@@ -57,6 +57,10 @@
     background: linear-gradient(90deg, rgba(20,30,60,0) 0%, rgba(30,45,85,.9) 50%, rgba(20,30,60,0) 100%);
     color: var(--magic); border-bottom: 1px solid var(--line-soft);
   }
+  .namebar.unique {
+    background: linear-gradient(90deg, rgba(70,40,10,0) 0%, rgba(105,60,18,.9) 50%, rgba(70,40,10,0) 100%);
+    color: #af6025;
+  }
   .props { padding: .5rem .65rem; font-size: .78rem; font-family: "Source Code Pro", Menlo, Consolas, monospace; }
   .p { display: flex; justify-content: space-between; gap: 1rem; color: var(--label); }
   .p b { color: #fff; font-weight: 400; }
@@ -111,9 +115,9 @@
   </header>
 
   <div class="verdict-top">
-    <h2>Due cose. Il resto è spazzatura.</h2>
-    <p>Misurando il prezzo di ogni categoria su trade, <b>solo due enchant superano i 10 chaos</b>. Tutti e nove i tipi di blueprint, cercati per nome, hanno il pavimento a <b>1 chaos</b>: il tipo da solo non vale niente. I contratti stanno a <b>1 Orb of Chance</b>.</p>
-    <p>Quindi la regola è una sola: <b>guarda l'enchant, ignora tutto il resto.</b> Se il blueprint non ha uno dei due enchant qui sotto, buttalo senza aprire trade.</p>
+    <h2>Tre cose. Il resto è spazzatura.</h2>
+    <p>Misurando ogni categoria su trade, <b>solo tre voci superano i 10 chaos</b>: un contratto unique e due enchant. Tutti e nove i tipi di blueprint hanno il pavimento a <b>1 chaos</b> e i nove tipi di contratto a <b>1 Orb of Alchemy</b>: il tipo da solo non vale niente.</p>
+    <p>La regola pratica: <b>guarda il nome se è un unique, l'enchant se è un blueprint.</b> Fuori da questi tre casi, butta senza nemmeno aprire trade.</p>
   </div>
 
   <h2 class="sec">Da tenere e vendere</h2>
@@ -141,8 +145,9 @@
 const LEAGUE = "Allflame";
 const BP = "heistmission.blueprint";
 
-function tradeUrl({ type, category, stat }) {
+function tradeUrl({ type, category, stat, name }) {
   const query = { query: { status: { option: "securable" }, stats: [{ type: "and", filters: [] }] }, sort: { price: "asc" } };
+  if (name) query.query.name = name;
   if (type) query.query.type = type;
   if (category) query.query.filters = { type_filters: { filters: { category: { option: category } } } };
   if (stat) query.query.stats[0].filters.push({ id: stat, disabled: false });
@@ -151,53 +156,60 @@ function tradeUrl({ type, category, stat }) {
 
 const KEEP = [
   {
-    name: "Heist Targets are always Experimented Items",
-    stat: "enchant.stat_4182516619",
-    price: "120c", floor: "il più basso stava a 111c", listings: "2 276 inserzioni",
-    found: "Laboratory · Prohibited Library",
-    why: "Il più caro dei due. Le basi Experimented hanno proprietà che non esistono su nessuna base normale, e non c'è modo di ottenerle fuori da Heist."
+    kind: "unique", icon: "contract-unique", rarity: "unique",
+    name: "Contract: The Twins",
+    sub: [["Classe base", "Vengeful Contract"], ["Come cercarlo", "per nome, non per tipo"]],
+    price: "149c", floor: "il più basso stava a 140c", listings: "242 inserzioni",
+    why: "Il contratto più caro del gioco, e l'unico dei cinque unique che vale qualcosa: gli altri quattro stanno fra 1 alch e 3 chaos. È anche il più raro — 242 inserzioni contro le 850–1200 degli altri.",
+    trade: { name: "Contract: The Twins", type: "Vengeful Contract" }
   },
   {
+    kind: "enchant", icon: "blueprint", rarity: "magic",
+    name: "Heist Targets are always Experimented Items",
+    sub: [["Stat filter", "enchant.stat_4182516619"], ["Si trova su", "Laboratory · Prohibited Library"]],
+    price: "120c", floor: "il più basso stava a 111c", listings: "2 276 inserzioni",
+    why: "Le basi Experimented hanno proprietà che non esistono su nessuna base normale, e non c'è modo di ottenerle fuori da Heist.",
+    trade: { category: BP, stat: "enchant.stat_4182516619" }
+  },
+  {
+    kind: "enchant", icon: "blueprint", rarity: "magic",
     name: "Heist Targets are always Currency or Scarabs",
-    stat: "enchant.stat_4168369352",
+    sub: [["Stat filter", "enchant.stat_4168369352"], ["Si trova su", "Smuggler's Den · Underbelly"]],
     price: "115c", floor: "il più basso stava a 100c", listings: "3 825 inserzioni",
-    found: "Smuggler's Den · Underbelly",
-    why: "Il più liquido: currency e scarab li vuole chiunque, quindi si vende in fretta anche a mercato pieno."
+    why: "Il più liquido dei tre: currency e scarab li vuole chiunque, quindi si vende in fretta anche a mercato pieno.",
+    trade: { category: BP, stat: "enchant.stat_4168369352" }
   }
 ];
 
 const JUNK = [
+  ["Contract: Breaking the Unbreakable (unique)", "307", "3c"],
+  ["Contract: Heart of Glory (unique)", "1 216", "1c"],
+  ["Contract: The Slaver King (unique)", "1 096", "1 Orb of Alchemy"],
+  ["Contract: Death to Darnaw (unique)", "852", "1 Orb of Alteration"],
   ["enchant Replica Unique Items", "3 119", "3–4c"],
   ["enchant Thieves' Trinkets", "8 098", "1c"],
   ["enchant Enchanted Armaments", "8 699", "1c"],
   ["enchant «additional Reveal» sui contratti", "0", "nessuna inserzione"],
-  ["Blueprint: Underbelly (per tipo)", "9 933", "1c"],
-  ["Blueprint: Smuggler's Den (per tipo)", "9 823", "1c"],
-  ["Blueprint: Prohibited Library (per tipo)", "9 215", "1c"],
-  ["Blueprint: Laboratory (per tipo)", "9 190", "1c"],
-  ["Blueprint: Bunker (per tipo)", "9 392", "1c"],
-  ["Blueprint: Mansion (per tipo)", "9 693", "1c"],
-  ["Blueprint: Records Office (per tipo)", "9 427", "1c"],
-  ["Blueprint: Tunnels (per tipo)", "9 705", "1c"],
-  ["Blueprint: Repository (per tipo)", "9 591", "1c"],
-  ["Contratti, qualsiasi tipo", "10 000+", "1 Orb of Chance"]
+  ["I nove Blueprint cercati per tipo", "~9 500 ciascuno", "1c"],
+  ["I nove Contract cercati per tipo", "10 000+ ciascuno", "1 alch / 1 chance"]
 ];
 
 document.getElementById("list").innerHTML = KEEP.map(k => '' +
   '<article class="row">' +
-    '<div><div class="icon"><img src="img/blueprint.png" alt=""></div></div>' +
+    '<div><div class="icon"><img src="img/' + k.icon + '.png" alt=""></div></div>' +
     '<div class="itembox">' +
-      '<div class="namebar"><span class="tagench">ENCHANT</span>' + k.name + '</div>' +
+      '<div class="namebar ' + k.rarity + '">' +
+        (k.kind === "enchant" ? '<span class="tagench">ENCHANT</span>' : '') + k.name +
+      '</div>' +
       '<div class="props">' +
-        '<div class="p"><span>Stat filter</span><b>' + k.stat + '</b></div>' +
-        '<div class="p"><span>Si trova su</span><b>' + k.found + '</b></div>' +
+        k.sub.map(([a, b]) => '<div class="p"><span>' + a + '</span><b>' + b + '</b></div>').join("") +
       '</div>' +
       '<p class="why">' + k.why + '</p>' +
     '</div>' +
     '<div class="side">' +
       '<div class="price">' + k.price + '<small>5° prezzo più basso</small></div>' +
       '<div class="n-list">' + k.listings + '<br>' + k.floor + '</div>' +
-      '<a class="trade" target="_blank" rel="noopener" href="' + tradeUrl({ category: BP, stat: k.stat }) + '">Verifica ora →</a>' +
+      '<a class="trade" target="_blank" rel="noopener" href="' + tradeUrl(k.trade) + '">Verifica ora →</a>' +
     '</div>' +
   '</article>').join("");
 
