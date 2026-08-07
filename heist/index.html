@@ -85,6 +85,12 @@
   th, td { text-align: left; padding: .4rem .6rem; border-bottom: 1px solid var(--line-soft); }
   th { color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: .07em; font-size: .68rem; }
   td.num { text-align: right; font-family: "Source Code Pro", Menlo, Consolas, monospace; color: var(--bad); }
+  .farm { border: 1px solid var(--line-soft); border-radius: 4px; background: var(--panel-2); padding: .9rem 1.1rem; }
+  .farm p { margin: 0 0 .7rem; font-size: .88rem; color: var(--muted); max-width: 52rem; }
+  .farm b { color: var(--text); }
+  .farm table { margin-bottom: .8rem; }
+  .pt { display: inline-block; font-size: .64rem; color: var(--muted); border: 1px solid var(--line-soft); border-radius: 3px; padding: 0 .3rem; margin-left: .4rem; }
+  .warn { margin: 0 !important; color: var(--gold) !important; font-size: .82rem !important; }
   details { border: 1px solid var(--line-soft); border-radius: 4px; background: var(--panel-2); padding: .8rem 1rem; }
   summary { cursor: pointer; color: var(--text); font-size: .88rem; }
   details p { color: var(--muted); font-size: .84rem; }
@@ -122,6 +128,25 @@
 
   <h2 class="sec">Da tenere e vendere</h2>
   <div id="list"></div>
+
+  <h2 class="sec">Come farmarle senza mai correre un heist</h2>
+  <div class="farm">
+    <p><b>L'enchant non si crafta.</b> In PoE «enchant» è il nome dello slot, non del metodo: qui viene tirato quando il blueprint droppa. O ce l'ha, o non ce l'avrà mai — non esiste modo di aggiungerlo.</p>
+    <p><b>Ma non serve giocare Heist per averli.</b> I blueprint escono dalle <b>Smuggler's Cache</b>, che compaiono <b>dentro le mappe normali</b>. Le clicchi mentre mappi, incassi contratti, Rogue's Marker e ogni tanto un blueprint. Rogue Harbour non lo apri mai: farmarli e correrli sono due attività separate.</p>
+    <p>I nodi che alzano il tasso stanno nel cluster Heist dell'albero atlas:</p>
+    <table>
+      <thead><tr><th>Nodo</th><th>Effetto</th></tr></thead>
+      <tbody>
+        <tr><td>Casing the Joint <span class="pt">notevole</span></td><td>+100% probabilità che le cache droppino blueprint, e possono uscire già rivelati</td></tr>
+        <tr><td>No Honour Among Thieves <span class="pt">notevole</span></td><td>+10% probabilità di blueprint per ogni cache già aperta nella mappa</td></tr>
+        <tr><td>Heist Blueprint Chance <span class="pt">3 punti</span></td><td>8% increased Blueprints found in your Maps</td></tr>
+        <tr><td>Heist Smuggler's Cache Chance <span class="pt">3 punti</span></td><td>+4% probabilità che una mappa contenga una cache</td></tr>
+        <tr><td>Additional Smuggler's Cache Chance <span class="pt">3 punti</span></td><td>10% probabilità di una seconda cache dove ce n'è già una</td></tr>
+        <tr><td>The Dutiful Soldier <span class="pt">notevole</span></td><td>Huck ti accompagna dalla prima cache aperta in ogni mappa</td></tr>
+      </tbody>
+    </table>
+    <p class="warn">⚠️ Valori presi da un riferimento fermo a 3.25: i nomi dei nodi sono stabili fra leghe, i numeri no. Più incerto ancora: alcune fonti dicono che in 3.29 <b>The Dutiful Soldier</b> darebbe anche «15% chance to have a special Implicit» ai blueprint trovati nelle tue mappe — sarebbe il nodo che più conta, ma non è confermato su fonte primaria. Leggilo in gioco prima di spenderci punti.</p>
+  </div>
 
   <h2 class="sec">Misurato e scartato — sotto i 10 chaos</h2>
   <details>
