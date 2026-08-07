@@ -62,6 +62,9 @@
   .card h3 { margin: 0 0 .35rem; font-size: 1rem; }
   .card p { margin: 0; color: var(--muted); font-size: .9rem; }
   .card.empty { border-style: dashed; background: transparent; }
+  a.card { display: block; text-decoration: none; color: inherit; transition: border-color .15s; }
+  a.card:hover { border-color: var(--accent); }
+  a.card:hover h3 { color: var(--accent); }
   footer {
     margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--border);
     color: var(--muted); font-size: .85rem;
@@ -79,10 +82,10 @@
 
   <h2>Strumenti</h2>
   <div class="grid">
-    <div class="card empty">
-      <h3>Nessuno strumento, per ora</h3>
-      <p>Questa è l'impalcatura. Ogni strumento diventa una scheda qui e una pagina propria del sito.</p>
-    </div>
+    <a class="card" href="heist/">
+      <h3>Heist — tengo o butto?</h3>
+      <p>Triage di contratti e blueprint: cosa vale la pena vendere e cosa buttare, con la ricerca live su trade già pronta.</p>
+    </a>
   </div>
 
   <footer>

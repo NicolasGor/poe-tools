@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Heist — tengo o butto?</title>
+<style>
+  :root {
+    --bg: #f7f6f3;
+    --surface: #ffffff;
+    --surface-2: #f1efe9;
+    --border: #e2ded6;
+    --text: #22201c;
+    --muted: #6b665e;
+    --accent: #9a6b2f;
+    --keep: #2f7d4f;
+    --keep-bg: #e6f2ea;
+    --check: #9a6b2f;
+    --check-bg: #f7eddc;
+    --drop: #a04338;
+    --drop-bg: #f7e6e4;
+    --radius: 10px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #16150f; --surface: #1e1d16; --surface-2: #24231a; --border: #322f24;
+      --text: #ece7dc; --muted: #9b9485; --accent: #d3a35f;
+      --keep: #7cc79b; --keep-bg: #1b2c22;
+      --check: #d3a35f; --check-bg: #2e2718;
+      --drop: #e08d82; --drop-bg: #2e1e1c;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #16150f; --surface: #1e1d16; --surface-2: #24231a; --border: #322f24;
+    --text: #ece7dc; --muted: #9b9485; --accent: #d3a35f;
+    --keep: #7cc79b; --keep-bg: #1b2c22;
+    --check: #d3a35f; --check-bg: #2e2718;
+    --drop: #e08d82; --drop-bg: #2e1e1c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 2.5rem 1.25rem 5rem;
+    background: var(--bg); color: var(--text);
+    font: 16px/1.6 ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
+  }
+  .wrap { max-width: 60rem; margin: 0 auto; }
+  a { color: var(--accent); }
+
+  header { border-bottom: 1px solid var(--border); padding-bottom: 1.4rem; margin-bottom: 2rem; }
+  .back { font-size: .85rem; }
+  h1 { margin: .8rem 0 .4rem; font-size: 1.8rem; letter-spacing: -.02em; }
+  .sub { margin: 0; color: var(--muted); }
+  .badges { margin-top: .9rem; display: flex; gap: .5rem; flex-wrap: wrap; }
+  .badge { padding: .2rem .6rem; border: 1px solid var(--border); border-radius: 999px; font-size: .78rem; color: var(--muted); }
+
+  .rule {
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.1rem 1.25rem; margin-bottom: 2rem;
+  }
+  .rule h2 { margin: 0 0 .6rem; font-size: .95rem; }
+  .rule ol { margin: 0; padding-left: 1.2rem; }
+  .rule li { margin-bottom: .35rem; }
+  .rule li:last-child { margin-bottom: 0; }
+
+  .controls { display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; margin-bottom: 1.2rem; }
+  #q {
+    flex: 1 1 16rem; height: 2.4rem; padding: 0 .75rem;
+    background: var(--surface); color: var(--text);
+    border: 1px solid var(--border); border-radius: 6px; font-size: .95rem;
+  }
+  .chip {
+    height: 2.4rem; padding: 0 .85rem; cursor: pointer;
+    background: var(--surface); color: var(--text);
+    border: 1px solid var(--border); border-radius: 6px;
+    font-size: .8rem; letter-spacing: .04em; text-transform: uppercase;
+  }
+  .chip[aria-pressed="true"] { background: var(--text); color: var(--bg); border-color: var(--text); font-weight: 600; }
+  .count { margin-left: auto; color: var(--muted); font-size: .85rem; }
+
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1rem 1.15rem; margin-bottom: .7rem;
+    display: grid; gap: .5rem .9rem;
+    grid-template-columns: 1fr auto; align-items: start;
+  }
+  .card h3 { margin: 0; font-size: 1.02rem; }
+  .verdict {
+    grid-row: 1; grid-column: 2; justify-self: end;
+    padding: .18rem .6rem; border-radius: 999px;
+    font-size: .74rem; font-weight: 700; letter-spacing: .05em; white-space: nowrap;
+  }
+  .v-keep  { color: var(--keep);  background: var(--keep-bg); }
+  .v-check { color: var(--check); background: var(--check-bg); }
+  .v-drop  { color: var(--drop);  background: var(--drop-bg); }
+  .why { grid-column: 1 / -1; margin: 0; color: var(--muted); font-size: .92rem; }
+  .meta { grid-column: 1 / -1; display: flex; gap: .4rem; flex-wrap: wrap; }
+  .tag {
+    font-size: .74rem; color: var(--muted);
+    border: 1px solid var(--border); border-radius: 4px; padding: .1rem .45rem;
+  }
+  .actions { grid-column: 1 / -1; }
+  .trade {
+    display: inline-block; text-decoration: none;
+    font-size: .82rem; padding: .35rem .7rem;
+    border: 1px solid var(--border); border-radius: 6px;
+    background: var(--surface-2); color: var(--text);
+  }
+  .trade:hover { border-color: var(--accent); color: var(--accent); }
+
+  h2.section { font-size: .8rem; text-transform: uppercase; letter-spacing: .09em; color: var(--muted); margin: 2rem 0 .8rem; }
+  .empty { color: var(--muted); padding: 1.5rem 0; }
+  footer { margin-top: 3.5rem; padding-top: 1.4rem; border-top: 1px solid var(--border); color: var(--muted); font-size: .85rem; }
+  footer p { margin: 0 0 .5rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="back"><a href="../index.html">← Tutti gli strumenti</a></div>
+    <h1>Heist — tengo o butto?</h1>
+    <p class="sub">Triage di contratti e blueprint. Nessun prezzo scritto qui dentro: ogni riga apre la ricerca live su trade.</p>
+    <div class="badges">
+      <span class="badge">patch 3.29.2</span>
+      <span class="badge">lega Allflame</span>
+      <span class="badge" id="stamp">criteri da verificare in gioco</span>
+    </div>
+  </header>
+
+  <div class="rule">
+    <h2>Le tre domande, in ordine</h2>
+    <ol>
+      <li><strong>Che tipo è?</strong> Il nome del blueprint dice già la categoria di reward, prima di rivelare qualsiasi cosa.</li>
+      <li><strong>Area level 83?</strong> Sotto l'83 vale sistematicamente meno, a parità di tutto il resto.</li>
+      <li><strong>Quante wing, e quante già rivelate?</strong> Più wing e più rivelazioni fatte = più valore, perché chi compra risparmia i Rogue's Marker.</li>
+    </ol>
+  </div>
+
+  <div class="controls">
+    <input id="q" type="search" placeholder="Cerca: bunker, currency, replica, contratto…" aria-label="Cerca">
+    <button class="chip" data-f="all" aria-pressed="true">Tutti</button>
+    <button class="chip" data-f="blueprint" aria-pressed="false">Blueprint</button>
+    <button class="chip" data-f="contract" aria-pressed="false">Contratti</button>
+    <button class="chip" data-f="keep" aria-pressed="false">Solo da tenere</button>
+    <span class="count" id="count"></span>
+  </div>
+
+  <div id="list"></div>
+
+  <footer>
+    <p><strong>Perché non ci sono prezzi.</strong> Il mercato Heist si muove ogni settimana e nessun sito lo indicizza — poe.ninja non copre contratti e blueprint. Un prezzo scritto a mano qui sarebbe falso in pochi giorni, e un prezzo falso fa buttare roba buona. I pulsanti aprono la ricerca vera.</p>
+    <p><strong>Come leggere i risultati su trade.</strong> Guarda il prezzo più basso fra le inserzioni <em>online</em>, non la media: quello è ciò che incasserai davvero. Se ci sono meno di 5 inserzioni, il prezzo non è un prezzo — è un'opinione.</p>
+    <p><strong>Da verificare.</strong> I verdetti nascono dalla struttura del gioco (che categoria contiene ogni blueprint), non da osservazione diretta del mercato di questa lega. Correggili quando li vedi smentiti in gioco.</p>
+  </footer>
+
+</div>
+
+<script>
+const LEAGUE = "Allflame";
+
+// Il valore non è scritto qui: `search` costruisce la query live su trade.
+const DATA = [
+  // ---------- BLUEPRINT ----------
+  {
+    kind: "blueprint", verdict: "keep",
+    name: "Blueprint: Smuggler's Den",
+    reward: "Thieves' Trinkets o Currency",
+    why: "Categoria currency/trinket: è la più richiesta perché il reward è liquido — chi la compra sa già cosa ne esce.",
+    tags: ["Trinkets", "Currency"], search: "Blueprint: Smuggler's Den"
+  },
+  {
+    kind: "blueprint", verdict: "keep",
+    name: "Blueprint: Underbelly",
+    reward: "Thieves' Trinkets o Currency",
+    why: "Stessa categoria dello Smuggler's Den. Un trinket con mod di duplicazione currency è il pezzo grosso di tutta la meccanica.",
+    tags: ["Trinkets", "Currency"], search: "Blueprint: Underbelly"
+  },
+  {
+    kind: "blueprint", verdict: "keep",
+    name: "Blueprint: Laboratory",
+    reward: "Replicas o Experimented Items",
+    why: "Le Replica unique e le basi Experimented sono roba che esiste solo qui dentro: nessuna alternativa in mappa, quindi domanda costante.",
+    tags: ["Replicas", "Experimented"], search: "Blueprint: Laboratory"
+  },
+  {
+    kind: "blueprint", verdict: "keep",
+    name: "Blueprint: Prohibited Library",
+    reward: "Replicas o Experimented Items",
+    why: "Come Laboratory. Le basi Experimented meta (anelli, amuleti) sono la fascia più alta del mercato Heist.",
+    tags: ["Replicas", "Experimented"], search: "Blueprint: Prohibited Library"
+  },
+  {
+    kind: "blueprint", verdict: "check",
+    name: "Blueprint: Tunnels",
+    reward: "Unusual Gems",
+    why: "Gemme di qualità alternativa: valore concentrato in poche gemme che la meta richiede. Fuori da quelle, si svende.",
+    tags: ["Unusual Gems"], search: "Blueprint: Tunnels"
+  },
+  {
+    kind: "blueprint", verdict: "check",
+    name: "Blueprint: Repository",
+    reward: "Unusual Gems",
+    why: "Come Tunnels. Tienila solo se area level 83 o se ha già wing rivelate.",
+    tags: ["Unusual Gems"], search: "Blueprint: Repository"
+  },
+  {
+    kind: "blueprint", verdict: "check",
+    name: "Blueprint: Bunker",
+    reward: "Enchanted Armaments",
+    why: "Enchant su armi e armature: interessa ai crafter, non a tutti. Mercato più stretto, si vende più lentamente.",
+    tags: ["Enchanted"], search: "Blueprint: Bunker"
+  },
+  {
+    kind: "blueprint", verdict: "check",
+    name: "Blueprint: Records Office",
+    reward: "Enchanted Armaments",
+    why: "Stessa categoria del Bunker. Sotto area level 83 e senza wing rivelate, non vale l'ingombro.",
+    tags: ["Enchanted"], search: "Blueprint: Records Office"
+  },
+  {
+    kind: "blueprint", verdict: "check",
+    name: "Blueprint: Mansion",
+    reward: "Enchanted Armaments",
+    why: "Stessa categoria. Nicchia di crafting: controlla prima di accumularne dieci.",
+    tags: ["Enchanted"], search: "Blueprint: Mansion"
+  },
+
+  // ---------- CONTRATTI ----------
+  {
+    kind: "contract", verdict: "check",
+    name: "Contratto con enchant «additional reveals»",
+    reward: "Contratto potenziato",
+    why: "L'enchant che genera rivelazioni extra vale più del contratto stesso: risparmia Rogue's Marker a chi rivela blueprint. È l'unico contratto comune che merita di essere guardato uno per uno.",
+    tags: ["Enchant", "Reveals"], search: "Contract"
+  },
+  {
+    kind: "contract", verdict: "check",
+    name: "Contratti unique / con nome proprio",
+    reward: "Target speciale",
+    why: "Hanno target e ricompense dedicati e il valore dipende dal nome esatto: alcuni sono la cosa più cara della cartella, altri valgono zero. Non generalizzare — cerca il nome.",
+    tags: ["Unique"], search: "Contract"
+  },
+  {
+    kind: "contract", verdict: "drop",
+    name: "Contratti normali sotto area level 83",
+    reward: "Heist standard",
+    why: "Cadono a valanga e nessuno li compra singolarmente. Servono a te per i Rogue's Marker e per generare rivelazioni: corrili o buttali, non stoccarli.",
+    tags: ["Bulk"], search: "Contract"
+  },
+  {
+    kind: "contract", verdict: "check",
+    name: "Contratti normali area level 83",
+    reward: "Heist standard",
+    why: "L'83 è l'unico livello che qualcuno compra in bulk. Vale solo a stack pieni: un contratto singolo non copre il tempo di scriverlo in vendita.",
+    tags: ["ilvl 83", "Bulk"], search: "Contract"
+  }
+];
+
+const VERDICT = {
+  keep:  { label: "TIENI",    cls: "v-keep"  },
+  check: { label: "CONTROLLA", cls: "v-check" },
+  drop:  { label: "BUTTA",    cls: "v-drop"  }
+};
+
+function tradeUrl(typeName) {
+  const query = {
+    query: { status: { option: "online" }, type: typeName, stats: [{ type: "and", filters: [] }] },
+    sort: { price: "asc" }
+  };
+  return "https://www.pathofexile.com/trade/search/" + encodeURIComponent(LEAGUE)
+       + "?q=" + encodeURIComponent(JSON.stringify(query));
+}
+
+const list = document.getElementById("list");
+const count = document.getElementById("count");
+const q = document.getElementById("q");
+const chips = [...document.querySelectorAll(".chip")];
+let filter = "all";
+
+function render() {
+  const term = q.value.trim().toLowerCase();
+  const rows = DATA.filter(d => {
+    const okFilter =
+      filter === "all" ||
+      filter === d.kind ||
+      (filter === "keep" && d.verdict === "keep");
+    if (!okFilter) return false;
+    if (!term) return true;
+    return (d.name + " " + d.reward + " " + d.why + " " + d.tags.join(" ")).toLowerCase().includes(term);
+  });
+
+  list.innerHTML = "";
+  if (!rows.length) {
+    list.innerHTML = '<p class="empty">Nessun risultato.</p>';
+  } else {
+    const order = { keep: 0, check: 1, drop: 2 };
+    rows.sort((a, b) => order[a.verdict] - order[b.verdict]);
+    for (const d of rows) {
+      const v = VERDICT[d.verdict];
+      const el = document.createElement("article");
+      el.className = "card";
+      el.innerHTML =
+        '<h3></h3>' +
+        '<span class="verdict ' + v.cls + '"></span>' +
+        '<p class="why"></p>' +
+        '<div class="meta"></div>' +
+        '<div class="actions"><a class="trade" target="_blank" rel="noopener">Prezzo live su trade →</a></div>';
+      el.querySelector("h3").textContent = d.name;
+      el.querySelector(".verdict").textContent = v.label;
+      el.querySelector(".why").textContent = d.why;
+      const meta = el.querySelector(".meta");
+      [d.reward, ...d.tags].forEach(t => {
+        const s = document.createElement("span");
+        s.className = "tag"; s.textContent = t; meta.appendChild(s);
+      });
+      el.querySelector(".trade").href = tradeUrl(d.search);
+      list.appendChild(el);
+    }
+  }
+  count.textContent = rows.length + (rows.length === 1 ? " voce" : " voci");
+}
+
+chips.forEach(c => c.addEventListener("click", () => {
+  chips.forEach(x => x.setAttribute("aria-pressed", String(x === c)));
+  filter = c.dataset.f;
+  render();
+}));
+q.addEventListener("input", render);
+render();
+</script>
+</body>
+</html>
