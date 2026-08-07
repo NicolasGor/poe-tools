@@ -26,8 +26,16 @@ dato della wiki serve a uno strumento, si copia il singolo valore, non la pagina
 
 ## Convenzioni
 
-- **Zero dipendenze esterne**: niente CDN, niente font remoti, niente fetch verso
-  altri host. Tutto inline, tutto funzionante offline.
+- **Zero dipendenze esterne a runtime**: niente CDN, niente font remoti, niente
+  fetch verso altri host. La pagina deve funzionare offline.
+- **Le icone si scaricano, non si linkano.** Gli asset di gioco stanno in
+  `<tool>/img/` e sono committati nel repo. Un `<img>` puntato a
+  `web.poecdn.com` è una dipendenza esterna travestita: si rompe se GGG blocca
+  l'hotlink e non funziona offline. CSS e JS restano inline nella pagina; le
+  immagini sono file locali, stesso origin.
+- **I link in uscita sono ammessi** — un `<a href>` verso `pathofexile.com/trade`
+  è navigazione, non una dipendenza: la pagina si carica lo stesso se il sito
+  remoto è giù.
 - Un strumento = una cartella con il suo `index.html`, più una scheda nel
   catalogo in `index.html` alla radice.
 - Il sito dichiara la patch a cui si riferisce. Quando cambia, si aggiorna.
