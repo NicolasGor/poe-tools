@@ -1,0 +1,9 @@
+# Credenziali — mai committare
+.env
+.env.local
+
+# macOS
+.DS_Store
+
+# Claude Code, impostazioni locali della macchina
+.claude/settings.local.json

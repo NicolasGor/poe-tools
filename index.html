@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PoE Tools</title>
+<style>
+  :root {
+    --bg: #f7f6f3;
+    --surface: #ffffff;
+    --border: #e2ded6;
+    --text: #22201c;
+    --muted: #6b665e;
+    --accent: #9a6b2f;
+    --radius: 10px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #16150f;
+      --surface: #1e1d16;
+      --border: #322f24;
+      --text: #ece7dc;
+      --muted: #9b9485;
+      --accent: #d3a35f;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #16150f;
+    --surface: #1e1d16;
+    --border: #322f24;
+    --text: #ece7dc;
+    --muted: #9b9485;
+    --accent: #d3a35f;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 3rem 1.25rem 5rem;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.6 ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
+  }
+  .wrap { max-width: 62rem; margin: 0 auto; }
+  header { border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; margin-bottom: 2.5rem; }
+  h1 { margin: 0 0 .4rem; font-size: 1.9rem; letter-spacing: -.02em; }
+  h1 span { color: var(--accent); }
+  .sub { margin: 0; color: var(--muted); }
+  .patch {
+    display: inline-block; margin-top: .9rem; padding: .2rem .6rem;
+    border: 1px solid var(--border); border-radius: 999px;
+    font-size: .8rem; color: var(--muted);
+  }
+  h2 {
+    font-size: .8rem; text-transform: uppercase; letter-spacing: .09em;
+    color: var(--muted); font-weight: 600; margin: 0 0 1rem;
+  }
+  .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); }
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.1rem 1.2rem;
+  }
+  .card h3 { margin: 0 0 .35rem; font-size: 1rem; }
+  .card p { margin: 0; color: var(--muted); font-size: .9rem; }
+  .card.empty { border-style: dashed; background: transparent; }
+  footer {
+    margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--border);
+    color: var(--muted); font-size: .85rem;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>PoE <span>Tools</span></h1>
+    <p class="sub">Strumenti per Path of Exile 1 — calcolatori e utilità, uno per scheda.</p>
+    <span class="patch">patch 3.29.2 · Curse of the Allflame</span>
+  </header>
+
+  <h2>Strumenti</h2>
+  <div class="grid">
+    <div class="card empty">
+      <h3>Nessuno strumento, per ora</h3>
+      <p>Questa è l'impalcatura. Ogni strumento diventa una scheda qui e una pagina propria del sito.</p>
+    </div>
+  </div>
+
+  <footer>
+    Sito statico servito da GitHub Pages. Gli appunti di gioco restano altrove, in locale.
+  </footer>
+
+</div>
+</body>
+</html>
