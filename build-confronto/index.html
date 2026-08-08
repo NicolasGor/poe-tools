@@ -334,21 +334,9 @@ fetch("albero.svg").then(r => r.text()).then(txt => {
     // l'ascendancy è nascosta finché non la si marca attiva
     if (asc) svg.querySelectorAll("." + CSS.escape(asc)).forEach(e => e.classList.add("active"));
 
-    // Inquadra sull'albero principale. I nodi di ascendancy stanno lontanissimi
-    // nello spazio delle coordinate: includerli dilata il riquadro e lascia
-    // l'ascendancy come un'isola in mezzo al vuoto.
-    const pts = [...svg.querySelectorAll(".nodes circle.active")]
-      .filter(c => (c.getAttribute("data-kind") || "") !== "Ascendancy")
-      .map(c => [+c.getAttribute("cx"), +c.getAttribute("cy")]);
-    if (pts.length) {
-      const xs = pts.map(p => p[0]), ys = pts.map(p => p[1]);
-      const pad = 900;
-      const x0 = Math.min(...xs) - pad, y0 = Math.min(...ys) - pad;
-      const w = Math.max(...xs) - Math.min(...xs) + pad * 2;
-      const h = Math.max(...ys) - Math.min(...ys) + pad * 2;
-      const s = Math.max(w, h);
-      svg.setAttribute("viewBox", `${x0 - (s - w) / 2} ${y0 - (s - h) / 2} ${s} ${s}`);
-    }
+    // Nessuna reinquadratura: si tiene il viewBox originale, cioè l'albero intero
+    // con l'ascendancy al suo posto. Zoomare sui nodi presi sembrava un'idea
+    // buona ma spezza il disegno e isola l'ascendancy.
     svg.removeAttribute("width"); svg.removeAttribute("height");
     box.innerHTML = "";
     box.appendChild(svg);
