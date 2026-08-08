@@ -28,12 +28,21 @@ dato della wiki serve a uno strumento, si copia il singolo valore, non la pagina
 
 - **Zero dipendenze esterne a runtime**: niente CDN, niente font remoti, niente
   fetch verso altri host. La pagina deve funzionare offline.
+- **Il design sta in [stile.css](stile.css), condiviso da tutte le pagine**: token
+  (colori, scala tipografica, spaziatura), barra di navigazione, e i componenti
+  ricorrenti — `.card`, `.badge`, `.avviso`, `.tabella`, `.kpi`, `.sec`. È un file
+  locale, non un CDN: la regola sopra resta rispettata. Nel `<style>` di una pagina
+  ci va **solo ciò che è davvero suo** (la mappa dell'atlante, la griglia del gear).
+  Se una regola servirebbe a due pagine, il suo posto è `stile.css`.
+- **La larghezza della colonna è la variabile `--colonna`**, condivisa fra barra e
+  contenuto perché restino allineati. Una pagina che ha bisogno di più spazio mette
+  `class="largo"` su `<body>` — non un max-width solo sul contenitore.
 - **Le icone si scaricano, non si linkano — tranne quando il contenuto è
   dinamico.** Per una pagina a contenuto fisso gli asset stanno in `<tool>/img/`
   e sono committati. Ma una pagina che **importa build arbitrarie** non può avere
   una copia locale di ogni item del gioco: lì si usa l'archivio remoto
   (`assets.pobb.in/1/<Nome>.webp`), con ripiego sul nome scritto se l'icona manca.
-  La regola resta valida per tutto il resto: CSS e JS inline, nessun CDN.
+  La regola resta valida per tutto il resto: nessun CDN, nessun host esterno.
 - **I link in uscita sono ammessi** — un `<a href>` verso `pathofexile.com/trade`
   è navigazione, non una dipendenza: la pagina si carica lo stesso se il sito
   remoto è giù.
