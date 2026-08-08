@@ -56,16 +56,22 @@
          background-image:url("img/atlante-sfondo.webp");background-size:cover;background-position:center}
   .mondo svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
   .link{stroke:rgba(255,255,255,.22);stroke-width:1.1}
-  .nodo{position:absolute;transform:translate(-50%,-50%);width:13px;height:13px;border-radius:50%;
-        border:1.4px solid rgba(255,255,255,.55);background:rgba(8,8,8,.75);cursor:pointer;overflow:hidden;
-        display:flex;align-items:center;justify-content:center}
-  .nodo img{width:88%;height:88%;object-fit:contain}
-  .nodo.ricco{border-color:#ffd166;box-shadow:0 0 5px 1px rgba(255,209,102,.55)}
-  .nodo.sel{border-color:#fff;border-width:2.4px;z-index:6}
-  .nodo.spento{opacity:.16;filter:grayscale(1)}
-  .etich{position:absolute;transform:translate(-50%,0);top:9px;font-size:9px;color:#fff;
-         text-shadow:0 0 3px #000,0 0 4px #000,0 1px 2px #000;white-space:nowrap;pointer-events:none}
-  .etich.spento{opacity:.16}
+  .nodo{position:absolute;transform:translate(-50%,-50%);width:19px;height:19px;border-radius:50%;
+        border:1.6px solid rgba(224,88,79,.85);background:rgba(8,8,8,.8);cursor:pointer;overflow:hidden;
+        display:flex;align-items:center;justify-content:center;z-index:2}
+  .nodo img{width:92%;height:92%;object-fit:contain}
+  .nodo.unica{border-color:#e0b34f}
+  .nodo.speciale{border-color:#6a9bd8}
+  .nodo.ricco{border-color:#ffd166;box-shadow:0 0 6px 1px rgba(255,209,102,.6)}
+  .nodo.sel{border-color:#fff;border-width:2.6px;z-index:6}
+  .nodo.spento{opacity:.18;filter:grayscale(1)}
+  .etich{position:absolute;transform:translate(-50%,0);top:12px;font-size:9.5px;font-weight:600;
+         color:#e0584f;background:rgba(9,7,6,.82);border:1px solid rgba(224,88,79,.5);
+         border-radius:3px;padding:1px 5px;white-space:nowrap;pointer-events:none;z-index:1}
+  .etich.unica{color:#e0b34f;border-color:rgba(224,179,79,.5)}
+  .etich.speciale{color:#6a9bd8;border-color:rgba(106,155,216,.5)}
+  .etich.sel{color:#fff;border-color:#fff;z-index:5}
+  .etich.spento{opacity:.18}
   .controlliMappa{position:absolute;right:.5rem;bottom:.5rem;z-index:20;display:flex;flex-direction:column;gap:.25rem}
   .controlliMappa button{width:1.9rem;height:1.9rem;border-radius:4px;background:rgba(23,29,39,.92);
                         color:var(--text);border:1px solid var(--line2);cursor:pointer;font-size:1rem;line-height:1}
@@ -244,7 +250,6 @@ function adattaZoom(){
   zoom.tx = (w - MONDO_LATO * zoom.scala) / 2;
   zoom.ty = (h - MONDO_LATO * zoom.scala) / 2;
   applicaZoom();
-  decluttera();
 }
 
 function mappa(){
@@ -267,49 +272,23 @@ function mappa(){
   D.mappe.forEach(n => {
     const spento = !visibile(n);
     const v = Math.sqrt((n[campo]||0)/max);
+    const classeTipo = n.tipo==="unique map" ? " unica" : n.tipo==="special map" ? " speciale" : "";
     const d = document.createElement("div");
-    d.className = "nodo" + (v>0.5?" ricco":"") + (sel===n.nome?" sel":"") + (spento?" spento":"");
+    d.className = "nodo" + classeTipo + (v>0.5?" ricco":"") + (sel===n.nome?" sel":"") + (spento?" spento":"");
     d.style.left = n.x+"px"; d.style.top = n.y+"px";
     d.title = `${n.nome} — ${n.totale.toLocaleString('it-IT')} c totale, ${n.nCarte} carte`;
     if (n.icona) d.innerHTML = `<img src="${iconaMappa(n)}" loading="lazy">`;
     d.onclick = () => { sel = n.nome; ridisegna(); pannello(); };
     frammento.appendChild(d);
     const e = document.createElement("div");
-    e.className = "etich" + (spento?" spento":"");
+    e.className = "etich" + classeTipo + (sel===n.nome?" sel":"") + (spento?" spento":"");
     e.style.left = n.x+"px"; e.style.top = n.y+"px";
     e.textContent = n.nome;
-    e.dataset.nome = n.nome;
     frammento.appendChild(e);
   });
   q("#mondo").appendChild(frammento);
   if (zoom.scala === 1 && zoom.tx === 0 && zoom.ty === 0) adattaZoom();
   else applicaZoom();
-  decluttera();
-}
-
-// Le etichette si accavallano nei gruppi fitti di nodi: tiene solo quelle che
-// non si sovrappongono sullo schermo, dando priorità alle mappe non spente e
-// a quelle di valore più alto — se c'è conflitto, sparisce l'etichetta meno utile.
-function decluttera(){
-  if (!D) return;
-  const tutte = [...q("#mondo").querySelectorAll(".etich")];
-  tutte.forEach(e => e.style.visibility = "visible");
-  const idx = new Map(D.mappe.map(n=>[n.nome,n]));
-  const ordinate = tutte.slice().sort((a,b) => {
-    const na = idx.get(a.dataset.nome), nb = idx.get(b.dataset.nome);
-    const pa = (na && visibile(na) ? 1e9 : 0) + (na?.totale || 0);
-    const pb = (nb && visibile(nb) ? 1e9 : 0) + (nb?.totale || 0);
-    return pb - pa;
-  });
-  const tenute = [];
-  ordinate.forEach(el => {
-    const r = el.getBoundingClientRect();
-    const scontro = tenute.some(k => {
-      const kr = k.getBoundingClientRect();
-      return !(r.right < kr.left || r.left > kr.right || r.bottom < kr.top || r.top > kr.bottom);
-    });
-    if (scontro) el.style.visibility = "hidden"; else tenute.push(el);
-  });
 }
 
 (function panZoom(){
@@ -324,7 +303,6 @@ function decluttera(){
     zoom.scala = nuova;
     zoom.tx = mx - wx*zoom.scala; zoom.ty = my - wy*zoom.scala;
     applicaZoom();
-    decluttera();
   }, { passive:false });
 
   let trasc = null;
@@ -342,8 +320,8 @@ function decluttera(){
   });
   vp.addEventListener("pointerup", () => { trasc=null; vp.classList.remove("trascina"); });
 
-  q("#zoomIn").onclick = () => { zoom.scala = Math.min(9, zoom.scala*1.35); applicaZoom(); decluttera(); };
-  q("#zoomOut").onclick = () => { zoom.scala = Math.max(0.4, zoom.scala/1.35); applicaZoom(); decluttera(); };
+  q("#zoomIn").onclick = () => { zoom.scala = Math.min(9, zoom.scala*1.35); applicaZoom(); };
+  q("#zoomOut").onclick = () => { zoom.scala = Math.max(0.4, zoom.scala/1.35); applicaZoom(); };
   q("#zoomReset").onclick = adattaZoom;
   addEventListener("resize", () => { if (vista==="mappa") adattaZoom(); });
 })();
