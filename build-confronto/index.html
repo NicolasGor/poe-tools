@@ -99,18 +99,23 @@
   /* albero passivo, disegnato sull'SVG di pobb.in */
   .albero{position:relative;background:#151b26;border:1px solid var(--line);border-radius:8px;
           overflow:hidden;margin-bottom:.7rem;aspect-ratio:1}
-  .albero svg{width:100%;height:100%;display:block;background:transparent !important}
-  /* sfondo smorzato, percorso in evidenza — come pobb.in */
-  .albero svg .nodes circle{opacity:.20}
-  .albero svg .connections path,
-  .albero svg .connections line{stroke-opacity:.16;stroke-width:14}
-  .albero svg .nodes circle.active{opacity:1;color:#4aa8e8}
-  .albero svg .nodes circle.active.notable{color:#7cc5f5}
-  .albero svg .nodes circle.active.keystone{color:#bfe3ff}
-  .albero svg .connections path.active,
-  .albero svg .connections line.active{stroke-opacity:1;stroke-width:30;stroke:#4aa8e8}
+  .albero svg{width:100%;height:100%;display:block}
+  /* l'SVG porta già il suo stile e le sue variabili: si aggiunge solo il colore
+     degli elementi attivi, esattamente come fa pobb.in. Niente raggi ritoccati,
+     niente opacità inventate. */
+  .albero svg .active{color:var(--active-color)}
   .albero .caric{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
                  color:var(--muted);font-size:.8rem}
+  /* tooltip dei nodi, stesso frame degli oggetti */
+  .nodetip{position:absolute;z-index:40;display:none;pointer-events:none;
+           width:22rem;max-width:88%;background:#000;border:1px solid #6b5a2e;
+           box-shadow:0 10px 26px rgba(0,0,0,.85);text-align:center}
+  .nodetip .hd{padding:.28rem .8rem;font-family:"Fontin SmallCaps",Georgia,serif;font-size:.92rem;
+               letter-spacing:.03em;color:#e0c68a;
+               background:linear-gradient(180deg,#4a3d17,#2a2109)}
+  .nodetip .bd{padding:.4rem .8rem;font-size:.78rem;line-height:1.5;color:#8888ff}
+  .nodetip .kind{display:block;font-size:.62rem;color:#8a8a8a;letter-spacing:.09em;
+                 text-transform:uppercase;padding:.15rem 0 .3rem}
   .ks{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.6rem}
   .ks span{font-size:.72rem;border:1px solid var(--line2);border-radius:999px;padding:.1rem .5rem;color:#cfd8ea}
   .ks span.mast{color:var(--muted);border-style:dashed}
@@ -316,10 +321,6 @@ fetch("albero.svg").then(r => r.text()).then(txt => {
       const id = (c.id || "").slice(1);
       if (!ids.has(id)) return;
       c.classList.add("active");
-      const k = (c.getAttribute("data-kind") || "").toLowerCase();
-      if (k === "keystone" || k === "notable") c.classList.add(k);
-      // i nodi presi vanno ingranditi, altrimenti spariscono nel fondo
-      c.setAttribute("r", k === "keystone" ? 130 : k === "notable" ? 105 : 78);
       n++;
     });
     // collegamenti fra due nodi entrambi allocati.
@@ -333,8 +334,11 @@ fetch("albero.svg").then(r => r.text()).then(txt => {
     // l'ascendancy è nascosta finché non la si marca attiva
     if (asc) svg.querySelectorAll("." + CSS.escape(asc)).forEach(e => e.classList.add("active"));
 
-    // inquadra sui nodi allocati, con margine
+    // Inquadra sull'albero principale. I nodi di ascendancy stanno lontanissimi
+    // nello spazio delle coordinate: includerli dilata il riquadro e lascia
+    // l'ascendancy come un'isola in mezzo al vuoto.
     const pts = [...svg.querySelectorAll(".nodes circle.active")]
+      .filter(c => (c.getAttribute("data-kind") || "") !== "Ascendancy")
       .map(c => [+c.getAttribute("cx"), +c.getAttribute("cy")]);
     if (pts.length) {
       const xs = pts.map(p => p[0]), ys = pts.map(p => p[1]);
@@ -348,7 +352,36 @@ fetch("albero.svg").then(r => r.text()).then(txt => {
     svg.removeAttribute("width"); svg.removeAttribute("height");
     box.innerHTML = "";
     box.appendChild(svg);
-    box.title = n + " nodi allocati";
+
+    // tooltip del nodo: nome, tipo e stat, presi dai data-* dell'SVG
+    const tip = document.createElement("div");
+    tip.className = "nodetip";
+    box.appendChild(tip);
+    box.addEventListener("mouseover", ev => {
+      const c = ev.target.closest("circle[data-name]");
+      if (!c) return;
+      const nome = c.getAttribute("data-name") || "";
+      const stats = (c.getAttribute("data-stats") || "").split("\n").filter(Boolean);
+      const kind = c.getAttribute("data-kind") || "";
+      if (!nome) return;
+      tip.innerHTML = `<div class="hd">${nome.replace(/</g,"&lt;")}</div>`
+        + `<span class="kind">${kind}${c.classList.contains("active") ? " · allocato" : ""}</span>`
+        + (stats.length ? `<div class="bd">${stats.map(s=>s.replace(/</g,"&lt;")).join("<br>")}</div>` : "");
+      const r = c.getBoundingClientRect(), b = box.getBoundingClientRect();
+      tip.style.display = "block";
+      const w = tip.offsetWidth, h = tip.offsetHeight;
+      let x = r.left - b.left + r.width / 2 - w / 2;
+      x = Math.max(4, Math.min(x, b.width - w - 4));
+      let y = r.top - b.top - h - 8;
+      if (y < 4) y = r.bottom - b.top + 8;
+      tip.style.left = x + "px";
+      tip.style.top = y + "px";
+    });
+    box.addEventListener("mouseout", ev => {
+      if (!ev.relatedTarget || !ev.relatedTarget.closest || !ev.relatedTarget.closest("circle[data-name]")) {
+        tip.style.display = "none";
+      }
+    });
   });
 }).catch(e => {
   document.querySelectorAll(".albero .caric").forEach(d => d.textContent = "albero non caricato: " + e.message);
