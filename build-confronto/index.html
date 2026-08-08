@@ -39,32 +39,42 @@
   h3.sec{font-size:.72rem;text-transform:uppercase;letter-spacing:.11em;color:var(--muted);
          margin:1.4rem 0 .55rem;padding-bottom:.3rem;border-bottom:1px solid var(--line)}
 
-  /* griglia del gear, impaginata come pobb.in */
-  .pad{display:grid;gap:.35rem;grid-template-columns:repeat(5,1fr);
+  /* griglia del gear ricalcata su pobb.in: 8 colonne quadrate,
+     ogni pezzo occupa le celle che occupa in gioco */
+  .pad{display:grid;grid-template-columns:repeat(8,1fr);gap:4px;
        grid-template-areas:
-       "wep .     helm  amu   ring1"
-       "wep body  body  boots ring2"
-       "glv body  body  boots ."
-       "glv belt  belt  .     ."
-       "flasks flasks flasks flasks flasks"
-       "jewels jewels jewels jewels jewels";
-       background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:.5rem;margin-bottom:.9rem}
-  .cell{background:#10141c;border:1px solid var(--line);border-radius:4px;
-        display:flex;align-items:center;justify-content:center;position:relative;min-height:3.4rem;padding:.2rem}
-  .cell img{max-width:100%;max-height:5.2rem;object-fit:contain;display:block}
-  .cell.tall img{max-height:8.4rem}
-  .cell.diffcell{border-color:var(--gold);box-shadow:0 0 0 1px rgba(240,185,74,.35) inset}
-  .cell .tip{position:absolute;left:0;bottom:calc(100% + 4px);z-index:20;display:none;
-             width:19rem;background:#0c1017;border:1px solid var(--line2);border-radius:5px;padding:.5rem .6rem;
-             font-size:.74rem;line-height:1.4;box-shadow:0 8px 22px rgba(0,0,0,.6)}
+       "wep wep .     helm  helm  .     .     ."
+       "wep wep .     helm  helm  .     .     ."
+       "wep wep .     body  body  amu   .     ."
+       "wep wep ring1 body  body  ring2 .     ."
+       ".   glv glv   body  body  boots boots ."
+       ".   glv glv   belt  belt  boots boots ."
+       ".   .   fl1   fl2   fl3   fl4   fl5   ."
+       ".   .   fl1   fl2   fl3   fl4   fl5   ."
+       "jw  jw  jw    jw    jw    jw    jw    jw";
+       background:var(--panel2);border:1px solid var(--line);border-radius:10px;
+       padding:.5rem;margin-bottom:.9rem}
+  .pad > .cell{aspect-ratio:1}
+  .cell{background:rgba(255,255,255,.02);border:1px solid transparent;border-radius:6px;
+        display:flex;align-items:center;justify-content:center;position:relative;
+        padding:2px;min-width:0;min-height:0}
+  .cell img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block}
+  .cell.diffcell{border-color:var(--gold);background:rgba(240,185,74,.07)}
+  .cell.filled:hover{border-color:var(--line2);background:rgba(255,255,255,.05)}
+  .cell .tip{position:absolute;left:50%;transform:translateX(-50%);bottom:calc(100% + 6px);z-index:30;display:none;
+             width:20rem;max-width:78vw;background:#0c1017;border:1px solid var(--line2);border-radius:6px;
+             padding:.55rem .65rem;font-size:.74rem;line-height:1.45;box-shadow:0 10px 26px rgba(0,0,0,.7);
+             text-align:left;pointer-events:none}
   .cell:hover .tip{display:block}
   .cell .tip .t{font-weight:600;margin-bottom:.25rem}
   .cell .tip .m{color:#a9b2c4;font-family:"Source Code Pro",Menlo,monospace}
-  .cell.empty{opacity:.25}
-  .row-flasks{grid-area:flasks;display:grid;grid-template-columns:repeat(5,1fr);gap:.35rem}
-  .row-jewels{grid-area:jewels;display:grid;grid-template-columns:repeat(9,1fr);gap:.3rem;margin-top:.1rem}
-  .row-jewels .cell{min-height:2.4rem}
-  .row-jewels img{max-height:2.6rem}
+  .cell.empty{background:none}
+  .cell .txt{font-size:.58rem;color:var(--muted);text-align:center;line-height:1.2;padding:1px}
+  /* le celle multiple non devono restare quadrate */
+  .cell[style*="wep"],.cell[style*="body"],.cell[style*="helm"],.cell[style*="glv"],
+  .cell[style*="boots"],.cell[style*="belt"],.cell[style*="fl"]{aspect-ratio:auto}
+  .row-jewels{grid-area:jw;display:grid;grid-template-columns:repeat(8,1fr);gap:4px;margin-top:4px}
+  .row-jewels .cell{aspect-ratio:1}
   .ks{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.6rem}
   .ks span{font-size:.72rem;border:1px solid var(--line2);border-radius:999px;padding:.1rem .5rem;color:#cfd8ea}
   .ks span.mast{color:var(--muted);border-style:dashed}
@@ -165,29 +175,30 @@ function iconFor(it){
 const AREA = {"Weapon 1":"wep","Helmet":"helm","Body Armour":"body","Gloves":"glv",
               "Boots":"boots","Amulet":"amu","Ring 1":"ring1","Ring 2":"ring2","Belt":"belt"};
 
-function cell(it, area, tall){
-  if(!it) return `<div class="cell empty" style="grid-area:${area}"></div>`;
-  // il bordo giallo vale solo per gli slot di equipaggiamento, non per flask e jewel
-  const f = iconFor(it), d = !!area && isDiff(it.slot);
-  const tip = `<div class="tip"><div class="t ${esc(it.rarity)}" style="color:var(--${
-      it.rarity==="UNIQUE"?"unique":it.rarity==="RARE"?"rare":it.rarity==="MAGIC"?"magic":"normal"})">${esc(it.name)}</div>`
+const COLORE = {UNIQUE:"unique", RELIC:"unique", RARE:"rare", MAGIC:"magic", NORMAL:"normal"};
+
+function cell(it, area, marcabile){
+  const st = area ? ` style="grid-area:${area}"` : "";
+  if(!it) return `<div class="cell empty"${st}></div>`;
+  const f = iconFor(it), d = marcabile && isDiff(it.slot);
+  const tip = `<div class="tip"><div class="t" style="color:var(--${COLORE[it.rarity]||"normal"})">${esc(it.name)}</div>`
     + (it.base?`<div style="color:var(--muted);margin-bottom:.25rem">${esc(it.base)}</div>`:"")
-    + `<div class="m">${it.mods.map(m=>esc(m)).join("<br>")}</div></div>`;
-  return `<div class="cell${tall?" tall":""}${d?" diffcell":""}"${area?` style="grid-area:${area}"`:""}>
-    ${f?`<img src="img/${esc(f)}" alt="${esc(it.name)}" loading="lazy">`:`<span style="font-size:.62rem;color:var(--muted);text-align:center">${esc(it.base||it.name)}</span>`}
-    ${tip}</div>`;
+    + `<div class="m">${(it.mods||[]).map(m=>esc(m)).join("<br>")}</div></div>`;
+  const body = f
+    ? `<img src="img/${esc(f)}" alt="${esc(it.name)}" loading="lazy">`
+    : `<span class="txt">${esc(it.base||it.name)}</span>`;
+  return `<div class="cell filled${d?" diffcell":""}"${st}>${body}${tip}</div>`;
 }
 
 function padHtml(col){
   const by = Object.fromEntries(col.gear.map(i=>[i.slot,i]));
-  const flasks = ["Flask 1","Flask 2","Flask 3","Flask 4","Flask 5"].map(s=>cell(by[s],null,false)).join("");
-  const jewels = (col.tree&&col.tree.jewels||[]).concat(by["Belt Abyssal Socket 1"]?[by["Belt Abyssal Socket 1"]]:[])
-      .map(j=>cell({...j, slot:"jewel", mods:j.mods||[]},null,false)).join("");
-  return `<div class="pad">
-    ${Object.entries(AREA).map(([slot,area])=>cell(by[slot],area,slot==="Weapon 1")).join("")}
-    <div class="row-flasks">${flasks}</div>
-    <div class="row-jewels">${jewels}</div>
-  </div>`;
+  const equip = Object.entries(AREA).map(([slot,area]) => cell(by[slot], area, true)).join("");
+  const flasks = ["Flask 1","Flask 2","Flask 3","Flask 4","Flask 5"]
+      .map((s,i) => cell(by[s], "fl"+(i+1), false)).join("");
+  const jewels = (col.tree && col.tree.jewels || [])
+      .concat(by["Belt Abyssal Socket 1"] ? [by["Belt Abyssal Socket 1"]] : [])
+      .map(j => cell({...j, slot:"jewel", mods:j.mods||[]}, null, false)).join("");
+  return `<div class="pad">${equip}${flasks}<div class="row-jewels">${jewels}</div></div>`;
 }
 
 function gearHtml(col){
