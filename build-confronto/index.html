@@ -100,12 +100,13 @@
   .albero{position:relative;background:#151b26;border:1px solid var(--line);border-radius:8px;
           overflow:hidden;margin-bottom:.7rem;aspect-ratio:1}
   .albero svg{width:100%;height:100%;display:block;background:transparent !important}
-  .albero svg .active{color:#7cc5f5}
-  .albero svg .nodes circle.active{color:#8fd3ff}
-  .albero svg .nodes circle.active.keystone{color:#ffd166}
-  .albero svg .nodes circle.active.notable{color:#ffb84d}
-  .albero svg .connections path{stroke-opacity:.35}
-  .albero svg .connections path.active{stroke-opacity:1}
+  /* sfondo smorzato, percorso in evidenza — come pobb.in */
+  .albero svg .nodes circle{opacity:.20}
+  .albero svg .connections path{stroke-opacity:.16;stroke-width:14}
+  .albero svg .nodes circle.active{opacity:1;color:#4aa8e8}
+  .albero svg .nodes circle.active.notable{color:#7cc5f5}
+  .albero svg .nodes circle.active.keystone{color:#bfe3ff}
+  .albero svg .connections path.active{stroke-opacity:1;stroke-width:34;stroke:#4aa8e8}
   .albero .caric{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
                  color:var(--muted);font-size:.8rem}
   .ks{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.6rem}
@@ -315,6 +316,8 @@ fetch("albero.svg").then(r => r.text()).then(txt => {
       c.classList.add("active");
       const k = (c.getAttribute("data-kind") || "").toLowerCase();
       if (k === "keystone" || k === "notable") c.classList.add(k);
+      // i nodi presi vanno ingranditi, altrimenti spariscono nel fondo
+      c.setAttribute("r", k === "keystone" ? 130 : k === "notable" ? 105 : 78);
       n++;
     });
     // collegamenti fra due nodi entrambi allocati
