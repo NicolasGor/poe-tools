@@ -1,0 +1,7061 @@
+{
+ "lega": "Allflame",
+ "droppool_weight": 7965209,
+ "fonte": "https://mapsofexile.com (repo deathbeam/maps-of-exile)",
+ "mappe": [
+  {
+   "nome": "Sanctuary",
+   "tipo": "special map",
+   "livelli": [
+    84,
+    84
+   ],
+   "rating": {},
+   "tags": [
+    "boss_not_twinnable"
+   ],
+   "collegate": [
+    "Moment of Reverence"
+   ],
+   "nCarte": 6,
+   "totale": 99488.96,
+   "media": 16581.49,
+   "mediana": 91.01,
+   "carte": [
+    {
+     "nome": "Damnation",
+     "prezzo": 98940,
+     "peso": 5.0
+    },
+    {
+     "nome": "Succor of the Sinless",
+     "prezzo": 340.8,
+     "peso": 26.0
+    },
+    {
+     "nome": "Temperance",
+     "prezzo": 102.5,
+     "peso": 88.0
+    },
+    {
+     "nome": "The Enlightened",
+     "prezzo": 79.52,
+     "peso": 83.5
+    },
+    {
+     "nome": "Altered Perception",
+     "prezzo": 14.05,
+     "peso": 32.0
+    },
+    {
+     "nome": "The Void",
+     "prezzo": 12.09,
+     "peso": 6286.5
+    }
+   ]
+  },
+  {
+   "nome": "Graveyard",
+   "tipo": "map",
+   "livelli": [
+    68,
+    83
+   ],
+   "rating": {
+    "boss": 4,
+    "density": 6,
+    "layout": 8
+   },
+   "tags": [
+    "boss_not_twinnable",
+    "boss_separated",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Conservatory",
+    "Park"
+   ],
+   "nCarte": 4,
+   "totale": 98951.6,
+   "media": 24737.9,
+   "mediana": 5.79,
+   "carte": [
+    {
+     "nome": "Damnation",
+     "prezzo": 98940,
+     "peso": 5.0
+    },
+    {
+     "nome": "Azyran's Reward",
+     "prezzo": 8.88,
+     "peso": 429.5
+    },
+    {
+     "nome": "The One With All",
+     "prezzo": 2.71,
+     "peso": 2613.0
+    },
+    {
+     "nome": "Bowyer's Dream",
+     "prezzo": 0.01,
+     "peso": 155.5
+    }
+   ]
+  },
+  {
+   "nome": "Pit of the Chimera",
+   "tipo": "special map",
+   "livelli": [
+    83,
+    83
+   ],
+   "rating": {},
+   "tags": [
+    "boss_not_twinnable",
+    "boss_phases",
+    "boss_separated",
+    "delirium_mirror",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "The Shaper's Realm"
+   ],
+   "nCarte": 5,
+   "totale": 12372.52,
+   "media": 2474.5,
+   "mediana": 34.83,
+   "carte": [
+    {
+     "nome": "Father's Love",
+     "prezzo": 12286,
+     "peso": 5.0
+    },
+    {
+     "nome": "Perfection",
+     "prezzo": 46.69,
+     "peso": 44.5
+    },
+    {
+     "nome": "The Everlasting",
+     "prezzo": 34.83,
+     "peso": 0
+    },
+    {
+     "nome": "A Familiar Call",
+     "prezzo": 4,
+     "peso": 7.5
+    },
+    {
+     "nome": "Boon of the First Ones",
+     "prezzo": 1,
+     "peso": 986.5
+    }
+   ]
+  },
+  {
+   "nome": "Forge of the Phoenix",
+   "tipo": "special map",
+   "livelli": [
+    83,
+    83
+   ],
+   "rating": {},
+   "tags": [
+    "boss_not_twinnable",
+    "boss_separated",
+    "boss_soft_phases",
+    "delirium_mirror",
+    "linear",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "The Shaper's Realm"
+   ],
+   "nCarte": 4,
+   "totale": 12367.52,
+   "media": 4122.51,
+   "mediana": 46.69,
+   "carte": [
+    {
+     "nome": "Father's Love",
+     "prezzo": 12286,
+     "peso": 5.0
+    },
+    {
+     "nome": "Perfection",
+     "prezzo": 46.69,
+     "peso": 44.5
+    },
+    {
+     "nome": "The Everlasting",
+     "prezzo": 34.83,
+     "peso": 0
+    },
+    {
+     "nome": "Astral Protection",
+     "prezzo": 0,
+     "peso": 728.5
+    }
+   ]
+  },
+  {
+   "nome": "Lair of the Hydra",
+   "tipo": "special map",
+   "livelli": [
+    83,
+    83
+   ],
+   "rating": {},
+   "tags": [
+    "boss_not_twinnable",
+    "boss_separated",
+    "boss_soft_phases",
+    "delirium_mirror",
+    "few_obstacles",
+    "linear",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "The Shaper's Realm"
+   ],
+   "nCarte": 4,
+   "totale": 12367.52,
+   "media": 4122.51,
+   "mediana": 46.69,
+   "carte": [
+    {
+     "nome": "Father's Love",
+     "prezzo": 12286,
+     "peso": 5.0
+    },
+    {
+     "nome": "Perfection",
+     "prezzo": 46.69,
+     "peso": 44.5
+    },
+    {
+     "nome": "The Everlasting",
+     "prezzo": 34.83,
+     "peso": 0
+    },
+    {
+     "nome": "Astral Protection",
+     "prezzo": 0,
+     "peso": 728.5
+    }
+   ]
+  },
+  {
+   "nome": "Maze of the Minotaur",
+   "tipo": "special map",
+   "livelli": [
+    83,
+    83
+   ],
+   "rating": {},
+   "tags": [
+    "boss_not_twinnable",
+    "boss_separated",
+    "boss_soft_phases",
+    "delirium_mirror",
+    "few_obstacles",
+    "linear",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "The Shaper's Realm"
+   ],
+   "nCarte": 4,
+   "totale": 12367.52,
+   "media": 4122.51,
+   "mediana": 46.69,
+   "carte": [
+    {
+     "nome": "Father's Love",
+     "prezzo": 12286,
+     "peso": 5.0
+    },
+    {
+     "nome": "Perfection",
+     "prezzo": 46.69,
+     "peso": 44.5
+    },
+    {
+     "nome": "The Everlasting",
+     "prezzo": 34.83,
+     "peso": 0
+    },
+    {
+     "nome": "Astral Protection",
+     "prezzo": 0,
+     "peso": 728.5
+    }
+   ]
+  },
+  {
+   "nome": "Cage",
+   "tipo": "map",
+   "livelli": [
+    70,
+    83
+   ],
+   "rating": {
+    "boss": 8,
+    "density": 4,
+    "layout": 8
+   },
+   "tags": [
+    "boss_separated",
+    "linear",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Flooded Mine",
+    "Phantasmagoria",
+    "Shrine",
+    "The Temple of Atzoatl"
+   ],
+   "nCarte": 4,
+   "totale": 9087.65,
+   "media": 2271.91,
+   "mediana": 7.78,
+   "carte": [
+    {
+     "nome": "The Apothecary",
+     "prezzo": 9072,
+     "peso": 9.0
+    },
+    {
+     "nome": "The Last Supper",
+     "prezzo": 15.36,
+     "peso": 11.5
+    },
+    {
+     "nome": "The Summoner",
+     "prezzo": 0.1946,
+     "peso": 5491.0
+    },
+    {
+     "nome": "The Journalist",
+     "prezzo": 0.1,
+     "peso": 12964.0
+    }
+   ]
+  },
+  {
+   "nome": "Bazaar",
+   "tipo": "map",
+   "livelli": [
+    74,
+    83
+   ],
+   "rating": {
+    "boss": 8,
+    "density": 10,
+    "layout": 8
+   },
+   "tags": [
+    "boss_separated",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Frozen Cabins",
+    "Overgrown Shrine",
+    "Primordial Blocks",
+    "Ramparts"
+   ],
+   "nCarte": 4,
+   "totale": 7725.96,
+   "media": 1931.49,
+   "mediana": 1298.43,
+   "carte": [
+    {
+     "nome": "The Miracle",
+     "prezzo": 5126,
+     "peso": 0
+    },
+    {
+     "nome": "The Slumbering Beast",
+     "prezzo": 2541,
+     "peso": 0
+    },
+    {
+     "nome": "The Silly Boy",
+     "prezzo": 55.86,
+     "peso": 0
+    },
+    {
+     "nome": "The Drunken Aristocrat",
+     "prezzo": 3.1,
+     "peso": 2287.0
+    }
+   ]
+  },
+  {
+   "nome": "Vaal Temple",
+   "tipo": "special map",
+   "livelli": [
+    83,
+    83
+   ],
+   "rating": {
+    "boss": 2,
+    "density": 6,
+    "layout": 2
+   },
+   "tags": [
+    "boss_not_twinnable",
+    "boss_separated",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Vaal Pyramid"
+   ],
+   "nCarte": 8,
+   "totale": 7019.4,
+   "media": 877.43,
+   "mediana": 1.65,
+   "carte": [
+    {
+     "nome": "Unrequited Love",
+     "prezzo": 6936,
+     "peso": 4.0
+    },
+    {
+     "nome": "The Damned",
+     "prezzo": 66.42,
+     "peso": 26.0
+    },
+    {
+     "nome": "Beauty Through Death",
+     "prezzo": 13.1,
+     "peso": 22.0
+    },
+    {
+     "nome": "The Admirer",
+     "prezzo": 2.26,
+     "peso": 2025.0
+    },
+    {
+     "nome": "Last Hope",
+     "prezzo": 1.05,
+     "peso": 6093.0
+    },
+    {
+     "nome": "The Inventor",
+     "prezzo": 0.4739,
+     "peso": 6435.0
+    },
+    {
+     "nome": "Her Mask",
+     "prezzo": 0.09235,
+     "peso": 10028.0
+    },
+    {
+     "nome": "The Catalyst",
+     "prezzo": 0.007271,
+     "peso": 22886.0
+    }
+   ]
+  },
+  {
+   "nome": "Vaal Pyramid",
+   "tipo": "map",
+   "livelli": [
+    75,
+    83
+   ],
+   "rating": {
+    "boss": 4,
+    "density": 8,
+    "layout": 2
+   },
+   "tags": [
+    "boss_separated",
+    "boss_soft_phases",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Burial Chambers",
+    "Grotto",
+    "Tower",
+    "Vaal Temple"
+   ],
+   "nCarte": 4,
+   "totale": 7002.43,
+   "media": 2334.14,
+   "mediana": 66.42,
+   "carte": [
+    {
+     "nome": "Unrequited Love",
+     "prezzo": 6936,
+     "peso": 4.0
+    },
+    {
+     "nome": "The Damned",
+     "prezzo": 66.42,
+     "peso": 26.0
+    },
+    {
+     "nome": "The Catalyst",
+     "prezzo": 0.007271,
+     "peso": 22886.0
+    },
+    {
+     "nome": "The Queen",
+     "prezzo": 0,
+     "peso": 186.0
+    }
+   ]
+  },
+  {
+   "nome": "Arcade",
+   "tipo": "map",
+   "livelli": [
+    70,
+    83
+   ],
+   "rating": {
+    "boss": 10,
+    "density": 6,
+    "layout": 8
+   },
+   "tags": [
+    "delirium_mirror",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Burial Chambers",
+    "Malformation",
+    "Tower"
+   ],
+   "nCarte": 4,
+   "totale": 5669.8,
+   "media": 1417.45,
+   "mediana": 268.9,
+   "carte": [
+    {
+     "nome": "The Miracle",
+     "prezzo": 5126,
+     "peso": 0
+    },
+    {
+     "nome": "I See Brothers",
+     "prezzo": 407.1,
+     "peso": 26.0
+    },
+    {
+     "nome": "The Mayor",
+     "prezzo": 130.7,
+     "peso": 155.5
+    },
+    {
+     "nome": "Deadly Joy",
+     "prezzo": 6,
+     "peso": 32.0
+    }
+   ]
+  },
+  {
+   "nome": "Grave Trough",
+   "tipo": "map",
+   "livelli": [
+    78,
+    83
+   ],
+   "rating": {
+    "boss": 4,
+    "density": 8,
+    "layout": 4
+   },
+   "tags": [
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Arsenal",
+    "Beach",
+    "Belfry"
+   ],
+   "nCarte": 4,
+   "totale": 4635.71,
+   "media": 1545.24,
+   "mediana": 3.59,
+   "carte": [
+    {
+     "nome": "Pearls Before Swine",
+     "prezzo": 4631,
+     "peso": 0
+    },
+    {
+     "nome": "Brother's Stash",
+     "prezzo": 3.59,
+     "peso": 56.5
+    },
+    {
+     "nome": "Cursed Words",
+     "prezzo": 1.12,
+     "peso": 3446.0
+    },
+    {
+     "nome": "Left to Fate",
+     "prezzo": 0,
+     "peso": 3088.0
+    }
+   ]
+  },
+  {
+   "nome": "Poorjoy's Asylum",
+   "tipo": "unique map",
+   "livelli": [
+    76,
+    83
+   ],
+   "rating": {},
+   "tags": [
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Temple"
+   ],
+   "nCarte": 4,
+   "totale": 3533.36,
+   "media": 883.34,
+   "mediana": 8.18,
+   "carte": [
+    {
+     "nome": "The Progeny of Lunaris",
+     "prezzo": 3516,
+     "peso": 32.0
+    },
+    {
+     "nome": "The Thaumaturgist",
+     "prezzo": 11.36,
+     "peso": 140.0
+    },
+    {
+     "nome": "The Army of Blood",
+     "prezzo": 5,
+     "peso": 8316.0
+    },
+    {
+     "nome": "Gift of the Gemling Queen",
+     "prezzo": 1,
+     "peso": 2047.0
+    }
+   ]
+  },
+  {
+   "nome": "Shrine",
+   "tipo": "map",
+   "livelli": [
+    80,
+    83
+   ],
+   "rating": {
+    "boss": 6,
+    "density": 10,
+    "layout": 4
+   },
+   "tags": [
+    "boss_phases",
+    "boss_separated",
+    "boss_soft_phases",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Cage",
+    "Coral Ruins",
+    "Port",
+    "Sunken City"
+   ],
+   "nCarte": 4,
+   "totale": 3529.0,
+   "media": 882.25,
+   "mediana": 6.18,
+   "carte": [
+    {
+     "nome": "The Progeny of Lunaris",
+     "prezzo": 3516,
+     "peso": 32.0
+    },
+    {
+     "nome": "The Thaumaturgist",
+     "prezzo": 11.36,
+     "peso": 140.0
+    },
+    {
+     "nome": "The Lunaris Priestess",
+     "prezzo": 1,
+     "peso": 7574.0
+    },
+    {
+     "nome": "Vinia's Token",
+     "prezzo": 0.6406,
+     "peso": 4817.0
+    }
+   ]
+  },
+  {
+   "nome": "Pier",
+   "tipo": "map",
+   "livelli": [
+    77,
+    83
+   ],
+   "rating": {
+    "boss": 2,
+    "density": 8,
+    "layout": 8
+   },
+   "tags": [
+    "boss_phases",
+    "boss_separated",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Haunted Mansion",
+    "Overgrown Shrine",
+    "Relic Chambers"
+   ],
+   "nCarte": 4,
+   "totale": 3482.27,
+   "media": 870.57,
+   "mediana": 7.08,
+   "carte": [
+    {
+     "nome": "Fire Of Unknown Origin",
+     "prezzo": 3468,
+     "peso": 15.5
+    },
+    {
+     "nome": "The Pact",
+     "prezzo": 11.07,
+     "peso": 429.5
+    },
+    {
+     "nome": "The Drunken Aristocrat",
+     "prezzo": 3.1,
+     "peso": 2287.0
+    },
+    {
+     "nome": "Lucky Connections",
+     "prezzo": 0.0967,
+     "peso": 7356.0
+    }
+   ]
+  },
+  {
+   "nome": "Ghetto",
+   "tipo": "map",
+   "livelli": [
+    80,
+    83
+   ],
+   "rating": {
+    "boss": 4,
+    "density": 6,
+    "layout": 6
+   },
+   "tags": [
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Port",
+    "Reef"
+   ],
+   "nCarte": 4,
+   "totale": 3468.37,
+   "media": 1156.12,
+   "mediana": 0.2,
+   "carte": [
+    {
+     "nome": "Fire Of Unknown Origin",
+     "prezzo": 3468,
+     "peso": 15.5
+    },
+    {
+     "nome": "The Tyrant",
+     "prezzo": 0.2,
+     "peso": 553.0
+    },
+    {
+     "nome": "The Saint's Treasure",
+     "prezzo": 0.1682,
+     "peso": 1299.0
+    },
+    {
+     "nome": "The Trial",
+     "prezzo": 0,
+     "peso": 5823.0
+    }
+   ]
+  },
+  {
+   "nome": "Crater",
+   "tipo": "map",
+   "livelli": [
+    74,
+    83
+   ],
+   "rating": {
+    "boss": 10,
+    "density": 10,
+    "layout": 6
+   },
+   "tags": [
+    "few_obstacles",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "City Square",
+    "Stagnation"
+   ],
+   "nCarte": 4,
+   "totale": 3033.34,
+   "media": 758.34,
+   "mediana": 1.6,
+   "carte": [
+    {
+     "nome": "The Demon",
+     "prezzo": 3029,
+     "peso": 1.5
+    },
+    {
+     "nome": "The Lion",
+     "prezzo": 1.8,
+     "peso": 3252.0
+    },
+    {
+     "nome": "Bound by Flame",
+     "prezzo": 1.4,
+     "peso": 0
+    },
+    {
+     "nome": "When Currents Blaze",
+     "prezzo": 1.14,
+     "peso": 18.0
+    }
+   ]
+  },
+  {
+   "nome": "Chateau",
+   "tipo": "map",
+   "livelli": [
+    71,
+    83
+   ],
+   "rating": {
+    "boss": 10,
+    "density": 7,
+    "layout": 6
+   },
+   "tags": [
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Arachnid Nest",
+    "Fungal Hollow"
+   ],
+   "nCarte": 4,
+   "totale": 2763.73,
+   "media": 921.24,
+   "mediana": 222.5,
+   "carte": [
+    {
+     "nome": "The Slumbering Beast",
+     "prezzo": 2541,
+     "peso": 0
+    },
+    {
+     "nome": "Squandered Prosperity",
+     "prezzo": 222.5,
+     "peso": 38.0
+    },
+    {
+     "nome": "The Bear Woman",
+     "prezzo": 0.2308,
+     "peso": 1104.5
+    },
+    {
+     "nome": "The Scavenger",
+     "prezzo": 0,
+     "peso": 1906.0
+    }
+   ]
+  },
+  {
+   "nome": "Promenade",
+   "tipo": "map",
+   "livelli": [
+    78,
+    83
+   ],
+   "rating": {
+    "boss": 6,
+    "density": 4,
+    "layout": 8
+   },
+   "tags": [
+    "delirium_mirror",
+    "few_obstacles",
+    "league_mechanics",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Caldera",
+    "Malformation",
+    "Orchard",
+    "Plateau",
+    "The Hall of Grandmasters"
+   ],
+   "nCarte": 4,
+   "totale": 2041.18,
+   "media": 510.3,
+   "mediana": 2.49,
+   "carte": [
+    {
+     "nome": "Lucky Bastion",
+     "prezzo": 2036,
+     "peso": 0
+    },
+    {
+     "nome": "The Last Laugh",
+     "prezzo": 4.1,
+     "peso": 0
+    },
+    {
+     "nome": "Jack in the Box",
+     "prezzo": 0.8763,
+     "peso": 4537.0
+    },
+    {
+     "nome": "Gemcutter's Promise",
+     "prezzo": 0.2064,
+     "peso": 7794.0
+    }
+   ]
+  },
+  {
+   "nome": "Ziggurat",
+   "tipo": "special map",
+   "livelli": [
+    84,
+    84
+   ],
+   "rating": {},
+   "tags": [
+    "boss_not_twinnable"
+   ],
+   "collegate": [
+    "Absence of Patience and Wisdom",
+    "Absence of Symmetry and Harmony"
+   ],
+   "nCarte": 8,
+   "totale": 1378.42,
+   "media": 172.3,
+   "mediana": 9.4,
+   "carte": [
+    {
+     "nome": "Outfoxed",
+     "prezzo": 1189,
+     "peso": 0
+    },
+    {
+     "nome": "The Samurai's Eye",
+     "prezzo": 83.33,
+     "peso": 83.5
+    },
+    {
+     "nome": "The Enlightened",
+     "prezzo": 79.52,
+     "peso": 83.5
+    },
+    {
+     "nome": "The Void",
+     "prezzo": 12.09,
+     "peso": 6286.5
+    },
+    {
+     "nome": "Keeper's Corruption",
+     "prezzo": 6.71,
+     "peso": 16.0
+    },
+    {
+     "nome": "Misery in Darkness",
+     "prezzo": 4.92,
+     "peso": 140.0
+    },
+    {
+     "nome": "Lucky Deck",
+     "prezzo": 1.85,
+     "peso": 274.5
+    },
+    {
+     "nome": "Nook's Crown",
+     "prezzo": 1,
+     "peso": 15.5
+    }
+   ]
+  },
+  {
+   "nome": "Seething Chyme",
+   "tipo": "unique map",
+   "livelli": [
+    83,
+    83
+   ],
+   "rating": {},
+   "tags": [
+    "boss_not_twinnable"
+   ],
+   "collegate": [
+    "Stagnation"
+   ],
+   "nCarte": 1,
+   "totale": 1224,
+   "media": 1224,
+   "mediana": 1224,
+   "carte": [
+    {
+     "nome": "Choking Guilt",
+     "prezzo": 1224,
+     "peso": 3.5
+    }
+   ]
+  },
+  {
+   "nome": "Burial Chambers",
+   "tipo": "map",
+   "livelli": [
+    70,
+    83
+   ],
+   "rating": {
+    "boss": 6,
+    "density": 9,
+    "layout": 8
+   },
+   "tags": [
+    "boss_separated",
+    "few_obstacles",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Arcade",
+    "Beach",
+    "The Utzaal Arena",
+    "Vaal Pyramid"
+   ],
+   "nCarte": 4,
+   "totale": 1214.0,
+   "media": 404.67,
+   "mediana": 3.0,
+   "carte": [
+    {
+     "nome": "The Doctor",
+     "prezzo": 1210,
+     "peso": 15.5
+    },
+    {
+     "nome": "The Brawny Battle Mage",
+     "prezzo": 3.0,
+     "peso": 224.5
+    },
+    {
+     "nome": "The Betrayal",
+     "prezzo": 1,
+     "peso": 2690.0
+    },
+    {
+     "nome": "The Witch",
+     "prezzo": 0,
+     "peso": 15999.0
+    }
+   ]
+  },
+  {
+   "nome": "Beach",
+   "tipo": "map",
+   "livelli": [
+    68,
+    83
+   ],
+   "rating": {
+    "boss": 10,
+    "density": 3,
+    "layout": 10
+   },
+   "tags": [
+    "boss_separated",
+    "delirium_mirror",
+    "few_obstacles",
+    "league_mechanics",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Burial Chambers",
+    "Foundry",
+    "Grave Trough",
+    "Temple"
+   ],
+   "nCarte": 4,
+   "totale": 1198.83,
+   "media": 399.61,
+   "mediana": 8.28,
+   "carte": [
+    {
+     "nome": "Outfoxed",
+     "prezzo": 1189,
+     "peso": 0
+    },
+    {
+     "nome": "The Catch",
+     "prezzo": 8.28,
+     "peso": 15.5
+    },
+    {
+     "nome": "The One That Got Away",
+     "prezzo": 1.55,
+     "peso": 4.0
+    },
+    {
+     "nome": "Lantador's Lost Love",
+     "prezzo": 0,
+     "peso": 16470.0
+    }
+   ]
+  },
+  {
+   "nome": "Foundry",
+   "tipo": "map",
+   "livelli": [
+    82,
+    83
+   ],
+   "rating": {
+    "boss": 4,
+    "density": 4,
+    "layout": 6
+   },
+   "tags": [
+    "boss_rushable",
+    "boss_separated",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Beach",
+    "Core",
+    "Doryani's Machinarium",
+    "Temple"
+   ],
+   "nCarte": 4,
+   "totale": 1148.43,
+   "media": 287.11,
+   "mediana": 5.1,
+   "carte": [
+    {
+     "nome": "The Fiend",
+     "prezzo": 1138,
+     "peso": 5.0
+    },
+    {
+     "nome": "The Golden Era",
+     "prezzo": 6.38,
+     "peso": 1025.0
+    },
+    {
+     "nome": "Haunting Shadows",
+     "prezzo": 3.82,
+     "peso": 1104.5
+    },
+    {
+     "nome": "Ever-Changing",
+     "prezzo": 0.232,
+     "peso": 1422.0
+    }
+   ]
+  },
+  {
+   "nome": "Cemetery",
+   "tipo": "map",
+   "livelli": [
+    73,
+    83
+   ],
+   "rating": {
+    "boss": 8,
+    "density": 5,
+    "layout": 8
+   },
+   "tags": [
+    "boss_not_twinnable",
+    "boss_rushable",
+    "boss_separated",
+    "league_mechanics",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "City Square",
+    "Excavation",
+    "Hallowed Ground",
+    "Jungle Valley",
+    "Terrace"
+   ],
+   "nCarte": 4,
+   "totale": 1113.4,
+   "media": 278.35,
+   "mediana": 3.15,
+   "carte": [
+    {
+     "nome": "Brother's Gift",
+     "prezzo": 1107,
+     "peso": 56.5
+    },
+    {
+     "nome": "Brother's Stash",
+     "prezzo": 3.59,
+     "peso": 56.5
+    },
+    {
+     "nome": "The One With All",
+     "prezzo": 2.71,
+     "peso": 2613.0
+    },
+    {
+     "nome": "The Cacophony",
+     "prezzo": 0.1,
+     "peso": 224.5
+    }
+   ]
+  },
+  {
+   "nome": "Fortress",
+   "tipo": "special map",
+   "livelli": [
+    84,
+    84
+   ],
+   "rating": {},
+   "tags": [
+    "boss_not_twinnable"
+   ],
+   "collegate": [
+    "Absence of Value and Meaning",
+    "Cortex"
+   ],
+   "nCarte": 7,
+   "totale": 1098.25,
+   "media": 156.89,
+   "mediana": 39.43,
+   "carte": [
+    {
+     "nome": "One Last Score",
+     "prezzo": 562.2,
+     "peso": 0
+    },
+    {
+     "nome": "Auspicious Ambitions",
+     "prezzo": 242.2,
+     "peso": 7.5
+    },
+    {
+     "nome": "The Dragon's Heart",
+     "prezzo": 217.3,
+     "peso": 39.5
+    },
+    {
+     "nome": "Doryani's Epiphany",
+     "prezzo": 39.43,
+     "peso": 131.5
+    },
+    {
+     "nome": "Something Dark",
+     "prezzo": 17.14,
+     "peso": 728.5
+    },
+    {
+     "nome": "The Void",
+     "prezzo": 12.09,
+     "peso": 6286.5
+    },
+    {
+     "nome": "Who Asked",
+     "prezzo": 7.89,
+     "peso": 12.5
+    }
+   ]
+  },
+  {
+   "nome": "Relic Chambers",
+   "tipo": "map",
+   "livelli": [
+    71,
+    83
+   ],
+   "rating": {
+    "boss": 6,
+    "density": 6,
+    "layout": 6
+   },
+   "tags": [
+    "linear",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Flooded Mine",
+    "Pier",
+    "Silo",
+    "The Apex of Sacrifice"
+   ],
+   "nCarte": 4,
+   "totale": 826.1,
+   "media": 206.53,
+   "mediana": 40.46,
+   "carte": [
+    {
+     "nome": "Reflection of the Heart",
+     "prezzo": 744.9,
+     "peso": 0
+    },
+    {
+     "nome": "The Enlightened",
+     "prezzo": 79.52,
+     "peso": 83.5
+    },
+    {
+     "nome": "The Union",
+     "prezzo": 1.4,
+     "peso": 1278.0
+    },
+    {
+     "nome": "Dialla's Subjugation",
+     "prezzo": 0.2821,
+     "peso": 1550.0
+    }
+   ]
+  },
+  {
+   "nome": "Primordial Blocks",
+   "tipo": "map",
+   "livelli": [
+    79,
+    83
+   ],
+   "rating": {
+    "boss": 2,
+    "density": 9,
+    "layout": 4
+   },
+   "tags": [
+    "boss_not_twinnable",
+    "boss_phases",
+    "boss_separated",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Alleyways",
+    "Bazaar",
+    "Oba's Cursed Trove",
+    "Shipyard",
+    "Strand"
+   ],
+   "nCarte": 4,
+   "totale": 771.51,
+   "media": 192.88,
+   "mediana": 12.8,
+   "carte": [
+    {
+     "nome": "Reflection of the Heart",
+     "prezzo": 744.9,
+     "peso": 0
+    },
+    {
+     "nome": "The Last Supper",
+     "prezzo": 15.36,
+     "peso": 11.5
+    },
+    {
+     "nome": "Costly Curio",
+     "prezzo": 10.25,
+     "peso": 553.0
+    },
+    {
+     "nome": "The Primordial",
+     "prezzo": 0.9965,
+     "peso": 1159.0
+    }
+   ]
+  },
+  {
+   "nome": "Museum",
+   "tipo": "map",
+   "livelli": [
+    76,
+    83
+   ],
+   "rating": {
+    "boss": 6,
+    "density": 8,
+    "layout": 2
+   },
+   "tags": [
+    "boss_separated",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Crystal Ore",
+    "Ivory Temple",
+    "The Putrid Cloister"
+   ],
+   "nCarte": 4,
+   "totale": 666.21,
+   "media": 166.55,
+   "mediana": 51.9,
+   "carte": [
+    {
+     "nome": "One Last Score",
+     "prezzo": 562.2,
+     "peso": 0
+    },
+    {
+     "nome": "Temperance",
+     "prezzo": 102.5,
+     "peso": 88.0
+    },
+    {
+     "nome": "Blind Venture",
+     "prezzo": 1.3,
+     "peso": 2142.0
+    },
+    {
+     "nome": "A Dab of Ink",
+     "prezzo": 0.2105,
+     "peso": 728.5
+    }
+   ]
+  },
+  {
+   "nome": "Abomination",
+   "tipo": "special map",
+   "livelli": [
+    84,
+    84
+   ],
+   "rating": {},
+   "tags": [
+    "boss_not_twinnable"
+   ],
+   "collegate": [
+    "Absence of Mercy and Empathy",
+    "Eye of the Storm"
+   ],
+   "nCarte": 6,
+   "totale": 558.88,
+   "media": 93.15,
+   "mediana": 29.05,
+   "carte": [
+    {
+     "nome": "The Soul",
+     "prezzo": 343.1,
+     "peso": 17.0
+    },
+    {
+     "nome": "The Nurse",
+     "prezzo": 140.6,
+     "peso": 131.5
+    },
+    {
+     "nome": "The Artist",
+     "prezzo": 44.34,
+     "peso": 39.5
+    },
+    {
+     "nome": "The Offering",
+     "prezzo": 13.75,
+     "peso": 553.0
+    },
+    {
+     "nome": "The Void",
+     "prezzo": 12.09,
+     "peso": 6286.5
+    },
+    {
+     "nome": "The Insatiable",
+     "prezzo": 5,
+     "peso": 1792.0
+    }
+   ]
+  },
+  {
+   "nome": "Basilica",
+   "tipo": "map",
+   "livelli": [
+    82,
+    83
+   ],
+   "rating": {
+    "boss": 0,
+    "density": 6,
+    "layout": 8
+   },
+   "tags": [
+    "boss_not_twinnable",
+    "boss_phases",
+    "boss_separated",
+    "linear",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Jungle Valley",
+    "Lookout",
+    "Sulphur Vents"
+   ],
+   "nCarte": 4,
+   "totale": 471.57,
+   "media": 117.89,
+   "mediana": 11.07,
+   "carte": [
+    {
+     "nome": "Seven Years Bad Luck",
+     "prezzo": 449.2,
+     "peso": 73.0
+    },
+    {
+     "nome": "The Forgotten Treasure",
+     "prezzo": 18.43,
+     "peso": 340.5
+    },
+    {
+     "nome": "The Opulent",
+     "prezzo": 3.71,
+     "peso": 10841.0
+    },
+    {
+     "nome": "The Bear Woman",
+     "prezzo": 0.2308,
+     "peso": 1104.5
+    }
+   ]
+  },
+  {
+   "nome": "Plateau",
+   "tipo": "map",
+   "livelli": [
+    76,
+    83
+   ],
+   "rating": {
+    "boss": 6,
+    "density": 3,
+    "layout": 8
+   },
+   "tags": [
+    "boss_separated",
+    "boss_soft_phases",
+    "delirium_mirror",
+    "few_obstacles",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Caldera",
+    "Channel",
+    "Desert Spring",
+    "Olmec's Sanctum",
+    "Promenade"
+   ],
+   "nCarte": 4,
+   "totale": 408.19,
+   "media": 136.06,
+   "mediana": 1,
+   "carte": [
+    {
+     "nome": "I See Brothers",
+     "prezzo": 407.1,
+     "peso": 26.0
+    },
+    {
+     "nome": "The Wind",
+     "prezzo": 1,
+     "peso": 553.0
+    },
+    {
+     "nome": "Rain of Chaos",
+     "prezzo": 0.08935,
+     "peso": 121400.0
+    },
+    {
+     "nome": "The Harvester",
+     "prezzo": 0,
+     "peso": 15812.0
+    }
+   ]
+  },
+  {
+   "nome": "The Putrid Cloister",
+   "tipo": "unique map",
+   "livelli": [
+    76,
+    83
+   ],
+   "rating": {},
+   "tags": [
+    "boss_separated",
+    "linear",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Museum"
+   ],
+   "nCarte": 4,
+   "totale": 350.89,
+   "media": 116.96,
+   "mediana": 7.79,
+   "carte": [
+    {
+     "nome": "The Soul",
+     "prezzo": 343.1,
+     "peso": 17.0
+    },
+    {
+     "nome": "Brush, Paint and Palette",
+     "prezzo": 7.79,
+     "peso": 728.5
+    },
+    {
+     "nome": "Doedre's Madness",
+     "prezzo": 0.0003997,
+     "peso": 12746.0
+    },
+    {
+     "nome": "The Incantation",
+     "prezzo": 0,
+     "peso": 1063.0
+    }
+   ]
+  },
+  {
+   "nome": "Phantasmagoria",
+   "tipo": "map",
+   "livelli": [
+    73,
+    83
+   ],
+   "rating": {
+    "boss": 4,
+    "density": 5,
+    "layout": 8
+   },
+   "tags": [
+    "boss_separated",
+    "delirium_mirror",
+    "linear",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Cage",
+    "Estuary"
+   ],
+   "nCarte": 4,
+   "totale": 345.61,
+   "media": 86.4,
+   "mediana": 1.26,
+   "carte": [
+    {
+     "nome": "The Soul",
+     "prezzo": 343.1,
+     "peso": 17.0
+    },
+    {
+     "nome": "Immortal Resolve",
+     "prezzo": 2.42,
+     "peso": 1104.5
+    },
+    {
+     "nome": "Her Mask",
+     "prezzo": 0.09235,
+     "peso": 10028.0
+    },
+    {
+     "nome": "Doedre's Madness",
+     "prezzo": 0.0003997,
+     "peso": 12746.0
+    }
+   ]
+  },
+  {
+   "nome": "Citadel",
+   "tipo": "special map",
+   "livelli": [
+    84,
+    84
+   ],
+   "rating": {},
+   "tags": [
+    "boss_not_twinnable"
+   ],
+   "collegate": [
+    "Cortex",
+    "The Shaper's Realm"
+   ],
+   "nCarte": 6,
+   "totale": 326.97,
+   "media": 54.5,
+   "mediana": 8.65,
+   "carte": [
+    {
+     "nome": "Wealth and Power",
+     "prezzo": 284.7,
+     "peso": 39.5
+    },
+    {
+     "nome": "The Shieldbearer",
+     "prezzo": 23.89,
+     "peso": 15.5
+    },
+    {
+     "nome": "The Void",
+     "prezzo": 12.09,
+     "peso": 6286.5
+    },
+    {
+     "nome": "The Road to Power",
+     "prezzo": 5.21,
+     "peso": 274.5
+    },
+    {
+     "nome": "Runic Luck",
+     "prezzo": 0.581,
+     "peso": 2094.0
+    },
+    {
+     "nome": "The Avenger",
+     "prezzo": 0.5,
+     "peso": 224.5
+    }
+   ]
+  },
+  {
+   "nome": "Doryani's Machinarium",
+   "tipo": "unique map",
+   "livelli": [
+    72,
+    83
+   ],
+   "rating": {},
+   "tags": [
+    "boss_separated",
+    "few_obstacles",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Foundry"
+   ],
+   "nCarte": 6,
+   "totale": 274.48,
+   "media": 45.75,
+   "mediana": 3.75,
+   "carte": [
+    {
+     "nome": "Apocalypse",
+     "prezzo": 223.4,
+     "peso": 0
+    },
+    {
+     "nome": "Doryani's Epiphany",
+     "prezzo": 39.43,
+     "peso": 131.5
+    },
+    {
+     "nome": "Atziri's Arsenal",
+     "prezzo": 4.08,
+     "peso": 1258.0
+    },
+    {
+     "nome": "Arrogance of the Vaal",
+     "prezzo": 3.43,
+     "peso": 728.5
+    },
+    {
+     "nome": "The Forward Gaze",
+     "prezzo": 3.29,
+     "peso": 1278.0
+    },
+    {
+     "nome": "The Spoiled Prince",
+     "prezzo": 0.8531,
+     "peso": 1104.5
+    }
+   ]
+  },
+  {
+   "nome": "Absence of Mercy and Empathy",
+   "tipo": "unique map",
+   "livelli": [
+    84,
+    84
+   ],
+   "rating": {},
+   "tags": [],
+   "collegate": [
+    "Abomination",
+    "Ancient Reliquary"
+   ],
+   "nCarte": 1,
+   "totale": 242.2,
+   "media": 242.2,
+   "mediana": 242.2,
+   "carte": [
+    {
+     "nome": "Auspicious Ambitions",
+     "prezzo": 242.2,
+     "peso": 7.5
+    }
+   ]
+  },
+  {
+   "nome": "Absence of Patience and Wisdom",
+   "tipo": "unique map",
+   "livelli": [
+    84,
+    84
+   ],
+   "rating": {},
+   "tags": [
+    "boss_not_twinnable"
+   ],
+   "collegate": [
+    "Ziggurat"
+   ],
+   "nCarte": 1,
+   "totale": 242.2,
+   "media": 242.2,
+   "mediana": 242.2,
+   "carte": [
+    {
+     "nome": "Auspicious Ambitions",
+     "prezzo": 242.2,
+     "peso": 7.5
+    }
+   ]
+  },
+  {
+   "nome": "Absence of Symmetry and Harmony",
+   "tipo": "unique map",
+   "livelli": [
+    84,
+    84
+   ],
+   "rating": {},
+   "tags": [
+    "boss_not_twinnable"
+   ],
+   "collegate": [
+    "Ziggurat"
+   ],
+   "nCarte": 1,
+   "totale": 242.2,
+   "media": 242.2,
+   "mediana": 242.2,
+   "carte": [
+    {
+     "nome": "Auspicious Ambitions",
+     "prezzo": 242.2,
+     "peso": 7.5
+    }
+   ]
+  },
+  {
+   "nome": "The Shaper's Realm",
+   "tipo": "unique map",
+   "livelli": [
+    84,
+    84
+   ],
+   "rating": {},
+   "tags": [
+    "boss_not_twinnable",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Citadel",
+    "Forge of the Phoenix",
+    "Lair of the Hydra",
+    "Maze of the Minotaur",
+    "Pit of the Chimera"
+   ],
+   "nCarte": 2,
+   "totale": 242.2,
+   "media": 242.2,
+   "mediana": 242.2,
+   "carte": [
+    {
+     "nome": "Auspicious Ambitions",
+     "prezzo": 242.2,
+     "peso": 7.5
+    },
+    {
+     "nome": "Void of the Elements",
+     "prezzo": 0,
+     "peso": 18.0
+    }
+   ]
+  },
+  {
+   "nome": "Residence",
+   "tipo": "map",
+   "livelli": [
+    74,
+    83
+   ],
+   "rating": {
+    "boss": 6,
+    "density": 9,
+    "layout": 6
+   },
+   "tags": [
+    "boss_separated",
+    "few_obstacles",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Desert",
+    "Plaza"
+   ],
+   "nCarte": 4,
+   "totale": 223.0,
+   "media": 111.5,
+   "mediana": 111.5,
+   "carte": [
+    {
+     "nome": "Squandered Prosperity",
+     "prezzo": 222.5,
+     "peso": 38.0
+    },
+    {
+     "nome": "Emperor's Luck",
+     "prezzo": 0.5045,
+     "peso": 49357.0
+    },
+    {
+     "nome": "Prosperity",
+     "prezzo": 0,
+     "peso": 12920.0
+    },
+    {
+     "nome": "The Surveyor",
+     "prezzo": 0,
+     "peso": 4445.0
+    }
+   ]
+  },
+  {
+   "nome": "Strand",
+   "tipo": "map",
+   "livelli": [
+    71,
+    83
+   ],
+   "rating": {
+    "boss": 10,
+    "density": 0,
+    "layout": 10
+   },
+   "tags": [
+    "boss_separated",
+    "delirium_mirror",
+    "few_obstacles",
+    "league_mechanics",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Alleyways",
+    "Marshes",
+    "Primordial Blocks",
+    "Whakawairua Tuahu"
+   ],
+   "nCarte": 4,
+   "totale": 204.52,
+   "media": 68.17,
+   "mediana": 59.13,
+   "carte": [
+    {
+     "nome": "The Journey",
+     "prezzo": 129.4,
+     "peso": 986.5
+    },
+    {
+     "nome": "The Leviathan",
+     "prezzo": 59.13,
+     "peso": 26.0
+    },
+    {
+     "nome": "The Formless Sea",
+     "prezzo": 15.99,
+     "peso": 553.0
+    },
+    {
+     "nome": "Boundless Realms",
+     "prezzo": 0,
+     "peso": 5491.0
+    }
+   ]
+  },
+  {
+   "nome": "Palace",
+   "tipo": "map",
+   "livelli": [
+    81,
+    83
+   ],
+   "rating": {
+    "boss": 4,
+    "density": 10,
+    "layout": 4
+   },
+   "tags": [
+    "boss_separated",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Haunted Mansion",
+    "Pit",
+    "Waterways"
+   ],
+   "nCarte": 4,
+   "totale": 201.54,
+   "media": 67.18,
+   "mediana": 4.97,
+   "carte": [
+    {
+     "nome": "The Sephirot",
+     "prezzo": 193.9,
+     "peso": 340.5
+    },
+    {
+     "nome": "Light and Truth",
+     "prezzo": 4.97,
+     "peso": 808.0
+    },
+    {
+     "nome": "The Dapper Prodigy",
+     "prezzo": 2.67,
+     "peso": 2336.0
+    },
+    {
+     "nome": "Prosperity",
+     "prezzo": 0,
+     "peso": 12920.0
+    }
+   ]
+  },
+  {
+   "nome": "City Square",
+   "tipo": "map",
+   "livelli": [
+    71,
+    83
+   ],
+   "rating": {
+    "boss": 6,
+    "density": 4,
+    "layout": 10
+   },
+   "tags": [
+    "boss_rushable",
+    "few_obstacles",
+    "league_mechanics",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Cemetery",
+    "Crater",
+    "Excavation"
+   ],
+   "nCarte": 4,
+   "totale": 189.4,
+   "media": 47.35,
+   "mediana": 29.35,
+   "carte": [
+    {
+     "nome": "The Mayor",
+     "prezzo": 130.7,
+     "peso": 155.5
+    },
+    {
+     "nome": "Home",
+     "prezzo": 57.7,
+     "peso": 105.0
+    },
+    {
+     "nome": "The Sigil",
+     "prezzo": 1,
+     "peso": 6820.0
+    },
+    {
+     "nome": "Assassin's Favour",
+     "prezzo": 0.0003992,
+     "peso": 10351.0
+    }
+   ]
+  },
+  {
+   "nome": "Belfry",
+   "tipo": "map",
+   "livelli": [
+    77,
+    83
+   ],
+   "rating": {
+    "boss": 0,
+    "density": 6,
+    "layout": 8
+   },
+   "tags": [
+    "boss_not_twinnable",
+    "boss_phases",
+    "boss_separated",
+    "few_obstacles",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Bramble Valley",
+    "Grave Trough",
+    "Temple"
+   ],
+   "nCarte": 4,
+   "totale": 184.39,
+   "media": 46.1,
+   "mediana": 51.94,
+   "carte": [
+    {
+     "nome": "The Enlightened",
+     "prezzo": 79.52,
+     "peso": 83.5
+    },
+    {
+     "nome": "A Modest Request",
+     "prezzo": 64.79,
+     "peso": 112.5
+    },
+    {
+     "nome": "The Life Thief",
+     "prezzo": 39.08,
+     "peso": 64.0
+    },
+    {
+     "nome": "Demigod's Wager",
+     "prezzo": 1,
+     "peso": 986.5
+    }
+   ]
+  },
+  {
+   "nome": "Core",
+   "tipo": "map",
+   "livelli": [
+    80,
+    83
+   ],
+   "rating": {
+    "boss": 0,
+    "density": 5,
+    "layout": 4
+   },
+   "tags": [
+    "boss_phases",
+    "boss_separated",
+    "linear",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Foundry",
+    "Vault"
+   ],
+   "nCarte": 4,
+   "totale": 155.98,
+   "media": 38.99,
+   "mediana": 6.19,
+   "carte": [
+    {
+     "nome": "The Nurse",
+     "prezzo": 140.6,
+     "peso": 131.5
+    },
+    {
+     "nome": "Brush, Paint and Palette",
+     "prezzo": 7.79,
+     "peso": 728.5
+    },
+    {
+     "nome": "Draped in Dreams",
+     "prezzo": 4.59,
+     "peso": 47.5
+    },
+    {
+     "nome": "The Hunger",
+     "prezzo": 3,
+     "peso": 808.0
+    }
+   ]
+  },
+  {
+   "nome": "Bramble Valley",
+   "tipo": "map",
+   "livelli": [
+    81,
+    83
+   ],
+   "rating": {
+    "boss": 4,
+    "density": 6,
+    "layout": 6
+   },
+   "tags": [
+    "boss_not_twinnable",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Arid Lake",
+    "Belfry",
+    "Temple",
+    "The Sacred Grove"
+   ],
+   "nCarte": 4,
+   "totale": 143.57,
+   "media": 35.89,
+   "mediana": 14.4,
+   "carte": [
+    {
+     "nome": "Mawr Blaidd",
+     "prezzo": 114.6,
+     "peso": 274.5
+    },
+    {
+     "nome": "Avian Pursuit",
+     "prezzo": 27.8,
+     "peso": 96.5
+    },
+    {
+     "nome": "The Explorer",
+     "prezzo": 1,
+     "peso": 7140.0
+    },
+    {
+     "nome": "The Adventuring Spirit",
+     "prezzo": 0.1667,
+     "peso": 9948.0
+    }
+   ]
+  },
+  {
+   "nome": "Cortex",
+   "tipo": "unique map",
+   "livelli": [
+    79,
+    83
+   ],
+   "rating": {},
+   "tags": [],
+   "collegate": [
+    "Altered Distant Memory",
+    "Augmented Distant Memory",
+    "Citadel",
+    "Cortex",
+    "Fortress",
+    "Rewritten Distant Memory",
+    "Twisted Distant Memory"
+   ],
+   "nCarte": 5,
+   "totale": 129.61,
+   "media": 25.92,
+   "mediana": 22.15,
+   "carte": [
+    {
+     "nome": "Monochrome",
+     "prezzo": 72.54,
+     "peso": 553.0
+    },
+    {
+     "nome": "The Hook",
+     "prezzo": 28.05,
+     "peso": 112.5
+    },
+    {
+     "nome": "Imperfect Memories",
+     "prezzo": 22.15,
+     "peso": 44.5
+    },
+    {
+     "nome": "The Astromancer",
+     "prezzo": 4,
+     "peso": 4.0
+    },
+    {
+     "nome": "A Dusty Memory",
+     "prezzo": 2.87,
+     "peso": 340.5
+    }
+   ]
+  },
+  {
+   "nome": "Maelström of Chaos",
+   "tipo": "unique map",
+   "livelli": [
+    73,
+    83
+   ],
+   "rating": {},
+   "tags": [
+    "boss_phases",
+    "linear",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Atoll"
+   ],
+   "nCarte": 4,
+   "totale": 129.57,
+   "media": 32.39,
+   "mediana": 2.83,
+   "carte": [
+    {
+     "nome": "Divine Beauty",
+     "prezzo": 123.9,
+     "peso": 501.5
+    },
+    {
+     "nome": "The Transformation",
+     "prezzo": 5.17,
+     "peso": 340.5
+    },
+    {
+     "nome": "The Avenger",
+     "prezzo": 0.5,
+     "peso": 224.5
+    },
+    {
+     "nome": "The Lover",
+     "prezzo": 0.0009956,
+     "peso": 65856.0
+    }
+   ]
+  },
+  {
+   "nome": "Reef",
+   "tipo": "map",
+   "livelli": [
+    82,
+    83
+   ],
+   "rating": {
+    "boss": 0,
+    "density": 5,
+    "layout": 8
+   },
+   "tags": [
+    "boss_not_twinnable",
+    "boss_separated",
+    "few_obstacles",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Estuary",
+    "Ghetto",
+    "Port"
+   ],
+   "nCarte": 4,
+   "totale": 129.25,
+   "media": 32.31,
+   "mediana": 4.3,
+   "carte": [
+    {
+     "nome": "The Mad King",
+     "prezzo": 119.2,
+     "peso": 0
+    },
+    {
+     "nome": "The Fathomless Depths",
+     "prezzo": 5,
+     "peso": 2025.0
+    },
+    {
+     "nome": "The Messenger",
+     "prezzo": 3.6,
+     "peso": 2025.0
+    },
+    {
+     "nome": "More is Never Enough",
+     "prezzo": 1.45,
+     "peso": 23257.0
+    }
+   ]
+  },
+  {
+   "nome": "Arachnid Nest",
+   "tipo": "map",
+   "livelli": [
+    74,
+    83
+   ],
+   "rating": {
+    "boss": 2,
+    "density": 5,
+    "layout": 6
+   },
+   "tags": [
+    "boss_not_spawned",
+    "boss_phases",
+    "boss_separated",
+    "few_obstacles",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Chateau",
+    "Courthouse",
+    "Mesa"
+   ],
+   "nCarte": 4,
+   "totale": 122.48,
+   "media": 30.62,
+   "mediana": 3.44,
+   "carte": [
+    {
+     "nome": "Mawr Blaidd",
+     "prezzo": 114.6,
+     "peso": 274.5
+    },
+    {
+     "nome": "Call to the First Ones",
+     "prezzo": 4.88,
+     "peso": 1636.0
+    },
+    {
+     "nome": "The Demoness",
+     "prezzo": 2,
+     "peso": 9120.0
+    },
+    {
+     "nome": "The Explorer",
+     "prezzo": 1,
+     "peso": 7140.0
+    }
+   ]
+  },
+  {
+   "nome": "Siege",
+   "tipo": "map",
+   "livelli": [
+    77,
+    83
+   ],
+   "rating": {
+    "boss": 6,
+    "density": 8,
+    "layout": 8
+   },
+   "tags": [
+    "boss_not_twinnable",
+    "boss_phases",
+    "boss_separated",
+    "few_obstacles",
+    "league_mechanics",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Cold River",
+    "Courthouse",
+    "Excavation"
+   ],
+   "nCarte": 4,
+   "totale": 115.0,
+   "media": 38.33,
+   "mediana": 55.86,
+   "carte": [
+    {
+     "nome": "Home",
+     "prezzo": 57.7,
+     "peso": 105.0
+    },
+    {
+     "nome": "The Silly Boy",
+     "prezzo": 55.86,
+     "peso": 0
+    },
+    {
+     "nome": "The Spark and the Flame",
+     "prezzo": 1.44,
+     "peso": 728.5
+    },
+    {
+     "nome": "The Trial",
+     "prezzo": 0,
+     "peso": 5823.0
+    }
+   ]
+  },
+  {
+   "nome": "Olmec's Sanctum",
+   "tipo": "unique map",
+   "livelli": [
+    74,
+    83
+   ],
+   "rating": {},
+   "tags": [
+    "boss_not_spawned",
+    "boss_phases",
+    "linear",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Plateau"
+   ],
+   "nCarte": 4,
+   "totale": 107.47,
+   "media": 35.82,
+   "mediana": 3.68,
+   "carte": [
+    {
+     "nome": "The Rabbit's Foot",
+     "prezzo": 103.7,
+     "peso": 64.0
+    },
+    {
+     "nome": "The Celestial Justicar",
+     "prezzo": 3.68,
+     "peso": 883.0
+    },
+    {
+     "nome": "Rain of Chaos",
+     "prezzo": 0.08935,
+     "peso": 121400.0
+    },
+    {
+     "nome": "The Harvester",
+     "prezzo": 0,
+     "peso": 15812.0
+    }
+   ]
+  },
+  {
+   "nome": "The Coward's Trial",
+   "tipo": "unique map",
+   "livelli": [
+    77,
+    83
+   ],
+   "rating": {},
+   "tags": [
+    "boss_not_spawned",
+    "boss_phases",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Tower"
+   ],
+   "nCarte": 4,
+   "totale": 105.85,
+   "media": 52.93,
+   "mediana": 52.93,
+   "carte": [
+    {
+     "nome": "The Rabbit's Foot",
+     "prezzo": 103.7,
+     "peso": 64.0
+    },
+    {
+     "nome": "The Wretched",
+     "prezzo": 2.15,
+     "peso": 3760.0
+    },
+    {
+     "nome": "Coveted Possession",
+     "prezzo": 0,
+     "peso": 3224.0
+    },
+    {
+     "nome": "Grave Knowledge",
+     "prezzo": 0,
+     "peso": 2511.0
+    }
+   ]
+  },
+  {
+   "nome": "Altered Distant Memory",
+   "tipo": "unique map",
+   "livelli": [
+    68,
+    83,
+    80
+   ],
+   "rating": {},
+   "tags": [],
+   "collegate": [
+    "Cortex"
+   ],
+   "nCarte": 4,
+   "totale": 101.56,
+   "media": 25.39,
+   "mediana": 13.07,
+   "carte": [
+    {
+     "nome": "Monochrome",
+     "prezzo": 72.54,
+     "peso": 553.0
+    },
+    {
+     "nome": "Imperfect Memories",
+     "prezzo": 22.15,
+     "peso": 44.5
+    },
+    {
+     "nome": "The Astromancer",
+     "prezzo": 4,
+     "peso": 4.0
+    },
+    {
+     "nome": "A Dusty Memory",
+     "prezzo": 2.87,
+     "peso": 340.5
+    }
+   ]
+  },
+  {
+   "nome": "Augmented Distant Memory",
+   "tipo": "unique map",
+   "livelli": [
+    68,
+    83,
+    80
+   ],
+   "rating": {},
+   "tags": [],
+   "collegate": [
+    "Cortex"
+   ],
+   "nCarte": 4,
+   "totale": 101.56,
+   "media": 25.39,
+   "mediana": 13.07,
+   "carte": [
+    {
+     "nome": "Monochrome",
+     "prezzo": 72.54,
+     "peso": 553.0
+    },
+    {
+     "nome": "Imperfect Memories",
+     "prezzo": 22.15,
+     "peso": 44.5
+    },
+    {
+     "nome": "The Astromancer",
+     "prezzo": 4,
+     "peso": 4.0
+    },
+    {
+     "nome": "A Dusty Memory",
+     "prezzo": 2.87,
+     "peso": 340.5
+    }
+   ]
+  },
+  {
+   "nome": "Rewritten Distant Memory",
+   "tipo": "unique map",
+   "livelli": [
+    68,
+    83,
+    80
+   ],
+   "rating": {},
+   "tags": [],
+   "collegate": [
+    "Cortex"
+   ],
+   "nCarte": 4,
+   "totale": 101.56,
+   "media": 25.39,
+   "mediana": 13.07,
+   "carte": [
+    {
+     "nome": "Monochrome",
+     "prezzo": 72.54,
+     "peso": 553.0
+    },
+    {
+     "nome": "Imperfect Memories",
+     "prezzo": 22.15,
+     "peso": 44.5
+    },
+    {
+     "nome": "The Astromancer",
+     "prezzo": 4,
+     "peso": 4.0
+    },
+    {
+     "nome": "A Dusty Memory",
+     "prezzo": 2.87,
+     "peso": 340.5
+    }
+   ]
+  },
+  {
+   "nome": "Twisted Distant Memory",
+   "tipo": "unique map",
+   "livelli": [
+    68,
+    83,
+    80
+   ],
+   "rating": {},
+   "tags": [],
+   "collegate": [
+    "Cortex"
+   ],
+   "nCarte": 4,
+   "totale": 101.56,
+   "media": 25.39,
+   "mediana": 13.07,
+   "carte": [
+    {
+     "nome": "Monochrome",
+     "prezzo": 72.54,
+     "peso": 553.0
+    },
+    {
+     "nome": "Imperfect Memories",
+     "prezzo": 22.15,
+     "peso": 44.5
+    },
+    {
+     "nome": "The Astromancer",
+     "prezzo": 4,
+     "peso": 4.0
+    },
+    {
+     "nome": "A Dusty Memory",
+     "prezzo": 2.87,
+     "peso": 340.5
+    }
+   ]
+  },
+  {
+   "nome": "Atoll",
+   "tipo": "map",
+   "livelli": [
+    73,
+    83
+   ],
+   "rating": {
+    "boss": 8,
+    "density": 1,
+    "layout": 8
+   },
+   "tags": [
+    "boss_rushable",
+    "boss_separated",
+    "delirium_mirror",
+    "few_obstacles",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Factory",
+    "Lava Lake",
+    "Maelström of Chaos"
+   ],
+   "nCarte": 4,
+   "totale": 84.59,
+   "media": 21.15,
+   "mediana": 3.13,
+   "carte": [
+    {
+     "nome": "The Destination",
+     "prezzo": 77.33,
+     "peso": 16.0
+    },
+    {
+     "nome": "The Vast",
+     "prezzo": 4.47,
+     "peso": 7.0
+    },
+    {
+     "nome": "The Old Man",
+     "prezzo": 1.79,
+     "peso": 3.0
+    },
+    {
+     "nome": "The Wind",
+     "prezzo": 1,
+     "peso": 553.0
+    }
+   ]
+  },
+  {
+   "nome": "Channel",
+   "tipo": "map",
+   "livelli": [
+    72,
+    83
+   ],
+   "rating": {
+    "boss": 8,
+    "density": 7,
+    "layout": 4
+   },
+   "tags": [
+    "few_obstacles",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Desert Spring",
+    "Malformation",
+    "Plateau"
+   ],
+   "nCarte": 4,
+   "totale": 80.24,
+   "media": 26.75,
+   "mediana": 1.79,
+   "carte": [
+    {
+     "nome": "The Destination",
+     "prezzo": 77.33,
+     "peso": 16.0
+    },
+    {
+     "nome": "The Old Man",
+     "prezzo": 1.79,
+     "peso": 3.0
+    },
+    {
+     "nome": "Desperate Crusade",
+     "prezzo": 1.12,
+     "peso": 241.0
+    },
+    {
+     "nome": "Left to Fate",
+     "prezzo": 0,
+     "peso": 3088.0
+    }
+   ]
+  },
+  {
+   "nome": "Conservatory",
+   "tipo": "map",
+   "livelli": [
+    72,
+    83
+   ],
+   "rating": {
+    "boss": 8,
+    "density": 6,
+    "layout": 4
+   },
+   "tags": [
+    "boss_separated",
+    "few_obstacles",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Graveyard",
+    "Plaza"
+   ],
+   "nCarte": 4,
+   "totale": 75.94,
+   "media": 18.98,
+   "mediana": 6.92,
+   "carte": [
+    {
+     "nome": "The Forbidden Fruit",
+     "prezzo": 62.1,
+     "peso": 0
+    },
+    {
+     "nome": "Peaceful Moments",
+     "prezzo": 13.33,
+     "peso": 274.5
+    },
+    {
+     "nome": "The Porcupine",
+     "prezzo": 0.5,
+     "peso": 4353.0
+    },
+    {
+     "nome": "The Flora's Gift",
+     "prezzo": 0.01,
+     "peso": 26570.0
+    }
+   ]
+  },
+  {
+   "nome": "Moment of Loneliness",
+   "tipo": "unique map",
+   "livelli": [
+    83,
+    83
+   ],
+   "rating": {},
+   "tags": [
+    "boss_not_twinnable"
+   ],
+   "collegate": [],
+   "nCarte": 1,
+   "totale": 72.54,
+   "media": 72.54,
+   "mediana": 72.54,
+   "carte": [
+    {
+     "nome": "Monochrome",
+     "prezzo": 72.54,
+     "peso": 553.0
+    }
+   ]
+  },
+  {
+   "nome": "Terrace",
+   "tipo": "map",
+   "livelli": [
+    80,
+    83
+   ],
+   "rating": {
+    "boss": 2,
+    "density": 6,
+    "layout": 8
+   },
+   "tags": [
+    "boss_not_twinnable",
+    "boss_phases",
+    "boss_separated",
+    "delirium_mirror",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Cemetery",
+    "Cold River",
+    "Jungle Valley",
+    "Laboratory"
+   ],
+   "nCarte": 4,
+   "totale": 66.64,
+   "media": 22.21,
+   "mediana": 2.54,
+   "carte": [
+    {
+     "nome": "The Forbidden Fruit",
+     "prezzo": 62.1,
+     "peso": 0
+    },
+    {
+     "nome": "The Wilted Rose",
+     "prezzo": 2.54,
+     "peso": 2312.0
+    },
+    {
+     "nome": "The Fox in the Brambles",
+     "prezzo": 2,
+     "peso": 986.5
+    },
+    {
+     "nome": "The Easy Stroll",
+     "prezzo": 0,
+     "peso": 1747.0
+    }
+   ]
+  },
+  {
+   "nome": "Malformation",
+   "tipo": "map",
+   "livelli": [
+    80,
+    83
+   ],
+   "rating": {
+    "boss": 2,
+    "density": 6,
+    "layout": 8
+   },
+   "tags": [
+    "boss_separated",
+    "delirium_mirror",
+    "few_obstacles",
+    "linear",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Arachnid Tomb",
+    "Arcade",
+    "Channel",
+    "Promenade"
+   ],
+   "nCarte": 4,
+   "totale": 61.22,
+   "media": 15.3,
+   "mediana": 15.0,
+   "carte": [
+    {
+     "nome": "The Prince of Darkness",
+     "prezzo": 28.22,
+     "peso": 224.5
+    },
+    {
+     "nome": "Last Stand",
+     "prezzo": 25,
+     "peso": 8.0
+    },
+    {
+     "nome": "The Insatiable",
+     "prezzo": 5,
+     "peso": 1792.0
+    },
+    {
+     "nome": "The Jeweller's Boon",
+     "prezzo": 3,
+     "peso": 3760.0
+    }
+   ]
+  },
+  {
+   "nome": "Colonnade",
+   "tipo": "map",
+   "livelli": [
+    78,
+    83
+   ],
+   "rating": {
+    "boss": 6,
+    "density": 7,
+    "layout": 6
+   },
+   "tags": [
+    "boss_separated",
+    "boss_soft_phases",
+    "delirium_mirror",
+    "league_mechanics",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Alleyways",
+    "Gardens",
+    "Geode"
+   ],
+   "nCarte": 4,
+   "totale": 59.7,
+   "media": 19.9,
+   "mediana": 17.7,
+   "carte": [
+    {
+     "nome": "The Dungeon Master",
+     "prezzo": 41.83,
+     "peso": 429.5
+    },
+    {
+     "nome": "The Patient",
+     "prezzo": 17.7,
+     "peso": 986.5
+    },
+    {
+     "nome": "The Traitor",
+     "prezzo": 0.1667,
+     "peso": 1159.0
+    },
+    {
+     "nome": "Struck by Lightning",
+     "prezzo": 0,
+     "peso": 7176.0
+    }
+   ]
+  },
+  {
+   "nome": "Cells",
+   "tipo": "map",
+   "livelli": [
+    70,
+    83
+   ],
+   "rating": {
+    "boss": 8,
+    "density": 9,
+    "layout": 4
+   },
+   "tags": [
+    "boss_separated",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Ramparts",
+    "Spider Lair"
+   ],
+   "nCarte": 4,
+   "totale": 55.84,
+   "media": 18.61,
+   "mediana": 13.75,
+   "carte": [
+    {
+     "nome": "The Dungeon Master",
+     "prezzo": 41.83,
+     "peso": 429.5
+    },
+    {
+     "nome": "The Offering",
+     "prezzo": 13.75,
+     "peso": 553.0
+    },
+    {
+     "nome": "The Chains that Bind",
+     "prezzo": 0.2558,
+     "peso": 8696.0
+    },
+    {
+     "nome": "Harmony of Souls",
+     "prezzo": 0,
+     "peso": 224.5
+    }
+   ]
+  },
+  {
+   "nome": "Fields",
+   "tipo": "map",
+   "livelli": [
+    73,
+    83
+   ],
+   "rating": {
+    "boss": 6,
+    "density": 4,
+    "layout": 8
+   },
+   "tags": [
+    "boss_not_twinnable",
+    "boss_phases",
+    "boss_rushable",
+    "boss_separated",
+    "delirium_mirror",
+    "few_obstacles",
+    "league_mechanics",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Crystal Ore",
+    "Mausoleum",
+    "Simulacrum"
+   ],
+   "nCarte": 4,
+   "totale": 54.71,
+   "media": 13.68,
+   "mediana": 9.23,
+   "carte": [
+    {
+     "nome": "The Fortunate",
+     "prezzo": 36.05,
+     "peso": 1238.0
+    },
+    {
+     "nome": "Tranquillity",
+     "prezzo": 17.96,
+     "peso": 14.5
+    },
+    {
+     "nome": "The Fox",
+     "prezzo": 0.5,
+     "peso": 2094.0
+    },
+    {
+     "nome": "The Scarred Meadow",
+     "prezzo": 0.2,
+     "peso": 18252.0
+    }
+   ]
+  },
+  {
+   "nome": "Waterways",
+   "tipo": "map",
+   "livelli": [
+    78,
+    83
+   ],
+   "rating": {
+    "boss": 8,
+    "density": 6,
+    "layout": 4
+   },
+   "tags": [
+    "few_obstacles",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Arid Lake",
+    "Palace"
+   ],
+   "nCarte": 4,
+   "totale": 54.69,
+   "media": 13.67,
+   "mediana": 15.21,
+   "carte": [
+    {
+     "nome": "Lachrymal Necrosis",
+     "prezzo": 23.16,
+     "peso": 808.0
+    },
+    {
+     "nome": "Terrible Secret of Space",
+     "prezzo": 18.03,
+     "peso": 6.0
+    },
+    {
+     "nome": "A Stone Perfected",
+     "prezzo": 12.38,
+     "peso": 155.5
+    },
+    {
+     "nome": "Desperate Crusade",
+     "prezzo": 1.12,
+     "peso": 241.0
+    }
+   ]
+  },
+  {
+   "nome": "Grotto",
+   "tipo": "map",
+   "livelli": [
+    71,
+    83
+   ],
+   "rating": {
+    "boss": 6,
+    "density": 8,
+    "layout": 6
+   },
+   "tags": [
+    "few_obstacles",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Forking River",
+    "Vaal Pyramid"
+   ],
+   "nCarte": 4,
+   "totale": 48.89,
+   "media": 12.22,
+   "mediana": 10.66,
+   "carte": [
+    {
+     "nome": "Lachrymal Necrosis",
+     "prezzo": 23.16,
+     "peso": 808.0
+    },
+    {
+     "nome": "A Stone Perfected",
+     "prezzo": 12.38,
+     "peso": 155.5
+    },
+    {
+     "nome": "The Tinkerer's Table",
+     "prezzo": 8.93,
+     "peso": 274.5
+    },
+    {
+     "nome": "The Rite of Elements",
+     "prezzo": 4.42,
+     "peso": 2047.0
+    }
+   ]
+  },
+  {
+   "nome": "Primordial Pool",
+   "tipo": "map",
+   "livelli": [
+    78,
+    83
+   ],
+   "rating": {
+    "boss": 8,
+    "density": 1,
+    "layout": 8
+   },
+   "tags": [
+    "boss_separated",
+    "few_obstacles",
+    "league_mechanics",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Crystal Ore"
+   ],
+   "nCarte": 4,
+   "totale": 44.66,
+   "media": 11.16,
+   "mediana": 7.72,
+   "carte": [
+    {
+     "nome": "The Prince of Darkness",
+     "prezzo": 28.22,
+     "peso": 224.5
+    },
+    {
+     "nome": "The Eye of the Dragon",
+     "prezzo": 12.44,
+     "peso": 64.0
+    },
+    {
+     "nome": "The Hunger",
+     "prezzo": 3,
+     "peso": 808.0
+    },
+    {
+     "nome": "The Survivalist",
+     "prezzo": 1,
+     "peso": 6714.0
+    }
+   ]
+  },
+  {
+   "nome": "Volcano",
+   "tipo": "map",
+   "livelli": [
+    71,
+    83
+   ],
+   "rating": {
+    "boss": 8,
+    "density": 7,
+    "layout": 6
+   },
+   "tags": [
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Mineral Pools",
+    "Polaric Void",
+    "Toxic Sewer"
+   ],
+   "nCarte": 4,
+   "totale": 41.57,
+   "media": 10.39,
+   "mediana": 8.41,
+   "carte": [
+    {
+     "nome": "Lonely Warrior",
+     "prezzo": 23.3,
+     "peso": 6.0
+    },
+    {
+     "nome": "Pride Before the Fall",
+     "prezzo": 10.24,
+     "peso": 140.0
+    },
+    {
+     "nome": "From Bone to Ashes",
+     "prezzo": 6.59,
+     "peso": 186.0
+    },
+    {
+     "nome": "The Spark and the Flame",
+     "prezzo": 1.44,
+     "peso": 728.5
+    }
+   ]
+  },
+  {
+   "nome": "Dunes",
+   "tipo": "map",
+   "livelli": [
+    74,
+    83
+   ],
+   "rating": {
+    "boss": 10,
+    "density": 4,
+    "layout": 10
+   },
+   "tags": [
+    "boss_rushable",
+    "boss_soft_phases",
+    "delirium_mirror",
+    "few_obstacles",
+    "league_mechanics",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Coral Ruins",
+    "Courthouse",
+    "Pillars of Arun",
+    "Port"
+   ],
+   "nCarte": 4,
+   "totale": 40.56,
+   "media": 10.14,
+   "mediana": 1.67,
+   "carte": [
+    {
+     "nome": "The Fortunate",
+     "prezzo": 36.05,
+     "peso": 1238.0
+    },
+    {
+     "nome": "Baited Expectations",
+     "prezzo": 2.05,
+     "peso": 553.0
+    },
+    {
+     "nome": "Acclimatisation",
+     "prezzo": 1.3,
+     "peso": 4232.0
+    },
+    {
+     "nome": "Earth Drinker",
+     "prezzo": 1.16,
+     "peso": 1507.0
+    }
+   ]
+  },
+  {
+   "nome": "Arsenal",
+   "tipo": "map",
+   "livelli": [
+    80,
+    83
+   ],
+   "rating": {
+    "boss": 4,
+    "density": 10,
+    "layout": 4
+   },
+   "tags": [
+    "boss_phases",
+    "boss_separated",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Grave Trough"
+   ],
+   "nCarte": 4,
+   "totale": 31.99,
+   "media": 8.0,
+   "mediana": 3.34,
+   "carte": [
+    {
+     "nome": "Last Stand",
+     "prezzo": 25,
+     "peso": 8.0
+    },
+    {
+     "nome": "Merciless Armament",
+     "prezzo": 5.56,
+     "peso": 296.5
+    },
+    {
+     "nome": "Dying Anguish",
+     "prezzo": 1.12,
+     "peso": 2461.0
+    },
+    {
+     "nome": "Three Faces in the Dark",
+     "prezzo": 0.3106,
+     "peso": 22517.0
+    }
+   ]
+  },
+  {
+   "nome": "Port",
+   "tipo": "map",
+   "livelli": [
+    70,
+    83
+   ],
+   "rating": {
+    "boss": 6,
+    "density": 7,
+    "layout": 8
+   },
+   "tags": [
+    "boss_phases",
+    "boss_separated",
+    "delirium_mirror",
+    "league_mechanics",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Coral Ruins",
+    "Dunes",
+    "Ghetto",
+    "Reef",
+    "Shrine"
+   ],
+   "nCarte": 4,
+   "totale": 31.09,
+   "media": 7.77,
+   "mediana": 4.11,
+   "carte": [
+    {
+     "nome": "Matryoshka",
+     "prezzo": 22.77,
+     "peso": 1.5
+    },
+    {
+     "nome": "The Return of the Rat",
+     "prezzo": 4.12,
+     "peso": 1025.0
+    },
+    {
+     "nome": "The Last Laugh",
+     "prezzo": 4.1,
+     "peso": 0
+    },
+    {
+     "nome": "Lucky Connections",
+     "prezzo": 0.0967,
+     "peso": 7356.0
+    }
+   ]
+  },
+  {
+   "nome": "Stagnation",
+   "tipo": "map",
+   "livelli": [
+    76,
+    83
+   ],
+   "rating": {
+    "boss": 4,
+    "density": 4,
+    "layout": 6
+   },
+   "tags": [
+    "boss_separated",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Crater",
+    "Domain of Timeless Conflict",
+    "Iceberg",
+    "Ivory Temple",
+    "Seething Chyme"
+   ],
+   "nCarte": 4,
+   "totale": 29.92,
+   "media": 9.97,
+   "mediana": 1.57,
+   "carte": [
+    {
+     "nome": "Avian Pursuit",
+     "prezzo": 27.8,
+     "peso": 96.5
+    },
+    {
+     "nome": "The Coming Storm",
+     "prezzo": 1.57,
+     "peso": 1976.0
+    },
+    {
+     "nome": "The Mind's Eyes",
+     "prezzo": 0.549,
+     "peso": 553.0
+    },
+    {
+     "nome": "Struck by Lightning",
+     "prezzo": 0,
+     "peso": 7176.0
+    }
+   ]
+  },
+  {
+   "nome": "Crystal Ore",
+   "tipo": "map",
+   "livelli": [
+    79,
+    83
+   ],
+   "rating": {
+    "boss": 4,
+    "density": 8,
+    "layout": 8
+   },
+   "tags": [
+    "boss_phases",
+    "boss_separated",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Fields",
+    "Museum",
+    "Primordial Pool",
+    "The Lightless Hollow"
+   ],
+   "nCarte": 4,
+   "totale": 28.88,
+   "media": 9.63,
+   "mediana": 2.94,
+   "carte": [
+    {
+     "nome": "Friendship",
+     "prezzo": 25.8,
+     "peso": 73.0
+    },
+    {
+     "nome": "Bijoux",
+     "prezzo": 2.94,
+     "peso": 274.5
+    },
+    {
+     "nome": "Three Voices",
+     "prezzo": 0.1399,
+     "peso": 11929.0
+    },
+    {
+     "nome": "Buried Treasure",
+     "prezzo": 0,
+     "peso": 728.5
+    }
+   ]
+  },
+  {
+   "nome": "Gardens",
+   "tipo": "map",
+   "livelli": [
+    74,
+    83
+   ],
+   "rating": {
+    "boss": 6,
+    "density": 8,
+    "layout": 4
+   },
+   "tags": [
+    "boss_separated",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Colonnade",
+    "Fungal Hollow",
+    "Laboratory"
+   ],
+   "nCarte": 4,
+   "totale": 28.62,
+   "media": 7.16,
+   "mediana": 2.92,
+   "carte": [
+    {
+     "nome": "Matryoshka",
+     "prezzo": 22.77,
+     "peso": 1.5
+    },
+    {
+     "nome": "The Awakened",
+     "prezzo": 3.85,
+     "peso": 15.5
+    },
+    {
+     "nome": "The Fox in the Brambles",
+     "prezzo": 2,
+     "peso": 986.5
+    },
+    {
+     "nome": "Rain Tempter",
+     "prezzo": 0.003455,
+     "peso": 15301.0
+    }
+   ]
+  },
+  {
+   "nome": "Tropical Island",
+   "tipo": "map",
+   "livelli": [
+    75,
+    83
+   ],
+   "rating": {
+    "boss": 10,
+    "density": 5,
+    "layout": 10
+   },
+   "tags": [
+    "delirium_mirror",
+    "few_obstacles",
+    "league_mechanics",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Caldera",
+    "Coral Ruins",
+    "Sunken City"
+   ],
+   "nCarte": 4,
+   "totale": 27.77,
+   "media": 6.94,
+   "mediana": 6.14,
+   "carte": [
+    {
+     "nome": "The Lake",
+     "prezzo": 14.84,
+     "peso": 0
+    },
+    {
+     "nome": "Pride of the First Ones",
+     "prezzo": 11.29,
+     "peso": 102.0
+    },
+    {
+     "nome": "Azure Rage",
+     "prezzo": 1,
+     "peso": 3224.0
+    },
+    {
+     "nome": "The Scout",
+     "prezzo": 0.6387,
+     "peso": 340.5
+    }
+   ]
+  },
+  {
+   "nome": "Estuary",
+   "tipo": "map",
+   "livelli": [
+    76,
+    83
+   ],
+   "rating": {
+    "boss": 8,
+    "density": 5,
+    "layout": 8
+   },
+   "tags": [
+    "boss_separated",
+    "few_obstacles",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Phantasmagoria",
+    "Reef"
+   ],
+   "nCarte": 4,
+   "totale": 27.08,
+   "media": 9.03,
+   "mediana": 10.24,
+   "carte": [
+    {
+     "nome": "Costly Curio",
+     "prezzo": 10.25,
+     "peso": 553.0
+    },
+    {
+     "nome": "Pride Before the Fall",
+     "prezzo": 10.24,
+     "peso": 140.0
+    },
+    {
+     "nome": "From Bone to Ashes",
+     "prezzo": 6.59,
+     "peso": 186.0
+    },
+    {
+     "nome": "Hope",
+     "prezzo": 0,
+     "peso": 2094.0
+    }
+   ]
+  },
+  {
+   "nome": "Mesa",
+   "tipo": "map",
+   "livelli": [
+    78,
+    83
+   ],
+   "rating": {
+    "boss": 8,
+    "density": 3,
+    "layout": 8
+   },
+   "tags": [
+    "boss_rushable",
+    "boss_separated",
+    "few_obstacles",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Arachnid Nest",
+    "Courthouse",
+    "Fungal Hollow",
+    "Laboratory"
+   ],
+   "nCarte": 4,
+   "totale": 27.0,
+   "media": 6.75,
+   "mediana": 4.44,
+   "carte": [
+    {
+     "nome": "Tranquillity",
+     "prezzo": 17.96,
+     "peso": 14.5
+    },
+    {
+     "nome": "The Enforcer",
+     "prezzo": 8.69,
+     "peso": 9.0
+    },
+    {
+     "nome": "The Scarred Meadow",
+     "prezzo": 0.2,
+     "peso": 18252.0
+    },
+    {
+     "nome": "Time-Lost Relic",
+     "prezzo": 0.1455,
+     "peso": 6470.0
+    }
+   ]
+  },
+  {
+   "nome": "Alleyways",
+   "tipo": "map",
+   "livelli": [
+    69,
+    83
+   ],
+   "rating": {
+    "boss": 10,
+    "density": 6,
+    "layout": 8
+   },
+   "tags": [
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Colonnade",
+    "Geode",
+    "Primordial Blocks",
+    "Strand",
+    "Summit"
+   ],
+   "nCarte": 4,
+   "totale": 26.45,
+   "media": 8.82,
+   "mediana": 2.67,
+   "carte": [
+    {
+     "nome": "The Side Quest",
+     "prezzo": 21.38,
+     "peso": 728.5
+    },
+    {
+     "nome": "The Enthusiasts",
+     "prezzo": 2.67,
+     "peso": 469.5
+    },
+    {
+     "nome": "The Gentleman",
+     "prezzo": 2.4,
+     "peso": 1422.0
+    },
+    {
+     "nome": "The Ruthless Ceinture",
+     "prezzo": 0,
+     "peso": 3307.0
+    }
+   ]
+  },
+  {
+   "nome": "Caldera",
+   "tipo": "map",
+   "livelli": [
+    80,
+    83
+   ],
+   "rating": {
+    "boss": 8,
+    "density": 6,
+    "layout": 8
+   },
+   "tags": [
+    "boss_separated",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Coral Ruins",
+    "Plateau",
+    "Promenade",
+    "Tropical Island"
+   ],
+   "nCarte": 4,
+   "totale": 25.94,
+   "media": 12.97,
+   "mediana": 12.97,
+   "carte": [
+    {
+     "nome": "Lonely Warrior",
+     "prezzo": 23.3,
+     "peso": 6.0
+    },
+    {
+     "nome": "The King's Heart",
+     "prezzo": 2.64,
+     "peso": 553.0
+    },
+    {
+     "nome": "Burning Blood",
+     "prezzo": 0,
+     "peso": 10.0
+    },
+    {
+     "nome": "Hope",
+     "prezzo": 0,
+     "peso": 2094.0
+    }
+   ]
+  },
+  {
+   "nome": "Tower",
+   "tipo": "map",
+   "livelli": [
+    76,
+    83
+   ],
+   "rating": {
+    "boss": 4,
+    "density": 9,
+    "layout": 8
+   },
+   "tags": [
+    "boss_not_twinnable",
+    "boss_phases",
+    "boss_separated",
+    "delirium_mirror",
+    "linear",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Arcade",
+    "Forking River",
+    "The Coward's Trial",
+    "Vaal Pyramid"
+   ],
+   "nCarte": 4,
+   "totale": 25.73,
+   "media": 8.58,
+   "mediana": 3,
+   "carte": [
+    {
+     "nome": "Energy Sword",
+     "prezzo": 21.73,
+     "peso": 0
+    },
+    {
+     "nome": "The Aesthete",
+     "prezzo": 3,
+     "peso": 5102.0
+    },
+    {
+     "nome": "The Tower",
+     "prezzo": 1,
+     "peso": 5590.0
+    },
+    {
+     "nome": "Thunderous Skies",
+     "prezzo": 0,
+     "peso": 10311.0
+    }
+   ]
+  },
+  {
+   "nome": "Geode",
+   "tipo": "map",
+   "livelli": [
+    75,
+    83
+   ],
+   "rating": {
+    "boss": 8,
+    "density": 6,
+    "layout": 6
+   },
+   "tags": [
+    "boss_separated",
+    "league_mechanics",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Alleyways",
+    "Colonnade",
+    "Sulphur Vents"
+   ],
+   "nCarte": 4,
+   "totale": 25.54,
+   "media": 6.38,
+   "mediana": 3.68,
+   "carte": [
+    {
+     "nome": "Terrible Secret of Space",
+     "prezzo": 18.03,
+     "peso": 6.0
+    },
+    {
+     "nome": "The Rite of Elements",
+     "prezzo": 4.42,
+     "peso": 2047.0
+    },
+    {
+     "nome": "The Endurance",
+     "prezzo": 2.94,
+     "peso": 5199.0
+    },
+    {
+     "nome": "Time-Lost Relic",
+     "prezzo": 0.1455,
+     "peso": 6470.0
+    }
+   ]
+  },
+  {
+   "nome": "The Sacred Grove",
+   "tipo": "unique map",
+   "livelli": [
+    1,
+    83
+   ],
+   "rating": {},
+   "tags": [],
+   "collegate": [],
+   "nCarte": 1,
+   "totale": 25.1,
+   "media": 25.1,
+   "mediana": 25.1,
+   "carte": [
+    {
+     "nome": "The Aspirant",
+     "prezzo": 25.1,
+     "peso": 25.0
+    }
+   ]
+  },
+  {
+   "nome": "The Vinktar Square",
+   "tipo": "unique map",
+   "livelli": [
+    75,
+    83
+   ],
+   "rating": {},
+   "tags": [
+    "boss_separated",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Courthouse"
+   ],
+   "nCarte": 2,
+   "totale": 22.48,
+   "media": 11.24,
+   "mediana": 11.24,
+   "carte": [
+    {
+     "nome": "Energy Sword",
+     "prezzo": 21.73,
+     "peso": 0
+    },
+    {
+     "nome": "The Rusted Bard",
+     "prezzo": 0.75,
+     "peso": 155.5
+    }
+   ]
+  },
+  {
+   "nome": "Mao Kun",
+   "tipo": "unique map",
+   "livelli": [
+    75,
+    83
+   ],
+   "rating": {},
+   "tags": [
+    "boss_not_spawned",
+    "boss_phases",
+    "few_obstacles",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Shipyard"
+   ],
+   "nCarte": 3,
+   "totale": 22.22,
+   "media": 7.41,
+   "mediana": 5.8,
+   "carte": [
+    {
+     "nome": "The Formless Sea",
+     "prezzo": 15.99,
+     "peso": 553.0
+    },
+    {
+     "nome": "The Deep Ones",
+     "prezzo": 5.8,
+     "peso": 72.0
+    },
+    {
+     "nome": "Abandoned Wealth",
+     "prezzo": 0.4305,
+     "peso": 553.0
+    }
+   ]
+  },
+  {
+   "nome": "Spider Lair",
+   "tipo": "map",
+   "livelli": [
+    72,
+    83
+   ],
+   "rating": {
+    "boss": 8,
+    "density": 5,
+    "layout": 6
+   },
+   "tags": [
+    "boss_separated",
+    "few_obstacles",
+    "linear",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Cells",
+    "Flooded Mine",
+    "Frozen Cabins"
+   ],
+   "nCarte": 4,
+   "totale": 22.08,
+   "media": 5.52,
+   "mediana": 5.8,
+   "carte": [
+    {
+     "nome": "The Tinkerer's Table",
+     "prezzo": 8.93,
+     "peso": 274.5
+    },
+    {
+     "nome": "The Wedding Gift",
+     "prezzo": 8.18,
+     "peso": 73.0
+    },
+    {
+     "nome": "Poisoned Faith",
+     "prezzo": 3.42,
+     "peso": 73.0
+    },
+    {
+     "nome": "The Dark Mage",
+     "prezzo": 1.55,
+     "peso": 1383.0
+    }
+   ]
+  },
+  {
+   "nome": "Shipyard",
+   "tipo": "map",
+   "livelli": [
+    77,
+    83
+   ],
+   "rating": {
+    "boss": 4,
+    "density": 4,
+    "layout": 8
+   },
+   "tags": [
+    "league_mechanics",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Lava Lake",
+    "Mao Kun",
+    "Primordial Blocks",
+    "Sulphur Vents"
+   ],
+   "nCarte": 4,
+   "totale": 19.66,
+   "media": 4.92,
+   "mediana": 3.38,
+   "carte": [
+    {
+     "nome": "The Pact",
+     "prezzo": 11.07,
+     "peso": 429.5
+    },
+    {
+     "nome": "The Fishmonger",
+     "prezzo": 4.33,
+     "peso": 22.0
+    },
+    {
+     "nome": "The Professor",
+     "prezzo": 2.43,
+     "peso": 186.0
+    },
+    {
+     "nome": "The Undaunted",
+     "prezzo": 1.83,
+     "peso": 1383.0
+    }
+   ]
+  },
+  {
+   "nome": "Hive Colony",
+   "tipo": "unique map",
+   "livelli": [
+    83,
+    83
+   ],
+   "rating": {},
+   "tags": [],
+   "collegate": [
+    "Infested Valley"
+   ],
+   "nCarte": 2,
+   "totale": 18.82,
+   "media": 9.41,
+   "mediana": 9.41,
+   "carte": [
+    {
+     "nome": "Something Dark",
+     "prezzo": 17.14,
+     "peso": 728.5
+    },
+    {
+     "nome": "The Escape",
+     "prezzo": 1.68,
+     "peso": 656.5
+    }
+   ]
+  },
+  {
+   "nome": "Acton's Nightmare",
+   "tipo": "unique map",
+   "livelli": [
+    79,
+    83
+   ],
+   "rating": {},
+   "tags": [
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Overgrown Shrine"
+   ],
+   "nCarte": 4,
+   "totale": 18.53,
+   "media": 4.63,
+   "mediana": 2.0,
+   "carte": [
+    {
+     "nome": "The Garish Power",
+     "prezzo": 14.02,
+     "peso": 96.5
+    },
+    {
+     "nome": "Shard of Fate",
+     "prezzo": 3.01,
+     "peso": 4943.0
+    },
+    {
+     "nome": "The Skeleton",
+     "prezzo": 1,
+     "peso": 5361.0
+    },
+    {
+     "nome": "The Craving",
+     "prezzo": 0.5,
+     "peso": 96.5
+    }
+   ]
+  },
+  {
+   "nome": "Orchard",
+   "tipo": "map",
+   "livelli": [
+    77,
+    83
+   ],
+   "rating": {
+    "boss": 2,
+    "density": 10,
+    "layout": 6
+   },
+   "tags": [
+    "boss_separated",
+    "league_mechanics",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Iceberg",
+    "Promenade"
+   ],
+   "nCarte": 4,
+   "totale": 18.16,
+   "media": 6.05,
+   "mediana": 2.54,
+   "carte": [
+    {
+     "nome": "Peaceful Moments",
+     "prezzo": 13.33,
+     "peso": 274.5
+    },
+    {
+     "nome": "The Wilted Rose",
+     "prezzo": 2.54,
+     "peso": 2312.0
+    },
+    {
+     "nome": "Brotherhood in Exile",
+     "prezzo": 2.29,
+     "peso": 224.5
+    },
+    {
+     "nome": "Boon of Justice",
+     "prezzo": 0,
+     "peso": 7068.0
+    }
+   ]
+  },
+  {
+   "nome": "Overgrown Shrine",
+   "tipo": "map",
+   "livelli": [
+    79,
+    83
+   ],
+   "rating": {
+    "boss": 4,
+    "density": 5,
+    "layout": 6
+   },
+   "tags": [
+    "boss_phases",
+    "boss_separated",
+    "few_obstacles",
+    "linear",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Acton's Nightmare",
+    "Bazaar",
+    "Pier"
+   ],
+   "nCarte": 4,
+   "totale": 17.97,
+   "media": 4.49,
+   "mediana": 1.97,
+   "carte": [
+    {
+     "nome": "The Garish Power",
+     "prezzo": 14.02,
+     "peso": 96.5
+    },
+    {
+     "nome": "The Surgeon",
+     "prezzo": 2.57,
+     "peso": 4599.0
+    },
+    {
+     "nome": "The Brittle Emperor",
+     "prezzo": 1.37,
+     "peso": 131.5
+    },
+    {
+     "nome": "Emperor of Purity",
+     "prezzo": 0.007143,
+     "peso": 2094.0
+    }
+   ]
+  },
+  {
+   "nome": "Sulphur Vents",
+   "tipo": "map",
+   "livelli": [
+    72,
+    83
+   ],
+   "rating": {
+    "boss": 8,
+    "density": 5,
+    "layout": 8
+   },
+   "tags": [
+    "boss_separated",
+    "league_mechanics",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Basilica",
+    "Geode",
+    "Lava Lake",
+    "Shipyard"
+   ],
+   "nCarte": 4,
+   "totale": 17.81,
+   "media": 5.94,
+   "mediana": 6.24,
+   "carte": [
+    {
+     "nome": "The Bitter Blossom",
+     "prezzo": 11.24,
+     "peso": 131.5
+    },
+    {
+     "nome": "The Darkest Dream",
+     "prezzo": 6.24,
+     "peso": 312.0
+    },
+    {
+     "nome": "The Standoff",
+     "prezzo": 0.3333,
+     "peso": 5723.0
+    },
+    {
+     "nome": "Vile Power",
+     "prezzo": 0,
+     "peso": 1443.0
+    }
+   ]
+  },
+  {
+   "nome": "Pillars of Arun",
+   "tipo": "unique map",
+   "livelli": [
+    74,
+    83
+   ],
+   "rating": {},
+   "tags": [
+    "boss_separated",
+    "boss_soft_phases",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Dunes"
+   ],
+   "nCarte": 4,
+   "totale": 16.75,
+   "media": 4.19,
+   "mediana": 5.0,
+   "carte": [
+    {
+     "nome": "Gift of Asenath",
+     "prezzo": 5.45,
+     "peso": 131.5
+    },
+    {
+     "nome": "A Note in the Wind",
+     "prezzo": 5,
+     "peso": 274.5
+    },
+    {
+     "nome": "The Tumbleweed",
+     "prezzo": 5,
+     "peso": 32.0
+    },
+    {
+     "nome": "Acclimatisation",
+     "prezzo": 1.3,
+     "peso": 4232.0
+    }
+   ]
+  },
+  {
+   "nome": "Colosseum",
+   "tipo": "map",
+   "livelli": [
+    81,
+    83
+   ],
+   "rating": {
+    "boss": 2,
+    "density": 10,
+    "layout": 6
+   },
+   "tags": [
+    "boss_phases",
+    "boss_separated",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Forbidden Woods",
+    "Summit"
+   ],
+   "nCarte": 4,
+   "totale": 16.06,
+   "media": 5.35,
+   "mediana": 1,
+   "carte": [
+    {
+     "nome": "The Last One Standing",
+     "prezzo": 14.56,
+     "peso": 20.0
+    },
+    {
+     "nome": "The Visionary",
+     "prezzo": 1,
+     "peso": 8965.0
+    },
+    {
+     "nome": "The Gladiator",
+     "prezzo": 0.5,
+     "peso": 5756.0
+    },
+    {
+     "nome": "The King's Blade",
+     "prezzo": 0,
+     "peso": 41980.0
+    }
+   ]
+  },
+  {
+   "nome": "Oba's Cursed Trove",
+   "tipo": "unique map",
+   "livelli": [
+    79,
+    83
+   ],
+   "rating": {},
+   "tags": [
+    "boss_not_spawned",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Primordial Blocks"
+   ],
+   "nCarte": 4,
+   "totale": 15.82,
+   "media": 7.91,
+   "mediana": 7.91,
+   "carte": [
+    {
+     "nome": "Rebirth and Renewal",
+     "prezzo": 14.58,
+     "peso": 728.5
+    },
+    {
+     "nome": "Might is Right",
+     "prezzo": 1.24,
+     "peso": 2486.0
+    },
+    {
+     "nome": "Coveted Possession",
+     "prezzo": 0,
+     "peso": 3224.0
+    },
+    {
+     "nome": "The Lich",
+     "prezzo": 0,
+     "peso": 5006.0
+    }
+   ]
+  },
+  {
+   "nome": "Sunken City",
+   "tipo": "map",
+   "livelli": [
+    82,
+    83
+   ],
+   "rating": {
+    "boss": 4,
+    "density": 7,
+    "layout": 6
+   },
+   "tags": [
+    "boss_not_twinnable",
+    "boss_separated",
+    "few_obstacles",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Desert Spring",
+    "Shrine",
+    "Tropical Island"
+   ],
+   "nCarte": 4,
+   "totale": 14.68,
+   "media": 3.67,
+   "mediana": 3.0,
+   "carte": [
+    {
+     "nome": "The Wedding Gift",
+     "prezzo": 8.18,
+     "peso": 73.0
+    },
+    {
+     "nome": "Ambitious Obsession",
+     "prezzo": 3,
+     "peso": 1.5
+    },
+    {
+     "nome": "The Web",
+     "prezzo": 3,
+     "peso": 7905.0
+    },
+    {
+     "nome": "The Fox",
+     "prezzo": 0.5,
+     "peso": 2094.0
+    }
+   ]
+  },
+  {
+   "nome": "Arid Lake",
+   "tipo": "map",
+   "livelli": [
+    69,
+    83
+   ],
+   "rating": {
+    "boss": 8,
+    "density": 7,
+    "layout": 8
+   },
+   "tags": [
+    "boss_rushable",
+    "boss_separated",
+    "delirium_mirror",
+    "few_obstacles",
+    "league_mechanics",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Bramble Valley",
+    "Dark Forest",
+    "Waterways"
+   ],
+   "nCarte": 4,
+   "totale": 13.99,
+   "media": 4.66,
+   "mediana": 1,
+   "carte": [
+    {
+     "nome": "The Eye of the Dragon",
+     "prezzo": 12.44,
+     "peso": 64.0
+    },
+    {
+     "nome": "Azure Rage",
+     "prezzo": 1,
+     "peso": 3224.0
+    },
+    {
+     "nome": "The Mind's Eyes",
+     "prezzo": 0.549,
+     "peso": 553.0
+    },
+    {
+     "nome": "The Inoculated",
+     "prezzo": 0,
+     "peso": 6926.0
+    }
+   ]
+  },
+  {
+   "nome": "The Temple of Atzoatl",
+   "tipo": "unique map",
+   "livelli": [
+    1,
+    83
+   ],
+   "rating": {},
+   "tags": [],
+   "collegate": [
+    "Cage"
+   ],
+   "nCarte": 1,
+   "totale": 13.57,
+   "media": 13.57,
+   "mediana": 13.57,
+   "carte": [
+    {
+     "nome": "Chasing Risk",
+     "prezzo": 13.57,
+     "peso": 274.5
+    }
+   ]
+  },
+  {
+   "nome": "Eye of the Storm",
+   "tipo": "special map",
+   "livelli": [
+    84,
+    84
+   ],
+   "rating": {},
+   "tags": [],
+   "collegate": [
+    "Abomination"
+   ],
+   "nCarte": 1,
+   "totale": 13.52,
+   "media": 13.52,
+   "mediana": 13.52,
+   "carte": [
+    {
+     "nome": "A Fate Worse Than Death",
+     "prezzo": 13.52,
+     "peso": 83.5
+    }
+   ]
+  },
+  {
+   "nome": "Toxic Sewer",
+   "tipo": "map",
+   "livelli": [
+    72,
+    83
+   ],
+   "rating": {
+    "boss": 10,
+    "density": 7,
+    "layout": 10
+   },
+   "tags": [
+    "boss_rushable",
+    "few_obstacles",
+    "linear",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Jungle Valley",
+    "Volcano"
+   ],
+   "nCarte": 4,
+   "totale": 13.39,
+   "media": 4.46,
+   "mediana": 4.67,
+   "carte": [
+    {
+     "nome": "The Darkest Dream",
+     "prezzo": 6.24,
+     "peso": 312.0
+    },
+    {
+     "nome": "Toxic Tidings",
+     "prezzo": 4.67,
+     "peso": 224.5
+    },
+    {
+     "nome": "Death",
+     "prezzo": 2.48,
+     "peso": 1339.0
+    },
+    {
+     "nome": "Vile Power",
+     "prezzo": 0,
+     "peso": 1443.0
+    }
+   ]
+  },
+  {
+   "nome": "Forbidden Woods",
+   "tipo": "map",
+   "livelli": [
+    77,
+    83
+   ],
+   "rating": {
+    "boss": 6,
+    "density": 6,
+    "layout": 4
+   },
+   "tags": [
+    "boss_not_twinnable",
+    "league_mechanics",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Colosseum",
+    "Marshes"
+   ],
+   "nCarte": 4,
+   "totale": 13.03,
+   "media": 3.26,
+   "mediana": 3.44,
+   "carte": [
+    {
+     "nome": "Alivia's Grace",
+     "prezzo": 5.15,
+     "peso": 1976.0
+    },
+    {
+     "nome": "Call to the First Ones",
+     "prezzo": 4.88,
+     "peso": 1636.0
+    },
+    {
+     "nome": "The Demoness",
+     "prezzo": 2,
+     "peso": 9120.0
+    },
+    {
+     "nome": "The Sigil",
+     "prezzo": 1,
+     "peso": 6820.0
+    }
+   ]
+  },
+  {
+   "nome": "Flooded Mine",
+   "tipo": "map",
+   "livelli": [
+    69,
+    83
+   ],
+   "rating": {
+    "boss": 6,
+    "density": 9,
+    "layout": 6
+   },
+   "tags": [
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Cage",
+    "Frozen Cabins",
+    "Relic Chambers",
+    "Spider Lair"
+   ],
+   "nCarte": 4,
+   "totale": 13.0,
+   "media": 3.25,
+   "mediana": 3.0,
+   "carte": [
+    {
+     "nome": "Underground Forest",
+     "prezzo": 7.0,
+     "peso": 296.5
+    },
+    {
+     "nome": "The Fathomless Depths",
+     "prezzo": 5,
+     "peso": 2025.0
+    },
+    {
+     "nome": "The Primordial",
+     "prezzo": 0.9965,
+     "peso": 1159.0
+    },
+    {
+     "nome": "Glimmer of Hope",
+     "prezzo": 0.002186,
+     "peso": 9630.0
+    }
+   ]
+  },
+  {
+   "nome": "Caer Blaidd, Wolfpack's Den",
+   "tipo": "unique map",
+   "livelli": [
+    74,
+    83
+   ],
+   "rating": {},
+   "tags": [
+    "boss_phases",
+    "boss_separated",
+    "few_obstacles",
+    "linear",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Lair"
+   ],
+   "nCarte": 4,
+   "totale": 12.79,
+   "media": 3.2,
+   "mediana": 0.71,
+   "carte": [
+    {
+     "nome": "Pride of the First Ones",
+     "prezzo": 11.29,
+     "peso": 102.0
+    },
+    {
+     "nome": "Treasure Hunter",
+     "prezzo": 1.04,
+     "peso": 986.5
+    },
+    {
+     "nome": "The Dragon",
+     "prezzo": 0.3865,
+     "peso": 5689.0
+    },
+    {
+     "nome": "Loyalty",
+     "prezzo": 0.07143,
+     "peso": 35134.0
+    }
+   ]
+  },
+  {
+   "nome": "Frozen Cabins",
+   "tipo": "map",
+   "livelli": [
+    69,
+    83
+   ],
+   "rating": {
+    "boss": 8,
+    "density": 6,
+    "layout": 8
+   },
+   "tags": [
+    "boss_separated",
+    "boss_soft_phases",
+    "delirium_mirror",
+    "linear",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Bazaar",
+    "Flooded Mine",
+    "Ramparts",
+    "Spider Lair"
+   ],
+   "nCarte": 4,
+   "totale": 12.1,
+   "media": 3.03,
+   "mediana": 1.82,
+   "carte": [
+    {
+     "nome": "The Pack Leader",
+     "prezzo": 8,
+     "peso": 1593.0
+    },
+    {
+     "nome": "The Whiteout",
+     "prezzo": 2.65,
+     "peso": 553.0
+    },
+    {
+     "nome": "Mitts",
+     "prezzo": 1,
+     "peso": 6025.0
+    },
+    {
+     "nome": "Hunter's Resolve",
+     "prezzo": 0.4545,
+     "peso": 8467.0
+    }
+   ]
+  },
+  {
+   "nome": "Desert Spring",
+   "tipo": "map",
+   "livelli": [
+    80,
+    83
+   ],
+   "rating": {
+    "boss": 2,
+    "density": 10,
+    "layout": 8
+   },
+   "tags": [
+    "boss_not_twinnable",
+    "boss_phases",
+    "boss_separated",
+    "delirium_mirror",
+    "few_obstacles",
+    "league_mechanics",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Channel",
+    "Plateau",
+    "Sunken City",
+    "Vault"
+   ],
+   "nCarte": 4,
+   "totale": 11.79,
+   "media": 2.95,
+   "mediana": 2.67,
+   "carte": [
+    {
+     "nome": "The Tumbleweed",
+     "prezzo": 5,
+     "peso": 32.0
+    },
+    {
+     "nome": "Ambitious Obsession",
+     "prezzo": 3,
+     "peso": 1.5
+    },
+    {
+     "nome": "Imperial Legacy",
+     "prezzo": 2.34,
+     "peso": 10924.0
+    },
+    {
+     "nome": "More is Never Enough",
+     "prezzo": 1.45,
+     "peso": 23257.0
+    }
+   ]
+  },
+  {
+   "nome": "Jungle Valley",
+   "tipo": "map",
+   "livelli": [
+    73,
+    83
+   ],
+   "rating": {
+    "boss": 6,
+    "density": 6,
+    "layout": 10
+   },
+   "tags": [
+    "boss_not_spawned",
+    "boss_phases",
+    "boss_separated",
+    "delirium_mirror",
+    "few_obstacles",
+    "league_mechanics",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Basilica",
+    "Cemetery",
+    "Terrace",
+    "Toxic Sewer"
+   ],
+   "nCarte": 4,
+   "totale": 11.74,
+   "media": 2.93,
+   "mediana": 3.21,
+   "carte": [
+    {
+     "nome": "Alivia's Grace",
+     "prezzo": 5.15,
+     "peso": 1976.0
+    },
+    {
+     "nome": "Poisoned Faith",
+     "prezzo": 3.42,
+     "peso": 73.0
+    },
+    {
+     "nome": "The Web",
+     "prezzo": 3,
+     "peso": 7905.0
+    },
+    {
+     "nome": "The Adventuring Spirit",
+     "prezzo": 0.1667,
+     "peso": 9948.0
+    }
+   ]
+  },
+  {
+   "nome": "Desert",
+   "tipo": "map",
+   "livelli": [
+    69,
+    83
+   ],
+   "rating": {
+    "boss": 4,
+    "density": 8,
+    "layout": 6
+   },
+   "tags": [
+    "few_obstacles",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Infested Valley",
+    "Mastermind's Lair",
+    "Mausoleum",
+    "Residence"
+   ],
+   "nCarte": 4,
+   "totale": 11.0,
+   "media": 2.75,
+   "mediana": 2.19,
+   "carte": [
+    {
+     "nome": "Gift of Asenath",
+     "prezzo": 5.45,
+     "peso": 131.5
+    },
+    {
+     "nome": "Imperial Legacy",
+     "prezzo": 2.34,
+     "peso": 10924.0
+    },
+    {
+     "nome": "Baited Expectations",
+     "prezzo": 2.05,
+     "peso": 553.0
+    },
+    {
+     "nome": "Earth Drinker",
+     "prezzo": 1.16,
+     "peso": 1507.0
+    }
+   ]
+  },
+  {
+   "nome": "Arachnid Tomb",
+   "tipo": "map",
+   "livelli": [
+    77,
+    83
+   ],
+   "rating": {
+    "boss": 8,
+    "density": 5,
+    "layout": 6
+   },
+   "tags": [
+    "boss_separated",
+    "delirium_mirror",
+    "few_obstacles",
+    "linear",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Forking River",
+    "Malformation"
+   ],
+   "nCarte": 4,
+   "totale": 10.66,
+   "media": 3.55,
+   "mediana": 3.5,
+   "carte": [
+    {
+     "nome": "Draped in Dreams",
+     "prezzo": 4.59,
+     "peso": 47.5
+    },
+    {
+     "nome": "Echoes of Love",
+     "prezzo": 3.5,
+     "peso": 553.0
+    },
+    {
+     "nome": "The Surgeon",
+     "prezzo": 2.57,
+     "peso": 4599.0
+    },
+    {
+     "nome": "The Rabid Rhoa",
+     "prezzo": 0,
+     "peso": 5393.0
+    }
+   ]
+  },
+  {
+   "nome": "Factory",
+   "tipo": "map",
+   "livelli": [
+    78,
+    83
+   ],
+   "rating": {
+    "boss": 6,
+    "density": 7,
+    "layout": 4
+   },
+   "tags": [
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Atoll",
+    "Dark Forest",
+    "Plaza"
+   ],
+   "nCarte": 4,
+   "totale": 10.12,
+   "media": 2.53,
+   "mediana": 1.0,
+   "carte": [
+    {
+     "nome": "Who Asked",
+     "prezzo": 7.89,
+     "peso": 12.5
+    },
+    {
+     "nome": "Gift of the Gemling Queen",
+     "prezzo": 1,
+     "peso": 2047.0
+    },
+    {
+     "nome": "Rats",
+     "prezzo": 1,
+     "peso": 14432.0
+    },
+    {
+     "nome": "Ever-Changing",
+     "prezzo": 0.232,
+     "peso": 1422.0
+    }
+   ]
+  },
+  {
+   "nome": "Summit",
+   "tipo": "map",
+   "livelli": [
+    79,
+    83
+   ],
+   "rating": {
+    "boss": 6,
+    "density": 5,
+    "layout": 8
+   },
+   "tags": [
+    "boss_not_twinnable",
+    "boss_separated",
+    "few_obstacles",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Alleyways",
+    "Colosseum",
+    "Marshes"
+   ],
+   "nCarte": 4,
+   "totale": 9.75,
+   "media": 3.25,
+   "mediana": 1.44,
+   "carte": [
+    {
+     "nome": "The Pack Leader",
+     "prezzo": 8,
+     "peso": 1593.0
+    },
+    {
+     "nome": "A Chilling Wind",
+     "prezzo": 1.44,
+     "peso": 340.5
+    },
+    {
+     "nome": "The Mountain",
+     "prezzo": 0.3075,
+     "peso": 5426.0
+    },
+    {
+     "nome": "The Wolverine",
+     "prezzo": 0,
+     "peso": 1566.5
+    }
+   ]
+  },
+  {
+   "nome": "Haunted Mansion",
+   "tipo": "map",
+   "livelli": [
+    72,
+    83
+   ],
+   "rating": {
+    "boss": 8,
+    "density": 5,
+    "layout": 6
+   },
+   "tags": [
+    "boss_separated",
+    "few_obstacles",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Palace",
+    "Pier",
+    "Pit"
+   ],
+   "nCarte": 4,
+   "totale": 9.27,
+   "media": 2.32,
+   "mediana": 2.0,
+   "carte": [
+    {
+     "nome": "The Transformation",
+     "prezzo": 5.17,
+     "peso": 340.5
+    },
+    {
+     "nome": "The Awakened",
+     "prezzo": 3.85,
+     "peso": 15.5
+    },
+    {
+     "nome": "The Blazing Fire",
+     "prezzo": 0.153,
+     "peso": 10800.0
+    },
+    {
+     "nome": "The Journalist",
+     "prezzo": 0.1,
+     "peso": 12964.0
+    }
+   ]
+  },
+  {
+   "nome": "Coral Ruins",
+   "tipo": "map",
+   "livelli": [
+    74,
+    83
+   ],
+   "rating": {
+    "boss": 4,
+    "density": 6,
+    "layout": 6
+   },
+   "tags": [
+    "boss_not_twinnable",
+    "league_mechanics",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Caldera",
+    "Dunes",
+    "Port",
+    "Shrine",
+    "Tropical Island"
+   ],
+   "nCarte": 4,
+   "totale": 9.08,
+   "media": 2.27,
+   "mediana": 2.21,
+   "carte": [
+    {
+     "nome": "The Vast",
+     "prezzo": 4.47,
+     "peso": 7.0
+    },
+    {
+     "nome": "Lingering Remnants",
+     "prezzo": 4.16,
+     "peso": 1422.0
+    },
+    {
+     "nome": "The Stormcaller",
+     "prezzo": 0.25,
+     "peso": 5006.0
+    },
+    {
+     "nome": "The Tyrant",
+     "prezzo": 0.2,
+     "peso": 553.0
+    }
+   ]
+  },
+  {
+   "nome": "Hallowed Ground",
+   "tipo": "unique map",
+   "livelli": [
+    73,
+    83
+   ],
+   "rating": {},
+   "tags": [
+    "boss_phases",
+    "few_obstacles",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Cemetery"
+   ],
+   "nCarte": 4,
+   "totale": 8.95,
+   "media": 4.47,
+   "mediana": 4.47,
+   "carte": [
+    {
+     "nome": "The Enforcer",
+     "prezzo": 8.69,
+     "peso": 9.0
+    },
+    {
+     "nome": "The Chains that Bind",
+     "prezzo": 0.2558,
+     "peso": 8696.0
+    },
+    {
+     "nome": "The Penitent",
+     "prezzo": 0,
+     "peso": 4692.0
+    },
+    {
+     "nome": "The Warden",
+     "prezzo": 0,
+     "peso": 7905.0
+    }
+   ]
+  },
+  {
+   "nome": "The Twilight Temple",
+   "tipo": "unique map",
+   "livelli": [
+    76,
+    83
+   ],
+   "rating": {},
+   "tags": [
+    "boss_separated",
+    "linear",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Ivory Temple"
+   ],
+   "nCarte": 4,
+   "totale": 8.76,
+   "media": 2.92,
+   "mediana": 2.76,
+   "carte": [
+    {
+     "nome": "The Army of Blood",
+     "prezzo": 5,
+     "peso": 8316.0
+    },
+    {
+     "nome": "The Twilight Moon",
+     "prezzo": 2.76,
+     "peso": 553.0
+    },
+    {
+     "nome": "Forbidden Power",
+     "prezzo": 1,
+     "peso": 1953.0
+    },
+    {
+     "nome": "The Twins",
+     "prezzo": 0,
+     "peso": 5134.0
+    }
+   ]
+  },
+  {
+   "nome": "Death and Taxes",
+   "tipo": "unique map",
+   "livelli": [
+    79,
+    83
+   ],
+   "rating": {},
+   "tags": [
+    "boss_not_spawned",
+    "boss_phases",
+    "few_obstacles",
+    "linear",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Mausoleum"
+   ],
+   "nCarte": 4,
+   "totale": 8.57,
+   "media": 2.14,
+   "mediana": 2.28,
+   "carte": [
+    {
+     "nome": "The Encroaching Darkness",
+     "prezzo": 4,
+     "peso": 1025.0
+    },
+    {
+     "nome": "Shard of Fate",
+     "prezzo": 3.01,
+     "peso": 4943.0
+    },
+    {
+     "nome": "The Dark Mage",
+     "prezzo": 1.55,
+     "peso": 1383.0
+    },
+    {
+     "nome": "Emperor of Purity",
+     "prezzo": 0.007143,
+     "peso": 2094.0
+    }
+   ]
+  },
+  {
+   "nome": "Whakawairua Tuahu",
+   "tipo": "unique map",
+   "livelli": [
+    71,
+    83
+   ],
+   "rating": {},
+   "tags": [
+    "boss_not_spawned",
+    "boss_separated",
+    "boss_soft_phases",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Strand"
+   ],
+   "nCarte": 4,
+   "totale": 8.31,
+   "media": 2.77,
+   "mediana": 2,
+   "carte": [
+    {
+     "nome": "The Deep Ones",
+     "prezzo": 5.8,
+     "peso": 72.0
+    },
+    {
+     "nome": "Scholar of the Seas",
+     "prezzo": 2,
+     "peso": 2386.0
+    },
+    {
+     "nome": "The Doppelganger",
+     "prezzo": 0.5094,
+     "peso": 18596.0
+    },
+    {
+     "nome": "The Siren",
+     "prezzo": 0,
+     "peso": 728.5
+    }
+   ]
+  },
+  {
+   "nome": "Courthouse",
+   "tipo": "map",
+   "livelli": [
+    71,
+    83
+   ],
+   "rating": {
+    "boss": 6,
+    "density": 5,
+    "layout": 6
+   },
+   "tags": [
+    "boss_separated",
+    "few_obstacles",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Arachnid Nest",
+    "Dunes",
+    "Mesa",
+    "Siege",
+    "The Vinktar Square"
+   ],
+   "nCarte": 4,
+   "totale": 8.15,
+   "media": 2.04,
+   "mediana": 1.91,
+   "carte": [
+    {
+     "nome": "Sambodhi's Wisdom",
+     "prezzo": 4.32,
+     "peso": 64.0
+    },
+    {
+     "nome": "The Oath",
+     "prezzo": 3.27,
+     "peso": 2336.0
+    },
+    {
+     "nome": "Checkmate",
+     "prezzo": 0.5597,
+     "peso": 340.5
+    },
+    {
+     "nome": "Thirst for Knowledge",
+     "prezzo": 0.001,
+     "peso": 7905.0
+    }
+   ]
+  },
+  {
+   "nome": "Mastermind's Lair",
+   "tipo": "unique map",
+   "livelli": [
+    83,
+    83
+   ],
+   "rating": {},
+   "tags": [],
+   "collegate": [
+    "Desert"
+   ],
+   "nCarte": 2,
+   "totale": 7.71,
+   "media": 3.85,
+   "mediana": 3.85,
+   "carte": [
+    {
+     "nome": "Keeper's Corruption",
+     "prezzo": 6.71,
+     "peso": 16.0
+    },
+    {
+     "nome": "Nook's Crown",
+     "prezzo": 1,
+     "peso": 15.5
+    }
+   ]
+  },
+  {
+   "nome": "Ramparts",
+   "tipo": "map",
+   "livelli": [
+    74,
+    83
+   ],
+   "rating": {
+    "boss": 10,
+    "density": 7,
+    "layout": 8
+   },
+   "tags": [
+    "boss_separated",
+    "delirium_mirror",
+    "few_obstacles",
+    "league_mechanics",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Bazaar",
+    "Cells",
+    "Frozen Cabins"
+   ],
+   "nCarte": 4,
+   "totale": 7.37,
+   "media": 2.46,
+   "mediana": 2.33,
+   "carte": [
+    {
+     "nome": "Lingering Remnants",
+     "prezzo": 4.16,
+     "peso": 1422.0
+    },
+    {
+     "nome": "The Warlord",
+     "prezzo": 2.33,
+     "peso": 728.5
+    },
+    {
+     "nome": "Jack in the Box",
+     "prezzo": 0.8763,
+     "peso": 4537.0
+    },
+    {
+     "nome": "The Ruthless Ceinture",
+     "prezzo": 0,
+     "peso": 3307.0
+    }
+   ]
+  },
+  {
+   "nome": "Dark Forest",
+   "tipo": "map",
+   "livelli": [
+    81,
+    83
+   ],
+   "rating": {
+    "boss": 4,
+    "density": 5,
+    "layout": 8
+   },
+   "tags": [
+    "boss_separated",
+    "few_obstacles",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Arid Lake",
+    "Crux of Nothingness",
+    "Factory"
+   ],
+   "nCarte": 4,
+   "totale": 7.33,
+   "media": 1.83,
+   "mediana": 1.0,
+   "carte": [
+    {
+     "nome": "The Road to Power",
+     "prezzo": 5.21,
+     "peso": 274.5
+    },
+    {
+     "nome": "Etched in Blood",
+     "prezzo": 1,
+     "peso": 35.5
+    },
+    {
+     "nome": "The Cursed King",
+     "prezzo": 1,
+     "peso": 728.5
+    },
+    {
+     "nome": "The Wolven King's Bite",
+     "prezzo": 0.125,
+     "peso": 553.0
+    }
+   ]
+  },
+  {
+   "nome": "Vaults of Atziri",
+   "tipo": "unique map",
+   "livelli": [
+    75,
+    83
+   ],
+   "rating": {},
+   "tags": [
+    "boss_not_spawned",
+    "linear",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Vault"
+   ],
+   "nCarte": 4,
+   "totale": 7.16,
+   "media": 1.79,
+   "mediana": 1.37,
+   "carte": [
+    {
+     "nome": "The Encroaching Darkness",
+     "prezzo": 4,
+     "peso": 1025.0
+    },
+    {
+     "nome": "The Admirer",
+     "prezzo": 2.26,
+     "peso": 2025.0
+    },
+    {
+     "nome": "The Inventor",
+     "prezzo": 0.4739,
+     "peso": 6435.0
+    },
+    {
+     "nome": "Abandoned Wealth",
+     "prezzo": 0.4305,
+     "peso": 553.0
+    }
+   ]
+  },
+  {
+   "nome": "Mausoleum",
+   "tipo": "map",
+   "livelli": [
+    73,
+    83
+   ],
+   "rating": {
+    "boss": 4,
+    "density": 5,
+    "layout": 8
+   },
+   "tags": [
+    "boss_not_spawned",
+    "boss_separated",
+    "few_obstacles",
+    "linear",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Death and Taxes",
+    "Desert",
+    "Fields",
+    "Mineral Pools"
+   ],
+   "nCarte": 4,
+   "totale": 7.03,
+   "media": 2.34,
+   "mediana": 2.4,
+   "carte": [
+    {
+     "nome": "The Celestial Justicar",
+     "prezzo": 3.68,
+     "peso": 883.0
+    },
+    {
+     "nome": "The Forsaken",
+     "prezzo": 2.4,
+     "peso": 1861.0
+    },
+    {
+     "nome": "No Traces",
+     "prezzo": 0.9488,
+     "peso": 2094.0
+    },
+    {
+     "nome": "The Lich",
+     "prezzo": 0,
+     "peso": 5006.0
+    }
+   ]
+  },
+  {
+   "nome": "Forking River",
+   "tipo": "map",
+   "livelli": [
+    70,
+    83
+   ],
+   "rating": {
+    "boss": 6,
+    "density": 6,
+    "layout": 8
+   },
+   "tags": [
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Arachnid Tomb",
+    "Grotto",
+    "Tower"
+   ],
+   "nCarte": 4,
+   "totale": 6.78,
+   "media": 2.26,
+   "mediana": 2,
+   "carte": [
+    {
+     "nome": "The Fishmonger",
+     "prezzo": 4.33,
+     "peso": 22.0
+    },
+    {
+     "nome": "Humility",
+     "prezzo": 2,
+     "peso": 2716.0
+    },
+    {
+     "nome": "Hunter's Resolve",
+     "prezzo": 0.4545,
+     "peso": 8467.0
+    },
+    {
+     "nome": "The Long Watch",
+     "prezzo": 0,
+     "peso": 77.0
+    }
+   ]
+  },
+  {
+   "nome": "Fungal Hollow",
+   "tipo": "map",
+   "livelli": [
+    70,
+    83
+   ],
+   "rating": {
+    "boss": 10,
+    "density": 2,
+    "layout": 8
+   },
+   "tags": [
+    "boss_separated",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Chateau",
+    "Gardens",
+    "Mesa"
+   ],
+   "nCarte": 4,
+   "totale": 6.23,
+   "media": 1.56,
+   "mediana": 1.51,
+   "carte": [
+    {
+     "nome": "The Shepherd's Sandals",
+     "prezzo": 2.82,
+     "peso": 296.5
+    },
+    {
+     "nome": "The Mercenary",
+     "prezzo": 1.98,
+     "peso": 1571.0
+    },
+    {
+     "nome": "Treasure Hunter",
+     "prezzo": 1.04,
+     "peso": 986.5
+    },
+    {
+     "nome": "The Dragon",
+     "prezzo": 0.3865,
+     "peso": 5689.0
+    }
+   ]
+  },
+  {
+   "nome": "Temple",
+   "tipo": "map",
+   "livelli": [
+    76,
+    83
+   ],
+   "rating": {
+    "boss": 8,
+    "density": 8,
+    "layout": 6
+   },
+   "tags": [
+    "boss_separated",
+    "few_obstacles",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Beach",
+    "Belfry",
+    "Bramble Valley",
+    "Foundry",
+    "Poorjoy's Asylum"
+   ],
+   "nCarte": 4,
+   "totale": 6.13,
+   "media": 2.04,
+   "mediana": 1.42,
+   "carte": [
+    {
+     "nome": "The Opulent",
+     "prezzo": 3.71,
+     "peso": 10841.0
+    },
+    {
+     "nome": "The Innocent",
+     "prezzo": 1.42,
+     "peso": 1566.5
+    },
+    {
+     "nome": "Demigod's Wager",
+     "prezzo": 1,
+     "peso": 986.5
+    },
+    {
+     "nome": "The Lord of Celebration",
+     "prezzo": 0,
+     "peso": 986.5
+    }
+   ]
+  },
+  {
+   "nome": "Ivory Temple",
+   "tipo": "map",
+   "livelli": [
+    72,
+    83
+   ],
+   "rating": {
+    "boss": 6,
+    "density": 8,
+    "layout": 4
+   },
+   "tags": [
+    "boss_separated",
+    "linear",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Mineral Pools",
+    "Museum",
+    "Stagnation",
+    "The Twilight Temple"
+   ],
+   "nCarte": 4,
+   "totale": 5.71,
+   "media": 2.85,
+   "mediana": 2.85,
+   "carte": [
+    {
+     "nome": "Light and Truth",
+     "prezzo": 4.97,
+     "peso": 808.0
+    },
+    {
+     "nome": "The Unexpected Prize",
+     "prezzo": 0.7385,
+     "peso": 501.5
+    },
+    {
+     "nome": "The Conduit",
+     "prezzo": 0,
+     "peso": 728.5
+    },
+    {
+     "nome": "The Lord of Celebration",
+     "prezzo": 0,
+     "peso": 986.5
+    }
+   ]
+  },
+  {
+   "nome": "Cold River",
+   "tipo": "map",
+   "livelli": [
+    78,
+    83
+   ],
+   "rating": {
+    "boss": 4,
+    "density": 6,
+    "layout": 6
+   },
+   "tags": [
+    "boss_rushable",
+    "boss_separated",
+    "league_mechanics",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Excavation",
+    "Laboratory",
+    "Siege",
+    "Terrace"
+   ],
+   "nCarte": 4,
+   "totale": 5.64,
+   "media": 1.88,
+   "mediana": 1.44,
+   "carte": [
+    {
+     "nome": "Divine Shard",
+     "prezzo": 4,
+     "peso": 0
+    },
+    {
+     "nome": "A Chilling Wind",
+     "prezzo": 1.44,
+     "peso": 340.5
+    },
+    {
+     "nome": "The Sun",
+     "prezzo": 0.2,
+     "peso": 10636.0
+    },
+    {
+     "nome": "The Twins",
+     "prezzo": 0,
+     "peso": 5134.0
+    }
+   ]
+  },
+  {
+   "nome": "Infested Valley",
+   "tipo": "map",
+   "livelli": [
+    75,
+    83
+   ],
+   "rating": {
+    "boss": 6,
+    "density": 6,
+    "layout": 8
+   },
+   "tags": [
+    "boss_not_twinnable",
+    "boss_phases",
+    "boss_separated",
+    "delirium_mirror",
+    "few_obstacles",
+    "league_mechanics",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Desert",
+    "Hive Colony",
+    "Park"
+   ],
+   "nCarte": 4,
+   "totale": 5.57,
+   "media": 1.39,
+   "mediana": 1.26,
+   "carte": [
+    {
+     "nome": "Death",
+     "prezzo": 2.48,
+     "peso": 1339.0
+    },
+    {
+     "nome": "The Offspring",
+     "prezzo": 1.52,
+     "peso": 369.5
+    },
+    {
+     "nome": "The Throne",
+     "prezzo": 1,
+     "peso": 186.0
+    },
+    {
+     "nome": "The Feast",
+     "prezzo": 0.5688,
+     "peso": 2142.0
+    }
+   ]
+  },
+  {
+   "nome": "Vault",
+   "tipo": "map",
+   "livelli": [
+    76,
+    83
+   ],
+   "rating": {
+    "boss": 8,
+    "density": 3,
+    "layout": 6
+   },
+   "tags": [
+    "boss_separated",
+    "few_obstacles",
+    "linear",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Core",
+    "Desert Spring",
+    "Pit",
+    "Vaults of Atziri"
+   ],
+   "nCarte": 4,
+   "totale": 5.37,
+   "media": 1.34,
+   "mediana": 0.43,
+   "carte": [
+    {
+     "nome": "Chaotic Disposition",
+     "prezzo": 4.4,
+     "peso": 4202.0
+    },
+    {
+     "nome": "The Gambler",
+     "prezzo": 0.4331,
+     "peso": 4262.0
+    },
+    {
+     "nome": "The Cache",
+     "prezzo": 0.4185,
+     "peso": 6263.0
+    },
+    {
+     "nome": "The Hoarder",
+     "prezzo": 0.1217,
+     "peso": 2411.0
+    }
+   ]
+  },
+  {
+   "nome": "Silo",
+   "tipo": "map",
+   "livelli": [
+    72,
+    83
+   ],
+   "rating": {
+    "boss": 4,
+    "density": 6,
+    "layout": 10
+   },
+   "tags": [
+    "boss_not_twinnable",
+    "boss_phases",
+    "boss_separated",
+    "delirium_mirror",
+    "few_obstacles",
+    "linear",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Pit",
+    "Relic Chambers"
+   ],
+   "nCarte": 4,
+   "totale": 5.14,
+   "media": 2.57,
+   "mediana": 2.57,
+   "carte": [
+    {
+     "nome": "Haunting Shadows",
+     "prezzo": 3.82,
+     "peso": 1104.5
+    },
+    {
+     "nome": "The Tireless Extractor",
+     "prezzo": 1.32,
+     "peso": 9120.0
+    },
+    {
+     "nome": "Burning Blood",
+     "prezzo": 0,
+     "peso": 10.0
+    },
+    {
+     "nome": "Further Invention",
+     "prezzo": 0,
+     "peso": 20.0
+    }
+   ]
+  },
+  {
+   "nome": "Mineral Pools",
+   "tipo": "map",
+   "livelli": [
+    75,
+    83
+   ],
+   "rating": {
+    "boss": 6,
+    "density": 5,
+    "layout": 4
+   },
+   "tags": [
+    "boss_separated",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Ivory Temple",
+    "Mausoleum",
+    "Volcano"
+   ],
+   "nCarte": 4,
+   "totale": 4.95,
+   "media": 1.65,
+   "mediana": 0.43,
+   "carte": [
+    {
+     "nome": "Chaotic Disposition",
+     "prezzo": 4.4,
+     "peso": 4202.0
+    },
+    {
+     "nome": "The Gambler",
+     "prezzo": 0.4331,
+     "peso": 4262.0
+    },
+    {
+     "nome": "The Hoarder",
+     "prezzo": 0.1217,
+     "peso": 2411.0
+    },
+    {
+     "nome": "Lysah's Respite",
+     "prezzo": 0,
+     "peso": 1976.0
+    }
+   ]
+  },
+  {
+   "nome": "Excavation",
+   "tipo": "map",
+   "livelli": [
+    70,
+    83
+   ],
+   "rating": {
+    "boss": 4,
+    "density": 8,
+    "layout": 8
+   },
+   "tags": [
+    "boss_separated",
+    "few_obstacles",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Cemetery",
+    "City Square",
+    "Cold River",
+    "Siege"
+   ],
+   "nCarte": 4,
+   "totale": 4.32,
+   "media": 1.08,
+   "mediana": 0.48,
+   "carte": [
+    {
+     "nome": "The Jeweller's Boon",
+     "prezzo": 3,
+     "peso": 3760.0
+    },
+    {
+     "nome": "Runic Luck",
+     "prezzo": 0.581,
+     "peso": 2094.0
+    },
+    {
+     "nome": "Volatile Power",
+     "prezzo": 0.3838,
+     "peso": 6298.0
+    },
+    {
+     "nome": "A Sea of Blue",
+     "prezzo": 0.3564,
+     "peso": 7356.0
+    }
+   ]
+  },
+  {
+   "nome": "Park",
+   "tipo": "map",
+   "livelli": [
+    80,
+    83
+   ],
+   "rating": {
+    "boss": 8,
+    "density": 4,
+    "layout": 8
+   },
+   "tags": [
+    "boss_rushable",
+    "few_obstacles",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Graveyard",
+    "Infested Valley"
+   ],
+   "nCarte": 4,
+   "totale": 4.32,
+   "media": 1.08,
+   "mediana": 0.64,
+   "carte": [
+    {
+     "nome": "The Poet",
+     "prezzo": 2.84,
+     "peso": 2287.0
+    },
+    {
+     "nome": "Forbidden Power",
+     "prezzo": 1,
+     "peso": 1953.0
+    },
+    {
+     "nome": "Dialla's Subjugation",
+     "prezzo": 0.2821,
+     "peso": 1550.0
+    },
+    {
+     "nome": "The Sun",
+     "prezzo": 0.2,
+     "peso": 10636.0
+    }
+   ]
+  },
+  {
+   "nome": "Laboratory",
+   "tipo": "map",
+   "livelli": [
+    75,
+    83
+   ],
+   "rating": {
+    "boss": 2,
+    "density": 6,
+    "layout": 6
+   },
+   "tags": [
+    "boss_phases",
+    "boss_separated",
+    "linear",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Cold River",
+    "Gardens",
+    "Mesa",
+    "Terrace"
+   ],
+   "nCarte": 4,
+   "totale": 4.29,
+   "media": 1.07,
+   "mediana": 0.85,
+   "carte": [
+    {
+     "nome": "The Academic",
+     "prezzo": 2.58,
+     "peso": 172.5
+    },
+    {
+     "nome": "The Polymath",
+     "prezzo": 1.66,
+     "peso": 224.5
+    },
+    {
+     "nome": "Destined to Crumble",
+     "prezzo": 0.04033,
+     "peso": 44989.0
+    },
+    {
+     "nome": "The Scholar",
+     "prezzo": 0.005037,
+     "peso": 45718.0
+    }
+   ]
+  },
+  {
+   "nome": "Iceberg",
+   "tipo": "map",
+   "livelli": [
+    70,
+    83
+   ],
+   "rating": {
+    "boss": 8,
+    "density": 3,
+    "layout": 8
+   },
+   "tags": [
+    "few_obstacles",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Orchard",
+    "Stagnation",
+    "The Black Barya"
+   ],
+   "nCarte": 4,
+   "totale": 3.65,
+   "media": 1.82,
+   "mediana": 1.82,
+   "carte": [
+    {
+     "nome": "The Whiteout",
+     "prezzo": 2.65,
+     "peso": 553.0
+    },
+    {
+     "nome": "Mitts",
+     "prezzo": 1,
+     "peso": 6025.0
+    },
+    {
+     "nome": "The Fletcher",
+     "prezzo": 0,
+     "peso": 2537.0
+    },
+    {
+     "nome": "The Long Watch",
+     "prezzo": 0,
+     "peso": 77.0
+    }
+   ]
+  },
+  {
+   "nome": "Lava Lake",
+   "tipo": "map",
+   "livelli": [
+    82,
+    83
+   ],
+   "rating": {
+    "boss": 0,
+    "density": 7,
+    "layout": 8
+   },
+   "tags": [
+    "boss_not_twinnable",
+    "boss_phases",
+    "boss_separated",
+    "few_obstacles",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Atoll",
+    "Lair",
+    "Lookout",
+    "Shipyard",
+    "Sulphur Vents"
+   ],
+   "nCarte": 4,
+   "totale": 3.02,
+   "media": 0.75,
+   "mediana": 0.79,
+   "carte": [
+    {
+     "nome": "The Wrath",
+     "prezzo": 1.1,
+     "peso": 6997.0
+    },
+    {
+     "nome": "Heterochromia",
+     "prezzo": 0.9927,
+     "peso": 1747.0
+    },
+    {
+     "nome": "The Battle Born",
+     "prezzo": 0.5919,
+     "peso": 5923.0
+    },
+    {
+     "nome": "The Standoff",
+     "prezzo": 0.3333,
+     "peso": 5723.0
+    }
+   ]
+  },
+  {
+   "nome": "Lookout",
+   "tipo": "map",
+   "livelli": [
+    68,
+    83
+   ],
+   "rating": {
+    "boss": 6,
+    "density": 5,
+    "layout": 8
+   },
+   "tags": [
+    "boss_separated",
+    "linear",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Basilica",
+    "Lair",
+    "Lava Lake"
+   ],
+   "nCarte": 4,
+   "totale": 2.99,
+   "media": 0.75,
+   "mediana": 0.63,
+   "carte": [
+    {
+     "nome": "The Coming Storm",
+     "prezzo": 1.57,
+     "peso": 1976.0
+    },
+    {
+     "nome": "The Wrath",
+     "prezzo": 1.1,
+     "peso": 6997.0
+    },
+    {
+     "nome": "The Traitor",
+     "prezzo": 0.1667,
+     "peso": 1159.0
+    },
+    {
+     "nome": "The Blazing Fire",
+     "prezzo": 0.153,
+     "peso": 10800.0
+    }
+   ]
+  },
+  {
+   "nome": "Lair",
+   "tipo": "map",
+   "livelli": [
+    78,
+    83
+   ],
+   "rating": {
+    "boss": 6,
+    "density": 8,
+    "layout": 8
+   },
+   "tags": [
+    "boss_separated",
+    "boss_soft_phases",
+    "delirium_mirror",
+    "few_obstacles",
+    "linear",
+    "nightmare_boss_map"
+   ],
+   "collegate": [
+    "Caer Blaidd, Wolfpack's Den",
+    "Lava Lake",
+    "Lookout",
+    "Plaza"
+   ],
+   "nCarte": 4,
+   "totale": 2.25,
+   "media": 0.75,
+   "mediana": 0.9,
+   "carte": [
+    {
+     "nome": "The Wolf's Shadow",
+     "prezzo": 1,
+     "peso": 3964.0
+    },
+    {
+     "nome": "The Wolf",
+     "prezzo": 0.8978,
+     "peso": 4848.0
+    },
+    {
+     "nome": "The Watcher",
+     "prezzo": 0.354,
+     "peso": 3446.0
+    },
+    {
+     "nome": "The Wolverine",
+     "prezzo": 0,
+     "peso": 1566.5
+    }
+   ]
+  },
+  {
+   "nome": "Marshes",
+   "tipo": "map",
+   "livelli": [
+    69,
+    83
+   ],
+   "rating": {
+    "boss": 8,
+    "density": 8,
+    "layout": 8
+   },
+   "tags": [
+    "boss_separated",
+    "delirium_mirror",
+    "league_mechanics",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Forbidden Woods",
+    "Strand",
+    "Summit"
+   ],
+   "nCarte": 4,
+   "totale": 1.43,
+   "media": 0.48,
+   "mediana": 0.43,
+   "carte": [
+    {
+     "nome": "The Survivalist",
+     "prezzo": 1,
+     "peso": 6714.0
+    },
+    {
+     "nome": "Man With Bear",
+     "prezzo": 0.4281,
+     "peso": 728.5
+    },
+    {
+     "nome": "Glimmer of Hope",
+     "prezzo": 0.002186,
+     "peso": 9630.0
+    },
+    {
+     "nome": "The Warden",
+     "prezzo": 0,
+     "peso": 7905.0
+    }
+   ]
+  },
+  {
+   "nome": "Pit",
+   "tipo": "map",
+   "livelli": [
+    78,
+    83
+   ],
+   "rating": {
+    "boss": 4,
+    "density": 10,
+    "layout": 4
+   },
+   "tags": [
+    "boss_separated",
+    "few_obstacles",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Haunted Mansion",
+    "Palace",
+    "Silo",
+    "Vault"
+   ],
+   "nCarte": 4,
+   "totale": 1.24,
+   "media": 1.24,
+   "mediana": 1.24,
+   "carte": [
+    {
+     "nome": "Unchained",
+     "prezzo": 1.24,
+     "peso": 553.0
+    },
+    {
+     "nome": "The Arena Champion",
+     "prezzo": 0,
+     "peso": 12400.0
+    },
+    {
+     "nome": "The Deceiver",
+     "prezzo": 0,
+     "peso": 1703.0
+    },
+    {
+     "nome": "The Sword King's Salute",
+     "prezzo": 0,
+     "peso": 14933.0
+    }
+   ]
+  },
+  {
+   "nome": "Plaza",
+   "tipo": "map",
+   "livelli": [
+    81,
+    83
+   ],
+   "rating": {
+    "boss": 2,
+    "density": 7,
+    "layout": 4
+   },
+   "tags": [
+    "boss_rushable",
+    "boss_separated",
+    "nightmare_boss_map",
+    "outdoors"
+   ],
+   "collegate": [
+    "Conservatory",
+    "Factory",
+    "Lair",
+    "Residence"
+   ],
+   "nCarte": 4,
+   "totale": 0.52,
+   "media": 0.17,
+   "mediana": 0.01,
+   "carte": [
+    {
+     "nome": "Emperor's Luck",
+     "prezzo": 0.5045,
+     "peso": 49357.0
+    },
+    {
+     "nome": "The Flora's Gift",
+     "prezzo": 0.01,
+     "peso": 26570.0
+    },
+    {
+     "nome": "Rain Tempter",
+     "prezzo": 0.003455,
+     "peso": 15301.0
+    },
+    {
+     "nome": "The Easy Stroll",
+     "prezzo": 0,
+     "peso": 1747.0
+    }
+   ]
+  },
+  {
+   "nome": "Absence of Value and Meaning",
+   "tipo": "unique map",
+   "livelli": [
+    83,
+    83
+   ],
+   "rating": {},
+   "tags": [
+    "boss_not_twinnable"
+   ],
+   "collegate": [
+    "Fortress"
+   ],
+   "nCarte": 1,
+   "totale": 0,
+   "media": 0,
+   "mediana": 0,
+   "carte": [
+    {
+     "nome": "Void of the Elements",
+     "prezzo": 0,
+     "peso": 18.0
+    }
+   ]
+  },
+  {
+   "nome": "Crux of Nothingness",
+   "tipo": "unique map",
+   "livelli": [
+    83,
+    83
+   ],
+   "rating": {},
+   "tags": [],
+   "collegate": [
+    "Dark Forest"
+   ],
+   "nCarte": 0,
+   "totale": 0,
+   "media": 0,
+   "mediana": 0,
+   "carte": []
+  },
+  {
+   "nome": "Domain of Timeless Conflict",
+   "tipo": "unique map",
+   "livelli": [
+    80,
+    83
+   ],
+   "rating": {},
+   "tags": [],
+   "collegate": [
+    "Stagnation"
+   ],
+   "nCarte": 0,
+   "totale": 0,
+   "media": 0,
+   "mediana": 0,
+   "carte": []
+  },
+  {
+   "nome": "Moment of Reverence",
+   "tipo": "unique map",
+   "livelli": [
+    83,
+    83
+   ],
+   "rating": {},
+   "tags": [
+    "boss_not_twinnable"
+   ],
+   "collegate": [],
+   "nCarte": 0,
+   "totale": 0,
+   "media": 0,
+   "mediana": 0,
+   "carte": []
+  },
+  {
+   "nome": "Moment of Trauma",
+   "tipo": "unique map",
+   "livelli": [
+    83,
+    83
+   ],
+   "rating": {},
+   "tags": [
+    "boss_not_twinnable"
+   ],
+   "collegate": [],
+   "nCarte": 0,
+   "totale": 0,
+   "media": 0,
+   "mediana": 0,
+   "carte": []
+  },
+  {
+   "nome": "Overgrown Grove",
+   "tipo": "unique map",
+   "livelli": [
+    83,
+    83
+   ],
+   "rating": {},
+   "tags": [],
+   "collegate": [],
+   "nCarte": 0,
+   "totale": 0,
+   "media": 0,
+   "mediana": 0,
+   "carte": []
+  },
+  {
+   "nome": "Polaric Void",
+   "tipo": "unique map",
+   "livelli": [
+    83,
+    83
+   ],
+   "rating": {},
+   "tags": [
+    "boss_not_twinnable"
+   ],
+   "collegate": [
+    "Volcano"
+   ],
+   "nCarte": 0,
+   "totale": 0,
+   "media": 0,
+   "mediana": 0,
+   "carte": []
+  },
+  {
+   "nome": "The Apex of Sacrifice",
+   "tipo": "unique map",
+   "livelli": [
+    70,
+    83
+   ],
+   "rating": {},
+   "tags": [],
+   "collegate": [
+    "Relic Chambers"
+   ],
+   "nCarte": 0,
+   "totale": 0,
+   "media": 0,
+   "mediana": 0,
+   "carte": []
+  },
+  {
+   "nome": "The Black Barya",
+   "tipo": "unique map",
+   "livelli": [
+    83,
+    83
+   ],
+   "rating": {},
+   "tags": [],
+   "collegate": [
+    "Iceberg"
+   ],
+   "nCarte": 0,
+   "totale": 0,
+   "media": 0,
+   "mediana": 0,
+   "carte": []
+  },
+  {
+   "nome": "The Lightless Hollow",
+   "tipo": "unique map",
+   "livelli": [
+    84,
+    84
+   ],
+   "rating": {},
+   "tags": [],
+   "collegate": [
+    "Crystal Ore"
+   ],
+   "nCarte": 0,
+   "totale": 0,
+   "media": 0,
+   "mediana": 0,
+   "carte": []
+  },
+  {
+   "nome": "Untainted Paradise",
+   "tipo": "unique map",
+   "livelli": [
+    75,
+    83
+   ],
+   "rating": {},
+   "tags": [],
+   "collegate": [],
+   "nCarte": 0,
+   "totale": 0,
+   "media": 0,
+   "mediana": 0,
+   "carte": []
+  }
+ ]
+}

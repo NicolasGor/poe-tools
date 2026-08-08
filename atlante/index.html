@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atlante — mappe da farmare, carte e punteggi</title>
+<style>
+  :root{
+    --bg:#0f131a; --panel:#171d27; --panel2:#131923; --line:#28313f; --line2:#3a4658;
+    --text:#e6e9ef; --muted:#8b95a8; --label:#78839a;
+    --gold:#f0b94a; --good:#60d394; --bad:#e07a6f; --uni:#af6025;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:1.2rem 1rem 4rem;background:var(--bg);color:var(--text);
+       font:14px/1.5 Inter,ui-sans-serif,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+  .wrap{max-width:72rem;margin:0 auto}
+  a{color:var(--gold)}
+  .back{font-size:.8rem}
+  h1{margin:.5rem 0 .25rem;font-size:1.4rem}
+  .sub{margin:0 0 .8rem;color:var(--muted);font-size:.88rem;max-width:56rem}
+
+  .esterno{display:flex;align-items:center;gap:.7rem;background:var(--panel);border:1px solid var(--gold);
+           border-radius:8px;padding:.7rem 1rem;margin:0 0 1rem}
+  .esterno b{color:var(--text)}
+  .esterno a{font-weight:600}
+  .esterno span{color:var(--muted);font-size:.85rem}
+
+  .barra{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center;margin-bottom:.7rem}
+  .barra button,.barra select,.barra input{font-size:.76rem;padding:.3rem .6rem;border-radius:4px;
+    background:#1a212c;color:var(--text);border:1px solid var(--line2)}
+  .barra button{cursor:pointer}
+  .barra button.on{background:var(--gold);color:#1b1608;border-color:var(--gold);font-weight:600}
+  .barra input{min-width:11rem}
+  .barra .sp{margin-left:auto;color:var(--muted);font-size:.76rem}
+
+  .griglia{display:grid;grid-template-columns:1fr 20rem;gap:.8rem;align-items:start}
+  table{width:100%;border-collapse:collapse;font-size:.8rem}
+  th{text-align:left;color:var(--muted);font-weight:500;font-size:.66rem;
+     text-transform:uppercase;letter-spacing:.06em;padding:.3rem .45rem;cursor:pointer;white-space:nowrap}
+  th:hover{color:var(--text)}
+  td{padding:.28rem .45rem;border-bottom:1px solid var(--line);white-space:nowrap}
+  td.n{text-align:right;font-family:"Source Code Pro",Menlo,monospace}
+  tbody tr{cursor:pointer}
+  tbody tr:hover{background:var(--panel2)}
+  tbody tr.sel{background:var(--panel2);outline:1px solid var(--gold)}
+  .tag{font-size:.6rem;padding:0 .3rem;border-radius:3px;background:var(--uni);color:#1a1008;margin-left:.3rem}
+  .r{display:inline-block;min-width:1.4rem;text-align:center;border-radius:3px;padding:0 .2rem;
+     font-family:"Source Code Pro",Menlo,monospace}
+
+  aside{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:.8rem .9rem;
+        position:sticky;top:.6rem;max-height:calc(100vh - 2rem);overflow:auto}
+  aside h2{margin:0 0 .1rem;font-size:1.05rem}
+  aside .meta{color:var(--muted);font-size:.76rem;margin-bottom:.6rem}
+  aside .kpi{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-bottom:.7rem}
+  aside .kpi div{background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:.35rem .5rem}
+  aside .kpi b{display:block;font-size:1.05rem}
+  aside .kpi span{font-size:.62rem;color:var(--label);text-transform:uppercase;letter-spacing:.06em}
+  aside .rate{display:flex;gap:.5rem;margin-bottom:.6rem}
+  aside .rate div{flex:1;background:var(--panel2);border:1px solid var(--line);border-radius:5px;
+                  padding:.3rem .4rem;text-align:center}
+  aside .rate b{display:block;font-size:1rem}
+  aside .rate span{font-size:.6rem;color:var(--label);text-transform:uppercase}
+  aside .tags{margin-bottom:.6rem}
+  aside .tags span{display:inline-block;font-size:.64rem;color:var(--muted);border:1px solid var(--line);
+                   border-radius:3px;padding:.05rem .35rem;margin:0 .25rem .25rem 0}
+  aside table td{border-bottom:1px solid var(--line)}
+  aside .collegate a{display:block;font-size:.78rem;margin:.1rem 0}
+  .vuoto{color:var(--muted);font-size:.82rem}
+
+  .avviso{background:rgba(240,185,74,.07);border:1px solid rgba(240,185,74,.3);border-radius:6px;
+          padding:.7rem .9rem;margin:1rem 0;font-size:.83rem;color:var(--muted)}
+  .avviso b{color:var(--text)}
+  @media(max-width:960px){ .griglia{grid-template-columns:1fr} aside{position:static;max-height:none}
+    table{display:block;overflow-x:auto} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="back"><a href="../index.html">← Tutti gli strumenti</a></div>
+  <h1>Atlante — mappe da farmare</h1>
+  <p class="sub">154 mappe ottenibili nell'atlante di questa lega, con le divination card che ci cadono e i punteggi layout / densità / boss. Clicca una riga per il dettaglio.</p>
+
+  <div class="esterno">
+    <b>Cerchi la mappa visuale, cliccabile, con le connessioni fra i nodi?</b>
+    <a href="https://mapsofexile.com/#/atlas" target="_blank" rel="noopener">mapsofexile.com/#/atlas ↗</a>
+    <span>— questa pagina è la classifica dei dati, quella è l'atlante disegnato.</span>
+  </div>
+
+  <div class="barra">
+    <button data-f="tutte" class="on">Tutte</button>
+    <button data-f="carte">Solo con carte</button>
+    <button data-f="speciali">Uniche e speciali</button>
+    <select id="colora">
+      <option value="totale">Ordina per totale</option>
+      <option value="media">Ordina per media</option>
+      <option value="mediana">Ordina per mediana</option>
+      <option value="nCarte">Ordina per numero di carte</option>
+    </select>
+    <input id="cerca" type="search" placeholder="Cerca una mappa…">
+    <span class="sp" id="conta"></span>
+  </div>
+
+  <div class="griglia">
+    <table id="cl">
+      <thead><tr>
+        <th data-k="nome">Mappa</th><th data-k="tipo">Tipo</th>
+        <th data-k="layout" class="n">Layout</th><th data-k="density" class="n">Densità</th><th data-k="boss" class="n">Boss</th>
+        <th data-k="nCarte" class="n">Carte</th>
+        <th data-k="totale" class="n">Totale</th><th data-k="media" class="n">Media</th><th data-k="mediana" class="n">Mediana</th>
+        <th>La più cara</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+    <aside id="pan"><div class="vuoto">Clicca una mappa nella tabella per vedere le sue carte, i tag e le mappe collegate.</div></aside>
+  </div>
+
+  <div class="avviso">
+    <b>Totale, media e mediana dicono cose diverse.</b> Il <b>totale</b> è quanto vale l'intero bacino di carte. La <b>media</b> viene tirata in alto da una sola carta rara. La <b>mediana</b> dice quanto vale la carta tipica ed è immune agli estremi — quando le prime due divergono di molto, la mappa è un tutto-o-niente: <em>Sanctuary</em> e <em>Graveyard</em> devono quasi tutto il loro totale a un'unica carta, <em>Damnation</em> (peso 5 su migliaia).
+    <br><br><b>Layout / densità / boss</b> sono voti 1–10 curati dalla community del sito sorgente, non misurati da qui: <b>layout</b> quanto è comodo da correre, <b>densità</b> mostri per metro, <b>boss</b> quanto è veloce da uccidere (voto alto = non rallenta). Non tutte le mappe hanno un voto.
+    <br><br><b>Nessuna metrica misura la frequenza di drop</b>, che non è pubblica: sono classifiche di potenziale, non di guadagno atteso. Fonte: <a href="https://mapsofexile.com" target="_blank" rel="noopener">mapsofexile.com</a> (repo open source <code>deathbeam/maps-of-exile</code>), lega <span id="lega"></span>.
+  </div>
+</div>
+
+<script>
+let D=null, filtro="tutte", campo="totale", sel=null, cerca="";
+const q = s => document.querySelector(s);
+
+const visibile = n => {
+  if (cerca && !n.nome.toLowerCase().includes(cerca)) return false;
+  if (filtro==="carte") return n.nCarte>0;
+  if (filtro==="speciali") return n.tipo!=="map";
+  return true;
+};
+
+function tabella(){
+  const arr = D.mappe.filter(visibile).sort((a,b) => {
+    if (campo==="layout"||campo==="density"||campo==="boss") return (b.rating[campo]||0)-(a.rating[campo]||0);
+    if (campo==="nome"||campo==="tipo") return String(a[campo]).localeCompare(String(b[campo]));
+    return (b[campo]||0)-(a[campo]||0);
+  });
+  q("#cl tbody").innerHTML = arr.map(n=>`
+    <tr data-nome="${n.nome}" class="${sel===n.nome?'sel':''}">
+      <td>${n.nome}${n.tipo!=="map"?`<span class="tag">${n.tipo==='unique map'?'UNICA':'SPECIALE'}</span>`:''}</td>
+      <td style="color:var(--muted)">${n.livelli[0]||''}</td>
+      <td class="n">${n.rating.layout ?? '—'}</td>
+      <td class="n">${n.rating.density ?? '—'}</td>
+      <td class="n">${n.rating.boss ?? '—'}</td>
+      <td class="n">${n.nCarte}</td>
+      <td class="n" style="color:var(--good)">${n.totale.toLocaleString('it-IT')}</td>
+      <td class="n">${n.media.toLocaleString('it-IT')}</td>
+      <td class="n">${n.mediana.toLocaleString('it-IT')}</td>
+      <td style="color:var(--muted)">${n.carte[0]?n.carte[0].nome:''}</td>
+    </tr>`).join("");
+  q("#cl tbody").querySelectorAll("tr").forEach(tr => tr.onclick = () => {
+    sel = tr.dataset.nome; tabella(); pannello();
+  });
+  q("#conta").textContent = arr.length + " mappe visibili · " + D.mappe.filter(n=>n.nCarte).length + " con carte";
+}
+
+function pannello(){
+  const n = D.mappe.find(x=>x.nome===sel);
+  if (!n) return;
+  q("#pan").innerHTML = `
+    <h2>${n.nome}${n.tipo!=="map"?`<span class="tag">${n.tipo==='unique map'?'UNICA':'SPECIALE'}</span>`:''}</h2>
+    <div class="meta">${n.tipo} · livello area ${n.livelli.join(', ')}</div>
+    <div class="rate">
+      <div><b>${n.rating.layout ?? '—'}</b><span>layout</span></div>
+      <div><b>${n.rating.density ?? '—'}</b><span>densità</span></div>
+      <div><b>${n.rating.boss ?? '—'}</b><span>boss</span></div>
+    </div>
+    <div class="kpi">
+      <div><b>${n.totale.toLocaleString('it-IT')} c</b><span>totale · ${n.nCarte} carte</span></div>
+      <div><b>${n.mediana.toLocaleString('it-IT')} c</b><span>mediana</span></div>
+    </div>
+    ${n.tags.length ? `<div class="tags">${n.tags.map(t=>`<span>${t.replace(/_/g,' ')}</span>`).join("")}</div>` : ""}
+    ${n.carte.length
+      ? `<table>${n.carte.map(c=>`<tr><td>${c.nome}</td><td class="n" style="text-align:right">${c.prezzo.toLocaleString('it-IT')} c</td></tr>`).join("")}</table>`
+      : `<div class="vuoto">Nessuna divination card nota qui.</div>`}
+    ${n.collegate.length ? `<div class="collegate" style="margin-top:.6rem"><b style="font-size:.76rem;color:var(--label)">Collegate</b>${n.collegate.map(c=>`<a href="#" data-nome="${c}">${c}</a>`).join("")}</div>` : ""}
+  `;
+  q("#pan").querySelectorAll(".collegate a").forEach(a => a.onclick = e => {
+    e.preventDefault();
+    if (D.mappe.some(m=>m.nome===a.dataset.nome)) { sel = a.dataset.nome; tabella(); pannello(); }
+  });
+}
+
+fetch("atlante.json").then(r=>r.json()).then(d=>{
+  D = d;
+  q("#lega").textContent = d.lega || "";
+  tabella();
+});
+
+document.querySelectorAll(".barra button").forEach(b => b.onclick = () => {
+  document.querySelectorAll(".barra button").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on"); filtro = b.dataset.f; tabella();
+});
+q("#colora").onchange = e => { campo = e.target.value; tabella(); };
+q("#cerca").oninput = e => { cerca = e.target.value.toLowerCase().trim(); tabella(); };
+document.querySelectorAll("#cl th[data-k]").forEach(th => th.onclick = () => { campo = th.dataset.k; tabella(); });
+</script>
+</body>
+</html>
