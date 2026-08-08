@@ -49,29 +49,36 @@
   tbody tr.sel{background:var(--panel2);outline:1px solid var(--gold)}
   .tag{font-size:.6rem;padding:0 .3rem;border-radius:3px;background:var(--uni);color:#1a1008;margin-left:.3rem}
 
-  .mapparea{position:relative;width:100%;height:70vh;min-height:420px;max-height:760px;background:#050403;
+  /* Vista mappa — struttura e misure riprese dal sito sorgente (mapsofexile.com):
+     mondo di 3010,56px (le coordinate del dataset moltiplicate per 3), nodi da
+     48px con cornice, etichetta-badge sotto, collegamenti a curva di Bézier. */
+  .mapparea{position:relative;width:100%;height:70vh;min-height:420px;max-height:760px;background:#000;
             border:1px solid var(--line);border-radius:8px;overflow:hidden;cursor:grab;touch-action:none}
   .mapparea.trascina{cursor:grabbing}
-  .mondo{position:absolute;left:0;top:0;width:1003.52px;height:1003.52px;transform-origin:0 0;
-         background-image:url("img/atlante-sfondo.webp");background-size:cover;background-position:center}
-  .mondo svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-  .link{stroke:rgba(255,255,255,.22);stroke-width:1.1}
-  .nodo{position:absolute;transform:translate(-50%,-50%);width:19px;height:19px;border-radius:50%;
-        border:1.6px solid rgba(224,88,79,.85);background:rgba(8,8,8,.8);cursor:pointer;overflow:hidden;
-        display:flex;align-items:center;justify-content:center;z-index:2}
-  .nodo img{width:92%;height:92%;object-fit:contain}
-  .nodo.unica{border-color:#e0b34f}
-  .nodo.speciale{border-color:#6a9bd8}
-  .nodo.ricco{border-color:#ffd166;box-shadow:0 0 6px 1px rgba(255,209,102,.6)}
-  .nodo.sel{border-color:#fff;border-width:2.6px;z-index:6}
-  .nodo.spento{opacity:.18;filter:grayscale(1)}
-  .etich{position:absolute;transform:translate(-50%,13px);font-size:9.5px;font-weight:600;
-         color:#e0584f;background:rgba(9,7,6,.82);border:1px solid rgba(224,88,79,.5);
-         border-radius:3px;padding:1px 5px;white-space:nowrap;pointer-events:none;z-index:1}
-  .etich.unica{color:#e0b34f;border-color:rgba(224,179,79,.5)}
-  .etich.speciale{color:#6a9bd8;border-color:rgba(106,155,216,.5)}
-  .etich.sel{color:#fff;border-color:#fff;z-index:5}
-  .etich.spento{opacity:.18}
+  .mondo{position:absolute;left:0;top:0;width:3010.56px;height:3010.56px;transform-origin:0 0}
+  .sfondoAtlante{position:absolute;left:-6px;top:-6px;width:3010.56px;height:3010.56px;
+                 pointer-events:none;user-select:none}
+  .mondo svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+  .link{stroke:#000;stroke-width:1;fill:none}
+
+  .nodo{position:absolute;width:48px;height:48px;cursor:pointer;z-index:2}
+  .nodo .cornice{width:48px;height:48px;padding:1px;display:block;
+                 background-image:url("img/cornice-mappa.png");background-repeat:round}
+  .nodo .cornice img{width:47px;height:47px;
+                     filter:contrast(10) sepia(1) saturate(100) hue-rotate(300deg) saturate(100)}
+  /* le uniche mostrano l'icona originale, senza cornice e senza virata al rosso */
+  .nodo.unica .cornice{background-image:none}
+  .nodo.unica .cornice img{filter:none}
+  .nodo.sel{z-index:6}
+  .nodo.sel .cornice{outline:2px solid #fff;outline-offset:-1px}
+  .nodo.spento{opacity:.25}
+
+  .etich{position:absolute;left:24px;top:50.4px;transform:translateX(-50%);
+         font-size:12px;font-weight:700;line-height:12px;padding:4.2px 7.8px;border-radius:6px;
+         color:#dc3545;background:#212529;border:1px solid #212529;
+         white-space:nowrap;pointer-events:none;z-index:1}
+  .nodo.unica .etich{color:#af6025}
+  .nodo.sel .etich{color:#fff;border-color:#fff}
   .controlliMappa{position:absolute;right:.5rem;bottom:.5rem;z-index:20;display:flex;flex-direction:column;gap:.25rem}
   .controlliMappa button{width:1.9rem;height:1.9rem;border-radius:4px;background:rgba(23,29,39,.92);
                         color:var(--text);border:1px solid var(--line2);cursor:pointer;font-size:1rem;line-height:1}
@@ -164,6 +171,7 @@
     <div id="vistaMappa" hidden>
       <div class="mapparea" id="mapparea">
         <div class="mondo" id="mondo">
+          <img class="sfondoAtlante" src="img/atlante-sfondo.webp" alt="">
           <svg id="linee"></svg>
         </div>
         <div class="controlliMappa">
@@ -235,8 +243,8 @@ function elenco(){
   q("#cl tbody").querySelectorAll("tr").forEach(tr => tr.onclick = () => { sel = tr.dataset.nome; ridisegna(); pannello(); });
 }
 
-// ---------- vista Mappa: mondo fisso 1003.52x1003.52, zoom/pan via transform ----------
-const MONDO_LATO = 1003.52;
+// ---------- vista Mappa: mondo fisso 3010.56x3010.56, zoom/pan via transform ----------
+const MONDO_LATO = 3010.56;
 let zoom = { scala: 1, tx: 0, ty: 0 };
 
 function applicaZoom(){
@@ -250,12 +258,18 @@ function adattaZoom(){
   zoom.tx = (w - MONDO_LATO * zoom.scala) / 2;
   zoom.ty = (h - MONDO_LATO * zoom.scala) / 2;
   applicaZoom();
-  sistemaEtichette();
 }
+
+// le coordinate del dataset sono nella scala 0–1003,52: il mondo disegnato è 3x
+const SCALA_MONDO = 3;
+const RAGGIO_NODO = 24;   // i nodi sono 48px, l'ancora è il loro centro
 
 function mappa(){
   const idx = new Map(D.mappe.map(n=>[n.nome,n]));
-  const max = Math.max(1, ...D.mappe.map(n=>n[campo]||0));
+  const cx = n => n.x * SCALA_MONDO, cy = n => n.y * SCALA_MONDO;
+
+  // Collegamenti come curve di Bézier con i punti di controllo alla quota
+  // verticale intermedia — è la forma usata dal sito sorgente.
   const linee = [];
   const fatte = new Set();
   D.mappe.forEach(n => (n.collegate||[]).forEach(c => {
@@ -264,65 +278,33 @@ function mappa(){
     const k = [n.nome,c].sort().join("|");
     if (fatte.has(k)) return;
     fatte.add(k);
-    linee.push(`<line class="link" x1="${n.x}" y1="${n.y}" x2="${v.x}" y2="${v.y}"/>`);
+    const x1 = cx(n), y1 = cy(n), x2 = cx(v), y2 = cy(v), ym = (y1+y2)/2;
+    linee.push(`<path class="link" d="M${x1},${y1} C${x1},${ym} ${x2},${ym} ${x2},${y2}"/>`);
   }));
   q("#linee").innerHTML = linee.join("");
 
-  q("#mondo").querySelectorAll(".nodo,.etich").forEach(e=>e.remove());
+  q("#mondo").querySelectorAll(".nodo").forEach(e=>e.remove());
   const frammento = document.createDocumentFragment();
   D.mappe.forEach(n => {
-    const spento = !visibile(n);
-    const v = Math.sqrt((n[campo]||0)/max);
-    const classeTipo = n.tipo==="unique map" ? " unica" : n.tipo==="special map" ? " speciale" : "";
+    const unica = n.tipo !== "map";
     const d = document.createElement("div");
-    d.className = "nodo" + classeTipo + (v>0.5?" ricco":"") + (sel===n.nome?" sel":"") + (spento?" spento":"");
-    d.style.left = n.x+"px"; d.style.top = n.y+"px";
+    d.className = "nodo" + (unica?" unica":"") + (sel===n.nome?" sel":"") + (!visibile(n)?" spento":"");
+    d.style.left = (cx(n) - RAGGIO_NODO) + "px";
+    d.style.top  = (cy(n) - RAGGIO_NODO) + "px";
     d.title = `${n.nome} — ${n.totale.toLocaleString('it-IT')} c totale, ${n.nCarte} carte`;
-    if (n.icona) d.innerHTML = `<img src="${iconaMappa(n)}" loading="lazy">`;
+    d.innerHTML =
+      `<div class="cornice">${n.icona?`<img src="${iconaMappa(n)}" loading="lazy" alt="">`:""}</div>` +
+      `<div class="etich">${n.nome}</div>`;
     d.onclick = () => { sel = n.nome; ridisegna(); pannello(); };
     frammento.appendChild(d);
-    const e = document.createElement("div");
-    e.className = "etich" + classeTipo + (sel===n.nome?" sel":"") + (spento?" spento":"");
-    e.style.left = n.x+"px"; e.style.top = n.y+"px";
-    e.textContent = n.nome;
-    e.dataset.nome = n.nome;
-    frammento.appendChild(e);
   });
   q("#mondo").appendChild(frammento);
   if (zoom.scala === 1 && zoom.tx === 0 && zoom.ty === 0) adattaZoom();
   else applicaZoom();
-  sistemaEtichette();
-}
-
-// Le etichette stanno sempre sotto al nodo, mai di lato — solo quando due
-// sono davvero incollate una scende un altro gradino, sempre nella stessa
-// direzione. Niente salti a destra/sinistra/sopra: quelli erano illeggibili.
-function sistemaEtichette(){
-  if (!D) return;
-  const idx = new Map(D.mappe.map(n=>[n.nome,n]));
-  const ordinate = [...q("#mondo").querySelectorAll(".etich")].sort((a,b) => {
-    const na = idx.get(a.dataset.nome), nb = idx.get(b.dataset.nome);
-    const pa = (na && visibile(na) ? 1e9 : 0) + (na?.totale || 0);
-    const pb = (nb && visibile(nb) ? 1e9 : 0) + (nb?.totale || 0);
-    return pb - pa;
-  });
-  const piazzate = [];
-  ordinate.forEach(el => {
-    let passo = 0, r, scontro;
-    do {
-      el.style.transform = `translate(-50%, ${13 + passo * 13}px)`;
-      r = el.getBoundingClientRect();
-      scontro = piazzate.some(pr => !(r.right < pr.left || r.left > pr.right || r.bottom < pr.top || r.top > pr.bottom));
-      passo++;
-    } while (scontro && passo <= 3);
-    piazzate.push(r);
-  });
 }
 
 (function panZoom(){
   const vp = q("#mapparea");
-  let attesaEtich = null;
-  const sistemaEtichRitardata = () => { clearTimeout(attesaEtich); attesaEtich = setTimeout(sistemaEtichette, 150); };
   vp.addEventListener("wheel", e => {
     e.preventDefault();
     const r = vp.getBoundingClientRect();
@@ -333,7 +315,6 @@ function sistemaEtichette(){
     zoom.scala = nuova;
     zoom.tx = mx - wx*zoom.scala; zoom.ty = my - wy*zoom.scala;
     applicaZoom();
-    sistemaEtichRitardata();
   }, { passive:false });
 
   let trasc = null;
@@ -351,8 +332,8 @@ function sistemaEtichette(){
   });
   vp.addEventListener("pointerup", () => { trasc=null; vp.classList.remove("trascina"); });
 
-  q("#zoomIn").onclick = () => { zoom.scala = Math.min(9, zoom.scala*1.35); applicaZoom(); sistemaEtichette(); };
-  q("#zoomOut").onclick = () => { zoom.scala = Math.max(0.4, zoom.scala/1.35); applicaZoom(); sistemaEtichette(); };
+  q("#zoomIn").onclick = () => { zoom.scala = Math.min(9, zoom.scala*1.35); applicaZoom(); };
+  q("#zoomOut").onclick = () => { zoom.scala = Math.max(0.4, zoom.scala/1.35); applicaZoom(); };
   q("#zoomReset").onclick = adattaZoom;
   addEventListener("resize", () => { if (vista==="mappa") adattaZoom(); });
 })();
