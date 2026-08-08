@@ -181,7 +181,7 @@
           <button id="apriGrande" title="Apri più grande">⛶</button>
         </div>
       </div>
-      <p id="suggerimentoMappa" style="font-size:.74rem;color:var(--muted);margin:.4rem 0 0">Rotella per zoomare, trascina per spostarti.</p>
+      <p id="suggerimentoMappa" style="font-size:.74rem;color:var(--muted);margin:.4rem 0 0">Rotella per zoomare, trascina per spostarti. Sull'atlante compaiono le 135 mappe con un'icona: le altre 19 voci — arene di boss e contenuto di lega — restano solo nell'elenco.</p>
     </div>
     <aside id="pan"><div class="vuoto">Clicca una mappa per vedere le sue carte, i tag e le mappe collegate.</div></aside>
   </div>
@@ -265,14 +265,18 @@ const SCALA_MONDO = 3;
 const RAGGIO_NODO = 24;   // i nodi sono 48px, l'ancora è il loro centro
 
 function mappa(){
-  const idx = new Map(D.mappe.map(n=>[n.nome,n]));
+  // Sull'atlante si disegnano solo le mappe con un'icona: le altre 19 voci sono
+  // arene di boss e contenuto di lega, che senza icona lascerebbero un'etichetta
+  // sospesa nel vuoto. Restano comunque nell'elenco.
+  const suMappa = D.mappe.filter(n => n.icona);
+  const idx = new Map(suMappa.map(n=>[n.nome,n]));
   const cx = n => n.x * SCALA_MONDO, cy = n => n.y * SCALA_MONDO;
 
   // Collegamenti come curve di Bézier con i punti di controllo alla quota
   // verticale intermedia — è la forma usata dal sito sorgente.
   const linee = [];
   const fatte = new Set();
-  D.mappe.forEach(n => (n.collegate||[]).forEach(c => {
+  suMappa.forEach(n => (n.collegate||[]).forEach(c => {
     const v = idx.get(c);
     if (!v) return;
     const k = [n.nome,c].sort().join("|");
@@ -285,7 +289,7 @@ function mappa(){
 
   q("#mondo").querySelectorAll(".nodo").forEach(e=>e.remove());
   const frammento = document.createDocumentFragment();
-  D.mappe.forEach(n => {
+  suMappa.forEach(n => {
     const unica = n.tipo !== "map";
     const d = document.createElement("div");
     d.className = "nodo" + (unica?" unica":"") + (sel===n.nome?" sel":"") + (!visibile(n)?" spento":"");
