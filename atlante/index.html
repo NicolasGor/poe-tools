@@ -250,7 +250,6 @@ function adattaZoom(){
   zoom.tx = (w - MONDO_LATO * zoom.scala) / 2;
   zoom.ty = (h - MONDO_LATO * zoom.scala) / 2;
   applicaZoom();
-  sistemaEtichette();
 }
 
 function mappa(){
@@ -291,49 +290,10 @@ function mappa(){
   q("#mondo").appendChild(frammento);
   if (zoom.scala === 1 && zoom.tx === 0 && zoom.ty === 0) adattaZoom();
   else applicaZoom();
-  sistemaEtichette();
-}
-
-// Le etichette vicine si accavallano (i nodi possono stare a poche decine di
-// pixel-mondo l'uno dall'altro). Invece di nasconderle, prova posizioni
-// alternative attorno al nodo (sotto, sopra, ai lati, in diagonale) e sceglie
-// la prima libera — così restano tutte visibili, come sul sito sorgente.
-const POSIZIONI_ETICH = [
-  "translate(-50%, 13px)",                              // sotto
-  "translate(-50%, calc(-100% - 13px))",                 // sopra
-  "translate(5px, -50%)",                                 // destra
-  "translate(calc(-100% - 5px), -50%)",                   // sinistra
-  "translate(5px, 13px)",                                  // sotto-destra
-  "translate(calc(-100% - 5px), 13px)",                    // sotto-sinistra
-  "translate(5px, calc(-100% - 13px))",                    // sopra-destra
-  "translate(calc(-100% - 5px), calc(-100% - 13px))",      // sopra-sinistra
-];
-function sistemaEtichette(){
-  if (!D) return;
-  const idx = new Map(D.mappe.map(n=>[n.nome,n]));
-  const etichette = [...q("#mondo").querySelectorAll(".etich")].sort((a,b) => {
-    const na = idx.get(a.dataset.nome), nb = idx.get(b.dataset.nome);
-    const pa = (na && visibile(na) ? 1e9 : 0) + (na?.totale || 0);
-    const pb = (nb && visibile(nb) ? 1e9 : 0) + (nb?.totale || 0);
-    return pb - pa;
-  });
-  const piazzate = [];
-  etichette.forEach(el => {
-    let sceltoRect = null;
-    for (const pos of POSIZIONI_ETICH){
-      el.style.transform = pos;
-      const r = el.getBoundingClientRect();
-      const scontro = piazzate.some(pr => !(r.right<pr.left||r.left>pr.right||r.bottom<pr.top||r.top>pr.bottom));
-      if (!scontro){ sceltoRect = r; break; }
-    }
-    piazzate.push(sceltoRect || el.getBoundingClientRect());
-  });
 }
 
 (function panZoom(){
   const vp = q("#mapparea");
-  let attesaEtich = null;
-  const sistemaEtichRitardata = () => { clearTimeout(attesaEtich); attesaEtich = setTimeout(sistemaEtichette, 150); };
   vp.addEventListener("wheel", e => {
     e.preventDefault();
     const r = vp.getBoundingClientRect();
@@ -344,7 +304,6 @@ function sistemaEtichette(){
     zoom.scala = nuova;
     zoom.tx = mx - wx*zoom.scala; zoom.ty = my - wy*zoom.scala;
     applicaZoom();
-    sistemaEtichRitardata();
   }, { passive:false });
 
   let trasc = null;
@@ -362,8 +321,8 @@ function sistemaEtichette(){
   });
   vp.addEventListener("pointerup", () => { trasc=null; vp.classList.remove("trascina"); });
 
-  q("#zoomIn").onclick = () => { zoom.scala = Math.min(9, zoom.scala*1.35); applicaZoom(); sistemaEtichette(); };
-  q("#zoomOut").onclick = () => { zoom.scala = Math.max(0.4, zoom.scala/1.35); applicaZoom(); sistemaEtichette(); };
+  q("#zoomIn").onclick = () => { zoom.scala = Math.min(9, zoom.scala*1.35); applicaZoom(); };
+  q("#zoomOut").onclick = () => { zoom.scala = Math.max(0.4, zoom.scala/1.35); applicaZoom(); };
   q("#zoomReset").onclick = adattaZoom;
   addEventListener("resize", () => { if (vista==="mappa") adattaZoom(); });
 })();
