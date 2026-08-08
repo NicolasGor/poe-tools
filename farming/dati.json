@@ -954,5 +954,644 @@
    "nome": "Tainted Oil",
    "chaos": 1.3
   }
- ]
+ ],
+ "mappe": [
+  {
+   "mappa": "Sanctuary",
+   "n": 3,
+   "max": 433,
+   "somma": 618,
+   "carte": [
+    {
+     "nome": "Damnation",
+     "chaos": 433,
+     "mappe": [
+      "Graveyard",
+      "Sanctuary"
+     ]
+    },
+    {
+     "nome": "Temperance",
+     "chaos": 104,
+     "mappe": [
+      "Museum",
+      "Sanctuary"
+     ]
+    },
+    {
+     "nome": "The Enlightened",
+     "chaos": 81,
+     "mappe": [
+      "Belfry",
+      "Relic Chambers",
+      "Sanctuary",
+      "Ziggurat"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "Graveyard",
+   "n": 1,
+   "max": 433,
+   "somma": 433,
+   "carte": [
+    {
+     "nome": "Damnation",
+     "chaos": 433,
+     "mappe": [
+      "Graveyard",
+      "Sanctuary"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "Courtyard of Wasting",
+   "n": 3,
+   "max": 208,
+   "somma": 332,
+   "carte": [
+    {
+     "nome": "The Gulf",
+     "chaos": 208,
+     "mappe": [
+      "Courtyard of Wasting"
+     ]
+    },
+    {
+     "nome": "Reckless Ambition",
+     "chaos": 93,
+     "mappe": [
+      "Courtyard of Wasting"
+     ]
+    },
+    {
+     "nome": "The Side Quest",
+     "chaos": 31,
+     "mappe": [
+      "Alleyways",
+      "Courtyard of Wasting"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "Shrine",
+   "n": 2,
+   "max": 223,
+   "somma": 238,
+   "carte": [
+    {
+     "nome": "The Lunaris Priestess",
+     "chaos": 223,
+     "mappe": [
+      "Shrine"
+     ]
+    },
+    {
+     "nome": "The Progeny of Lunaris",
+     "chaos": 15,
+     "mappe": [
+      "Shrine"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "Chateau",
+   "n": 2,
+   "max": 222,
+   "somma": 234,
+   "carte": [
+    {
+     "nome": "Squandered Prosperity",
+     "chaos": 222,
+     "mappe": [
+      "Chateau",
+      "Residence"
+     ]
+    },
+    {
+     "nome": "The Slumbering Beast",
+     "chaos": 12,
+     "mappe": [
+      "Bazaar",
+      "Chateau"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "Residence",
+   "n": 1,
+   "max": 222,
+   "somma": 222,
+   "carte": [
+    {
+     "nome": "Squandered Prosperity",
+     "chaos": 222,
+     "mappe": [
+      "Chateau",
+      "Residence"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "City Square",
+   "n": 2,
+   "max": 140,
+   "somma": 195,
+   "carte": [
+    {
+     "nome": "The Mayor",
+     "chaos": 140,
+     "mappe": [
+      "Arcade",
+      "City Square"
+     ]
+    },
+    {
+     "nome": "Home",
+     "chaos": 55,
+     "mappe": [
+      "City Square",
+      "Siege"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "Palace",
+   "n": 1,
+   "max": 194,
+   "somma": 194,
+   "carte": [
+    {
+     "nome": "The Sephirot",
+     "chaos": 194,
+     "mappe": [
+      "Palace"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "Strand",
+   "n": 2,
+   "max": 128,
+   "somma": 181,
+   "carte": [
+    {
+     "nome": "The Journey",
+     "chaos": 128,
+     "mappe": [
+      "Strand"
+     ]
+    },
+    {
+     "nome": "The Leviathan",
+     "chaos": 53,
+     "mappe": [
+      "Strand"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "Abomination",
+   "n": 2,
+   "max": 139,
+   "somma": 178,
+   "carte": [
+    {
+     "nome": "The Nurse",
+     "chaos": 139,
+     "mappe": [
+      "Abomination",
+      "Core"
+     ]
+    },
+    {
+     "nome": "The Artist",
+     "chaos": 39,
+     "mappe": [
+      "Abomination"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "Arcade",
+   "n": 2,
+   "max": 140,
+   "somma": 163,
+   "carte": [
+    {
+     "nome": "The Mayor",
+     "chaos": 140,
+     "mappe": [
+      "Arcade",
+      "City Square"
+     ]
+    },
+    {
+     "nome": "The Miracle",
+     "chaos": 23,
+     "mappe": [
+      "Arcade",
+      "Bazaar"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "Bramble Valley",
+   "n": 2,
+   "max": 131,
+   "somma": 160,
+   "carte": [
+    {
+     "nome": "Mawr Blaidd",
+     "chaos": 131,
+     "mappe": [
+      "Arachnid Nest",
+      "Bramble Valley"
+     ]
+    },
+    {
+     "nome": "Avian Pursuit",
+     "chaos": 29,
+     "mappe": [
+      "Bramble Valley",
+      "Stagnation"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "Belfry",
+   "n": 2,
+   "max": 81,
+   "somma": 141,
+   "carte": [
+    {
+     "nome": "The Enlightened",
+     "chaos": 81,
+     "mappe": [
+      "Belfry",
+      "Relic Chambers",
+      "Sanctuary",
+      "Ziggurat"
+     ]
+    },
+    {
+     "nome": "A Modest Request",
+     "chaos": 60,
+     "mappe": [
+      "Belfry"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "Core",
+   "n": 1,
+   "max": 139,
+   "somma": 139,
+   "carte": [
+    {
+     "nome": "The Nurse",
+     "chaos": 139,
+     "mappe": [
+      "Abomination",
+      "Core"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "Arachnid Nest",
+   "n": 1,
+   "max": 131,
+   "somma": 131,
+   "carte": [
+    {
+     "nome": "Mawr Blaidd",
+     "chaos": 131,
+     "mappe": [
+      "Arachnid Nest",
+      "Bramble Valley"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "Reef",
+   "n": 1,
+   "max": 118,
+   "somma": 118,
+   "carte": [
+    {
+     "nome": "The Mad King",
+     "chaos": 118,
+     "mappe": [
+      "Reef"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "Siege",
+   "n": 2,
+   "max": 58,
+   "somma": 113,
+   "carte": [
+    {
+     "nome": "The Silly Boy",
+     "chaos": 58,
+     "mappe": [
+      "Bazaar",
+      "Siege"
+     ]
+    },
+    {
+     "nome": "Home",
+     "chaos": 55,
+     "mappe": [
+      "City Square",
+      "Siege"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "Fortress",
+   "n": 1,
+   "max": 107,
+   "somma": 107,
+   "carte": [
+    {
+     "nome": "Auspicious Ambitions",
+     "chaos": 107,
+     "mappe": [
+      "Fortress"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "Museum",
+   "n": 1,
+   "max": 104,
+   "somma": 104,
+   "carte": [
+    {
+     "nome": "Temperance",
+     "chaos": 104,
+     "mappe": [
+      "Museum",
+      "Sanctuary"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "Vaal Pyramid",
+   "n": 2,
+   "max": 71,
+   "somma": 103,
+   "carte": [
+    {
+     "nome": "The Damned",
+     "chaos": 71,
+     "mappe": [
+      "Vaal Pyramid"
+     ]
+    },
+    {
+     "nome": "Unrequited Love",
+     "chaos": 32,
+     "mappe": [
+      "Vaal Pyramid"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "Atoll",
+   "n": 1,
+   "max": 100,
+   "somma": 100,
+   "carte": [
+    {
+     "nome": "The Destination",
+     "chaos": 100,
+     "mappe": [
+      "Atoll",
+      "Channel"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "Channel",
+   "n": 1,
+   "max": 100,
+   "somma": 100,
+   "carte": [
+    {
+     "nome": "The Destination",
+     "chaos": 100,
+     "mappe": [
+      "Atoll",
+      "Channel"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "Bazaar",
+   "n": 3,
+   "max": 58,
+   "somma": 93,
+   "carte": [
+    {
+     "nome": "The Silly Boy",
+     "chaos": 58,
+     "mappe": [
+      "Bazaar",
+      "Siege"
+     ]
+    },
+    {
+     "nome": "The Miracle",
+     "chaos": 23,
+     "mappe": [
+      "Arcade",
+      "Bazaar"
+     ]
+    },
+    {
+     "nome": "The Slumbering Beast",
+     "chaos": 12,
+     "mappe": [
+      "Bazaar",
+      "Chateau"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "Forge of the Phoenix",
+   "n": 2,
+   "max": 55,
+   "somma": 89,
+   "carte": [
+    {
+     "nome": "Perfection",
+     "chaos": 55,
+     "mappe": [
+      "Forge of the Phoenix",
+      "Lair of the Hydra",
+      "Maze of the Minotaur"
+     ]
+    },
+    {
+     "nome": "The Everlasting",
+     "chaos": 34,
+     "mappe": [
+      "Forge of the Phoenix",
+      "Lair of the Hydra",
+      "Maze of the Minotaur",
+      "Pit of the Chimera"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "Lair of the Hydra",
+   "n": 2,
+   "max": 55,
+   "somma": 89,
+   "carte": [
+    {
+     "nome": "Perfection",
+     "chaos": 55,
+     "mappe": [
+      "Forge of the Phoenix",
+      "Lair of the Hydra",
+      "Maze of the Minotaur"
+     ]
+    },
+    {
+     "nome": "The Everlasting",
+     "chaos": 34,
+     "mappe": [
+      "Forge of the Phoenix",
+      "Lair of the Hydra",
+      "Maze of the Minotaur",
+      "Pit of the Chimera"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "Maze of the Minotaur",
+   "n": 2,
+   "max": 55,
+   "somma": 89,
+   "carte": [
+    {
+     "nome": "Perfection",
+     "chaos": 55,
+     "mappe": [
+      "Forge of the Phoenix",
+      "Lair of the Hydra",
+      "Maze of the Minotaur"
+     ]
+    },
+    {
+     "nome": "The Everlasting",
+     "chaos": 34,
+     "mappe": [
+      "Forge of the Phoenix",
+      "Lair of the Hydra",
+      "Maze of the Minotaur",
+      "Pit of the Chimera"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "Relic Chambers",
+   "n": 1,
+   "max": 81,
+   "somma": 81,
+   "carte": [
+    {
+     "nome": "The Enlightened",
+     "chaos": 81,
+     "mappe": [
+      "Belfry",
+      "Relic Chambers",
+      "Sanctuary",
+      "Ziggurat"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "Ziggurat",
+   "n": 1,
+   "max": 81,
+   "somma": 81,
+   "carte": [
+    {
+     "nome": "The Enlightened",
+     "chaos": 81,
+     "mappe": [
+      "Belfry",
+      "Relic Chambers",
+      "Sanctuary",
+      "Ziggurat"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "Conservatory",
+   "n": 1,
+   "max": 62,
+   "somma": 62,
+   "carte": [
+    {
+     "nome": "The Forbidden Fruit",
+     "chaos": 62,
+     "mappe": [
+      "Conservatory",
+      "Terrace"
+     ]
+    }
+   ]
+  },
+  {
+   "mappa": "Terrace",
+   "n": 1,
+   "max": 62,
+   "somma": 62,
+   "carte": [
+    {
+     "nome": "The Forbidden Fruit",
+     "chaos": 62,
+     "mappe": [
+      "Conservatory",
+      "Terrace"
+     ]
+    }
+   ]
+  }
+ ],
+ "carteAnalizzate": 70
 }
