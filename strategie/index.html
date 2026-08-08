@@ -57,6 +57,26 @@
   .voce .n{display:flex;align-items:center;gap:.45rem;min-width:0}
   .voce img{width:26px;height:26px;object-fit:contain;flex:none;
             filter:drop-shadow(0 1px 2px rgba(0,0,0,.6))}
+
+  /* caricamenti di scarab: quantita', effetto, limite */
+  .carico{margin-bottom:var(--s4)}
+  .carico:last-child{margin-bottom:0}
+  .carico > .tit{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s2);
+                 font-size:var(--t-xs);text-transform:uppercase;letter-spacing:.09em;
+                 color:var(--gold);margin-bottom:var(--s2)}
+  .carico > .tit .tot{font-family:var(--mono);color:var(--muted);text-transform:none;letter-spacing:0}
+  .sc{display:grid;grid-template-columns:auto 26px 1fr auto;gap:.5rem;align-items:start;
+      padding:.4rem 0;border-bottom:1px dashed var(--line)}
+  .sc:last-child{border-bottom:0}
+  .sc .q{font-family:var(--mono);color:var(--text);font-weight:600;font-size:var(--t-sm);
+         padding-top:1px;white-space:nowrap}
+  .sc img{width:26px;height:26px;object-fit:contain;filter:drop-shadow(0 1px 2px rgba(0,0,0,.6))}
+  .sc .nm{font-size:var(--t-sm);line-height:1.35}
+  .sc .ef{display:block;font-size:var(--t-xs);color:var(--muted);line-height:1.45;margin-top:.1rem}
+  .sc .pz{font-family:var(--mono);color:var(--gold);font-size:var(--t-sm);white-space:nowrap}
+  .lim{color:var(--muted);font-size:var(--t-xs);font-family:var(--mono)}
+  .quinto{border-top:1px solid var(--line);margin-top:var(--s3);padding-top:var(--s3)}
+  .quinto .tit{color:var(--good)}
   .albero{display:block;text-align:center;padding:.55rem;border-radius:var(--r-sm);
           background:var(--gold);color:#161310;font-weight:600;font-size:var(--t-sm);
           text-decoration:none;margin-top:var(--s3)}
@@ -156,11 +176,19 @@
       <div>
         <div class="pannello">
           <h3>Scarab</h3>
-          <div class="voce"><span>Nessuno</span><span class="p nulla">0c</span></div>
-          <div class="voce"><span class="n"><img src="img/abyss-scarab-of-the-consort.png" alt="" loading="lazy"><span>Abyss Scarab of the Consort</span></span><span class="p">3,8c</span></div>
-          <div class="voce"><span class="n"><img src="img/abyss-scarab.png" alt="" loading="lazy"><span>Abyss Scarab</span></span><span class="p">2,8c</span></div>
-          <div class="voce"><span class="n"><img src="img/abyss-scarab-of-multitudes.png" alt="" loading="lazy"><span>Abyss Scarab of Multitudes</span></span><span class="p">2,6c</span></div>
-          <p class="nota">Tutta la famiglia sta sotto i 4 chaos: è la meccanica con la barriera d'ingresso più bassa fra le tre.</p>
+          <div class="carico"><div class="tit"><span>Budget · 4 slot</span><span class="tot">≈ 9 chaos</span></div>
+          <div class="sc"><span class="q">2×</span><img src="img/abyss-scarab.png" alt="" loading="lazy"><span class="nm">Abyss Scarab<span class="ef">Un Abyss in più nell'area · <span class="lim">max 5</span></span></span><span class="pz">5,6c</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/abyss-scarab-of-multitudes.png" alt="" loading="lazy"><span class="nm">Abyss Scarab of Multitudes<span class="ef">+100% mostri per anima consumata · <span class="lim">max 2</span></span></span><span class="pz">2,6c</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/abyss-scarab-of-descending.png" alt="" loading="lazy"><span class="nm">Abyss Scarab of Descending<span class="ef">L'area contiene un Abyssal Depths · <span class="lim">max 1</span></span></span><span class="pz">1c</span></div>
+          </div>
+          <div class="carico"><div class="tit"><span>Spinta · 4 slot</span><span class="tot">≈ 17 chaos</span></div>
+          <div class="sc"><span class="q">2×</span><img src="img/abyss-scarab.png" alt="" loading="lazy"><span class="nm">Abyss Scarab<span class="ef">Un Abyss in più nell'area · <span class="lim">max 5</span></span></span><span class="pz">5,6c</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/abyss-scarab-of-descending.png" alt="" loading="lazy"><span class="nm">Abyss Scarab of Descending<span class="ef">L'area contiene un Abyssal Depths · <span class="lim">max 1</span></span></span><span class="pz">1c</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/horned-scarab-of-nemeses.png" alt="" loading="lazy"><span class="nm">Horned Scarab of Nemeses<span class="ef">I rari hanno 2 modificatori in più · <span class="lim">max 2</span></span></span><span class="pz">10c</span></div>
+          </div>
+          <div class="carico quinto"><div class="tit"><span>Quinto slot, quando lo sblocchi</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/abyss-scarab-of-the-consort.png" alt="" loading="lazy"><span class="nm">Abyss Scarab of the Consort<span class="ef">Una pit genera un Abyssal Consort · <span class="lim">max 1</span></span></span><span class="pz">3,8c</span></div>
+          </div>
         </div>
         <div class="pannello">
           <h3>Mappa</h3>
@@ -220,11 +248,18 @@
       <div>
         <div class="pannello">
           <h3>Scarab</h3>
-          <div class="voce"><span class="n"><img src="img/legion-scarab.png" alt="" loading="lazy"><span>Legion Scarab</span></span><span class="p">1,3c</span></div>
-          <div class="voce"><span class="n"><img src="img/legion-scarab-of-officers.png" alt="" loading="lazy"><span>Legion Scarab of Officers</span></span><span class="p">1,3c</span></div>
-          <div class="voce"><span class="n"><img src="img/legion-scarab-of-command.png" alt="" loading="lazy"><span>Legion Scarab of Treasures</span></span><span class="p">2,6c</span></div>
-          <div class="voce"><span class="n"><img src="img/legion-scarab-of-eternal-conflict.png" alt="" loading="lazy"><span><b>of Eternal Conflict</b></span></span><span class="p">88c</span></div>
-          <p class="nota">Si entra con <b>1,3 chaos</b> e si sale fino a 88 quando il personaggio regge. Verificato indipendentemente su trade: 75c al quartile alto su 17 inserzioni.</p>
+          <div class="carico"><div class="tit"><span>Budget · 4 slot</span><span class="tot">≈ 5 chaos</span></div>
+          <div class="sc"><span class="q">3×</span><img src="img/legion-scarab.png" alt="" loading="lazy"><span class="nm">Legion Scarab<span class="ef">Un Legion Encounter in più · <span class="lim">max 5</span></span></span><span class="pz">3,9c</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/legion-scarab-of-officers.png" alt="" loading="lazy"><span class="nm">Legion Scarab of Officers<span class="ef">5 Sergenti in più per fazione · <span class="lim">max 1</span></span></span><span class="pz">1,3c</span></div>
+          </div>
+          <div class="carico"><div class="tit"><span>Spinta · 4 slot</span><span class="tot">≈ 92 chaos</span></div>
+          <div class="sc"><span class="q">2×</span><img src="img/legion-scarab.png" alt="" loading="lazy"><span class="nm">Legion Scarab<span class="ef">Un Legion Encounter in più · <span class="lim">max 5</span></span></span><span class="pz">2,6c</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/legion-scarab-of-officers.png" alt="" loading="lazy"><span class="nm">Legion Scarab of Officers<span class="ef">5 Sergenti in più per fazione · <span class="lim">max 1</span></span></span><span class="pz">1,3c</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/legion-scarab-of-eternal-conflict.png" alt="" loading="lazy"><span class="nm">Legion Scarab of Eternal Conflict<span class="ef">I mostri escono dalla stasi più volte · <span class="lim">max 1</span></span></span><span class="pz">88c</span></div>
+          </div>
+          <div class="carico quinto"><div class="tit"><span>Quinto slot, quando lo sblocchi</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/legion-scarab-of-command.png" alt="" loading="lazy"><span class="nm">Legion Scarab of Treasures<span class="ef">I forzieri spargono i premi sui mostri · <span class="lim">max 3</span></span></span><span class="pz">2,6c</span></div>
+          </div>
         </div>
         <div class="pannello">
           <h3>Mappa</h3>
@@ -285,10 +320,20 @@
       <div>
         <div class="pannello">
           <h3>Scarab</h3>
-          <div class="voce"><span class="n"><img src="img/harvest-scarab.png" alt="" loading="lazy"><span>Harvest Scarab</span></span><span class="p">1,1c</span></div>
-          <div class="voce"><span class="n"><img src="img/harvest-scarab-of-doubling.png" alt="" loading="lazy"><span>Harvest Scarab of Doubling</span></span><span class="p">21c</span></div>
-          <div class="voce"><span class="n"><img src="img/harvest-scarab-of-cornucopia.png" alt="" loading="lazy"><span><b>of Cornucopia</b></span></span><span class="p">55c</span></div>
-          <p class="nota">Cornucopia verificato indipendentemente su trade: <b>54c</b> al quartile alto su 25 inserzioni. Le due fonti coincidono al chaos.</p>
+          <div class="carico"><div class="tit"><span>Budget · 4 slot</span><span class="tot">≈ 30 chaos</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/harvest-scarab.png" alt="" loading="lazy"><span class="nm">Harvest Scarab<span class="ef">L'area contiene il Sacred Grove · <span class="lim">max 1</span></span></span><span class="pz">1,1c</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/harvest-scarab-of-doubling.png" alt="" loading="lazy"><span class="nm">Harvest Scarab of Doubling<span class="ef">Lifeforce raddoppiata · mostri +100% vita · <span class="lim">max 1</span></span></span><span class="pz">21c</span></div>
+          <div class="sc"><span class="q">2×</span><img src="img/scarab-of-monstrous-lineage.png" alt="" loading="lazy"><span class="nm">Scarab of Monstrous Lineage<span class="ef">+40% dimensione dei pacchi magici · <span class="lim">max 2</span></span></span><span class="pz">7,6c</span></div>
+          </div>
+          <div class="carico"><div class="tit"><span>Spinta · 4 slot</span><span class="tot">≈ 81 chaos</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/harvest-scarab.png" alt="" loading="lazy"><span class="nm">Harvest Scarab<span class="ef">L'area contiene il Sacred Grove · <span class="lim">max 1</span></span></span><span class="pz">1,1c</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/harvest-scarab-of-doubling.png" alt="" loading="lazy"><span class="nm">Harvest Scarab of Doubling<span class="ef">Lifeforce raddoppiata · mostri +100% vita · <span class="lim">max 1</span></span></span><span class="pz">21c</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/harvest-scarab-of-cornucopia.png" alt="" loading="lazy"><span class="nm">Harvest Scarab of Cornucopia<span class="ef">Un seme Tier 4 in più di ogni tipo · <span class="lim">max 1</span></span></span><span class="pz">55c</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/scarab-of-monstrous-lineage.png" alt="" loading="lazy"><span class="nm">Scarab of Monstrous Lineage<span class="ef">+40% dimensione dei pacchi magici · <span class="lim">max 2</span></span></span><span class="pz">3,8c</span></div>
+          </div>
+          <div class="carico quinto"><div class="tit"><span>Quinto slot, quando lo sblocchi</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/scarab-of-monstrous-lineage.png" alt="" loading="lazy"><span class="nm">Scarab of Monstrous Lineage<span class="ef">Il secondo: il limite è 2 · <span class="lim">max 2</span></span></span><span class="pz">3,8c</span></div>
+          </div>
         </div>
         <div class="pannello">
           <h3>Mappa</h3>
