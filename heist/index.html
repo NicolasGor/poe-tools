@@ -144,6 +144,12 @@
     <p class="warn">⚠️ Valori presi da un riferimento fermo a 3.25: i nomi dei nodi sono stabili fra leghe, i numeri no. Più incerto ancora: alcune fonti dicono che in 3.29 <b>The Dutiful Soldier</b> darebbe anche «15% chance to have a special Implicit» ai blueprint trovati nelle tue mappe — sarebbe il nodo che più conta, ma non è confermato su fonte primaria. Leggilo in gioco prima di spenderci punti.</p>
   </div>
 
+  <h2 class="sec">Quanto vale un blueprint prima di guardarlo</h2>
+  <div class="avviso" style="border:1px solid var(--line);border-radius:7px;background:var(--panel2);padding:.8rem 1rem;font-size:.86rem;line-height:1.55;color:var(--muted)">
+    <b>8,5 chaos.</b> È il valore atteso di un blueprint raccolto a caso, prima di controllarne l'enchant: <b>3,7%</b> porta <em>Currency or Scarabs</em> (115c), <b>2,7%</b> porta <em>Experimented Items</em> (120c), il resto è pavimento. Serve a decidere se vale la pena raccogliere le Smuggler's Cache — la risposta è sì, ma senza aspettarsi una fortuna.
+    <br><br><b>Il denominatore ha richiesto un aggiramento.</b> L'API di trade <b>tronca i conteggi a 10.000</b>: <code>Blueprint: Underbelly</code> dichiara 10.000, ma spezzato per area level fa 8.514 + 2.072 = 10.586. Sommando fasce di livello abbastanza strette da starci sotto — e spezzando per tipo la fascia 83, che satura da sola — la popolazione vera è <b>90.777 blueprint</b>. Ogni conteggio vicino a 10.000 su questa pagina è un tetto, non un censimento.
+  </div>
+
   <h2 class="sec">Misurato e scartato — sotto i 10 chaos</h2>
   <details>
     <summary>Cosa è stato tolto, e a quanto stava davvero</summary>
@@ -155,7 +161,7 @@
   </details>
 
   <footer>
-    <p><strong>Come sono stati misurati.</strong> Una ricerca per categoria sull'API ufficiale di trade, ordinata per prezzo crescente, prendendo il <b>quinto</b> prezzo più basso fra i primi dieci. Il singolo più basso è spesso un'esca o un errore di battitura; il quinto è la prima cifra che si può chiamare mercato.</p>
+    <p><strong>Come sono stati misurati.</strong> Una ricerca per categoria sull'API ufficiale di trade, ordinata per prezzo crescente, prendendo il <b>quinto</b> prezzo più basso fra i primi dieci. Il singolo più basso è spesso un'esca o un errore di battitura; il quinto è la prima cifra che si può chiamare mercato. <b>Il metodo vale qui</b> proprio perché di blueprint ce ne sono decine di migliaia: su un item con dieci inserzioni in tutto, il quinto prezzo misurerebbe solo le esche.</p>
     <p><strong>Il pavimento non è il soffitto.</strong> Un blueprint con l'enchant giusto <em>e</em> area level 83 <em>e</em> tutte le wing rivelate vale molto più delle cifre qui sopra: quelle dicono quanto vale l'esemplare generico. Ma un esemplare generico di una categoria a 1 chaos non diventa vendibile per meriti propri.</p>
     <p><strong>Rimisura ogni settimana.</strong> Questi numeri sono del <b>8 agosto 2026</b>. Il mercato Heist si muove, e nessun sito lo indicizza — poe.ninja non copre contratti e blueprint. Quando la data invecchia, fidati dei pulsanti e non delle cifre.</p>
   </footer>
@@ -207,12 +213,12 @@ const JUNK = [
   ["Contract: Heart of Glory (unique)", "1 216", "1c"],
   ["Contract: The Slaver King (unique)", "1 096", "1 Orb of Alchemy"],
   ["Contract: Death to Darnaw (unique)", "852", "1 Orb of Alteration"],
-  ["enchant Replica Unique Items", "3 119", "3–4c"],
-  ["enchant Thieves' Trinkets", "8 098", "1c"],
-  ["enchant Enchanted Armaments", "8 699", "1c"],
+  ["enchant Replica Unique Items", "3 353", "3–4c"],
+  ["enchant Thieves' Trinkets", "8 380", "1c"],
+  ["enchant Enchanted Armaments", "8 894", "1c"],
   ["enchant «additional Reveal» sui contratti", "0", "nessuna inserzione"],
-  ["I nove Blueprint cercati per tipo", "~9 500 ciascuno", "1c"],
-  ["I nove Contract cercati per tipo", "10 000+ ciascuno", "1 alch / 1 chance"]
+  ["I nove Blueprint cercati per tipo", "tetto dell'API", "1c"],
+  ["I nove Contract cercati per tipo", "tetto dell'API", "1 alch / 1 chance"]
 ];
 
 document.getElementById("list").innerHTML = KEEP.map(k => '' +
