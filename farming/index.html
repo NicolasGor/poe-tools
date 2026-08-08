@@ -94,14 +94,13 @@
 
   <h2 class="sec">Quali mappe — dove vivono le carte che valgono</h2>
   <div class="avviso">
-    <b>Cosa misura questa tabella.</b> Per ognuna delle 70 divination card sopra gli 8 chaos ho cercato su poedb in quale area cade, e sommato il valore delle carte per mappa. Dice <b>dove stanno i premi grossi</b>.
+    <b>Cosa misura questa tabella.</b> Per <b>tutte le 395</b> divination card ho cercato su poedb in quale area cade, e calcolato totale, media e mediana per mappa. Dice <b>dove stanno i premi grossi</b>.
     <br><br><b>Cosa NON misura: la frequenza.</b> Una carta da 433 chaos che cade una volta ogni cinquemila mappe rende meno di una da 20 che cade ogni dieci. Le probabilità di drop non sono pubbliche, quindi questa non è una classifica di guadagno atteso: è la mappa del <em>potenziale</em>. Serve a scegliere dove puntare gli scarab Divination, non a decidere cosa girare a vuoto.
     <br><br><b>E non misura la velocità.</b> Quanto sia rapido attraversare un layout non esiste come dato pubblico. Le mappe qui sotto vanno incrociate con la tua esperienza di percorrenza: una mappa ricca ma lenta può rendere meno di una povera e veloce.
   </div>
   <table id="tabm">
     <thead><tr>
-      <th>Mappa</th><th class="n">Valore carte</th><th class="n">Carte</th>
-      <th class="n">La più cara</th><th>Quali</th>
+      <th>Mappa</th><th class="n">Totale</th><th class="n">Media</th><th class="n">Mediana</th><th class="n">Carte</th><th>Quali</th>
     </tr></thead>
     <tbody></tbody>
   </table>
@@ -174,14 +173,15 @@ fetch("dati.json").then(r=>r.json()).then(d=>{
     dis(arr);
   });
 
-  const maxm = Math.max(...d.mappe.map(m=>m.somma));
+  const maxm = Math.max(...d.mappe.map(m=>m.valore));
   document.querySelector("#tabm tbody").innerHTML = d.mappe.map(m => `
-    <tr class="${m.somma>=180?'alta':''}">
+    <tr class="${m.valore>=180?'alta':''}">
       <td>${m.mappa}</td>
-      <td class="n max">${m.somma} c</td>
-      <td class="n">${m.n}</td>
-      <td class="n">${m.max} c</td>
-      <td style="color:var(--muted)"><span class="barra" style="width:${Math.max(2,m.somma/maxm*70)}px"></span>
+      <td class="n max">${m.valore} c</td>
+      <td class="n">${m.media} c</td>
+      <td class="n">${m.mediana} c</td>
+      <td class="n">${m.nCarte}</td>
+      <td style="color:var(--muted)"><span class="barra" style="width:${Math.max(2,m.valore/maxm*70)}px"></span>
           ${m.carte.map(c=>c.nome).slice(0,3).join(" · ")}</td>
     </tr>`).join("");
 

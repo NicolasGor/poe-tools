@@ -958,640 +958,928 @@
  "mappe": [
   {
    "mappa": "Sanctuary",
-   "n": 3,
+   "nCarte": 4,
+   "valore": 632,
+   "media": 158,
+   "mediana": 92.5,
    "max": 433,
-   "somma": 618,
    "carte": [
     {
      "nome": "Damnation",
-     "chaos": 433,
-     "mappe": [
-      "Graveyard",
-      "Sanctuary"
-     ]
+     "chaos": 433
     },
     {
      "nome": "Temperance",
-     "chaos": 104,
-     "mappe": [
-      "Museum",
-      "Sanctuary"
-     ]
+     "chaos": 104
     },
     {
      "nome": "The Enlightened",
-     "chaos": 81,
-     "mappe": [
-      "Belfry",
-      "Relic Chambers",
-      "Sanctuary",
-      "Ziggurat"
-     ]
+     "chaos": 81
+    },
+    {
+     "nome": "Altered Perception",
+     "chaos": 14
     }
    ]
   },
   {
    "mappa": "Graveyard",
-   "n": 1,
+   "nCarte": 2,
+   "valore": 436,
+   "media": 218,
+   "mediana": 218.0,
    "max": 433,
-   "somma": 433,
    "carte": [
     {
      "nome": "Damnation",
-     "chaos": 433,
-     "mappe": [
-      "Graveyard",
-      "Sanctuary"
-     ]
+     "chaos": 433
+    },
+    {
+     "nome": "The One With All",
+     "chaos": 3
     }
    ]
   },
   {
    "mappa": "Courtyard of Wasting",
-   "n": 3,
+   "nCarte": 4,
+   "valore": 337,
+   "media": 84.2,
+   "mediana": 62.0,
    "max": 208,
-   "somma": 332,
    "carte": [
     {
      "nome": "The Gulf",
-     "chaos": 208,
-     "mappe": [
-      "Courtyard of Wasting"
-     ]
+     "chaos": 208
     },
     {
      "nome": "Reckless Ambition",
-     "chaos": 93,
-     "mappe": [
-      "Courtyard of Wasting"
-     ]
+     "chaos": 93
     },
     {
      "nome": "The Side Quest",
-     "chaos": 31,
-     "mappe": [
-      "Alleyways",
-      "Courtyard of Wasting"
-     ]
+     "chaos": 31
+    },
+    {
+     "nome": "Astral Protection",
+     "chaos": 5
     }
    ]
   },
   {
    "mappa": "Shrine",
-   "n": 2,
+   "nCarte": 2,
+   "valore": 238,
+   "media": 119,
+   "mediana": 119.0,
    "max": 223,
-   "somma": 238,
    "carte": [
     {
      "nome": "The Lunaris Priestess",
-     "chaos": 223,
-     "mappe": [
-      "Shrine"
-     ]
+     "chaos": 223
     },
     {
      "nome": "The Progeny of Lunaris",
-     "chaos": 15,
-     "mappe": [
-      "Shrine"
-     ]
+     "chaos": 15
     }
    ]
   },
   {
    "mappa": "Chateau",
-   "n": 2,
+   "nCarte": 3,
+   "valore": 224,
+   "media": 74.7,
+   "mediana": 1,
    "max": 222,
-   "somma": 234,
    "carte": [
     {
      "nome": "Squandered Prosperity",
-     "chaos": 222,
-     "mappe": [
-      "Chateau",
-      "Residence"
-     ]
+     "chaos": 222
     },
     {
-     "nome": "The Slumbering Beast",
-     "chaos": 12,
-     "mappe": [
-      "Bazaar",
-      "Chateau"
-     ]
+     "nome": "The Price of Protection",
+     "chaos": 1
+    },
+    {
+     "nome": "The Bear Woman",
+     "chaos": 1
     }
    ]
   },
   {
    "mappa": "Residence",
-   "n": 1,
+   "nCarte": 1,
+   "valore": 222,
+   "media": 222,
+   "mediana": 222,
    "max": 222,
-   "somma": 222,
    "carte": [
     {
      "nome": "Squandered Prosperity",
-     "chaos": 222,
-     "mappe": [
-      "Chateau",
-      "Residence"
-     ]
-    }
-   ]
-  },
-  {
-   "mappa": "City Square",
-   "n": 2,
-   "max": 140,
-   "somma": 195,
-   "carte": [
-    {
-     "nome": "The Mayor",
-     "chaos": 140,
-     "mappe": [
-      "Arcade",
-      "City Square"
-     ]
-    },
-    {
-     "nome": "Home",
-     "chaos": 55,
-     "mappe": [
-      "City Square",
-      "Siege"
-     ]
+     "chaos": 222
     }
    ]
   },
   {
    "mappa": "Palace",
-   "n": 1,
+   "nCarte": 3,
+   "valore": 202.1,
+   "media": 67.4,
+   "mediana": 5.1,
    "max": 194,
-   "somma": 194,
    "carte": [
     {
      "nome": "The Sephirot",
-     "chaos": 194,
-     "mappe": [
-      "Palace"
-     ]
+     "chaos": 194
+    },
+    {
+     "nome": "Light and Truth",
+     "chaos": 5.1
+    },
+    {
+     "nome": "The Dapper Prodigy",
+     "chaos": 3
+    }
+   ]
+  },
+  {
+   "mappa": "City Square",
+   "nCarte": 3,
+   "valore": 196,
+   "media": 65.3,
+   "mediana": 55,
+   "max": 140,
+   "carte": [
+    {
+     "nome": "The Mayor",
+     "chaos": 140
+    },
+    {
+     "nome": "Home",
+     "chaos": 55
+    },
+    {
+     "nome": "The Sigil",
+     "chaos": 1
     }
    ]
   },
   {
    "mappa": "Strand",
-   "n": 2,
+   "nCarte": 4,
+   "valore": 196,
+   "media": 49,
+   "mediana": 33.5,
    "max": 128,
-   "somma": 181,
    "carte": [
     {
      "nome": "The Journey",
-     "chaos": 128,
-     "mappe": [
-      "Strand"
-     ]
+     "chaos": 128
     },
     {
      "nome": "The Leviathan",
-     "chaos": 53,
-     "mappe": [
-      "Strand"
-     ]
+     "chaos": 53
+    },
+    {
+     "nome": "The Formless Sea",
+     "chaos": 14
+    },
+    {
+     "nome": "Rain Tempter",
+     "chaos": 1
     }
    ]
   },
   {
    "mappa": "Abomination",
-   "n": 2,
+   "nCarte": 4,
+   "valore": 186.9,
+   "media": 46.7,
+   "mediana": 22.0,
    "max": 139,
-   "somma": 178,
    "carte": [
     {
      "nome": "The Nurse",
-     "chaos": 139,
-     "mappe": [
-      "Abomination",
-      "Core"
-     ]
+     "chaos": 139
     },
     {
      "nome": "The Artist",
-     "chaos": 39,
-     "mappe": [
-      "Abomination"
-     ]
+     "chaos": 39
+    },
+    {
+     "nome": "The Insatiable",
+     "chaos": 5
+    },
+    {
+     "nome": "The Offering",
+     "chaos": 3.9
     }
    ]
   },
   {
    "mappa": "Arcade",
-   "n": 2,
+   "nCarte": 4,
+   "valore": 169.3,
+   "media": 42.3,
+   "mediana": 13.8,
    "max": 140,
-   "somma": 163,
    "carte": [
     {
      "nome": "The Mayor",
-     "chaos": 140,
-     "mappe": [
-      "Arcade",
-      "City Square"
-     ]
+     "chaos": 140
     },
     {
      "nome": "The Miracle",
-     "chaos": 23,
-     "mappe": [
-      "Arcade",
-      "Bazaar"
-     ]
-    }
-   ]
-  },
-  {
-   "mappa": "Bramble Valley",
-   "n": 2,
-   "max": 131,
-   "somma": 160,
-   "carte": [
-    {
-     "nome": "Mawr Blaidd",
-     "chaos": 131,
-     "mappe": [
-      "Arachnid Nest",
-      "Bramble Valley"
-     ]
+     "chaos": 23
     },
     {
-     "nome": "Avian Pursuit",
-     "chaos": 29,
-     "mappe": [
-      "Bramble Valley",
-      "Stagnation"
-     ]
+     "nome": "Deadly Joy",
+     "chaos": 4.5
+    },
+    {
+     "nome": "I See Brothers",
+     "chaos": 1.8
     }
    ]
   },
   {
    "mappa": "Belfry",
-   "n": 2,
+   "nCarte": 3,
+   "valore": 164,
+   "media": 54.7,
+   "mediana": 60,
    "max": 81,
-   "somma": 141,
    "carte": [
     {
      "nome": "The Enlightened",
-     "chaos": 81,
-     "mappe": [
-      "Belfry",
-      "Relic Chambers",
-      "Sanctuary",
-      "Ziggurat"
-     ]
+     "chaos": 81
     },
     {
      "nome": "A Modest Request",
-     "chaos": 60,
-     "mappe": [
-      "Belfry"
-     ]
+     "chaos": 60
+    },
+    {
+     "nome": "The Life Thief",
+     "chaos": 23
+    }
+   ]
+  },
+  {
+   "mappa": "Bramble Valley",
+   "nCarte": 4,
+   "valore": 162,
+   "media": 40.5,
+   "mediana": 15.0,
+   "max": 131,
+   "carte": [
+    {
+     "nome": "Mawr Blaidd",
+     "chaos": 131
+    },
+    {
+     "nome": "Avian Pursuit",
+     "chaos": 29
+    },
+    {
+     "nome": "The Explorer",
+     "chaos": 1
+    },
+    {
+     "nome": "The Adventuring Spirit",
+     "chaos": 1
     }
    ]
   },
   {
    "mappa": "Core",
-   "n": 1,
+   "nCarte": 3,
+   "valore": 146.0,
+   "media": 48.7,
+   "mediana": 4.6,
    "max": 139,
-   "somma": 139,
    "carte": [
     {
      "nome": "The Nurse",
-     "chaos": 139,
-     "mappe": [
-      "Abomination",
-      "Core"
-     ]
+     "chaos": 139
+    },
+    {
+     "nome": "Draped in Dreams",
+     "chaos": 4.6
+    },
+    {
+     "nome": "The Hunger",
+     "chaos": 2.4
     }
    ]
   },
   {
    "mappa": "Arachnid Nest",
-   "n": 1,
+   "nCarte": 4,
+   "valore": 135.1,
+   "media": 33.8,
+   "mediana": 1.6,
    "max": 131,
-   "somma": 131,
    "carte": [
     {
      "nome": "Mawr Blaidd",
-     "chaos": 131,
-     "mappe": [
-      "Arachnid Nest",
-      "Bramble Valley"
-     ]
-    }
-   ]
-  },
-  {
-   "mappa": "Reef",
-   "n": 1,
-   "max": 118,
-   "somma": 118,
-   "carte": [
-    {
-     "nome": "The Mad King",
-     "chaos": 118,
-     "mappe": [
-      "Reef"
-     ]
-    }
-   ]
-  },
-  {
-   "mappa": "Siege",
-   "n": 2,
-   "max": 58,
-   "somma": 113,
-   "carte": [
-    {
-     "nome": "The Silly Boy",
-     "chaos": 58,
-     "mappe": [
-      "Bazaar",
-      "Siege"
-     ]
+     "chaos": 131
     },
     {
-     "nome": "Home",
-     "chaos": 55,
-     "mappe": [
-      "City Square",
-      "Siege"
-     ]
+     "nome": "Call to the First Ones",
+     "chaos": 2.1
+    },
+    {
+     "nome": "The Explorer",
+     "chaos": 1
+    },
+    {
+     "nome": "The Demoness",
+     "chaos": 1
     }
    ]
   },
   {
    "mappa": "Fortress",
-   "n": 1,
+   "nCarte": 4,
+   "valore": 134.7,
+   "media": 33.7,
+   "mediana": 12.6,
    "max": 107,
-   "somma": 107,
    "carte": [
     {
      "nome": "Auspicious Ambitions",
-     "chaos": 107,
-     "mappe": [
-      "Fortress"
-     ]
-    }
-   ]
-  },
-  {
-   "mappa": "Museum",
-   "n": 1,
-   "max": 104,
-   "somma": 104,
-   "carte": [
-    {
-     "nome": "Temperance",
-     "chaos": 104,
-     "mappe": [
-      "Museum",
-      "Sanctuary"
-     ]
-    }
-   ]
-  },
-  {
-   "mappa": "Vaal Pyramid",
-   "n": 2,
-   "max": 71,
-   "somma": 103,
-   "carte": [
-    {
-     "nome": "The Damned",
-     "chaos": 71,
-     "mappe": [
-      "Vaal Pyramid"
-     ]
+     "chaos": 107
     },
     {
-     "nome": "Unrequited Love",
-     "chaos": 32,
-     "mappe": [
-      "Vaal Pyramid"
-     ]
+     "nome": "Something Dark",
+     "chaos": 17
+    },
+    {
+     "nome": "Who Asked",
+     "chaos": 8.2
+    },
+    {
+     "nome": "One Last Score",
+     "chaos": 2.5
+    }
+   ]
+  },
+  {
+   "mappa": "Reef",
+   "nCarte": 4,
+   "valore": 127.8,
+   "media": 31.9,
+   "mediana": 4.2,
+   "max": 118,
+   "carte": [
+    {
+     "nome": "The Mad King",
+     "chaos": 118
+    },
+    {
+     "nome": "The Fathomless Depths",
+     "chaos": 5
+    },
+    {
+     "nome": "The Messenger",
+     "chaos": 3.4
+    },
+    {
+     "nome": "More is Never Enough",
+     "chaos": 1.4
     }
    ]
   },
   {
    "mappa": "Atoll",
-   "n": 1,
+   "nCarte": 4,
+   "valore": 125.4,
+   "media": 31.4,
+   "mediana": 12.2,
    "max": 100,
-   "somma": 100,
    "carte": [
     {
      "nome": "The Destination",
-     "chaos": 100,
-     "mappe": [
-      "Atoll",
-      "Channel"
-     ]
+     "chaos": 100
+    },
+    {
+     "nome": "The Old Man",
+     "chaos": 20
+    },
+    {
+     "nome": "The Vast",
+     "chaos": 4.4
+    },
+    {
+     "nome": "The Wind",
+     "chaos": 1
     }
    ]
   },
   {
    "mappa": "Channel",
-   "n": 1,
+   "nCarte": 3,
+   "valore": 121,
+   "media": 40.3,
+   "mediana": 20,
    "max": 100,
-   "somma": 100,
    "carte": [
     {
      "nome": "The Destination",
-     "chaos": 100,
-     "mappe": [
-      "Atoll",
-      "Channel"
-     ]
+     "chaos": 100
+    },
+    {
+     "nome": "The Old Man",
+     "chaos": 20
+    },
+    {
+     "nome": "Desperate Crusade",
+     "chaos": 1
     }
    ]
   },
   {
-   "mappa": "Bazaar",
-   "n": 3,
+   "mappa": "Siege",
+   "nCarte": 3,
+   "valore": 114.5,
+   "media": 38.2,
+   "mediana": 55,
    "max": 58,
-   "somma": 93,
    "carte": [
     {
      "nome": "The Silly Boy",
-     "chaos": 58,
-     "mappe": [
-      "Bazaar",
-      "Siege"
-     ]
+     "chaos": 58
     },
     {
-     "nome": "The Miracle",
-     "chaos": 23,
-     "mappe": [
-      "Arcade",
-      "Bazaar"
-     ]
+     "nome": "Home",
+     "chaos": 55
     },
     {
-     "nome": "The Slumbering Beast",
-     "chaos": 12,
-     "mappe": [
-      "Bazaar",
-      "Chateau"
-     ]
+     "nome": "The Spark and the Flame",
+     "chaos": 1.5
+    }
+   ]
+  },
+  {
+   "mappa": "Museum",
+   "nCarte": 4,
+   "valore": 108.9,
+   "media": 27.2,
+   "mediana": 1.9,
+   "max": 104,
+   "carte": [
+    {
+     "nome": "Temperance",
+     "chaos": 104
+    },
+    {
+     "nome": "One Last Score",
+     "chaos": 2.5
+    },
+    {
+     "nome": "Blind Venture",
+     "chaos": 1.4
+    },
+    {
+     "nome": "A Dab of Ink",
+     "chaos": 1
     }
    ]
   },
   {
    "mappa": "Forge of the Phoenix",
-   "n": 2,
+   "nCarte": 3,
+   "valore": 94,
+   "media": 31.3,
+   "mediana": 34,
    "max": 55,
-   "somma": 89,
    "carte": [
     {
      "nome": "Perfection",
-     "chaos": 55,
-     "mappe": [
-      "Forge of the Phoenix",
-      "Lair of the Hydra",
-      "Maze of the Minotaur"
-     ]
+     "chaos": 55
     },
     {
      "nome": "The Everlasting",
-     "chaos": 34,
-     "mappe": [
-      "Forge of the Phoenix",
-      "Lair of the Hydra",
-      "Maze of the Minotaur",
-      "Pit of the Chimera"
-     ]
+     "chaos": 34
+    },
+    {
+     "nome": "Astral Protection",
+     "chaos": 5
     }
    ]
   },
   {
    "mappa": "Lair of the Hydra",
-   "n": 2,
+   "nCarte": 3,
+   "valore": 94,
+   "media": 31.3,
+   "mediana": 34,
    "max": 55,
-   "somma": 89,
    "carte": [
     {
      "nome": "Perfection",
-     "chaos": 55,
-     "mappe": [
-      "Forge of the Phoenix",
-      "Lair of the Hydra",
-      "Maze of the Minotaur"
-     ]
+     "chaos": 55
     },
     {
      "nome": "The Everlasting",
-     "chaos": 34,
-     "mappe": [
-      "Forge of the Phoenix",
-      "Lair of the Hydra",
-      "Maze of the Minotaur",
-      "Pit of the Chimera"
-     ]
+     "chaos": 34
+    },
+    {
+     "nome": "Astral Protection",
+     "chaos": 5
     }
    ]
   },
   {
    "mappa": "Maze of the Minotaur",
-   "n": 2,
+   "nCarte": 3,
+   "valore": 94,
+   "media": 31.3,
+   "mediana": 34,
    "max": 55,
-   "somma": 89,
    "carte": [
     {
      "nome": "Perfection",
-     "chaos": 55,
-     "mappe": [
-      "Forge of the Phoenix",
-      "Lair of the Hydra",
-      "Maze of the Minotaur"
-     ]
+     "chaos": 55
     },
     {
      "nome": "The Everlasting",
-     "chaos": 34,
-     "mappe": [
-      "Forge of the Phoenix",
-      "Lair of the Hydra",
-      "Maze of the Minotaur",
-      "Pit of the Chimera"
-     ]
-    }
-   ]
-  },
-  {
-   "mappa": "Relic Chambers",
-   "n": 1,
-   "max": 81,
-   "somma": 81,
-   "carte": [
+     "chaos": 34
+    },
     {
-     "nome": "The Enlightened",
-     "chaos": 81,
-     "mappe": [
-      "Belfry",
-      "Relic Chambers",
-      "Sanctuary",
-      "Ziggurat"
-     ]
+     "nome": "Astral Protection",
+     "chaos": 5
     }
    ]
   },
   {
    "mappa": "Ziggurat",
-   "n": 1,
+   "nCarte": 4,
+   "valore": 93.5,
+   "media": 23.4,
+   "mediana": 5.3,
    "max": 81,
-   "somma": 81,
    "carte": [
     {
      "nome": "The Enlightened",
-     "chaos": 81,
-     "mappe": [
-      "Belfry",
-      "Relic Chambers",
-      "Sanctuary",
-      "Ziggurat"
-     ]
+     "chaos": 81
+    },
+    {
+     "nome": "Outfoxed",
+     "chaos": 5.3
+    },
+    {
+     "nome": "Misery in Darkness",
+     "chaos": 5.3
+    },
+    {
+     "nome": "Lucky Deck",
+     "chaos": 1.9
+    }
+   ]
+  },
+  {
+   "mappa": "Relic Chambers",
+   "nCarte": 3,
+   "valore": 85.6,
+   "media": 28.5,
+   "mediana": 3.3,
+   "max": 81,
+   "carte": [
+    {
+     "nome": "The Enlightened",
+     "chaos": 81
+    },
+    {
+     "nome": "Reflection of the Heart",
+     "chaos": 3.3
+    },
+    {
+     "nome": "The Union",
+     "chaos": 1.3
+    }
+   ]
+  },
+  {
+   "mappa": "Bazaar",
+   "nCarte": 3,
+   "valore": 84.2,
+   "media": 28.1,
+   "mediana": 23,
+   "max": 58,
+   "carte": [
+    {
+     "nome": "The Silly Boy",
+     "chaos": 58
+    },
+    {
+     "nome": "The Miracle",
+     "chaos": 23
+    },
+    {
+     "nome": "The Drunken Aristocrat",
+     "chaos": 3.2
     }
    ]
   },
   {
    "mappa": "Conservatory",
-   "n": 1,
+   "nCarte": 3,
+   "valore": 78,
+   "media": 26,
+   "mediana": 15,
    "max": 62,
-   "somma": 62,
    "carte": [
     {
      "nome": "The Forbidden Fruit",
-     "chaos": 62,
-     "mappe": [
-      "Conservatory",
-      "Terrace"
-     ]
+     "chaos": 62
+    },
+    {
+     "nome": "Peaceful Moments",
+     "chaos": 15
+    },
+    {
+     "nome": "The Porcupine",
+     "chaos": 1
+    }
+   ]
+  },
+  {
+   "mappa": "Vaal Pyramid",
+   "nCarte": 2,
+   "valore": 72,
+   "media": 36,
+   "mediana": 36.0,
+   "max": 71,
+   "carte": [
+    {
+     "nome": "The Damned",
+     "chaos": 71
+    },
+    {
+     "nome": "The Catalyst",
+     "chaos": 1
     }
    ]
   },
   {
    "mappa": "Terrace",
-   "n": 1,
+   "nCarte": 3,
+   "valore": 66.7,
+   "media": 22.2,
+   "mediana": 2.7,
    "max": 62,
-   "somma": 62,
    "carte": [
     {
      "nome": "The Forbidden Fruit",
-     "chaos": 62,
-     "mappe": [
-      "Conservatory",
-      "Terrace"
-     ]
+     "chaos": 62
+    },
+    {
+     "nome": "The Wilted Rose",
+     "chaos": 2.7
+    },
+    {
+     "nome": "The Fox in the Brambles",
+     "chaos": 2
+    }
+   ]
+  },
+  {
+   "mappa": "Colonnade",
+   "nCarte": 3,
+   "valore": 60.4,
+   "media": 20.1,
+   "mediana": 17,
+   "max": 42,
+   "carte": [
+    {
+     "nome": "The Dungeon Master",
+     "chaos": 42
+    },
+    {
+     "nome": "The Patient",
+     "chaos": 17
+    },
+    {
+     "nome": "The Traitor",
+     "chaos": 1.4
+    }
+   ]
+  },
+  {
+   "mappa": "Malformation",
+   "nCarte": 3,
+   "valore": 59,
+   "media": 19.7,
+   "mediana": 25,
+   "max": 29,
+   "carte": [
+    {
+     "nome": "The Prince of Darkness",
+     "chaos": 29
+    },
+    {
+     "nome": "Last Stand",
+     "chaos": 25
+    },
+    {
+     "nome": "The Insatiable",
+     "chaos": 5
+    }
+   ]
+  },
+  {
+   "mappa": "Fields",
+   "nCarte": 4,
+   "valore": 53,
+   "media": 13.2,
+   "mediana": 8.5,
+   "max": 35,
+   "carte": [
+    {
+     "nome": "The Fortunate",
+     "chaos": 35
+    },
+    {
+     "nome": "Tranquillity",
+     "chaos": 16
+    },
+    {
+     "nome": "The Fox",
+     "chaos": 1
+    },
+    {
+     "nome": "The Scarred Meadow",
+     "chaos": 1
+    }
+   ]
+  },
+  {
+   "mappa": "Cells",
+   "nCarte": 3,
+   "valore": 46.9,
+   "media": 15.6,
+   "mediana": 3.9,
+   "max": 42,
+   "carte": [
+    {
+     "nome": "The Dungeon Master",
+     "chaos": 42
+    },
+    {
+     "nome": "The Offering",
+     "chaos": 3.9
+    },
+    {
+     "nome": "The Chains that Bind",
+     "chaos": 1
+    }
+   ]
+  },
+  {
+   "mappa": "Primordial Pool",
+   "nCarte": 4,
+   "valore": 44.4,
+   "media": 11.1,
+   "mediana": 7.2,
+   "max": 29,
+   "carte": [
+    {
+     "nome": "The Prince of Darkness",
+     "chaos": 29
+    },
+    {
+     "nome": "The Eye of the Dragon",
+     "chaos": 12
+    },
+    {
+     "nome": "The Hunger",
+     "chaos": 2.4
+    },
+    {
+     "nome": "The Survivalist",
+     "chaos": 1
+    }
+   ]
+  },
+  {
+   "mappa": "Waterways",
+   "nCarte": 3,
+   "valore": 43,
+   "media": 14.3,
+   "mediana": 18,
+   "max": 24,
+   "carte": [
+    {
+     "nome": "Lachrymal Necrosis",
+     "chaos": 24
+    },
+    {
+     "nome": "Terrible Secret of Space",
+     "chaos": 18
+    },
+    {
+     "nome": "Desperate Crusade",
+     "chaos": 1
+    }
+   ]
+  },
+  {
+   "mappa": "Volcano",
+   "nCarte": 4,
+   "valore": 41.3,
+   "media": 10.3,
+   "mediana": 8.9,
+   "max": 22,
+   "carte": [
+    {
+     "nome": "Lonely Warrior",
+     "chaos": 22
+    },
+    {
+     "nome": "Pride Before the Fall",
+     "chaos": 9.1
+    },
+    {
+     "nome": "From Bone to Ashes",
+     "chaos": 8.7
+    },
+    {
+     "nome": "The Spark and the Flame",
+     "chaos": 1.5
+    }
+   ]
+  },
+  {
+   "mappa": "Dunes",
+   "nCarte": 4,
+   "valore": 39.8,
+   "media": 9.9,
+   "mediana": 1.8,
+   "max": 35,
+   "carte": [
+    {
+     "nome": "The Fortunate",
+     "chaos": 35
+    },
+    {
+     "nome": "Baited Expectations",
+     "chaos": 2.2
+    },
+    {
+     "nome": "Earth Drinker",
+     "chaos": 1.3
+    },
+    {
+     "nome": "Acclimatisation",
+     "chaos": 1.3
+    }
+   ]
+  },
+  {
+   "mappa": "Pit of the Chimera",
+   "nCarte": 3,
+   "valore": 39,
+   "media": 13,
+   "mediana": 4,
+   "max": 34,
+   "carte": [
+    {
+     "nome": "The Everlasting",
+     "chaos": 34
+    },
+    {
+     "nome": "A Familiar Call",
+     "chaos": 4
+    },
+    {
+     "nome": "Boon of the First Ones",
+     "chaos": 1
+    }
+   ]
+  },
+  {
+   "mappa": "Alleyways",
+   "nCarte": 3,
+   "valore": 35.7,
+   "media": 11.9,
+   "mediana": 2.4,
+   "max": 31,
+   "carte": [
+    {
+     "nome": "The Side Quest",
+     "chaos": 31
+    },
+    {
+     "nome": "The Gentleman",
+     "chaos": 2.4
+    },
+    {
+     "nome": "The Enthusiasts",
+     "chaos": 2.3
     }
    ]
   }
  ],
- "carteAnalizzate": 70
+ "carteAnalizzate": 395
 }

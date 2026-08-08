@@ -82,7 +82,8 @@
     <button data-f="normali">Solo normali T16</button>
     <button data-f="carte">Solo con carte</button>
     <select id="colora">
-      <option value="valore">Colora per valore totale</option>
+      <option value="valore">Colora per totale</option>
+      <option value="media">Colora per media</option>
       <option value="mediana">Colora per mediana</option>
       <option value="nCarte">Colora per numero di carte</option>
     </select>
@@ -96,8 +97,8 @@
   </div>
 
   <div class="avviso">
-    <b>Il totale premia la quantità, la mediana la qualità.</b> Una mappa con tre carte da 200, 30 e 20 chaos ha totale 250 e mediana 30: il totale dice quanto c'è da prendere in tutto, la mediana dice quanto vale la carta tipica. Se cerchi il colpo grosso guarda il massimo; se cerchi un flusso costante guarda la mediana.
-    <br><br><b>Nessuna delle due misura la frequenza di drop</b>, che non è pubblica: sono classifiche di potenziale, non di guadagno atteso.
+    <b>Totale, media e mediana dicono cose diverse.</b> Il <b>totale</b> è quanto vale l'intero bacino. La <b>media</b> viene tirata in alto da una sola carta cara. La <b>mediana</b> dice quanto vale la carta tipica ed è immune agli estremi. Quando media e mediana divergono di molto la mappa è un <b>tutto o niente</b>: Chateau ha media 74,7 e mediana 1 — una carta da 222 chaos e due da uno. Sanctuary invece ha media 158 e mediana 92,5 su quattro carte: paga davvero.
+    <br><br><b>Conteggio per difetto:</b> l'estrazione attribuisce al massimo 4 mappe per carta, quindi qualche accoppiamento manca. <b>E nessuna delle metriche misura la frequenza di drop</b>, che non è pubblica: sono classifiche di potenziale, non di guadagno atteso.
     <br><br><b>Le coordinate vengono da poeatlas.net</b> e sono precedenti alla 3.29, che ha rimescolato il pool. <span id="fuoriNota"></span>
   </div>
 
@@ -106,7 +107,8 @@
     <table id="cl">
       <thead><tr>
         <th data-k="nome">Mappa</th><th data-k="regione">Regione</th>
-        <th data-k="valore" class="n">Totale</th><th data-k="mediana" class="n">Mediana</th>
+        <th data-k="valore" class="n">Totale</th><th data-k="media" class="n">Media</th>
+        <th data-k="mediana" class="n">Mediana</th>
         <th data-k="nCarte" class="n">Carte</th><th>La più cara</th>
       </tr></thead>
       <tbody></tbody>
@@ -164,9 +166,13 @@ function pannello(){
     <h2>${n.nome}${n.unica?'<span class="tag">UNICA</span>':''}</h2>
     <div class="meta">${n.regione} · livello area ${n.livello} · tier max ${n.tierMax}</div>
     <div class="kpi">
-      <div><b>${n.valore||0} c</b><span>totale carte</span></div>
+      <div><b>${n.valore||0} c</b><span>totale · ${n.nCarte||0} carte</span></div>
+      <div><b>${n.max||0} c</b><span>la più cara</span></div>
+      <div><b>${n.media||0} c</b><span>media</span></div>
       <div><b>${n.mediana||0} c</b><span>mediana</span></div>
     </div>
+    ${n.nCarte>=3 && n.mediana>0 && n.media/n.mediana>=10
+      ? `<div style="font-size:.76rem;color:var(--gold);margin-bottom:.5rem">⚠ tutto o niente: una carta cara e il resto fondo di magazzino</div>` : ""}
     ${n.carte.length
       ? `<table>${n.carte.map(c=>`<tr><td>${c.nome}</td><td class="n">${c.chaos} c</td></tr>`).join("")}</table>`
       : `<div class="vuoto">Nessuna divination card sopra gli 8 chaos cade qui.</div>`}`;
@@ -179,7 +185,8 @@ function tabella(){
       <td>${n.nome}${n.unica?'<span class="tag">UNICA</span>':''}</td>
       <td style="color:var(--muted)">${n.regione}</td>
       <td class="n" style="color:var(--good)">${n.valore}</td>
-      <td class="n">${n.mediana}</td>
+      <td class="n">${n.media}</td>
+      <td class="n"${n.nCarte>=3 && n.mediana>0 && n.media/n.mediana>=10 ? ' style="color:var(--gold)"' : ''}>${n.mediana}</td>
       <td class="n">${n.nCarte}</td>
       <td style="color:var(--muted)">${n.carte[0]?n.carte[0].nome:""}</td>
     </tr>`).join("");

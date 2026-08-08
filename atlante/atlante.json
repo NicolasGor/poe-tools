@@ -26,7 +26,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 1,
@@ -46,7 +48,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 2,
@@ -61,10 +65,25 @@
     141,
     109
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Last Supper",
+     "chaos": 16
+    },
+    {
+     "nome": "Reflection of the Heart",
+     "chaos": 3.3
+    },
+    {
+     "nome": "The Primordial",
+     "chaos": 1
+    }
+   ],
+   "valore": 20.3,
+   "mediana": 3.3,
+   "nCarte": 3,
+   "media": 6.8,
+   "max": 16
   },
   {
    "i": 3,
@@ -83,10 +102,21 @@
     30,
     1
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Pack Leader",
+     "chaos": 6
+    },
+    {
+     "nome": "The Mountain",
+     "chaos": 1
+    }
+   ],
+   "valore": 7,
+   "mediana": 3.5,
+   "nCarte": 2,
+   "media": 3.5,
+   "max": 6
   },
   {
    "i": 4,
@@ -102,10 +132,21 @@
     96,
     7
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Energy Sword",
+     "chaos": 20
+    },
+    {
+     "nome": "The Aesthete",
+     "chaos": 2.8
+    }
+   ],
+   "valore": 22.8,
+   "mediana": 11.4,
+   "nCarte": 2,
+   "media": 11.4,
+   "max": 20
   },
   {
    "i": 5,
@@ -121,10 +162,29 @@
     82,
     64
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Heterochromia",
+     "chaos": 1.1
+    },
+    {
+     "nome": "The Wrath",
+     "chaos": 1.1
+    },
+    {
+     "nome": "The Battle Born",
+     "chaos": 1
+    },
+    {
+     "nome": "The Standoff",
+     "chaos": 1
+    }
+   ],
+   "valore": 4.2,
+   "mediana": 1.1,
+   "nCarte": 4,
+   "media": 1.1,
+   "max": 1.1
   },
   {
    "i": 6,
@@ -146,11 +206,21 @@
     {
      "nome": "The Sephirot",
      "chaos": 194
+    },
+    {
+     "nome": "Light and Truth",
+     "chaos": 5.1
+    },
+    {
+     "nome": "The Dapper Prodigy",
+     "chaos": 3
     }
    ],
-   "valore": 194,
-   "mediana": 194,
-   "nCarte": 1
+   "valore": 202.1,
+   "mediana": 5.1,
+   "nCarte": 3,
+   "media": 67.4,
+   "max": 194
   },
   {
    "i": 7,
@@ -167,10 +237,29 @@
     4,
     41
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Tumbleweed",
+     "chaos": 5
+    },
+    {
+     "nome": "Ambitious Obsession",
+     "chaos": 3
+    },
+    {
+     "nome": "Imperial Legacy",
+     "chaos": 2.2
+    },
+    {
+     "nome": "More is Never Enough",
+     "chaos": 1.4
+    }
+   ],
+   "valore": 11.6,
+   "mediana": 2.6,
+   "nCarte": 4,
+   "media": 2.9,
+   "max": 5
   },
   {
    "i": 8,
@@ -185,7 +274,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 9,
@@ -201,10 +292,17 @@
     52,
     32
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Rain Tempter",
+     "chaos": 1
+    }
+   ],
+   "valore": 1,
+   "mediana": 1,
+   "nCarte": 1,
+   "media": 1,
+   "max": 1
   },
   {
    "i": 10,
@@ -221,10 +319,25 @@
     47,
     66
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Road to Power",
+     "chaos": 6.3
+    },
+    {
+     "nome": "Etched in Blood",
+     "chaos": 4.4
+    },
+    {
+     "nome": "The Cursed King",
+     "chaos": 1
+    }
+   ],
+   "valore": 11.7,
+   "mediana": 4.4,
+   "nCarte": 3,
+   "media": 3.9,
+   "max": 6.3
   },
   {
    "i": 11,
@@ -241,10 +354,29 @@
     151,
     65
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Forgotten Treasure",
+     "chaos": 23
+    },
+    {
+     "nome": "The Opulent",
+     "chaos": 3.8
+    },
+    {
+     "nome": "Seven Years Bad Luck",
+     "chaos": 2.1
+    },
+    {
+     "nome": "The Bear Woman",
+     "chaos": 1
+    }
+   ],
+   "valore": 29.9,
+   "mediana": 3.0,
+   "nCarte": 4,
+   "media": 7.5,
+   "max": 23
   },
   {
    "i": 12,
@@ -264,7 +396,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 13,
@@ -281,10 +415,21 @@
     55,
     51
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Ambitious Obsession",
+     "chaos": 3
+    },
+    {
+     "nome": "The Fox",
+     "chaos": 1
+    }
+   ],
+   "valore": 4,
+   "mediana": 2.0,
+   "nCarte": 2,
+   "media": 2,
+   "max": 3
   },
   {
    "i": 14,
@@ -305,11 +450,21 @@
     {
      "nome": "The Nurse",
      "chaos": 139
+    },
+    {
+     "nome": "Draped in Dreams",
+     "chaos": 4.6
+    },
+    {
+     "nome": "The Hunger",
+     "chaos": 2.4
     }
    ],
-   "valore": 139,
-   "mediana": 139,
-   "nCarte": 1
+   "valore": 146.0,
+   "mediana": 4.6,
+   "nCarte": 3,
+   "media": 48.7,
+   "max": 139
   },
   {
    "i": 15,
@@ -328,7 +483,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 16,
@@ -356,7 +513,9 @@
    ],
    "valore": 238,
    "mediana": 119.0,
-   "nCarte": 2
+   "nCarte": 2,
+   "media": 119,
+   "max": 223
   },
   {
    "i": 17,
@@ -377,11 +536,25 @@
     {
      "nome": "Last Stand",
      "chaos": 25
+    },
+    {
+     "nome": "Merciless Armament",
+     "chaos": 5.2
+    },
+    {
+     "nome": "Dying Anguish",
+     "chaos": 1.1
+    },
+    {
+     "nome": "Three Faces in the Dark",
+     "chaos": 1
     }
    ],
-   "valore": 25,
-   "mediana": 25,
-   "nCarte": 1
+   "valore": 32.3,
+   "mediana": 3.2,
+   "nCarte": 4,
+   "media": 8.1,
+   "max": 25
   },
   {
    "i": 18,
@@ -401,11 +574,21 @@
     {
      "nome": "The Forbidden Fruit",
      "chaos": 62
+    },
+    {
+     "nome": "The Wilted Rose",
+     "chaos": 2.7
+    },
+    {
+     "nome": "The Fox in the Brambles",
+     "chaos": 2
     }
    ],
-   "valore": 62,
-   "mediana": 62,
-   "nCarte": 1
+   "valore": 66.7,
+   "mediana": 2.7,
+   "nCarte": 3,
+   "media": 22.2,
+   "max": 62
   },
   {
    "i": 19,
@@ -430,11 +613,17 @@
     {
      "nome": "Last Stand",
      "chaos": 25
+    },
+    {
+     "nome": "The Insatiable",
+     "chaos": 5
     }
    ],
-   "valore": 54,
-   "mediana": 27.0,
-   "nCarte": 2
+   "valore": 59,
+   "mediana": 25,
+   "nCarte": 3,
+   "media": 19.7,
+   "max": 29
   },
   {
    "i": 20,
@@ -451,7 +640,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 21,
@@ -468,7 +659,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 22,
@@ -485,10 +678,25 @@
     71,
     66
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Poet",
+     "chaos": 3.3
+    },
+    {
+     "nome": "Forbidden Power",
+     "chaos": 1
+    },
+    {
+     "nome": "The Sun",
+     "chaos": 1
+    }
+   ],
+   "valore": 5.3,
+   "mediana": 1,
+   "nCarte": 3,
+   "media": 1.8,
+   "max": 3.3
   },
   {
    "i": 23,
@@ -507,11 +715,17 @@
     {
      "nome": "Fire Of Unknown Origin",
      "chaos": 17
+    },
+    {
+     "nome": "The Tyrant",
+     "chaos": 1
     }
    ],
-   "valore": 17,
-   "mediana": 17,
-   "nCarte": 1
+   "valore": 18,
+   "mediana": 9.0,
+   "nCarte": 2,
+   "media": 9,
+   "max": 17
   },
   {
    "i": 24,
@@ -527,10 +741,21 @@
     61,
     50
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Lonely Warrior",
+     "chaos": 22
+    },
+    {
+     "nome": "Hope",
+     "chaos": 1
+    }
+   ],
+   "valore": 23,
+   "mediana": 11.5,
+   "nCarte": 2,
+   "media": 11.5,
+   "max": 22
   },
   {
    "i": 25,
@@ -551,7 +776,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 26,
@@ -571,7 +798,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 27,
@@ -591,11 +820,25 @@
     {
      "nome": "The Mad King",
      "chaos": 118
+    },
+    {
+     "nome": "The Fathomless Depths",
+     "chaos": 5
+    },
+    {
+     "nome": "The Messenger",
+     "chaos": 3.4
+    },
+    {
+     "nome": "More is Never Enough",
+     "chaos": 1.4
     }
    ],
-   "valore": 118,
-   "mediana": 118,
-   "nCarte": 1
+   "valore": 127.8,
+   "mediana": 4.2,
+   "nCarte": 4,
+   "media": 31.9,
+   "max": 118
   },
   {
    "i": 28,
@@ -614,7 +857,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 29,
@@ -630,10 +875,25 @@
     157,
     93
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Friendship",
+     "chaos": 24
+    },
+    {
+     "nome": "Bijoux",
+     "chaos": 2.4
+    },
+    {
+     "nome": "Three Voices",
+     "chaos": 1
+    }
+   ],
+   "valore": 27.4,
+   "mediana": 2.4,
+   "nCarte": 3,
+   "media": 9.1,
+   "max": 24
   },
   {
    "i": 30,
@@ -655,7 +915,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 31,
@@ -672,7 +934,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 32,
@@ -690,10 +954,29 @@
     31,
     9
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Garish Power",
+     "chaos": 14
+    },
+    {
+     "nome": "The Surgeon",
+     "chaos": 2.3
+    },
+    {
+     "nome": "The Brittle Emperor",
+     "chaos": 1
+    },
+    {
+     "nome": "Emperor of Purity",
+     "chaos": 1
+    }
+   ],
+   "valore": 18.3,
+   "mediana": 1.6,
+   "nCarte": 4,
+   "media": 4.6,
+   "max": 14
   },
   {
    "i": 33,
@@ -712,7 +995,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 34,
@@ -731,7 +1016,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 35,
@@ -748,10 +1035,21 @@
     42,
     19
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Tranquillity",
+     "chaos": 16
+    },
+    {
+     "nome": "The Scarred Meadow",
+     "chaos": 1
+    }
+   ],
+   "valore": 17,
+   "mediana": 8.5,
+   "nCarte": 2,
+   "media": 8.5,
+   "max": 16
   },
   {
    "i": 36,
@@ -768,10 +1066,21 @@
     81,
     1
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Last One Standing",
+     "chaos": 15
+    },
+    {
+     "nome": "The Gladiator",
+     "chaos": 1
+    }
+   ],
+   "valore": 16,
+   "mediana": 8.0,
+   "nCarte": 2,
+   "media": 8,
+   "max": 15
   },
   {
    "i": 37,
@@ -793,7 +1102,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 38,
@@ -809,10 +1120,25 @@
     126,
     125
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Who Asked",
+     "chaos": 8.2
+    },
+    {
+     "nome": "Gift of the Gemling Queen",
+     "chaos": 1
+    },
+    {
+     "nome": "Rats",
+     "chaos": 1
+    }
+   ],
+   "valore": 10.2,
+   "mediana": 1,
+   "nCarte": 3,
+   "media": 3.4,
+   "max": 8.2
   },
   {
    "i": 39,
@@ -833,7 +1159,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 40,
@@ -851,7 +1179,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 41,
@@ -872,11 +1202,25 @@
     {
      "nome": "The Prince of Darkness",
      "chaos": 29
+    },
+    {
+     "nome": "The Eye of the Dragon",
+     "chaos": 12
+    },
+    {
+     "nome": "The Hunger",
+     "chaos": 2.4
+    },
+    {
+     "nome": "The Survivalist",
+     "chaos": 1
     }
    ],
-   "valore": 29,
-   "mediana": 29,
-   "nCarte": 1
+   "valore": 44.4,
+   "mediana": 7.2,
+   "nCarte": 4,
+   "media": 11.1,
+   "max": 29
   },
   {
    "i": 42,
@@ -897,11 +1241,21 @@
     {
      "nome": "The Dungeon Master",
      "chaos": 42
+    },
+    {
+     "nome": "The Patient",
+     "chaos": 17
+    },
+    {
+     "nome": "The Traitor",
+     "chaos": 1.4
     }
    ],
-   "valore": 42,
-   "mediana": 42,
-   "nCarte": 1
+   "valore": 60.4,
+   "mediana": 17,
+   "nCarte": 3,
+   "media": 20.1,
+   "max": 42
   },
   {
    "i": 43,
@@ -919,10 +1273,21 @@
     28,
     17
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Wolf",
+     "chaos": 1
+    },
+    {
+     "nome": "The Watcher",
+     "chaos": 1
+    }
+   ],
+   "valore": 2,
+   "mediana": 1.0,
+   "nCarte": 2,
+   "media": 1,
+   "max": 1
   },
   {
    "i": 44,
@@ -942,13 +1307,23 @@
    ],
    "carte": [
     {
-     "nome": "Lucky Bastion",
-     "chaos": 9.8
+     "nome": "The Last Laugh",
+     "chaos": 4.8
+    },
+    {
+     "nome": "The Traitor",
+     "chaos": 1.4
+    },
+    {
+     "nome": "Jack in the Box",
+     "chaos": 1
     }
    ],
-   "valore": 9.8,
-   "mediana": 9.8,
-   "nCarte": 1
+   "valore": 7.2,
+   "mediana": 1.4,
+   "nCarte": 3,
+   "media": 2.4,
+   "max": 4.8
   },
   {
    "i": 45,
@@ -964,10 +1339,25 @@
     61,
     50
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Peaceful Moments",
+     "chaos": 15
+    },
+    {
+     "nome": "The Wilted Rose",
+     "chaos": 2.7
+    },
+    {
+     "nome": "Brotherhood in Exile",
+     "chaos": 1.9
+    }
+   ],
+   "valore": 19.6,
+   "mediana": 2.7,
+   "nCarte": 3,
+   "media": 6.5,
+   "max": 15
   },
   {
    "i": 46,
@@ -984,7 +1374,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 47,
@@ -1006,7 +1398,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 48,
@@ -1025,11 +1419,21 @@
     {
      "nome": "Fire Of Unknown Origin",
      "chaos": 17
+    },
+    {
+     "nome": "The Drunken Aristocrat",
+     "chaos": 3.2
+    },
+    {
+     "nome": "Lucky Connections",
+     "chaos": 1
     }
    ],
-   "valore": 17,
-   "mediana": 17,
-   "nCarte": 1
+   "valore": 21.2,
+   "mediana": 3.2,
+   "nCarte": 3,
+   "media": 7.1,
+   "max": 17
   },
   {
    "i": 49,
@@ -1049,7 +1453,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 50,
@@ -1069,7 +1475,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 51,
@@ -1086,10 +1494,21 @@
     12,
     13
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Tumbleweed",
+     "chaos": 5
+    },
+    {
+     "nome": "The Brittle Emperor",
+     "chaos": 1
+    }
+   ],
+   "valore": 6,
+   "mediana": 3.0,
+   "nCarte": 2,
+   "media": 3,
+   "max": 5
   },
   {
    "i": 52,
@@ -1105,10 +1524,25 @@
     33,
     9
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Draped in Dreams",
+     "chaos": 4.6
+    },
+    {
+     "nome": "Echoes of Love",
+     "chaos": 3.5
+    },
+    {
+     "nome": "The Surgeon",
+     "chaos": 2.3
+    }
+   ],
+   "valore": 10.4,
+   "mediana": 3.5,
+   "nCarte": 3,
+   "media": 3.5,
+   "max": 4.6
   },
   {
    "i": 53,
@@ -1132,11 +1566,17 @@
     {
      "nome": "A Modest Request",
      "chaos": 60
+    },
+    {
+     "nome": "The Life Thief",
+     "chaos": 23
     }
    ],
-   "valore": 141,
-   "mediana": 70.5,
-   "nCarte": 2
+   "valore": 164,
+   "mediana": 60,
+   "nCarte": 3,
+   "media": 54.7,
+   "max": 81
   },
   {
    "i": 54,
@@ -1163,11 +1603,17 @@
     {
      "nome": "Home",
      "chaos": 55
+    },
+    {
+     "nome": "The Spark and the Flame",
+     "chaos": 1.5
     }
    ],
-   "valore": 113,
-   "mediana": 56.5,
-   "nCarte": 2
+   "valore": 114.5,
+   "mediana": 55,
+   "nCarte": 3,
+   "media": 38.2,
+   "max": 58
   },
   {
    "i": 55,
@@ -1185,7 +1631,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 56,
@@ -1203,10 +1651,25 @@
     3,
     6
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Fishmonger",
+     "chaos": 6.3
+    },
+    {
+     "nome": "The Professor",
+     "chaos": 2.9
+    },
+    {
+     "nome": "The Undaunted",
+     "chaos": 1.9
+    }
+   ],
+   "valore": 11.1,
+   "mediana": 2.9,
+   "nCarte": 3,
+   "media": 3.7,
+   "max": 6.3
   },
   {
    "i": 57,
@@ -1223,7 +1686,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 58,
@@ -1245,11 +1710,25 @@
     {
      "nome": "Temperance",
      "chaos": 104
+    },
+    {
+     "nome": "One Last Score",
+     "chaos": 2.5
+    },
+    {
+     "nome": "Blind Venture",
+     "chaos": 1.4
+    },
+    {
+     "nome": "A Dab of Ink",
+     "chaos": 1
     }
    ],
-   "valore": 104,
-   "mediana": 104,
-   "nCarte": 1
+   "valore": 108.9,
+   "mediana": 1.9,
+   "nCarte": 4,
+   "media": 27.2,
+   "max": 104
   },
   {
    "i": 59,
@@ -1269,7 +1748,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 60,
@@ -1286,7 +1767,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 61,
@@ -1303,10 +1786,17 @@
     24,
     22
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The One With All",
+     "chaos": 3
+    }
+   ],
+   "valore": 3,
+   "mediana": 3,
+   "nCarte": 1,
+   "media": 3,
+   "max": 3
   },
   {
    "i": 62,
@@ -1322,10 +1812,29 @@
     94,
     39
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Chaotic Disposition",
+     "chaos": 4.3
+    },
+    {
+     "nome": "The Gambler",
+     "chaos": 1
+    },
+    {
+     "nome": "The Cache",
+     "chaos": 1
+    },
+    {
+     "nome": "The Hoarder",
+     "chaos": 1
+    }
+   ],
+   "valore": 7.3,
+   "mediana": 1.0,
+   "nCarte": 4,
+   "media": 1.8,
+   "max": 4.3
   },
   {
    "i": 63,
@@ -1342,10 +1851,25 @@
     76,
     59
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Pride Before the Fall",
+     "chaos": 9.1
+    },
+    {
+     "nome": "From Bone to Ashes",
+     "chaos": 8.7
+    },
+    {
+     "nome": "Hope",
+     "chaos": 1
+    }
+   ],
+   "valore": 18.8,
+   "mediana": 8.7,
+   "nCarte": 3,
+   "media": 6.3,
+   "max": 9.1
   },
   {
    "i": 64,
@@ -1362,10 +1886,25 @@
     5,
     154
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "I See Brothers",
+     "chaos": 1.8
+    },
+    {
+     "nome": "The Wind",
+     "chaos": 1
+    },
+    {
+     "nome": "Rain of Chaos",
+     "chaos": 1
+    }
+   ],
+   "valore": 3.8,
+   "mediana": 1,
+   "nCarte": 3,
+   "media": 1.3,
+   "max": 1.8
   },
   {
    "i": 65,
@@ -1384,7 +1923,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 66,
@@ -1404,11 +1945,21 @@
     {
      "nome": "Lachrymal Necrosis",
      "chaos": 24
+    },
+    {
+     "nome": "Terrible Secret of Space",
+     "chaos": 18
+    },
+    {
+     "nome": "Desperate Crusade",
+     "chaos": 1
     }
    ],
-   "valore": 24,
-   "mediana": 24,
-   "nCarte": 1
+   "valore": 43,
+   "mediana": 18,
+   "nCarte": 3,
+   "media": 14.3,
+   "max": 24
   },
   {
    "i": 67,
@@ -1427,7 +1978,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 68,
@@ -1444,7 +1997,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 69,
@@ -1467,7 +2022,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 70,
@@ -1483,10 +2040,25 @@
     126,
     125
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Chaotic Disposition",
+     "chaos": 4.3
+    },
+    {
+     "nome": "The Gambler",
+     "chaos": 1
+    },
+    {
+     "nome": "The Hoarder",
+     "chaos": 1
+    }
+   ],
+   "valore": 6.3,
+   "mediana": 1,
+   "nCarte": 3,
+   "media": 2.1,
+   "max": 4.3
   },
   {
    "i": 71,
@@ -1502,10 +2074,21 @@
     22,
     9
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Lake",
+     "chaos": 15
+    },
+    {
+     "nome": "The Scout",
+     "chaos": 1
+    }
+   ],
+   "valore": 16,
+   "mediana": 8.0,
+   "nCarte": 2,
+   "media": 8,
+   "max": 15
   },
   {
    "i": 72,
@@ -1524,7 +2107,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 73,
@@ -1544,7 +2129,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 74,
@@ -1561,7 +2148,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 75,
@@ -1581,7 +2170,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 76,
@@ -1600,7 +2191,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 77,
@@ -1615,10 +2208,25 @@
     137,
     40
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Terrible Secret of Space",
+     "chaos": 18
+    },
+    {
+     "nome": "The Rite of Elements",
+     "chaos": 4.3
+    },
+    {
+     "nome": "The Endurance",
+     "chaos": 3
+    }
+   ],
+   "valore": 25.3,
+   "mediana": 4.3,
+   "nCarte": 3,
+   "media": 8.4,
+   "max": 18
   },
   {
    "i": 78,
@@ -1635,7 +2243,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 79,
@@ -1660,13 +2270,15 @@
      "chaos": 71
     },
     {
-     "nome": "Unrequited Love",
-     "chaos": 32
+     "nome": "The Catalyst",
+     "chaos": 1
     }
    ],
-   "valore": 103,
-   "mediana": 51.5,
-   "nCarte": 2
+   "valore": 72,
+   "mediana": 36.0,
+   "nCarte": 2,
+   "media": 36,
+   "max": 71
   },
   {
    "i": 80,
@@ -1685,7 +2297,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 81,
@@ -1704,10 +2318,29 @@
     36,
     6
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Death",
+     "chaos": 17
+    },
+    {
+     "nome": "The Throne",
+     "chaos": 2
+    },
+    {
+     "nome": "The Feast",
+     "chaos": 1.9
+    },
+    {
+     "nome": "The Offspring",
+     "chaos": 1.8
+    }
+   ],
+   "valore": 22.7,
+   "mediana": 1.9,
+   "nCarte": 4,
+   "media": 5.7,
+   "max": 17
   },
   {
    "i": 82,
@@ -1723,10 +2356,29 @@
     12,
     5
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Academic",
+     "chaos": 2.8
+    },
+    {
+     "nome": "The Polymath",
+     "chaos": 1.9
+    },
+    {
+     "nome": "Destined to Crumble",
+     "chaos": 1
+    },
+    {
+     "nome": "The Scholar",
+     "chaos": 1
+    }
+   ],
+   "valore": 6.7,
+   "mediana": 1.4,
+   "nCarte": 4,
+   "media": 1.7,
+   "max": 2.8
   },
   {
    "i": 83,
@@ -1756,13 +2408,15 @@
      "chaos": 23
     },
     {
-     "nome": "The Slumbering Beast",
-     "chaos": 12
+     "nome": "The Drunken Aristocrat",
+     "chaos": 3.2
     }
    ],
-   "valore": 93,
+   "valore": 84.2,
    "mediana": 23,
-   "nCarte": 3
+   "nCarte": 3,
+   "media": 28.1,
+   "max": 58
   },
   {
    "i": 84,
@@ -1783,11 +2437,25 @@
     {
      "nome": "Mawr Blaidd",
      "chaos": 131
+    },
+    {
+     "nome": "Call to the First Ones",
+     "chaos": 2.1
+    },
+    {
+     "nome": "The Explorer",
+     "chaos": 1
+    },
+    {
+     "nome": "The Demoness",
+     "chaos": 1
     }
    ],
-   "valore": 131,
-   "mediana": 131,
-   "nCarte": 1
+   "valore": 135.1,
+   "mediana": 1.6,
+   "nCarte": 4,
+   "media": 33.8,
+   "max": 131
   },
   {
    "i": 85,
@@ -1803,10 +2471,29 @@
     83,
     64
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Matryoshka",
+     "chaos": 24
+    },
+    {
+     "nome": "The Awakened",
+     "chaos": 3.3
+    },
+    {
+     "nome": "The Fox in the Brambles",
+     "chaos": 2
+    },
+    {
+     "nome": "Rain Tempter",
+     "chaos": 1
+    }
+   ],
+   "valore": 30.3,
+   "mediana": 2.6,
+   "nCarte": 4,
+   "media": 7.6,
+   "max": 24
   },
   {
    "i": 86,
@@ -1823,7 +2510,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 87,
@@ -1845,7 +2534,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 88,
@@ -1862,7 +2553,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 89,
@@ -1885,7 +2578,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 90,
@@ -1902,7 +2597,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 91,
@@ -1923,11 +2620,25 @@
     {
      "nome": "The Fortunate",
      "chaos": 35
+    },
+    {
+     "nome": "Baited Expectations",
+     "chaos": 2.2
+    },
+    {
+     "nome": "Earth Drinker",
+     "chaos": 1.3
+    },
+    {
+     "nome": "Acclimatisation",
+     "chaos": 1.3
     }
    ],
-   "valore": 35,
-   "mediana": 35,
-   "nCarte": 1
+   "valore": 39.8,
+   "mediana": 1.8,
+   "nCarte": 4,
+   "media": 9.9,
+   "max": 35
   },
   {
    "i": 92,
@@ -1943,10 +2654,29 @@
     99,
     55
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Lingering Remnants",
+     "chaos": 4.2
+    },
+    {
+     "nome": "The Warlord",
+     "chaos": 2.3
+    },
+    {
+     "nome": "The Traitor",
+     "chaos": 1.4
+    },
+    {
+     "nome": "Jack in the Box",
+     "chaos": 1
+    }
+   ],
+   "valore": 8.9,
+   "mediana": 1.8,
+   "nCarte": 4,
+   "media": 2.2,
+   "max": 4.2
   },
   {
    "i": 93,
@@ -1970,7 +2700,9 @@
    ],
    "valore": 222,
    "mediana": 222,
-   "nCarte": 1
+   "nCarte": 1,
+   "media": 222,
+   "max": 222
   },
   {
    "i": 94,
@@ -1990,7 +2722,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 95,
@@ -2007,10 +2741,25 @@
     64,
     14
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Vast",
+     "chaos": 4.4
+    },
+    {
+     "nome": "Lingering Remnants",
+     "chaos": 4.2
+    },
+    {
+     "nome": "The Tyrant",
+     "chaos": 1
+    }
+   ],
+   "valore": 9.6,
+   "mediana": 4.2,
+   "nCarte": 3,
+   "media": 3.2,
+   "max": 4.4
   },
   {
    "i": 96,
@@ -2030,11 +2779,21 @@
     {
      "nome": "The Dungeon Master",
      "chaos": 42
+    },
+    {
+     "nome": "The Offering",
+     "chaos": 3.9
+    },
+    {
+     "nome": "The Chains that Bind",
+     "chaos": 1
     }
    ],
-   "valore": 42,
-   "mediana": 42,
-   "nCarte": 1
+   "valore": 46.9,
+   "mediana": 3.9,
+   "nCarte": 3,
+   "media": 15.6,
+   "max": 42
   },
   {
    "i": 97,
@@ -2053,7 +2812,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 98,
@@ -2070,7 +2831,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 99,
@@ -2089,10 +2852,21 @@
     76,
     98
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Opulent",
+     "chaos": 3.8
+    },
+    {
+     "nome": "The Innocent",
+     "chaos": 1.3
+    }
+   ],
+   "valore": 5.1,
+   "mediana": 2.5,
+   "nCarte": 2,
+   "media": 2.5,
+   "max": 3.8
   },
   {
    "i": 100,
@@ -2109,7 +2883,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 101,
@@ -2129,7 +2905,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 102,
@@ -2150,11 +2928,25 @@
     {
      "nome": "The Destination",
      "chaos": 100
+    },
+    {
+     "nome": "The Old Man",
+     "chaos": 20
+    },
+    {
+     "nome": "The Vast",
+     "chaos": 4.4
+    },
+    {
+     "nome": "The Wind",
+     "chaos": 1
     }
    ],
-   "valore": 100,
-   "mediana": 100,
-   "nCarte": 1
+   "valore": 125.4,
+   "mediana": 12.2,
+   "nCarte": 4,
+   "media": 31.4,
+   "max": 100
   },
   {
    "i": 103,
@@ -2177,7 +2969,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 104,
@@ -2197,7 +2991,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 105,
@@ -2213,10 +3009,21 @@
     85,
     83
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Poisoned Faith",
+     "chaos": 3.2
+    },
+    {
+     "nome": "The Dark Mage",
+     "chaos": 2.6
+    }
+   ],
+   "valore": 5.8,
+   "mediana": 2.9,
+   "nCarte": 2,
+   "media": 2.9,
+   "max": 3.2
   },
   {
    "i": 106,
@@ -2234,10 +3041,21 @@
     23,
     36
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Celestial Justicar",
+     "chaos": 3.8
+    },
+    {
+     "nome": "No Traces",
+     "chaos": 1
+    }
+   ],
+   "valore": 4.8,
+   "mediana": 2.4,
+   "nCarte": 2,
+   "media": 2.4,
+   "max": 3.8
   },
   {
    "i": 107,
@@ -2252,10 +3070,21 @@
     26,
     155
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Light and Truth",
+     "chaos": 5.1
+    },
+    {
+     "nome": "The Unexpected Prize",
+     "chaos": 2
+    }
+   ],
+   "valore": 7.1,
+   "mediana": 3.5,
+   "nCarte": 2,
+   "media": 3.5,
+   "max": 5.1
   },
   {
    "i": 108,
@@ -2276,7 +3105,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 109,
@@ -2293,10 +3124,25 @@
     2,
     25
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Death",
+     "chaos": 17
+    },
+    {
+     "nome": "The Darkest Dream",
+     "chaos": 5
+    },
+    {
+     "nome": "Toxic Tidings",
+     "chaos": 4.2
+    }
+   ],
+   "valore": 26.2,
+   "mediana": 5,
+   "nCarte": 3,
+   "media": 8.7,
+   "max": 17
   },
   {
    "i": 110,
@@ -2313,7 +3159,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 111,
@@ -2332,7 +3180,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 112,
@@ -2350,10 +3200,29 @@
     99,
     15
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Transformation",
+     "chaos": 5.1
+    },
+    {
+     "nome": "The Awakened",
+     "chaos": 3.3
+    },
+    {
+     "nome": "The Blazing Fire",
+     "chaos": 1
+    },
+    {
+     "nome": "The Journalist",
+     "chaos": 1
+    }
+   ],
+   "valore": 10.4,
+   "mediana": 2.1,
+   "nCarte": 4,
+   "media": 2.6,
+   "max": 5.1
   },
   {
    "i": 113,
@@ -2374,11 +3243,21 @@
     {
      "nome": "The Destination",
      "chaos": 100
+    },
+    {
+     "nome": "The Old Man",
+     "chaos": 20
+    },
+    {
+     "nome": "Desperate Crusade",
+     "chaos": 1
     }
    ],
-   "valore": 100,
-   "mediana": 100,
-   "nCarte": 1
+   "valore": 121,
+   "mediana": 20,
+   "nCarte": 3,
+   "media": 40.3,
+   "max": 100
   },
   {
    "i": 114,
@@ -2394,10 +3273,25 @@
     138,
     30
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Bitter Blossom",
+     "chaos": 13
+    },
+    {
+     "nome": "The Darkest Dream",
+     "chaos": 5
+    },
+    {
+     "nome": "The Standoff",
+     "chaos": 1
+    }
+   ],
+   "valore": 19,
+   "mediana": 5,
+   "nCarte": 3,
+   "media": 6.3,
+   "max": 13
   },
   {
    "i": 115,
@@ -2417,11 +3311,25 @@
     {
      "nome": "The Fortunate",
      "chaos": 35
+    },
+    {
+     "nome": "Tranquillity",
+     "chaos": 16
+    },
+    {
+     "nome": "The Fox",
+     "chaos": 1
+    },
+    {
+     "nome": "The Scarred Meadow",
+     "chaos": 1
     }
    ],
-   "valore": 35,
-   "mediana": 35,
-   "nCarte": 1
+   "valore": 53,
+   "mediana": 8.5,
+   "nCarte": 4,
+   "media": 13.2,
+   "max": 35
   },
   {
    "i": 116,
@@ -2440,11 +3348,21 @@
     {
      "nome": "The Forbidden Fruit",
      "chaos": 62
+    },
+    {
+     "nome": "Peaceful Moments",
+     "chaos": 15
+    },
+    {
+     "nome": "The Porcupine",
+     "chaos": 1
     }
    ],
-   "valore": 62,
-   "mediana": 62,
-   "nCarte": 1
+   "valore": 78,
+   "mediana": 15,
+   "nCarte": 3,
+   "media": 26,
+   "max": 62
   },
   {
    "i": 117,
@@ -2464,7 +3382,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 118,
@@ -2483,7 +3403,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 119,
@@ -2499,10 +3421,29 @@
     30,
     1
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Lonely Warrior",
+     "chaos": 22
+    },
+    {
+     "nome": "Pride Before the Fall",
+     "chaos": 9.1
+    },
+    {
+     "nome": "From Bone to Ashes",
+     "chaos": 8.7
+    },
+    {
+     "nome": "The Spark and the Flame",
+     "chaos": 1.5
+    }
+   ],
+   "valore": 41.3,
+   "mediana": 8.9,
+   "nCarte": 4,
+   "media": 10.3,
+   "max": 22
   },
   {
    "i": 120,
@@ -2522,7 +3463,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 121,
@@ -2539,7 +3482,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 122,
@@ -2556,7 +3501,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 123,
@@ -2572,10 +3519,25 @@
     106,
     73
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Oath",
+     "chaos": 2
+    },
+    {
+     "nome": "Checkmate",
+     "chaos": 1
+    },
+    {
+     "nome": "Thirst for Knowledge",
+     "chaos": 1
+    }
+   ],
+   "valore": 4,
+   "mediana": 1,
+   "nCarte": 3,
+   "media": 1.3,
+   "max": 2
   },
   {
    "i": 124,
@@ -2602,11 +3564,21 @@
     {
      "nome": "The Leviathan",
      "chaos": 53
+    },
+    {
+     "nome": "The Formless Sea",
+     "chaos": 14
+    },
+    {
+     "nome": "Rain Tempter",
+     "chaos": 1
     }
    ],
-   "valore": 181,
-   "mediana": 90.5,
-   "nCarte": 2
+   "valore": 196,
+   "mediana": 33.5,
+   "nCarte": 4,
+   "media": 49,
+   "max": 128
   },
   {
    "i": 125,
@@ -2629,13 +3601,19 @@
      "chaos": 222
     },
     {
-     "nome": "The Slumbering Beast",
-     "chaos": 12
+     "nome": "The Price of Protection",
+     "chaos": 1
+    },
+    {
+     "nome": "The Bear Woman",
+     "chaos": 1
     }
    ],
-   "valore": 234,
-   "mediana": 117.0,
-   "nCarte": 2
+   "valore": 224,
+   "mediana": 1,
+   "nCarte": 3,
+   "media": 74.7,
+   "max": 222
   },
   {
    "i": 126,
@@ -2655,11 +3633,21 @@
     {
      "nome": "The Enlightened",
      "chaos": 81
+    },
+    {
+     "nome": "Reflection of the Heart",
+     "chaos": 3.3
+    },
+    {
+     "nome": "The Union",
+     "chaos": 1.3
     }
    ],
-   "valore": 81,
-   "mediana": 81,
-   "nCarte": 1
+   "valore": 85.6,
+   "mediana": 3.3,
+   "nCarte": 3,
+   "media": 28.5,
+   "max": 81
   },
   {
    "i": 127,
@@ -2683,11 +3671,17 @@
     {
      "nome": "Home",
      "chaos": 55
+    },
+    {
+     "nome": "The Sigil",
+     "chaos": 1
     }
    ],
-   "valore": 195,
-   "mediana": 97.5,
-   "nCarte": 2
+   "valore": 196,
+   "mediana": 55,
+   "nCarte": 3,
+   "media": 65.3,
+   "max": 140
   },
   {
    "i": 128,
@@ -2712,11 +3706,21 @@
     {
      "nome": "The Miracle",
      "chaos": 23
+    },
+    {
+     "nome": "Deadly Joy",
+     "chaos": 4.5
+    },
+    {
+     "nome": "I See Brothers",
+     "chaos": 1.8
     }
    ],
-   "valore": 163,
-   "mediana": 81.5,
-   "nCarte": 2
+   "valore": 169.3,
+   "mediana": 13.8,
+   "nCarte": 4,
+   "media": 42.3,
+   "max": 140
   },
   {
    "i": 129,
@@ -2735,13 +3739,23 @@
    ],
    "carte": [
     {
-     "nome": "The Demon",
-     "chaos": 14
+     "nome": "The Lion",
+     "chaos": 1.4
+    },
+    {
+     "nome": "When Currents Blaze",
+     "chaos": 1.3
+    },
+    {
+     "nome": "Bound by Flame",
+     "chaos": 1.2
     }
    ],
-   "valore": 14,
-   "mediana": 14,
-   "nCarte": 1
+   "valore": 3.9,
+   "mediana": 1.3,
+   "nCarte": 3,
+   "media": 1.3,
+   "max": 1.4
   },
   {
    "i": 130,
@@ -2757,10 +3771,25 @@
     6,
     27
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Doctor",
+     "chaos": 5.4
+    },
+    {
+     "nome": "The Brawny Battle Mage",
+     "chaos": 4.6
+    },
+    {
+     "nome": "The Betrayal",
+     "chaos": 1
+    }
+   ],
+   "valore": 11.0,
+   "mediana": 4.6,
+   "nCarte": 3,
+   "media": 3.7,
+   "max": 5.4
   },
   {
    "i": 131,
@@ -2777,10 +3806,29 @@
     43,
     11
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Matryoshka",
+     "chaos": 24
+    },
+    {
+     "nome": "The Last Laugh",
+     "chaos": 4.8
+    },
+    {
+     "nome": "The Return of the Rat",
+     "chaos": 3
+    },
+    {
+     "nome": "Lucky Connections",
+     "chaos": 1
+    }
+   ],
+   "valore": 32.8,
+   "mediana": 3.9,
+   "nCarte": 4,
+   "media": 8.2,
+   "max": 24
   },
   {
    "i": 132,
@@ -2799,7 +3847,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 133,
@@ -2817,7 +3867,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 134,
@@ -2832,10 +3884,25 @@
     113,
     17
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Runic Luck",
+     "chaos": 1
+    },
+    {
+     "nome": "Volatile Power",
+     "chaos": 1
+    },
+    {
+     "nome": "A Sea of Blue",
+     "chaos": 1
+    }
+   ],
+   "valore": 3,
+   "mediana": 1,
+   "nCarte": 3,
+   "media": 1,
+   "max": 1
   },
   {
    "i": 135,
@@ -2854,10 +3921,25 @@
     44,
     37
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Treasure Hunter",
+     "chaos": 2.8
+    },
+    {
+     "nome": "The Mercenary",
+     "chaos": 2.1
+    },
+    {
+     "nome": "The Dragon",
+     "chaos": 1
+    }
+   ],
+   "valore": 5.9,
+   "mediana": 2.1,
+   "nCarte": 3,
+   "media": 2.0,
+   "max": 2.8
   },
   {
    "i": 136,
@@ -2876,13 +3958,23 @@
    ],
    "carte": [
     {
-     "nome": "The Apothecary",
-     "chaos": 41
+     "nome": "The Last Supper",
+     "chaos": 16
+    },
+    {
+     "nome": "The Summoner",
+     "chaos": 1
+    },
+    {
+     "nome": "The Journalist",
+     "chaos": 1
     }
    ],
-   "valore": 41,
-   "mediana": 41,
-   "nCarte": 1
+   "valore": 18,
+   "mediana": 1,
+   "nCarte": 3,
+   "media": 6,
+   "max": 16
   },
   {
    "i": 137,
@@ -2900,10 +3992,25 @@
     71,
     35
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Long Watch",
+     "chaos": 4
+    },
+    {
+     "nome": "The Whiteout",
+     "chaos": 2.8
+    },
+    {
+     "nome": "Mitts",
+     "chaos": 1
+    }
+   ],
+   "valore": 7.8,
+   "mediana": 2.8,
+   "nCarte": 3,
+   "media": 2.6,
+   "max": 4
   },
   {
    "i": 138,
@@ -2921,10 +4028,29 @@
     30,
     153
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Warden",
+     "chaos": 1.2
+    },
+    {
+     "nome": "The Survivalist",
+     "chaos": 1
+    },
+    {
+     "nome": "Man With Bear",
+     "chaos": 1
+    },
+    {
+     "nome": "Glimmer of Hope",
+     "chaos": 1
+    }
+   ],
+   "valore": 4.2,
+   "mediana": 1.0,
+   "nCarte": 4,
+   "media": 1.1,
+   "max": 1.2
   },
   {
    "i": 139,
@@ -2940,10 +4066,25 @@
     102,
     129
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Fathomless Depths",
+     "chaos": 5
+    },
+    {
+     "nome": "The Primordial",
+     "chaos": 1
+    },
+    {
+     "nome": "Glimmer of Hope",
+     "chaos": 1
+    }
+   ],
+   "valore": 7,
+   "mediana": 1,
+   "nCarte": 3,
+   "media": 2.3,
+   "max": 5
   },
   {
    "i": 140,
@@ -2960,10 +4101,17 @@
     47,
     32
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Eye of the Dragon",
+     "chaos": 12
+    }
+   ],
+   "valore": 12,
+   "mediana": 12,
+   "nCarte": 1,
+   "media": 12,
+   "max": 12
   },
   {
    "i": 141,
@@ -2982,10 +4130,29 @@
     2,
     7
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Gift of Asenath",
+     "chaos": 6
+    },
+    {
+     "nome": "Baited Expectations",
+     "chaos": 2.2
+    },
+    {
+     "nome": "Imperial Legacy",
+     "chaos": 2.2
+    },
+    {
+     "nome": "Earth Drinker",
+     "chaos": 1.3
+    }
+   ],
+   "valore": 11.7,
+   "mediana": 2.2,
+   "nCarte": 4,
+   "media": 2.9,
+   "max": 6
   },
   {
    "i": 142,
@@ -3005,7 +4172,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 143,
@@ -3026,11 +4195,21 @@
     {
      "nome": "The Side Quest",
      "chaos": 31
+    },
+    {
+     "nome": "The Gentleman",
+     "chaos": 2.4
+    },
+    {
+     "nome": "The Enthusiasts",
+     "chaos": 2.3
     }
    ],
-   "valore": 31,
-   "mediana": 31,
-   "nCarte": 1
+   "valore": 35.7,
+   "mediana": 2.4,
+   "nCarte": 3,
+   "media": 11.9,
+   "max": 31
   },
   {
    "i": 144,
@@ -3049,7 +4228,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 145,
@@ -3071,11 +4252,17 @@
     {
      "nome": "Damnation",
      "chaos": 433
+    },
+    {
+     "nome": "The One With All",
+     "chaos": 3
     }
    ],
-   "valore": 433,
-   "mediana": 433,
-   "nCarte": 1
+   "valore": 436,
+   "mediana": 218.0,
+   "nCarte": 2,
+   "media": 218,
+   "max": 433
   },
   {
    "i": 146,
@@ -3094,11 +4281,17 @@
     {
      "nome": "Lachrymal Necrosis",
      "chaos": 24
+    },
+    {
+     "nome": "The Rite of Elements",
+     "chaos": 4.3
     }
    ],
-   "valore": 24,
-   "mediana": 24,
-   "nCarte": 1
+   "valore": 28.3,
+   "mediana": 14.2,
+   "nCarte": 2,
+   "media": 14.2,
+   "max": 24
   },
   {
    "i": 147,
@@ -3116,10 +4309,25 @@
     24,
     153
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Catch",
+     "chaos": 8.2
+    },
+    {
+     "nome": "Outfoxed",
+     "chaos": 5.3
+    },
+    {
+     "nome": "The One That Got Away",
+     "chaos": 1.5
+    }
+   ],
+   "valore": 15.0,
+   "mediana": 5.3,
+   "nCarte": 3,
+   "media": 5.0,
+   "max": 8.2
   },
   {
    "i": 148,
@@ -3134,10 +4342,29 @@
     139,
     18
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Coming Storm",
+     "chaos": 4
+    },
+    {
+     "nome": "The Traitor",
+     "chaos": 1.4
+    },
+    {
+     "nome": "The Wrath",
+     "chaos": 1.1
+    },
+    {
+     "nome": "The Blazing Fire",
+     "chaos": 1
+    }
+   ],
+   "valore": 7.5,
+   "mediana": 1.2,
+   "nCarte": 4,
+   "media": 1.9,
+   "max": 4
   },
   {
    "i": 149,
@@ -3154,10 +4381,21 @@
     125,
     18
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Poisoned Faith",
+     "chaos": 3.2
+    },
+    {
+     "nome": "The Adventuring Spirit",
+     "chaos": 1
+    }
+   ],
+   "valore": 4.2,
+   "mediana": 2.1,
+   "nCarte": 2,
+   "media": 2.1,
+   "max": 3.2
   },
   {
    "i": 150,
@@ -3173,10 +4411,21 @@
     34,
     155
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Immortal Resolve",
+     "chaos": 2.4
+    },
+    {
+     "nome": "Her Mask",
+     "chaos": 1
+    }
+   ],
+   "valore": 3.4,
+   "mediana": 1.7,
+   "nCarte": 2,
+   "media": 1.7,
+   "max": 2.4
   },
   {
    "i": 151,
@@ -3197,7 +4446,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 152,
@@ -3218,7 +4469,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 153,
@@ -3238,7 +4491,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 154,
@@ -3257,11 +4512,17 @@
     {
      "nome": "Avian Pursuit",
      "chaos": 29
+    },
+    {
+     "nome": "The Coming Storm",
+     "chaos": 4
     }
    ],
-   "valore": 29,
-   "mediana": 29,
-   "nCarte": 1
+   "valore": 33,
+   "mediana": 16.5,
+   "nCarte": 2,
+   "media": 16.5,
+   "max": 29
   },
   {
    "i": 155,
@@ -3287,11 +4548,21 @@
     {
      "nome": "Avian Pursuit",
      "chaos": 29
+    },
+    {
+     "nome": "The Explorer",
+     "chaos": 1
+    },
+    {
+     "nome": "The Adventuring Spirit",
+     "chaos": 1
     }
    ],
-   "valore": 160,
-   "mediana": 80.0,
-   "nCarte": 2
+   "valore": 162,
+   "mediana": 15.0,
+   "nCarte": 4,
+   "media": 40.5,
+   "max": 131
   },
   {
    "i": 156,
@@ -3308,10 +4579,25 @@
     13,
     163
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Pack Leader",
+     "chaos": 6
+    },
+    {
+     "nome": "The Whiteout",
+     "chaos": 2.8
+    },
+    {
+     "nome": "Mitts",
+     "chaos": 1
+    }
+   ],
+   "valore": 9.8,
+   "mediana": 2.8,
+   "nCarte": 3,
+   "media": 3.3,
+   "max": 6
   },
   {
    "i": 157,
@@ -3332,11 +4618,17 @@
     {
      "nome": "Pearls Before Swine",
      "chaos": 21
+    },
+    {
+     "nome": "Cursed Words",
+     "chaos": 1.2
     }
    ],
-   "valore": 21,
-   "mediana": 21,
-   "nCarte": 1
+   "valore": 22.2,
+   "mediana": 11.1,
+   "nCarte": 2,
+   "media": 11.1,
+   "max": 21
   },
   {
    "i": 158,
@@ -3355,7 +4647,9 @@
    "carte": [],
    "valore": 0,
    "mediana": 0,
-   "nCarte": 0
+   "nCarte": 0,
+   "media": 0,
+   "max": 0
   },
   {
    "i": 159,
@@ -3370,10 +4664,25 @@
     152,
     63
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Fishmonger",
+     "chaos": 6.3
+    },
+    {
+     "nome": "The Long Watch",
+     "chaos": 4
+    },
+    {
+     "nome": "Humility",
+     "chaos": 2
+    }
+   ],
+   "valore": 12.3,
+   "mediana": 4,
+   "nCarte": 3,
+   "media": 4.1,
+   "max": 6.3
   },
   {
    "i": 160,
@@ -3389,10 +4698,25 @@
     80,
     54
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "The Fiend",
+     "chaos": 5.2
+    },
+    {
+     "nome": "Haunting Shadows",
+     "chaos": 3.2
+    },
+    {
+     "nome": "The Golden Era",
+     "chaos": 1
+    }
+   ],
+   "valore": 9.4,
+   "mediana": 3.2,
+   "nCarte": 3,
+   "media": 3.1,
+   "max": 5.2
   },
   {
    "i": 161,
@@ -3407,10 +4731,21 @@
     129,
     16
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Divine Shard",
+     "chaos": 4
+    },
+    {
+     "nome": "The Sun",
+     "chaos": 1
+    }
+   ],
+   "valore": 5,
+   "mediana": 2.5,
+   "nCarte": 2,
+   "media": 2.5,
+   "max": 4
   },
   {
    "i": 162,
@@ -3426,10 +4761,25 @@
     106,
     45
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Call to the First Ones",
+     "chaos": 2.1
+    },
+    {
+     "nome": "The Sigil",
+     "chaos": 1
+    },
+    {
+     "nome": "The Demoness",
+     "chaos": 1
+    }
+   ],
+   "valore": 4.1,
+   "mediana": 1,
+   "nCarte": 3,
+   "media": 1.4,
+   "max": 2.1
   },
   {
    "i": 163,
@@ -3446,19 +4796,32 @@
     37,
     15
    ],
-   "carte": [],
-   "valore": 0,
-   "mediana": 0,
-   "nCarte": 0
+   "carte": [
+    {
+     "nome": "Haunting Shadows",
+     "chaos": 3.2
+    },
+    {
+     "nome": "The Tireless Extractor",
+     "chaos": 1.4
+    }
+   ],
+   "valore": 4.6,
+   "mediana": 2.3,
+   "nCarte": 2,
+   "media": 2.3,
+   "max": 3.2
   }
  ],
  "fonte": "poeatlas.net (coordinate) + poe.ninja (prezzi) + poedb (aree di drop)",
  "fuoriAtlante": [
   {
    "nome": "Sanctuary",
-   "valore": 618,
-   "mediana": 104,
-   "nCarte": 3,
+   "nCarte": 4,
+   "valore": 632,
+   "media": 158,
+   "mediana": 92.5,
+   "max": 433,
    "carte": [
     {
      "nome": "Damnation",
@@ -3471,14 +4834,20 @@
     {
      "nome": "The Enlightened",
      "chaos": 81
+    },
+    {
+     "nome": "Altered Perception",
+     "chaos": 14
     }
    ]
   },
   {
    "nome": "Courtyard of Wasting",
-   "valore": 332,
-   "mediana": 93,
-   "nCarte": 3,
+   "nCarte": 4,
+   "valore": 337,
+   "media": 84.2,
+   "mediana": 62.0,
+   "max": 208,
    "carte": [
     {
      "nome": "The Gulf",
@@ -3491,14 +4860,20 @@
     {
      "nome": "The Side Quest",
      "chaos": 31
+    },
+    {
+     "nome": "Astral Protection",
+     "chaos": 5
     }
    ]
   },
   {
    "nome": "Abomination",
-   "valore": 178,
-   "mediana": 89.0,
-   "nCarte": 2,
+   "nCarte": 4,
+   "valore": 186.9,
+   "media": 46.7,
+   "mediana": 22.0,
+   "max": 139,
    "carte": [
     {
      "nome": "The Nurse",
@@ -3507,26 +4882,50 @@
     {
      "nome": "The Artist",
      "chaos": 39
+    },
+    {
+     "nome": "The Insatiable",
+     "chaos": 5
+    },
+    {
+     "nome": "The Offering",
+     "chaos": 3.9
     }
    ]
   },
   {
    "nome": "Fortress",
-   "valore": 107,
-   "mediana": 107,
-   "nCarte": 1,
+   "nCarte": 4,
+   "valore": 134.7,
+   "media": 33.7,
+   "mediana": 12.6,
+   "max": 107,
    "carte": [
     {
      "nome": "Auspicious Ambitions",
      "chaos": 107
+    },
+    {
+     "nome": "Something Dark",
+     "chaos": 17
+    },
+    {
+     "nome": "Who Asked",
+     "chaos": 8.2
+    },
+    {
+     "nome": "One Last Score",
+     "chaos": 2.5
     }
    ]
   },
   {
    "nome": "Forge of the Phoenix",
-   "valore": 89,
-   "mediana": 44.5,
-   "nCarte": 2,
+   "nCarte": 3,
+   "valore": 94,
+   "media": 31.3,
+   "mediana": 34,
+   "max": 55,
    "carte": [
     {
      "nome": "Perfection",
@@ -3535,14 +4934,20 @@
     {
      "nome": "The Everlasting",
      "chaos": 34
+    },
+    {
+     "nome": "Astral Protection",
+     "chaos": 5
     }
    ]
   },
   {
    "nome": "Lair of the Hydra",
-   "valore": 89,
-   "mediana": 44.5,
-   "nCarte": 2,
+   "nCarte": 3,
+   "valore": 94,
+   "media": 31.3,
+   "mediana": 34,
+   "max": 55,
    "carte": [
     {
      "nome": "Perfection",
@@ -3551,14 +4956,20 @@
     {
      "nome": "The Everlasting",
      "chaos": 34
+    },
+    {
+     "nome": "Astral Protection",
+     "chaos": 5
     }
    ]
   },
   {
    "nome": "Maze of the Minotaur",
-   "valore": 89,
-   "mediana": 44.5,
-   "nCarte": 2,
+   "nCarte": 3,
+   "valore": 94,
+   "media": 31.3,
+   "mediana": 34,
+   "max": 55,
    "carte": [
     {
      "nome": "Perfection",
@@ -3567,44 +4978,168 @@
     {
      "nome": "The Everlasting",
      "chaos": 34
+    },
+    {
+     "nome": "Astral Protection",
+     "chaos": 5
     }
    ]
   },
   {
    "nome": "Ziggurat",
-   "valore": 81,
-   "mediana": 81,
-   "nCarte": 1,
+   "nCarte": 4,
+   "valore": 93.5,
+   "media": 23.4,
+   "mediana": 5.3,
+   "max": 81,
    "carte": [
     {
      "nome": "The Enlightened",
      "chaos": 81
+    },
+    {
+     "nome": "Outfoxed",
+     "chaos": 5.3
+    },
+    {
+     "nome": "Misery in Darkness",
+     "chaos": 5.3
+    },
+    {
+     "nome": "Lucky Deck",
+     "chaos": 1.9
     }
    ]
   },
   {
    "nome": "Pit of the Chimera",
-   "valore": 34,
-   "mediana": 34,
-   "nCarte": 1,
+   "nCarte": 3,
+   "valore": 39,
+   "media": 13,
+   "mediana": 4,
+   "max": 34,
    "carte": [
     {
      "nome": "The Everlasting",
      "chaos": 34
+    },
+    {
+     "nome": "A Familiar Call",
+     "chaos": 4
+    },
+    {
+     "nome": "Boon of the First Ones",
+     "chaos": 1
     }
    ]
   },
   {
    "nome": "Citadel",
-   "valore": 24,
-   "mediana": 24,
-   "nCarte": 1,
+   "nCarte": 4,
+   "valore": 32.3,
+   "media": 8.1,
+   "mediana": 3.6,
+   "max": 24,
    "carte": [
     {
      "nome": "The Shieldbearer",
      "chaos": 24
+    },
+    {
+     "nome": "The Road to Power",
+     "chaos": 6.3
+    },
+    {
+     "nome": "The Avenger",
+     "chaos": 1
+    },
+    {
+     "nome": "Runic Luck",
+     "chaos": 1
+    }
+   ]
+  },
+  {
+   "nome": "Chambers of Impurity",
+   "nCarte": 4,
+   "valore": 31.1,
+   "media": 7.8,
+   "mediana": 3.5,
+   "max": 23,
+   "carte": [
+    {
+     "nome": "The Forgotten Treasure",
+     "chaos": 23
+    },
+    {
+     "nome": "The Fiend",
+     "chaos": 5.2
+    },
+    {
+     "nome": "The Polymath",
+     "chaos": 1.9
+    },
+    {
+     "nome": "Justified Ambition",
+     "chaos": 1
+    }
+   ]
+  },
+  {
+   "nome": "Theatre of Lies",
+   "nCarte": 4,
+   "valore": 7.3,
+   "media": 1.8,
+   "mediana": 1.7,
+   "max": 2.8,
+   "carte": [
+    {
+     "nome": "The Academic",
+     "chaos": 2.8
+    },
+    {
+     "nome": "Seven Years Bad Luck",
+     "chaos": 2.1
+    },
+    {
+     "nome": "The Innocent",
+     "chaos": 1.3
+    },
+    {
+     "nome": "Heterochromia",
+     "chaos": 1.1
+    }
+   ]
+  },
+  {
+   "nome": "Synthesis",
+   "nCarte": 1,
+   "valore": 1,
+   "media": 1,
+   "mediana": 1,
+   "max": 1,
+   "carte": [
+    {
+     "nome": "Justified Ambition",
+     "chaos": 1
+    }
+   ]
+  },
+  {
+   "nome": "Elder Guardian Occupied",
+   "nCarte": 1,
+   "valore": 1,
+   "media": 1,
+   "mediana": 1,
+   "max": 1,
+   "carte": [
+    {
+     "nome": "The Price of Protection",
+     "chaos": 1
     }
    ]
   }
- ]
+ ],
+ "carteAnalizzate": 395,
+ "nota": "totale, media e mediana calcolati su TUTTE le carte collegate alla mappa"
 }
