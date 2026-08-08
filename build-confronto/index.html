@@ -102,11 +102,13 @@
   .albero svg{width:100%;height:100%;display:block;background:transparent !important}
   /* sfondo smorzato, percorso in evidenza — come pobb.in */
   .albero svg .nodes circle{opacity:.20}
-  .albero svg .connections path{stroke-opacity:.16;stroke-width:14}
+  .albero svg .connections path,
+  .albero svg .connections line{stroke-opacity:.16;stroke-width:14}
   .albero svg .nodes circle.active{opacity:1;color:#4aa8e8}
   .albero svg .nodes circle.active.notable{color:#7cc5f5}
   .albero svg .nodes circle.active.keystone{color:#bfe3ff}
-  .albero svg .connections path.active{stroke-opacity:1;stroke-width:34;stroke:#4aa8e8}
+  .albero svg .connections path.active,
+  .albero svg .connections line.active{stroke-opacity:1;stroke-width:30;stroke:#4aa8e8}
   .albero .caric{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
                  color:var(--muted);font-size:.8rem}
   .ks{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.6rem}
@@ -320,8 +322,11 @@ fetch("albero.svg").then(r => r.text()).then(txt => {
       c.setAttribute("r", k === "keystone" ? 130 : k === "notable" ? 105 : 78);
       n++;
     });
-    // collegamenti fra due nodi entrambi allocati
-    svg.querySelectorAll(".connections path").forEach(p => {
+    // collegamenti fra due nodi entrambi allocati.
+    // ATTENZIONE: sono di DUE tipi — <path> per gli archi lungo un'orbita
+    // e <line> per i tratti dritti fra orbite. Selezionare solo i path
+    // lascia l'albero a puntini.
+    svg.querySelectorAll(".connections path, .connections line").forEach(p => {
       const m = /^c(\d+)-(\d+)$/.exec(p.id || "");
       if (m && ids.has(m[1]) && ids.has(m[2])) p.classList.add("active");
     });
