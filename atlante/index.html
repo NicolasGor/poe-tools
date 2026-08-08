@@ -28,7 +28,20 @@
   .barra .sp{margin-left:auto;color:var(--muted);font-size:.76rem}
 
   .griglia{display:grid;grid-template-columns:1fr 20rem;gap:.8rem;align-items:start}
-  .mappa{background:#0b0f16;border:1px solid var(--line);border-radius:8px;overflow:hidden;position:relative}
+  .regione{margin-bottom:.9rem}
+  .regione h3{font-size:.68rem;text-transform:uppercase;letter-spacing:.11em;color:var(--muted);
+              margin:0 0 .35rem;padding-bottom:.25rem;border-bottom:1px solid var(--line)}
+  .regione h3 span{color:var(--label)}
+  .celle{display:grid;grid-template-columns:repeat(auto-fill,minmax(8.5rem,1fr));gap:.3rem}
+  .cella{text-align:left;cursor:pointer;border-radius:5px;padding:.35rem .5rem;font:inherit;
+         border:1px solid var(--line);color:var(--text);
+         background:color-mix(in srgb, #60d394 calc(var(--v) * 55%), var(--panel2))}
+  .cella:hover{border-color:var(--line2)}
+  .cella.sel{border-color:var(--gold);border-width:2px}
+  .cella.uni{border-left:3px solid var(--uni)}
+  .cella b{display:block;font-size:.76rem;font-weight:600;line-height:1.25}
+  .cella span{font-size:.68rem;color:var(--muted);font-family:"Source Code Pro",Menlo,monospace}
+  .mappa{background:transparent;border:0;border-radius:8px;position:relative}
   svg{width:100%;height:auto;display:block;cursor:grab}
   svg:active{cursor:grabbing}
   .link{stroke:#2b3646;stroke-width:1.2}
@@ -74,7 +87,7 @@
 <div class="wrap">
   <div class="back"><a href="../index.html">← Tutti gli strumenti</a></div>
   <h1>Atlante interattivo</h1>
-  <p class="sub">Le mappe alla loro posizione reale sull'atlante, colorate per <b>valore delle divination card</b> che ospitano. Clicca un nodo per vedere quali carte e quanto valgono.</p>
+  <p class="sub">Tutte le mappe raggruppate per regione, colorate per <b>valore delle divination card</b> che ospitano. Clicca una mappa per vedere quali carte e quanto valgono.</p>
 
   <div class="barra">
     <button data-f="tutte" class="on">Tutte</button>
@@ -92,14 +105,14 @@
   </div>
 
   <div class="griglia">
-    <div class="mappa"><svg id="svg" viewBox="150 55 700 450"></svg></div>
+    <div class="mappa" id="regioni"></div>
     <aside id="pan"><div class="vuoto">Clicca un nodo sull'atlante, o una riga della classifica qui sotto.</div></aside>
   </div>
 
   <div class="avviso">
     <b>Totale, media e mediana dicono cose diverse.</b> Il <b>totale</b> è quanto vale l'intero bacino. La <b>media</b> viene tirata in alto da una sola carta cara. La <b>mediana</b> dice quanto vale la carta tipica ed è immune agli estremi. Quando media e mediana divergono di molto la mappa è un <b>tutto o niente</b>: Chateau ha media 74,7 e mediana 1 — una carta da 222 chaos e due da uno. Sanctuary invece ha media 158 e mediana 92,5 su quattro carte: paga davvero.
     <br><br><b>Conteggio per difetto:</b> l'estrazione attribuisce al massimo 4 mappe per carta, quindi qualche accoppiamento manca. <b>E nessuna delle metriche misura la frequenza di drop</b>, che non è pubblica: sono classifiche di potenziale, non di guadagno atteso.
-    <br><br><b>Le coordinate vengono da poeatlas.net</b> e sono precedenti alla 3.29, che ha rimescolato il pool. <span id="fuoriNota"></span>
+    <br><br><b>Perché non c'è il disegno dell'atlante.</b> Per renderlo cliccabile servirebbero le coordinate di ogni nodo <em>associate al nome della mappa</em>: nell'immagine di gioco i nomi compaiono solo al passaggio del mouse, quindi non sono ricavabili dai pixel. L'unico dataset con nomi e coordinate (poeatlas.net) è fermo a prima della 3.29 e disegnava un atlante diverso da quello attuale. Meglio una griglia esatta che una mappa sbagliata. <span id="fuoriNota"></span>
   </div>
 
   <div class="classifica">
@@ -138,6 +151,26 @@ const colore = n => {
 };
 
 function disegna(){
+  const cont = q("#regioni");
+  const perReg = {};
+  D.nodi.filter(visibile).forEach(n => (perReg[n.regione] ||= []).push(n));
+  const maxv = Math.max(1, ...D.nodi.map(x=>x[campo]||0));
+  cont.innerHTML = Object.keys(perReg).sort().map(r => `
+    <section class="regione">
+      <h3>${r} <span>${perReg[r].length}</span></h3>
+      <div class="celle">${perReg[r]
+        .sort((a,b)=>(b[campo]||0)-(a[campo]||0))
+        .map(n => `<button class="cella ${sel===n.i?'sel':''} ${n.unica?'uni':''}" data-i="${n.i}"
+             style="--v:${Math.sqrt((n[campo]||0)/maxv)}">
+             <b>${n.nome}</b>
+             <span>${n.nCarte ? (n[campo]||0)+' c' : '—'}</span>
+           </button>`).join("")}</div>
+    </section>`).join("");
+  cont.querySelectorAll(".cella").forEach(b => b.onclick = () => { sel=+b.dataset.i; disegna(); pannello(); });
+  q("#conta").textContent = D.nodi.filter(visibile).length + " mappe visibili · " +
+                            D.nodi.filter(n=>n.nCarte).length + " con carte";
+  tabella();
+  return;
   const svg = q("#svg");
   const idx = new Map(D.nodi.map(n=>[n.i,n]));
   let linee = "";
