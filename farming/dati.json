@@ -1,1885 +1,1452 @@
 {
  "aggiornato": "2026-08-08",
  "lega": "Allflame",
- "divine": 223,
- "meccaniche": [
-  {
-   "nome": "Ultimatum",
-   "n": 5,
-   "max": 199,
-   "mediana": 1.4,
-   "totale": 206.8,
-   "scarab": [
-    {
-     "nome": "Ultimatum Scarab of Catalysing",
-     "chaos": 199
-    },
-    {
-     "nome": "Ultimatum Scarab of Dueling",
-     "chaos": 4
-    },
-    {
-     "nome": "Ultimatum Scarab of Inscription",
-     "chaos": 1.4
-    },
-    {
-     "nome": "Ultimatum Scarab of Bribing",
-     "chaos": 1.3
-    },
-    {
-     "nome": "Ultimatum Scarab",
-     "chaos": 1.1
-    }
-   ]
-  },
-  {
-   "nome": "Horned",
-   "n": 7,
-   "max": 180,
-   "mediana": 10,
-   "totale": 288.5,
-   "scarab": [
-    {
-     "nome": "Horned Scarab of Preservation",
-     "chaos": 180
-    },
-    {
-     "nome": "Horned Scarab of Awakening",
-     "chaos": 71
-    },
-    {
-     "nome": "Horned Scarab of Tradition",
-     "chaos": 19
-    },
-    {
-     "nome": "Horned Scarab of Nemeses",
-     "chaos": 10
-    },
-    {
-     "nome": "Horned Scarab of Glittering",
-     "chaos": 5.2
-    },
-    {
-     "nome": "Horned Scarab of Pandemonium",
-     "chaos": 1.8
-    }
-   ]
-  },
-  {
-   "nome": "Cartography",
-   "n": 4,
-   "max": 172,
-   "mediana": 5.25,
-   "totale": 183.8,
-   "scarab": [
-    {
-     "nome": "Cartography Scarab of Risk",
-     "chaos": 172
-    },
-    {
-     "nome": "Cartography Scarab of Corruption",
-     "chaos": 8.3
-    },
-    {
-     "nome": "Cartography Scarab of the Multitude",
-     "chaos": 2.2
-    },
-    {
-     "nome": "Cartography Scarab of Escalation",
-     "chaos": 1.3
-    }
-   ]
-  },
-  {
-   "nome": "Ambush",
-   "n": 5,
-   "max": 93,
-   "mediana": 5.1,
-   "totale": 114.5,
-   "scarab": [
-    {
-     "nome": "Ambush Scarab of Containment",
-     "chaos": 93
-    },
-    {
-     "nome": "Ambush Scarab of Discernment",
-     "chaos": 14
-    },
-    {
-     "nome": "Ambush Scarab",
-     "chaos": 5.1
-    },
-    {
-     "nome": "Ambush Scarab of Potency",
-     "chaos": 1.4
-    },
-    {
-     "nome": "Ambush Scarab of Hidden Compartments",
-     "chaos": 1
-    }
-   ]
-  },
-  {
-   "nome": "Legion",
-   "n": 4,
-   "max": 88,
-   "mediana": 1.9500000000000002,
-   "totale": 93.2,
-   "scarab": [
-    {
-     "nome": "Legion Scarab of Eternal Conflict",
-     "chaos": 88
-    },
-    {
-     "nome": "Legion Scarab of Treasures",
-     "chaos": 2.6
-    },
-    {
-     "nome": "Legion Scarab",
-     "chaos": 1.3
-    },
-    {
-     "nome": "Legion Scarab of Officers",
-     "chaos": 1.3
-    }
-   ]
-  },
-  {
-   "nome": "Trarthan",
-   "n": 4,
-   "max": 81,
-   "mediana": 16.0,
-   "totale": 114.2,
-   "scarab": [
-    {
-     "nome": "Trarthan Scarab of Surprising Alliances",
-     "chaos": 81
-    },
-    {
-     "nome": "Trarthan Scarab of Renown",
-     "chaos": 21
-    },
-    {
-     "nome": "Trarthan Scarab of Infamy",
-     "chaos": 11
-    },
-    {
-     "nome": "Trarthan Scarab",
-     "chaos": 1.2
-    }
-   ]
-  },
-  {
-   "nome": "Kalguuran",
-   "n": 4,
-   "max": 73,
-   "mediana": 2.05,
-   "totale": 78.2,
-   "scarab": [
-    {
-     "nome": "Kalguuran Scarab of Refinement",
-     "chaos": 73
-    },
-    {
-     "nome": "Kalguuran Scarab",
-     "chaos": 2.8
-    },
-    {
-     "nome": "Kalguuran Scarab of Enriching",
-     "chaos": 1.3
-    },
-    {
-     "nome": "Kalguuran Scarab of Guarded Riches",
-     "chaos": 1.1
-    }
-   ]
-  },
-  {
-   "nome": "Divination",
-   "n": 3,
-   "max": 57,
-   "mediana": 18,
-   "totale": 92,
-   "scarab": [
-    {
-     "nome": "Divination Scarab of Pilfering",
-     "chaos": 57
-    },
-    {
-     "nome": "Divination Scarab of The Cloister",
-     "chaos": 18
-    },
-    {
-     "nome": "Divination Scarab of Plenty",
-     "chaos": 17
-    }
-   ]
-  },
+ "divine": 230,
+ "nScarab": 124,
+ "mancantiDalloScrape": [
+  "Sulphite Scarab of Greed",
+  "Torment Scarab of Release",
+  "Bestiary Scarab of the Shadowed Crow",
+  "Blight Scarab of Bounty",
+  "Breach Scarab of the Dreamer",
+  "Legion Scarab of The Sekhema",
+  "Cartography Scarab of Singularity",
+  "Beyond Scarab of Corruption",
+  "Scarab of Hunted Traitors"
+ ],
+ "verificati": [
+  "abyss-scarab",
+  "abyss-scarab-of-crystals",
+  "abyss-scarab-of-descending",
+  "abyss-scarab-of-multitudes",
+  "abyss-scarab-of-the-consort",
+  "ambush-scarab-of-containment",
+  "cartography-scarab-of-risk",
+  "divination-scarab-of-pilfering",
+  "divination-scarab-of-plenty",
+  "divination-scarab-of-the-cloister",
+  "harvest-scarab",
+  "harvest-scarab-of-cornucopia",
+  "harvest-scarab-of-doubling",
+  "horned-scarab-of-preservation",
+  "incursion-scarab-of-timelines",
+  "kalguuran-scarab-of-refinement",
+  "legion-scarab-of-eternal-conflict",
+  "trarthan-scarab-of-surprising-alliances"
+ ],
+ "famiglie": [
   {
    "nome": "Harvest",
+   "meccanica": true,
    "n": 3,
+   "conPrezzo": 3,
    "max": 55,
    "mediana": 21,
    "totale": 77.1,
    "scarab": [
     {
      "nome": "Harvest Scarab of Cornucopia",
+     "famiglia": "Harvest",
+     "ninja": 55,
+     "misurato": 54.0,
+     "inserzioni": 25,
+     "nelloScrape": true,
      "chaos": 55
     },
     {
      "nome": "Harvest Scarab of Doubling",
+     "famiglia": "Harvest",
+     "ninja": 21,
+     "misurato": 40.0,
+     "inserzioni": 54,
+     "nelloScrape": true,
      "chaos": 21
     },
     {
      "nome": "Harvest Scarab",
+     "famiglia": "Harvest",
+     "ninja": 1.1,
+     "misurato": 30.0,
+     "inserzioni": 80,
+     "nelloScrape": true,
      "chaos": 1.1
     }
    ]
   },
   {
-   "nome": "Domination",
-   "n": 4,
-   "max": 51,
-   "mediana": 1.3,
-   "totale": 54.6,
+   "nome": "Divination",
+   "meccanica": true,
+   "n": 3,
+   "conPrezzo": 3,
+   "max": 57,
+   "mediana": 18,
+   "totale": 92,
    "scarab": [
     {
-     "nome": "Domination Scarab of Terrors",
-     "chaos": 51
+     "nome": "Divination Scarab of Pilfering",
+     "famiglia": "Divination",
+     "ninja": 57,
+     "misurato": 58.0,
+     "inserzioni": 20,
+     "nelloScrape": true,
+     "chaos": 57
     },
     {
-     "nome": "Domination Scarab",
-     "chaos": 1.6
+     "nome": "Divination Scarab of The Cloister",
+     "famiglia": "Divination",
+     "ninja": 18,
+     "misurato": 30.0,
+     "inserzioni": 66,
+     "nelloScrape": true,
+     "chaos": 18
     },
     {
-     "nome": "Domination Scarab of Evolution",
-     "chaos": 1
-    },
-    {
-     "nome": "Domination Scarab of Apparitions",
-     "chaos": 1
+     "nome": "Divination Scarab of Plenty",
+     "famiglia": "Divination",
+     "ninja": 17,
+     "misurato": 30.0,
+     "inserzioni": 62,
+     "nelloScrape": true,
+     "chaos": 17
     }
    ]
   },
   {
-   "nome": "Incursion",
+   "nome": "Trarthan",
+   "meccanica": false,
    "n": 4,
-   "max": 37,
-   "mediana": 1.05,
-   "totale": 40.1,
+   "conPrezzo": 4,
+   "max": 81,
+   "mediana": 16.0,
+   "totale": 114.2,
    "scarab": [
     {
-     "nome": "Incursion Scarab of Timelines",
-     "chaos": 37
+     "nome": "Trarthan Scarab of Surprising Alliances",
+     "famiglia": "Trarthan",
+     "ninja": 81,
+     "misurato": 52.5,
+     "inserzioni": 32,
+     "nelloScrape": true,
+     "chaos": 81
     },
     {
-     "nome": "Incursion Scarab",
-     "chaos": 1.1
+     "nome": "Trarthan Scarab of Renown",
+     "famiglia": "Trarthan",
+     "ninja": 21,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 21
     },
     {
-     "nome": "Incursion Scarab of Invasion",
-     "chaos": 1
+     "nome": "Trarthan Scarab of Infamy",
+     "famiglia": "Trarthan",
+     "ninja": 11,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 11
     },
     {
-     "nome": "Incursion Scarab of Champions",
-     "chaos": 1
-    }
-   ]
-  },
-  {
-   "nome": "Essence",
-   "n": 5,
-   "max": 33,
-   "mediana": 2.6,
-   "totale": 43.3,
-   "scarab": [
-    {
-     "nome": "Essence Scarab of Calcification",
-     "chaos": 33
-    },
-    {
-     "nome": "Essence Scarab of Adaptation",
-     "chaos": 5.1
-    },
-    {
-     "nome": "Essence Scarab of Ascent",
-     "chaos": 2.6
-    },
-    {
-     "nome": "Essence Scarab",
-     "chaos": 1.4
-    },
-    {
-     "nome": "Essence Scarab of Stability",
+     "nome": "Trarthan Scarab",
+     "famiglia": "Trarthan",
+     "ninja": 1.2,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 1.2
     }
    ]
   },
   {
-   "nome": "Blight",
-   "n": 4,
-   "max": 19,
-   "mediana": 5.3500000000000005,
-   "totale": 30.8,
+   "nome": "Horned",
+   "meccanica": false,
+   "n": 7,
+   "conPrezzo": 7,
+   "max": 180,
+   "mediana": 10,
+   "totale": 288.5,
    "scarab": [
     {
-     "nome": "Blight Scarab of Blooming",
+     "nome": "Horned Scarab of Preservation",
+     "famiglia": "Horned",
+     "ninja": 180,
+     "misurato": null,
+     "inserzioni": 0,
+     "nelloScrape": true,
+     "chaos": 180
+    },
+    {
+     "nome": "Horned Scarab of Awakening",
+     "famiglia": "Horned",
+     "ninja": 71,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 71
+    },
+    {
+     "nome": "Horned Scarab of Tradition",
+     "famiglia": "Horned",
+     "ninja": 19,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 19
     },
     {
-     "nome": "Blight Scarab of Invigoration",
-     "chaos": 9.4
+     "nome": "Horned Scarab of Nemeses",
+     "famiglia": "Horned",
+     "ninja": 10,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 10
     },
     {
-     "nome": "Blight Scarab of the Blightheart",
-     "chaos": 1.3
+     "nome": "Horned Scarab of Glittering",
+     "famiglia": "Horned",
+     "ninja": 5.2,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 5.2
     },
     {
-     "nome": "Blight Scarab",
-     "chaos": 1.1
-    }
-   ]
-  },
-  {
-   "nome": "Generici",
-   "n": 8,
-   "max": 18,
-   "mediana": 1.75,
-   "totale": 30.8,
-   "scarab": [
-    {
-     "nome": "Scarab of Wisps",
-     "chaos": 18
+     "nome": "Horned Scarab of Pandemonium",
+     "famiglia": "Horned",
+     "ninja": 1.8,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.8
     },
     {
-     "nome": "Scarab of Monstrous Lineage",
-     "chaos": 3.8
-    },
-    {
-     "nome": "Scarab of the Sinistral",
-     "chaos": 2.5
-    },
-    {
-     "nome": "Scarab of the Dextral",
-     "chaos": 2.3
-    },
-    {
-     "nome": "Scarab of Adversaries",
-     "chaos": 1.2
-    },
-    {
-     "nome": "Scarab of Divinity",
-     "chaos": 1
-    }
-   ]
-  },
-  {
-   "nome": "Breach",
-   "n": 5,
-   "max": 18,
-   "mediana": 2.7,
-   "totale": 28.6,
-   "scarab": [
-    {
-     "nome": "Breach Scarab of Resonant Cascade",
-     "chaos": 18
-    },
-    {
-     "nome": "Breach Scarab of Instability",
-     "chaos": 5.5
-    },
-    {
-     "nome": "Breach Scarab of the Incensed Swarm",
-     "chaos": 2.7
-    },
-    {
-     "nome": "Breach Scarab of the Marshal",
-     "chaos": 1.3
-    },
-    {
-     "nome": "Breach Scarab of the Hive",
-     "chaos": 1.1
-    }
-   ]
-  },
-  {
-   "nome": "Delirium",
-   "n": 5,
-   "max": 15,
-   "mediana": 1.3,
-   "totale": 20.4,
-   "scarab": [
-    {
-     "nome": "Delirium Scarab of Paranoia",
-     "chaos": 15
-    },
-    {
-     "nome": "Delirium Scarab of Neuroses",
-     "chaos": 1.9
-    },
-    {
-     "nome": "Delirium Scarab of Mania",
-     "chaos": 1.3
-    },
-    {
-     "nome": "Delirium Scarab of Delusions",
-     "chaos": 1.1
-    },
-    {
-     "nome": "Delirium Scarab",
-     "chaos": 1.1
+     "nome": "Horned Scarab of Bloodlines",
+     "famiglia": "Horned",
+     "ninja": 1.5,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.5
     }
    ]
   },
   {
    "nome": "Bestiary",
-   "n": 3,
+   "meccanica": true,
+   "n": 4,
+   "conPrezzo": 3,
    "max": 9.6,
    "mediana": 6.8,
    "totale": 17.5,
    "scarab": [
     {
      "nome": "Bestiary Scarab of Duplicating",
+     "famiglia": "Bestiary",
+     "ninja": 9.6,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 9.6
     },
     {
      "nome": "Bestiary Scarab of the Herd",
+     "famiglia": "Bestiary",
+     "ninja": 6.8,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 6.8
     },
     {
      "nome": "Bestiary Scarab",
+     "famiglia": "Bestiary",
+     "ninja": 1.1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 1.1
+    },
+    {
+     "nome": "Bestiary Scarab of the Shadowed Crow",
+     "famiglia": "Bestiary",
+     "ninja": null,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": false,
+     "chaos": null
     }
    ]
   },
   {
-   "nome": "Ritual",
-   "n": 4,
-   "max": 9.1,
-   "mediana": 1.3,
-   "totale": 12.7,
+   "nome": "Blight",
+   "meccanica": true,
+   "n": 5,
+   "conPrezzo": 4,
+   "max": 19,
+   "mediana": 5.35,
+   "totale": 30.8,
    "scarab": [
     {
-     "nome": "Ritual Scarab of Abundance",
-     "chaos": 9.1
+     "nome": "Blight Scarab of Blooming",
+     "famiglia": "Blight",
+     "ninja": 19,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 19
     },
     {
-     "nome": "Ritual Scarab of Corpses",
+     "nome": "Blight Scarab of Invigoration",
+     "famiglia": "Blight",
+     "ninja": 9.4,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 9.4
+    },
+    {
+     "nome": "Blight Scarab of the Blightheart",
+     "famiglia": "Blight",
+     "ninja": 1.3,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 1.3
     },
     {
-     "nome": "Ritual Scarab of Selectiveness",
+     "nome": "Blight Scarab",
+     "famiglia": "Blight",
+     "ninja": 1.1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.1
+    },
+    {
+     "nome": "Blight Scarab of Bounty",
+     "famiglia": "Blight",
+     "ninja": null,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": false,
+     "chaos": null
+    }
+   ]
+  },
+  {
+   "nome": "Cartography",
+   "meccanica": true,
+   "n": 5,
+   "conPrezzo": 4,
+   "max": 172,
+   "mediana": 5.25,
+   "totale": 183.8,
+   "scarab": [
+    {
+     "nome": "Cartography Scarab of Risk",
+     "famiglia": "Cartography",
+     "ninja": 172,
+     "misurato": 142.5,
+     "inserzioni": 16,
+     "nelloScrape": true,
+     "chaos": 172
+    },
+    {
+     "nome": "Cartography Scarab of Corruption",
+     "famiglia": "Cartography",
+     "ninja": 8.3,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 8.3
+    },
+    {
+     "nome": "Cartography Scarab of the Multitude",
+     "famiglia": "Cartography",
+     "ninja": 2.2,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 2.2
+    },
+    {
+     "nome": "Cartography Scarab of Escalation",
+     "famiglia": "Cartography",
+     "ninja": 1.3,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 1.3
     },
     {
-     "nome": "Ritual Scarab of Wisps",
+     "nome": "Cartography Scarab of Singularity",
+     "famiglia": "Cartography",
+     "ninja": null,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": false,
+     "chaos": null
+    }
+   ]
+  },
+  {
+   "nome": "Ambush",
+   "meccanica": true,
+   "n": 5,
+   "conPrezzo": 5,
+   "max": 93,
+   "mediana": 5.1,
+   "totale": 114.5,
+   "scarab": [
+    {
+     "nome": "Ambush Scarab of Containment",
+     "famiglia": "Ambush",
+     "ninja": 93,
+     "misurato": 93.0,
+     "inserzioni": 18,
+     "nelloScrape": true,
+     "chaos": 93
+    },
+    {
+     "nome": "Ambush Scarab of Discernment",
+     "famiglia": "Ambush",
+     "ninja": 14,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 14
+    },
+    {
+     "nome": "Ambush Scarab",
+     "famiglia": "Ambush",
+     "ninja": 5.1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 5.1
+    },
+    {
+     "nome": "Ambush Scarab of Potency",
+     "famiglia": "Ambush",
+     "ninja": 1.4,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.4
+    },
+    {
+     "nome": "Ambush Scarab of Hidden Compartments",
+     "famiglia": "Ambush",
+     "ninja": 1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 1
     }
    ]
   },
   {
+   "nome": "Breach",
+   "meccanica": true,
+   "n": 6,
+   "conPrezzo": 5,
+   "max": 18,
+   "mediana": 2.7,
+   "totale": 28.6,
+   "scarab": [
+    {
+     "nome": "Breach Scarab of Resonant Cascade",
+     "famiglia": "Breach",
+     "ninja": 18,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 18
+    },
+    {
+     "nome": "Breach Scarab of Instability",
+     "famiglia": "Breach",
+     "ninja": 5.5,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 5.5
+    },
+    {
+     "nome": "Breach Scarab of the Incensed Swarm",
+     "famiglia": "Breach",
+     "ninja": 2.7,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 2.7
+    },
+    {
+     "nome": "Breach Scarab of the Marshal",
+     "famiglia": "Breach",
+     "ninja": 1.3,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.3
+    },
+    {
+     "nome": "Breach Scarab of the Hive",
+     "famiglia": "Breach",
+     "ninja": 1.1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.1
+    },
+    {
+     "nome": "Breach Scarab of the Dreamer",
+     "famiglia": "Breach",
+     "ninja": null,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": false,
+     "chaos": null
+    }
+   ]
+  },
+  {
    "nome": "Abyss",
+   "meccanica": true,
    "n": 5,
+   "conPrezzo": 5,
    "max": 3.8,
    "mediana": 2.6,
    "totale": 11.2,
    "scarab": [
     {
      "nome": "Abyss Scarab of the Consort",
+     "famiglia": "Abyss",
+     "ninja": 3.8,
+     "misurato": 32.0,
+     "inserzioni": 37,
+     "nelloScrape": true,
      "chaos": 3.8
     },
     {
      "nome": "Abyss Scarab",
+     "famiglia": "Abyss",
+     "ninja": 2.8,
+     "misurato": 25.0,
+     "inserzioni": 75,
+     "nelloScrape": true,
      "chaos": 2.8
     },
     {
      "nome": "Abyss Scarab of Multitudes",
+     "famiglia": "Abyss",
+     "ninja": 2.6,
+     "misurato": 32.0,
+     "inserzioni": 65,
+     "nelloScrape": true,
      "chaos": 2.6
     },
     {
-     "nome": "Abyss Scarab of Crystals",
+     "nome": "Abyss Scarab of Descending",
+     "famiglia": "Abyss",
+     "ninja": 1,
+     "misurato": 40.0,
+     "inserzioni": 53,
+     "nelloScrape": true,
      "chaos": 1
     },
     {
-     "nome": "Abyss Scarab of Descending",
+     "nome": "Abyss Scarab of Crystals",
+     "famiglia": "Abyss",
+     "ninja": 1,
+     "misurato": 30.0,
+     "inserzioni": 58,
+     "nelloScrape": true,
      "chaos": 1
     }
    ]
   },
   {
-   "nome": "Betrayal",
-   "n": 4,
-   "max": 1.8,
-   "mediana": 1.1,
-   "totale": 5.1,
+   "nome": "Essence",
+   "meccanica": true,
+   "n": 5,
+   "conPrezzo": 5,
+   "max": 33,
+   "mediana": 2.6,
+   "totale": 43.3,
    "scarab": [
     {
-     "nome": "Betrayal Scarab of Unbreaking",
-     "chaos": 1.8
+     "nome": "Essence Scarab of Calcification",
+     "famiglia": "Essence",
+     "ninja": 33,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 33
     },
     {
-     "nome": "Betrayal Scarab",
+     "nome": "Essence Scarab of Adaptation",
+     "famiglia": "Essence",
+     "ninja": 5.1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 5.1
+    },
+    {
+     "nome": "Essence Scarab of Ascent",
+     "famiglia": "Essence",
+     "ninja": 2.6,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 2.6
+    },
+    {
+     "nome": "Essence Scarab",
+     "famiglia": "Essence",
+     "ninja": 1.4,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.4
+    },
+    {
+     "nome": "Essence Scarab of Stability",
+     "famiglia": "Essence",
+     "ninja": 1.2,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.2
+    }
+   ]
+  },
+  {
+   "nome": "Kalguuran",
+   "meccanica": false,
+   "n": 4,
+   "conPrezzo": 4,
+   "max": 73,
+   "mediana": 2.05,
+   "totale": 78.2,
+   "scarab": [
+    {
+     "nome": "Kalguuran Scarab of Refinement",
+     "famiglia": "Kalguuran",
+     "ninja": 73,
+     "misurato": 65.0,
+     "inserzioni": 18,
+     "nelloScrape": true,
+     "chaos": 73
+    },
+    {
+     "nome": "Kalguuran Scarab",
+     "famiglia": "Kalguuran",
+     "ninja": 2.8,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 2.8
+    },
+    {
+     "nome": "Kalguuran Scarab of Enriching",
+     "famiglia": "Kalguuran",
+     "ninja": 1.3,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.3
+    },
+    {
+     "nome": "Kalguuran Scarab of Guarded Riches",
+     "famiglia": "Kalguuran",
+     "ninja": 1.1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.1
+    }
+   ]
+  },
+  {
+   "nome": "Legion",
+   "meccanica": true,
+   "n": 5,
+   "conPrezzo": 4,
+   "max": 88,
+   "mediana": 1.95,
+   "totale": 93.2,
+   "scarab": [
+    {
+     "nome": "Legion Scarab of Eternal Conflict",
+     "famiglia": "Legion",
+     "ninja": 88,
+     "misurato": 75.0,
+     "inserzioni": 17,
+     "nelloScrape": true,
+     "chaos": 88
+    },
+    {
+     "nome": "Legion Scarab of Treasures",
+     "famiglia": "Legion",
+     "ninja": 2.6,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 2.6
+    },
+    {
+     "nome": "Legion Scarab",
+     "famiglia": "Legion",
+     "ninja": 1.3,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.3
+    },
+    {
+     "nome": "Legion Scarab of Officers",
+     "famiglia": "Legion",
+     "ninja": 1.3,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.3
+    },
+    {
+     "nome": "Legion Scarab of The Sekhema",
+     "famiglia": "Legion",
+     "ninja": null,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": false,
+     "chaos": null
+    }
+   ]
+  },
+  {
+   "nome": "Generici",
+   "meccanica": false,
+   "n": 9,
+   "conPrezzo": 8,
+   "max": 18,
+   "mediana": 1.75,
+   "totale": 30.8,
+   "scarab": [
+    {
+     "nome": "Scarab of Wisps",
+     "famiglia": "Generici",
+     "ninja": 18,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 18
+    },
+    {
+     "nome": "Scarab of Monstrous Lineage",
+     "famiglia": "Generici",
+     "ninja": 3.8,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 3.8
+    },
+    {
+     "nome": "Scarab of the Sinistral",
+     "famiglia": "Generici",
+     "ninja": 2.5,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 2.5
+    },
+    {
+     "nome": "Scarab of the Dextral",
+     "famiglia": "Generici",
+     "ninja": 2.3,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 2.3
+    },
+    {
+     "nome": "Scarab of Adversaries",
+     "famiglia": "Generici",
+     "ninja": 1.2,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.2
+    },
+    {
+     "nome": "Scarab of Divinity",
+     "famiglia": "Generici",
+     "ninja": 1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1
+    },
+    {
+     "nome": "Scarab of Stability",
+     "famiglia": "Generici",
+     "ninja": 1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1
+    },
+    {
+     "nome": "Scarab of Radiant Storms",
+     "famiglia": "Generici",
+     "ninja": 1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1
+    },
+    {
+     "nome": "Scarab of Hunted Traitors",
+     "famiglia": "Generici",
+     "ninja": null,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": false,
+     "chaos": null
+    }
+   ]
+  },
+  {
+   "nome": "Ultimatum",
+   "meccanica": true,
+   "n": 5,
+   "conPrezzo": 5,
+   "max": 199,
+   "mediana": 1.4,
+   "totale": 206.8,
+   "scarab": [
+    {
+     "nome": "Ultimatum Scarab of Catalysing",
+     "famiglia": "Ultimatum",
+     "ninja": 199,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 199
+    },
+    {
+     "nome": "Ultimatum Scarab of Dueling",
+     "famiglia": "Ultimatum",
+     "ninja": 4,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 4
+    },
+    {
+     "nome": "Ultimatum Scarab of Inscription",
+     "famiglia": "Ultimatum",
+     "ninja": 1.4,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.4
+    },
+    {
+     "nome": "Ultimatum Scarab of Bribing",
+     "famiglia": "Ultimatum",
+     "ninja": 1.3,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.3
+    },
+    {
+     "nome": "Ultimatum Scarab",
+     "famiglia": "Ultimatum",
+     "ninja": 1.1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.1
+    }
+   ]
+  },
+  {
+   "nome": "Ritual",
+   "meccanica": true,
+   "n": 4,
+   "conPrezzo": 4,
+   "max": 9.1,
+   "mediana": 1.3,
+   "totale": 12.7,
+   "scarab": [
+    {
+     "nome": "Ritual Scarab of Abundance",
+     "famiglia": "Ritual",
+     "ninja": 9.1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 9.1
+    },
+    {
+     "nome": "Ritual Scarab of Selectiveness",
+     "famiglia": "Ritual",
+     "ninja": 1.3,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.3
+    },
+    {
+     "nome": "Ritual Scarab of Corpses",
+     "famiglia": "Ritual",
+     "ninja": 1.3,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.3
+    },
+    {
+     "nome": "Ritual Scarab of Wisps",
+     "famiglia": "Ritual",
+     "ninja": 1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1
+    }
+   ]
+  },
+  {
+   "nome": "Domination",
+   "meccanica": true,
+   "n": 4,
+   "conPrezzo": 4,
+   "max": 51,
+   "mediana": 1.3,
+   "totale": 54.6,
+   "scarab": [
+    {
+     "nome": "Domination Scarab of Terrors",
+     "famiglia": "Domination",
+     "ninja": 51,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 51
+    },
+    {
+     "nome": "Domination Scarab",
+     "famiglia": "Domination",
+     "ninja": 1.6,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.6
+    },
+    {
+     "nome": "Domination Scarab of Apparitions",
+     "famiglia": "Domination",
+     "ninja": 1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1
+    },
+    {
+     "nome": "Domination Scarab of Evolution",
+     "famiglia": "Domination",
+     "ninja": 1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1
+    }
+   ]
+  },
+  {
+   "nome": "Delirium",
+   "meccanica": true,
+   "n": 5,
+   "conPrezzo": 5,
+   "max": 15,
+   "mediana": 1.3,
+   "totale": 20.4,
+   "scarab": [
+    {
+     "nome": "Delirium Scarab of Paranoia",
+     "famiglia": "Delirium",
+     "ninja": 15,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 15
+    },
+    {
+     "nome": "Delirium Scarab of Neuroses",
+     "famiglia": "Delirium",
+     "ninja": 1.9,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.9
+    },
+    {
+     "nome": "Delirium Scarab of Mania",
+     "famiglia": "Delirium",
+     "ninja": 1.3,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.3
+    },
+    {
+     "nome": "Delirium Scarab",
+     "famiglia": "Delirium",
+     "ninja": 1.1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 1.1
     },
     {
-     "nome": "Betrayal Scarab of Reinforcements",
-     "chaos": 1.1
-    },
-    {
-     "nome": "Betrayal Scarab of the Allflame",
+     "nome": "Delirium Scarab of Delusions",
+     "famiglia": "Delirium",
+     "ninja": 1.1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 1.1
     }
    ]
   },
   {
    "nome": "Influencing",
+   "meccanica": false,
    "n": 4,
+   "conPrezzo": 4,
    "max": 1.7,
    "mediana": 1.25,
    "totale": 5.3,
    "scarab": [
     {
      "nome": "Influencing Scarab of Interference",
+     "famiglia": "Influencing",
+     "ninja": 1.7,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 1.7
     },
     {
      "nome": "Influencing Scarab of Hordes",
+     "famiglia": "Influencing",
+     "ninja": 1.4,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 1.4
     },
     {
      "nome": "Influencing Scarab of the Shaper",
+     "famiglia": "Influencing",
+     "ninja": 1.1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 1.1
     },
     {
      "nome": "Influencing Scarab of the Elder",
+     "famiglia": "Influencing",
+     "ninja": 1.1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 1.1
-    }
-   ]
-  },
-  {
-   "nome": "Beyond",
-   "n": 4,
-   "max": 1.6,
-   "mediana": 1.1,
-   "totale": 4.8,
-   "scarab": [
-    {
-     "nome": "Beyond Scarab of the Invasion",
-     "chaos": 1.6
-    },
-    {
-     "nome": "Beyond Scarab",
-     "chaos": 1.1
-    },
-    {
-     "nome": "Beyond Scarab of Resurgence",
-     "chaos": 1.1
-    },
-    {
-     "nome": "Beyond Scarab of Haemophilia",
-     "chaos": 1
     }
    ]
   },
   {
    "nome": "Titanic",
+   "meccanica": false,
    "n": 3,
+   "conPrezzo": 3,
    "max": 1.6,
    "mediana": 1.2,
    "totale": 3.9,
    "scarab": [
     {
      "nome": "Titanic Scarab of Legend",
+     "famiglia": "Titanic",
+     "ninja": 1.6,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 1.6
     },
     {
      "nome": "Titanic Scarab",
+     "famiglia": "Titanic",
+     "ninja": 1.2,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 1.2
     },
     {
      "nome": "Titanic Scarab of Treasures",
+     "famiglia": "Titanic",
+     "ninja": 1.1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 1.1
     }
    ]
   },
   {
-   "nome": "Anarchy",
-   "n": 4,
-   "max": 1.2,
-   "mediana": 1.0,
-   "totale": 4.2,
-   "scarab": [
-    {
-     "nome": "Anarchy Scarab",
-     "chaos": 1.2
-    },
-    {
-     "nome": "Anarchy Scarab of Partnership",
-     "chaos": 1
-    },
-    {
-     "nome": "Anarchy Scarab of Gigantification",
-     "chaos": 1
-    },
-    {
-     "nome": "Anarchy Scarab of the Exceptional",
-     "chaos": 1
-    }
-   ]
-  },
-  {
    "nome": "Sulphite",
-   "n": 2,
+   "meccanica": true,
+   "n": 3,
+   "conPrezzo": 2,
    "max": 1.1,
    "mediana": 1.1,
    "totale": 2.2,
    "scarab": [
     {
      "nome": "Sulphite Scarab",
+     "famiglia": "Sulphite",
+     "ninja": 1.1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 1.1
     },
     {
      "nome": "Sulphite Scarab of Fumes",
-     "chaos": 1.1
-    }
-   ]
-  },
-  {
-   "nome": "Expedition",
-   "n": 5,
-   "max": 1.1,
-   "mediana": 1,
-   "totale": 5.2,
-   "scarab": [
-    {
-     "nome": "Expedition Scarab",
+     "famiglia": "Sulphite",
+     "ninja": 1.1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 1.1
     },
     {
-     "nome": "Expedition Scarab of Runefinding",
-     "chaos": 1.1
-    },
-    {
-     "nome": "Expedition Scarab of Verisium Powder",
-     "chaos": 1
-    },
-    {
-     "nome": "Expedition Scarab of Archaeology",
-     "chaos": 1
-    },
-    {
-     "nome": "Expedition Scarab of Infusion",
-     "chaos": 1
+     "nome": "Sulphite Scarab of Greed",
+     "famiglia": "Sulphite",
+     "ninja": null,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": false,
+     "chaos": null
     }
    ]
   },
   {
    "nome": "Torment",
-   "n": 3,
+   "meccanica": true,
+   "n": 4,
+   "conPrezzo": 3,
    "max": 1.1,
    "mediana": 1.1,
    "totale": 3.2,
    "scarab": [
     {
      "nome": "Torment Scarab",
+     "famiglia": "Torment",
+     "ninja": 1.1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 1.1
     },
     {
      "nome": "Torment Scarab of Peculiarity",
+     "famiglia": "Torment",
+     "ninja": 1.1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 1.1
     },
     {
      "nome": "Torment Scarab of Possession",
-     "chaos": 1
-    }
-   ]
-  }
- ],
- "carte": [
-  {
-   "nome": "Damnation",
-   "chaos": 433
-  },
-  {
-   "nome": "The Lunaris Priestess",
-   "chaos": 223
-  },
-  {
-   "nome": "Squandered Prosperity",
-   "chaos": 222
-  },
-  {
-   "nome": "The Dragon's Heart",
-   "chaos": 219
-  },
-  {
-   "nome": "The Gulf",
-   "chaos": 208
-  },
-  {
-   "nome": "The Sephirot",
-   "chaos": 194
-  },
-  {
-   "nome": "The Chosen",
-   "chaos": 182
-  },
-  {
-   "nome": "The Mayor",
-   "chaos": 140
-  },
-  {
-   "nome": "The Nurse",
-   "chaos": 139
-  },
-  {
-   "nome": "Remembrance",
-   "chaos": 133
-  },
-  {
-   "nome": "Mawr Blaidd",
-   "chaos": 131
-  },
-  {
-   "nome": "The Journey",
-   "chaos": 128
-  },
-  {
-   "nome": "Divine Beauty",
-   "chaos": 124
-  },
-  {
-   "nome": "The Mad King",
-   "chaos": 118
-  },
-  {
-   "nome": "Auspicious Ambitions",
-   "chaos": 107
-  },
-  {
-   "nome": "Temperance",
-   "chaos": 104
-  },
-  {
-   "nome": "The Destination",
-   "chaos": 100
-  },
-  {
-   "nome": "The Rabbit's Foot",
-   "chaos": 99
-  },
-  {
-   "nome": "The Greatest Intentions",
-   "chaos": 94
-  },
-  {
-   "nome": "Reckless Ambition",
-   "chaos": 93
-  },
-  {
-   "nome": "The Samurai's Eye",
-   "chaos": 92
-  },
-  {
-   "nome": "The Price of Loyalty",
-   "chaos": 88
-  },
-  {
-   "nome": "Lethean Temptation",
-   "chaos": 82
-  },
-  {
-   "nome": "The Enlightened",
-   "chaos": 81
-  },
-  {
-   "nome": "Monochrome",
-   "chaos": 72
-  }
- ],
- "currency": [
-  {
-   "nome": "Mirror of Kalandra",
-   "chaos": 526
-  },
-  {
-   "nome": "Divine Orb",
-   "chaos": 223
-  },
-  {
-   "nome": "Tempering Orb",
-   "chaos": 219
-  },
-  {
-   "nome": "Tailoring Orb",
-   "chaos": 212
-  },
-  {
-   "nome": "Orb of Conflict",
-   "chaos": 199
-  },
-  {
-   "nome": "Warlord's Exalted Orb",
-   "chaos": 169
-  },
-  {
-   "nome": "Reflecting Mist",
-   "chaos": 162
-  },
-  {
-   "nome": "Shaper's Exalted Orb",
-   "chaos": 148
-  },
-  {
-   "nome": "Tainted Exalted Orb",
-   "chaos": 93
-  },
-  {
-   "nome": "Crusader's Exalted Orb",
-   "chaos": 81
-  },
-  {
-   "nome": "Redeemer's Exalted Orb",
-   "chaos": 77
-  },
-  {
-   "nome": "Exceptional Eldritch Ember",
-   "chaos": 72
-  },
-  {
-   "nome": "Maven's Chisel of Divination",
-   "chaos": 72
-  },
-  {
-   "nome": "Orb of Remembrance",
-   "chaos": 71
-  },
-  {
-   "nome": "Exceptional Eldritch Ichor",
-   "chaos": 66
-  },
-  {
-   "nome": "Hinekora's Lock",
-   "chaos": 60
-  },
-  {
-   "nome": "Maven's Chisel of Scarabs",
-   "chaos": 57
-  },
-  {
-   "nome": "Veiled Chaos Orb",
-   "chaos": 55
-  },
-  {
-   "nome": "Elder's Exalted Orb",
-   "chaos": 45
-  },
-  {
-   "nome": "Maven's Chisel of Avarice",
-   "chaos": 41
-  }
- ],
- "fossili": [
-  {
-   "nome": "Fractured Fossil",
-   "chaos": 162
-  },
-  {
-   "nome": "Faceted Fossil",
-   "chaos": 80
-  },
-  {
-   "nome": "Sanctified Fossil",
-   "chaos": 43
-  },
-  {
-   "nome": "Glyphic Fossil",
-   "chaos": 28
-  },
-  {
-   "nome": "Shuddering Fossil",
-   "chaos": 23
-  },
-  {
-   "nome": "Dense Fossil",
-   "chaos": 14
-  },
-  {
-   "nome": "Corroded Fossil",
-   "chaos": 12
-  },
-  {
-   "nome": "Aetheric Fossil",
-   "chaos": 10
-  },
-  {
-   "nome": "Deft Fossil",
-   "chaos": 10
-  },
-  {
-   "nome": "Pristine Fossil",
-   "chaos": 10
-  }
- ],
- "oli": [
-  {
-   "nome": "Silver Oil",
-   "chaos": 113
-  },
-  {
-   "nome": "Prismatic Oil",
-   "chaos": 46
-  },
-  {
-   "nome": "Opalescent Oil",
-   "chaos": 36
-  },
-  {
-   "nome": "Black Oil",
-   "chaos": 11
-  },
-  {
-   "nome": "Crimson Oil",
-   "chaos": 3.8
-  },
-  {
-   "nome": "Reflective Oil",
-   "chaos": 1.8
-  },
-  {
-   "nome": "Golden Oil",
-   "chaos": 1.5
-  },
-  {
-   "nome": "Tainted Oil",
-   "chaos": 1.3
-  }
- ],
- "mappe": [
-  {
-   "mappa": "Sanctuary",
-   "nCarte": 4,
-   "valore": 632,
-   "media": 158,
-   "mediana": 92.5,
-   "max": 433,
-   "carte": [
-    {
-     "nome": "Damnation",
-     "chaos": 433
-    },
-    {
-     "nome": "Temperance",
-     "chaos": 104
-    },
-    {
-     "nome": "The Enlightened",
-     "chaos": 81
-    },
-    {
-     "nome": "Altered Perception",
-     "chaos": 14
-    }
-   ]
-  },
-  {
-   "mappa": "Graveyard",
-   "nCarte": 2,
-   "valore": 436,
-   "media": 218,
-   "mediana": 218.0,
-   "max": 433,
-   "carte": [
-    {
-     "nome": "Damnation",
-     "chaos": 433
-    },
-    {
-     "nome": "The One With All",
-     "chaos": 3
-    }
-   ]
-  },
-  {
-   "mappa": "Courtyard of Wasting",
-   "nCarte": 4,
-   "valore": 337,
-   "media": 84.2,
-   "mediana": 62.0,
-   "max": 208,
-   "carte": [
-    {
-     "nome": "The Gulf",
-     "chaos": 208
-    },
-    {
-     "nome": "Reckless Ambition",
-     "chaos": 93
-    },
-    {
-     "nome": "The Side Quest",
-     "chaos": 31
-    },
-    {
-     "nome": "Astral Protection",
-     "chaos": 5
-    }
-   ]
-  },
-  {
-   "mappa": "Shrine",
-   "nCarte": 2,
-   "valore": 238,
-   "media": 119,
-   "mediana": 119.0,
-   "max": 223,
-   "carte": [
-    {
-     "nome": "The Lunaris Priestess",
-     "chaos": 223
-    },
-    {
-     "nome": "The Progeny of Lunaris",
-     "chaos": 15
-    }
-   ]
-  },
-  {
-   "mappa": "Chateau",
-   "nCarte": 3,
-   "valore": 224,
-   "media": 74.7,
-   "mediana": 1,
-   "max": 222,
-   "carte": [
-    {
-     "nome": "Squandered Prosperity",
-     "chaos": 222
-    },
-    {
-     "nome": "The Price of Protection",
+     "famiglia": "Torment",
+     "ninja": 1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 1
     },
     {
-     "nome": "The Bear Woman",
-     "chaos": 1
+     "nome": "Torment Scarab of Release",
+     "famiglia": "Torment",
+     "ninja": null,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": false,
+     "chaos": null
     }
    ]
   },
   {
-   "mappa": "Residence",
-   "nCarte": 1,
-   "valore": 222,
-   "media": 222,
-   "mediana": 222,
-   "max": 222,
-   "carte": [
+   "nome": "Betrayal",
+   "meccanica": true,
+   "n": 4,
+   "conPrezzo": 4,
+   "max": 1.8,
+   "mediana": 1.1,
+   "totale": 5.1,
+   "scarab": [
     {
-     "nome": "Squandered Prosperity",
-     "chaos": 222
-    }
-   ]
-  },
-  {
-   "mappa": "Palace",
-   "nCarte": 3,
-   "valore": 202.1,
-   "media": 67.4,
-   "mediana": 5.1,
-   "max": 194,
-   "carte": [
-    {
-     "nome": "The Sephirot",
-     "chaos": 194
-    },
-    {
-     "nome": "Light and Truth",
-     "chaos": 5.1
-    },
-    {
-     "nome": "The Dapper Prodigy",
-     "chaos": 3
-    }
-   ]
-  },
-  {
-   "mappa": "City Square",
-   "nCarte": 3,
-   "valore": 196,
-   "media": 65.3,
-   "mediana": 55,
-   "max": 140,
-   "carte": [
-    {
-     "nome": "The Mayor",
-     "chaos": 140
-    },
-    {
-     "nome": "Home",
-     "chaos": 55
-    },
-    {
-     "nome": "The Sigil",
-     "chaos": 1
-    }
-   ]
-  },
-  {
-   "mappa": "Strand",
-   "nCarte": 4,
-   "valore": 196,
-   "media": 49,
-   "mediana": 33.5,
-   "max": 128,
-   "carte": [
-    {
-     "nome": "The Journey",
-     "chaos": 128
-    },
-    {
-     "nome": "The Leviathan",
-     "chaos": 53
-    },
-    {
-     "nome": "The Formless Sea",
-     "chaos": 14
-    },
-    {
-     "nome": "Rain Tempter",
-     "chaos": 1
-    }
-   ]
-  },
-  {
-   "mappa": "Abomination",
-   "nCarte": 4,
-   "valore": 186.9,
-   "media": 46.7,
-   "mediana": 22.0,
-   "max": 139,
-   "carte": [
-    {
-     "nome": "The Nurse",
-     "chaos": 139
-    },
-    {
-     "nome": "The Artist",
-     "chaos": 39
-    },
-    {
-     "nome": "The Insatiable",
-     "chaos": 5
-    },
-    {
-     "nome": "The Offering",
-     "chaos": 3.9
-    }
-   ]
-  },
-  {
-   "mappa": "Arcade",
-   "nCarte": 4,
-   "valore": 169.3,
-   "media": 42.3,
-   "mediana": 13.8,
-   "max": 140,
-   "carte": [
-    {
-     "nome": "The Mayor",
-     "chaos": 140
-    },
-    {
-     "nome": "The Miracle",
-     "chaos": 23
-    },
-    {
-     "nome": "Deadly Joy",
-     "chaos": 4.5
-    },
-    {
-     "nome": "I See Brothers",
+     "nome": "Betrayal Scarab of Unbreaking",
+     "famiglia": "Betrayal",
+     "ninja": 1.8,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 1.8
+    },
+    {
+     "nome": "Betrayal Scarab",
+     "famiglia": "Betrayal",
+     "ninja": 1.1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.1
+    },
+    {
+     "nome": "Betrayal Scarab of the Allflame",
+     "famiglia": "Betrayal",
+     "ninja": 1.1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.1
+    },
+    {
+     "nome": "Betrayal Scarab of Reinforcements",
+     "famiglia": "Betrayal",
+     "ninja": 1.1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.1
     }
    ]
   },
   {
-   "mappa": "Belfry",
-   "nCarte": 3,
-   "valore": 164,
-   "media": 54.7,
-   "mediana": 60,
-   "max": 81,
-   "carte": [
+   "nome": "Beyond",
+   "meccanica": true,
+   "n": 5,
+   "conPrezzo": 4,
+   "max": 1.6,
+   "mediana": 1.1,
+   "totale": 4.8,
+   "scarab": [
     {
-     "nome": "The Enlightened",
-     "chaos": 81
+     "nome": "Beyond Scarab of the Invasion",
+     "famiglia": "Beyond",
+     "ninja": 1.6,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.6
     },
     {
-     "nome": "A Modest Request",
-     "chaos": 60
+     "nome": "Beyond Scarab",
+     "famiglia": "Beyond",
+     "ninja": 1.1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.1
     },
     {
-     "nome": "The Life Thief",
-     "chaos": 23
-    }
-   ]
-  },
-  {
-   "mappa": "Bramble Valley",
-   "nCarte": 4,
-   "valore": 162,
-   "media": 40.5,
-   "mediana": 15.0,
-   "max": 131,
-   "carte": [
-    {
-     "nome": "Mawr Blaidd",
-     "chaos": 131
+     "nome": "Beyond Scarab of Resurgence",
+     "famiglia": "Beyond",
+     "ninja": 1.1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.1
     },
     {
-     "nome": "Avian Pursuit",
-     "chaos": 29
-    },
-    {
-     "nome": "The Explorer",
+     "nome": "Beyond Scarab of Haemophilia",
+     "famiglia": "Beyond",
+     "ninja": 1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 1
     },
     {
-     "nome": "The Adventuring Spirit",
+     "nome": "Beyond Scarab of Corruption",
+     "famiglia": "Beyond",
+     "ninja": null,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": false,
+     "chaos": null
+    }
+   ]
+  },
+  {
+   "nome": "Incursion",
+   "meccanica": true,
+   "n": 4,
+   "conPrezzo": 4,
+   "max": 37,
+   "mediana": 1.05,
+   "totale": 40.1,
+   "scarab": [
+    {
+     "nome": "Incursion Scarab of Timelines",
+     "famiglia": "Incursion",
+     "ninja": 37,
+     "misurato": 30.0,
+     "inserzioni": 29,
+     "nelloScrape": true,
+     "chaos": 37
+    },
+    {
+     "nome": "Incursion Scarab",
+     "famiglia": "Incursion",
+     "ninja": 1.1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.1
+    },
+    {
+     "nome": "Incursion Scarab of Invasion",
+     "famiglia": "Incursion",
+     "ninja": 1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 1
-    }
-   ]
-  },
-  {
-   "mappa": "Core",
-   "nCarte": 3,
-   "valore": 146.0,
-   "media": 48.7,
-   "mediana": 4.6,
-   "max": 139,
-   "carte": [
-    {
-     "nome": "The Nurse",
-     "chaos": 139
     },
     {
-     "nome": "Draped in Dreams",
-     "chaos": 4.6
-    },
-    {
-     "nome": "The Hunger",
-     "chaos": 2.4
-    }
-   ]
-  },
-  {
-   "mappa": "Arachnid Nest",
-   "nCarte": 4,
-   "valore": 135.1,
-   "media": 33.8,
-   "mediana": 1.6,
-   "max": 131,
-   "carte": [
-    {
-     "nome": "Mawr Blaidd",
-     "chaos": 131
-    },
-    {
-     "nome": "Call to the First Ones",
-     "chaos": 2.1
-    },
-    {
-     "nome": "The Explorer",
-     "chaos": 1
-    },
-    {
-     "nome": "The Demoness",
-     "chaos": 1
-    }
-   ]
-  },
-  {
-   "mappa": "Fortress",
-   "nCarte": 4,
-   "valore": 134.7,
-   "media": 33.7,
-   "mediana": 12.6,
-   "max": 107,
-   "carte": [
-    {
-     "nome": "Auspicious Ambitions",
-     "chaos": 107
-    },
-    {
-     "nome": "Something Dark",
-     "chaos": 17
-    },
-    {
-     "nome": "Who Asked",
-     "chaos": 8.2
-    },
-    {
-     "nome": "One Last Score",
-     "chaos": 2.5
-    }
-   ]
-  },
-  {
-   "mappa": "Reef",
-   "nCarte": 4,
-   "valore": 127.8,
-   "media": 31.9,
-   "mediana": 4.2,
-   "max": 118,
-   "carte": [
-    {
-     "nome": "The Mad King",
-     "chaos": 118
-    },
-    {
-     "nome": "The Fathomless Depths",
-     "chaos": 5
-    },
-    {
-     "nome": "The Messenger",
-     "chaos": 3.4
-    },
-    {
-     "nome": "More is Never Enough",
-     "chaos": 1.4
-    }
-   ]
-  },
-  {
-   "mappa": "Atoll",
-   "nCarte": 4,
-   "valore": 125.4,
-   "media": 31.4,
-   "mediana": 12.2,
-   "max": 100,
-   "carte": [
-    {
-     "nome": "The Destination",
-     "chaos": 100
-    },
-    {
-     "nome": "The Old Man",
-     "chaos": 20
-    },
-    {
-     "nome": "The Vast",
-     "chaos": 4.4
-    },
-    {
-     "nome": "The Wind",
+     "nome": "Incursion Scarab of Champions",
+     "famiglia": "Incursion",
+     "ninja": 1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 1
     }
    ]
   },
   {
-   "mappa": "Channel",
-   "nCarte": 3,
-   "valore": 121,
-   "media": 40.3,
-   "mediana": 20,
-   "max": 100,
-   "carte": [
+   "nome": "Anarchy",
+   "meccanica": true,
+   "n": 4,
+   "conPrezzo": 4,
+   "max": 1.2,
+   "mediana": 1.0,
+   "totale": 4.2,
+   "scarab": [
     {
-     "nome": "The Destination",
-     "chaos": 100
+     "nome": "Anarchy Scarab",
+     "famiglia": "Anarchy",
+     "ninja": 1.2,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.2
     },
     {
-     "nome": "The Old Man",
-     "chaos": 20
+     "nome": "Anarchy Scarab of Gigantification",
+     "famiglia": "Anarchy",
+     "ninja": 1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1
     },
     {
-     "nome": "Desperate Crusade",
+     "nome": "Anarchy Scarab of Partnership",
+     "famiglia": "Anarchy",
+     "ninja": 1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1
+    },
+    {
+     "nome": "Anarchy Scarab of the Exceptional",
+     "famiglia": "Anarchy",
+     "ninja": 1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 1
     }
    ]
   },
   {
-   "mappa": "Siege",
-   "nCarte": 3,
-   "valore": 114.5,
-   "media": 38.2,
-   "mediana": 55,
-   "max": 58,
-   "carte": [
+   "nome": "Expedition",
+   "meccanica": true,
+   "n": 5,
+   "conPrezzo": 5,
+   "max": 1.1,
+   "mediana": 1,
+   "totale": 5.2,
+   "scarab": [
     {
-     "nome": "The Silly Boy",
-     "chaos": 58
+     "nome": "Expedition Scarab",
+     "famiglia": "Expedition",
+     "ninja": 1.1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.1
     },
     {
-     "nome": "Home",
-     "chaos": 55
+     "nome": "Expedition Scarab of Runefinding",
+     "famiglia": "Expedition",
+     "ninja": 1.1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
+     "chaos": 1.1
     },
     {
-     "nome": "The Spark and the Flame",
-     "chaos": 1.5
-    }
-   ]
-  },
-  {
-   "mappa": "Museum",
-   "nCarte": 4,
-   "valore": 108.9,
-   "media": 27.2,
-   "mediana": 1.9,
-   "max": 104,
-   "carte": [
-    {
-     "nome": "Temperance",
-     "chaos": 104
-    },
-    {
-     "nome": "One Last Score",
-     "chaos": 2.5
-    },
-    {
-     "nome": "Blind Venture",
-     "chaos": 1.4
-    },
-    {
-     "nome": "A Dab of Ink",
-     "chaos": 1
-    }
-   ]
-  },
-  {
-   "mappa": "Forge of the Phoenix",
-   "nCarte": 3,
-   "valore": 94,
-   "media": 31.3,
-   "mediana": 34,
-   "max": 55,
-   "carte": [
-    {
-     "nome": "Perfection",
-     "chaos": 55
-    },
-    {
-     "nome": "The Everlasting",
-     "chaos": 34
-    },
-    {
-     "nome": "Astral Protection",
-     "chaos": 5
-    }
-   ]
-  },
-  {
-   "mappa": "Lair of the Hydra",
-   "nCarte": 3,
-   "valore": 94,
-   "media": 31.3,
-   "mediana": 34,
-   "max": 55,
-   "carte": [
-    {
-     "nome": "Perfection",
-     "chaos": 55
-    },
-    {
-     "nome": "The Everlasting",
-     "chaos": 34
-    },
-    {
-     "nome": "Astral Protection",
-     "chaos": 5
-    }
-   ]
-  },
-  {
-   "mappa": "Maze of the Minotaur",
-   "nCarte": 3,
-   "valore": 94,
-   "media": 31.3,
-   "mediana": 34,
-   "max": 55,
-   "carte": [
-    {
-     "nome": "Perfection",
-     "chaos": 55
-    },
-    {
-     "nome": "The Everlasting",
-     "chaos": 34
-    },
-    {
-     "nome": "Astral Protection",
-     "chaos": 5
-    }
-   ]
-  },
-  {
-   "mappa": "Ziggurat",
-   "nCarte": 4,
-   "valore": 93.5,
-   "media": 23.4,
-   "mediana": 5.3,
-   "max": 81,
-   "carte": [
-    {
-     "nome": "The Enlightened",
-     "chaos": 81
-    },
-    {
-     "nome": "Outfoxed",
-     "chaos": 5.3
-    },
-    {
-     "nome": "Misery in Darkness",
-     "chaos": 5.3
-    },
-    {
-     "nome": "Lucky Deck",
-     "chaos": 1.9
-    }
-   ]
-  },
-  {
-   "mappa": "Relic Chambers",
-   "nCarte": 3,
-   "valore": 85.6,
-   "media": 28.5,
-   "mediana": 3.3,
-   "max": 81,
-   "carte": [
-    {
-     "nome": "The Enlightened",
-     "chaos": 81
-    },
-    {
-     "nome": "Reflection of the Heart",
-     "chaos": 3.3
-    },
-    {
-     "nome": "The Union",
-     "chaos": 1.3
-    }
-   ]
-  },
-  {
-   "mappa": "Bazaar",
-   "nCarte": 3,
-   "valore": 84.2,
-   "media": 28.1,
-   "mediana": 23,
-   "max": 58,
-   "carte": [
-    {
-     "nome": "The Silly Boy",
-     "chaos": 58
-    },
-    {
-     "nome": "The Miracle",
-     "chaos": 23
-    },
-    {
-     "nome": "The Drunken Aristocrat",
-     "chaos": 3.2
-    }
-   ]
-  },
-  {
-   "mappa": "Conservatory",
-   "nCarte": 3,
-   "valore": 78,
-   "media": 26,
-   "mediana": 15,
-   "max": 62,
-   "carte": [
-    {
-     "nome": "The Forbidden Fruit",
-     "chaos": 62
-    },
-    {
-     "nome": "Peaceful Moments",
-     "chaos": 15
-    },
-    {
-     "nome": "The Porcupine",
-     "chaos": 1
-    }
-   ]
-  },
-  {
-   "mappa": "Vaal Pyramid",
-   "nCarte": 2,
-   "valore": 72,
-   "media": 36,
-   "mediana": 36.0,
-   "max": 71,
-   "carte": [
-    {
-     "nome": "The Damned",
-     "chaos": 71
-    },
-    {
-     "nome": "The Catalyst",
-     "chaos": 1
-    }
-   ]
-  },
-  {
-   "mappa": "Terrace",
-   "nCarte": 3,
-   "valore": 66.7,
-   "media": 22.2,
-   "mediana": 2.7,
-   "max": 62,
-   "carte": [
-    {
-     "nome": "The Forbidden Fruit",
-     "chaos": 62
-    },
-    {
-     "nome": "The Wilted Rose",
-     "chaos": 2.7
-    },
-    {
-     "nome": "The Fox in the Brambles",
-     "chaos": 2
-    }
-   ]
-  },
-  {
-   "mappa": "Colonnade",
-   "nCarte": 3,
-   "valore": 60.4,
-   "media": 20.1,
-   "mediana": 17,
-   "max": 42,
-   "carte": [
-    {
-     "nome": "The Dungeon Master",
-     "chaos": 42
-    },
-    {
-     "nome": "The Patient",
-     "chaos": 17
-    },
-    {
-     "nome": "The Traitor",
-     "chaos": 1.4
-    }
-   ]
-  },
-  {
-   "mappa": "Malformation",
-   "nCarte": 3,
-   "valore": 59,
-   "media": 19.7,
-   "mediana": 25,
-   "max": 29,
-   "carte": [
-    {
-     "nome": "The Prince of Darkness",
-     "chaos": 29
-    },
-    {
-     "nome": "Last Stand",
-     "chaos": 25
-    },
-    {
-     "nome": "The Insatiable",
-     "chaos": 5
-    }
-   ]
-  },
-  {
-   "mappa": "Fields",
-   "nCarte": 4,
-   "valore": 53,
-   "media": 13.2,
-   "mediana": 8.5,
-   "max": 35,
-   "carte": [
-    {
-     "nome": "The Fortunate",
-     "chaos": 35
-    },
-    {
-     "nome": "Tranquillity",
-     "chaos": 16
-    },
-    {
-     "nome": "The Fox",
+     "nome": "Expedition Scarab of Verisium Powder",
+     "famiglia": "Expedition",
+     "ninja": 1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 1
     },
     {
-     "nome": "The Scarred Meadow",
+     "nome": "Expedition Scarab of Infusion",
+     "famiglia": "Expedition",
+     "ninja": 1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 1
-    }
-   ]
-  },
-  {
-   "mappa": "Cells",
-   "nCarte": 3,
-   "valore": 46.9,
-   "media": 15.6,
-   "mediana": 3.9,
-   "max": 42,
-   "carte": [
-    {
-     "nome": "The Dungeon Master",
-     "chaos": 42
     },
     {
-     "nome": "The Offering",
-     "chaos": 3.9
-    },
-    {
-     "nome": "The Chains that Bind",
+     "nome": "Expedition Scarab of Archaeology",
+     "famiglia": "Expedition",
+     "ninja": 1,
+     "misurato": null,
+     "inserzioni": null,
+     "nelloScrape": true,
      "chaos": 1
-    }
-   ]
-  },
-  {
-   "mappa": "Primordial Pool",
-   "nCarte": 4,
-   "valore": 44.4,
-   "media": 11.1,
-   "mediana": 7.2,
-   "max": 29,
-   "carte": [
-    {
-     "nome": "The Prince of Darkness",
-     "chaos": 29
-    },
-    {
-     "nome": "The Eye of the Dragon",
-     "chaos": 12
-    },
-    {
-     "nome": "The Hunger",
-     "chaos": 2.4
-    },
-    {
-     "nome": "The Survivalist",
-     "chaos": 1
-    }
-   ]
-  },
-  {
-   "mappa": "Waterways",
-   "nCarte": 3,
-   "valore": 43,
-   "media": 14.3,
-   "mediana": 18,
-   "max": 24,
-   "carte": [
-    {
-     "nome": "Lachrymal Necrosis",
-     "chaos": 24
-    },
-    {
-     "nome": "Terrible Secret of Space",
-     "chaos": 18
-    },
-    {
-     "nome": "Desperate Crusade",
-     "chaos": 1
-    }
-   ]
-  },
-  {
-   "mappa": "Volcano",
-   "nCarte": 4,
-   "valore": 41.3,
-   "media": 10.3,
-   "mediana": 8.9,
-   "max": 22,
-   "carte": [
-    {
-     "nome": "Lonely Warrior",
-     "chaos": 22
-    },
-    {
-     "nome": "Pride Before the Fall",
-     "chaos": 9.1
-    },
-    {
-     "nome": "From Bone to Ashes",
-     "chaos": 8.7
-    },
-    {
-     "nome": "The Spark and the Flame",
-     "chaos": 1.5
-    }
-   ]
-  },
-  {
-   "mappa": "Dunes",
-   "nCarte": 4,
-   "valore": 39.8,
-   "media": 9.9,
-   "mediana": 1.8,
-   "max": 35,
-   "carte": [
-    {
-     "nome": "The Fortunate",
-     "chaos": 35
-    },
-    {
-     "nome": "Baited Expectations",
-     "chaos": 2.2
-    },
-    {
-     "nome": "Earth Drinker",
-     "chaos": 1.3
-    },
-    {
-     "nome": "Acclimatisation",
-     "chaos": 1.3
-    }
-   ]
-  },
-  {
-   "mappa": "Pit of the Chimera",
-   "nCarte": 3,
-   "valore": 39,
-   "media": 13,
-   "mediana": 4,
-   "max": 34,
-   "carte": [
-    {
-     "nome": "The Everlasting",
-     "chaos": 34
-    },
-    {
-     "nome": "A Familiar Call",
-     "chaos": 4
-    },
-    {
-     "nome": "Boon of the First Ones",
-     "chaos": 1
-    }
-   ]
-  },
-  {
-   "mappa": "Alleyways",
-   "nCarte": 3,
-   "valore": 35.7,
-   "media": 11.9,
-   "mediana": 2.4,
-   "max": 31,
-   "carte": [
-    {
-     "nome": "The Side Quest",
-     "chaos": 31
-    },
-    {
-     "nome": "The Gentleman",
-     "chaos": 2.4
-    },
-    {
-     "nome": "The Enthusiasts",
-     "chaos": 2.3
     }
    ]
   }
- ],
- "carteAnalizzate": 395
+ ]
 }

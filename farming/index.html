@@ -56,7 +56,7 @@
 <div class="wrap">
   <header class="testata">
     <h1>Farming — cosa conviene davvero</h1>
-    <p class="sub">Classifica delle meccaniche costruita sul <b>prezzo dei loro scarab</b>, letto da poe.ninja. Non è una tier list copiata da un articolo: è quello che il mercato paga adesso.</p>
+    <p class="sub">Classifica delle meccaniche costruita sul <b>prezzo dei loro scarab</b>, letto da poe.ninja e <b>verificato sull'API di trade</b> su 17 scarab. Non è una tier list copiata da un articolo: è quello che il mercato paga adesso.</p>
     <div class="badges">
       <span class="badge">patch 3.29.2</span>
       <span class="badge">lega Allflame</span>
@@ -66,14 +66,16 @@
   </header>
 
   <div class="avviso">
-    <b>Cosa misura questo numero, e cosa no.</b> Il prezzo di uno scarab dice quanto il mercato è disposto a pagare per <em>entrare</em> in quella meccanica: è domanda, cioè la miglior prova indiretta che la gente ci guadagna. <b>Non è il tuo profitto.</b> Uno scarab da 199 chaos è anche un costo che ti mangia il margine, e una meccanica gratis con drop modesti può rendere di più in mano tua. Usa la classifica per capire <em>dove guarda il mercato</em>, non come garanzia di guadagno.
-    <br><br><b>La mediana conta più del massimo.</b> Una meccanica con un solo scarab caro e gli altri a 1 chaos ha un picco, non un valore: significa che serve quel pezzo specifico. Una con mediana alta paga su tutta la linea.
+    <b>Cosa misura questo numero, e cosa no.</b> Il prezzo di uno scarab dice quanto il mercato è disposto a pagare per <em>entrare</em> in quella meccanica: è domanda, cioè la miglior prova indiretta che la gente ci guadagna. <b>Non è il tuo profitto.</b> Uno scarab da 199 chaos è anche un costo che ti mangia il margine, e una meccanica gratis con drop modesti può rendere di più in mano tua.
+    <br><br><b>La mediana conta più del massimo.</b> Una meccanica con un solo scarab caro e gli altri a 1 chaos ha un picco, non un valore: serve quel pezzo specifico. Una con mediana alta paga su tutta la linea.
+    <br><br><b>Verificato, non creduto.</b> Diciassette scarab sono stati rimisurati sull'API di trade, dove la valuta è un campo esplicito. Sugli scarab rari le due fonti coincidono — Containment 93 contro 93, Pilfering 58 contro 57, Cornucopia 54 contro 55. Su quelli da pochi chaos la misura sulle inserzioni sta da 8 a 40 volte sopra, perché le inserzioni invendute si accumulano: dove l'item costa un chaos, il fondo del mercato <em>è</em> il mercato, e in alto restano solo offerte ferme da settimane. Per questo il prezzo pubblicato resta quello di poe.ninja, che legge gli scambi e non le richieste.
   </div>
 
   <h2 class="sec">Le tre che consiglio</h2>
   <div class="top" id="top"></div>
 
-  <h2 class="sec">Tutte le meccaniche, per prezzo degli scarab</h2>
+  <h2 class="sec">Le meccaniche dell'atlante, per prezzo degli scarab</h2>
+  <p style="font-size:.84rem;color:var(--muted);margin:0 0 .7rem">Solo le <b>21 famiglie che sono davvero meccaniche</b>, quelle su cui puoi investire punti atlas. I gruppi generici — Horned, Titanic, Trarthan, Kalguuran, Influencing e gli scarab senza famiglia — modificano la mappa ma non sono una strategia, e stanno nella tabella sotto.</p>
   <table id="tab">
     <thead><tr>
       <th data-k="nome">Meccanica</th>
@@ -86,58 +88,74 @@
     <tbody></tbody>
   </table>
 
-  <h2 class="sec">Quali mappe — dove vivono le carte che valgono</h2>
-  <div class="avviso">
-    <b>Cosa misura questa tabella.</b> Per <b>tutte le 395</b> divination card ho cercato su poedb in quale area cade, e calcolato totale, media e mediana per mappa. Dice <b>dove stanno i premi grossi</b>.
-    <br><br><b>Cosa NON misura: la frequenza.</b> Una carta da 433 chaos che cade una volta ogni cinquemila mappe rende meno di una da 20 che cade ogni dieci. Le probabilità di drop non sono pubbliche, quindi questa non è una classifica di guadagno atteso: è la mappa del <em>potenziale</em>. Serve a scegliere dove puntare gli scarab Divination, non a decidere cosa girare a vuoto.
-    <br><br><b>E non misura la velocità.</b> Quanto sia rapido attraversare un layout non esiste come dato pubblico. Le mappe qui sotto vanno incrociate con la tua esperienza di percorrenza: una mappa ricca ma lenta può rendere meno di una povera e veloce.
-  </div>
-  <table id="tabm">
+  <h2 class="sec">Scarab generici — non sono meccaniche</h2>
+  <table id="tabg">
     <thead><tr>
-      <th>Mappa</th><th class="n">Totale</th><th class="n">Media</th><th class="n">Mediana</th><th class="n">Carte</th><th>Quali</th>
+      <th>Gruppo</th><th class="n">Più caro</th><th class="n">Mediana</th><th class="n">Scarab</th><th>Il più caro</th>
     </tr></thead>
     <tbody></tbody>
   </table>
 
-  <h2 class="sec">Altri numeri utili</h2>
-  <div id="extra"></div>
+  <h2 class="sec">La verifica, scarab per scarab</h2>
+  <p style="font-size:.84rem;color:var(--muted);margin:0 0 .7rem">Quartile alto delle inserzioni di trade contro il valore di poe.ninja. Le righe in alto sono gli scarab rari, dove le due fonti concordano.</p>
+  <table id="tabv">
+    <thead><tr>
+      <th>Scarab</th><th class="n">poe.ninja</th><th class="n">misurato</th><th class="n">rapporto</th><th class="n">inserzioni</th>
+    </tr></thead>
+    <tbody></tbody>
+  </table>
+
+  <h2 class="sec">Quali mappe — sta nell'Atlante</h2>
+  <div class="avviso">
+    <b>Questa tabella è stata rimossa perché la sua metrica era sbagliata.</b> Sommava il prezzo delle divination card di ogni mappa senza pesarle per quanto spesso cadono: trattava <em>Damnation</em> (98.940 chaos, una ogni 1.740 mappe) come una carta qualsiasi. Pesando il drop, le prime dodici mappe di quella classifica finiscono fra la 28ª e la 124ª posizione su 154.
+    <br><br>La versione corretta è nell'<a href="../atlante/">Atlante</a>, in chaos per mappa: <b>Shrine 22,8</b>, <b>Palace 13,9</b>, <b>Desert Spring 10,8</b>. Con la conclusione scomoda che ne segue — fra la mappa migliore e una qualsiasi ci sono venti chaos, quindi le carte non sono il criterio con cui si sceglie una mappa.
+  </div>
+
+  <h2 class="sec">Le tabelle di carte e currency sono state rimosse</h2>
+  <div class="avviso">
+    <b>Erano corrotte, e si smentivano da sole.</b> Lo scrape di poe.ninja che le alimentava mostra i valori sopra 1 divine <em>in divine</em>, ma l'unità non finisce nel DOM che si legge. Tre prove: <em>Damnation</em> registrata a <b>433</b> quando ne vale <b>98.940</b>; <em>The Lunaris Priestess</em> a <b>223</b> quando ne vale <b>1</b>, e 223 è esattamente il tasso del divine salvato nello stesso file; un <em>Mirror of Kalandra</em> a <b>526 chaos</b> con 1 divine = 223 chaos, cioè uno specchio da 2,4 divine.
+    <br><br>Tre carte su venticinque erano sbagliate, in due direzioni diverse. Un prezzo falso fa buttare roba buona, che è esattamente il motivo per cui questo sito non ne pubblica di hardcodati: meglio nessuna tabella che una tabella che mente.
+  </div>
 
   <footer>
-    <p><strong>Da dove vengono i dati.</strong> Dalle tabelle economiche di <b>poe.ninja</b> per la lega Allflame: 115 scarab, 102 currency, 395 divination card. L'API pubblica di poe.ninja oggi risponde 404 su tutti gli endpoint documentati — il sito è passato a rendering lato server, quindi i valori sono letti dalle tabelle pubblicate.</p>
+    <p><strong>Da dove vengono i dati.</strong> I prezzi da <b>poe.ninja</b> per la lega Allflame; l'elenco degli scarab dall'<b>API ufficiale di trade</b>, che ne conta <b>124</b> mentre lo scrape ne aveva 115 — nove mancavano del tutto. La verifica indipendente viene dall'endpoint di scambio in blocco di trade, dove la valuta è un campo esplicito e non un'unità da indovinare. L'API pubblica di poe.ninja risponde 404 su tutti gli endpoint documentati, quindi i suoi valori si leggono dalle tabelle del sito.</p>
+    <p><strong>Il limite del metodo di verifica.</strong> Misurare un prezzo dalle inserzioni ha un bias che cambia segno con la liquidità: sugli item rari il fondo è fatto di esche, su quelli da un chaos il fondo è il mercato. Su questo ci ho sbagliato una conclusione prima di accorgermene — vedi la tabella di verifica sopra, dove Harvest Scarab diverge 27 volte e non significa niente.</p>
     <p><strong>Quando rimisurare.</strong> I prezzi si muovono ogni settimana, e a inizio lega ogni giorno. Quando la data in alto invecchia, i numeri qui vanno rifatti, non creduti.</p>
-    <p><strong>Cosa non è misurato.</strong> Quali mappe girare e come potenziarle: quelle indicazioni nascono dalla struttura delle meccaniche, non da una misura di profitto per ora. Sono marcate come da verificare, e vanno provate in gioco.</p>
+    <p><strong>Cosa non è misurato.</strong> Il profitto per ora di ciascuna meccanica: nessuna fonte pubblica lo espone, e le indicazioni su come potenziarle nascono dalla struttura del gioco, non da una misura. Vanno provate in gioco.</p>
   </footer>
 </div>
 
 <script>
 const CONSIGLI = {
   "Harvest": {
-    perche: "Ha la <b>mediana più alta di tutte</b>: non un picco isolato ma tre scarab tutti richiesti. Significa che paga qualunque sia il pezzo che ti cade, ed è la firma di una meccanica solida invece che di una moda.",
+    perche: "Ha la <b>mediana più alta di tutte</b>: non un picco isolato ma tre scarab tutti richiesti. Paga qualunque sia il pezzo che ti cade, ed è la firma di una meccanica solida invece che di una moda.",
     mappe: "Qualunque mappa: il Sacred Grove non dipende dal layout. Conviene quindi la mappa più <b>veloce da attraversare</b> che possiedi in quantità.",
     potenziare: ["Nodi atlas del cluster Harvest fino a garantire il Grove", "Harvest Scarab of Cornucopia sui giri buoni", "Non serve pack size: il valore è nel raccolto, non nei mostri"],
     nota: "È anche l'unica delle tre che non chiede di uccidere niente di pericoloso."
   },
+  "Divination": {
+    perche: "Seconda per mediana, e i suoi tre scarab stanno tutti fra 17 e 57 chaos: nessun buco. Sono gli scarab che moltiplicano le <b>divination card</b>, quindi si sposano con la scelta della mappa invece di ignorarla.",
+    mappe: "Le mappe con valore atteso alto nell'<a href='../atlante/'>Atlante</a> — Shrine, Palace, Desert Spring. Qui, e solo qui, la scelta della mappa conta.",
+    potenziare: ["Cluster Divination sull'albero atlas", "Divination Scarab of Pilfering (57c) sulle mappe che hai scelto per le carte", "Ha senso solo su mappe con carte pesate: altrove moltiplica zero"],
+    nota: "È l'unica meccanica che rende utile l'analisi delle mappe."
+  },
   "Ambush": {
-    perche: "Ambush sono gli <b>strongbox</b>. Scarab fino a 93 chaos con mediana 5: c'è domanda vera e diffusa. È la strategia che le fonti indicano come più accessibile, e qui i numeri le danno ragione.",
-    mappe: "Mappe <b>piccole e lineari</b>, perché il guadagno sta nel numero di mappe all'ora, non in quanto spremi la singola. Obiettivo dichiarato dalle guide: 90 secondi a mappa.",
+    perche: "Ambush sono gli <b>strongbox</b>. Scarab fino a 93 chaos — un prezzo confermato al chaos dalla misura indipendente — con mediana 5: c'è domanda vera. È la strategia più accessibile, e i numeri le danno ragione.",
+    mappe: "Mappe <b>piccole e lineari</b>, perché il guadagno sta nel numero di mappe all'ora, non in quanto spremi la singola.",
     potenziare: ["Cluster Ambush sull'albero atlas", "Ambush Scarab of Containment quando il prezzo lo giustifica", "Quantità e pack size aiutano poco: conta la velocità"],
     nota: "Richiede poco investimento in equipaggiamento, quindi è la più adatta se il personaggio è ancora fragile."
-  },
-  "Cartography": {
-    perche: "Scarab fino a 172 chaos. Non è una meccanica di loot ma di <b>sostentamento</b>: produce le mappe che poi userai per tutto il resto. In una lega dove il map pool è stato rimescolato, vale doppio.",
-    mappe: "Le mappe che vuoi far ricadere: si sceglie in base a cosa stai farmando, non al layout.",
-    potenziare: ["Nodi di duplicazione mappe sull'albero atlas", "Cartography Scarab of Risk sulle mappe che vuoi moltiplicare", "Si combina con qualsiasi altra strategia invece di sostituirla"],
-    nota: "È l'unica delle tre che <b>si somma</b> alle altre due invece di escluderle."
   }
 };
+
+const chaos = v => v === null || v === undefined ? "—" : (v >= 100 ? Math.round(v) : v);
 
 fetch("dati.json").then(r=>r.json()).then(d=>{
   document.getElementById("quando").textContent = "misurato il " + d.aggiornato;
   document.getElementById("cambio").textContent = "1 divine = " + d.divine + " chaos";
 
-  const tre = ["Harvest","Ambush","Cartography"];
-  document.getElementById("top").innerHTML = tre.map((k,i) => {
-    const m = d.meccaniche.find(x=>x.nome===k), c = CONSIGLI[k];
+  const perNome = n => d.famiglie.find(x => x.nome === n);
+  document.getElementById("top").innerHTML = ["Harvest","Divination","Ambush"].map((k,i) => {
+    const m = perNome(k), c = CONSIGLI[k];
     return `<article class="card">
       <div class="pos">${i+1}ª scelta</div>
       <h3>${k}${k==="Ambush"?" — strongbox":""}</h3>
@@ -149,43 +167,43 @@ fetch("dati.json").then(r=>r.json()).then(d=>{
     </article>`;
   }).join("");
 
+  const meccaniche = d.famiglie.filter(f => f.meccanica);
+  const generici   = d.famiglie.filter(f => !f.meccanica);
+  const maxTutti   = Math.max(...d.famiglie.map(f => f.max));
+
+  const riga = f => `
+    <tr class="${f.max>=50?'alta':''}">
+      <td>${f.nome}</td>
+      <td class="n max">${f.max}</td>
+      <td class="n">${f.mediana}</td>
+      <td class="n">${f.totale}</td>
+      <td class="n">${f.n}</td>
+      <td style="color:var(--muted)"><span class="barra" style="width:${Math.max(2,f.max/maxTutti*90)}px"></span> ${f.scarab[0].nome}</td>
+    </tr>`;
   const tb = document.querySelector("#tab tbody");
-  const max = Math.max(...d.meccaniche.map(m=>m.max));
-  const dis = (arr) => tb.innerHTML = arr.map(m => `
-    <tr class="${m.max>=50?'alta':''}">
-      <td>${m.nome}</td>
-      <td class="n max">${m.max}</td>
-      <td class="n">${m.mediana}</td>
-      <td class="n">${m.totale}</td>
-      <td class="n">${m.n}</td>
-      <td style="color:var(--muted)"><span class="barra" style="width:${Math.max(2,m.max/max*90)}px"></span> ${m.scarab[0].nome}</td>
-    </tr>`).join("");
-  dis(d.meccaniche);
+  tb.innerHTML = meccaniche.map(riga).join("");
   document.querySelectorAll("#tab th[data-k]").forEach(th => th.onclick = () => {
     const k = th.dataset.k;
-    const arr = [...d.meccaniche].sort((a,b) => typeof a[k]==="string" ? a[k].localeCompare(b[k]) : b[k]-a[k]);
-    dis(arr);
+    tb.innerHTML = [...meccaniche].sort((a,b) => typeof a[k]==="string" ? a[k].localeCompare(b[k]) : b[k]-a[k]).map(riga).join("");
   });
 
-  const maxm = Math.max(...d.mappe.map(m=>m.valore));
-  document.querySelector("#tabm tbody").innerHTML = d.mappe.map(m => `
-    <tr class="${m.valore>=180?'alta':''}">
-      <td>${m.mappa}</td>
-      <td class="n max">${m.valore} c</td>
-      <td class="n">${m.media} c</td>
-      <td class="n">${m.mediana} c</td>
-      <td class="n">${m.nCarte}</td>
-      <td style="color:var(--muted)"><span class="barra" style="width:${Math.max(2,m.valore/maxm*70)}px"></span>
-          ${m.carte.map(c=>c.nome).slice(0,3).join(" · ")}</td>
-    </tr>`).join("");
+  document.querySelector("#tabg tbody").innerHTML = generici.map(f => `
+    <tr><td>${f.nome}</td><td class="n max">${f.max}</td><td class="n">${f.mediana}</td>
+        <td class="n">${f.n}</td><td style="color:var(--muted)">${f.scarab[0].nome}</td></tr>`).join("");
 
-  const tabellina = (tit, arr) => `<details><summary>${tit} (${arr.length})</summary>
-    <table><tbody>${arr.map(x=>`<tr><td>${x.nome}</td><td class="n">${x.chaos} c</td></tr>`).join("")}</tbody></table></details>`;
-  document.getElementById("extra").innerHTML =
-      tabellina("Divination card più care", d.carte)
-    + tabellina("Currency più care", d.currency)
-    + tabellina("Fossili più cari", d.fossili)
-    + tabellina("Oli più cari", d.oli);
+  const verificati = d.famiglie.flatMap(f => f.scarab).filter(s => s.misurato !== null && s.ninja !== null)
+                      .sort((a,b) => b.ninja - a.ninja);
+  document.querySelector("#tabv tbody").innerHTML = verificati.map(s => {
+    const r = s.misurato / s.ninja;
+    const ok = r >= 0.6 && r <= 1.6;
+    return `<tr>
+      <td>${s.nome}</td>
+      <td class="n">${s.ninja}</td>
+      <td class="n">${chaos(s.misurato)}</td>
+      <td class="n" style="color:${ok?'var(--good)':'var(--muted)'}">×${r.toFixed(1)}</td>
+      <td class="n">${s.inserzioni}</td>
+    </tr>`;
+  }).join("");
 });
 </script>
 </body>
