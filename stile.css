@@ -61,8 +61,8 @@
   --nav-h:3.5rem;
 
   /* larghezza della colonna: barra e contenuto la condividono, così restano
-     allineati anche sulle pagine che la allargano (vedi .wrap-largo) */
-  --colonna:76rem;
+     allineati e nessuna pagina puo' andare per conto suo */
+  --colonna:84rem;
 }
 
 /* ---------- Reset ---------- */
@@ -88,9 +88,8 @@ code{font-family:var(--mono);font-size:.92em}
 
 /* ---------- Impaginazione ---------- */
 .wrap{max-width:var(--colonna);margin:0 auto;padding:0 var(--s4)}
-/* da mettere su <html> o <body>, non sul solo contenitore, così anche la barra
-   in alto si allarga insieme e i due restano allineati */
-.largo{--colonna:96rem}
+/* Nessuna pagina cambia questa larghezza: prima ognuna aveva la sua (62, 76,
+   96rem) e passando da una all'altra il contenuto saltava. */
 .sezione{margin:var(--s7) 0 0}
 
 /* ---------- Header condiviso ---------- */
