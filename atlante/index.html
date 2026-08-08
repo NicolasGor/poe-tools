@@ -71,6 +71,17 @@
                         color:var(--text);border:1px solid var(--line2);cursor:pointer;font-size:1rem;line-height:1}
   .controlliMappa button:hover{border-color:var(--gold);color:var(--gold)}
 
+  .modaleMappa{position:fixed;inset:0;background:rgba(5,4,3,.88);z-index:100;
+               display:flex;align-items:center;justify-content:center;padding:2.2rem}
+  .modaleMappa[hidden]{display:none}
+  .modaleMappaContenuto{position:relative;width:100%;height:100%;max-width:100rem;
+                         background:#050403;border:1px solid var(--line2);border-radius:8px;overflow:hidden}
+  .modaleMappaContenuto .mapparea{width:100%;height:100%;min-height:0;max-height:none;border:0;border-radius:0}
+  .chiudiModale{position:absolute;top:.6rem;right:.6rem;z-index:30;padding:.4rem .8rem;border-radius:4px;
+                background:rgba(23,29,39,.92);color:var(--text);border:1px solid var(--line2);
+                cursor:pointer;font-size:.8rem}
+  .chiudiModale:hover{border-color:var(--gold);color:var(--gold)}
+
   aside{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:.8rem .9rem;
         position:sticky;top:.6rem;max-height:calc(100vh - 2rem);overflow:auto}
   aside h2{margin:0 0 .1rem;font-size:1.05rem;display:flex;align-items:center;gap:.4rem}
@@ -153,9 +164,10 @@
           <button id="zoomIn" title="Ingrandisci">+</button>
           <button id="zoomOut" title="Rimpicciolisci">−</button>
           <button id="zoomReset" title="Adatta alla finestra">⤢</button>
+          <button id="apriGrande" title="Apri più grande">⛶</button>
         </div>
       </div>
-      <p style="font-size:.74rem;color:var(--muted);margin:.4rem 0 0">Rotella per zoomare, trascina per spostarti.</p>
+      <p id="suggerimentoMappa" style="font-size:.74rem;color:var(--muted);margin:.4rem 0 0">Rotella per zoomare, trascina per spostarti.</p>
     </div>
     <aside id="pan"><div class="vuoto">Clicca una mappa per vedere le sue carte, i tag e le mappe collegate.</div></aside>
   </div>
@@ -164,6 +176,12 @@
     <b>Totale, media e mediana dicono cose diverse.</b> Il <b>totale</b> è quanto vale l'intero bacino di carte. La <b>media</b> viene tirata in alto da una sola carta rara. La <b>mediana</b> dice quanto vale la carta tipica ed è immune agli estremi — quando le prime due divergono di molto, la mappa è un tutto-o-niente: <em>Sanctuary</em> e <em>Graveyard</em> devono quasi tutto il loro totale a un'unica carta, <em>Damnation</em> (peso 5 su migliaia).
     <br><br><b>Layout / densità / boss</b> sono voti 1–10 curati dalla community del sito sorgente, non misurati da qui: <b>layout</b> quanto è comodo da correre, <b>densità</b> mostri per metro, <b>boss</b> quanto è veloce da uccidere (voto alto = non rallenta). Non tutte le mappe hanno un voto.
     <br><br><b>Nessuna metrica misura la frequenza di drop</b>, che non è pubblica: sono classifiche di potenziale, non di guadagno atteso. Fonte: <a href="https://mapsofexile.com" target="_blank" rel="noopener">mapsofexile.com</a> (repo open source <code>deathbeam/maps-of-exile</code>), lega <span id="lega"></span>.
+  </div>
+</div>
+
+<div class="modaleMappa" id="modaleMappa" hidden>
+  <div class="modaleMappaContenuto" id="modaleMappaContenuto">
+    <button class="chiudiModale" id="chiudiModale" title="Chiudi">✕ Chiudi</button>
   </div>
 </div>
 
@@ -226,6 +244,7 @@ function adattaZoom(){
   zoom.tx = (w - MONDO_LATO * zoom.scala) / 2;
   zoom.ty = (h - MONDO_LATO * zoom.scala) / 2;
   applicaZoom();
+  decluttera();
 }
 
 function mappa(){
@@ -259,11 +278,38 @@ function mappa(){
     e.className = "etich" + (spento?" spento":"");
     e.style.left = n.x+"px"; e.style.top = n.y+"px";
     e.textContent = n.nome;
+    e.dataset.nome = n.nome;
     frammento.appendChild(e);
   });
   q("#mondo").appendChild(frammento);
   if (zoom.scala === 1 && zoom.tx === 0 && zoom.ty === 0) adattaZoom();
   else applicaZoom();
+  decluttera();
+}
+
+// Le etichette si accavallano nei gruppi fitti di nodi: tiene solo quelle che
+// non si sovrappongono sullo schermo, dando priorità alle mappe non spente e
+// a quelle di valore più alto — se c'è conflitto, sparisce l'etichetta meno utile.
+function decluttera(){
+  if (!D) return;
+  const tutte = [...q("#mondo").querySelectorAll(".etich")];
+  tutte.forEach(e => e.style.visibility = "visible");
+  const idx = new Map(D.mappe.map(n=>[n.nome,n]));
+  const ordinate = tutte.slice().sort((a,b) => {
+    const na = idx.get(a.dataset.nome), nb = idx.get(b.dataset.nome);
+    const pa = (na && visibile(na) ? 1e9 : 0) + (na?.totale || 0);
+    const pb = (nb && visibile(nb) ? 1e9 : 0) + (nb?.totale || 0);
+    return pb - pa;
+  });
+  const tenute = [];
+  ordinate.forEach(el => {
+    const r = el.getBoundingClientRect();
+    const scontro = tenute.some(k => {
+      const kr = k.getBoundingClientRect();
+      return !(r.right < kr.left || r.left > kr.right || r.bottom < kr.top || r.top > kr.bottom);
+    });
+    if (scontro) el.style.visibility = "hidden"; else tenute.push(el);
+  });
 }
 
 (function panZoom(){
@@ -278,11 +324,12 @@ function mappa(){
     zoom.scala = nuova;
     zoom.tx = mx - wx*zoom.scala; zoom.ty = my - wy*zoom.scala;
     applicaZoom();
+    decluttera();
   }, { passive:false });
 
   let trasc = null;
   vp.addEventListener("pointerdown", e => {
-    if (e.target.closest(".nodo")) return;
+    if (e.target.closest(".nodo") || e.target.closest(".controlliMappa")) return;
     trasc = { x:e.clientX, y:e.clientY, tx:zoom.tx, ty:zoom.ty };
     vp.classList.add("trascina");
     vp.setPointerCapture(e.pointerId);
@@ -295,10 +342,29 @@ function mappa(){
   });
   vp.addEventListener("pointerup", () => { trasc=null; vp.classList.remove("trascina"); });
 
-  q("#zoomIn").onclick = () => { zoom.scala = Math.min(9, zoom.scala*1.35); applicaZoom(); };
-  q("#zoomOut").onclick = () => { zoom.scala = Math.max(0.4, zoom.scala/1.35); applicaZoom(); };
+  q("#zoomIn").onclick = () => { zoom.scala = Math.min(9, zoom.scala*1.35); applicaZoom(); decluttera(); };
+  q("#zoomOut").onclick = () => { zoom.scala = Math.max(0.4, zoom.scala/1.35); applicaZoom(); decluttera(); };
   q("#zoomReset").onclick = adattaZoom;
   addEventListener("resize", () => { if (vista==="mappa") adattaZoom(); });
+})();
+
+// ---------- modale "più grande": sposta #mapparea dentro, poi lo rimette al suo posto ----------
+(function modaleMappa(){
+  const modale = q("#modaleMappa"), contenuto = q("#modaleMappaContenuto"), mapparea = q("#mapparea");
+  const apri = () => {
+    contenuto.insertBefore(mapparea, q("#chiudiModale"));
+    modale.hidden = false;
+    requestAnimationFrame(() => { adattaZoom(); });
+  };
+  const chiudi = () => {
+    q("#vistaMappa").insertBefore(mapparea, q("#suggerimentoMappa"));
+    modale.hidden = true;
+    requestAnimationFrame(() => { adattaZoom(); });
+  };
+  q("#apriGrande").onclick = apri;
+  q("#chiudiModale").onclick = chiudi;
+  modale.addEventListener("click", e => { if (e.target === modale) chiudi(); });
+  addEventListener("keydown", e => { if (e.key === "Escape" && !modale.hidden) chiudi(); });
 })();
 
 function pannello(){
