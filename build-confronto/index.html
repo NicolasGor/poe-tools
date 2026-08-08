@@ -104,6 +104,10 @@
      degli elementi attivi, esattamente come fa pobb.in. Niente raggi ritoccati,
      niente opacità inventate. */
   .albero svg .active{color:var(--active-color)}
+  /* L'SVG nasconde le ascendancy con `.ascendancy:not(.active)`. Per mostrare
+     quella giusta serve una classe SEPARATA da `active`, altrimenti l'intera
+     ascendancy apparirebbe allocata. */
+  .albero svg .ascendancy.mostra{display:initial}
   .albero .caric{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
                  color:var(--muted);font-size:.8rem}
   /* tooltip dei nodi, stesso frame degli oggetti */
@@ -331,8 +335,8 @@ fetch("albero.svg").then(r => r.text()).then(txt => {
       const m = /^c(\d+)-(\d+)$/.exec(p.id || "");
       if (m && ids.has(m[1]) && ids.has(m[2])) p.classList.add("active");
     });
-    // l'ascendancy è nascosta finché non la si marca attiva
-    if (asc) svg.querySelectorAll("." + CSS.escape(asc)).forEach(e => e.classList.add("active"));
+    // mostra solo l'ascendancy della classe giusta, senza farla sembrare allocata
+    if (asc) svg.querySelectorAll(".ascendancy." + CSS.escape(asc)).forEach(e => e.classList.add("mostra"));
 
     // Nessuna reinquadratura: si tiene il viewBox originale, cioè l'albero intero
     // con l'ascendancy al suo posto. Zoomare sui nodi presi sembrava un'idea
