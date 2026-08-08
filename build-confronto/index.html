@@ -104,6 +104,9 @@
      degli elementi attivi, esattamente come fa pobb.in. Niente raggi ritoccati,
      niente opacità inventate. */
   .albero svg .active{color:var(--active-color)}
+  /* Le mastery sono `color: transparent` nello stile dell'SVG, con la stessa
+     specificità di `.active`: senza alzarla restano invisibili anche se prese. */
+  .albero svg .nodes circle.mastery.active{color:var(--highlight-color)}
   /* L'SVG nasconde le ascendancy con `.ascendancy:not(.active)`. Per mostrare
      quella giusta serve una classe SEPARATA da `active`, altrimenti l'intera
      ascendancy apparirebbe allocata. */
