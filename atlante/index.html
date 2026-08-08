@@ -157,9 +157,10 @@
     <button data-f="carte">Solo con carte</button>
     <button data-f="speciali">Uniche e speciali</button>
     <select id="colora">
-      <option value="totale">Colora/ordina per totale</option>
-      <option value="media">per media</option>
-      <option value="mediana">per mediana</option>
+      <option value="incassabile">Colora/ordina per c/mappa incassabile</option>
+      <option value="ev">per c/mappa atteso</option>
+      <option value="totale">per totale (metrica vecchia)</option>
+      <option value="mediana">per mediana (metrica vecchia)</option>
       <option value="nCarte">per numero di carte</option>
     </select>
     <input id="cerca" type="search" placeholder="Cerca una mappa…">
@@ -173,8 +174,9 @@
           <th data-k="nome">Mappa</th>
           <th data-k="layout" class="n">Layout</th><th data-k="density" class="n">Densità</th><th data-k="boss" class="n">Boss</th>
           <th data-k="nCarte" class="n">Carte</th>
-          <th data-k="totale" class="n">Totale</th><th data-k="media" class="n">Media</th><th data-k="mediana" class="n">Mediana</th>
-          <th>La più cara</th>
+          <th data-k="incassabile" class="n">c/mappa</th><th data-k="ev" class="n">Atteso</th><th data-k="lotteria" class="n">Lotteria</th>
+          <th data-k="totale" class="n">Totale</th>
+          <th>Carta che traina</th>
         </tr></thead>
         <tbody></tbody>
       </table>
@@ -198,7 +200,8 @@
   </div>
 
   <div class="avviso">
-    <b>Totale, media e mediana dicono cose diverse.</b> Il <b>totale</b> è quanto vale l'intero bacino di carte. La <b>media</b> viene tirata in alto da una sola carta rara. La <b>mediana</b> dice quanto vale la carta tipica ed è immune agli estremi — quando le prime due divergono di molto, la mappa è un tutto-o-niente: <em>Sanctuary</em> e <em>Graveyard</em> devono quasi tutto il loro totale a un'unica carta, <em>Damnation</em> (peso 5 su migliaia).
+    <b>Il totale dei prezzi non è una classifica.</b> Somma e mediana trattano una carta da 98.940 c come una da 100 c, ma <em>Damnation</em> ha peso di drop <b>5</b> su un pool di 7.965.209 ed esce una volta ogni <b>1.740 mappe</b>. La colonna <b>c/mappa</b> pesa ogni carta per quanto spesso cade (modello del sito sorgente: <code>prezzo × peso / pool</code>, ÷10 se cade dal boss, ancorato a <em>The Chains that Bind</em> = 916 estrazioni per mappa). L'<b>atteso</b> include tutto; l'<b>incassabile</b> tiene solo le carte che escono almeno una volta ogni 500 mappe, e la differenza è la <b>quota lotteria</b>: <em>Cage</em> ha il 97% del suo valore in una carta sola.
+    <br><br><b>Peso ignoto ≠ zero.</b> Di <em>Bazaar</em>, 7.723 dei suoi 7.726 c di totale vengono da tre carte di cui il peso di drop non è noto: il suo valore non è alto né basso, è ignoto.
     <br><br><b>Layout / densità / boss</b> sono voti 1–10 curati dalla community del sito sorgente, non misurati da qui: <b>layout</b> quanto è comodo da correre, <b>densità</b> mostri per metro, <b>boss</b> quanto è veloce da uccidere (voto alto = non rallenta). Non tutte le mappe hanno un voto.
     <br><br><b>Nessuna metrica misura la frequenza di drop</b>, che non è pubblica: sono classifiche di potenziale, non di guadagno atteso. Fonte: <a href="https://mapsofexile.com" target="_blank" rel="noopener">mapsofexile.com</a> (repo open source <code>deathbeam/maps-of-exile</code>), lega <span id="lega"></span>.
   </div>
@@ -211,7 +214,7 @@
 </div>
 
 <script>
-let D=null, vista="elenco", filtro="tutte", campo="totale", sel=null, cerca="";
+let D=null, vista="elenco", filtro="tutte", campo="incassabile", sel=null, cerca="";
 const q = s => document.querySelector(s);
 // I prezzi in chaos non hanno bisogno dei centesimi: sopra 100 si arrotonda
 // all'intero, sotto si tiene un decimale perche' li' la differenza conta.
@@ -250,9 +253,10 @@ function elenco(){
       <td class="n">${n.rating.density ?? '—'}</td>
       <td class="n">${n.rating.boss ?? '—'}</td>
       <td class="n">${n.nCarte}</td>
-      <td class="n" style="color:var(--good)">${chaos(n.totale)}</td>
-      <td class="n">${chaos(n.media)}</td>
-      <td class="n">${chaos(n.mediana)}</td>
+      <td class="n" style="color:var(--good)">${chaos(n.incassabile)}</td>
+      <td class="n">${chaos(n.ev)}</td>
+      <td class="n" style="color:${n.lotteria>=.5?'var(--warn,#e0a030)':'var(--muted)'}">${n.lotteria?Math.round(n.lotteria*100)+'%':'—'}</td>
+      <td class="n" style="color:var(--muted)">${chaos(n.totale)}</td>
       <td style="color:var(--muted)">${n.carte[0]?n.carte[0].nome:''}</td>
     </tr>`).join("");
   q("#cl tbody").querySelectorAll("tr").forEach(tr => tr.onclick = () => { sel = tr.dataset.nome; ridisegna(); pannello(); });
@@ -388,12 +392,12 @@ function pannello(){
       <div><b>${n.rating.boss ?? '—'}</b><span>boss</span></div>
     </div>
     <div class="kpi">
-      <div><b>${chaos(n.totale)} c</b><span>totale · ${n.nCarte} carte</span></div>
-      <div><b>${chaos(n.mediana)} c</b><span>mediana</span></div>
+      <div><b>${chaos(n.incassabile)} c</b><span>per mappa · ${n.nCarte} carte</span></div>
+      <div><b>${n.lotteria?Math.round(n.lotteria*100)+'%':'0%'}</b><span>quota lotteria</span></div>
     </div>
     ${n.tags.length ? `<div class="tags">${n.tags.map(t=>`<span>${t.replace(/_/g,' ')}</span>`).join("")}</div>` : ""}
     ${n.carte.length
-      ? n.carte.map(c=>`<div class="carta">${c.arte?`<img src="${iconaCarta(c)}" loading="lazy">`:''}<b>${c.nome}</b><span>${chaos(c.prezzo)} c</span></div>`).join("")
+      ? n.carte.map(c=>`<div class="carta">${c.arte?`<img src="${iconaCarta(c)}" loading="lazy">`:''}<b>${c.nome}</b><span>${chaos(c.prezzo)} c${c.ogniNMappe?` · 1 ogni ${c.ogniNMappe<10?c.ogniNMappe:Math.round(c.ogniNMappe)} mappe`:` · peso ignoto`}</span></div>`).join("")
       : `<div class="vuoto">Nessuna divination card nota qui.</div>`}
     ${n.collegate.length ? `<div class="collegate" style="margin-top:.6rem"><b style="font-size:.76rem;color:var(--label)">Collegate</b>${n.collegate.map(c=>`<a href="#" data-nome="${c}">${c}</a>`).join("")}</div>` : ""}
   `;
