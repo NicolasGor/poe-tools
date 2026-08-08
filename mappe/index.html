@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mod di mappa da evitare — generatore di regex</title>
+<style>
+  :root{
+    --bg:#12151c; --panel:#1a1f2a; --panel2:#151a23; --line:#2b3342; --line2:#39435a;
+    --text:#e6e9ef; --muted:#8b95a8; --label:#78839a;
+    --gold:#f0b94a; --good:#60d394; --bad:#e07a6f; --magic:#8888ff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:1.4rem 1rem 5rem;background:var(--bg);color:var(--text);
+       font:14px/1.55 Inter,ui-sans-serif,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+  .wrap{max-width:74rem;margin:0 auto}
+  a{color:var(--gold)}
+  header{margin-bottom:1.2rem}
+  .back{font-size:.8rem}
+  h1{margin:.6rem 0 .3rem;font-size:1.45rem}
+  .sub{margin:0;color:var(--muted);font-size:.9rem;max-width:52rem}
+
+  .out{position:sticky;top:0;z-index:10;background:var(--bg);padding:.8rem 0 .6rem;margin-bottom:.8rem;
+       border-bottom:1px solid var(--line)}
+  .box{background:#0e1218;border:1px solid var(--line2);border-radius:6px;padding:.6rem .7rem}
+  .box .rx{font-family:"Source Code Pro",Menlo,Consolas,monospace;font-size:.86rem;color:var(--magic);
+           word-break:break-all;min-height:1.3rem}
+  .riga{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin-top:.5rem}
+  button{font-size:.78rem;padding:.32rem .75rem;cursor:pointer;border-radius:4px;
+         background:#181b21;color:var(--text);border:1px solid var(--line2)}
+  button:hover{border-color:var(--gold);color:var(--gold)}
+  button.p{background:var(--gold);color:#1b1608;border:0;font-weight:600}
+  .conta{color:var(--muted);font-size:.78rem;margin-left:auto}
+  .len{font-variant-numeric:tabular-nums}
+  .len.ok{color:var(--good)} .len.ko{color:var(--bad)}
+
+  .preset{display:flex;gap:.4rem;flex-wrap:wrap;margin:.7rem 0 1rem}
+  .preset button{font-size:.74rem}
+
+  .cerca{width:100%;height:2.2rem;padding:0 .7rem;background:var(--panel);color:var(--text);
+         border:1px solid var(--line2);border-radius:5px;font-size:.85rem;margin-bottom:.9rem}
+
+  .cat{margin-bottom:1.1rem}
+  .cat h2{font-size:.74rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);
+          margin:0 0 .45rem;padding-bottom:.3rem;border-bottom:1px solid var(--line)}
+  .cat.pericolo h2{color:var(--bad)}
+  .mods{display:grid;grid-template-columns:repeat(auto-fill,minmax(21rem,1fr));gap:.25rem}
+  label.m{display:flex;gap:.5rem;align-items:flex-start;background:var(--panel2);
+          border:1px solid transparent;border-radius:4px;padding:.3rem .5rem;font-size:.8rem;cursor:pointer}
+  label.m:hover{border-color:var(--line2)}
+  label.m.on{background:rgba(224,122,111,.12);border-color:var(--bad)}
+  label.m input{margin-top:.2rem}
+  label.m .fr{font-family:"Source Code Pro",Menlo,monospace;font-size:.68rem;color:var(--label);
+              display:block;margin-top:.1rem}
+
+  footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem}
+  footer p{margin:0 0 .6rem;max-width:56rem}
+  footer b{color:var(--text)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="back"><a href="../index.html">← Tutti gli strumenti</a></div>
+    <h1>Mod di mappa da evitare</h1>
+    <p class="sub">Spunta i modificatori che non vuoi correre: esce una <b>regex</b> da incollare nella ricerca della stash. Le mappe che la fanno accendere sono quelle da rerollare.</p>
+  </header>
+
+  <div class="out">
+    <div class="box">
+      <div class="rx" id="rx">— spunta qualcosa qui sotto —</div>
+      <div class="riga">
+        <button class="p" id="copia">Copia</button>
+        <button id="pulisci">Azzera</button>
+        <span class="conta">
+          <span id="nsel">0</span> mod ·
+          <span class="len" id="len">0</span>/50 caratteri
+        </span>
+      </div>
+    </div>
+    <div class="preset" id="preset"></div>
+  </div>
+
+  <input class="cerca" id="cerca" type="search" placeholder="Filtra i modificatori… (es. regen, reflect, resistances)">
+  <div id="lista"></div>
+
+  <footer>
+    <p><strong>Come si usa.</strong> Copia la regex, aprila nel campo di ricerca della stash delle mappe (o del map device). PoE accetta le espressioni regolari e <b>ignora maiuscole e minuscole</b>. Le mappe evidenziate hanno almeno uno dei mod che hai escluso.</p>
+    <p><strong>Perché è così corta.</strong> Il campo di ricerca di PoE accetta <b>50 caratteri</b>. Per ogni mod scelto la pagina cerca la <b>sottostringa più breve che non compare in nessun altro mod di mappa</b>, così la regex resta minuscola pur essendo precisa. Se il contatore diventa rosso hai superato il limite: togli qualche voce.</p>
+    <p><strong>Da dove vengono i mod.</strong> Da <code>api/trade/data/stats</code>, l'elenco ufficiale dei filtri di ricerca — non da una lista scritta a mano. Sono <span id="tot">…</span> modificatori.</p>
+    <p><strong>Limite noto.</strong> La lista contiene anche mod che non sono prefissi di mappa ma vengono da scarab e albero atlas: sono innocui da spuntare, semplicemente non compariranno mai su una mappa.</p>
+  </footer>
+</div>
+
+<script>
+const PRESET = {
+  "Build su Energy Shield": ["Recover","Regenerat","Leech","maximum Resistances","less Recovery"],
+  "Riflesso e Thorns": ["Reflect","Thorns"],
+  "Maledizioni": ["Cursed with"],
+  "Mostri troppo duri": ["Monster Physical Damage Reduction","Monster Elemental Resistances","Chaos Resistance","increased Critical"],
+  "Nessuna cura": ["Cannot Regenerate","cannot Leech","less Recovery Rate","reduced Flask Charges"],
+};
+
+let MODS = {}, TUTTI = [], scelti = new Set();
+
+// ---- il cuore: la sottostringa più corta che identifica un mod ----
+function normalizza(t){ return t.replace(/#/g,"").replace(/\s+/g," ").trim().toLowerCase(); }
+function frammento(testo, altri){
+  const s = normalizza(testo);
+  // I frammenti partono sempre dall'inizio di una parola e sono lunghi almeno 4.
+  // Sottostringhe più corte o prese a metà parola (tipo "e n") sarebbero uniche
+  // dentro questa lista ma colpirebbero qualsiasi cosa sull'item vero, dove
+  // compaiono anche il nome della mappa e i numeri.
+  const inizi = [0];
+  for (let i = 1; i < s.length; i++) if (s[i-1] === " ") inizi.push(i);
+  for (let L = 4; L <= 24; L++){
+    for (const i of inizi){
+      if (i + L > s.length) continue;
+      const sub = s.slice(i, i+L);
+      if (/[%+0-9]/.test(sub)) continue;
+      if (sub.endsWith(" ")) continue;
+      if (!altri.some(a => a.includes(sub))) return sub;
+    }
+  }
+  return s.slice(0, 24);
+}
+
+// Copertura minima: non serve un frammento per ogni mod, serve il minor numero
+// di frammenti che coprano tutti i mod scelti senza toccare quelli non scelti.
+// "recover" da solo può valere per dieci righe diverse.
+function regexMinima(sel){
+  const S = sel.map(normalizza);
+  const NO = TUTTI.filter(t => !scelti.has(t)).map(normalizza);
+  // candidati: sottostringhe allineate a parola che non colpiscono nessun mod escluso
+  const cand = new Map();                    // frammento → insieme di indici coperti
+  S.forEach((s, idx) => {
+    const inizi = [0];
+    for (let i = 1; i < s.length; i++) if (s[i-1] === " ") inizi.push(i);
+    for (const i of inizi) for (let L = 4; L <= 20 && i+L <= s.length; L++){
+      const sub = s.slice(i, i+L);
+      if (/[%+0-9]/.test(sub) || sub.endsWith(" ")) continue;
+      if (NO.some(n => n.includes(sub))) continue;
+      if (!cand.has(sub)) cand.set(sub, new Set());
+      cand.get(sub).add(idx);
+    }
+  });
+  const scoperti = new Set(S.map((_,i)=>i));
+  const scelte = [];
+  while (scoperti.size){
+    let best = null, bestN = 0;
+    for (const [f, set] of cand){
+      let n = 0; for (const i of set) if (scoperti.has(i)) n++;
+      if (n > bestN || (n === bestN && n > 0 && best && f.length < best.length)) { best = f; bestN = n; }
+    }
+    if (!best) {                              // mod non copribile: uso il testo intero
+      const i = [...scoperti][0];
+      scelte.push(S[i].slice(0, 20)); scoperti.delete(i); continue;
+    }
+    scelte.push(best);
+    for (const i of cand.get(best)) scoperti.delete(i);
+  }
+  return scelte;
+}
+
+function aggiorna(){
+  const sel = [...scelti];
+  const rx = sel.length ? regexMinima(sel).join("|") : "";
+  document.getElementById("rx").textContent = rx || "— spunta qualcosa qui sotto —";
+  document.getElementById("nsel").textContent = sel.length;
+  const len = document.getElementById("len");
+  len.textContent = rx.length;
+  len.className = "len " + (rx.length <= 50 ? "ok" : "ko");
+  localStorage.setItem("mappe-scelti", JSON.stringify(sel));
+  document.querySelectorAll("label.m").forEach(l => l.classList.toggle("on", scelti.has(l.dataset.t)));
+}
+
+function disegna(filtro=""){
+  const f = filtro.toLowerCase();
+  const ordine = ["Recupero","Riflesso e Thorns","Maledizioni","Resistenze e difese","Danno dei mostri",
+                  "Difese dei mostri","Movimento e velocità","Cariche e buff","Quantità e varietà","Altro"];
+  const pericolose = new Set(["Recupero","Riflesso e Thorns","Maledizioni","Resistenze e difese","Danno dei mostri"]);
+  const el = document.getElementById("lista");
+  el.innerHTML = ordine.filter(k => MODS[k]).map(k => {
+    const voci = MODS[k].filter(t => !f || t.toLowerCase().includes(f));
+    if (!voci.length) return "";
+    return `<section class="cat ${pericolose.has(k)?"pericolo":""}">
+      <h2>${k} · ${voci.length}</h2>
+      <div class="mods">${voci.map(t => `
+        <label class="m" data-t="${t.replace(/"/g,"&quot;")}">
+          <input type="checkbox" ${scelti.has(t)?"checked":""}>
+          <span>${t.replace(/</g,"&lt;")}</span>
+        </label>`).join("")}</div>
+    </section>`;
+  }).join("");
+  el.querySelectorAll("label.m").forEach(l => {
+    l.querySelector("input").onchange = e => {
+      e.target.checked ? scelti.add(l.dataset.t) : scelti.delete(l.dataset.t);
+      aggiorna();
+    };
+  });
+  aggiorna();
+}
+
+fetch("mod-mappa.json").then(r=>r.json()).then(d => {
+  MODS = d;
+  TUTTI = Object.values(d).flat();
+  document.getElementById("tot").textContent = TUTTI.length;
+  try { JSON.parse(localStorage.getItem("mappe-scelti")||"[]").forEach(t => scelti.add(t)); } catch(e){}
+  document.getElementById("preset").innerHTML = Object.keys(PRESET)
+    .map(k => `<button data-k="${k}">+ ${k}</button>`).join("");
+  document.querySelectorAll("#preset button").forEach(b => b.onclick = () => {
+    PRESET[b.dataset.k].forEach(ago => TUTTI.filter(t => t.toLowerCase().includes(ago.toLowerCase()))
+      .forEach(t => scelti.add(t)));
+    disegna(document.getElementById("cerca").value);
+  });
+  disegna();
+});
+
+document.getElementById("cerca").addEventListener("input", e => disegna(e.target.value));
+document.getElementById("pulisci").onclick = () => { scelti.clear(); disegna(document.getElementById("cerca").value); };
+document.getElementById("copia").onclick = async () => {
+  const t = document.getElementById("rx").textContent;
+  try { await navigator.clipboard.writeText(t); document.getElementById("copia").textContent = "Copiata ✓";
+        setTimeout(()=>document.getElementById("copia").textContent="Copia", 1500); } catch(e){}
+};
+</script>
+</body>
+</html>
