@@ -250,6 +250,7 @@ function adattaZoom(){
   zoom.tx = (w - MONDO_LATO * zoom.scala) / 2;
   zoom.ty = (h - MONDO_LATO * zoom.scala) / 2;
   applicaZoom();
+  sistemaEtichette();
 }
 
 function mappa(){
@@ -290,10 +291,38 @@ function mappa(){
   q("#mondo").appendChild(frammento);
   if (zoom.scala === 1 && zoom.tx === 0 && zoom.ty === 0) adattaZoom();
   else applicaZoom();
+  sistemaEtichette();
+}
+
+// Le etichette stanno sempre sotto al nodo, mai di lato — solo quando due
+// sono davvero incollate una scende un altro gradino, sempre nella stessa
+// direzione. Niente salti a destra/sinistra/sopra: quelli erano illeggibili.
+function sistemaEtichette(){
+  if (!D) return;
+  const idx = new Map(D.mappe.map(n=>[n.nome,n]));
+  const ordinate = [...q("#mondo").querySelectorAll(".etich")].sort((a,b) => {
+    const na = idx.get(a.dataset.nome), nb = idx.get(b.dataset.nome);
+    const pa = (na && visibile(na) ? 1e9 : 0) + (na?.totale || 0);
+    const pb = (nb && visibile(nb) ? 1e9 : 0) + (nb?.totale || 0);
+    return pb - pa;
+  });
+  const piazzate = [];
+  ordinate.forEach(el => {
+    let passo = 0, r, scontro;
+    do {
+      el.style.transform = `translate(-50%, ${13 + passo * 13}px)`;
+      r = el.getBoundingClientRect();
+      scontro = piazzate.some(pr => !(r.right < pr.left || r.left > pr.right || r.bottom < pr.top || r.top > pr.bottom));
+      passo++;
+    } while (scontro && passo <= 3);
+    piazzate.push(r);
+  });
 }
 
 (function panZoom(){
   const vp = q("#mapparea");
+  let attesaEtich = null;
+  const sistemaEtichRitardata = () => { clearTimeout(attesaEtich); attesaEtich = setTimeout(sistemaEtichette, 150); };
   vp.addEventListener("wheel", e => {
     e.preventDefault();
     const r = vp.getBoundingClientRect();
@@ -304,6 +333,7 @@ function mappa(){
     zoom.scala = nuova;
     zoom.tx = mx - wx*zoom.scala; zoom.ty = my - wy*zoom.scala;
     applicaZoom();
+    sistemaEtichRitardata();
   }, { passive:false });
 
   let trasc = null;
@@ -321,8 +351,8 @@ function mappa(){
   });
   vp.addEventListener("pointerup", () => { trasc=null; vp.classList.remove("trascina"); });
 
-  q("#zoomIn").onclick = () => { zoom.scala = Math.min(9, zoom.scala*1.35); applicaZoom(); };
-  q("#zoomOut").onclick = () => { zoom.scala = Math.max(0.4, zoom.scala/1.35); applicaZoom(); };
+  q("#zoomIn").onclick = () => { zoom.scala = Math.min(9, zoom.scala*1.35); applicaZoom(); sistemaEtichette(); };
+  q("#zoomOut").onclick = () => { zoom.scala = Math.max(0.4, zoom.scala/1.35); applicaZoom(); sistemaEtichette(); };
   q("#zoomReset").onclick = adattaZoom;
   addEventListener("resize", () => { if (vista==="mappa") adattaZoom(); });
 })();
