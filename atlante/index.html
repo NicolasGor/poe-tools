@@ -49,18 +49,27 @@
   tbody tr.sel{background:var(--panel2);outline:1px solid var(--gold)}
   .tag{font-size:.6rem;padding:0 .3rem;border-radius:3px;background:var(--uni);color:#1a1008;margin-left:.3rem}
 
-  .mapparea{position:relative;width:100%;aspect-ratio:1/1;background:var(--panel2);border:1px solid var(--line);
-            border-radius:8px;overflow:hidden}
-  .mapparea svg{position:absolute;inset:0;width:100%;height:100%}
-  .mapparea .link{stroke:#2b3646;stroke-width:.15}
-  .nodo{position:absolute;transform:translate(-50%,-50%);width:1.9%;aspect-ratio:1/1;border-radius:50%;
-        border:1.5px solid var(--line2);background:var(--panel);cursor:pointer;overflow:hidden;
+  .mapparea{position:relative;width:100%;height:70vh;min-height:420px;max-height:760px;background:#050403;
+            border:1px solid var(--line);border-radius:8px;overflow:hidden;cursor:grab;touch-action:none}
+  .mapparea.trascina{cursor:grabbing}
+  .mondo{position:absolute;left:0;top:0;width:1003.52px;height:1003.52px;transform-origin:0 0;
+         background-image:url("img/atlante-sfondo.webp");background-size:cover;background-position:center}
+  .mondo svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+  .link{stroke:rgba(255,255,255,.22);stroke-width:1.1}
+  .nodo{position:absolute;transform:translate(-50%,-50%);width:13px;height:13px;border-radius:50%;
+        border:1.4px solid rgba(255,255,255,.55);background:rgba(8,8,8,.75);cursor:pointer;overflow:hidden;
         display:flex;align-items:center;justify-content:center}
-  .nodo img{width:80%;height:80%;object-fit:contain}
-  .nodo.ricco{border-color:#ffd166}
-  .nodo.sel{border-color:#fff;border-width:2.5px;z-index:5}
-  .nodo.spento{opacity:.2}
-  .nodo:hover{z-index:4;border-color:var(--gold)}
+  .nodo img{width:88%;height:88%;object-fit:contain}
+  .nodo.ricco{border-color:#ffd166;box-shadow:0 0 5px 1px rgba(255,209,102,.55)}
+  .nodo.sel{border-color:#fff;border-width:2.4px;z-index:6}
+  .nodo.spento{opacity:.16;filter:grayscale(1)}
+  .etich{position:absolute;transform:translate(-50%,0);top:9px;font-size:9px;color:#fff;
+         text-shadow:0 0 3px #000,0 0 4px #000,0 1px 2px #000;white-space:nowrap;pointer-events:none}
+  .etich.spento{opacity:.16}
+  .controlliMappa{position:absolute;right:.5rem;bottom:.5rem;z-index:20;display:flex;flex-direction:column;gap:.25rem}
+  .controlliMappa button{width:1.9rem;height:1.9rem;border-radius:4px;background:rgba(23,29,39,.92);
+                        color:var(--text);border:1px solid var(--line2);cursor:pointer;font-size:1rem;line-height:1}
+  .controlliMappa button:hover{border-color:var(--gold);color:var(--gold)}
 
   aside{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:.8rem .9rem;
         position:sticky;top:.6rem;max-height:calc(100vh - 2rem);overflow:auto}
@@ -136,7 +145,17 @@
       </table>
     </div>
     <div id="vistaMappa" hidden>
-      <div class="mapparea" id="mapparea"><svg id="linee" viewBox="0 0 100 100" preserveAspectRatio="none"></svg></div>
+      <div class="mapparea" id="mapparea">
+        <div class="mondo" id="mondo">
+          <svg id="linee"></svg>
+        </div>
+        <div class="controlliMappa">
+          <button id="zoomIn" title="Ingrandisci">+</button>
+          <button id="zoomOut" title="Rimpicciolisci">−</button>
+          <button id="zoomReset" title="Adatta alla finestra">⤢</button>
+        </div>
+      </div>
+      <p style="font-size:.74rem;color:var(--muted);margin:.4rem 0 0">Rotella per zoomare, trascina per spostarti.</p>
     </div>
     <aside id="pan"><div class="vuoto">Clicca una mappa per vedere le sue carte, i tag e le mappe collegate.</div></aside>
   </div>
@@ -192,9 +211,24 @@ function elenco(){
   q("#cl tbody").querySelectorAll("tr").forEach(tr => tr.onclick = () => { sel = tr.dataset.nome; ridisegna(); pannello(); });
 }
 
+// ---------- vista Mappa: mondo fisso 1003.52x1003.52, zoom/pan via transform ----------
+const MONDO_LATO = 1003.52;
+let zoom = { scala: 1, tx: 0, ty: 0 };
+
+function applicaZoom(){
+  q("#mondo").style.transform = `translate(${zoom.tx}px,${zoom.ty}px) scale(${zoom.scala})`;
+}
+function adattaZoom(){
+  const vp = q("#mapparea");
+  const w = vp.clientWidth, h = vp.clientHeight;
+  if (!w || !h) return;
+  zoom.scala = Math.min(w, h) / MONDO_LATO * 0.97;
+  zoom.tx = (w - MONDO_LATO * zoom.scala) / 2;
+  zoom.ty = (h - MONDO_LATO * zoom.scala) / 2;
+  applicaZoom();
+}
+
 function mappa(){
-  const area = q("#mapparea");
-  area.querySelectorAll(".nodo").forEach(e=>e.remove());
   const idx = new Map(D.mappe.map(n=>[n.nome,n]));
   const max = Math.max(1, ...D.mappe.map(n=>n[campo]||0));
   const linee = [];
@@ -205,20 +239,67 @@ function mappa(){
     const k = [n.nome,c].sort().join("|");
     if (fatte.has(k)) return;
     fatte.add(k);
-    linee.push(`<line class="link" x1="${n.x/10.0352}" y1="${n.y/10.0352}" x2="${v.x/10.0352}" y2="${v.y/10.0352}"/>`);
+    linee.push(`<line class="link" x1="${n.x}" y1="${n.y}" x2="${v.x}" y2="${v.y}"/>`);
   }));
   q("#linee").innerHTML = linee.join("");
+
+  q("#mondo").querySelectorAll(".nodo,.etich").forEach(e=>e.remove());
+  const frammento = document.createDocumentFragment();
   D.mappe.forEach(n => {
-    const d = document.createElement("div");
+    const spento = !visibile(n);
     const v = Math.sqrt((n[campo]||0)/max);
-    d.className = "nodo" + (v>0.5?" ricco":"") + (sel===n.nome?" sel":"") + (!visibile(n)?" spento":"");
-    d.style.left = (n.x/10.0352)+"%"; d.style.top = (n.y/10.0352)+"%";
+    const d = document.createElement("div");
+    d.className = "nodo" + (v>0.5?" ricco":"") + (sel===n.nome?" sel":"") + (spento?" spento":"");
+    d.style.left = n.x+"px"; d.style.top = n.y+"px";
     d.title = `${n.nome} — ${n.totale.toLocaleString('it-IT')} c totale, ${n.nCarte} carte`;
     if (n.icona) d.innerHTML = `<img src="${iconaMappa(n)}" loading="lazy">`;
     d.onclick = () => { sel = n.nome; ridisegna(); pannello(); };
-    area.appendChild(d);
+    frammento.appendChild(d);
+    const e = document.createElement("div");
+    e.className = "etich" + (spento?" spento":"");
+    e.style.left = n.x+"px"; e.style.top = n.y+"px";
+    e.textContent = n.nome;
+    frammento.appendChild(e);
   });
+  q("#mondo").appendChild(frammento);
+  if (zoom.scala === 1 && zoom.tx === 0 && zoom.ty === 0) adattaZoom();
+  else applicaZoom();
 }
+
+(function panZoom(){
+  const vp = q("#mapparea");
+  vp.addEventListener("wheel", e => {
+    e.preventDefault();
+    const r = vp.getBoundingClientRect();
+    const mx = e.clientX - r.left, my = e.clientY - r.top;
+    const fattore = e.deltaY < 0 ? 1.16 : 1/1.16;
+    const nuova = Math.min(9, Math.max(0.4, zoom.scala*fattore));
+    const wx = (mx - zoom.tx) / zoom.scala, wy = (my - zoom.ty) / zoom.scala;
+    zoom.scala = nuova;
+    zoom.tx = mx - wx*zoom.scala; zoom.ty = my - wy*zoom.scala;
+    applicaZoom();
+  }, { passive:false });
+
+  let trasc = null;
+  vp.addEventListener("pointerdown", e => {
+    if (e.target.closest(".nodo")) return;
+    trasc = { x:e.clientX, y:e.clientY, tx:zoom.tx, ty:zoom.ty };
+    vp.classList.add("trascina");
+    vp.setPointerCapture(e.pointerId);
+  });
+  vp.addEventListener("pointermove", e => {
+    if (!trasc) return;
+    zoom.tx = trasc.tx + (e.clientX-trasc.x);
+    zoom.ty = trasc.ty + (e.clientY-trasc.y);
+    applicaZoom();
+  });
+  vp.addEventListener("pointerup", () => { trasc=null; vp.classList.remove("trascina"); });
+
+  q("#zoomIn").onclick = () => { zoom.scala = Math.min(9, zoom.scala*1.35); applicaZoom(); };
+  q("#zoomOut").onclick = () => { zoom.scala = Math.max(0.4, zoom.scala/1.35); applicaZoom(); };
+  q("#zoomReset").onclick = adattaZoom;
+  addEventListener("resize", () => { if (vista==="mappa") adattaZoom(); });
+})();
 
 function pannello(){
   const n = D.mappe.find(x=>x.nome===sel);
