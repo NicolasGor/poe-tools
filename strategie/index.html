@@ -97,6 +97,11 @@
   .incorpora .capo button{background:none;border:0;color:var(--muted);cursor:pointer;
                           font-size:var(--t-xs);text-decoration:underline}
   .incorpora iframe{display:block;width:100%;height:40rem;border:0}
+  /* Mentre il puntatore e' sull'albero la pagina non scorre: la rotella deve
+     zoomare l'iframe e basta. L'iframe e' cross-origin, quindi il suo evento
+     wheel non e' intercettabile da qui — l'unico rimedio e' togliere lo scroll
+     alla pagina finche' il puntatore sta sopra. */
+  html.albero-attivo{overflow:hidden}
 </style>
 </head>
 <body>
@@ -365,18 +370,39 @@
 // pagina: cosi' la regola «zero dipendenze esterne a runtime» resta rispettata —
 // senza rete la pagina funziona per intero, manca solo un riquadro che nessuno
 // ha chiesto di aprire. Il link diretto resta sempre disponibile accanto.
+// La rotella sull'albero deve zoomare, non far scorrere la pagina. L'iframe e'
+// cross-origin: il suo evento wheel non arriva qui e non si puo' annullare.
+// L'unico rimedio dal lato pagina e' toglierle lo scroll finche' il puntatore
+// sta sopra il riquadro, compensando la barra che sparisce per non far saltare
+// il layout.
+const doc = document.documentElement;
+function scrollPagina(attivo){
+  if (attivo) {
+    doc.style.paddingRight = (window.innerWidth - doc.clientWidth) + "px";
+    doc.classList.add("albero-attivo");
+  } else {
+    doc.classList.remove("albero-attivo");
+    doc.style.paddingRight = "";
+  }
+}
+
 document.querySelectorAll("button[data-albero]").forEach(b => {
   b.onclick = () => {
     const url = b.dataset.albero;
     const box = document.createElement("div");
     box.className = "incorpora";
-    box.innerHTML = '<div class="capo"><span>Albero completo — poeplanner</span>'
+    box.innerHTML = '<div class="capo"><span>Albero completo — poeplanner '
+      + '<em>(mentre il puntatore e\' qui la pagina non scorre)</em></span>'
       + '<button type="button">chiudi</button></div>'
       + '<iframe src="' + url + '" loading="lazy" '
       + 'title="Albero atlas completo su poe.ninja" referrerpolicy="no-referrer"></iframe>';
     // in coda alla scheda, fuori dalla griglia a due colonne
     b.closest("article.strat").appendChild(box);
-    box.querySelector("button").onclick = () => { box.remove(); b.style.display = ""; };
+    box.querySelector("button").onclick = () => {
+      scrollPagina(false); box.remove(); b.style.display = "";
+    };
+    box.addEventListener("mouseenter", () => scrollPagina(true));
+    box.addEventListener("mouseleave", () => scrollPagina(false));
     b.style.display = "none";
     box.scrollIntoView({behavior: "smooth", block: "nearest"});
   };
