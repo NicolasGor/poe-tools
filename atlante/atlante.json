@@ -17,6 +17,9 @@
    "collegate": [
     "Moment of Reverence"
    ],
+   "x": 204,
+   "y": 182,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/UberRelicChambers",
    "nCarte": 6,
    "totale": 99488.96,
    "media": 16581.49,
@@ -25,32 +28,38 @@
     {
      "nome": "Damnation",
      "prezzo": 98940,
-     "peso": 5.0
+     "peso": 5.0,
+     "arte": "Damnation"
     },
     {
      "nome": "Succor of the Sinless",
      "prezzo": 340.8,
-     "peso": 26.0
+     "peso": 26.0,
+     "arte": "SuccorOfTheSinless"
     },
     {
      "nome": "Temperance",
      "prezzo": 102.5,
-     "peso": 88.0
+     "peso": 88.0,
+     "arte": "Temperance"
     },
     {
      "nome": "The Enlightened",
      "prezzo": 79.52,
-     "peso": 83.5
+     "peso": 83.5,
+     "arte": "TheEnlightened"
     },
     {
      "nome": "Altered Perception",
      "prezzo": 14.05,
-     "peso": 32.0
+     "peso": 32.0,
+     "arte": "AlteredPerception"
     },
     {
      "nome": "The Void",
      "prezzo": 12.09,
-     "peso": 6286.5
+     "peso": 6286.5,
+     "arte": "TheVoid"
     }
    ]
   },
@@ -76,6 +85,9 @@
     "Conservatory",
     "Park"
    ],
+   "x": 206,
+   "y": 336,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Graveyard",
    "nCarte": 4,
    "totale": 98951.6,
    "media": 24737.9,
@@ -84,22 +96,26 @@
     {
      "nome": "Damnation",
      "prezzo": 98940,
-     "peso": 5.0
+     "peso": 5.0,
+     "arte": "Damnation"
     },
     {
      "nome": "Azyran's Reward",
      "prezzo": 8.88,
-     "peso": 429.5
+     "peso": 429.5,
+     "arte": "AzyransReward"
     },
     {
      "nome": "The One With All",
      "prezzo": 2.71,
-     "peso": 2613.0
+     "peso": 2613.0,
+     "arte": "TheOneWithAll"
     },
     {
      "nome": "Bowyer's Dream",
      "prezzo": 0.01,
-     "peso": 155.5
+     "peso": 155.5,
+     "arte": "BowyersDream"
     }
    ]
   },
@@ -123,6 +139,9 @@
    "collegate": [
     "The Shaper's Realm"
    ],
+   "x": 820,
+   "y": 239,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Chimera",
    "nCarte": 5,
    "totale": 12372.52,
    "media": 2474.5,
@@ -131,27 +150,32 @@
     {
      "nome": "Father's Love",
      "prezzo": 12286,
-     "peso": 5.0
+     "peso": 5.0,
+     "arte": "FathersLove"
     },
     {
      "nome": "Perfection",
      "prezzo": 46.69,
-     "peso": 44.5
+     "peso": 44.5,
+     "arte": "Perfection"
     },
     {
      "nome": "The Everlasting",
      "prezzo": 34.83,
-     "peso": 0
+     "peso": 0,
+     "arte": "TheEverlasting"
     },
     {
      "nome": "A Familiar Call",
      "prezzo": 4,
-     "peso": 7.5
+     "peso": 7.5,
+     "arte": "AFamiliarCall"
     },
     {
      "nome": "Boon of the First Ones",
      "prezzo": 1,
-     "peso": 986.5
+     "peso": 986.5,
+     "arte": "BoonoftheFirstOnes"
     }
    ]
   },
@@ -174,6 +198,9 @@
    "collegate": [
     "The Shaper's Realm"
    ],
+   "x": 799,
+   "y": 270,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Phoenix",
    "nCarte": 4,
    "totale": 12367.52,
    "media": 4122.51,
@@ -182,22 +209,26 @@
     {
      "nome": "Father's Love",
      "prezzo": 12286,
-     "peso": 5.0
+     "peso": 5.0,
+     "arte": "FathersLove"
     },
     {
      "nome": "Perfection",
      "prezzo": 46.69,
-     "peso": 44.5
+     "peso": 44.5,
+     "arte": "Perfection"
     },
     {
      "nome": "The Everlasting",
      "prezzo": 34.83,
-     "peso": 0
+     "peso": 0,
+     "arte": "TheEverlasting"
     },
     {
      "nome": "Astral Protection",
      "prezzo": 0,
-     "peso": 728.5
+     "peso": 728.5,
+     "arte": "AstralProtection"
     }
    ]
   },
@@ -221,6 +252,9 @@
    "collegate": [
     "The Shaper's Realm"
    ],
+   "x": 830,
+   "y": 224,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Hydra",
    "nCarte": 4,
    "totale": 12367.52,
    "media": 4122.51,
@@ -229,22 +263,26 @@
     {
      "nome": "Father's Love",
      "prezzo": 12286,
-     "peso": 5.0
+     "peso": 5.0,
+     "arte": "FathersLove"
     },
     {
      "nome": "Perfection",
      "prezzo": 46.69,
-     "peso": 44.5
+     "peso": 44.5,
+     "arte": "Perfection"
     },
     {
      "nome": "The Everlasting",
      "prezzo": 34.83,
-     "peso": 0
+     "peso": 0,
+     "arte": "TheEverlasting"
     },
     {
      "nome": "Astral Protection",
      "prezzo": 0,
-     "peso": 728.5
+     "peso": 728.5,
+     "arte": "AstralProtection"
     }
    ]
   },
@@ -268,6 +306,9 @@
    "collegate": [
     "The Shaper's Realm"
    ],
+   "x": 810,
+   "y": 255,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Minotaur",
    "nCarte": 4,
    "totale": 12367.52,
    "media": 4122.51,
@@ -276,22 +317,26 @@
     {
      "nome": "Father's Love",
      "prezzo": 12286,
-     "peso": 5.0
+     "peso": 5.0,
+     "arte": "FathersLove"
     },
     {
      "nome": "Perfection",
      "prezzo": 46.69,
-     "peso": 44.5
+     "peso": 44.5,
+     "arte": "Perfection"
     },
     {
      "nome": "The Everlasting",
      "prezzo": 34.83,
-     "peso": 0
+     "peso": 0,
+     "arte": "TheEverlasting"
     },
     {
      "nome": "Astral Protection",
      "prezzo": 0,
-     "peso": 728.5
+     "peso": 728.5,
+     "arte": "AstralProtection"
     }
    ]
   },
@@ -318,6 +363,9 @@
     "Shrine",
     "The Temple of Atzoatl"
    ],
+   "x": 647,
+   "y": 527,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Cage",
    "nCarte": 4,
    "totale": 9087.65,
    "media": 2271.91,
@@ -326,22 +374,26 @@
     {
      "nome": "The Apothecary",
      "prezzo": 9072,
-     "peso": 9.0
+     "peso": 9.0,
+     "arte": "TheApothecary"
     },
     {
      "nome": "The Last Supper",
      "prezzo": 15.36,
-     "peso": 11.5
+     "peso": 11.5,
+     "arte": "TheLastSupper"
     },
     {
      "nome": "The Summoner",
      "prezzo": 0.1946,
-     "peso": 5491.0
+     "peso": 5491.0,
+     "arte": "TheSummoner"
     },
     {
      "nome": "The Journalist",
      "prezzo": 0.1,
-     "peso": 12964.0
+     "peso": 12964.0,
+     "arte": "TheJournalist"
     }
    ]
   },
@@ -368,6 +420,9 @@
     "Primordial Blocks",
     "Ramparts"
    ],
+   "x": 532,
+   "y": 369,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Bazaar",
    "nCarte": 4,
    "totale": 7725.96,
    "media": 1931.49,
@@ -376,22 +431,26 @@
     {
      "nome": "The Miracle",
      "prezzo": 5126,
-     "peso": 0
+     "peso": 0,
+     "arte": "TheMiracle"
     },
     {
      "nome": "The Slumbering Beast",
      "prezzo": 2541,
-     "peso": 0
+     "peso": 0,
+     "arte": "TheSlumberingBeast"
     },
     {
      "nome": "The Silly Boy",
      "prezzo": 55.86,
-     "peso": 0
+     "peso": 0,
+     "arte": "TheSillyBoy"
     },
     {
      "nome": "The Drunken Aristocrat",
      "prezzo": 3.1,
-     "peso": 2287.0
+     "peso": 2287.0,
+     "arte": "TheDrunkenAristocrat"
     }
    ]
   },
@@ -415,6 +474,9 @@
    "collegate": [
     "Vaal Pyramid"
    ],
+   "x": 871,
+   "y": 530,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/VaalTempleBase",
    "nCarte": 8,
    "totale": 7019.4,
    "media": 877.43,
@@ -423,42 +485,50 @@
     {
      "nome": "Unrequited Love",
      "prezzo": 6936,
-     "peso": 4.0
+     "peso": 4.0,
+     "arte": "UnrequitedLove"
     },
     {
      "nome": "The Damned",
      "prezzo": 66.42,
-     "peso": 26.0
+     "peso": 26.0,
+     "arte": "TheDamned"
     },
     {
      "nome": "Beauty Through Death",
      "prezzo": 13.1,
-     "peso": 22.0
+     "peso": 22.0,
+     "arte": "BeautyThroughDeath"
     },
     {
      "nome": "The Admirer",
      "prezzo": 2.26,
-     "peso": 2025.0
+     "peso": 2025.0,
+     "arte": "TheAdmirer"
     },
     {
      "nome": "Last Hope",
      "prezzo": 1.05,
-     "peso": 6093.0
+     "peso": 6093.0,
+     "arte": "LastHope"
     },
     {
      "nome": "The Inventor",
      "prezzo": 0.4739,
-     "peso": 6435.0
+     "peso": 6435.0,
+     "arte": "TheInventor"
     },
     {
      "nome": "Her Mask",
      "prezzo": 0.09235,
-     "peso": 10028.0
+     "peso": 10028.0,
+     "arte": "HerMask"
     },
     {
      "nome": "The Catalyst",
      "prezzo": 0.007271,
-     "peso": 22886.0
+     "peso": 22886.0,
+     "arte": "TheCatalyst"
     }
    ]
   },
@@ -485,6 +555,9 @@
     "Tower",
     "Vaal Temple"
    ],
+   "x": 851,
+   "y": 557,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/VaalPyramid",
    "nCarte": 4,
    "totale": 7002.43,
    "media": 2334.14,
@@ -493,22 +566,26 @@
     {
      "nome": "Unrequited Love",
      "prezzo": 6936,
-     "peso": 4.0
+     "peso": 4.0,
+     "arte": "UnrequitedLove"
     },
     {
      "nome": "The Damned",
      "prezzo": 66.42,
-     "peso": 26.0
+     "peso": 26.0,
+     "arte": "TheDamned"
     },
     {
      "nome": "The Catalyst",
      "prezzo": 0.007271,
-     "peso": 22886.0
+     "peso": 22886.0,
+     "arte": "TheCatalyst"
     },
     {
      "nome": "The Queen",
      "prezzo": 0,
-     "peso": 186.0
+     "peso": 186.0,
+     "arte": "TheQueen"
     }
    ]
   },
@@ -534,6 +611,9 @@
     "Malformation",
     "Tower"
    ],
+   "x": 797,
+   "y": 529,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Arcade",
    "nCarte": 4,
    "totale": 5669.8,
    "media": 1417.45,
@@ -542,22 +622,26 @@
     {
      "nome": "The Miracle",
      "prezzo": 5126,
-     "peso": 0
+     "peso": 0,
+     "arte": "TheMiracle"
     },
     {
      "nome": "I See Brothers",
      "prezzo": 407.1,
-     "peso": 26.0
+     "peso": 26.0,
+     "arte": "ISeeBrothers"
     },
     {
      "nome": "The Mayor",
      "prezzo": 130.7,
-     "peso": 155.5
+     "peso": 155.5,
+     "arte": "TheMayor"
     },
     {
      "nome": "Deadly Joy",
      "prezzo": 6,
-     "peso": 32.0
+     "peso": 32.0,
+     "arte": "DeadlyJoy"
     }
    ]
   },
@@ -581,6 +665,9 @@
     "Beach",
     "Belfry"
    ],
+   "x": 818,
+   "y": 356,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Burn",
    "nCarte": 4,
    "totale": 4635.71,
    "media": 1545.24,
@@ -589,22 +676,26 @@
     {
      "nome": "Pearls Before Swine",
      "prezzo": 4631,
-     "peso": 0
+     "peso": 0,
+     "arte": "PearlsBeforeSwine"
     },
     {
      "nome": "Brother's Stash",
      "prezzo": 3.59,
-     "peso": 56.5
+     "peso": 56.5,
+     "arte": "BrothersStash"
     },
     {
      "nome": "Cursed Words",
      "prezzo": 1.12,
-     "peso": 3446.0
+     "peso": 3446.0,
+     "arte": "CursedWords"
     },
     {
      "nome": "Left to Fate",
      "prezzo": 0,
-     "peso": 3088.0
+     "peso": 3088.0,
+     "arte": "LeftToFate"
     }
    ]
   },
@@ -622,6 +713,9 @@
    "collegate": [
     "Temple"
    ],
+   "x": 720,
+   "y": 400,
+   "icona": "Art/2DItems/Maps/PoorjoysAsylum",
    "nCarte": 4,
    "totale": 3533.36,
    "media": 883.34,
@@ -630,22 +724,26 @@
     {
      "nome": "The Progeny of Lunaris",
      "prezzo": 3516,
-     "peso": 32.0
+     "peso": 32.0,
+     "arte": "TheProgenyofLunaris"
     },
     {
      "nome": "The Thaumaturgist",
      "prezzo": 11.36,
-     "peso": 140.0
+     "peso": 140.0,
+     "arte": "TheThaumaturgist"
     },
     {
      "nome": "The Army of Blood",
      "prezzo": 5,
-     "peso": 8316.0
+     "peso": 8316.0,
+     "arte": "TheArmyOfBlood"
     },
     {
      "nome": "Gift of the Gemling Queen",
      "prezzo": 1,
-     "peso": 2047.0
+     "peso": 2047.0,
+     "arte": "GiftOfTheGemlingQueen"
     }
    ]
   },
@@ -673,6 +771,9 @@
     "Port",
     "Sunken City"
    ],
+   "x": 631,
+   "y": 566,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Shrine",
    "nCarte": 4,
    "totale": 3529.0,
    "media": 882.25,
@@ -681,22 +782,26 @@
     {
      "nome": "The Progeny of Lunaris",
      "prezzo": 3516,
-     "peso": 32.0
+     "peso": 32.0,
+     "arte": "TheProgenyofLunaris"
     },
     {
      "nome": "The Thaumaturgist",
      "prezzo": 11.36,
-     "peso": 140.0
+     "peso": 140.0,
+     "arte": "TheThaumaturgist"
     },
     {
      "nome": "The Lunaris Priestess",
      "prezzo": 1,
-     "peso": 7574.0
+     "peso": 7574.0,
+     "arte": "TheLunarisPriestess"
     },
     {
      "nome": "Vinia's Token",
      "prezzo": 0.6406,
-     "peso": 4817.0
+     "peso": 4817.0,
+     "arte": "ViniasToken"
     }
    ]
   },
@@ -723,6 +828,9 @@
     "Overgrown Shrine",
     "Relic Chambers"
    ],
+   "x": 637,
+   "y": 396,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Pier",
    "nCarte": 4,
    "totale": 3482.27,
    "media": 870.57,
@@ -731,22 +839,26 @@
     {
      "nome": "Fire Of Unknown Origin",
      "prezzo": 3468,
-     "peso": 15.5
+     "peso": 15.5,
+     "arte": "FireOfUnknownOrigin"
     },
     {
      "nome": "The Pact",
      "prezzo": 11.07,
-     "peso": 429.5
+     "peso": 429.5,
+     "arte": "ThePact"
     },
     {
      "nome": "The Drunken Aristocrat",
      "prezzo": 3.1,
-     "peso": 2287.0
+     "peso": 2287.0,
+     "arte": "TheDrunkenAristocrat"
     },
     {
      "nome": "Lucky Connections",
      "prezzo": 0.0967,
-     "peso": 7356.0
+     "peso": 7356.0,
+     "arte": "LuckyConnections"
     }
    ]
   },
@@ -770,6 +882,9 @@
     "Port",
     "Reef"
    ],
+   "x": 521,
+   "y": 607,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Ghetto",
    "nCarte": 4,
    "totale": 3468.37,
    "media": 1156.12,
@@ -778,22 +893,26 @@
     {
      "nome": "Fire Of Unknown Origin",
      "prezzo": 3468,
-     "peso": 15.5
+     "peso": 15.5,
+     "arte": "FireOfUnknownOrigin"
     },
     {
      "nome": "The Tyrant",
      "prezzo": 0.2,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "TheTyrant"
     },
     {
      "nome": "The Saint's Treasure",
      "prezzo": 0.1682,
-     "peso": 1299.0
+     "peso": 1299.0,
+     "arte": "TheSaintsTreasure"
     },
     {
      "nome": "The Trial",
      "prezzo": 0,
-     "peso": 5823.0
+     "peso": 5823.0,
+     "arte": "TheTrial"
     }
    ]
   },
@@ -819,6 +938,9 @@
     "City Square",
     "Stagnation"
    ],
+   "x": 346,
+   "y": 658,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Tribunal",
    "nCarte": 4,
    "totale": 3033.34,
    "media": 758.34,
@@ -827,22 +949,26 @@
     {
      "nome": "The Demon",
      "prezzo": 3029,
-     "peso": 1.5
+     "peso": 1.5,
+     "arte": "TheDemon"
     },
     {
      "nome": "The Lion",
      "prezzo": 1.8,
-     "peso": 3252.0
+     "peso": 3252.0,
+     "arte": "TheLion"
     },
     {
      "nome": "Bound by Flame",
      "prezzo": 1.4,
-     "peso": 0
+     "peso": 0,
+     "arte": "BoundByFlame"
     },
     {
      "nome": "When Currents Blaze",
      "prezzo": 1.14,
-     "peso": 18.0
+     "peso": 18.0,
+     "arte": "WhenCurrentsBlaze"
     }
    ]
   },
@@ -866,6 +992,9 @@
     "Arachnid Nest",
     "Fungal Hollow"
    ],
+   "x": 435,
+   "y": 535,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Chateau",
    "nCarte": 4,
    "totale": 2763.73,
    "media": 921.24,
@@ -874,22 +1003,26 @@
     {
      "nome": "The Slumbering Beast",
      "prezzo": 2541,
-     "peso": 0
+     "peso": 0,
+     "arte": "TheSlumberingBeast"
     },
     {
      "nome": "Squandered Prosperity",
      "prezzo": 222.5,
-     "peso": 38.0
+     "peso": 38.0,
+     "arte": "BaronCat"
     },
     {
      "nome": "The Bear Woman",
      "prezzo": 0.2308,
-     "peso": 1104.5
+     "peso": 1104.5,
+     "arte": "TheBearWoman"
     },
     {
      "nome": "The Scavenger",
      "prezzo": 0,
-     "peso": 1906.0
+     "peso": 1906.0,
+     "arte": "TheScavenger"
     }
    ]
   },
@@ -920,6 +1053,9 @@
     "Plateau",
     "The Hall of Grandmasters"
    ],
+   "x": 711,
+   "y": 665,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Promenade",
    "nCarte": 4,
    "totale": 2041.18,
    "media": 510.3,
@@ -928,22 +1064,26 @@
     {
      "nome": "Lucky Bastion",
      "prezzo": 2036,
-     "peso": 0
+     "peso": 0,
+     "arte": "LuckyBastion"
     },
     {
      "nome": "The Last Laugh",
      "prezzo": 4.1,
-     "peso": 0
+     "peso": 0,
+     "arte": "TheLastLaugh"
     },
     {
      "nome": "Jack in the Box",
      "prezzo": 0.8763,
-     "peso": 4537.0
+     "peso": 4537.0,
+     "arte": "JackInTheBox"
     },
     {
      "nome": "Gemcutter's Promise",
      "prezzo": 0.2064,
-     "peso": 7794.0
+     "peso": 7794.0,
+     "arte": "GemcuttersPromise"
     }
    ]
   },
@@ -962,6 +1102,9 @@
     "Absence of Patience and Wisdom",
     "Absence of Symmetry and Harmony"
    ],
+   "x": 146,
+   "y": 825,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/UberMausoleum",
    "nCarte": 8,
    "totale": 1378.42,
    "media": 172.3,
@@ -970,42 +1113,50 @@
     {
      "nome": "Outfoxed",
      "prezzo": 1189,
-     "peso": 0
+     "peso": 0,
+     "arte": "Outfoxed"
     },
     {
      "nome": "The Samurai's Eye",
      "prezzo": 83.33,
-     "peso": 83.5
+     "peso": 83.5,
+     "arte": "TheSamuraisEye"
     },
     {
      "nome": "The Enlightened",
      "prezzo": 79.52,
-     "peso": 83.5
+     "peso": 83.5,
+     "arte": "TheEnlightened"
     },
     {
      "nome": "The Void",
      "prezzo": 12.09,
-     "peso": 6286.5
+     "peso": 6286.5,
+     "arte": "TheVoid"
     },
     {
      "nome": "Keeper's Corruption",
      "prezzo": 6.71,
-     "peso": 16.0
+     "peso": 16.0,
+     "arte": "KeepersCorruption"
     },
     {
      "nome": "Misery in Darkness",
      "prezzo": 4.92,
-     "peso": 140.0
+     "peso": 140.0,
+     "arte": "MiseryInDarkness"
     },
     {
      "nome": "Lucky Deck",
      "prezzo": 1.85,
-     "peso": 274.5
+     "peso": 274.5,
+     "arte": "LuckyDeck"
     },
     {
      "nome": "Nook's Crown",
      "prezzo": 1,
-     "peso": 15.5
+     "peso": 15.5,
+     "arte": "NooksCrown"
     }
    ]
   },
@@ -1023,6 +1174,9 @@
    "collegate": [
     "Stagnation"
    ],
+   "x": 366,
+   "y": 706,
+   "icona": null,
    "nCarte": 1,
    "totale": 1224,
    "media": 1224,
@@ -1031,7 +1185,8 @@
     {
      "nome": "Choking Guilt",
      "prezzo": 1224,
-     "peso": 3.5
+     "peso": 3.5,
+     "arte": "ChokingGuilt"
     }
    ]
   },
@@ -1060,6 +1215,9 @@
     "The Utzaal Arena",
     "Vaal Pyramid"
    ],
+   "x": 832,
+   "y": 474,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/BurialChambers",
    "nCarte": 4,
    "totale": 1214.0,
    "media": 404.67,
@@ -1068,22 +1226,26 @@
     {
      "nome": "The Doctor",
      "prezzo": 1210,
-     "peso": 15.5
+     "peso": 15.5,
+     "arte": "TheDoctor"
     },
     {
      "nome": "The Brawny Battle Mage",
      "prezzo": 3.0,
-     "peso": 224.5
+     "peso": 224.5,
+     "arte": "TheBrawnyBattleMage"
     },
     {
      "nome": "The Betrayal",
      "prezzo": 1,
-     "peso": 2690.0
+     "peso": 2690.0,
+     "arte": "TheBetrayal"
     },
     {
      "nome": "The Witch",
      "prezzo": 0,
-     "peso": 15999.0
+     "peso": 15999.0,
+     "arte": "TheWitch"
     }
    ]
   },
@@ -1114,6 +1276,9 @@
     "Grave Trough",
     "Temple"
    ],
+   "x": 814,
+   "y": 409,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Beach",
    "nCarte": 4,
    "totale": 1198.83,
    "media": 399.61,
@@ -1122,22 +1287,26 @@
     {
      "nome": "Outfoxed",
      "prezzo": 1189,
-     "peso": 0
+     "peso": 0,
+     "arte": "Outfoxed"
     },
     {
      "nome": "The Catch",
      "prezzo": 8.28,
-     "peso": 15.5
+     "peso": 15.5,
+     "arte": "TheCatch"
     },
     {
      "nome": "The One That Got Away",
      "prezzo": 1.55,
-     "peso": 4.0
+     "peso": 4.0,
+     "arte": "TheOneThatGotAway"
     },
     {
      "nome": "Lantador's Lost Love",
      "prezzo": 0,
-     "peso": 16470.0
+     "peso": 16470.0,
+     "arte": "LantadorsLostLove"
     }
    ]
   },
@@ -1164,6 +1333,9 @@
     "Doryani's Machinarium",
     "Temple"
    ],
+   "x": 770,
+   "y": 450,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/ThaumaturgyDungeon",
    "nCarte": 4,
    "totale": 1148.43,
    "media": 287.11,
@@ -1172,22 +1344,26 @@
     {
      "nome": "The Fiend",
      "prezzo": 1138,
-     "peso": 5.0
+     "peso": 5.0,
+     "arte": "TheFiend"
     },
     {
      "nome": "The Golden Era",
      "prezzo": 6.38,
-     "peso": 1025.0
+     "peso": 1025.0,
+     "arte": "TheGoldenEra"
     },
     {
      "nome": "Haunting Shadows",
      "prezzo": 3.82,
-     "peso": 1104.5
+     "peso": 1104.5,
+     "arte": "HauntingShadows"
     },
     {
      "nome": "Ever-Changing",
      "prezzo": 0.232,
-     "peso": 1422.0
+     "peso": 1422.0,
+     "arte": "EverChanging"
     }
    ]
   },
@@ -1218,6 +1394,9 @@
     "Jungle Valley",
     "Terrace"
    ],
+   "x": 274,
+   "y": 586,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Cemetery",
    "nCarte": 4,
    "totale": 1113.4,
    "media": 278.35,
@@ -1226,22 +1405,26 @@
     {
      "nome": "Brother's Gift",
      "prezzo": 1107,
-     "peso": 56.5
+     "peso": 56.5,
+     "arte": "BrotherGift"
     },
     {
      "nome": "Brother's Stash",
      "prezzo": 3.59,
-     "peso": 56.5
+     "peso": 56.5,
+     "arte": "BrothersStash"
     },
     {
      "nome": "The One With All",
      "prezzo": 2.71,
-     "peso": 2613.0
+     "peso": 2613.0,
+     "arte": "TheOneWithAll"
     },
     {
      "nome": "The Cacophony",
      "prezzo": 0.1,
-     "peso": 224.5
+     "peso": 224.5,
+     "arte": "TheCacophony"
     }
    ]
   },
@@ -1260,6 +1443,9 @@
     "Absence of Value and Meaning",
     "Cortex"
    ],
+   "x": 905,
+   "y": 167,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/UberSilo",
    "nCarte": 7,
    "totale": 1098.25,
    "media": 156.89,
@@ -1268,37 +1454,44 @@
     {
      "nome": "One Last Score",
      "prezzo": 562.2,
-     "peso": 0
+     "peso": 0,
+     "arte": "OneLastScore"
     },
     {
      "nome": "Auspicious Ambitions",
      "prezzo": 242.2,
-     "peso": 7.5
+     "peso": 7.5,
+     "arte": "AuspiciousAmbitions"
     },
     {
      "nome": "The Dragon's Heart",
      "prezzo": 217.3,
-     "peso": 39.5
+     "peso": 39.5,
+     "arte": "TheDragonsHeart"
     },
     {
      "nome": "Doryani's Epiphany",
      "prezzo": 39.43,
-     "peso": 131.5
+     "peso": 131.5,
+     "arte": "DoryanisEpiphany"
     },
     {
      "nome": "Something Dark",
      "prezzo": 17.14,
-     "peso": 728.5
+     "peso": 728.5,
+     "arte": "SomethingDark"
     },
     {
      "nome": "The Void",
      "prezzo": 12.09,
-     "peso": 6286.5
+     "peso": 6286.5,
+     "arte": "TheVoid"
     },
     {
      "nome": "Who Asked",
      "prezzo": 7.89,
-     "peso": 12.5
+     "peso": 12.5,
+     "arte": "WhoAsked"
     }
    ]
   },
@@ -1324,6 +1517,9 @@
     "Silo",
     "The Apex of Sacrifice"
    ],
+   "x": 648,
+   "y": 435,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Antiquary",
    "nCarte": 4,
    "totale": 826.1,
    "media": 206.53,
@@ -1332,22 +1528,26 @@
     {
      "nome": "Reflection of the Heart",
      "prezzo": 744.9,
-     "peso": 0
+     "peso": 0,
+     "arte": "TheReflectionOfTheHeart"
     },
     {
      "nome": "The Enlightened",
      "prezzo": 79.52,
-     "peso": 83.5
+     "peso": 83.5,
+     "arte": "TheEnlightened"
     },
     {
      "nome": "The Union",
      "prezzo": 1.4,
-     "peso": 1278.0
+     "peso": 1278.0,
+     "arte": "TheUnion"
     },
     {
      "nome": "Dialla's Subjugation",
      "prezzo": 0.2821,
-     "peso": 1550.0
+     "peso": 1550.0,
+     "arte": "DiallasSubjugation"
     }
    ]
   },
@@ -1377,6 +1577,9 @@
     "Shipyard",
     "Strand"
    ],
+   "x": 428,
+   "y": 345,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/PrimevalRuins",
    "nCarte": 4,
    "totale": 771.51,
    "media": 192.88,
@@ -1385,22 +1588,26 @@
     {
      "nome": "Reflection of the Heart",
      "prezzo": 744.9,
-     "peso": 0
+     "peso": 0,
+     "arte": "TheReflectionOfTheHeart"
     },
     {
      "nome": "The Last Supper",
      "prezzo": 15.36,
-     "peso": 11.5
+     "peso": 11.5,
+     "arte": "TheLastSupper"
     },
     {
      "nome": "Costly Curio",
      "prezzo": 10.25,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "CostlyCurio"
     },
     {
      "nome": "The Primordial",
      "prezzo": 0.9965,
-     "peso": 1159.0
+     "peso": 1159.0,
+     "arte": "ThePrimordial"
     }
    ]
   },
@@ -1425,6 +1632,9 @@
     "Ivory Temple",
     "The Putrid Cloister"
    ],
+   "x": 205,
+   "y": 675,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Museum",
    "nCarte": 4,
    "totale": 666.21,
    "media": 166.55,
@@ -1433,22 +1643,26 @@
     {
      "nome": "One Last Score",
      "prezzo": 562.2,
-     "peso": 0
+     "peso": 0,
+     "arte": "OneLastScore"
     },
     {
      "nome": "Temperance",
      "prezzo": 102.5,
-     "peso": 88.0
+     "peso": 88.0,
+     "arte": "Temperance"
     },
     {
      "nome": "Blind Venture",
      "prezzo": 1.3,
-     "peso": 2142.0
+     "peso": 2142.0,
+     "arte": "BlindVenture"
     },
     {
      "nome": "A Dab of Ink",
      "prezzo": 0.2105,
-     "peso": 728.5
+     "peso": 728.5,
+     "arte": "ADabOfInk"
     }
    ]
   },
@@ -1467,6 +1681,9 @@
     "Absence of Mercy and Empathy",
     "Eye of the Storm"
    ],
+   "x": 777,
+   "y": 796,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/UberMalformation",
    "nCarte": 6,
    "totale": 558.88,
    "media": 93.15,
@@ -1475,32 +1692,38 @@
     {
      "nome": "The Soul",
      "prezzo": 343.1,
-     "peso": 17.0
+     "peso": 17.0,
+     "arte": "TheSoul"
     },
     {
      "nome": "The Nurse",
      "prezzo": 140.6,
-     "peso": 131.5
+     "peso": 131.5,
+     "arte": "TheNurse"
     },
     {
      "nome": "The Artist",
      "prezzo": 44.34,
-     "peso": 39.5
+     "peso": 39.5,
+     "arte": "TheArtist"
     },
     {
      "nome": "The Offering",
      "prezzo": 13.75,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "TheOffering"
     },
     {
      "nome": "The Void",
      "prezzo": 12.09,
-     "peso": 6286.5
+     "peso": 6286.5,
+     "arte": "TheVoid"
     },
     {
      "nome": "The Insatiable",
      "prezzo": 5,
-     "peso": 1792.0
+     "peso": 1792.0,
+     "arte": "TheInsatiable"
     }
    ]
   },
@@ -1528,6 +1751,9 @@
     "Lookout",
     "Sulphur Vents"
    ],
+   "x": 302,
+   "y": 484,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Basilica",
    "nCarte": 4,
    "totale": 471.57,
    "media": 117.89,
@@ -1536,22 +1762,26 @@
     {
      "nome": "Seven Years Bad Luck",
      "prezzo": 449.2,
-     "peso": 73.0
+     "peso": 73.0,
+     "arte": "SevenYearsBadLuck"
     },
     {
      "nome": "The Forgotten Treasure",
      "prezzo": 18.43,
-     "peso": 340.5
+     "peso": 340.5,
+     "arte": "TheForgottenTreasure"
     },
     {
      "nome": "The Opulent",
      "prezzo": 3.71,
-     "peso": 10841.0
+     "peso": 10841.0,
+     "arte": "TheOpulecent"
     },
     {
      "nome": "The Bear Woman",
      "prezzo": 0.2308,
-     "peso": 1104.5
+     "peso": 1104.5,
+     "arte": "TheBearWoman"
     }
    ]
   },
@@ -1583,6 +1813,9 @@
     "Olmec's Sanctum",
     "Promenade"
    ],
+   "x": 711,
+   "y": 590,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Plateau",
    "nCarte": 4,
    "totale": 408.19,
    "media": 136.06,
@@ -1591,22 +1824,26 @@
     {
      "nome": "I See Brothers",
      "prezzo": 407.1,
-     "peso": 26.0
+     "peso": 26.0,
+     "arte": "ISeeBrothers"
     },
     {
      "nome": "The Wind",
      "prezzo": 1,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "TheWind"
     },
     {
      "nome": "Rain of Chaos",
      "prezzo": 0.08935,
-     "peso": 121400.0
+     "peso": 121400.0,
+     "arte": "RainOfChaos"
     },
     {
      "nome": "The Harvester",
      "prezzo": 0,
-     "peso": 15812.0
+     "peso": 15812.0,
+     "arte": "TheHarvester"
     }
    ]
   },
@@ -1626,6 +1863,9 @@
    "collegate": [
     "Museum"
    ],
+   "x": 214,
+   "y": 648,
+   "icona": "Art/2DItems/Maps/PutridCloister",
    "nCarte": 4,
    "totale": 350.89,
    "media": 116.96,
@@ -1634,22 +1874,26 @@
     {
      "nome": "The Soul",
      "prezzo": 343.1,
-     "peso": 17.0
+     "peso": 17.0,
+     "arte": "TheSoul"
     },
     {
      "nome": "Brush, Paint and Palette",
      "prezzo": 7.79,
-     "peso": 728.5
+     "peso": 728.5,
+     "arte": "BrushPaintAndPalette"
     },
     {
      "nome": "Doedre's Madness",
      "prezzo": 0.0003997,
-     "peso": 12746.0
+     "peso": 12746.0,
+     "arte": "DoedresMadness"
     },
     {
      "nome": "The Incantation",
      "prezzo": 0,
-     "peso": 1063.0
+     "peso": 1063.0,
+     "arte": "TheIncantation"
     }
    ]
   },
@@ -1675,6 +1919,9 @@
     "Cage",
     "Estuary"
    ],
+   "x": 602,
+   "y": 520,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Phantasmagoria",
    "nCarte": 4,
    "totale": 345.61,
    "media": 86.4,
@@ -1683,22 +1930,26 @@
     {
      "nome": "The Soul",
      "prezzo": 343.1,
-     "peso": 17.0
+     "peso": 17.0,
+     "arte": "TheSoul"
     },
     {
      "nome": "Immortal Resolve",
      "prezzo": 2.42,
-     "peso": 1104.5
+     "peso": 1104.5,
+     "arte": "ImmortalResolve"
     },
     {
      "nome": "Her Mask",
      "prezzo": 0.09235,
-     "peso": 10028.0
+     "peso": 10028.0,
+     "arte": "HerMask"
     },
     {
      "nome": "Doedre's Madness",
      "prezzo": 0.0003997,
-     "peso": 12746.0
+     "peso": 12746.0,
+     "arte": "DoedresMadness"
     }
    ]
   },
@@ -1717,6 +1968,9 @@
     "Cortex",
     "The Shaper's Realm"
    ],
+   "x": 817,
+   "y": 164,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/UberPrimordialBlocks",
    "nCarte": 6,
    "totale": 326.97,
    "media": 54.5,
@@ -1725,32 +1979,38 @@
     {
      "nome": "Wealth and Power",
      "prezzo": 284.7,
-     "peso": 39.5
+     "peso": 39.5,
+     "arte": "WealthAndPower"
     },
     {
      "nome": "The Shieldbearer",
      "prezzo": 23.89,
-     "peso": 15.5
+     "peso": 15.5,
+     "arte": "TheShieldbearer"
     },
     {
      "nome": "The Void",
      "prezzo": 12.09,
-     "peso": 6286.5
+     "peso": 6286.5,
+     "arte": "TheVoid"
     },
     {
      "nome": "The Road to Power",
      "prezzo": 5.21,
-     "peso": 274.5
+     "peso": 274.5,
+     "arte": "TheRoadToPower"
     },
     {
      "nome": "Runic Luck",
      "prezzo": 0.581,
-     "peso": 2094.0
+     "peso": 2094.0,
+     "arte": "RunicLuck"
     },
     {
      "nome": "The Avenger",
      "prezzo": 0.5,
-     "peso": 224.5
+     "peso": 224.5,
+     "arte": "TheAvenger"
     }
    ]
   },
@@ -1770,6 +2030,9 @@
    "collegate": [
     "Foundry"
    ],
+   "x": 794,
+   "y": 480,
+   "icona": "Art/2DItems/Maps/Doryanis",
    "nCarte": 6,
    "totale": 274.48,
    "media": 45.75,
@@ -1778,32 +2041,38 @@
     {
      "nome": "Apocalypse",
      "prezzo": 223.4,
-     "peso": 0
+     "peso": 0,
+     "arte": "Apocalypse"
     },
     {
      "nome": "Doryani's Epiphany",
      "prezzo": 39.43,
-     "peso": 131.5
+     "peso": 131.5,
+     "arte": "DoryanisEpiphany"
     },
     {
      "nome": "Atziri's Arsenal",
      "prezzo": 4.08,
-     "peso": 1258.0
+     "peso": 1258.0,
+     "arte": "AtzirisArmory"
     },
     {
      "nome": "Arrogance of the Vaal",
      "prezzo": 3.43,
-     "peso": 728.5
+     "peso": 728.5,
+     "arte": "ArroganceoftheVaal"
     },
     {
      "nome": "The Forward Gaze",
      "prezzo": 3.29,
-     "peso": 1278.0
+     "peso": 1278.0,
+     "arte": "TheForwardGaze"
     },
     {
      "nome": "The Spoiled Prince",
      "prezzo": 0.8531,
-     "peso": 1104.5
+     "peso": 1104.5,
+     "arte": "TheSpoiledPrince"
     }
    ]
   },
@@ -1820,6 +2089,9 @@
     "Abomination",
     "Ancient Reliquary"
    ],
+   "x": 860,
+   "y": 759,
+   "icona": null,
    "nCarte": 1,
    "totale": 242.2,
    "media": 242.2,
@@ -1828,7 +2100,8 @@
     {
      "nome": "Auspicious Ambitions",
      "prezzo": 242.2,
-     "peso": 7.5
+     "peso": 7.5,
+     "arte": "AuspiciousAmbitions"
     }
    ]
   },
@@ -1846,6 +2119,9 @@
    "collegate": [
     "Ziggurat"
    ],
+   "x": 87,
+   "y": 812,
+   "icona": null,
    "nCarte": 1,
    "totale": 242.2,
    "media": 242.2,
@@ -1854,7 +2130,8 @@
     {
      "nome": "Auspicious Ambitions",
      "prezzo": 242.2,
-     "peso": 7.5
+     "peso": 7.5,
+     "arte": "AuspiciousAmbitions"
     }
    ]
   },
@@ -1872,6 +2149,9 @@
    "collegate": [
     "Ziggurat"
    ],
+   "x": 204,
+   "y": 813,
+   "icona": null,
    "nCarte": 1,
    "totale": 242.2,
    "media": 242.2,
@@ -1880,7 +2160,8 @@
     {
      "nome": "Auspicious Ambitions",
      "prezzo": 242.2,
-     "peso": 7.5
+     "peso": 7.5,
+     "arte": "AuspiciousAmbitions"
     }
    ]
   },
@@ -1903,6 +2184,9 @@
     "Maze of the Minotaur",
     "Pit of the Chimera"
    ],
+   "x": 780,
+   "y": 223,
+   "icona": "Art/2DItems/Maps/AtlasMaps/Atlas",
    "nCarte": 2,
    "totale": 242.2,
    "media": 242.2,
@@ -1911,12 +2195,14 @@
     {
      "nome": "Auspicious Ambitions",
      "prezzo": 242.2,
-     "peso": 7.5
+     "peso": 7.5,
+     "arte": "AuspiciousAmbitions"
     },
     {
      "nome": "Void of the Elements",
      "prezzo": 0,
-     "peso": 18.0
+     "peso": 18.0,
+     "arte": "VoidOfTheElements"
     }
    ]
   },
@@ -1941,6 +2227,9 @@
     "Desert",
     "Plaza"
    ],
+   "x": 204,
+   "y": 397,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Residence",
    "nCarte": 4,
    "totale": 223.0,
    "media": 111.5,
@@ -1949,22 +2238,26 @@
     {
      "nome": "Squandered Prosperity",
      "prezzo": 222.5,
-     "peso": 38.0
+     "peso": 38.0,
+     "arte": "BaronCat"
     },
     {
      "nome": "Emperor's Luck",
      "prezzo": 0.5045,
-     "peso": 49357.0
+     "peso": 49357.0,
+     "arte": "EmperorsLuck"
     },
     {
      "nome": "Prosperity",
      "prezzo": 0,
-     "peso": 12920.0
+     "peso": 12920.0,
+     "arte": "Prosperity"
     },
     {
      "nome": "The Surveyor",
      "prezzo": 0,
-     "peso": 4445.0
+     "peso": 4445.0,
+     "arte": "TheSurveyor"
     }
    ]
   },
@@ -1995,6 +2288,9 @@
     "Primordial Blocks",
     "Whakawairua Tuahu"
    ],
+   "x": 434,
+   "y": 392,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Strand",
    "nCarte": 4,
    "totale": 204.52,
    "media": 68.17,
@@ -2003,22 +2299,26 @@
     {
      "nome": "The Journey",
      "prezzo": 129.4,
-     "peso": 986.5
+     "peso": 986.5,
+     "arte": "TheJourney"
     },
     {
      "nome": "The Leviathan",
      "prezzo": 59.13,
-     "peso": 26.0
+     "peso": 26.0,
+     "arte": "TheLeviathan"
     },
     {
      "nome": "The Formless Sea",
      "prezzo": 15.99,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "TheFormlessSea"
     },
     {
      "nome": "Boundless Realms",
      "prezzo": 0,
-     "peso": 5491.0
+     "peso": 5491.0,
+     "arte": "BoundlessRealms"
     }
    ]
   },
@@ -2043,6 +2343,9 @@
     "Pit",
     "Waterways"
    ],
+   "x": 692,
+   "y": 362,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Palace",
    "nCarte": 4,
    "totale": 201.54,
    "media": 67.18,
@@ -2051,22 +2354,26 @@
     {
      "nome": "The Sephirot",
      "prezzo": 193.9,
-     "peso": 340.5
+     "peso": 340.5,
+     "arte": "TheSephirot"
     },
     {
      "nome": "Light and Truth",
      "prezzo": 4.97,
-     "peso": 808.0
+     "peso": 808.0,
+     "arte": "LigthAndTruth"
     },
     {
      "nome": "The Dapper Prodigy",
      "prezzo": 2.67,
-     "peso": 2336.0
+     "peso": 2336.0,
+     "arte": "TheDapperProdigy"
     },
     {
      "nome": "Prosperity",
      "prezzo": 0,
-     "peso": 12920.0
+     "peso": 12920.0,
+     "arte": "Prosperity"
     }
    ]
   },
@@ -2094,6 +2401,9 @@
     "Crater",
     "Excavation"
    ],
+   "x": 280,
+   "y": 636,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/CitySquare",
    "nCarte": 4,
    "totale": 189.4,
    "media": 47.35,
@@ -2102,22 +2412,26 @@
     {
      "nome": "The Mayor",
      "prezzo": 130.7,
-     "peso": 155.5
+     "peso": 155.5,
+     "arte": "TheMayor"
     },
     {
      "nome": "Home",
      "prezzo": 57.7,
-     "peso": 105.0
+     "peso": 105.0,
+     "arte": "Home"
     },
     {
      "nome": "The Sigil",
      "prezzo": 1,
-     "peso": 6820.0
+     "peso": 6820.0,
+     "arte": "TheSigil"
     },
     {
      "nome": "Assassin's Favour",
      "prezzo": 0.0003992,
-     "peso": 10351.0
+     "peso": 10351.0,
+     "arte": "AssassinsFavor"
     }
    ]
   },
@@ -2147,6 +2461,9 @@
     "Grave Trough",
     "Temple"
    ],
+   "x": 736,
+   "y": 307,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Belfry",
    "nCarte": 4,
    "totale": 184.39,
    "media": 46.1,
@@ -2155,22 +2472,26 @@
     {
      "nome": "The Enlightened",
      "prezzo": 79.52,
-     "peso": 83.5
+     "peso": 83.5,
+     "arte": "TheEnlightened"
     },
     {
      "nome": "A Modest Request",
      "prezzo": 64.79,
-     "peso": 112.5
+     "peso": 112.5,
+     "arte": "AModestRequest"
     },
     {
      "nome": "The Life Thief",
      "prezzo": 39.08,
-     "peso": 64.0
+     "peso": 64.0,
+     "arte": "TheLifeThief"
     },
     {
      "nome": "Demigod's Wager",
      "prezzo": 1,
-     "peso": 986.5
+     "peso": 986.5,
+     "arte": "DemigodsWagergives"
     }
    ]
   },
@@ -2196,6 +2517,9 @@
     "Foundry",
     "Vault"
    ],
+   "x": 734,
+   "y": 428,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Core",
    "nCarte": 4,
    "totale": 155.98,
    "media": 38.99,
@@ -2204,22 +2528,26 @@
     {
      "nome": "The Nurse",
      "prezzo": 140.6,
-     "peso": 131.5
+     "peso": 131.5,
+     "arte": "TheNurse"
     },
     {
      "nome": "Brush, Paint and Palette",
      "prezzo": 7.79,
-     "peso": 728.5
+     "peso": 728.5,
+     "arte": "BrushPaintAndPalette"
     },
     {
      "nome": "Draped in Dreams",
      "prezzo": 4.59,
-     "peso": 47.5
+     "peso": 47.5,
+     "arte": "DrapedInDreams"
     },
     {
      "nome": "The Hunger",
      "prezzo": 3,
-     "peso": 808.0
+     "peso": 808.0,
+     "arte": "TheHunger"
     }
    ]
   },
@@ -2245,6 +2573,9 @@
     "Temple",
     "The Sacred Grove"
    ],
+   "x": 603,
+   "y": 286,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Bramblefall",
    "nCarte": 4,
    "totale": 143.57,
    "media": 35.89,
@@ -2253,22 +2584,26 @@
     {
      "nome": "Mawr Blaidd",
      "prezzo": 114.6,
-     "peso": 274.5
+     "peso": 274.5,
+     "arte": "RussiaDivinationCard"
     },
     {
      "nome": "Avian Pursuit",
      "prezzo": 27.8,
-     "peso": 96.5
+     "peso": 96.5,
+     "arte": "AvianPursuit"
     },
     {
      "nome": "The Explorer",
      "prezzo": 1,
-     "peso": 7140.0
+     "peso": 7140.0,
+     "arte": "TheExplorer"
     },
     {
      "nome": "The Adventuring Spirit",
      "prezzo": 0.1667,
-     "peso": 9948.0
+     "peso": 9948.0,
+     "arte": "TheAdventuringSpirit"
     }
    ]
   },
@@ -2290,6 +2625,9 @@
     "Rewritten Distant Memory",
     "Twisted Distant Memory"
    ],
+   "x": 859,
+   "y": 181,
+   "icona": "Art/2DItems/Maps/SynthesisBossGuardianMap",
    "nCarte": 5,
    "totale": 129.61,
    "media": 25.92,
@@ -2298,27 +2636,32 @@
     {
      "nome": "Monochrome",
      "prezzo": 72.54,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "Monochrome"
     },
     {
      "nome": "The Hook",
      "prezzo": 28.05,
-     "peso": 112.5
+     "peso": 112.5,
+     "arte": "TheHook"
     },
     {
      "nome": "Imperfect Memories",
      "prezzo": 22.15,
-     "peso": 44.5
+     "peso": 44.5,
+     "arte": "ImperfectMemories"
     },
     {
      "nome": "The Astromancer",
      "prezzo": 4,
-     "peso": 4.0
+     "peso": 4.0,
+     "arte": "TheAstromancer"
     },
     {
      "nome": "A Dusty Memory",
      "prezzo": 2.87,
-     "peso": 340.5
+     "peso": 340.5,
+     "arte": "ADustyMemory"
     }
    ]
   },
@@ -2338,6 +2681,9 @@
    "collegate": [
     "Atoll"
    ],
+   "x": 314,
+   "y": 338,
+   "icona": "Art/2DItems/Maps/MaelstromofChaos",
    "nCarte": 4,
    "totale": 129.57,
    "media": 32.39,
@@ -2346,22 +2692,26 @@
     {
      "nome": "Divine Beauty",
      "prezzo": 123.9,
-     "peso": 501.5
+     "peso": 501.5,
+     "arte": "DivineBeauty"
     },
     {
      "nome": "The Transformation",
      "prezzo": 5.17,
-     "peso": 340.5
+     "peso": 340.5,
+     "arte": "TheTransformation"
     },
     {
      "nome": "The Avenger",
      "prezzo": 0.5,
-     "peso": 224.5
+     "peso": 224.5,
+     "arte": "TheAvenger"
     },
     {
      "nome": "The Lover",
      "prezzo": 0.0009956,
-     "peso": 65856.0
+     "peso": 65856.0,
+     "arte": "TheLover"
     }
    ]
   },
@@ -2390,6 +2740,9 @@
     "Ghetto",
     "Port"
    ],
+   "x": 531,
+   "y": 571,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Reef",
    "nCarte": 4,
    "totale": 129.25,
    "media": 32.31,
@@ -2398,22 +2751,26 @@
     {
      "nome": "The Mad King",
      "prezzo": 119.2,
-     "peso": 0
+     "peso": 0,
+     "arte": "TheMadKing"
     },
     {
      "nome": "The Fathomless Depths",
      "prezzo": 5,
-     "peso": 2025.0
+     "peso": 2025.0,
+     "arte": "TheFathomlessDepths"
     },
     {
      "nome": "The Messenger",
      "prezzo": 3.6,
-     "peso": 2025.0
+     "peso": 2025.0,
+     "arte": "TheMessenger"
     },
     {
      "nome": "More is Never Enough",
      "prezzo": 1.45,
-     "peso": 23257.0
+     "peso": 23257.0,
+     "arte": "MoreIsNeverEnough"
     }
    ]
   },
@@ -2441,6 +2798,9 @@
     "Courthouse",
     "Mesa"
    ],
+   "x": 466,
+   "y": 584,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/ArachnidNest",
    "nCarte": 4,
    "totale": 122.48,
    "media": 30.62,
@@ -2449,22 +2809,26 @@
     {
      "nome": "Mawr Blaidd",
      "prezzo": 114.6,
-     "peso": 274.5
+     "peso": 274.5,
+     "arte": "RussiaDivinationCard"
     },
     {
      "nome": "Call to the First Ones",
      "prezzo": 4.88,
-     "peso": 1636.0
+     "peso": 1636.0,
+     "arte": "CallToTheFirstOnes"
     },
     {
      "nome": "The Demoness",
      "prezzo": 2,
-     "peso": 9120.0
+     "peso": 9120.0,
+     "arte": "TheDemoness"
     },
     {
      "nome": "The Explorer",
      "prezzo": 1,
-     "peso": 7140.0
+     "peso": 7140.0,
+     "arte": "TheExplorer"
     }
    ]
   },
@@ -2495,6 +2859,9 @@
     "Courthouse",
     "Excavation"
    ],
+   "x": 419,
+   "y": 653,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Boulevard",
    "nCarte": 4,
    "totale": 115.0,
    "media": 38.33,
@@ -2503,22 +2870,26 @@
     {
      "nome": "Home",
      "prezzo": 57.7,
-     "peso": 105.0
+     "peso": 105.0,
+     "arte": "Home"
     },
     {
      "nome": "The Silly Boy",
      "prezzo": 55.86,
-     "peso": 0
+     "peso": 0,
+     "arte": "TheSillyBoy"
     },
     {
      "nome": "The Spark and the Flame",
      "prezzo": 1.44,
-     "peso": 728.5
+     "peso": 728.5,
+     "arte": "TheSparkAndTheFlame"
     },
     {
      "nome": "The Trial",
      "prezzo": 0,
-     "peso": 5823.0
+     "peso": 5823.0,
+     "arte": "TheTrial"
     }
    ]
   },
@@ -2539,6 +2910,9 @@
    "collegate": [
     "Plateau"
    ],
+   "x": 733,
+   "y": 606,
+   "icona": "Art/2DItems/Maps/olmec",
    "nCarte": 4,
    "totale": 107.47,
    "media": 35.82,
@@ -2547,22 +2921,26 @@
     {
      "nome": "The Rabbit's Foot",
      "prezzo": 103.7,
-     "peso": 64.0
+     "peso": 64.0,
+     "arte": "TheRabbitsFoot"
     },
     {
      "nome": "The Celestial Justicar",
      "prezzo": 3.68,
-     "peso": 883.0
+     "peso": 883.0,
+     "arte": "TheCelestialJusticar"
     },
     {
      "nome": "Rain of Chaos",
      "prezzo": 0.08935,
-     "peso": 121400.0
+     "peso": 121400.0,
+     "arte": "RainOfChaos"
     },
     {
      "nome": "The Harvester",
      "prezzo": 0,
-     "peso": 15812.0
+     "peso": 15812.0,
+     "arte": "TheHarvester"
     }
    ]
   },
@@ -2582,6 +2960,9 @@
    "collegate": [
     "Tower"
    ],
+   "x": 838,
+   "y": 625,
+   "icona": "Art/2DItems/Maps/UndeadSiege",
    "nCarte": 4,
    "totale": 105.85,
    "media": 52.93,
@@ -2590,22 +2971,26 @@
     {
      "nome": "The Rabbit's Foot",
      "prezzo": 103.7,
-     "peso": 64.0
+     "peso": 64.0,
+     "arte": "TheRabbitsFoot"
     },
     {
      "nome": "The Wretched",
      "prezzo": 2.15,
-     "peso": 3760.0
+     "peso": 3760.0,
+     "arte": "TheWretched"
     },
     {
      "nome": "Coveted Possession",
      "prezzo": 0,
-     "peso": 3224.0
+     "peso": 3224.0,
+     "arte": "CovetedPossession"
     },
     {
      "nome": "Grave Knowledge",
      "prezzo": 0,
-     "peso": 2511.0
+     "peso": 2511.0,
+     "arte": "GraveKnowledge"
     }
    ]
   },
@@ -2622,6 +3007,9 @@
    "collegate": [
     "Cortex"
    ],
+   "x": 869,
+   "y": 217,
+   "icona": "Art/2DItems/Maps/SynthesisColdGuardianMap",
    "nCarte": 4,
    "totale": 101.56,
    "media": 25.39,
@@ -2630,22 +3018,26 @@
     {
      "nome": "Monochrome",
      "prezzo": 72.54,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "Monochrome"
     },
     {
      "nome": "Imperfect Memories",
      "prezzo": 22.15,
-     "peso": 44.5
+     "peso": 44.5,
+     "arte": "ImperfectMemories"
     },
     {
      "nome": "The Astromancer",
      "prezzo": 4,
-     "peso": 4.0
+     "peso": 4.0,
+     "arte": "TheAstromancer"
     },
     {
      "nome": "A Dusty Memory",
      "prezzo": 2.87,
-     "peso": 340.5
+     "peso": 340.5,
+     "arte": "ADustyMemory"
     }
    ]
   },
@@ -2662,6 +3054,9 @@
    "collegate": [
     "Cortex"
    ],
+   "x": 835,
+   "y": 204,
+   "icona": "Art/2DItems/Maps/SynthesisFireGuardianMap",
    "nCarte": 4,
    "totale": 101.56,
    "media": 25.39,
@@ -2670,22 +3065,26 @@
     {
      "nome": "Monochrome",
      "prezzo": 72.54,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "Monochrome"
     },
     {
      "nome": "Imperfect Memories",
      "prezzo": 22.15,
-     "peso": 44.5
+     "peso": 44.5,
+     "arte": "ImperfectMemories"
     },
     {
      "nome": "The Astromancer",
      "prezzo": 4,
-     "peso": 4.0
+     "peso": 4.0,
+     "arte": "TheAstromancer"
     },
     {
      "nome": "A Dusty Memory",
      "prezzo": 2.87,
-     "peso": 340.5
+     "peso": 340.5,
+     "arte": "ADustyMemory"
     }
    ]
   },
@@ -2702,6 +3101,9 @@
    "collegate": [
     "Cortex"
    ],
+   "x": 884,
+   "y": 203,
+   "icona": "Art/2DItems/Maps/SynthesisGolemGuardianMap",
    "nCarte": 4,
    "totale": 101.56,
    "media": 25.39,
@@ -2710,22 +3112,26 @@
     {
      "nome": "Monochrome",
      "prezzo": 72.54,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "Monochrome"
     },
     {
      "nome": "Imperfect Memories",
      "prezzo": 22.15,
-     "peso": 44.5
+     "peso": 44.5,
+     "arte": "ImperfectMemories"
     },
     {
      "nome": "The Astromancer",
      "prezzo": 4,
-     "peso": 4.0
+     "peso": 4.0,
+     "arte": "TheAstromancer"
     },
     {
      "nome": "A Dusty Memory",
      "prezzo": 2.87,
-     "peso": 340.5
+     "peso": 340.5,
+     "arte": "ADustyMemory"
     }
    ]
   },
@@ -2742,6 +3148,9 @@
    "collegate": [
     "Cortex"
    ],
+   "x": 850,
+   "y": 216,
+   "icona": "Art/2DItems/Maps/SynthesisLightningGuardianMap",
    "nCarte": 4,
    "totale": 101.56,
    "media": 25.39,
@@ -2750,22 +3159,26 @@
     {
      "nome": "Monochrome",
      "prezzo": 72.54,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "Monochrome"
     },
     {
      "nome": "Imperfect Memories",
      "prezzo": 22.15,
-     "peso": 44.5
+     "peso": 44.5,
+     "arte": "ImperfectMemories"
     },
     {
      "nome": "The Astromancer",
      "prezzo": 4,
-     "peso": 4.0
+     "peso": 4.0,
+     "arte": "TheAstromancer"
     },
     {
      "nome": "A Dusty Memory",
      "prezzo": 2.87,
-     "peso": 340.5
+     "peso": 340.5,
+     "arte": "ADustyMemory"
     }
    ]
   },
@@ -2795,6 +3208,9 @@
     "Lava Lake",
     "Maelström of Chaos"
    ],
+   "x": 351,
+   "y": 338,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Atoll",
    "nCarte": 4,
    "totale": 84.59,
    "media": 21.15,
@@ -2803,22 +3219,26 @@
     {
      "nome": "The Destination",
      "prezzo": 77.33,
-     "peso": 16.0
+     "peso": 16.0,
+     "arte": "TheDestination"
     },
     {
      "nome": "The Vast",
      "prezzo": 4.47,
-     "peso": 7.0
+     "peso": 7.0,
+     "arte": "TheVast"
     },
     {
      "nome": "The Old Man",
      "prezzo": 1.79,
-     "peso": 3.0
+     "peso": 3.0,
+     "arte": "TheOldMan"
     },
     {
      "nome": "The Wind",
      "prezzo": 1,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "TheWind"
     }
    ]
   },
@@ -2844,6 +3264,9 @@
     "Malformation",
     "Plateau"
    ],
+   "x": 765,
+   "y": 550,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Channel",
    "nCarte": 4,
    "totale": 80.24,
    "media": 26.75,
@@ -2852,22 +3275,26 @@
     {
      "nome": "The Destination",
      "prezzo": 77.33,
-     "peso": 16.0
+     "peso": 16.0,
+     "arte": "TheDestination"
     },
     {
      "nome": "The Old Man",
      "prezzo": 1.79,
-     "peso": 3.0
+     "peso": 3.0,
+     "arte": "TheOldMan"
     },
     {
      "nome": "Desperate Crusade",
      "prezzo": 1.12,
-     "peso": 241.0
+     "peso": 241.0,
+     "arte": "DesperateCrusade"
     },
     {
      "nome": "Left to Fate",
      "prezzo": 0,
-     "peso": 3088.0
+     "peso": 3088.0,
+     "arte": "LeftToFate"
     }
    ]
   },
@@ -2892,6 +3319,9 @@
     "Graveyard",
     "Plaza"
    ],
+   "x": 256,
+   "y": 303,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Baths",
    "nCarte": 4,
    "totale": 75.94,
    "media": 18.98,
@@ -2900,22 +3330,26 @@
     {
      "nome": "The Forbidden Fruit",
      "prezzo": 62.1,
-     "peso": 0
+     "peso": 0,
+     "arte": "TheForbiddenFruit"
     },
     {
      "nome": "Peaceful Moments",
      "prezzo": 13.33,
-     "peso": 274.5
+     "peso": 274.5,
+     "arte": "PeacefulMoments"
     },
     {
      "nome": "The Porcupine",
      "prezzo": 0.5,
-     "peso": 4353.0
+     "peso": 4353.0,
+     "arte": "ThePorcupine"
     },
     {
      "nome": "The Flora's Gift",
      "prezzo": 0.01,
-     "peso": 26570.0
+     "peso": 26570.0,
+     "arte": "TheFlorasGift"
     }
    ]
   },
@@ -2931,6 +3365,9 @@
     "boss_not_twinnable"
    ],
    "collegate": [],
+   "x": 145,
+   "y": 255,
+   "icona": null,
    "nCarte": 1,
    "totale": 72.54,
    "media": 72.54,
@@ -2939,7 +3376,8 @@
     {
      "nome": "Monochrome",
      "prezzo": 72.54,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "Monochrome"
     }
    ]
   },
@@ -2970,6 +3408,9 @@
     "Jungle Valley",
     "Laboratory"
    ],
+   "x": 309,
+   "y": 568,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/HighGardens",
    "nCarte": 4,
    "totale": 66.64,
    "media": 22.21,
@@ -2978,22 +3419,26 @@
     {
      "nome": "The Forbidden Fruit",
      "prezzo": 62.1,
-     "peso": 0
+     "peso": 0,
+     "arte": "TheForbiddenFruit"
     },
     {
      "nome": "The Wilted Rose",
      "prezzo": 2.54,
-     "peso": 2312.0
+     "peso": 2312.0,
+     "arte": "TheWiltedRose"
     },
     {
      "nome": "The Fox in the Brambles",
      "prezzo": 2,
-     "peso": 986.5
+     "peso": 986.5,
+     "arte": "TheFoxInTheBrambles"
     },
     {
      "nome": "The Easy Stroll",
      "prezzo": 0,
-     "peso": 1747.0
+     "peso": 1747.0,
+     "arte": "TheEasyStroll"
     }
    ]
   },
@@ -3022,6 +3467,9 @@
     "Channel",
     "Promenade"
    ],
+   "x": 777,
+   "y": 616,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Malformation",
    "nCarte": 4,
    "totale": 61.22,
    "media": 15.3,
@@ -3030,22 +3478,26 @@
     {
      "nome": "The Prince of Darkness",
      "prezzo": 28.22,
-     "peso": 224.5
+     "peso": 224.5,
+     "arte": "ThePrinceOfDarkness"
     },
     {
      "nome": "Last Stand",
      "prezzo": 25,
-     "peso": 8.0
+     "peso": 8.0,
+     "arte": "LastStand"
     },
     {
      "nome": "The Insatiable",
      "prezzo": 5,
-     "peso": 1792.0
+     "peso": 1792.0,
+     "arte": "TheInsatiable"
     },
     {
      "nome": "The Jeweller's Boon",
      "prezzo": 3,
-     "peso": 3760.0
+     "peso": 3760.0,
+     "arte": "TheJewellersBoon"
     }
    ]
   },
@@ -3075,6 +3527,9 @@
     "Gardens",
     "Geode"
    ],
+   "x": 353,
+   "y": 471,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Colonnade",
    "nCarte": 4,
    "totale": 59.7,
    "media": 19.9,
@@ -3083,22 +3538,26 @@
     {
      "nome": "The Dungeon Master",
      "prezzo": 41.83,
-     "peso": 429.5
+     "peso": 429.5,
+     "arte": "TheDungeonMaster"
     },
     {
      "nome": "The Patient",
      "prezzo": 17.7,
-     "peso": 986.5
+     "peso": 986.5,
+     "arte": "ThePatient"
     },
     {
      "nome": "The Traitor",
      "prezzo": 0.1667,
-     "peso": 1159.0
+     "peso": 1159.0,
+     "arte": "TheTraitor"
     },
     {
      "nome": "Struck by Lightning",
      "prezzo": 0,
-     "peso": 7176.0
+     "peso": 7176.0,
+     "arte": "StruckbyLightning"
     }
    ]
   },
@@ -3122,6 +3581,9 @@
     "Ramparts",
     "Spider Lair"
    ],
+   "x": 565,
+   "y": 461,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Cells",
    "nCarte": 4,
    "totale": 55.84,
    "media": 18.61,
@@ -3130,22 +3592,26 @@
     {
      "nome": "The Dungeon Master",
      "prezzo": 41.83,
-     "peso": 429.5
+     "peso": 429.5,
+     "arte": "TheDungeonMaster"
     },
     {
      "nome": "The Offering",
      "prezzo": 13.75,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "TheOffering"
     },
     {
      "nome": "The Chains that Bind",
      "prezzo": 0.2558,
-     "peso": 8696.0
+     "peso": 8696.0,
+     "arte": "TheChainsThatBind"
     },
     {
      "nome": "Harmony of Souls",
      "prezzo": 0,
-     "peso": 224.5
+     "peso": 224.5,
+     "arte": "HarmonyOfSouls"
     }
    ]
   },
@@ -3177,6 +3643,9 @@
     "Mausoleum",
     "Simulacrum"
    ],
+   "x": 153,
+   "y": 599,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Fields",
    "nCarte": 4,
    "totale": 54.71,
    "media": 13.68,
@@ -3185,22 +3654,26 @@
     {
      "nome": "The Fortunate",
      "prezzo": 36.05,
-     "peso": 1238.0
+     "peso": 1238.0,
+     "arte": "TheFortunate"
     },
     {
      "nome": "Tranquillity",
      "prezzo": 17.96,
-     "peso": 14.5
+     "peso": 14.5,
+     "arte": "Tranquillity"
     },
     {
      "nome": "The Fox",
      "prezzo": 0.5,
-     "peso": 2094.0
+     "peso": 2094.0,
+     "arte": "TheFox"
     },
     {
      "nome": "The Scarred Meadow",
      "prezzo": 0.2,
-     "peso": 18252.0
+     "peso": 18252.0,
+     "arte": "TheScarredMeadow"
     }
    ]
   },
@@ -3226,6 +3699,9 @@
     "Arid Lake",
     "Palace"
    ],
+   "x": 622,
+   "y": 335,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Waterways",
    "nCarte": 4,
    "totale": 54.69,
    "media": 13.67,
@@ -3234,22 +3710,26 @@
     {
      "nome": "Lachrymal Necrosis",
      "prezzo": 23.16,
-     "peso": 808.0
+     "peso": 808.0,
+     "arte": "LachrymalNecrosis"
     },
     {
      "nome": "Terrible Secret of Space",
      "prezzo": 18.03,
-     "peso": 6.0
+     "peso": 6.0,
+     "arte": "TerribleSecretOfSpace"
     },
     {
      "nome": "A Stone Perfected",
      "prezzo": 12.38,
-     "peso": 155.5
+     "peso": 155.5,
+     "arte": "AStonePerfected"
     },
     {
      "nome": "Desperate Crusade",
      "prezzo": 1.12,
-     "peso": 241.0
+     "peso": 241.0,
+     "arte": "DesperateCrusade"
     }
    ]
   },
@@ -3273,6 +3753,9 @@
     "Forking River",
     "Vaal Pyramid"
    ],
+   "x": 865,
+   "y": 662,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Grotto",
    "nCarte": 4,
    "totale": 48.89,
    "media": 12.22,
@@ -3281,22 +3764,26 @@
     {
      "nome": "Lachrymal Necrosis",
      "prezzo": 23.16,
-     "peso": 808.0
+     "peso": 808.0,
+     "arte": "LachrymalNecrosis"
     },
     {
      "nome": "A Stone Perfected",
      "prezzo": 12.38,
-     "peso": 155.5
+     "peso": 155.5,
+     "arte": "AStonePerfected"
     },
     {
      "nome": "The Tinkerer's Table",
      "prezzo": 8.93,
-     "peso": 274.5
+     "peso": 274.5,
+     "arte": "TheTinkerersTable"
     },
     {
      "nome": "The Rite of Elements",
      "prezzo": 4.42,
-     "peso": 2047.0
+     "peso": 2047.0,
+     "arte": "TheRiteofElements"
     }
    ]
   },
@@ -3323,6 +3810,9 @@
    "collegate": [
     "Crystal Ore"
    ],
+   "x": 149,
+   "y": 675,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/PrimordialPool",
    "nCarte": 4,
    "totale": 44.66,
    "media": 11.16,
@@ -3331,22 +3821,26 @@
     {
      "nome": "The Prince of Darkness",
      "prezzo": 28.22,
-     "peso": 224.5
+     "peso": 224.5,
+     "arte": "ThePrinceOfDarkness"
     },
     {
      "nome": "The Eye of the Dragon",
      "prezzo": 12.44,
-     "peso": 64.0
+     "peso": 64.0,
+     "arte": "TheEyeOfTheDragon"
     },
     {
      "nome": "The Hunger",
      "prezzo": 3,
-     "peso": 808.0
+     "peso": 808.0,
+     "arte": "TheHunger"
     },
     {
      "nome": "The Survivalist",
      "prezzo": 1,
-     "peso": 6714.0
+     "peso": 6714.0,
+     "arte": "TheSurvivalist"
     }
    ]
   },
@@ -3371,6 +3865,9 @@
     "Polaric Void",
     "Toxic Sewer"
    ],
+   "x": 223,
+   "y": 544,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Volcano",
    "nCarte": 4,
    "totale": 41.57,
    "media": 10.39,
@@ -3379,22 +3876,26 @@
     {
      "nome": "Lonely Warrior",
      "prezzo": 23.3,
-     "peso": 6.0
+     "peso": 6.0,
+     "arte": "LonelyWarrior"
     },
     {
      "nome": "Pride Before the Fall",
      "prezzo": 10.24,
-     "peso": 140.0
+     "peso": 140.0,
+     "arte": "PrideBeforeTheFall"
     },
     {
      "nome": "From Bone to Ashes",
      "prezzo": 6.59,
-     "peso": 186.0
+     "peso": 186.0,
+     "arte": "FromBonesToAshes"
     },
     {
      "nome": "The Spark and the Flame",
      "prezzo": 1.44,
-     "peso": 728.5
+     "peso": 728.5,
+     "arte": "TheSparkAndTheFlame"
     }
    ]
   },
@@ -3426,6 +3927,9 @@
     "Pillars of Arun",
     "Port"
    ],
+   "x": 533,
+   "y": 646,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Dunes",
    "nCarte": 4,
    "totale": 40.56,
    "media": 10.14,
@@ -3434,22 +3938,26 @@
     {
      "nome": "The Fortunate",
      "prezzo": 36.05,
-     "peso": 1238.0
+     "peso": 1238.0,
+     "arte": "TheFortunate"
     },
     {
      "nome": "Baited Expectations",
      "prezzo": 2.05,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "BaitedExpectations"
     },
     {
      "nome": "Acclimatisation",
      "prezzo": 1.3,
-     "peso": 4232.0
+     "peso": 4232.0,
+     "arte": "Acclimatisation"
     },
     {
      "nome": "Earth Drinker",
      "prezzo": 1.16,
-     "peso": 1507.0
+     "peso": 1507.0,
+     "arte": "EarthDrinker"
     }
    ]
   },
@@ -3474,6 +3982,9 @@
    "collegate": [
     "Grave Trough"
    ],
+   "x": 858,
+   "y": 321,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Arsenal",
    "nCarte": 4,
    "totale": 31.99,
    "media": 8.0,
@@ -3482,22 +3993,26 @@
     {
      "nome": "Last Stand",
      "prezzo": 25,
-     "peso": 8.0
+     "peso": 8.0,
+     "arte": "LastStand"
     },
     {
      "nome": "Merciless Armament",
      "prezzo": 5.56,
-     "peso": 296.5
+     "peso": 296.5,
+     "arte": "MercilessArmament"
     },
     {
      "nome": "Dying Anguish",
      "prezzo": 1.12,
-     "peso": 2461.0
+     "peso": 2461.0,
+     "arte": "DyingAnguish"
     },
     {
      "nome": "Three Faces in the Dark",
      "prezzo": 0.3106,
-     "peso": 22517.0
+     "peso": 22517.0,
+     "arte": "ThreeFacesInTheDark"
     }
    ]
   },
@@ -3529,6 +4044,9 @@
     "Reef",
     "Shrine"
    ],
+   "x": 577,
+   "y": 588,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Quay",
    "nCarte": 4,
    "totale": 31.09,
    "media": 7.77,
@@ -3537,22 +4055,26 @@
     {
      "nome": "Matryoshka",
      "prezzo": 22.77,
-     "peso": 1.5
+     "peso": 1.5,
+     "arte": "Matryoshka"
     },
     {
      "nome": "The Return of the Rat",
      "prezzo": 4.12,
-     "peso": 1025.0
+     "peso": 1025.0,
+     "arte": "TheReturnOfTheRat"
     },
     {
      "nome": "The Last Laugh",
      "prezzo": 4.1,
-     "peso": 0
+     "peso": 0,
+     "arte": "TheLastLaugh"
     },
     {
      "nome": "Lucky Connections",
      "prezzo": 0.0967,
-     "peso": 7356.0
+     "peso": 7356.0,
+     "arte": "LuckyConnections"
     }
    ]
   },
@@ -3580,6 +4102,9 @@
     "Ivory Temple",
     "Seething Chyme"
    ],
+   "x": 398,
+   "y": 684,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Stagnation",
    "nCarte": 4,
    "totale": 29.92,
    "media": 9.97,
@@ -3588,22 +4113,26 @@
     {
      "nome": "Avian Pursuit",
      "prezzo": 27.8,
-     "peso": 96.5
+     "peso": 96.5,
+     "arte": "AvianPursuit"
     },
     {
      "nome": "The Coming Storm",
      "prezzo": 1.57,
-     "peso": 1976.0
+     "peso": 1976.0,
+     "arte": "TheComingStorm"
     },
     {
      "nome": "The Mind's Eyes",
      "prezzo": 0.549,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "TheMindsEyes"
     },
     {
      "nome": "Struck by Lightning",
      "prezzo": 0,
-     "peso": 7176.0
+     "peso": 7176.0,
+     "arte": "StruckbyLightning"
     }
    ]
   },
@@ -3630,6 +4159,9 @@
     "Primordial Pool",
     "The Lightless Hollow"
    ],
+   "x": 170,
+   "y": 632,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/CrystalOre",
    "nCarte": 4,
    "totale": 28.88,
    "media": 9.63,
@@ -3638,22 +4170,26 @@
     {
      "nome": "Friendship",
      "prezzo": 25.8,
-     "peso": 73.0
+     "peso": 73.0,
+     "arte": "Friendship"
     },
     {
      "nome": "Bijoux",
      "prezzo": 2.94,
-     "peso": 274.5
+     "peso": 274.5,
+     "arte": "Bijoux"
     },
     {
      "nome": "Three Voices",
      "prezzo": 0.1399,
-     "peso": 11929.0
+     "peso": 11929.0,
+     "arte": "ThreeVoices"
     },
     {
      "nome": "Buried Treasure",
      "prezzo": 0,
-     "peso": 728.5
+     "peso": 728.5,
+     "arte": "BuriedTreasure"
     }
    ]
   },
@@ -3680,6 +4216,9 @@
     "Fungal Hollow",
     "Laboratory"
    ],
+   "x": 355,
+   "y": 518,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Terrace",
    "nCarte": 4,
    "totale": 28.62,
    "media": 7.16,
@@ -3688,22 +4227,26 @@
     {
      "nome": "Matryoshka",
      "prezzo": 22.77,
-     "peso": 1.5
+     "peso": 1.5,
+     "arte": "Matryoshka"
     },
     {
      "nome": "The Awakened",
      "prezzo": 3.85,
-     "peso": 15.5
+     "peso": 15.5,
+     "arte": "TheAwakened"
     },
     {
      "nome": "The Fox in the Brambles",
      "prezzo": 2,
-     "peso": 986.5
+     "peso": 986.5,
+     "arte": "TheFoxInTheBrambles"
     },
     {
      "nome": "Rain Tempter",
      "prezzo": 0.003455,
-     "peso": 15301.0
+     "peso": 15301.0,
+     "arte": "RainTempter"
     }
    ]
   },
@@ -3732,6 +4275,9 @@
     "Coral Ruins",
     "Sunken City"
    ],
+   "x": 661,
+   "y": 588,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/TropicalIsland",
    "nCarte": 4,
    "totale": 27.77,
    "media": 6.94,
@@ -3740,22 +4286,26 @@
     {
      "nome": "The Lake",
      "prezzo": 14.84,
-     "peso": 0
+     "peso": 0,
+     "arte": "TheLake"
     },
     {
      "nome": "Pride of the First Ones",
      "prezzo": 11.29,
-     "peso": 102.0
+     "peso": 102.0,
+     "arte": "PrideOfTheFirstOnes"
     },
     {
      "nome": "Azure Rage",
      "prezzo": 1,
-     "peso": 3224.0
+     "peso": 3224.0,
+     "arte": "AzureRage"
     },
     {
      "nome": "The Scout",
      "prezzo": 0.6387,
-     "peso": 340.5
+     "peso": 340.5,
+     "arte": "TheScout"
     }
    ]
   },
@@ -3781,6 +4331,9 @@
     "Phantasmagoria",
     "Reef"
    ],
+   "x": 564,
+   "y": 537,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Estuary",
    "nCarte": 4,
    "totale": 27.08,
    "media": 9.03,
@@ -3789,22 +4342,26 @@
     {
      "nome": "Costly Curio",
      "prezzo": 10.25,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "CostlyCurio"
     },
     {
      "nome": "Pride Before the Fall",
      "prezzo": 10.24,
-     "peso": 140.0
+     "peso": 140.0,
+     "arte": "PrideBeforeTheFall"
     },
     {
      "nome": "From Bone to Ashes",
      "prezzo": 6.59,
-     "peso": 186.0
+     "peso": 186.0,
+     "arte": "FromBonesToAshes"
     },
     {
      "nome": "Hope",
      "prezzo": 0,
-     "peso": 2094.0
+     "peso": 2094.0,
+     "arte": "Hope"
     }
    ]
   },
@@ -3834,6 +4391,9 @@
     "Fungal Hollow",
     "Laboratory"
    ],
+   "x": 399,
+   "y": 590,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Mesa",
    "nCarte": 4,
    "totale": 27.0,
    "media": 6.75,
@@ -3842,22 +4402,26 @@
     {
      "nome": "Tranquillity",
      "prezzo": 17.96,
-     "peso": 14.5
+     "peso": 14.5,
+     "arte": "Tranquillity"
     },
     {
      "nome": "The Enforcer",
      "prezzo": 8.69,
-     "peso": 9.0
+     "peso": 9.0,
+     "arte": "TheEnforcer"
     },
     {
      "nome": "The Scarred Meadow",
      "prezzo": 0.2,
-     "peso": 18252.0
+     "peso": 18252.0,
+     "arte": "TheScarredMeadow"
     },
     {
      "nome": "Time-Lost Relic",
      "prezzo": 0.1455,
-     "peso": 6470.0
+     "peso": 6470.0,
+     "arte": "TimeLostRelic"
     }
    ]
   },
@@ -3885,6 +4449,9 @@
     "Strand",
     "Summit"
    ],
+   "x": 382,
+   "y": 410,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Alleyways",
    "nCarte": 4,
    "totale": 26.45,
    "media": 8.82,
@@ -3893,22 +4460,26 @@
     {
      "nome": "The Side Quest",
      "prezzo": 21.38,
-     "peso": 728.5
+     "peso": 728.5,
+     "arte": "TheSideQuest"
     },
     {
      "nome": "The Enthusiasts",
      "prezzo": 2.67,
-     "peso": 469.5
+     "peso": 469.5,
+     "arte": "TheEnthusiasts"
     },
     {
      "nome": "The Gentleman",
      "prezzo": 2.4,
-     "peso": 1422.0
+     "peso": 1422.0,
+     "arte": "TheGentleman"
     },
     {
      "nome": "The Ruthless Ceinture",
      "prezzo": 0,
-     "peso": 3307.0
+     "peso": 3307.0,
+     "arte": "TheRuthlessCeinture"
     }
    ]
   },
@@ -3935,6 +4506,9 @@
     "Promenade",
     "Tropical Island"
    ],
+   "x": 655,
+   "y": 641,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Abyss",
    "nCarte": 4,
    "totale": 25.94,
    "media": 12.97,
@@ -3943,22 +4517,26 @@
     {
      "nome": "Lonely Warrior",
      "prezzo": 23.3,
-     "peso": 6.0
+     "peso": 6.0,
+     "arte": "LonelyWarrior"
     },
     {
      "nome": "The King's Heart",
      "prezzo": 2.64,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "TheKingsHeart"
     },
     {
      "nome": "Burning Blood",
      "prezzo": 0,
-     "peso": 10.0
+     "peso": 10.0,
+     "arte": "BurningBlood"
     },
     {
      "nome": "Hope",
      "prezzo": 0,
-     "peso": 2094.0
+     "peso": 2094.0,
+     "arte": "Hope"
     }
    ]
   },
@@ -3988,6 +4566,9 @@
     "The Coward's Trial",
     "Vaal Pyramid"
    ],
+   "x": 819,
+   "y": 606,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Tower",
    "nCarte": 4,
    "totale": 25.73,
    "media": 8.58,
@@ -3996,22 +4577,26 @@
     {
      "nome": "Energy Sword",
      "prezzo": 21.73,
-     "peso": 0
+     "peso": 0,
+     "arte": "EnergySword"
     },
     {
      "nome": "The Aesthete",
      "prezzo": 3,
-     "peso": 5102.0
+     "peso": 5102.0,
+     "arte": "TheAesthete"
     },
     {
      "nome": "The Tower",
      "prezzo": 1,
-     "peso": 5590.0
+     "peso": 5590.0,
+     "arte": "TheTower"
     },
     {
      "nome": "Thunderous Skies",
      "prezzo": 0,
-     "peso": 10311.0
+     "peso": 10311.0,
+     "arte": "ThunderousSkies"
     }
    ]
   },
@@ -4038,6 +4623,9 @@
     "Colonnade",
     "Sulphur Vents"
    ],
+   "x": 320,
+   "y": 448,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Quarry",
    "nCarte": 4,
    "totale": 25.54,
    "media": 6.38,
@@ -4046,22 +4634,26 @@
     {
      "nome": "Terrible Secret of Space",
      "prezzo": 18.03,
-     "peso": 6.0
+     "peso": 6.0,
+     "arte": "TerribleSecretOfSpace"
     },
     {
      "nome": "The Rite of Elements",
      "prezzo": 4.42,
-     "peso": 2047.0
+     "peso": 2047.0,
+     "arte": "TheRiteofElements"
     },
     {
      "nome": "The Endurance",
      "prezzo": 2.94,
-     "peso": 5199.0
+     "peso": 5199.0,
+     "arte": "TheEndurance"
     },
     {
      "nome": "Time-Lost Relic",
      "prezzo": 0.1455,
-     "peso": 6470.0
+     "peso": 6470.0,
+     "arte": "TimeLostRelic"
     }
    ]
   },
@@ -4075,6 +4667,9 @@
    "rating": {},
    "tags": [],
    "collegate": [],
+   "x": 565,
+   "y": 276,
+   "icona": null,
    "nCarte": 1,
    "totale": 25.1,
    "media": 25.1,
@@ -4083,7 +4678,8 @@
     {
      "nome": "The Aspirant",
      "prezzo": 25.1,
-     "peso": 25.0
+     "peso": 25.0,
+     "arte": "Dream"
     }
    ]
   },
@@ -4104,6 +4700,9 @@
    "collegate": [
     "Courthouse"
    ],
+   "x": 449,
+   "y": 665,
+   "icona": "Art/2DItems/Maps/TheVinktarSquare",
    "nCarte": 2,
    "totale": 22.48,
    "media": 11.24,
@@ -4112,12 +4711,14 @@
     {
      "nome": "Energy Sword",
      "prezzo": 21.73,
-     "peso": 0
+     "peso": 0,
+     "arte": "EnergySword"
     },
     {
      "nome": "The Rusted Bard",
      "prezzo": 0.75,
-     "peso": 155.5
+     "peso": 155.5,
+     "arte": "TheRustedBard"
     }
    ]
   },
@@ -4140,6 +4741,9 @@
    "collegate": [
     "Shipyard"
    ],
+   "x": 373,
+   "y": 349,
+   "icona": "Art/2DItems/Maps/FairgravesMap01",
    "nCarte": 3,
    "totale": 22.22,
    "media": 7.41,
@@ -4148,17 +4752,20 @@
     {
      "nome": "The Formless Sea",
      "prezzo": 15.99,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "TheFormlessSea"
     },
     {
      "nome": "The Deep Ones",
      "prezzo": 5.8,
-     "peso": 72.0
+     "peso": 72.0,
+     "arte": "TheDeepOnes"
     },
     {
      "nome": "Abandoned Wealth",
      "prezzo": 0.4305,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "AbandonedWealth"
     }
    ]
   },
@@ -4185,6 +4792,9 @@
     "Flooded Mine",
     "Frozen Cabins"
    ],
+   "x": 610,
+   "y": 474,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/SpiderLair",
    "nCarte": 4,
    "totale": 22.08,
    "media": 5.52,
@@ -4193,22 +4803,26 @@
     {
      "nome": "The Tinkerer's Table",
      "prezzo": 8.93,
-     "peso": 274.5
+     "peso": 274.5,
+     "arte": "TheTinkerersTable"
     },
     {
      "nome": "The Wedding Gift",
      "prezzo": 8.18,
-     "peso": 73.0
+     "peso": 73.0,
+     "arte": "TheWeddingGift"
     },
     {
      "nome": "Poisoned Faith",
      "prezzo": 3.42,
-     "peso": 73.0
+     "peso": 73.0,
+     "arte": "PoisonedFaith"
     },
     {
      "nome": "The Dark Mage",
      "prezzo": 1.55,
-     "peso": 1383.0
+     "peso": 1383.0,
+     "arte": "TheDarkMage"
     }
    ]
   },
@@ -4235,6 +4849,9 @@
     "Primordial Blocks",
     "Sulphur Vents"
    ],
+   "x": 355,
+   "y": 385,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Shipyard",
    "nCarte": 4,
    "totale": 19.66,
    "media": 4.92,
@@ -4243,22 +4860,26 @@
     {
      "nome": "The Pact",
      "prezzo": 11.07,
-     "peso": 429.5
+     "peso": 429.5,
+     "arte": "ThePact"
     },
     {
      "nome": "The Fishmonger",
      "prezzo": 4.33,
-     "peso": 22.0
+     "peso": 22.0,
+     "arte": "TheFishmonger"
     },
     {
      "nome": "The Professor",
      "prezzo": 2.43,
-     "peso": 186.0
+     "peso": 186.0,
+     "arte": "TheProfessor"
     },
     {
      "nome": "The Undaunted",
      "prezzo": 1.83,
-     "peso": 1383.0
+     "peso": 1383.0,
+     "arte": "TheUndaunted"
     }
    ]
   },
@@ -4274,6 +4895,9 @@
    "collegate": [
     "Infested Valley"
    ],
+   "x": 132,
+   "y": 372,
+   "icona": null,
    "nCarte": 2,
    "totale": 18.82,
    "media": 9.41,
@@ -4282,12 +4906,14 @@
     {
      "nome": "Something Dark",
      "prezzo": 17.14,
-     "peso": 728.5
+     "peso": 728.5,
+     "arte": "SomethingDark"
     },
     {
      "nome": "The Escape",
      "prezzo": 1.68,
-     "peso": 656.5
+     "peso": 656.5,
+     "arte": "TheEscape"
     }
    ]
   },
@@ -4305,6 +4931,9 @@
    "collegate": [
     "Overgrown Shrine"
    ],
+   "x": 574,
+   "y": 343,
+   "icona": "Art/2DItems/Maps/musicbox",
    "nCarte": 4,
    "totale": 18.53,
    "media": 4.63,
@@ -4313,22 +4942,26 @@
     {
      "nome": "The Garish Power",
      "prezzo": 14.02,
-     "peso": 96.5
+     "peso": 96.5,
+     "arte": "GarishPower"
     },
     {
      "nome": "Shard of Fate",
      "prezzo": 3.01,
-     "peso": 4943.0
+     "peso": 4943.0,
+     "arte": "ShardofFate"
     },
     {
      "nome": "The Skeleton",
      "prezzo": 1,
-     "peso": 5361.0
+     "peso": 5361.0,
+     "arte": "TheSkeleton"
     },
     {
      "nome": "The Craving",
      "prezzo": 0.5,
-     "peso": 96.5
+     "peso": 96.5,
+     "arte": "TheCraving"
     }
    ]
   },
@@ -4354,6 +4987,9 @@
     "Iceberg",
     "Promenade"
    ],
+   "x": 595,
+   "y": 702,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Orchard",
    "nCarte": 4,
    "totale": 18.16,
    "media": 6.05,
@@ -4362,22 +4998,26 @@
     {
      "nome": "Peaceful Moments",
      "prezzo": 13.33,
-     "peso": 274.5
+     "peso": 274.5,
+     "arte": "PeacefulMoments"
     },
     {
      "nome": "The Wilted Rose",
      "prezzo": 2.54,
-     "peso": 2312.0
+     "peso": 2312.0,
+     "arte": "TheWiltedRose"
     },
     {
      "nome": "Brotherhood in Exile",
      "prezzo": 2.29,
-     "peso": 224.5
+     "peso": 224.5,
+     "arte": "BrotherhoodInExile"
     },
     {
      "nome": "Boon of Justice",
      "prezzo": 0,
-     "peso": 7068.0
+     "peso": 7068.0,
+     "arte": "BoonofJustice"
     }
    ]
   },
@@ -4405,6 +5045,9 @@
     "Bazaar",
     "Pier"
    ],
+   "x": 589,
+   "y": 368,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/OvergrownShrine",
    "nCarte": 4,
    "totale": 17.97,
    "media": 4.49,
@@ -4413,22 +5056,26 @@
     {
      "nome": "The Garish Power",
      "prezzo": 14.02,
-     "peso": 96.5
+     "peso": 96.5,
+     "arte": "GarishPower"
     },
     {
      "nome": "The Surgeon",
      "prezzo": 2.57,
-     "peso": 4599.0
+     "peso": 4599.0,
+     "arte": "TheSurgeon"
     },
     {
      "nome": "The Brittle Emperor",
      "prezzo": 1.37,
-     "peso": 131.5
+     "peso": 131.5,
+     "arte": "TheBrittleEmperor"
     },
     {
      "nome": "Emperor of Purity",
      "prezzo": 0.007143,
-     "peso": 2094.0
+     "peso": 2094.0,
+     "arte": "EmperorOfPurity"
     }
    ]
   },
@@ -4457,6 +5104,9 @@
     "Lava Lake",
     "Shipyard"
    ],
+   "x": 289,
+   "y": 426,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Corrosion",
    "nCarte": 4,
    "totale": 17.81,
    "media": 5.94,
@@ -4465,22 +5115,26 @@
     {
      "nome": "The Bitter Blossom",
      "prezzo": 11.24,
-     "peso": 131.5
+     "peso": 131.5,
+     "arte": "TheBitterBlossom"
     },
     {
      "nome": "The Darkest Dream",
      "prezzo": 6.24,
-     "peso": 312.0
+     "peso": 312.0,
+     "arte": "TheDarkestDream"
     },
     {
      "nome": "The Standoff",
      "prezzo": 0.3333,
-     "peso": 5723.0
+     "peso": 5723.0,
+     "arte": "TheStandOff"
     },
     {
      "nome": "Vile Power",
      "prezzo": 0,
-     "peso": 1443.0
+     "peso": 1443.0,
+     "arte": "VilePower"
     }
    ]
   },
@@ -4501,6 +5155,9 @@
    "collegate": [
     "Dunes"
    ],
+   "x": 556,
+   "y": 670,
+   "icona": "Art/2DItems/Maps/PillarsOfVastiri",
    "nCarte": 4,
    "totale": 16.75,
    "media": 4.19,
@@ -4509,22 +5166,26 @@
     {
      "nome": "Gift of Asenath",
      "prezzo": 5.45,
-     "peso": 131.5
+     "peso": 131.5,
+     "arte": "GiftOfAsenath"
     },
     {
      "nome": "A Note in the Wind",
      "prezzo": 5,
-     "peso": 274.5
+     "peso": 274.5,
+     "arte": "ANoteInTheWind"
     },
     {
      "nome": "The Tumbleweed",
      "prezzo": 5,
-     "peso": 32.0
+     "peso": 32.0,
+     "arte": "TheTumbleWeed"
     },
     {
      "nome": "Acclimatisation",
      "prezzo": 1.3,
-     "peso": 4232.0
+     "peso": 4232.0,
+     "arte": "Acclimatisation"
     }
    ]
   },
@@ -4551,6 +5212,9 @@
     "Forbidden Woods",
     "Summit"
    ],
+   "x": 393,
+   "y": 475,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Colosseum",
    "nCarte": 4,
    "totale": 16.06,
    "media": 5.35,
@@ -4559,22 +5223,26 @@
     {
      "nome": "The Last One Standing",
      "prezzo": 14.56,
-     "peso": 20.0
+     "peso": 20.0,
+     "arte": "TheLastOneStanding"
     },
     {
      "nome": "The Visionary",
      "prezzo": 1,
-     "peso": 8965.0
+     "peso": 8965.0,
+     "arte": "TheVisionary"
     },
     {
      "nome": "The Gladiator",
      "prezzo": 0.5,
-     "peso": 5756.0
+     "peso": 5756.0,
+     "arte": "TheGladiator"
     },
     {
      "nome": "The King's Blade",
      "prezzo": 0,
-     "peso": 41980.0
+     "peso": 41980.0,
+     "arte": "TheKingsBlade"
     }
    ]
   },
@@ -4593,6 +5261,9 @@
    "collegate": [
     "Primordial Blocks"
    ],
+   "x": 465,
+   "y": 332,
+   "icona": "Art/2DItems/Maps/oba",
    "nCarte": 4,
    "totale": 15.82,
    "media": 7.91,
@@ -4601,22 +5272,26 @@
     {
      "nome": "Rebirth and Renewal",
      "prezzo": 14.58,
-     "peso": 728.5
+     "peso": 728.5,
+     "arte": "RebirthAndRenewal"
     },
     {
      "nome": "Might is Right",
      "prezzo": 1.24,
-     "peso": 2486.0
+     "peso": 2486.0,
+     "arte": "MightIsRight"
     },
     {
      "nome": "Coveted Possession",
      "prezzo": 0,
-     "peso": 3224.0
+     "peso": 3224.0,
+     "arte": "CovetedPossession"
     },
     {
      "nome": "The Lich",
      "prezzo": 0,
-     "peso": 5006.0
+     "peso": 5006.0,
+     "arte": "TheLich"
     }
    ]
   },
@@ -4645,6 +5320,9 @@
     "Shrine",
     "Tropical Island"
    ],
+   "x": 684,
+   "y": 548,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/SunkenCity",
    "nCarte": 4,
    "totale": 14.68,
    "media": 3.67,
@@ -4653,22 +5331,26 @@
     {
      "nome": "The Wedding Gift",
      "prezzo": 8.18,
-     "peso": 73.0
+     "peso": 73.0,
+     "arte": "TheWeddingGift"
     },
     {
      "nome": "Ambitious Obsession",
      "prezzo": 3,
-     "peso": 1.5
+     "peso": 1.5,
+     "arte": "AmbitiousObsession"
     },
     {
      "nome": "The Web",
      "prezzo": 3,
-     "peso": 7905.0
+     "peso": 7905.0,
+     "arte": "TheWeb"
     },
     {
      "nome": "The Fox",
      "prezzo": 0.5,
-     "peso": 2094.0
+     "peso": 2094.0,
+     "arte": "TheFox"
     }
    ]
   },
@@ -4698,6 +5380,9 @@
     "Dark Forest",
     "Waterways"
    ],
+   "x": 553,
+   "y": 310,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/AridLake",
    "nCarte": 4,
    "totale": 13.99,
    "media": 4.66,
@@ -4706,22 +5391,26 @@
     {
      "nome": "The Eye of the Dragon",
      "prezzo": 12.44,
-     "peso": 64.0
+     "peso": 64.0,
+     "arte": "TheEyeOfTheDragon"
     },
     {
      "nome": "Azure Rage",
      "prezzo": 1,
-     "peso": 3224.0
+     "peso": 3224.0,
+     "arte": "AzureRage"
     },
     {
      "nome": "The Mind's Eyes",
      "prezzo": 0.549,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "TheMindsEyes"
     },
     {
      "nome": "The Inoculated",
      "prezzo": 0,
-     "peso": 6926.0
+     "peso": 6926.0,
+     "arte": "TheInoculated"
     }
    ]
   },
@@ -4737,6 +5426,9 @@
    "collegate": [
     "Cage"
    ],
+   "x": 684,
+   "y": 515,
+   "icona": null,
    "nCarte": 1,
    "totale": 13.57,
    "media": 13.57,
@@ -4745,7 +5437,8 @@
     {
      "nome": "Chasing Risk",
      "prezzo": 13.57,
-     "peso": 274.5
+     "peso": 274.5,
+     "arte": "ChasingRisk"
     }
    ]
   },
@@ -4761,6 +5454,9 @@
    "collegate": [
     "Abomination"
    ],
+   "x": 776,
+   "y": 755,
+   "icona": null,
    "nCarte": 1,
    "totale": 13.52,
    "media": 13.52,
@@ -4769,7 +5465,8 @@
     {
      "nome": "A Fate Worse Than Death",
      "prezzo": 13.52,
-     "peso": 83.5
+     "peso": 83.5,
+     "arte": "AFateWorseThanDeath"
     }
    ]
   },
@@ -4795,6 +5492,9 @@
     "Jungle Valley",
     "Volcano"
    ],
+   "x": 248,
+   "y": 566,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Sewer",
    "nCarte": 4,
    "totale": 13.39,
    "media": 4.46,
@@ -4803,22 +5503,26 @@
     {
      "nome": "The Darkest Dream",
      "prezzo": 6.24,
-     "peso": 312.0
+     "peso": 312.0,
+     "arte": "TheDarkestDream"
     },
     {
      "nome": "Toxic Tidings",
      "prezzo": 4.67,
-     "peso": 224.5
+     "peso": 224.5,
+     "arte": "ToxicTidings"
     },
     {
      "nome": "Death",
      "prezzo": 2.48,
-     "peso": 1339.0
+     "peso": 1339.0,
+     "arte": "Death"
     },
     {
      "nome": "Vile Power",
      "prezzo": 0,
-     "peso": 1443.0
+     "peso": 1443.0,
+     "arte": "VilePower"
     }
    ]
   },
@@ -4845,6 +5549,9 @@
     "Colosseum",
     "Marshes"
    ],
+   "x": 436,
+   "y": 462,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/ForbiddenWoods",
    "nCarte": 4,
    "totale": 13.03,
    "media": 3.26,
@@ -4853,22 +5560,26 @@
     {
      "nome": "Alivia's Grace",
      "prezzo": 5.15,
-     "peso": 1976.0
+     "peso": 1976.0,
+     "arte": "AliviasGrace"
     },
     {
      "nome": "Call to the First Ones",
      "prezzo": 4.88,
-     "peso": 1636.0
+     "peso": 1636.0,
+     "arte": "CallToTheFirstOnes"
     },
     {
      "nome": "The Demoness",
      "prezzo": 2,
-     "peso": 9120.0
+     "peso": 9120.0,
+     "arte": "TheDemoness"
     },
     {
      "nome": "The Sigil",
      "prezzo": 1,
-     "peso": 6820.0
+     "peso": 6820.0,
+     "arte": "TheSigil"
     }
    ]
   },
@@ -4893,6 +5604,9 @@
     "Relic Chambers",
     "Spider Lair"
    ],
+   "x": 650,
+   "y": 472,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Cavern",
    "nCarte": 4,
    "totale": 13.0,
    "media": 3.25,
@@ -4901,22 +5615,26 @@
     {
      "nome": "Underground Forest",
      "prezzo": 7.0,
-     "peso": 296.5
+     "peso": 296.5,
+     "arte": "UndergroundForest"
     },
     {
      "nome": "The Fathomless Depths",
      "prezzo": 5,
-     "peso": 2025.0
+     "peso": 2025.0,
+     "arte": "TheFathomlessDepths"
     },
     {
      "nome": "The Primordial",
      "prezzo": 0.9965,
-     "peso": 1159.0
+     "peso": 1159.0,
+     "arte": "ThePrimordial"
     },
     {
      "nome": "Glimmer of Hope",
      "prezzo": 0.002186,
-     "peso": 9630.0
+     "peso": 9630.0,
+     "arte": "GlimmerOfHope"
     }
    ]
   },
@@ -4938,6 +5656,9 @@
    "collegate": [
     "Lair"
    ],
+   "x": 205,
+   "y": 446,
+   "icona": "Art/2DItems/Maps/WolfMap",
    "nCarte": 4,
    "totale": 12.79,
    "media": 3.2,
@@ -4946,22 +5667,26 @@
     {
      "nome": "Pride of the First Ones",
      "prezzo": 11.29,
-     "peso": 102.0
+     "peso": 102.0,
+     "arte": "PrideOfTheFirstOnes"
     },
     {
      "nome": "Treasure Hunter",
      "prezzo": 1.04,
-     "peso": 986.5
+     "peso": 986.5,
+     "arte": "TreasureHunter"
     },
     {
      "nome": "The Dragon",
      "prezzo": 0.3865,
-     "peso": 5689.0
+     "peso": 5689.0,
+     "arte": "TheDragon"
     },
     {
      "nome": "Loyalty",
      "prezzo": 0.07143,
-     "peso": 35134.0
+     "peso": 35134.0,
+     "arte": "Loyalty"
     }
    ]
   },
@@ -4990,6 +5715,9 @@
     "Ramparts",
     "Spider Lair"
    ],
+   "x": 592,
+   "y": 417,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/FrozenCabins",
    "nCarte": 4,
    "totale": 12.1,
    "media": 3.03,
@@ -4998,22 +5726,26 @@
     {
      "nome": "The Pack Leader",
      "prezzo": 8,
-     "peso": 1593.0
+     "peso": 1593.0,
+     "arte": "ThePackLeader"
     },
     {
      "nome": "The Whiteout",
      "prezzo": 2.65,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "TheWhiteout"
     },
     {
      "nome": "Mitts",
      "prezzo": 1,
-     "peso": 6025.0
+     "peso": 6025.0,
+     "arte": "Mitts"
     },
     {
      "nome": "Hunter's Resolve",
      "prezzo": 0.4545,
-     "peso": 8467.0
+     "peso": 8467.0,
+     "arte": "HuntersResolve"
     }
    ]
   },
@@ -5046,6 +5778,9 @@
     "Sunken City",
     "Vault"
    ],
+   "x": 728,
+   "y": 519,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Oasis",
    "nCarte": 4,
    "totale": 11.79,
    "media": 2.95,
@@ -5054,22 +5789,26 @@
     {
      "nome": "The Tumbleweed",
      "prezzo": 5,
-     "peso": 32.0
+     "peso": 32.0,
+     "arte": "TheTumbleWeed"
     },
     {
      "nome": "Ambitious Obsession",
      "prezzo": 3,
-     "peso": 1.5
+     "peso": 1.5,
+     "arte": "AmbitiousObsession"
     },
     {
      "nome": "Imperial Legacy",
      "prezzo": 2.34,
-     "peso": 10924.0
+     "peso": 10924.0,
+     "arte": "ImperialLegacy"
     },
     {
      "nome": "More is Never Enough",
      "prezzo": 1.45,
-     "peso": 23257.0
+     "peso": 23257.0,
+     "arte": "MoreIsNeverEnough"
     }
    ]
   },
@@ -5102,6 +5841,9 @@
     "Terrace",
     "Toxic Sewer"
    ],
+   "x": 274,
+   "y": 527,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/JungleValley",
    "nCarte": 4,
    "totale": 11.74,
    "media": 2.93,
@@ -5110,22 +5852,26 @@
     {
      "nome": "Alivia's Grace",
      "prezzo": 5.15,
-     "peso": 1976.0
+     "peso": 1976.0,
+     "arte": "AliviasGrace"
     },
     {
      "nome": "Poisoned Faith",
      "prezzo": 3.42,
-     "peso": 73.0
+     "peso": 73.0,
+     "arte": "PoisonedFaith"
     },
     {
      "nome": "The Web",
      "prezzo": 3,
-     "peso": 7905.0
+     "peso": 7905.0,
+     "arte": "TheWeb"
     },
     {
      "nome": "The Adventuring Spirit",
      "prezzo": 0.1667,
-     "peso": 9948.0
+     "peso": 9948.0,
+     "arte": "TheAdventuringSpirit"
     }
    ]
   },
@@ -5152,6 +5898,9 @@
     "Mausoleum",
     "Residence"
    ],
+   "x": 152,
+   "y": 471,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Desert",
    "nCarte": 4,
    "totale": 11.0,
    "media": 2.75,
@@ -5160,22 +5909,26 @@
     {
      "nome": "Gift of Asenath",
      "prezzo": 5.45,
-     "peso": 131.5
+     "peso": 131.5,
+     "arte": "GiftOfAsenath"
     },
     {
      "nome": "Imperial Legacy",
      "prezzo": 2.34,
-     "peso": 10924.0
+     "peso": 10924.0,
+     "arte": "ImperialLegacy"
     },
     {
      "nome": "Baited Expectations",
      "prezzo": 2.05,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "BaitedExpectations"
     },
     {
      "nome": "Earth Drinker",
      "prezzo": 1.16,
-     "peso": 1507.0
+     "peso": 1507.0,
+     "arte": "EarthDrinker"
     }
    ]
   },
@@ -5202,6 +5955,9 @@
     "Forking River",
     "Malformation"
    ],
+   "x": 764,
+   "y": 680,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Arachnid",
    "nCarte": 4,
    "totale": 10.66,
    "media": 3.55,
@@ -5210,22 +5966,26 @@
     {
      "nome": "Draped in Dreams",
      "prezzo": 4.59,
-     "peso": 47.5
+     "peso": 47.5,
+     "arte": "DrapedInDreams"
     },
     {
      "nome": "Echoes of Love",
      "prezzo": 3.5,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "EchoesOfLove"
     },
     {
      "nome": "The Surgeon",
      "prezzo": 2.57,
-     "peso": 4599.0
+     "peso": 4599.0,
+     "arte": "TheSurgeon"
     },
     {
      "nome": "The Rabid Rhoa",
      "prezzo": 0,
-     "peso": 5393.0
+     "peso": 5393.0,
+     "arte": "TheRabidRhoa"
     }
    ]
   },
@@ -5251,6 +6011,9 @@
     "Dark Forest",
     "Plaza"
    ],
+   "x": 337,
+   "y": 294,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Factory",
    "nCarte": 4,
    "totale": 10.12,
    "media": 2.53,
@@ -5259,22 +6022,26 @@
     {
      "nome": "Who Asked",
      "prezzo": 7.89,
-     "peso": 12.5
+     "peso": 12.5,
+     "arte": "WhoAsked"
     },
     {
      "nome": "Gift of the Gemling Queen",
      "prezzo": 1,
-     "peso": 2047.0
+     "peso": 2047.0,
+     "arte": "GiftOfTheGemlingQueen"
     },
     {
      "nome": "Rats",
      "prezzo": 1,
-     "peso": 14432.0
+     "peso": 14432.0,
+     "arte": "Rats"
     },
     {
      "nome": "Ever-Changing",
      "prezzo": 0.232,
-     "peso": 1422.0
+     "peso": 1422.0,
+     "arte": "EverChanging"
     }
    ]
   },
@@ -5303,6 +6070,9 @@
     "Colosseum",
     "Marshes"
    ],
+   "x": 403,
+   "y": 437,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Summit",
    "nCarte": 4,
    "totale": 9.75,
    "media": 3.25,
@@ -5311,22 +6081,26 @@
     {
      "nome": "The Pack Leader",
      "prezzo": 8,
-     "peso": 1593.0
+     "peso": 1593.0,
+     "arte": "ThePackLeader"
     },
     {
      "nome": "A Chilling Wind",
      "prezzo": 1.44,
-     "peso": 340.5
+     "peso": 340.5,
+     "arte": "AChillingWind"
     },
     {
      "nome": "The Mountain",
      "prezzo": 0.3075,
-     "peso": 5426.0
+     "peso": 5426.0,
+     "arte": "TheMountain"
     },
     {
      "nome": "The Wolverine",
      "prezzo": 0,
-     "peso": 1566.5
+     "peso": 1566.5,
+     "arte": "TheWolverine"
     }
    ]
   },
@@ -5352,6 +6126,9 @@
     "Pier",
     "Pit"
    ],
+   "x": 660,
+   "y": 373,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Chambers",
    "nCarte": 4,
    "totale": 9.27,
    "media": 2.32,
@@ -5360,22 +6137,26 @@
     {
      "nome": "The Transformation",
      "prezzo": 5.17,
-     "peso": 340.5
+     "peso": 340.5,
+     "arte": "TheTransformation"
     },
     {
      "nome": "The Awakened",
      "prezzo": 3.85,
-     "peso": 15.5
+     "peso": 15.5,
+     "arte": "TheAwakened"
     },
     {
      "nome": "The Blazing Fire",
      "prezzo": 0.153,
-     "peso": 10800.0
+     "peso": 10800.0,
+     "arte": "TheBlazingFire"
     },
     {
      "nome": "The Journalist",
      "prezzo": 0.1,
-     "peso": 12964.0
+     "peso": 12964.0,
+     "arte": "TheJournalist"
     }
    ]
   },
@@ -5405,6 +6186,9 @@
     "Shrine",
     "Tropical Island"
    ],
+   "x": 598,
+   "y": 649,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/CorpseTrench",
    "nCarte": 4,
    "totale": 9.08,
    "media": 2.27,
@@ -5413,22 +6197,26 @@
     {
      "nome": "The Vast",
      "prezzo": 4.47,
-     "peso": 7.0
+     "peso": 7.0,
+     "arte": "TheVast"
     },
     {
      "nome": "Lingering Remnants",
      "prezzo": 4.16,
-     "peso": 1422.0
+     "peso": 1422.0,
+     "arte": "LingeringRemnants"
     },
     {
      "nome": "The Stormcaller",
      "prezzo": 0.25,
-     "peso": 5006.0
+     "peso": 5006.0,
+     "arte": "TheStormcaller"
     },
     {
      "nome": "The Tyrant",
      "prezzo": 0.2,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "TheTyrant"
     }
    ]
   },
@@ -5448,6 +6236,9 @@
    "collegate": [
     "Cemetery"
    ],
+   "x": 252,
+   "y": 600,
+   "icona": "Art/2DItems/Maps/HallowedGround",
    "nCarte": 4,
    "totale": 8.95,
    "media": 4.47,
@@ -5456,22 +6247,26 @@
     {
      "nome": "The Enforcer",
      "prezzo": 8.69,
-     "peso": 9.0
+     "peso": 9.0,
+     "arte": "TheEnforcer"
     },
     {
      "nome": "The Chains that Bind",
      "prezzo": 0.2558,
-     "peso": 8696.0
+     "peso": 8696.0,
+     "arte": "TheChainsThatBind"
     },
     {
      "nome": "The Penitent",
      "prezzo": 0,
-     "peso": 4692.0
+     "peso": 4692.0,
+     "arte": "ThePenitent"
     },
     {
      "nome": "The Warden",
      "prezzo": 0,
-     "peso": 7905.0
+     "peso": 7905.0,
+     "arte": "TheWarden"
     }
    ]
   },
@@ -5491,6 +6286,9 @@
    "collegate": [
     "Ivory Temple"
    ],
+   "x": 301,
+   "y": 662,
+   "icona": "Art/2DItems/Maps/Celestial",
    "nCarte": 4,
    "totale": 8.76,
    "media": 2.92,
@@ -5499,22 +6297,26 @@
     {
      "nome": "The Army of Blood",
      "prezzo": 5,
-     "peso": 8316.0
+     "peso": 8316.0,
+     "arte": "TheArmyOfBlood"
     },
     {
      "nome": "The Twilight Moon",
      "prezzo": 2.76,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "TheTwilightMoon"
     },
     {
      "nome": "Forbidden Power",
      "prezzo": 1,
-     "peso": 1953.0
+     "peso": 1953.0,
+     "arte": "ForbiddenPower"
     },
     {
      "nome": "The Twins",
      "prezzo": 0,
-     "peso": 5134.0
+     "peso": 5134.0,
+     "arte": "TheTwins"
     }
    ]
   },
@@ -5536,6 +6338,9 @@
    "collegate": [
     "Mausoleum"
    ],
+   "x": 155,
+   "y": 518,
+   "icona": "Art/2DItems/Maps/DeathandTaxes",
    "nCarte": 4,
    "totale": 8.57,
    "media": 2.14,
@@ -5544,22 +6349,26 @@
     {
      "nome": "The Encroaching Darkness",
      "prezzo": 4,
-     "peso": 1025.0
+     "peso": 1025.0,
+     "arte": "TheEncroachingDarkness"
     },
     {
      "nome": "Shard of Fate",
      "prezzo": 3.01,
-     "peso": 4943.0
+     "peso": 4943.0,
+     "arte": "ShardofFate"
     },
     {
      "nome": "The Dark Mage",
      "prezzo": 1.55,
-     "peso": 1383.0
+     "peso": 1383.0,
+     "arte": "TheDarkMage"
     },
     {
      "nome": "Emperor of Purity",
      "prezzo": 0.007143,
-     "peso": 2094.0
+     "peso": 2094.0,
+     "arte": "EmperorOfPurity"
     }
    ]
   },
@@ -5581,6 +6390,9 @@
    "collegate": [
     "Strand"
    ],
+   "x": 466,
+   "y": 379,
+   "icona": "Art/2DItems/Maps/UniqueMapEye",
    "nCarte": 4,
    "totale": 8.31,
    "media": 2.77,
@@ -5589,22 +6401,26 @@
     {
      "nome": "The Deep Ones",
      "prezzo": 5.8,
-     "peso": 72.0
+     "peso": 72.0,
+     "arte": "TheDeepOnes"
     },
     {
      "nome": "Scholar of the Seas",
      "prezzo": 2,
-     "peso": 2386.0
+     "peso": 2386.0,
+     "arte": "ScholarOfTheSeas"
     },
     {
      "nome": "The Doppelganger",
      "prezzo": 0.5094,
-     "peso": 18596.0
+     "peso": 18596.0,
+     "arte": "TheDoppelganger"
     },
     {
      "nome": "The Siren",
      "prezzo": 0,
-     "peso": 728.5
+     "peso": 728.5,
+     "arte": "TheSiren"
     }
    ]
   },
@@ -5632,6 +6448,9 @@
     "Siege",
     "The Vinktar Square"
    ],
+   "x": 452,
+   "y": 628,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Courthouse",
    "nCarte": 4,
    "totale": 8.15,
    "media": 2.04,
@@ -5640,22 +6459,26 @@
     {
      "nome": "Sambodhi's Wisdom",
      "prezzo": 4.32,
-     "peso": 64.0
+     "peso": 64.0,
+     "arte": "SambodhisWisdom"
     },
     {
      "nome": "The Oath",
      "prezzo": 3.27,
-     "peso": 2336.0
+     "peso": 2336.0,
+     "arte": "TheOath"
     },
     {
      "nome": "Checkmate",
      "prezzo": 0.5597,
-     "peso": 340.5
+     "peso": 340.5,
+     "arte": "Checkmate"
     },
     {
      "nome": "Thirst for Knowledge",
      "prezzo": 0.001,
-     "peso": 7905.0
+     "peso": 7905.0,
+     "arte": "ThirstForKnowledge"
     }
    ]
   },
@@ -5671,6 +6494,9 @@
    "collegate": [
     "Desert"
    ],
+   "x": 122,
+   "y": 464,
+   "icona": null,
    "nCarte": 2,
    "totale": 7.71,
    "media": 3.85,
@@ -5679,12 +6505,14 @@
     {
      "nome": "Keeper's Corruption",
      "prezzo": 6.71,
-     "peso": 16.0
+     "peso": 16.0,
+     "arte": "KeepersCorruption"
     },
     {
      "nome": "Nook's Crown",
      "prezzo": 1,
-     "peso": 15.5
+     "peso": 15.5,
+     "arte": "NooksCrown"
     }
    ]
   },
@@ -5714,6 +6542,9 @@
     "Cells",
     "Frozen Cabins"
    ],
+   "x": 536,
+   "y": 417,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Ramparts",
    "nCarte": 4,
    "totale": 7.37,
    "media": 2.46,
@@ -5722,22 +6553,26 @@
     {
      "nome": "Lingering Remnants",
      "prezzo": 4.16,
-     "peso": 1422.0
+     "peso": 1422.0,
+     "arte": "LingeringRemnants"
     },
     {
      "nome": "The Warlord",
      "prezzo": 2.33,
-     "peso": 728.5
+     "peso": 728.5,
+     "arte": "TheWarlord"
     },
     {
      "nome": "Jack in the Box",
      "prezzo": 0.8763,
-     "peso": 4537.0
+     "peso": 4537.0,
+     "arte": "JackInTheBox"
     },
     {
      "nome": "The Ruthless Ceinture",
      "prezzo": 0,
-     "peso": 3307.0
+     "peso": 3307.0,
+     "arte": "TheRuthlessCeinture"
     }
    ]
   },
@@ -5764,6 +6599,9 @@
     "Crux of Nothingness",
     "Factory"
    ],
+   "x": 446,
+   "y": 311,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/DarkForest",
    "nCarte": 4,
    "totale": 7.33,
    "media": 1.83,
@@ -5772,22 +6610,26 @@
     {
      "nome": "The Road to Power",
      "prezzo": 5.21,
-     "peso": 274.5
+     "peso": 274.5,
+     "arte": "TheRoadToPower"
     },
     {
      "nome": "Etched in Blood",
      "prezzo": 1,
-     "peso": 35.5
+     "peso": 35.5,
+     "arte": "EtchedInBlood"
     },
     {
      "nome": "The Cursed King",
      "prezzo": 1,
-     "peso": 728.5
+     "peso": 728.5,
+     "arte": "TheCursedKing"
     },
     {
      "nome": "The Wolven King's Bite",
      "prezzo": 0.125,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "TheWolvenKingsBite"
     }
    ]
   },
@@ -5807,6 +6649,9 @@
    "collegate": [
     "Vault"
    ],
+   "x": 704,
+   "y": 483,
+   "icona": "Art/2DItems/Maps/UniqueMap1",
    "nCarte": 4,
    "totale": 7.16,
    "media": 1.79,
@@ -5815,22 +6660,26 @@
     {
      "nome": "The Encroaching Darkness",
      "prezzo": 4,
-     "peso": 1025.0
+     "peso": 1025.0,
+     "arte": "TheEncroachingDarkness"
     },
     {
      "nome": "The Admirer",
      "prezzo": 2.26,
-     "peso": 2025.0
+     "peso": 2025.0,
+     "arte": "TheAdmirer"
     },
     {
      "nome": "The Inventor",
      "prezzo": 0.4739,
-     "peso": 6435.0
+     "peso": 6435.0,
+     "arte": "TheInventor"
     },
     {
      "nome": "Abandoned Wealth",
      "prezzo": 0.4305,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "AbandonedWealth"
     }
    ]
   },
@@ -5859,6 +6708,9 @@
     "Fields",
     "Mineral Pools"
    ],
+   "x": 181,
+   "y": 532,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Mausoleum",
    "nCarte": 4,
    "totale": 7.03,
    "media": 2.34,
@@ -5867,22 +6719,26 @@
     {
      "nome": "The Celestial Justicar",
      "prezzo": 3.68,
-     "peso": 883.0
+     "peso": 883.0,
+     "arte": "TheCelestialJusticar"
     },
     {
      "nome": "The Forsaken",
      "prezzo": 2.4,
-     "peso": 1861.0
+     "peso": 1861.0,
+     "arte": "TheForsaken"
     },
     {
      "nome": "No Traces",
      "prezzo": 0.9488,
-     "peso": 2094.0
+     "peso": 2094.0,
+     "arte": "NoTraces"
     },
     {
      "nome": "The Lich",
      "prezzo": 0,
-     "peso": 5006.0
+     "peso": 5006.0,
+     "arte": "TheLich"
     }
    ]
   },
@@ -5906,6 +6762,9 @@
     "Grotto",
     "Tower"
    ],
+   "x": 815,
+   "y": 658,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/ForkingRiver",
    "nCarte": 4,
    "totale": 6.78,
    "media": 2.26,
@@ -5914,22 +6773,26 @@
     {
      "nome": "The Fishmonger",
      "prezzo": 4.33,
-     "peso": 22.0
+     "peso": 22.0,
+     "arte": "TheFishmonger"
     },
     {
      "nome": "Humility",
      "prezzo": 2,
-     "peso": 2716.0
+     "peso": 2716.0,
+     "arte": "Humility"
     },
     {
      "nome": "Hunter's Resolve",
      "prezzo": 0.4545,
-     "peso": 8467.0
+     "peso": 8467.0,
+     "arte": "HuntersResolve"
     },
     {
      "nome": "The Long Watch",
      "prezzo": 0,
-     "peso": 77.0
+     "peso": 77.0,
+     "arte": "TheLongWatch"
     }
    ]
   },
@@ -5954,6 +6817,9 @@
     "Gardens",
     "Mesa"
    ],
+   "x": 392,
+   "y": 521,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/FungalCaverns",
    "nCarte": 4,
    "totale": 6.23,
    "media": 1.56,
@@ -5962,22 +6828,26 @@
     {
      "nome": "The Shepherd's Sandals",
      "prezzo": 2.82,
-     "peso": 296.5
+     "peso": 296.5,
+     "arte": "TheShepherdsSandals"
     },
     {
      "nome": "The Mercenary",
      "prezzo": 1.98,
-     "peso": 1571.0
+     "peso": 1571.0,
+     "arte": "TheMercenary"
     },
     {
      "nome": "Treasure Hunter",
      "prezzo": 1.04,
-     "peso": 986.5
+     "peso": 986.5,
+     "arte": "TreasureHunter"
     },
     {
      "nome": "The Dragon",
      "prezzo": 0.3865,
-     "peso": 5689.0
+     "peso": 5689.0,
+     "arte": "TheDragon"
     }
    ]
   },
@@ -6005,6 +6875,9 @@
     "Foundry",
     "Poorjoy's Asylum"
    ],
+   "x": 737,
+   "y": 367,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Temple",
    "nCarte": 4,
    "totale": 6.13,
    "media": 2.04,
@@ -6013,22 +6886,26 @@
     {
      "nome": "The Opulent",
      "prezzo": 3.71,
-     "peso": 10841.0
+     "peso": 10841.0,
+     "arte": "TheOpulecent"
     },
     {
      "nome": "The Innocent",
      "prezzo": 1.42,
-     "peso": 1566.5
+     "peso": 1566.5,
+     "arte": "TheInnocent"
     },
     {
      "nome": "Demigod's Wager",
      "prezzo": 1,
-     "peso": 986.5
+     "peso": 986.5,
+     "arte": "DemigodsWagergives"
     },
     {
      "nome": "The Lord of Celebration",
      "prezzo": 0,
-     "peso": 986.5
+     "peso": 986.5,
+     "arte": "TheLordofCelebration"
     }
    ]
   },
@@ -6055,6 +6932,9 @@
     "Stagnation",
     "The Twilight Temple"
    ],
+   "x": 275,
+   "y": 678,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/IvoryTemple",
    "nCarte": 4,
    "totale": 5.71,
    "media": 2.85,
@@ -6063,22 +6943,26 @@
     {
      "nome": "Light and Truth",
      "prezzo": 4.97,
-     "peso": 808.0
+     "peso": 808.0,
+     "arte": "LigthAndTruth"
     },
     {
      "nome": "The Unexpected Prize",
      "prezzo": 0.7385,
-     "peso": 501.5
+     "peso": 501.5,
+     "arte": "TheUnexpectedPrize"
     },
     {
      "nome": "The Conduit",
      "prezzo": 0,
-     "peso": 728.5
+     "peso": 728.5,
+     "arte": "TheConduit"
     },
     {
      "nome": "The Lord of Celebration",
      "prezzo": 0,
-     "peso": 986.5
+     "peso": 986.5,
+     "arte": "TheLordofCelebration"
     }
    ]
   },
@@ -6107,6 +6991,9 @@
     "Siege",
     "Terrace"
    ],
+   "x": 368,
+   "y": 618,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/ColdRiver",
    "nCarte": 4,
    "totale": 5.64,
    "media": 1.88,
@@ -6115,22 +7002,26 @@
     {
      "nome": "Divine Shard",
      "prezzo": 4,
-     "peso": 0
+     "peso": 0,
+     "arte": "DivineShard"
     },
     {
      "nome": "A Chilling Wind",
      "prezzo": 1.44,
-     "peso": 340.5
+     "peso": 340.5,
+     "arte": "AChillingWind"
     },
     {
      "nome": "The Sun",
      "prezzo": 0.2,
-     "peso": 10636.0
+     "peso": 10636.0,
+     "arte": "TheSun"
     },
     {
      "nome": "The Twins",
      "prezzo": 0,
-     "peso": 5134.0
+     "peso": 5134.0,
+     "arte": "TheTwins"
     }
    ]
   },
@@ -6162,6 +7053,9 @@
     "Hive Colony",
     "Park"
    ],
+   "x": 169,
+   "y": 396,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Infestation",
    "nCarte": 4,
    "totale": 5.57,
    "media": 1.39,
@@ -6170,22 +7064,26 @@
     {
      "nome": "Death",
      "prezzo": 2.48,
-     "peso": 1339.0
+     "peso": 1339.0,
+     "arte": "Death"
     },
     {
      "nome": "The Offspring",
      "prezzo": 1.52,
-     "peso": 369.5
+     "peso": 369.5,
+     "arte": "TheOffspring"
     },
     {
      "nome": "The Throne",
      "prezzo": 1,
-     "peso": 186.0
+     "peso": 186.0,
+     "arte": "TheThrone"
     },
     {
      "nome": "The Feast",
      "prezzo": 0.5688,
-     "peso": 2142.0
+     "peso": 2142.0,
+     "arte": "TheFeast"
     }
    ]
   },
@@ -6213,6 +7111,9 @@
     "Pit",
     "Vaults of Atziri"
    ],
+   "x": 735,
+   "y": 471,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Vault",
    "nCarte": 4,
    "totale": 5.37,
    "media": 1.34,
@@ -6221,22 +7122,26 @@
     {
      "nome": "Chaotic Disposition",
      "prezzo": 4.4,
-     "peso": 4202.0
+     "peso": 4202.0,
+     "arte": "ChaoticDisposition"
     },
     {
      "nome": "The Gambler",
      "prezzo": 0.4331,
-     "peso": 4262.0
+     "peso": 4262.0,
+     "arte": "TheGambler"
     },
     {
      "nome": "The Cache",
      "prezzo": 0.4185,
-     "peso": 6263.0
+     "peso": 6263.0,
+     "arte": "TheCache"
     },
     {
      "nome": "The Hoarder",
      "prezzo": 0.1217,
-     "peso": 2411.0
+     "peso": 2411.0,
+     "arte": "TheHoarder"
     }
    ]
   },
@@ -6265,6 +7170,9 @@
     "Pit",
     "Relic Chambers"
    ],
+   "x": 691,
+   "y": 455,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/RobotTunnelSilo",
    "nCarte": 4,
    "totale": 5.14,
    "media": 2.57,
@@ -6273,22 +7181,26 @@
     {
      "nome": "Haunting Shadows",
      "prezzo": 3.82,
-     "peso": 1104.5
+     "peso": 1104.5,
+     "arte": "HauntingShadows"
     },
     {
      "nome": "The Tireless Extractor",
      "prezzo": 1.32,
-     "peso": 9120.0
+     "peso": 9120.0,
+     "arte": "TheTirelessExtractor"
     },
     {
      "nome": "Burning Blood",
      "prezzo": 0,
-     "peso": 10.0
+     "peso": 10.0,
+     "arte": "BurningBlood"
     },
     {
      "nome": "Further Invention",
      "prezzo": 0,
-     "peso": 20.0
+     "peso": 20.0,
+     "arte": "FurtherInvention"
     }
    ]
   },
@@ -6314,6 +7226,9 @@
     "Mausoleum",
     "Volcano"
    ],
+   "x": 208,
+   "y": 610,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/MineralPools",
    "nCarte": 4,
    "totale": 4.95,
    "media": 1.65,
@@ -6322,22 +7237,26 @@
     {
      "nome": "Chaotic Disposition",
      "prezzo": 4.4,
-     "peso": 4202.0
+     "peso": 4202.0,
+     "arte": "ChaoticDisposition"
     },
     {
      "nome": "The Gambler",
      "prezzo": 0.4331,
-     "peso": 4262.0
+     "peso": 4262.0,
+     "arte": "TheGambler"
     },
     {
      "nome": "The Hoarder",
      "prezzo": 0.1217,
-     "peso": 2411.0
+     "peso": 2411.0,
+     "arte": "TheHoarder"
     },
     {
      "nome": "Lysah's Respite",
      "prezzo": 0,
-     "peso": 1976.0
+     "peso": 1976.0,
+     "arte": "LysahsRespite"
     }
    ]
   },
@@ -6364,6 +7283,9 @@
     "Cold River",
     "Siege"
    ],
+   "x": 327,
+   "y": 621,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Excavation",
    "nCarte": 4,
    "totale": 4.32,
    "media": 1.08,
@@ -6372,22 +7294,26 @@
     {
      "nome": "The Jeweller's Boon",
      "prezzo": 3,
-     "peso": 3760.0
+     "peso": 3760.0,
+     "arte": "TheJewellersBoon"
     },
     {
      "nome": "Runic Luck",
      "prezzo": 0.581,
-     "peso": 2094.0
+     "peso": 2094.0,
+     "arte": "RunicLuck"
     },
     {
      "nome": "Volatile Power",
      "prezzo": 0.3838,
-     "peso": 6298.0
+     "peso": 6298.0,
+     "arte": "VolatilePower"
     },
     {
      "nome": "A Sea of Blue",
      "prezzo": 0.3564,
-     "peso": 7356.0
+     "peso": 7356.0,
+     "arte": "ASeaOfBlue"
     }
    ]
   },
@@ -6414,6 +7340,9 @@
     "Graveyard",
     "Infested Valley"
    ],
+   "x": 147,
+   "y": 323,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Park",
    "nCarte": 4,
    "totale": 4.32,
    "media": 1.08,
@@ -6422,22 +7351,26 @@
     {
      "nome": "The Poet",
      "prezzo": 2.84,
-     "peso": 2287.0
+     "peso": 2287.0,
+     "arte": "ThePoet"
     },
     {
      "nome": "Forbidden Power",
      "prezzo": 1,
-     "peso": 1953.0
+     "peso": 1953.0,
+     "arte": "ForbiddenPower"
     },
     {
      "nome": "Dialla's Subjugation",
      "prezzo": 0.2821,
-     "peso": 1550.0
+     "peso": 1550.0,
+     "arte": "DiallasSubjugation"
     },
     {
      "nome": "The Sun",
      "prezzo": 0.2,
-     "peso": 10636.0
+     "peso": 10636.0,
+     "arte": "TheSun"
     }
    ]
   },
@@ -6465,6 +7398,9 @@
     "Mesa",
     "Terrace"
    ],
+   "x": 338,
+   "y": 540,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Laboratory",
    "nCarte": 4,
    "totale": 4.29,
    "media": 1.07,
@@ -6473,22 +7409,26 @@
     {
      "nome": "The Academic",
      "prezzo": 2.58,
-     "peso": 172.5
+     "peso": 172.5,
+     "arte": "TheAcademic"
     },
     {
      "nome": "The Polymath",
      "prezzo": 1.66,
-     "peso": 224.5
+     "peso": 224.5,
+     "arte": "ThePolymath"
     },
     {
      "nome": "Destined to Crumble",
      "prezzo": 0.04033,
-     "peso": 44989.0
+     "peso": 44989.0,
+     "arte": "DestinedtoCrumble"
     },
     {
      "nome": "The Scholar",
      "prezzo": 0.005037,
-     "peso": 45718.0
+     "peso": 45718.0,
+     "arte": "TheScholar"
     }
    ]
   },
@@ -6515,6 +7455,9 @@
     "Stagnation",
     "The Black Barya"
    ],
+   "x": 521,
+   "y": 681,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Iceberg",
    "nCarte": 4,
    "totale": 3.65,
    "media": 1.82,
@@ -6523,22 +7466,26 @@
     {
      "nome": "The Whiteout",
      "prezzo": 2.65,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "TheWhiteout"
     },
     {
      "nome": "Mitts",
      "prezzo": 1,
-     "peso": 6025.0
+     "peso": 6025.0,
+     "arte": "Mitts"
     },
     {
      "nome": "The Fletcher",
      "prezzo": 0,
-     "peso": 2537.0
+     "peso": 2537.0,
+     "arte": "TheFletcher"
     },
     {
      "nome": "The Long Watch",
      "prezzo": 0,
-     "peso": 77.0
+     "peso": 77.0,
+     "arte": "TheLongWatch"
     }
    ]
   },
@@ -6570,6 +7517,9 @@
     "Shipyard",
     "Sulphur Vents"
    ],
+   "x": 286,
+   "y": 382,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Corpse",
    "nCarte": 4,
    "totale": 3.02,
    "media": 0.75,
@@ -6578,22 +7528,26 @@
     {
      "nome": "The Wrath",
      "prezzo": 1.1,
-     "peso": 6997.0
+     "peso": 6997.0,
+     "arte": "TheWrath"
     },
     {
      "nome": "Heterochromia",
      "prezzo": 0.9927,
-     "peso": 1747.0
+     "peso": 1747.0,
+     "arte": "Heterochromia"
     },
     {
      "nome": "The Battle Born",
      "prezzo": 0.5919,
-     "peso": 5923.0
+     "peso": 5923.0,
+     "arte": "TheBattleBorn"
     },
     {
      "nome": "The Standoff",
      "prezzo": 0.3333,
-     "peso": 5723.0
+     "peso": 5723.0,
+     "arte": "TheStandOff"
     }
    ]
   },
@@ -6620,6 +7574,9 @@
     "Lair",
     "Lava Lake"
    ],
+   "x": 247,
+   "y": 472,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Lookout",
    "nCarte": 4,
    "totale": 2.99,
    "media": 0.75,
@@ -6628,22 +7585,26 @@
     {
      "nome": "The Coming Storm",
      "prezzo": 1.57,
-     "peso": 1976.0
+     "peso": 1976.0,
+     "arte": "TheComingStorm"
     },
     {
      "nome": "The Wrath",
      "prezzo": 1.1,
-     "peso": 6997.0
+     "peso": 6997.0,
+     "arte": "TheWrath"
     },
     {
      "nome": "The Traitor",
      "prezzo": 0.1667,
-     "peso": 1159.0
+     "peso": 1159.0,
+     "arte": "TheTraitor"
     },
     {
      "nome": "The Blazing Fire",
      "prezzo": 0.153,
-     "peso": 10800.0
+     "peso": 10800.0,
+     "arte": "TheBlazingFire"
     }
    ]
   },
@@ -6673,6 +7634,9 @@
     "Lookout",
     "Plaza"
    ],
+   "x": 225,
+   "y": 415,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Lair",
    "nCarte": 4,
    "totale": 2.25,
    "media": 0.75,
@@ -6681,22 +7645,26 @@
     {
      "nome": "The Wolf's Shadow",
      "prezzo": 1,
-     "peso": 3964.0
+     "peso": 3964.0,
+     "arte": "TheWolfsShadow"
     },
     {
      "nome": "The Wolf",
      "prezzo": 0.8978,
-     "peso": 4848.0
+     "peso": 4848.0,
+     "arte": "TheWolf"
     },
     {
      "nome": "The Watcher",
      "prezzo": 0.354,
-     "peso": 3446.0
+     "peso": 3446.0,
+     "arte": "TheWatcher"
     },
     {
      "nome": "The Wolverine",
      "prezzo": 0,
-     "peso": 1566.5
+     "peso": 1566.5,
+     "arte": "TheWolverine"
     }
    ]
   },
@@ -6724,6 +7692,9 @@
     "Strand",
     "Summit"
    ],
+   "x": 462,
+   "y": 414,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Marshes",
    "nCarte": 4,
    "totale": 1.43,
    "media": 0.48,
@@ -6732,22 +7703,26 @@
     {
      "nome": "The Survivalist",
      "prezzo": 1,
-     "peso": 6714.0
+     "peso": 6714.0,
+     "arte": "TheSurvivalist"
     },
     {
      "nome": "Man With Bear",
      "prezzo": 0.4281,
-     "peso": 728.5
+     "peso": 728.5,
+     "arte": "ManWithBear"
     },
     {
      "nome": "Glimmer of Hope",
      "prezzo": 0.002186,
-     "peso": 9630.0
+     "peso": 9630.0,
+     "arte": "GlimmerOfHope"
     },
     {
      "nome": "The Warden",
      "prezzo": 0,
-     "peso": 7905.0
+     "peso": 7905.0,
+     "arte": "TheWarden"
     }
    ]
   },
@@ -6775,6 +7750,9 @@
     "Silo",
     "Vault"
    ],
+   "x": 695,
+   "y": 430,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Pit1",
    "nCarte": 4,
    "totale": 1.24,
    "media": 1.24,
@@ -6783,22 +7761,26 @@
     {
      "nome": "Unchained",
      "prezzo": 1.24,
-     "peso": 553.0
+     "peso": 553.0,
+     "arte": "Unchained"
     },
     {
      "nome": "The Arena Champion",
      "prezzo": 0,
-     "peso": 12400.0
+     "peso": 12400.0,
+     "arte": "TheArenaChampion"
     },
     {
      "nome": "The Deceiver",
      "prezzo": 0,
-     "peso": 1703.0
+     "peso": 1703.0,
+     "arte": "TheDeceiver"
     },
     {
      "nome": "The Sword King's Salute",
      "prezzo": 0,
-     "peso": 14933.0
+     "peso": 14933.0,
+     "arte": "TheSwordKingsSalute"
     }
    ]
   },
@@ -6826,6 +7808,9 @@
     "Lair",
     "Residence"
    ],
+   "x": 252,
+   "y": 349,
+   "icona": "Art/2DItems/Maps/Atlas2Maps/New/Plaza",
    "nCarte": 4,
    "totale": 0.52,
    "media": 0.17,
@@ -6834,22 +7819,26 @@
     {
      "nome": "Emperor's Luck",
      "prezzo": 0.5045,
-     "peso": 49357.0
+     "peso": 49357.0,
+     "arte": "EmperorsLuck"
     },
     {
      "nome": "The Flora's Gift",
      "prezzo": 0.01,
-     "peso": 26570.0
+     "peso": 26570.0,
+     "arte": "TheFlorasGift"
     },
     {
      "nome": "Rain Tempter",
      "prezzo": 0.003455,
-     "peso": 15301.0
+     "peso": 15301.0,
+     "arte": "RainTempter"
     },
     {
      "nome": "The Easy Stroll",
      "prezzo": 0,
-     "peso": 1747.0
+     "peso": 1747.0,
+     "arte": "TheEasyStroll"
     }
    ]
   },
@@ -6867,6 +7856,9 @@
    "collegate": [
     "Fortress"
    ],
+   "x": 919,
+   "y": 225,
+   "icona": null,
    "nCarte": 1,
    "totale": 0,
    "media": 0,
@@ -6875,7 +7867,8 @@
     {
      "nome": "Void of the Elements",
      "prezzo": 0,
-     "peso": 18.0
+     "peso": 18.0,
+     "arte": "VoidOfTheElements"
     }
    ]
   },
@@ -6891,6 +7884,9 @@
    "collegate": [
     "Dark Forest"
    ],
+   "x": 440,
+   "y": 283,
+   "icona": null,
    "nCarte": 0,
    "totale": 0,
    "media": 0,
@@ -6909,6 +7905,9 @@
    "collegate": [
     "Stagnation"
    ],
+   "x": 431,
+   "y": 708,
+   "icona": null,
    "nCarte": 0,
    "totale": 0,
    "media": 0,
@@ -6927,6 +7926,9 @@
     "boss_not_twinnable"
    ],
    "collegate": [],
+   "x": 146,
+   "y": 117,
+   "icona": null,
    "nCarte": 0,
    "totale": 0,
    "media": 0,
@@ -6945,6 +7947,9 @@
     "boss_not_twinnable"
    ],
    "collegate": [],
+   "x": 88,
+   "y": 184,
+   "icona": null,
    "nCarte": 0,
    "totale": 0,
    "media": 0,
@@ -6961,6 +7966,9 @@
    "rating": {},
    "tags": [],
    "collegate": [],
+   "x": 529,
+   "y": 283,
+   "icona": null,
    "nCarte": 0,
    "totale": 0,
    "media": 0,
@@ -6981,6 +7989,9 @@
    "collegate": [
     "Volcano"
    ],
+   "x": 231,
+   "y": 517,
+   "icona": null,
    "nCarte": 0,
    "totale": 0,
    "media": 0,
@@ -6999,6 +8010,9 @@
    "collegate": [
     "Relic Chambers"
    ],
+   "x": 679,
+   "y": 479,
+   "icona": null,
    "nCarte": 0,
    "totale": 0,
    "media": 0,
@@ -7017,6 +8031,9 @@
    "collegate": [
     "Iceberg"
    ],
+   "x": 515,
+   "y": 706,
+   "icona": "Art/2DItems/Currency/Faridun/FaridunBossKey",
    "nCarte": 0,
    "totale": 0,
    "media": 0,
@@ -7035,6 +8052,9 @@
    "collegate": [
     "Crystal Ore"
    ],
+   "x": 140,
+   "y": 628,
+   "icona": null,
    "nCarte": 0,
    "totale": 0,
    "media": 0,
@@ -7051,6 +8071,9 @@
    "rating": {},
    "tags": [],
    "collegate": [],
+   "x": 293,
+   "y": 299,
+   "icona": "Art/2DItems/Maps/UniqueMap2",
    "nCarte": 0,
    "totale": 0,
    "media": 0,

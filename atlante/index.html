@@ -13,14 +13,15 @@
   *{box-sizing:border-box}
   body{margin:0;padding:1.2rem 1rem 4rem;background:var(--bg);color:var(--text);
        font:14px/1.5 Inter,ui-sans-serif,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
-  .wrap{max-width:72rem;margin:0 auto}
+  .wrap{max-width:76rem;margin:0 auto}
   a{color:var(--gold)}
   .back{font-size:.8rem}
   h1{margin:.5rem 0 .25rem;font-size:1.4rem}
   .sub{margin:0 0 .8rem;color:var(--muted);font-size:.88rem;max-width:56rem}
+  img.ic{width:1.2rem;height:1.2rem;object-fit:contain;vertical-align:middle;border-radius:3px;background:#000}
 
   .esterno{display:flex;align-items:center;gap:.7rem;background:var(--panel);border:1px solid var(--gold);
-           border-radius:8px;padding:.7rem 1rem;margin:0 0 1rem}
+           border-radius:8px;padding:.7rem 1rem;margin:0 0 1rem;flex-wrap:wrap}
   .esterno b{color:var(--text)}
   .esterno a{font-weight:600}
   .esterno span{color:var(--muted);font-size:.85rem}
@@ -30,6 +31,8 @@
     background:#1a212c;color:var(--text);border:1px solid var(--line2)}
   .barra button{cursor:pointer}
   .barra button.on{background:var(--gold);color:#1b1608;border-color:var(--gold);font-weight:600}
+  .barra .vista{display:flex;border:1px solid var(--line2);border-radius:4px;overflow:hidden}
+  .barra .vista button{border:0;border-radius:0}
   .barra input{min-width:11rem}
   .barra .sp{margin-left:auto;color:var(--muted);font-size:.76rem}
 
@@ -40,16 +43,28 @@
   th:hover{color:var(--text)}
   td{padding:.28rem .45rem;border-bottom:1px solid var(--line);white-space:nowrap}
   td.n{text-align:right;font-family:"Source Code Pro",Menlo,monospace}
+  td.nome{display:flex;align-items:center;gap:.4rem}
   tbody tr{cursor:pointer}
   tbody tr:hover{background:var(--panel2)}
   tbody tr.sel{background:var(--panel2);outline:1px solid var(--gold)}
   .tag{font-size:.6rem;padding:0 .3rem;border-radius:3px;background:var(--uni);color:#1a1008;margin-left:.3rem}
-  .r{display:inline-block;min-width:1.4rem;text-align:center;border-radius:3px;padding:0 .2rem;
-     font-family:"Source Code Pro",Menlo,monospace}
+
+  .mapparea{position:relative;width:100%;aspect-ratio:1/1;background:var(--panel2);border:1px solid var(--line);
+            border-radius:8px;overflow:hidden}
+  .mapparea svg{position:absolute;inset:0;width:100%;height:100%}
+  .mapparea .link{stroke:#2b3646;stroke-width:.15}
+  .nodo{position:absolute;transform:translate(-50%,-50%);width:1.9%;aspect-ratio:1/1;border-radius:50%;
+        border:1.5px solid var(--line2);background:var(--panel);cursor:pointer;overflow:hidden;
+        display:flex;align-items:center;justify-content:center}
+  .nodo img{width:80%;height:80%;object-fit:contain}
+  .nodo.ricco{border-color:#ffd166}
+  .nodo.sel{border-color:#fff;border-width:2.5px;z-index:5}
+  .nodo.spento{opacity:.2}
+  .nodo:hover{z-index:4;border-color:var(--gold)}
 
   aside{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:.8rem .9rem;
         position:sticky;top:.6rem;max-height:calc(100vh - 2rem);overflow:auto}
-  aside h2{margin:0 0 .1rem;font-size:1.05rem}
+  aside h2{margin:0 0 .1rem;font-size:1.05rem;display:flex;align-items:center;gap:.4rem}
   aside .meta{color:var(--muted);font-size:.76rem;margin-bottom:.6rem}
   aside .kpi{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-bottom:.7rem}
   aside .kpi div{background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:.35rem .5rem}
@@ -63,7 +78,10 @@
   aside .tags{margin-bottom:.6rem}
   aside .tags span{display:inline-block;font-size:.64rem;color:var(--muted);border:1px solid var(--line);
                    border-radius:3px;padding:.05rem .35rem;margin:0 .25rem .25rem 0}
-  aside table td{border-bottom:1px solid var(--line)}
+  aside .carta{display:flex;align-items:center;gap:.4rem;padding:.2rem 0;border-bottom:1px solid var(--line)}
+  aside .carta img{width:1.5rem;height:2rem;object-fit:cover;border-radius:2px;background:#000}
+  aside .carta b{flex:1;font-weight:400;font-size:.78rem}
+  aside .carta span{font-family:"Source Code Pro",Menlo,monospace;font-size:.76rem;color:var(--good)}
   aside .collegate a{display:block;font-size:.78rem;margin:.1rem 0}
   .vuoto{color:var(--muted);font-size:.82rem}
 
@@ -78,40 +96,49 @@
 <div class="wrap">
   <div class="back"><a href="../index.html">← Tutti gli strumenti</a></div>
   <h1>Atlante — mappe da farmare</h1>
-  <p class="sub">154 mappe ottenibili nell'atlante di questa lega, con le divination card che ci cadono e i punteggi layout / densità / boss. Clicca una riga per il dettaglio.</p>
+  <p class="sub">154 mappe ottenibili nell'atlante di questa lega, con le divination card che ci cadono e i punteggi layout / densità / boss.</p>
 
   <div class="esterno">
-    <b>Cerchi la mappa visuale, cliccabile, con le connessioni fra i nodi?</b>
+    <b>Vuoi il sito originale, con più dettagli?</b>
     <a href="https://mapsofexile.com/#/atlas" target="_blank" rel="noopener">mapsofexile.com/#/atlas ↗</a>
-    <span>— questa pagina è la classifica dei dati, quella è l'atlante disegnato.</span>
+    <span>— questa è una versione più compatta, con solo i dati che uso davvero.</span>
   </div>
 
   <div class="barra">
+    <div class="vista">
+      <button data-v="elenco" class="on">Elenco</button>
+      <button data-v="mappa">Mappa</button>
+    </div>
     <button data-f="tutte" class="on">Tutte</button>
     <button data-f="carte">Solo con carte</button>
     <button data-f="speciali">Uniche e speciali</button>
     <select id="colora">
-      <option value="totale">Ordina per totale</option>
-      <option value="media">Ordina per media</option>
-      <option value="mediana">Ordina per mediana</option>
-      <option value="nCarte">Ordina per numero di carte</option>
+      <option value="totale">Colora/ordina per totale</option>
+      <option value="media">per media</option>
+      <option value="mediana">per mediana</option>
+      <option value="nCarte">per numero di carte</option>
     </select>
     <input id="cerca" type="search" placeholder="Cerca una mappa…">
     <span class="sp" id="conta"></span>
   </div>
 
   <div class="griglia">
-    <table id="cl">
-      <thead><tr>
-        <th data-k="nome">Mappa</th><th data-k="tipo">Tipo</th>
-        <th data-k="layout" class="n">Layout</th><th data-k="density" class="n">Densità</th><th data-k="boss" class="n">Boss</th>
-        <th data-k="nCarte" class="n">Carte</th>
-        <th data-k="totale" class="n">Totale</th><th data-k="media" class="n">Media</th><th data-k="mediana" class="n">Mediana</th>
-        <th>La più cara</th>
-      </tr></thead>
-      <tbody></tbody>
-    </table>
-    <aside id="pan"><div class="vuoto">Clicca una mappa nella tabella per vedere le sue carte, i tag e le mappe collegate.</div></aside>
+    <div id="vistaElenco">
+      <table id="cl">
+        <thead><tr>
+          <th data-k="nome">Mappa</th>
+          <th data-k="layout" class="n">Layout</th><th data-k="density" class="n">Densità</th><th data-k="boss" class="n">Boss</th>
+          <th data-k="nCarte" class="n">Carte</th>
+          <th data-k="totale" class="n">Totale</th><th data-k="media" class="n">Media</th><th data-k="mediana" class="n">Mediana</th>
+          <th>La più cara</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div id="vistaMappa" hidden>
+      <div class="mapparea" id="mapparea"><svg id="linee" viewBox="0 0 100 100" preserveAspectRatio="none"></svg></div>
+    </div>
+    <aside id="pan"><div class="vuoto">Clicca una mappa per vedere le sue carte, i tag e le mappe collegate.</div></aside>
   </div>
 
   <div class="avviso">
@@ -122,8 +149,10 @@
 </div>
 
 <script>
-let D=null, filtro="tutte", campo="totale", sel=null, cerca="";
+let D=null, vista="elenco", filtro="tutte", campo="totale", sel=null, cerca="";
 const q = s => document.querySelector(s);
+const iconaMappa = n => n.icona ? `img/mappe/${n.icona.split("/").pop()}.png` : "";
+const iconaCarta = c => c.arte ? `img/carte/${c.arte}.png` : "";
 
 const visibile = n => {
   if (cerca && !n.nome.toLowerCase().includes(cerca)) return false;
@@ -132,16 +161,25 @@ const visibile = n => {
   return true;
 };
 
-function tabella(){
-  const arr = D.mappe.filter(visibile).sort((a,b) => {
+function ordinati(){
+  return D.mappe.slice().sort((a,b) => {
     if (campo==="layout"||campo==="density"||campo==="boss") return (b.rating[campo]||0)-(a.rating[campo]||0);
-    if (campo==="nome"||campo==="tipo") return String(a[campo]).localeCompare(String(b[campo]));
     return (b[campo]||0)-(a[campo]||0);
   });
+}
+
+function ridisegna(){
+  q("#vistaElenco").hidden = vista!=="elenco";
+  q("#vistaMappa").hidden = vista!=="mappa";
+  if (vista==="elenco") elenco(); else mappa();
+  q("#conta").textContent = D.mappe.filter(visibile).length + " mappe visibili · " + D.mappe.filter(n=>n.nCarte).length + " con carte";
+}
+
+function elenco(){
+  const arr = ordinati().filter(visibile);
   q("#cl tbody").innerHTML = arr.map(n=>`
     <tr data-nome="${n.nome}" class="${sel===n.nome?'sel':''}">
-      <td>${n.nome}${n.tipo!=="map"?`<span class="tag">${n.tipo==='unique map'?'UNICA':'SPECIALE'}</span>`:''}</td>
-      <td style="color:var(--muted)">${n.livelli[0]||''}</td>
+      <td class="nome">${n.icona?`<img class="ic" src="${iconaMappa(n)}" loading="lazy">`:''}${n.nome}${n.tipo!=="map"?`<span class="tag">${n.tipo==='unique map'?'UNICA':'SPECIALE'}</span>`:''}</td>
       <td class="n">${n.rating.layout ?? '—'}</td>
       <td class="n">${n.rating.density ?? '—'}</td>
       <td class="n">${n.rating.boss ?? '—'}</td>
@@ -151,17 +189,42 @@ function tabella(){
       <td class="n">${n.mediana.toLocaleString('it-IT')}</td>
       <td style="color:var(--muted)">${n.carte[0]?n.carte[0].nome:''}</td>
     </tr>`).join("");
-  q("#cl tbody").querySelectorAll("tr").forEach(tr => tr.onclick = () => {
-    sel = tr.dataset.nome; tabella(); pannello();
+  q("#cl tbody").querySelectorAll("tr").forEach(tr => tr.onclick = () => { sel = tr.dataset.nome; ridisegna(); pannello(); });
+}
+
+function mappa(){
+  const area = q("#mapparea");
+  area.querySelectorAll(".nodo").forEach(e=>e.remove());
+  const idx = new Map(D.mappe.map(n=>[n.nome,n]));
+  const max = Math.max(1, ...D.mappe.map(n=>n[campo]||0));
+  const linee = [];
+  const fatte = new Set();
+  D.mappe.forEach(n => (n.collegate||[]).forEach(c => {
+    const v = idx.get(c);
+    if (!v) return;
+    const k = [n.nome,c].sort().join("|");
+    if (fatte.has(k)) return;
+    fatte.add(k);
+    linee.push(`<line class="link" x1="${n.x/10.0352}" y1="${n.y/10.0352}" x2="${v.x/10.0352}" y2="${v.y/10.0352}"/>`);
+  }));
+  q("#linee").innerHTML = linee.join("");
+  D.mappe.forEach(n => {
+    const d = document.createElement("div");
+    const v = Math.sqrt((n[campo]||0)/max);
+    d.className = "nodo" + (v>0.5?" ricco":"") + (sel===n.nome?" sel":"") + (!visibile(n)?" spento":"");
+    d.style.left = (n.x/10.0352)+"%"; d.style.top = (n.y/10.0352)+"%";
+    d.title = `${n.nome} — ${n.totale.toLocaleString('it-IT')} c totale, ${n.nCarte} carte`;
+    if (n.icona) d.innerHTML = `<img src="${iconaMappa(n)}" loading="lazy">`;
+    d.onclick = () => { sel = n.nome; ridisegna(); pannello(); };
+    area.appendChild(d);
   });
-  q("#conta").textContent = arr.length + " mappe visibili · " + D.mappe.filter(n=>n.nCarte).length + " con carte";
 }
 
 function pannello(){
   const n = D.mappe.find(x=>x.nome===sel);
   if (!n) return;
   q("#pan").innerHTML = `
-    <h2>${n.nome}${n.tipo!=="map"?`<span class="tag">${n.tipo==='unique map'?'UNICA':'SPECIALE'}</span>`:''}</h2>
+    <h2>${n.icona?`<img class="ic" style="width:1.6rem;height:1.6rem" src="${iconaMappa(n)}">`:''}${n.nome}${n.tipo!=="map"?`<span class="tag">${n.tipo==='unique map'?'UNICA':'SPECIALE'}</span>`:''}</h2>
     <div class="meta">${n.tipo} · livello area ${n.livelli.join(', ')}</div>
     <div class="rate">
       <div><b>${n.rating.layout ?? '—'}</b><span>layout</span></div>
@@ -174,29 +237,33 @@ function pannello(){
     </div>
     ${n.tags.length ? `<div class="tags">${n.tags.map(t=>`<span>${t.replace(/_/g,' ')}</span>`).join("")}</div>` : ""}
     ${n.carte.length
-      ? `<table>${n.carte.map(c=>`<tr><td>${c.nome}</td><td class="n" style="text-align:right">${c.prezzo.toLocaleString('it-IT')} c</td></tr>`).join("")}</table>`
+      ? n.carte.map(c=>`<div class="carta">${c.arte?`<img src="${iconaCarta(c)}" loading="lazy">`:''}<b>${c.nome}</b><span>${c.prezzo.toLocaleString('it-IT')} c</span></div>`).join("")
       : `<div class="vuoto">Nessuna divination card nota qui.</div>`}
     ${n.collegate.length ? `<div class="collegate" style="margin-top:.6rem"><b style="font-size:.76rem;color:var(--label)">Collegate</b>${n.collegate.map(c=>`<a href="#" data-nome="${c}">${c}</a>`).join("")}</div>` : ""}
   `;
   q("#pan").querySelectorAll(".collegate a").forEach(a => a.onclick = e => {
     e.preventDefault();
-    if (D.mappe.some(m=>m.nome===a.dataset.nome)) { sel = a.dataset.nome; tabella(); pannello(); }
+    if (D.mappe.some(m=>m.nome===a.dataset.nome)) { sel = a.dataset.nome; ridisegna(); pannello(); }
   });
 }
 
 fetch("atlante.json").then(r=>r.json()).then(d=>{
   D = d;
   q("#lega").textContent = d.lega || "";
-  tabella();
+  ridisegna();
 });
 
-document.querySelectorAll(".barra button").forEach(b => b.onclick = () => {
-  document.querySelectorAll(".barra button").forEach(x=>x.classList.remove("on"));
-  b.classList.add("on"); filtro = b.dataset.f; tabella();
+document.querySelectorAll(".vista button").forEach(b => b.onclick = () => {
+  document.querySelectorAll(".vista button").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on"); vista = b.dataset.v; ridisegna();
 });
-q("#colora").onchange = e => { campo = e.target.value; tabella(); };
-q("#cerca").oninput = e => { cerca = e.target.value.toLowerCase().trim(); tabella(); };
-document.querySelectorAll("#cl th[data-k]").forEach(th => th.onclick = () => { campo = th.dataset.k; tabella(); });
+document.querySelectorAll(".barra > button[data-f]").forEach(b => b.onclick = () => {
+  document.querySelectorAll(".barra > button[data-f]").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on"); filtro = b.dataset.f; ridisegna();
+});
+q("#colora").onchange = e => { campo = e.target.value; ridisegna(); };
+q("#cerca").oninput = e => { cerca = e.target.value.toLowerCase().trim(); ridisegna(); };
+document.querySelectorAll("#cl th[data-k]").forEach(th => th.onclick = () => { campo = th.dataset.k; ridisegna(); });
 </script>
 </body>
 </html>
