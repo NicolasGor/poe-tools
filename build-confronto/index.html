@@ -156,6 +156,16 @@
   .ks span{font-size:.72rem;border:1px solid var(--line2);border-radius:999px;padding:.1rem .5rem;color:#cfd8ea}
   .ks span.mast{color:var(--muted);border-style:dashed}
 
+  /* la lista testuale sta chiusa: la griglia col tooltip basta quasi sempre */
+  details.lista{border:1px solid var(--line);border-radius:6px;background:var(--panel2);
+                padding:.5rem .7rem;margin-bottom:.5rem}
+  details.lista summary{cursor:pointer;font-size:.8rem;color:var(--muted);list-style:none}
+  details.lista summary::-webkit-details-marker{display:none}
+  details.lista summary::before{content:"▸ ";color:var(--gold)}
+  details.lista[open] summary::before{content:"▾ "}
+  details.lista[open] summary{margin-bottom:.6rem}
+  details.lista .item:last-child{margin-bottom:0}
+
   .item{background:var(--panel);border:1px solid var(--line);border-radius:5px;margin-bottom:.4rem;overflow:hidden}
   .item .top{display:flex;justify-content:space-between;gap:.5rem;padding:.4rem .55rem;background:var(--panel2);border-bottom:1px solid var(--line)}
   .item .slot{color:var(--label);font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
@@ -248,11 +258,25 @@ function isDiff(slot){
 function iconUrl(nome){
   return "https://assets.pobb.in/1/" + encodeURIComponent(nome) + ".webp";
 }
+// Sugli item MAGIC il PoB non scrive la base: sta dentro il nome, fra un prefisso
+// e un suffisso — "Experimenter's Topaz Flask of the Crystal" → "Topaz Flask".
+function baseDaNomeMagic(nome){
+  let s = nome.replace(/\s+of\s+.+$/i, "").trim();   // via il suffisso
+  const p = s.split(/\s+/);
+  if (p.length >= 3) s = p.slice(1).join(" ");       // via il prefisso
+  return s;
+}
 function iconFor(it){
   const unica = it.rarity === "UNIQUE" || it.rarity === "RELIC";
-  const primo = unica ? it.name : (it.base || it.name);
-  return primo ? { src: iconUrl(primo), alt: it.name,
-                   ripiego: it.base && it.base !== primo ? iconUrl(it.base) : null } : null;
+  let primo = unica ? it.name : (it.base || it.name);
+  let ripiego = null;
+  if (!unica && !it.base) {                          // magic senza base esplicita
+    const dedotta = baseDaNomeMagic(it.name);
+    if (dedotta && dedotta !== primo) { ripiego = iconUrl(primo); primo = dedotta; }
+  } else if (it.base && it.base !== primo) {
+    ripiego = iconUrl(it.base);
+  }
+  return primo ? { src: iconUrl(primo), alt: it.name, ripiego } : null;
 }
 const AREA = {"Weapon 1":"wep","Helmet":"helm","Body Armour":"body","Gloves":"glv",
               "Boots":"boots","Amulet":"amu","Ring 1":"ring1","Ring 2":"ring2","Belt":"belt"};
@@ -362,7 +386,8 @@ function colHtml(col, cls){
     ${impHtml(cls === "mine" ? "left" : "right")}
     <div class="statrow">${Object.entries(col.stats).map(([k,v])=>
       `<div class="stat"><b>${esc(v)}</b><span>${esc(k)}</span></div>`).join("")}</div>
-    <h3 class="sec">Gear</h3>${padHtml(col)}${gearHtml(col)}
+    <h3 class="sec">Gear</h3>${padHtml(col)}
+    <details class="lista"><summary>Elenco dei pezzi con tutti i mod (${col.gear.length})</summary>${gearHtml(col)}</details>
     <h3 class="sec">Gemme</h3>${gemsHtml(col)}
     <h3 class="sec">Albero</h3>${treeHtml(col)}
   </div>`;
@@ -485,6 +510,12 @@ function datiDaPoB(doc, sel){
   };
 }
 
+// La configurazione di import resta: codice, link e scelte sopravvivono al
+// ridisegno della pagina e alla chiusura del browser.
+const STATO = JSON.parse(localStorage.getItem("confronto-import") || "{}");
+const DOCS = {};   // documenti già decodificati, per non rifare il lavoro
+function salvaStato(){ localStorage.setItem("confronto-import", JSON.stringify(STATO)); }
+
 function collegaImport(){
   document.querySelectorAll(".imp").forEach(box => {
     const side = box.dataset.side;
@@ -492,7 +523,8 @@ function collegaImport(){
     const ta = box.querySelector("textarea");
     const esito = box.querySelector(".esito");
     const sel = { set: box.querySelector(".set"), spec: box.querySelector(".spec"), skill: box.querySelector(".skill") };
-    let doc = null;
+    const st = STATO[side] || (STATO[side] = {});
+    let doc = DOCS[side] || null;
 
     box.querySelector(".apri").onclick = () => box.classList.toggle("aperto");
 
@@ -512,11 +544,14 @@ function collegaImport(){
         opz(sel.set, items, x=>x.getAttribute("id"));
         opz(sel.skill, skills.length?skills:[], x=>x.getAttribute("id"));
         opz(sel.spec, specs, (x,i)=>i+1);
-        sel.set.value = doc.querySelector("Items").getAttribute("activeItemSet") || sel.set.value;
-        sel.skill.value = doc.querySelector("Skills").getAttribute("activeSkillSet") || sel.skill.value;
-        sel.spec.value = doc.querySelector("Tree").getAttribute("activeSpec") || "1";
+        // ripristina la scelta precedente, altrimenti usa i set attivi del file
+        sel.set.value   = st.set   || doc.querySelector("Items").getAttribute("activeItemSet") || sel.set.value;
+        sel.skill.value = st.skill || doc.querySelector("Skills").getAttribute("activeSkillSet") || sel.skill.value;
+        sel.spec.value  = st.spec  || doc.querySelector("Tree").getAttribute("activeSpec") || "1";
+        DOCS[side] = doc;
+        st.code = code; salvaStato();
         esito.className = "esito ok";
-        esito.textContent = `letto: ${items.length} set di gear, ${specs.length} alberi, ${skills.length} set di gemme. Scegli e premi Carica.`;
+        esito.textContent = `letto: ${items.length} set di gear, ${specs.length} alberi, ${skills.length} set di gemme. Cambia i selettori quando vuoi.`;
       } catch (e) {
         doc = null; esito.className = "esito ko"; esito.textContent = "non riesco a leggerlo: " + e.message;
       }
@@ -538,6 +573,7 @@ function collegaImport(){
         const code = (await r.text()).trim();
         if (!/^[A-Za-z0-9_-]{200,}={0,2}$/.test(code)) throw new Error("risposta non è un codice PoB");
         ta.value = code;
+        st.url = v; salvaStato();
         await leggi();
       } catch (e) {
         esito.className="esito ko";
@@ -546,16 +582,26 @@ function collegaImport(){
     };
     url.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); box.querySelector(".scarica").click(); } });
 
-    form.onsubmit = ev => {
-      ev.preventDefault();
-      if (!doc) { esito.className="esito ko"; esito.textContent="prima incolla un codice valido"; return; }
+    const carica = () => {
+      if (!doc) { esito.className="esito ko"; esito.textContent="prima incolla un codice o scarica un link"; return; }
       try {
-        DATA[side] = datiDaPoB(doc, { set: sel.set.value, spec: sel.spec.value, skill: sel.skill.value });
+        st.set = sel.set.value; st.spec = sel.spec.value; st.skill = sel.skill.value;
+        st.aperto = box.classList.contains("aperto");
+        salvaStato();
+        DATA[side] = datiDaPoB(doc, { set: st.set, spec: st.spec, skill: st.skill });
         render();
       } catch (e) {
         esito.className="esito ko"; esito.textContent="errore nel caricamento: " + e.message;
       }
     };
+    form.onsubmit = ev => { ev.preventDefault(); carica(); };
+    // i selettori restano vivi: cambiarli ricarica subito, senza reincollare niente
+    [sel.set, sel.spec, sel.skill].forEach(s => s.addEventListener("change", carica));
+
+    // ripristino: link, codice e pannello aperto tornano come li avevi lasciati
+    if (st.url) url.value = st.url;
+    if (st.aperto) box.classList.add("aperto");
+    if (st.code && !ta.value) { ta.value = st.code; leggi(); }
   });
 }
 
