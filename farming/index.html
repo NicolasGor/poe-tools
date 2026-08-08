@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Farming — cosa conviene davvero, misurato</title>
+<style>
+  :root{
+    --bg:#12151c; --panel:#1a1f2a; --panel2:#151a23; --line:#2b3342; --line2:#39435a;
+    --text:#e6e9ef; --muted:#8b95a8; --label:#78839a;
+    --gold:#f0b94a; --good:#60d394; --bad:#e07a6f; --magic:#8888ff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:1.4rem 1rem 5rem;background:var(--bg);color:var(--text);
+       font:14px/1.55 Inter,ui-sans-serif,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+  .wrap{max-width:72rem;margin:0 auto}
+  a{color:var(--gold)}
+  header{margin-bottom:1.2rem}
+  .back{font-size:.8rem}
+  h1{margin:.6rem 0 .3rem;font-size:1.5rem}
+  .sub{margin:0;color:var(--muted);font-size:.9rem;max-width:54rem}
+  .badges{margin-top:.7rem;display:flex;gap:.4rem;flex-wrap:wrap}
+  .badge{padding:.15rem .55rem;border:1px solid var(--line2);border-radius:999px;font-size:.72rem;color:var(--muted)}
+  .badge.live{border-color:rgba(96,211,148,.5);color:var(--good)}
+
+  .avviso{background:rgba(240,185,74,.08);border:1px solid rgba(240,185,74,.35);border-radius:6px;
+          padding:.85rem 1rem;margin:1rem 0 1.4rem;font-size:.88rem;color:var(--muted)}
+  .avviso b{color:var(--text)}
+
+  h2.sec{font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);
+         margin:2rem 0 .7rem;padding-bottom:.3rem;border-bottom:1px solid var(--line)}
+
+  .top{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fit,minmax(19rem,1fr))}
+  .card{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--good);
+        border-radius:7px;padding:.9rem 1rem}
+  .card h3{margin:0 0 .1rem;font-size:1.05rem}
+  .card .pos{font-size:.7rem;color:var(--label);text-transform:uppercase;letter-spacing:.08em}
+  .card .num{font-size:1.5rem;font-weight:700;color:var(--good);margin:.4rem 0 .1rem}
+  .card .num small{display:block;font-size:.68rem;font-weight:400;color:var(--muted)}
+  .card p{margin:.5rem 0 0;font-size:.86rem;color:var(--muted);line-height:1.5}
+  .card b{color:var(--text)}
+  .card ul{margin:.5rem 0 0;padding-left:1.1rem;font-size:.84rem;color:var(--muted)}
+  .card li{margin-bottom:.2rem}
+
+  table{width:100%;border-collapse:collapse;font-size:.84rem}
+  th,td{text-align:left;padding:.35rem .55rem;border-bottom:1px solid var(--line)}
+  th{color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:.07em;font-size:.66rem;cursor:pointer}
+  td.n{text-align:right;font-family:"Source Code Pro",Menlo,monospace;font-variant-numeric:tabular-nums}
+  tr.alta td.n.max{color:var(--good);font-weight:600}
+  tr:hover{background:var(--panel2)}
+  .barra{display:inline-block;height:.5rem;background:var(--magic);border-radius:2px;vertical-align:middle;opacity:.55}
+
+  details{border:1px solid var(--line);border-radius:6px;background:var(--panel2);padding:.6rem .8rem;margin-top:.6rem}
+  summary{cursor:pointer;font-size:.82rem;color:var(--muted)}
+  footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem}
+  footer p{margin:0 0 .6rem;max-width:56rem}
+  footer b{color:var(--text)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="back"><a href="../index.html">← Tutti gli strumenti</a></div>
+    <h1>Farming — cosa conviene davvero</h1>
+    <p class="sub">Classifica delle meccaniche costruita sul <b>prezzo dei loro scarab</b>, letto da poe.ninja. Non è una tier list copiata da un articolo: è quello che il mercato paga adesso.</p>
+    <div class="badges">
+      <span class="badge">patch 3.29.2</span>
+      <span class="badge">lega Allflame</span>
+      <span class="badge live" id="quando">—</span>
+      <span class="badge" id="cambio">—</span>
+    </div>
+  </header>
+
+  <div class="avviso">
+    <b>Cosa misura questo numero, e cosa no.</b> Il prezzo di uno scarab dice quanto il mercato è disposto a pagare per <em>entrare</em> in quella meccanica: è domanda, cioè la miglior prova indiretta che la gente ci guadagna. <b>Non è il tuo profitto.</b> Uno scarab da 199 chaos è anche un costo che ti mangia il margine, e una meccanica gratis con drop modesti può rendere di più in mano tua. Usa la classifica per capire <em>dove guarda il mercato</em>, non come garanzia di guadagno.
+    <br><br><b>La mediana conta più del massimo.</b> Una meccanica con un solo scarab caro e gli altri a 1 chaos ha un picco, non un valore: significa che serve quel pezzo specifico. Una con mediana alta paga su tutta la linea.
+  </div>
+
+  <h2 class="sec">Le tre che consiglio</h2>
+  <div class="top" id="top"></div>
+
+  <h2 class="sec">Tutte le meccaniche, per prezzo degli scarab</h2>
+  <table id="tab">
+    <thead><tr>
+      <th data-k="nome">Meccanica</th>
+      <th data-k="max" class="n">Scarab più caro</th>
+      <th data-k="mediana" class="n">Mediana</th>
+      <th data-k="totale" class="n">Somma</th>
+      <th data-k="n" class="n">Scarab</th>
+      <th>Il più caro</th>
+    </tr></thead>
+    <tbody></tbody>
+  </table>
+
+  <h2 class="sec">Altri numeri utili</h2>
+  <div id="extra"></div>
+
+  <footer>
+    <p><strong>Da dove vengono i dati.</strong> Dalle tabelle economiche di <b>poe.ninja</b> per la lega Allflame: 115 scarab, 102 currency, 395 divination card. L'API pubblica di poe.ninja oggi risponde 404 su tutti gli endpoint documentati — il sito è passato a rendering lato server, quindi i valori sono letti dalle tabelle pubblicate.</p>
+    <p><strong>Quando rimisurare.</strong> I prezzi si muovono ogni settimana, e a inizio lega ogni giorno. Quando la data in alto invecchia, i numeri qui vanno rifatti, non creduti.</p>
+    <p><strong>Cosa non è misurato.</strong> Quali mappe girare e come potenziarle: quelle indicazioni nascono dalla struttura delle meccaniche, non da una misura di profitto per ora. Sono marcate come da verificare, e vanno provate in gioco.</p>
+  </footer>
+</div>
+
+<script>
+const CONSIGLI = {
+  "Harvest": {
+    perche: "Ha la <b>mediana più alta di tutte</b>: non un picco isolato ma tre scarab tutti richiesti. Significa che paga qualunque sia il pezzo che ti cade, ed è la firma di una meccanica solida invece che di una moda.",
+    mappe: "Qualunque mappa: il Sacred Grove non dipende dal layout. Conviene quindi la mappa più <b>veloce da attraversare</b> che possiedi in quantità.",
+    potenziare: ["Nodi atlas del cluster Harvest fino a garantire il Grove", "Harvest Scarab of Cornucopia sui giri buoni", "Non serve pack size: il valore è nel raccolto, non nei mostri"],
+    nota: "È anche l'unica delle tre che non chiede di uccidere niente di pericoloso."
+  },
+  "Ambush": {
+    perche: "Ambush sono gli <b>strongbox</b>. Scarab fino a 93 chaos con mediana 5: c'è domanda vera e diffusa. È la strategia che le fonti indicano come più accessibile, e qui i numeri le danno ragione.",
+    mappe: "Mappe <b>piccole e lineari</b>, perché il guadagno sta nel numero di mappe all'ora, non in quanto spremi la singola. Obiettivo dichiarato dalle guide: 90 secondi a mappa.",
+    potenziare: ["Cluster Ambush sull'albero atlas", "Ambush Scarab of Containment quando il prezzo lo giustifica", "Quantità e pack size aiutano poco: conta la velocità"],
+    nota: "Richiede poco investimento in equipaggiamento, quindi è la più adatta se il personaggio è ancora fragile."
+  },
+  "Cartography": {
+    perche: "Scarab fino a 172 chaos. Non è una meccanica di loot ma di <b>sostentamento</b>: produce le mappe che poi userai per tutto il resto. In una lega dove il map pool è stato rimescolato, vale doppio.",
+    mappe: "Le mappe che vuoi far ricadere: si sceglie in base a cosa stai farmando, non al layout.",
+    potenziare: ["Nodi di duplicazione mappe sull'albero atlas", "Cartography Scarab of Risk sulle mappe che vuoi moltiplicare", "Si combina con qualsiasi altra strategia invece di sostituirla"],
+    nota: "È l'unica delle tre che <b>si somma</b> alle altre due invece di escluderle."
+  }
+};
+
+fetch("dati.json").then(r=>r.json()).then(d=>{
+  document.getElementById("quando").textContent = "misurato il " + d.aggiornato;
+  document.getElementById("cambio").textContent = "1 divine = " + d.divine + " chaos";
+
+  const tre = ["Harvest","Ambush","Cartography"];
+  document.getElementById("top").innerHTML = tre.map((k,i) => {
+    const m = d.meccaniche.find(x=>x.nome===k), c = CONSIGLI[k];
+    return `<article class="card">
+      <div class="pos">${i+1}ª scelta</div>
+      <h3>${k}${k==="Ambush"?" — strongbox":""}</h3>
+      <div class="num">${m.max} c<small>scarab più caro · mediana ${m.mediana} c su ${m.n} scarab</small></div>
+      <p>${c.perche}</p>
+      <p><b>Dove:</b> ${c.mappe}</p>
+      <ul>${c.potenziare.map(x=>`<li>${x}</li>`).join("")}</ul>
+      <p style="font-size:.82rem">${c.nota}</p>
+    </article>`;
+  }).join("");
+
+  const tb = document.querySelector("#tab tbody");
+  const max = Math.max(...d.meccaniche.map(m=>m.max));
+  const dis = (arr) => tb.innerHTML = arr.map(m => `
+    <tr class="${m.max>=50?'alta':''}">
+      <td>${m.nome}</td>
+      <td class="n max">${m.max}</td>
+      <td class="n">${m.mediana}</td>
+      <td class="n">${m.totale}</td>
+      <td class="n">${m.n}</td>
+      <td style="color:var(--muted)"><span class="barra" style="width:${Math.max(2,m.max/max*90)}px"></span> ${m.scarab[0].nome}</td>
+    </tr>`).join("");
+  dis(d.meccaniche);
+  document.querySelectorAll("#tab th[data-k]").forEach(th => th.onclick = () => {
+    const k = th.dataset.k;
+    const arr = [...d.meccaniche].sort((a,b) => typeof a[k]==="string" ? a[k].localeCompare(b[k]) : b[k]-a[k]);
+    dis(arr);
+  });
+
+  const tabellina = (tit, arr) => `<details><summary>${tit} (${arr.length})</summary>
+    <table><tbody>${arr.map(x=>`<tr><td>${x.nome}</td><td class="n">${x.chaos} c</td></tr>`).join("")}</tbody></table></details>`;
+  document.getElementById("extra").innerHTML =
+      tabellina("Divination card più care", d.carte)
+    + tabellina("Currency più care", d.currency)
+    + tabellina("Fossili più cari", d.fossili)
+    + tabellina("Oli più cari", d.oli);
+});
+</script>
+</body>
+</html>
