@@ -40,12 +40,17 @@
   /* Vista mappa — struttura e misure riprese dal sito sorgente (mapsofexile.com):
      mondo di 3010,56px (le coordinate del dataset moltiplicate per 3), nodi da
      48px con cornice, etichetta-badge sotto, collegamenti a curva di Bézier. */
+  /* user-select:none è essenziale: senza, trascinare la mappa seleziona icone ed
+     etichette come fosse testo e tutto si riempie di evidenziazioni blu. */
   .mapparea{position:relative;width:100%;height:70vh;min-height:420px;max-height:760px;background:#000;
-            border:1px solid var(--line);border-radius:8px;overflow:hidden;cursor:grab;touch-action:none}
+            border:1px solid var(--line);border-radius:8px;overflow:hidden;cursor:grab;touch-action:none;
+            user-select:none;-webkit-user-select:none}
   .mapparea.trascina{cursor:grabbing}
   .mondo{position:absolute;left:0;top:0;width:3010.56px;height:3010.56px;transform-origin:0 0}
-  .sfondoAtlante{position:absolute;left:-6px;top:-6px;width:3010.56px;height:3010.56px;
-                 pointer-events:none;user-select:none}
+  /* Senza questo, trascinare partendo da un'icona avvia il drag nativo del
+     browser — compare il fantasma dell'immagine invece di spostare la mappa. */
+  .mondo img{-webkit-user-drag:none;user-select:none;pointer-events:none}
+  .sfondoAtlante{position:absolute;left:-6px;top:-6px;width:3010.56px;height:3010.56px}
   .mondo svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
   .link{stroke:#000;stroke-width:1;fill:none}
 
@@ -177,7 +182,7 @@
     <div id="vistaMappa" hidden>
       <div class="mapparea" id="mapparea">
         <div class="mondo" id="mondo">
-          <img class="sfondoAtlante" src="img/atlante-sfondo.webp" alt="">
+          <img class="sfondoAtlante" src="img/atlante-sfondo.webp" alt="" draggable="false">
           <svg id="linee"></svg>
         </div>
         <div class="controlliMappa">
@@ -307,7 +312,7 @@ function mappa(){
     d.style.top  = (cy(n) - RAGGIO_NODO) + "px";
     d.title = `${n.nome} — ${chaos(n.totale)} c totale, ${n.nCarte} carte`;
     d.innerHTML =
-      `<div class="cornice">${n.icona?`<img src="${iconaMappa(n)}" loading="lazy" alt="">`:""}</div>` +
+      `<div class="cornice">${n.icona?`<img src="${iconaMappa(n)}" loading="lazy" alt="" draggable="false">`:""}</div>` +
       `<div class="etich">${n.nome}</div>`;
     d.onclick = () => { sel = n.nome; ridisegna(); pannello(); };
     frammento.appendChild(d);
