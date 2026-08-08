@@ -1,0 +1,3610 @@
+{
+ "aggiornato": "2026-08-08",
+ "regioni": [
+  "Haewark Hamlet",
+  "Tirn's End",
+  "Lex Proxima",
+  "Lex Ejoris",
+  "New Vastir",
+  "Glennach Cairns",
+  "Valdo's Rest",
+  "Lira Arthain"
+ ],
+ "nodi": [
+  {
+   "i": 0,
+   "nome": "Mao Kun",
+   "regione": "Lex Proxima",
+   "unica": true,
+   "livello": 75,
+   "tierMax": 16,
+   "x": 498.78,
+   "y": 144.52,
+   "vicini": [
+    72
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 1,
+   "nome": "Carcass",
+   "regione": "Glennach Cairns",
+   "unica": false,
+   "livello": 82,
+   "tierMax": 14,
+   "x": 369.03,
+   "y": 350.63,
+   "vicini": [
+    119,
+    50,
+    3,
+    36
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 2,
+   "nome": "Primordial Blocks",
+   "regione": "Haewark Hamlet",
+   "unica": false,
+   "livello": 79,
+   "tierMax": 14,
+   "x": 286.69,
+   "y": 121.54,
+   "vicini": [
+    141,
+    109
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 3,
+   "nome": "Summit",
+   "regione": "Glennach Cairns",
+   "unica": false,
+   "livello": 79,
+   "tierMax": 14,
+   "x": 352.59,
+   "y": 389.02,
+   "vicini": [
+    145,
+    117,
+    81,
+    56,
+    30,
+    1
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 4,
+   "nome": "Tower",
+   "regione": "Haewark Hamlet",
+   "unica": false,
+   "livello": 76,
+   "tierMax": 16,
+   "x": 167.68,
+   "y": 82.16,
+   "vicini": [
+    141,
+    96,
+    7
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 5,
+   "nome": "Lava Lake",
+   "regione": "Lira Arthain",
+   "unica": false,
+   "livello": 82,
+   "tierMax": 16,
+   "x": 829.74,
+   "y": 430.05,
+   "vicini": [
+    103,
+    82,
+    64
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 6,
+   "nome": "Palace",
+   "regione": "New Vastir",
+   "unica": false,
+   "livello": 81,
+   "tierMax": 15,
+   "x": 272.76,
+   "y": 428.55,
+   "vicini": [
+    130,
+    118,
+    89,
+    81,
+    56
+   ],
+   "carte": [
+    {
+     "nome": "The Sephirot",
+     "chaos": 194
+    }
+   ],
+   "valore": 194,
+   "mediana": 194,
+   "nCarte": 1
+  },
+  {
+   "i": 7,
+   "nome": "Desert Spring",
+   "regione": "Haewark Hamlet",
+   "unica": false,
+   "livello": 80,
+   "tierMax": 15,
+   "x": 225.73,
+   "y": 73.82,
+   "vicini": [
+    141,
+    128,
+    4,
+    41
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 8,
+   "nome": "Vaal Temple",
+   "regione": "Lex Proxima",
+   "unica": false,
+   "livello": 83,
+   "tierMax": 16,
+   "x": 575.93,
+   "y": 276.97,
+   "vicini": [],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 9,
+   "nome": "Plaza",
+   "regione": "Lex Proxima",
+   "unica": false,
+   "livello": 81,
+   "tierMax": 14,
+   "x": 470.68,
+   "y": 173.49,
+   "vicini": [
+    71,
+    52,
+    32
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 10,
+   "nome": "Dark Forest",
+   "regione": "Tirn's End",
+   "unica": false,
+   "livello": 81,
+   "tierMax": 14,
+   "x": 349.26,
+   "y": 201.61,
+   "vicini": [
+    102,
+    129,
+    47,
+    66
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 11,
+   "nome": "Basilica",
+   "regione": "Valdo's Rest",
+   "unica": false,
+   "livello": 82,
+   "tierMax": 14,
+   "x": 560.37,
+   "y": 428.2,
+   "vicini": [
+    131,
+    146,
+    151,
+    65
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 12,
+   "nome": "Crimson Temple",
+   "regione": "Lira Arthain",
+   "unica": false,
+   "livello": 81,
+   "tierMax": 16,
+   "x": 811.79,
+   "y": 311.27,
+   "vicini": [
+    127,
+    103,
+    82,
+    51
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 13,
+   "nome": "Sunken City",
+   "regione": "Lira Arthain",
+   "unica": false,
+   "livello": 82,
+   "tierMax": 15,
+   "x": 749.76,
+   "y": 339.79,
+   "vicini": [
+    156,
+    103,
+    55,
+    51
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 14,
+   "nome": "Core",
+   "regione": "Lira Arthain",
+   "unica": false,
+   "livello": 80,
+   "tierMax": 14,
+   "x": 689.27,
+   "y": 441.54,
+   "vicini": [
+    151,
+    95,
+    83,
+    67
+   ],
+   "carte": [
+    {
+     "nome": "The Nurse",
+     "chaos": 139
+    }
+   ],
+   "valore": 139,
+   "mediana": 139,
+   "nCarte": 1
+  },
+  {
+   "i": 15,
+   "nome": "Dig",
+   "regione": "Lex Proxima",
+   "unica": false,
+   "livello": 81,
+   "tierMax": 14,
+   "x": 656.95,
+   "y": 264.73,
+   "vicini": [
+    112,
+    42,
+    163
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 16,
+   "nome": "Shrine",
+   "regione": "Tirn's End",
+   "unica": false,
+   "livello": 80,
+   "tierMax": 16,
+   "x": 265.99,
+   "y": 192.21,
+   "vicini": [
+    142,
+    161,
+    18
+   ],
+   "carte": [
+    {
+     "nome": "The Lunaris Priestess",
+     "chaos": 223
+    },
+    {
+     "nome": "The Progeny of Lunaris",
+     "chaos": 15
+    }
+   ],
+   "valore": 238,
+   "mediana": 119.0,
+   "nCarte": 2
+  },
+  {
+   "i": 17,
+   "nome": "Arsenal",
+   "regione": "Valdo's Rest",
+   "unica": false,
+   "livello": 80,
+   "tierMax": 14,
+   "x": 500.11,
+   "y": 368.89,
+   "vicini": [
+    134,
+    146,
+    43,
+    153
+   ],
+   "carte": [
+    {
+     "nome": "Last Stand",
+     "chaos": 25
+    }
+   ],
+   "valore": 25,
+   "mediana": 25,
+   "nCarte": 1
+  },
+  {
+   "i": 18,
+   "nome": "Terrace",
+   "regione": "Tirn's End",
+   "unica": false,
+   "livello": 80,
+   "tierMax": 16,
+   "x": 262.98,
+   "y": 231.58,
+   "vicini": [
+    148,
+    149,
+    16
+   ],
+   "carte": [
+    {
+     "nome": "The Forbidden Fruit",
+     "chaos": 62
+    }
+   ],
+   "valore": 62,
+   "mediana": 62,
+   "nCarte": 1
+  },
+  {
+   "i": 19,
+   "nome": "Malformation",
+   "regione": "Lex Proxima",
+   "unica": false,
+   "livello": 80,
+   "tierMax": 14,
+   "x": 590.85,
+   "y": 232.62,
+   "vicini": [
+    120,
+    87,
+    79,
+    35
+   ],
+   "carte": [
+    {
+     "nome": "The Prince of Darkness",
+     "chaos": 29
+    },
+    {
+     "nome": "Last Stand",
+     "chaos": 25
+    }
+   ],
+   "valore": 54,
+   "mediana": 27.0,
+   "nCarte": 2
+  },
+  {
+   "i": 20,
+   "nome": "Death and Taxes",
+   "regione": "Tirn's End",
+   "unica": true,
+   "livello": 79,
+   "tierMax": 14,
+   "x": 292.72,
+   "y": 179.65,
+   "vicini": [
+    25
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 21,
+   "nome": "Oba's Cursed Trove",
+   "regione": "Valdo's Rest",
+   "unica": true,
+   "livello": 79,
+   "tierMax": 16,
+   "x": 557.03,
+   "y": 474.79,
+   "vicini": [
+    97
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 22,
+   "nome": "Park",
+   "regione": "Tirn's End",
+   "unica": false,
+   "livello": 80,
+   "tierMax": 14,
+   "x": 451.51,
+   "y": 230.99,
+   "vicini": [
+    102,
+    61,
+    71,
+    66
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 23,
+   "nome": "Ghetto",
+   "regione": "Glennach Cairns",
+   "unica": false,
+   "livello": 80,
+   "tierMax": 15,
+   "x": 278.16,
+   "y": 313.7,
+   "vicini": [
+    124,
+    106
+   ],
+   "carte": [
+    {
+     "nome": "Fire Of Unknown Origin",
+     "chaos": 17
+    }
+   ],
+   "valore": 17,
+   "mediana": 17,
+   "nCarte": 1
+  },
+  {
+   "i": 24,
+   "nome": "Caldera",
+   "regione": "Glennach Cairns",
+   "unica": false,
+   "livello": 80,
+   "tierMax": 14,
+   "x": 417.25,
+   "y": 302.91,
+   "vicini": [
+    147,
+    61,
+    50
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 25,
+   "nome": "Necropolis",
+   "regione": "Tirn's End",
+   "unica": false,
+   "livello": 79,
+   "tierMax": 14,
+   "x": 310.07,
+   "y": 159.59,
+   "vicini": [
+    142,
+    109,
+    129,
+    47,
+    20
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 26,
+   "nome": "Racecourse",
+   "regione": "Lex Proxima",
+   "unica": false,
+   "livello": 79,
+   "tierMax": 14,
+   "x": 607.84,
+   "y": 125.12,
+   "vicini": [
+    107,
+    87,
+    49,
+    34
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 27,
+   "nome": "Reef",
+   "regione": "New Vastir",
+   "unica": false,
+   "livello": 82,
+   "tierMax": 15,
+   "x": 235.48,
+   "y": 481.24,
+   "vicini": [
+    144,
+    130,
+    93
+   ],
+   "carte": [
+    {
+     "nome": "The Mad King",
+     "chaos": 118
+    }
+   ],
+   "valore": 118,
+   "mediana": 118,
+   "nCarte": 1
+  },
+  {
+   "i": 28,
+   "nome": "Villa",
+   "regione": "Valdo's Rest",
+   "unica": false,
+   "livello": 79,
+   "tierMax": 15,
+   "x": 475.64,
+   "y": 455.2,
+   "vicini": [
+    108,
+    75,
+    43
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 29,
+   "nome": "Crystal Ore",
+   "regione": "New Vastir",
+   "unica": false,
+   "livello": 79,
+   "tierMax": 16,
+   "x": 169.66,
+   "y": 433.74,
+   "vicini": [
+    143,
+    157,
+    93
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 30,
+   "nome": "Castle Ruins",
+   "regione": "Glennach Cairns",
+   "unica": false,
+   "livello": 79,
+   "tierMax": 14,
+   "x": 389.73,
+   "y": 382.13,
+   "vicini": [
+    147,
+    145,
+    138,
+    119,
+    114,
+    3
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 31,
+   "nome": "Acton's Nightmare",
+   "regione": "Tirn's End",
+   "unica": true,
+   "livello": 79,
+   "tierMax": 14,
+   "x": 396.82,
+   "y": 118.32,
+   "vicini": [
+    32
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 32,
+   "nome": "Overgrown Shrine",
+   "regione": "Tirn's End",
+   "unica": false,
+   "livello": 79,
+   "tierMax": 14,
+   "x": 420.96,
+   "y": 108.31,
+   "vicini": [
+    140,
+    158,
+    33,
+    31,
+    9
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 33,
+   "nome": "Defiled Cathedral",
+   "regione": "Haewark Hamlet",
+   "unica": false,
+   "livello": 79,
+   "tierMax": 14,
+   "x": 399.28,
+   "y": 78.02,
+   "vicini": [
+    53,
+    52,
+    32
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 34,
+   "nome": "Pit",
+   "regione": "Lex Ejoris",
+   "unica": false,
+   "livello": 78,
+   "tierMax": 14,
+   "x": 664.81,
+   "y": 108.31,
+   "vicini": [
+    150,
+    48,
+    26
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 35,
+   "nome": "Mesa",
+   "regione": "Lex Proxima",
+   "unica": false,
+   "livello": 78,
+   "tierMax": 14,
+   "x": 550.69,
+   "y": 229.44,
+   "vicini": [
+    137,
+    120,
+    42,
+    19
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 36,
+   "nome": "Colosseum",
+   "regione": "Glennach Cairns",
+   "unica": false,
+   "livello": 81,
+   "tierMax": 14,
+   "x": 309.36,
+   "y": 347.29,
+   "vicini": [
+    124,
+    106,
+    81,
+    1
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 37,
+   "nome": "Acid Caverns",
+   "regione": "Lex Proxima",
+   "unica": false,
+   "livello": 81,
+   "tierMax": 14,
+   "x": 706.33,
+   "y": 209.45,
+   "vicini": [
+    135,
+    133,
+    91,
+    79,
+    44,
+    163
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 38,
+   "nome": "Factory",
+   "regione": "Haewark Hamlet",
+   "unica": false,
+   "livello": 78,
+   "tierMax": 15,
+   "x": 204.94,
+   "y": 166.34,
+   "vicini": [
+    142,
+    126,
+    125
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 39,
+   "nome": "Spider Forest",
+   "regione": "Lex Ejoris",
+   "unica": false,
+   "livello": 78,
+   "tierMax": 15,
+   "x": 790.09,
+   "y": 200.78,
+   "vicini": [
+    101,
+    94,
+    91,
+    62,
+    54
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 40,
+   "nome": "Coves",
+   "regione": "Lex Proxima",
+   "unica": false,
+   "livello": 78,
+   "tierMax": 16,
+   "x": 550.93,
+   "y": 107.85,
+   "vicini": [
+    77,
+    72
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 41,
+   "nome": "Primordial Pool",
+   "regione": "Haewark Hamlet",
+   "unica": false,
+   "livello": 78,
+   "tierMax": 15,
+   "x": 278.89,
+   "y": 69.9,
+   "vicini": [
+    128,
+    69,
+    53,
+    7
+   ],
+   "carte": [
+    {
+     "nome": "The Prince of Darkness",
+     "chaos": 29
+    }
+   ],
+   "valore": 29,
+   "mediana": 29,
+   "nCarte": 1
+  },
+  {
+   "i": 42,
+   "nome": "Colonnade",
+   "regione": "Lex Proxima",
+   "unica": false,
+   "livello": 78,
+   "tierMax": 14,
+   "x": 614.33,
+   "y": 261.92,
+   "vicini": [
+    136,
+    79,
+    35,
+    15
+   ],
+   "carte": [
+    {
+     "nome": "The Dungeon Master",
+     "chaos": 42
+    }
+   ],
+   "valore": 42,
+   "mediana": 42,
+   "nCarte": 1
+  },
+  {
+   "i": 43,
+   "nome": "Lair",
+   "regione": "Valdo's Rest",
+   "unica": false,
+   "livello": 78,
+   "tierMax": 14,
+   "x": 521.81,
+   "y": 412.14,
+   "vicini": [
+    131,
+    108,
+    115,
+    28,
+    17
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 44,
+   "nome": "Promenade",
+   "regione": "Lex Ejoris",
+   "unica": false,
+   "livello": 78,
+   "tierMax": 15,
+   "x": 741.59,
+   "y": 175.94,
+   "vicini": [
+    135,
+    91,
+    84,
+    54,
+    37
+   ],
+   "carte": [
+    {
+     "nome": "Lucky Bastion",
+     "chaos": 9.8
+    }
+   ],
+   "valore": 9.8,
+   "mediana": 9.8,
+   "nCarte": 1
+  },
+  {
+   "i": 45,
+   "nome": "Orchard",
+   "regione": "Glennach Cairns",
+   "unica": false,
+   "livello": 77,
+   "tierMax": 14,
+   "x": 366.86,
+   "y": 267.83,
+   "vicini": [
+    162,
+    61,
+    50
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 46,
+   "nome": "The Coward's Trial",
+   "regione": "Tirn's End",
+   "unica": true,
+   "livello": 77,
+   "tierMax": 14,
+   "x": 356.77,
+   "y": 137.81,
+   "vicini": [
+    47
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 47,
+   "nome": "Cursed Crypt",
+   "regione": "Tirn's End",
+   "unica": false,
+   "livello": 77,
+   "tierMax": 14,
+   "x": 344.96,
+   "y": 153.73,
+   "vicini": [
+    140,
+    109,
+    69,
+    46,
+    25,
+    10
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 48,
+   "nome": "Pier",
+   "regione": "Lex Ejoris",
+   "unica": false,
+   "livello": 77,
+   "tierMax": 14,
+   "x": 692.98,
+   "y": 98.23,
+   "vicini": [
+    34,
+    155
+   ],
+   "carte": [
+    {
+     "nome": "Fire Of Unknown Origin",
+     "chaos": 17
+    }
+   ],
+   "valore": 17,
+   "mediana": 17,
+   "nCarte": 1
+  },
+  {
+   "i": 49,
+   "nome": "Bog",
+   "regione": "Lex Proxima",
+   "unica": false,
+   "livello": 77,
+   "tierMax": 14,
+   "x": 649.5,
+   "y": 156.15,
+   "vicini": [
+    135,
+    87,
+    79,
+    26
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 50,
+   "nome": "Precinct",
+   "regione": "Glennach Cairns",
+   "unica": false,
+   "livello": 77,
+   "tierMax": 14,
+   "x": 375.71,
+   "y": 292.42,
+   "vicini": [
+    106,
+    45,
+    24,
+    1
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 51,
+   "nome": "Wasteland",
+   "regione": "Lira Arthain",
+   "unica": false,
+   "livello": 77,
+   "tierMax": 15,
+   "x": 780.62,
+   "y": 316.63,
+   "vicini": [
+    156,
+    103,
+    12,
+    13
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 52,
+   "nome": "Arachnid Tomb",
+   "regione": "Lex Proxima",
+   "unica": false,
+   "livello": 77,
+   "tierMax": 15,
+   "x": 477.62,
+   "y": 123.43,
+   "vicini": [
+    72,
+    33,
+    9
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 53,
+   "nome": "Belfry",
+   "regione": "Haewark Hamlet",
+   "unica": false,
+   "livello": 77,
+   "tierMax": 14,
+   "x": 346.05,
+   "y": 88.65,
+   "vicini": [
+    69,
+    41,
+    33
+   ],
+   "carte": [
+    {
+     "nome": "The Enlightened",
+     "chaos": 81
+    },
+    {
+     "nome": "A Modest Request",
+     "chaos": 60
+    }
+   ],
+   "valore": 141,
+   "mediana": 70.5,
+   "nCarte": 2
+  },
+  {
+   "i": 54,
+   "nome": "Siege",
+   "regione": "Lex Ejoris",
+   "unica": false,
+   "livello": 77,
+   "tierMax": 15,
+   "x": 788.54,
+   "y": 155.63,
+   "vicini": [
+    160,
+    94,
+    84,
+    80,
+    44,
+    39
+   ],
+   "carte": [
+    {
+     "nome": "The Silly Boy",
+     "chaos": 58
+    },
+    {
+     "nome": "Home",
+     "chaos": 55
+    }
+   ],
+   "valore": 113,
+   "mediana": 56.5,
+   "nCarte": 2
+  },
+  {
+   "i": 55,
+   "nome": "Scriptorium",
+   "regione": "Lira Arthain",
+   "unica": false,
+   "livello": 76,
+   "tierMax": 14,
+   "x": 730.77,
+   "y": 353.0,
+   "vicini": [
+    92,
+    13
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 56,
+   "nome": "Shipyard",
+   "regione": "New Vastir",
+   "unica": false,
+   "livello": 77,
+   "tierMax": 14,
+   "x": 323.29,
+   "y": 429.21,
+   "vicini": [
+    117,
+    81,
+    58,
+    3,
+    6
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 57,
+   "nome": "The Putrid Cloister",
+   "regione": "New Vastir",
+   "unica": true,
+   "livello": 76,
+   "tierMax": 14,
+   "x": 318.21,
+   "y": 450.1,
+   "vicini": [
+    58
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 58,
+   "nome": "Museum",
+   "regione": "New Vastir",
+   "unica": false,
+   "livello": 76,
+   "tierMax": 14,
+   "x": 345.61,
+   "y": 469.33,
+   "vicini": [
+    118,
+    117,
+    104,
+    57,
+    56
+   ],
+   "carte": [
+    {
+     "nome": "Temperance",
+     "chaos": 104
+    }
+   ],
+   "valore": 104,
+   "mediana": 104,
+   "nCarte": 1
+  },
+  {
+   "i": 59,
+   "nome": "Arena",
+   "regione": "Valdo's Rest",
+   "unica": false,
+   "livello": 76,
+   "tierMax": 14,
+   "x": 590.76,
+   "y": 356.93,
+   "vicini": [
+    136,
+    113,
+    65,
+    63
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 60,
+   "nome": "Hallowed Ground",
+   "regione": "Tirn's End",
+   "unica": true,
+   "livello": 73,
+   "tierMax": 14,
+   "x": 401.16,
+   "y": 244.29,
+   "vicini": [
+    61
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 61,
+   "nome": "Cemetery",
+   "regione": "Tirn's End",
+   "unica": false,
+   "livello": 73,
+   "tierMax": 14,
+   "x": 423.17,
+   "y": 256.43,
+   "vicini": [
+    60,
+    45,
+    24,
+    22
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 62,
+   "nome": "Vault",
+   "regione": "Lex Ejoris",
+   "unica": false,
+   "livello": 76,
+   "tierMax": 16,
+   "x": 831.0,
+   "y": 195.42,
+   "vicini": [
+    127,
+    94,
+    39
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 63,
+   "nome": "Estuary",
+   "regione": "Valdo's Rest",
+   "unica": false,
+   "livello": 76,
+   "tierMax": 14,
+   "x": 610.01,
+   "y": 379.19,
+   "vicini": [
+    159,
+    112,
+    76,
+    59
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 64,
+   "nome": "Plateau",
+   "regione": "Lira Arthain",
+   "unica": false,
+   "livello": 76,
+   "tierMax": 16,
+   "x": 828.57,
+   "y": 477.94,
+   "vicini": [
+    95,
+    85,
+    5,
+    154
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 65,
+   "nome": "Waste Pool",
+   "regione": "Valdo's Rest",
+   "unica": false,
+   "livello": 76,
+   "tierMax": 14,
+   "x": 559.64,
+   "y": 383.55,
+   "vicini": [
+    116,
+    59,
+    11
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 66,
+   "nome": "Waterways",
+   "regione": "Tirn's End",
+   "unica": false,
+   "livello": 78,
+   "tierMax": 14,
+   "x": 432.49,
+   "y": 209.13,
+   "vicini": [
+    158,
+    22,
+    10
+   ],
+   "carte": [
+    {
+     "nome": "Lachrymal Necrosis",
+     "chaos": 24
+    }
+   ],
+   "valore": 24,
+   "mediana": 24,
+   "nCarte": 1
+  },
+  {
+   "i": 67,
+   "nome": "Sepulchre",
+   "regione": "Lira Arthain",
+   "unica": false,
+   "livello": 76,
+   "tierMax": 15,
+   "x": 680.4,
+   "y": 473.12,
+   "vicini": [
+    151,
+    95,
+    14
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 68,
+   "nome": "The Twilight Temple",
+   "regione": "Haewark Hamlet",
+   "unica": true,
+   "livello": 76,
+   "tierMax": 14,
+   "x": 328.46,
+   "y": 99.56,
+   "vicini": [
+    69
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 69,
+   "nome": "Moon Temple",
+   "regione": "Haewark Hamlet",
+   "unica": false,
+   "livello": 76,
+   "tierMax": 14,
+   "x": 330.13,
+   "y": 120.05,
+   "vicini": [
+    140,
+    128,
+    109,
+    68,
+    53,
+    47,
+    41
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 70,
+   "nome": "Mineral Pools",
+   "regione": "Haewark Hamlet",
+   "unica": false,
+   "livello": 75,
+   "tierMax": 16,
+   "x": 170.15,
+   "y": 131.4,
+   "vicini": [
+    96,
+    126,
+    125
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 71,
+   "nome": "Tropical Island",
+   "regione": "Tirn's End",
+   "unica": false,
+   "livello": 75,
+   "tierMax": 14,
+   "x": 463.41,
+   "y": 202.28,
+   "vicini": [
+    137,
+    22,
+    9
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 72,
+   "nome": "Shore",
+   "regione": "Lex Proxima",
+   "unica": false,
+   "livello": 75,
+   "tierMax": 16,
+   "x": 508.89,
+   "y": 122.0,
+   "vicini": [
+    0,
+    52,
+    40
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 73,
+   "nome": "Mud Geyser",
+   "regione": "New Vastir",
+   "unica": false,
+   "livello": 75,
+   "tierMax": 16,
+   "x": 188.74,
+   "y": 341.45,
+   "vicini": [
+    143,
+    123,
+    124,
+    89
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 74,
+   "nome": "The Vinktar Square",
+   "regione": "Valdo's Rest",
+   "unica": true,
+   "livello": 75,
+   "tierMax": 16,
+   "x": 537.1,
+   "y": 478.39,
+   "vicini": [
+    75
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 75,
+   "nome": "Courtyard",
+   "regione": "Valdo's Rest",
+   "unica": false,
+   "livello": 75,
+   "tierMax": 16,
+   "x": 513.76,
+   "y": 466.98,
+   "vicini": [
+    108,
+    97,
+    74,
+    28
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 76,
+   "nome": "Armoury",
+   "regione": "Lex Proxima",
+   "unica": false,
+   "livello": 75,
+   "tierMax": 14,
+   "x": 648.9,
+   "y": 376.08,
+   "vicini": [
+    152,
+    63,
+    99
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 77,
+   "nome": "Geode",
+   "regione": "Lex Proxima",
+   "unica": false,
+   "livello": 75,
+   "tierMax": 15,
+   "x": 533.66,
+   "y": 163.3,
+   "vicini": [
+    137,
+    40
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 78,
+   "nome": "Vaults of Atziri",
+   "regione": "Lex Proxima",
+   "unica": true,
+   "livello": 75,
+   "tierMax": 14,
+   "x": 663.97,
+   "y": 237.72,
+   "vicini": [
+    79
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 79,
+   "nome": "Vaal Pyramid",
+   "regione": "Lex Proxima",
+   "unica": false,
+   "livello": 75,
+   "tierMax": 14,
+   "x": 657.41,
+   "y": 221.3,
+   "vicini": [
+    111,
+    78,
+    49,
+    42,
+    19,
+    37
+   ],
+   "carte": [
+    {
+     "nome": "The Damned",
+     "chaos": 71
+    },
+    {
+     "nome": "Unrequited Love",
+     "chaos": 32
+    }
+   ],
+   "valore": 103,
+   "mediana": 51.5,
+   "nCarte": 2
+  },
+  {
+   "i": 80,
+   "nome": "Overgrown Ruin",
+   "regione": "Lex Ejoris",
+   "unica": false,
+   "livello": 75,
+   "tierMax": 15,
+   "x": 779.63,
+   "y": 75.91,
+   "vicini": [
+    160,
+    54,
+    155
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 81,
+   "nome": "Infested Valley",
+   "regione": "Glennach Cairns",
+   "unica": false,
+   "livello": 75,
+   "tierMax": 15,
+   "x": 293.02,
+   "y": 388.19,
+   "vicini": [
+    124,
+    89,
+    56,
+    3,
+    36,
+    6
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 82,
+   "nome": "Laboratory",
+   "regione": "Lira Arthain",
+   "unica": false,
+   "livello": 75,
+   "tierMax": 16,
+   "x": 828.98,
+   "y": 373.8,
+   "vicini": [
+    103,
+    12,
+    5
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 83,
+   "nome": "Bazaar",
+   "regione": "Lira Arthain",
+   "unica": false,
+   "livello": 74,
+   "tierMax": 14,
+   "x": 701.77,
+   "y": 414.99,
+   "vicini": [
+    105,
+    152,
+    95,
+    92,
+    85,
+    99,
+    14
+   ],
+   "carte": [
+    {
+     "nome": "The Silly Boy",
+     "chaos": 58
+    },
+    {
+     "nome": "The Miracle",
+     "chaos": 23
+    },
+    {
+     "nome": "The Slumbering Beast",
+     "chaos": 12
+    }
+   ],
+   "valore": 93,
+   "mediana": 23,
+   "nCarte": 3
+  },
+  {
+   "i": 84,
+   "nome": "Arachnid Nest",
+   "regione": "Lex Ejoris",
+   "unica": false,
+   "livello": 74,
+   "tierMax": 15,
+   "x": 736.19,
+   "y": 147.26,
+   "vicini": [
+    135,
+    54,
+    44,
+    155
+   ],
+   "carte": [
+    {
+     "nome": "Mawr Blaidd",
+     "chaos": 131
+    }
+   ],
+   "valore": 131,
+   "mediana": 131,
+   "nCarte": 1
+  },
+  {
+   "i": 85,
+   "nome": "Gardens",
+   "regione": "Lira Arthain",
+   "unica": false,
+   "livello": 74,
+   "tierMax": 15,
+   "x": 751.86,
+   "y": 451.83,
+   "vicini": [
+    105,
+    83,
+    64
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 86,
+   "nome": "Caer Blaidd, Wolfpack's Den",
+   "regione": "Lex Proxima",
+   "unica": true,
+   "livello": 74,
+   "tierMax": 14,
+   "x": 569.49,
+   "y": 138.4,
+   "vicini": [
+    87
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 87,
+   "nome": "Underground River",
+   "regione": "Lex Proxima",
+   "unica": false,
+   "livello": 74,
+   "tierMax": 14,
+   "x": 591.02,
+   "y": 159.27,
+   "vicini": [
+    137,
+    120,
+    86,
+    49,
+    26,
+    19
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 88,
+   "nome": "Olmec's Sanctum",
+   "regione": "New Vastir",
+   "unica": true,
+   "livello": 74,
+   "tierMax": 15,
+   "x": 221.2,
+   "y": 359.99,
+   "vicini": [
+    89
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 89,
+   "nome": "Bone Crypt",
+   "regione": "New Vastir",
+   "unica": false,
+   "livello": 74,
+   "tierMax": 15,
+   "x": 223.72,
+   "y": 385.39,
+   "vicini": [
+    143,
+    124,
+    157,
+    88,
+    81,
+    73,
+    6
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 90,
+   "nome": "Pillars of Arun",
+   "regione": "Lex Ejoris",
+   "unica": true,
+   "livello": 74,
+   "tierMax": 15,
+   "x": 763.61,
+   "y": 187.07,
+   "vicini": [
+    91
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 91,
+   "nome": "Dunes",
+   "regione": "Lex Ejoris",
+   "unica": false,
+   "livello": 74,
+   "tierMax": 15,
+   "x": 746.36,
+   "y": 207.03,
+   "vicini": [
+    90,
+    44,
+    39,
+    37
+   ],
+   "carte": [
+    {
+     "nome": "The Fortunate",
+     "chaos": 35
+    }
+   ],
+   "valore": 35,
+   "mediana": 35,
+   "nCarte": 1
+  },
+  {
+   "i": 92,
+   "nome": "Ramparts",
+   "regione": "Lira Arthain",
+   "unica": false,
+   "livello": 74,
+   "tierMax": 14,
+   "x": 719.12,
+   "y": 374.91,
+   "vicini": [
+    83,
+    99,
+    55
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 93,
+   "nome": "Residence",
+   "regione": "New Vastir",
+   "unica": false,
+   "livello": 74,
+   "tierMax": 16,
+   "x": 177.15,
+   "y": 480.36,
+   "vicini": [
+    144,
+    29,
+    27
+   ],
+   "carte": [
+    {
+     "nome": "Squandered Prosperity",
+     "chaos": 222
+    }
+   ],
+   "valore": 222,
+   "mediana": 222,
+   "nCarte": 1
+  },
+  {
+   "i": 94,
+   "nome": "Lava Chamber",
+   "regione": "Lex Ejoris",
+   "unica": false,
+   "livello": 74,
+   "tierMax": 16,
+   "x": 832.76,
+   "y": 136.82,
+   "vicini": [
+    160,
+    62,
+    54,
+    39
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 95,
+   "nome": "Coral Ruins",
+   "regione": "Lira Arthain",
+   "unica": false,
+   "livello": 74,
+   "tierMax": 15,
+   "x": 740.62,
+   "y": 472.88,
+   "vicini": [
+    83,
+    67,
+    64,
+    14
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 96,
+   "nome": "Cells",
+   "regione": "Haewark Hamlet",
+   "unica": false,
+   "livello": 70,
+   "tierMax": 16,
+   "x": 166.17,
+   "y": 108.11,
+   "vicini": [
+    141,
+    70,
+    4
+   ],
+   "carte": [
+    {
+     "nome": "The Dungeon Master",
+     "chaos": 42
+    }
+   ],
+   "valore": 42,
+   "mediana": 42,
+   "nCarte": 1
+  },
+  {
+   "i": 97,
+   "nome": "Underground Sea",
+   "regione": "Valdo's Rest",
+   "unica": false,
+   "livello": 73,
+   "tierMax": 16,
+   "x": 544.75,
+   "y": 460.54,
+   "vicini": [
+    108,
+    75,
+    21
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 98,
+   "nome": "Poorjoy's Asylum",
+   "regione": "Lex Proxima",
+   "unica": true,
+   "livello": 76,
+   "tierMax": 14,
+   "x": 696.85,
+   "y": 336.94,
+   "vicini": [
+    99
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 99,
+   "nome": "Temple",
+   "regione": "Lex Proxima",
+   "unica": false,
+   "livello": 76,
+   "tierMax": 14,
+   "x": 681.08,
+   "y": 381.43,
+   "vicini": [
+    112,
+    152,
+    92,
+    83,
+    76,
+    98
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 100,
+   "nome": "Maelström of Chaos",
+   "regione": "Tirn's End",
+   "unica": true,
+   "livello": 73,
+   "tierMax": 14,
+   "x": 372.27,
+   "y": 221.78,
+   "vicini": [
+    102
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 101,
+   "nome": "Ashen Wood",
+   "regione": "Lex Proxima",
+   "unica": false,
+   "livello": 73,
+   "tierMax": 16,
+   "x": 767.43,
+   "y": 261.31,
+   "vicini": [
+    133,
+    127,
+    39,
+    163
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 102,
+   "nome": "Atoll",
+   "regione": "Tirn's End",
+   "unica": false,
+   "livello": 73,
+   "tierMax": 14,
+   "x": 415.17,
+   "y": 235.44,
+   "vicini": [
+    139,
+    100,
+    22,
+    10
+   ],
+   "carte": [
+    {
+     "nome": "The Destination",
+     "chaos": 100
+    }
+   ],
+   "valore": 100,
+   "mediana": 100,
+   "nCarte": 1
+  },
+  {
+   "i": 103,
+   "nome": "Thicket",
+   "regione": "Lira Arthain",
+   "unica": false,
+   "livello": 73,
+   "tierMax": 15,
+   "x": 786.21,
+   "y": 375.5,
+   "vicini": [
+    105,
+    82,
+    51,
+    12,
+    5,
+    13,
+    154
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 104,
+   "nome": "Barrows",
+   "regione": "New Vastir",
+   "unica": false,
+   "livello": 72,
+   "tierMax": 14,
+   "x": 389.81,
+   "y": 486.32,
+   "vicini": [
+    145,
+    138,
+    115,
+    58
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 105,
+   "nome": "Spider Lair",
+   "regione": "Lira Arthain",
+   "unica": false,
+   "livello": 72,
+   "tierMax": 15,
+   "x": 771.3,
+   "y": 434.76,
+   "vicini": [
+    103,
+    85,
+    83
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 106,
+   "nome": "Mausoleum",
+   "regione": "Glennach Cairns",
+   "unica": false,
+   "livello": 73,
+   "tierMax": 15,
+   "x": 310.98,
+   "y": 288.74,
+   "vicini": [
+    123,
+    162,
+    50,
+    23,
+    36
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 107,
+   "nome": "Ivory Temple",
+   "regione": "Lex Ejoris",
+   "unica": false,
+   "livello": 72,
+   "tierMax": 14,
+   "x": 652.5,
+   "y": 75.83,
+   "vicini": [
+    26,
+    155
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 108,
+   "nome": "Ancient City",
+   "regione": "Valdo's Rest",
+   "unica": false,
+   "livello": 72,
+   "tierMax": 15,
+   "x": 523.04,
+   "y": 440.16,
+   "vicini": [
+    131,
+    97,
+    75,
+    43,
+    28
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 109,
+   "nome": "Toxic Sewer",
+   "regione": "Haewark Hamlet",
+   "unica": false,
+   "livello": 72,
+   "tierMax": 14,
+   "x": 307.37,
+   "y": 135.22,
+   "vicini": [
+    69,
+    47,
+    2,
+    25
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 110,
+   "nome": "Doryani's Machinarium",
+   "regione": "Lex Proxima",
+   "unica": true,
+   "livello": 72,
+   "tierMax": 14,
+   "x": 673.75,
+   "y": 199.3,
+   "vicini": [
+    111
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 111,
+   "nome": "Maze",
+   "regione": "Lex Proxima",
+   "unica": false,
+   "livello": 72,
+   "tierMax": 14,
+   "x": 672.59,
+   "y": 183.04,
+   "vicini": [
+    135,
+    110,
+    79
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 112,
+   "nome": "Haunted Mansion",
+   "regione": "Lex Proxima",
+   "unica": false,
+   "livello": 72,
+   "tierMax": 14,
+   "x": 656.3,
+   "y": 319.09,
+   "vicini": [
+    136,
+    156,
+    63,
+    99,
+    15
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 113,
+   "nome": "Channel",
+   "regione": "Valdo's Rest",
+   "unica": false,
+   "livello": 72,
+   "tierMax": 14,
+   "x": 549.16,
+   "y": 330.92,
+   "vicini": [
+    136,
+    134,
+    116,
+    59
+   ],
+   "carte": [
+    {
+     "nome": "The Destination",
+     "chaos": 100
+    }
+   ],
+   "valore": 100,
+   "mediana": 100,
+   "nCarte": 1
+  },
+  {
+   "i": 114,
+   "nome": "Sulphur Vents",
+   "regione": "Glennach Cairns",
+   "unica": false,
+   "livello": 72,
+   "tierMax": 14,
+   "x": 438.15,
+   "y": 373.04,
+   "vicini": [
+    147,
+    138,
+    30
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 115,
+   "nome": "Fields",
+   "regione": "Glennach Cairns",
+   "unica": false,
+   "livello": 73,
+   "tierMax": 14,
+   "x": 467.03,
+   "y": 414.33,
+   "vicini": [
+    104,
+    43,
+    153
+   ],
+   "carte": [
+    {
+     "nome": "The Fortunate",
+     "chaos": 35
+    }
+   ],
+   "valore": 35,
+   "mediana": 35,
+   "nCarte": 1
+  },
+  {
+   "i": 116,
+   "nome": "Conservatory",
+   "regione": "Valdo's Rest",
+   "unica": false,
+   "livello": 72,
+   "tierMax": 14,
+   "x": 549.68,
+   "y": 361.87,
+   "vicini": [
+    113,
+    65
+   ],
+   "carte": [
+    {
+     "nome": "The Forbidden Fruit",
+     "chaos": 62
+    }
+   ],
+   "valore": 62,
+   "mediana": 62,
+   "nCarte": 1
+  },
+  {
+   "i": 117,
+   "nome": "Canyon",
+   "regione": "Glennach Cairns",
+   "unica": false,
+   "livello": 71,
+   "tierMax": 14,
+   "x": 359.78,
+   "y": 424.03,
+   "vicini": [
+    145,
+    58,
+    56,
+    3
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 118,
+   "nome": "Lighthouse",
+   "regione": "New Vastir",
+   "unica": false,
+   "livello": 71,
+   "tierMax": 15,
+   "x": 303.65,
+   "y": 460.85,
+   "vicini": [
+    130,
+    58,
+    6
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 119,
+   "nome": "Volcano",
+   "regione": "Glennach Cairns",
+   "unica": false,
+   "livello": 71,
+   "tierMax": 14,
+   "x": 405.96,
+   "y": 336.1,
+   "vicini": [
+    147,
+    30,
+    1
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 120,
+   "nome": "Glacier",
+   "regione": "Lex Proxima",
+   "unica": false,
+   "livello": 71,
+   "tierMax": 14,
+   "x": 571.57,
+   "y": 206.83,
+   "vicini": [
+    137,
+    87,
+    35,
+    19
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 121,
+   "nome": "Perandus Manor",
+   "regione": "Haewark Hamlet",
+   "unica": true,
+   "livello": 71,
+   "tierMax": 16,
+   "x": 168.17,
+   "y": 194.38,
+   "vicini": [
+    125
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 122,
+   "nome": "Whakawairua Tuahu",
+   "regione": "Glennach Cairns",
+   "unica": true,
+   "livello": 71,
+   "tierMax": 15,
+   "x": 238.4,
+   "y": 320.93,
+   "vicini": [
+    124
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 123,
+   "nome": "Courthouse",
+   "regione": "Glennach Cairns",
+   "unica": false,
+   "livello": 71,
+   "tierMax": 16,
+   "x": 221.78,
+   "y": 295.64,
+   "vicini": [
+    132,
+    106,
+    73
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 124,
+   "nome": "Strand",
+   "regione": "Glennach Cairns",
+   "unica": false,
+   "livello": 71,
+   "tierMax": 15,
+   "x": 250.88,
+   "y": 338.06,
+   "vicini": [
+    122,
+    89,
+    81,
+    73,
+    23,
+    36
+   ],
+   "carte": [
+    {
+     "nome": "The Journey",
+     "chaos": 128
+    },
+    {
+     "nome": "The Leviathan",
+     "chaos": 53
+    }
+   ],
+   "valore": 181,
+   "mediana": 90.5,
+   "nCarte": 2
+  },
+  {
+   "i": 125,
+   "nome": "Chateau",
+   "regione": "Haewark Hamlet",
+   "unica": false,
+   "livello": 71,
+   "tierMax": 16,
+   "x": 165.2,
+   "y": 167.61,
+   "vicini": [
+    121,
+    149,
+    70,
+    38
+   ],
+   "carte": [
+    {
+     "nome": "Squandered Prosperity",
+     "chaos": 222
+    },
+    {
+     "nome": "The Slumbering Beast",
+     "chaos": 12
+    }
+   ],
+   "valore": 234,
+   "mediana": 117.0,
+   "nCarte": 2
+  },
+  {
+   "i": 126,
+   "nome": "Relic Chambers",
+   "regione": "Haewark Hamlet",
+   "unica": false,
+   "livello": 71,
+   "tierMax": 15,
+   "x": 219.31,
+   "y": 138.74,
+   "vicini": [
+    141,
+    70,
+    38
+   ],
+   "carte": [
+    {
+     "nome": "The Enlightened",
+     "chaos": 81
+    }
+   ],
+   "valore": 81,
+   "mediana": 81,
+   "nCarte": 1
+  },
+  {
+   "i": 127,
+   "nome": "City Square",
+   "regione": "Lex Ejoris",
+   "unica": false,
+   "livello": 71,
+   "tierMax": 16,
+   "x": 822.35,
+   "y": 249.41,
+   "vicini": [
+    101,
+    62,
+    12
+   ],
+   "carte": [
+    {
+     "nome": "The Mayor",
+     "chaos": 140
+    },
+    {
+     "nome": "Home",
+     "chaos": 55
+    }
+   ],
+   "valore": 195,
+   "mediana": 97.5,
+   "nCarte": 2
+  },
+  {
+   "i": 128,
+   "nome": "Arcade",
+   "regione": "Haewark Hamlet",
+   "unica": false,
+   "livello": 70,
+   "tierMax": 15,
+   "x": 282.86,
+   "y": 99.36,
+   "vicini": [
+    141,
+    69,
+    41,
+    7
+   ],
+   "carte": [
+    {
+     "nome": "The Mayor",
+     "chaos": 140
+    },
+    {
+     "nome": "The Miracle",
+     "chaos": 23
+    }
+   ],
+   "valore": 163,
+   "mediana": 81.5,
+   "nCarte": 2
+  },
+  {
+   "i": 129,
+   "nome": "Crater",
+   "regione": "Tirn's End",
+   "unica": false,
+   "livello": 74,
+   "tierMax": 14,
+   "x": 321.58,
+   "y": 198.74,
+   "vicini": [
+    139,
+    161,
+    25,
+    10
+   ],
+   "carte": [
+    {
+     "nome": "The Demon",
+     "chaos": 14
+    }
+   ],
+   "valore": 14,
+   "mediana": 14,
+   "nCarte": 1
+  },
+  {
+   "i": 130,
+   "nome": "Burial Chambers",
+   "regione": "New Vastir",
+   "unica": false,
+   "livello": 70,
+   "tierMax": 15,
+   "x": 268.26,
+   "y": 472.32,
+   "vicini": [
+    118,
+    6,
+    27
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 131,
+   "nome": "Port",
+   "regione": "Valdo's Rest",
+   "unica": false,
+   "livello": 70,
+   "tierMax": 14,
+   "x": 575.22,
+   "y": 459.74,
+   "vicini": [
+    108,
+    151,
+    43,
+    11
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 132,
+   "nome": "Peninsula",
+   "regione": "Glennach Cairns",
+   "unica": false,
+   "livello": 70,
+   "tierMax": 16,
+   "x": 244.27,
+   "y": 265.61,
+   "vicini": [
+    123,
+    162,
+    149
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 133,
+   "nome": "Leyline",
+   "regione": "Lex Proxima",
+   "unica": false,
+   "livello": 70,
+   "tierMax": 15,
+   "x": 734.61,
+   "y": 236.14,
+   "vicini": [
+    101,
+    37
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 134,
+   "nome": "Excavation",
+   "regione": "Valdo's Rest",
+   "unica": false,
+   "livello": 70,
+   "tierMax": 14,
+   "x": 526.96,
+   "y": 345.82,
+   "vicini": [
+    113,
+    17
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 135,
+   "nome": "Fungal Hollow",
+   "regione": "Lex Ejoris",
+   "unica": false,
+   "livello": 70,
+   "tierMax": 14,
+   "x": 711.81,
+   "y": 153.34,
+   "vicini": [
+    111,
+    150,
+    84,
+    49,
+    44,
+    37
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 136,
+   "nome": "Cage",
+   "regione": "Lex Proxima",
+   "unica": false,
+   "livello": 70,
+   "tierMax": 14,
+   "x": 591.21,
+   "y": 315.09,
+   "vicini": [
+    112,
+    113,
+    59,
+    42
+   ],
+   "carte": [
+    {
+     "nome": "The Apothecary",
+     "chaos": 41
+    }
+   ],
+   "valore": 41,
+   "mediana": 41,
+   "nCarte": 1
+  },
+  {
+   "i": 137,
+   "nome": "Iceberg",
+   "regione": "Lex Proxima",
+   "unica": false,
+   "livello": 70,
+   "tierMax": 14,
+   "x": 524.89,
+   "y": 200.8,
+   "vicini": [
+    120,
+    87,
+    77,
+    71,
+    35
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 138,
+   "nome": "Marshes",
+   "regione": "Glennach Cairns",
+   "unica": false,
+   "livello": 69,
+   "tierMax": 14,
+   "x": 434.63,
+   "y": 419.68,
+   "vicini": [
+    145,
+    114,
+    104,
+    30,
+    153
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 139,
+   "nome": "Flooded Mine",
+   "regione": "Tirn's End",
+   "unica": false,
+   "livello": 69,
+   "tierMax": 14,
+   "x": 359.88,
+   "y": 233.4,
+   "vicini": [
+    148,
+    102,
+    129
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 140,
+   "nome": "Arid Lake",
+   "regione": "Tirn's End",
+   "unica": false,
+   "livello": 69,
+   "tierMax": 14,
+   "x": 393.32,
+   "y": 141.51,
+   "vicini": [
+    158,
+    69,
+    47,
+    32
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 141,
+   "nome": "Desert",
+   "regione": "Haewark Hamlet",
+   "unica": false,
+   "livello": 69,
+   "tierMax": 15,
+   "x": 236.07,
+   "y": 99.98,
+   "vicini": [
+    96,
+    128,
+    126,
+    4,
+    2,
+    7
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 142,
+   "nome": "Pen",
+   "regione": "Haewark Hamlet",
+   "unica": false,
+   "livello": 69,
+   "tierMax": 15,
+   "x": 239.45,
+   "y": 175.82,
+   "vicini": [
+    149,
+    38,
+    25,
+    16
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 143,
+   "nome": "Alleyways",
+   "regione": "New Vastir",
+   "unica": false,
+   "livello": 69,
+   "tierMax": 16,
+   "x": 166.93,
+   "y": 385.25,
+   "vicini": [
+    157,
+    89,
+    73,
+    29
+   ],
+   "carte": [
+    {
+     "nome": "The Side Quest",
+     "chaos": 31
+    }
+   ],
+   "valore": 31,
+   "mediana": 31,
+   "nCarte": 1
+  },
+  {
+   "i": 144,
+   "nome": "Dungeon",
+   "regione": "New Vastir",
+   "unica": false,
+   "livello": 68,
+   "tierMax": 15,
+   "x": 201.8,
+   "y": 456.49,
+   "vicini": [
+    157,
+    93,
+    27
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 145,
+   "nome": "Graveyard",
+   "regione": "Glennach Cairns",
+   "unica": false,
+   "livello": 68,
+   "tierMax": 14,
+   "x": 404.32,
+   "y": 418.81,
+   "vicini": [
+    138,
+    117,
+    104,
+    3,
+    30
+   ],
+   "carte": [
+    {
+     "nome": "Damnation",
+     "chaos": 433
+    }
+   ],
+   "valore": 433,
+   "mediana": 433,
+   "nCarte": 1
+  },
+  {
+   "i": 146,
+   "nome": "Grotto",
+   "regione": "Valdo's Rest",
+   "unica": false,
+   "livello": 71,
+   "tierMax": 14,
+   "x": 534.82,
+   "y": 390.03,
+   "vicini": [
+    17,
+    11
+   ],
+   "carte": [
+    {
+     "nome": "Lachrymal Necrosis",
+     "chaos": 24
+    }
+   ],
+   "valore": 24,
+   "mediana": 24,
+   "nCarte": 1
+  },
+  {
+   "i": 147,
+   "nome": "Beach",
+   "regione": "Glennach Cairns",
+   "unica": false,
+   "livello": 68,
+   "tierMax": 14,
+   "x": 450.83,
+   "y": 331.68,
+   "vicini": [
+    119,
+    114,
+    30,
+    24,
+    153
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 148,
+   "nome": "Lookout",
+   "regione": "Tirn's End",
+   "unica": false,
+   "livello": 68,
+   "tierMax": 15,
+   "x": 314.84,
+   "y": 242.77,
+   "vicini": [
+    139,
+    18
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 149,
+   "nome": "Jungle Valley",
+   "regione": "Glennach Cairns",
+   "unica": false,
+   "livello": 73,
+   "tierMax": 16,
+   "x": 222.79,
+   "y": 234.6,
+   "vicini": [
+    142,
+    132,
+    125,
+    18
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 150,
+   "nome": "Phantasmagoria",
+   "regione": "Lex Ejoris",
+   "unica": false,
+   "livello": 73,
+   "tierMax": 14,
+   "x": 697.42,
+   "y": 128.75,
+   "vicini": [
+    135,
+    34,
+    155
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 151,
+   "nome": "Academy",
+   "regione": "Valdo's Rest",
+   "unica": false,
+   "livello": 73,
+   "tierMax": 14,
+   "x": 623.39,
+   "y": 469.07,
+   "vicini": [
+    131,
+    152,
+    67,
+    14,
+    11
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 152,
+   "nome": "Wharf",
+   "regione": "Valdo's Rest",
+   "unica": false,
+   "livello": 73,
+   "tierMax": 14,
+   "x": 646.98,
+   "y": 423.05,
+   "vicini": [
+    159,
+    151,
+    83,
+    76,
+    99
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 153,
+   "nome": "Dry Sea",
+   "regione": "Glennach Cairns",
+   "unica": false,
+   "livello": 75,
+   "tierMax": 14,
+   "x": 465.69,
+   "y": 362.08,
+   "vicini": [
+    147,
+    138,
+    115,
+    17
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 154,
+   "nome": "Stagnation",
+   "regione": "Lira Arthain",
+   "unica": false,
+   "livello": 76,
+   "tierMax": 15,
+   "x": 789.56,
+   "y": 417.52,
+   "vicini": [
+    103,
+    64
+   ],
+   "carte": [
+    {
+     "nome": "Avian Pursuit",
+     "chaos": 29
+    }
+   ],
+   "valore": 29,
+   "mediana": 29,
+   "nCarte": 1
+  },
+  {
+   "i": 155,
+   "nome": "Bramble Valley",
+   "regione": "Lex Ejoris",
+   "unica": false,
+   "livello": 81,
+   "tierMax": 15,
+   "x": 721.19,
+   "y": 82.14,
+   "vicini": [
+    107,
+    150,
+    84,
+    80,
+    48
+   ],
+   "carte": [
+    {
+     "nome": "Mawr Blaidd",
+     "chaos": 131
+    },
+    {
+     "nome": "Avian Pursuit",
+     "chaos": 29
+    }
+   ],
+   "valore": 160,
+   "mediana": 80.0,
+   "nCarte": 2
+  },
+  {
+   "i": 156,
+   "nome": "Frozen Cabins",
+   "regione": "Lex Proxima",
+   "unica": false,
+   "livello": 69,
+   "tierMax": 14,
+   "x": 718.36,
+   "y": 307.73,
+   "vicini": [
+    112,
+    51,
+    13,
+    163
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 157,
+   "nome": "Grave Trough",
+   "regione": "New Vastir",
+   "unica": false,
+   "livello": 78,
+   "tierMax": 15,
+   "x": 203.09,
+   "y": 422.86,
+   "vicini": [
+    144,
+    143,
+    89,
+    29
+   ],
+   "carte": [
+    {
+     "nome": "Pearls Before Swine",
+     "chaos": 21
+    }
+   ],
+   "valore": 21,
+   "mediana": 21,
+   "nCarte": 1
+  },
+  {
+   "i": 158,
+   "nome": "Crimson Township",
+   "regione": "Tirn's End",
+   "unica": false,
+   "livello": 79,
+   "tierMax": 14,
+   "x": 433.82,
+   "y": 155.62,
+   "vicini": [
+    140,
+    66,
+    32
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 159,
+   "nome": "Forking River",
+   "regione": "Valdo's Rest",
+   "unica": false,
+   "livello": 70,
+   "tierMax": 14,
+   "x": 627.58,
+   "y": 431.98,
+   "vicini": [
+    152,
+    63
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 160,
+   "nome": "Foundry",
+   "regione": "Lex Ejoris",
+   "unica": false,
+   "livello": 82,
+   "tierMax": 16,
+   "x": 830.66,
+   "y": 83.51,
+   "vicini": [
+    94,
+    80,
+    54
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 161,
+   "nome": "Cold River",
+   "regione": "Tirn's End",
+   "unica": false,
+   "livello": 78,
+   "tierMax": 15,
+   "x": 293.12,
+   "y": 202.69,
+   "vicini": [
+    129,
+    16
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 162,
+   "nome": "Forbidden Woods",
+   "regione": "Glennach Cairns",
+   "unica": false,
+   "livello": 77,
+   "tierMax": 15,
+   "x": 314.19,
+   "y": 264.66,
+   "vicini": [
+    132,
+    106,
+    45
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  },
+  {
+   "i": 163,
+   "nome": "Silo",
+   "regione": "Lex Proxima",
+   "unica": false,
+   "livello": 72,
+   "tierMax": 15,
+   "x": 703.79,
+   "y": 266.57,
+   "vicini": [
+    156,
+    101,
+    37,
+    15
+   ],
+   "carte": [],
+   "valore": 0,
+   "mediana": 0,
+   "nCarte": 0
+  }
+ ],
+ "fonte": "poeatlas.net (coordinate) + poe.ninja (prezzi) + poedb (aree di drop)",
+ "fuoriAtlante": [
+  {
+   "nome": "Sanctuary",
+   "valore": 618,
+   "mediana": 104,
+   "nCarte": 3,
+   "carte": [
+    {
+     "nome": "Damnation",
+     "chaos": 433
+    },
+    {
+     "nome": "Temperance",
+     "chaos": 104
+    },
+    {
+     "nome": "The Enlightened",
+     "chaos": 81
+    }
+   ]
+  },
+  {
+   "nome": "Courtyard of Wasting",
+   "valore": 332,
+   "mediana": 93,
+   "nCarte": 3,
+   "carte": [
+    {
+     "nome": "The Gulf",
+     "chaos": 208
+    },
+    {
+     "nome": "Reckless Ambition",
+     "chaos": 93
+    },
+    {
+     "nome": "The Side Quest",
+     "chaos": 31
+    }
+   ]
+  },
+  {
+   "nome": "Abomination",
+   "valore": 178,
+   "mediana": 89.0,
+   "nCarte": 2,
+   "carte": [
+    {
+     "nome": "The Nurse",
+     "chaos": 139
+    },
+    {
+     "nome": "The Artist",
+     "chaos": 39
+    }
+   ]
+  },
+  {
+   "nome": "Fortress",
+   "valore": 107,
+   "mediana": 107,
+   "nCarte": 1,
+   "carte": [
+    {
+     "nome": "Auspicious Ambitions",
+     "chaos": 107
+    }
+   ]
+  },
+  {
+   "nome": "Forge of the Phoenix",
+   "valore": 89,
+   "mediana": 44.5,
+   "nCarte": 2,
+   "carte": [
+    {
+     "nome": "Perfection",
+     "chaos": 55
+    },
+    {
+     "nome": "The Everlasting",
+     "chaos": 34
+    }
+   ]
+  },
+  {
+   "nome": "Lair of the Hydra",
+   "valore": 89,
+   "mediana": 44.5,
+   "nCarte": 2,
+   "carte": [
+    {
+     "nome": "Perfection",
+     "chaos": 55
+    },
+    {
+     "nome": "The Everlasting",
+     "chaos": 34
+    }
+   ]
+  },
+  {
+   "nome": "Maze of the Minotaur",
+   "valore": 89,
+   "mediana": 44.5,
+   "nCarte": 2,
+   "carte": [
+    {
+     "nome": "Perfection",
+     "chaos": 55
+    },
+    {
+     "nome": "The Everlasting",
+     "chaos": 34
+    }
+   ]
+  },
+  {
+   "nome": "Ziggurat",
+   "valore": 81,
+   "mediana": 81,
+   "nCarte": 1,
+   "carte": [
+    {
+     "nome": "The Enlightened",
+     "chaos": 81
+    }
+   ]
+  },
+  {
+   "nome": "Pit of the Chimera",
+   "valore": 34,
+   "mediana": 34,
+   "nCarte": 1,
+   "carte": [
+    {
+     "nome": "The Everlasting",
+     "chaos": 34
+    }
+   ]
+  },
+  {
+   "nome": "Citadel",
+   "valore": 24,
+   "mediana": 24,
+   "nCarte": 1,
+   "carte": [
+    {
+     "nome": "The Shieldbearer",
+     "chaos": 24
+    }
+   ]
+  }
+ ]
+}
