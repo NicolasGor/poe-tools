@@ -4,20 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atlante — mappe da farmare, carte e punteggi</title>
+<link rel="stylesheet" href="../stile.css">
 <style>
-  :root{
-    --bg:#0f131a; --panel:#171d27; --panel2:#131923; --line:#28313f; --line2:#3a4658;
-    --text:#e6e9ef; --muted:#8b95a8; --label:#78839a;
-    --gold:#f0b94a; --good:#60d394; --bad:#e07a6f; --uni:#af6025;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;padding:1.2rem 1rem 4rem;background:var(--bg);color:var(--text);
-       font:14px/1.5 Inter,ui-sans-serif,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
-  .wrap{max-width:76rem;margin:0 auto}
-  a{color:var(--gold)}
-  .back{font-size:.8rem}
-  h1{margin:.5rem 0 .25rem;font-size:1.4rem}
-  .sub{margin:0 0 .8rem;color:var(--muted);font-size:.88rem;max-width:56rem}
   img.ic{width:1.2rem;height:1.2rem;object-fit:contain;vertical-align:middle;border-radius:3px;background:#000}
 
   .esterno{display:flex;align-items:center;gap:.7rem;background:var(--panel);border:1px solid var(--gold);
@@ -118,18 +106,36 @@
   aside .collegate a{display:block;font-size:.78rem;margin:.1rem 0}
   .vuoto{color:var(--muted);font-size:.82rem}
 
-  .avviso{background:rgba(240,185,74,.07);border:1px solid rgba(240,185,74,.3);border-radius:6px;
-          padding:.7rem .9rem;margin:1rem 0;font-size:.83rem;color:var(--muted)}
-  .avviso b{color:var(--text)}
   @media(max-width:960px){ .griglia{grid-template-columns:1fr} aside{position:static;max-height:none}
     table{display:block;overflow-x:auto} }
 </style>
 </head>
-<body>
+<body class="largo">
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="marchio" href="../index.html">PoE <span>Tools</span></a>
+    <div class="nav-link">
+      <a href="../atlante/" aria-current="page">Atlante</a>
+      <a href="../farming/">Farming</a>
+      <a href="../mappe/">Mod mappa</a>
+      <a href="../build-confronto/">Build</a>
+      <a href="../heist/">Heist</a>
+    </div>
+    <span class="nav-patch">patch 3.29.2</span>
+  </div>
+</nav>
+
 <div class="wrap">
-  <div class="back"><a href="../index.html">← Tutti gli strumenti</a></div>
-  <h1>Atlante — mappe da farmare</h1>
-  <p class="sub">154 mappe ottenibili nell'atlante di questa lega, con le divination card che ci cadono e i punteggi layout / densità / boss.</p>
+  <header class="testata">
+    <h1>Atlante — mappe da farmare</h1>
+    <p class="sub">Le mappe ottenibili nell'atlante di questa lega, con le <b>divination card</b> che ci cadono e i punteggi <b>layout</b>, <b>densità</b> e <b>boss</b>.</p>
+    <div class="badges">
+      <span class="badge">patch <b>3.29.2</b></span>
+      <span class="badge">lega <b>Allflame</b></span>
+      <span class="badge oro"><b>154</b> mappe · <b>144</b> con carte</span>
+    </div>
+  </header>
 
   <div class="esterno">
     <b>Vuoi il sito originale, con più dettagli?</b>
@@ -202,6 +208,10 @@
 <script>
 let D=null, vista="elenco", filtro="tutte", campo="totale", sel=null, cerca="";
 const q = s => document.querySelector(s);
+// I prezzi in chaos non hanno bisogno dei centesimi: sopra 100 si arrotonda
+// all'intero, sotto si tiene un decimale perche' li' la differenza conta.
+const chaos = v => (v >= 100 ? Math.round(v) : Math.round(v * 10) / 10)
+  .toLocaleString('it-IT', { maximumFractionDigits: 1 });
 const iconaMappa = n => n.icona ? `img/mappe/${n.icona.split("/").pop()}.png` : "";
 const iconaCarta = c => c.arte ? `img/carte/${c.arte}.png` : "";
 
@@ -235,9 +245,9 @@ function elenco(){
       <td class="n">${n.rating.density ?? '—'}</td>
       <td class="n">${n.rating.boss ?? '—'}</td>
       <td class="n">${n.nCarte}</td>
-      <td class="n" style="color:var(--good)">${n.totale.toLocaleString('it-IT')}</td>
-      <td class="n">${n.media.toLocaleString('it-IT')}</td>
-      <td class="n">${n.mediana.toLocaleString('it-IT')}</td>
+      <td class="n" style="color:var(--good)">${chaos(n.totale)}</td>
+      <td class="n">${chaos(n.media)}</td>
+      <td class="n">${chaos(n.mediana)}</td>
       <td style="color:var(--muted)">${n.carte[0]?n.carte[0].nome:''}</td>
     </tr>`).join("");
   q("#cl tbody").querySelectorAll("tr").forEach(tr => tr.onclick = () => { sel = tr.dataset.nome; ridisegna(); pannello(); });
@@ -295,7 +305,7 @@ function mappa(){
     d.className = "nodo" + (unica?" unica":"") + (sel===n.nome?" sel":"") + (!visibile(n)?" spento":"");
     d.style.left = (cx(n) - RAGGIO_NODO) + "px";
     d.style.top  = (cy(n) - RAGGIO_NODO) + "px";
-    d.title = `${n.nome} — ${n.totale.toLocaleString('it-IT')} c totale, ${n.nCarte} carte`;
+    d.title = `${n.nome} — ${chaos(n.totale)} c totale, ${n.nCarte} carte`;
     d.innerHTML =
       `<div class="cornice">${n.icona?`<img src="${iconaMappa(n)}" loading="lazy" alt="">`:""}</div>` +
       `<div class="etich">${n.nome}</div>`;
@@ -373,12 +383,12 @@ function pannello(){
       <div><b>${n.rating.boss ?? '—'}</b><span>boss</span></div>
     </div>
     <div class="kpi">
-      <div><b>${n.totale.toLocaleString('it-IT')} c</b><span>totale · ${n.nCarte} carte</span></div>
-      <div><b>${n.mediana.toLocaleString('it-IT')} c</b><span>mediana</span></div>
+      <div><b>${chaos(n.totale)} c</b><span>totale · ${n.nCarte} carte</span></div>
+      <div><b>${chaos(n.mediana)} c</b><span>mediana</span></div>
     </div>
     ${n.tags.length ? `<div class="tags">${n.tags.map(t=>`<span>${t.replace(/_/g,' ')}</span>`).join("")}</div>` : ""}
     ${n.carte.length
-      ? n.carte.map(c=>`<div class="carta">${c.arte?`<img src="${iconaCarta(c)}" loading="lazy">`:''}<b>${c.nome}</b><span>${c.prezzo.toLocaleString('it-IT')} c</span></div>`).join("")
+      ? n.carte.map(c=>`<div class="carta">${c.arte?`<img src="${iconaCarta(c)}" loading="lazy">`:''}<b>${c.nome}</b><span>${chaos(c.prezzo)} c</span></div>`).join("")
       : `<div class="vuoto">Nessuna divination card nota qui.</div>`}
     ${n.collegate.length ? `<div class="collegate" style="margin-top:.6rem"><b style="font-size:.76rem;color:var(--label)">Collegate</b>${n.collegate.map(c=>`<a href="#" data-nome="${c}">${c}</a>`).join("")}</div>` : ""}
   `;

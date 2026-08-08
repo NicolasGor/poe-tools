@@ -1,0 +1,239 @@
+/* ===========================================================================
+   PoE Tools — sistema di design condiviso
+   Un solo file per tutte le pagine: token, tipografia, header, componenti.
+   Le pagine aggiungono solo ciò che è davvero specifico (la mappa dell'atlante,
+   la griglia del gear, l'albero passivo).
+   File locale, non un CDN: la regola "zero dipendenze esterne" resta rispettata.
+   =========================================================================== */
+
+/* ---------- Token ---------- */
+:root{
+  /* superfici, dal fondo verso l'alto */
+  --bg:        #0e1116;
+  --bg-alt:    #12161d;
+  --panel:     #171c24;
+  --panel2:    #131820;
+  --panel-alto:#1d232d;
+  --line:      #262d39;
+  --line2:     #384354;
+
+  /* testo */
+  --text:  #e8ebf1;
+  --muted: #939eb2;
+  --label: #737e93;
+
+  /* accento e semantica */
+  --gold:      #f0b94a;
+  --gold-scuro:#c99a37;
+  --good:      #5fd3a0;
+  --bad:       #e5786d;
+  --warn:      #e0a33f;
+
+  /* rarità degli item di PoE */
+  --normal:#c8c8c8;
+  --magic: #8888ff;
+  --rare:  #ffff77;
+  --unique:#af6025;
+  --uni:   #af6025; /* alias storico */
+
+  /* tipografia */
+  --font: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", "Source Code Pro", Menlo, Consolas, monospace;
+
+  /* scala tipografica */
+  --t-xs:  .72rem;
+  --t-sm:  .8rem;
+  --t-base:.875rem;
+  --t-md:  1rem;
+  --t-lg:  1.25rem;
+  --t-xl:  1.6rem;
+  --t-2xl: 2.1rem;
+
+  /* spaziatura */
+  --s1:.25rem; --s2:.5rem; --s3:.75rem; --s4:1rem;
+  --s5:1.5rem; --s6:2rem;  --s7:3rem;   --s8:4rem;
+
+  /* forma */
+  --r-sm:5px; --r:8px; --r-lg:12px; --r-full:999px;
+  --ombra:    0 1px 2px rgba(0,0,0,.4);
+  --ombra-alta:0 8px 28px rgba(0,0,0,.45);
+  --nav-h:3.5rem;
+
+  /* larghezza della colonna: barra e contenuto la condividono, così restano
+     allineati anche sulle pagine che la allargano (vedi .wrap-largo) */
+  --colonna:76rem;
+}
+
+/* ---------- Reset ---------- */
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font:var(--t-base)/1.6 var(--font);
+  -webkit-font-smoothing:antialiased;
+  /* alone caldo appena percettibile, richiama la pergamena dell'atlante */
+  background-image:radial-gradient(120rem 40rem at 50% -10rem, rgba(240,185,74,.05), transparent 70%);
+  background-repeat:no-repeat;
+}
+img{max-width:100%}
+a{color:var(--gold);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3{margin:0;line-height:1.25;letter-spacing:-.015em;font-weight:650}
+p{margin:0}
+table{border-collapse:collapse;width:100%}
+code{font-family:var(--mono);font-size:.92em}
+
+/* ---------- Impaginazione ---------- */
+.wrap{max-width:var(--colonna);margin:0 auto;padding:0 var(--s4)}
+/* da mettere su <html> o <body>, non sul solo contenitore, così anche la barra
+   in alto si allarga insieme e i due restano allineati */
+.largo{--colonna:96rem}
+.sezione{margin:var(--s7) 0 0}
+
+/* ---------- Header condiviso ---------- */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(14,17,22,.88);
+  backdrop-filter:saturate(1.6) blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.nav-in{
+  max-width:var(--colonna);margin:0 auto;padding:0 var(--s4);
+  height:var(--nav-h);display:flex;align-items:center;gap:var(--s5);
+}
+.marchio{
+  display:flex;align-items:baseline;gap:.35rem;
+  font-size:var(--t-md);font-weight:700;letter-spacing:-.02em;
+  color:var(--text);white-space:nowrap;
+}
+.marchio:hover{text-decoration:none}
+.marchio span{color:var(--gold)}
+.nav-link{
+  display:flex;gap:var(--s1);overflow-x:auto;scrollbar-width:none;
+  margin-right:auto;
+}
+.nav-link::-webkit-scrollbar{display:none}
+.nav-link a{
+  padding:.35rem .6rem;border-radius:var(--r-sm);
+  font-size:var(--t-sm);color:var(--muted);white-space:nowrap;
+  transition:color .12s, background .12s;
+}
+.nav-link a:hover{color:var(--text);background:var(--panel);text-decoration:none}
+.nav-link a[aria-current="page"]{color:var(--gold);background:rgba(240,185,74,.1)}
+.nav-patch{
+  font-size:var(--t-xs);color:var(--label);white-space:nowrap;
+  padding:.2rem .55rem;border:1px solid var(--line);border-radius:var(--r-full);
+}
+@media(max-width:720px){
+  .nav-in{gap:var(--s3)}
+  .nav-patch{display:none}
+}
+
+/* ---------- Intestazione di pagina ---------- */
+.testata{padding:var(--s6) 0 var(--s5);border-bottom:1px solid var(--line);margin-bottom:var(--s5)}
+.testata h1{font-size:var(--t-2xl);margin-bottom:var(--s2)}
+.testata .sub{color:var(--muted);font-size:var(--t-md);max-width:56rem}
+.testata .sub b{color:var(--text);font-weight:600}
+@media(max-width:720px){ .testata h1{font-size:var(--t-xl)} }
+
+/* riga di badge sotto il titolo: fonte, data, conteggi */
+.badges{display:flex;gap:var(--s2);flex-wrap:wrap;margin-top:var(--s3)}
+.badge{
+  font-size:var(--t-xs);color:var(--muted);
+  padding:.22rem .6rem;border:1px solid var(--line);border-radius:var(--r-full);
+  background:var(--panel2);
+}
+.badge b{color:var(--text);font-weight:600}
+.badge.oro{border-color:rgba(240,185,74,.4);color:var(--gold);background:rgba(240,185,74,.07)}
+
+/* ---------- Titolo di sezione ---------- */
+.sec{
+  font-size:var(--t-xs);text-transform:uppercase;letter-spacing:.11em;
+  color:var(--label);font-weight:600;
+  margin:var(--s6) 0 var(--s3);padding-bottom:var(--s2);
+  border-bottom:1px solid var(--line);
+}
+
+/* ---------- Superfici ---------- */
+.card{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--r);
+  padding:var(--s4);
+}
+a.card{display:block;color:inherit;transition:border-color .15s, transform .15s, box-shadow .15s}
+a.card:hover{border-color:var(--line2);transform:translateY(-1px);box-shadow:var(--ombra-alta);text-decoration:none}
+a.card:hover h3{color:var(--gold)}
+
+/* ---------- Nota / avviso ---------- */
+.avviso{
+  background:linear-gradient(180deg, rgba(240,185,74,.07), rgba(240,185,74,.03));
+  border:1px solid rgba(240,185,74,.28);border-left:3px solid var(--gold);
+  border-radius:var(--r);padding:var(--s3) var(--s4);margin:var(--s4) 0;
+  font-size:var(--t-base);color:var(--muted);
+}
+.avviso b{color:var(--text)}
+
+/* ---------- Controlli ---------- */
+button, .btn, select, input[type=search], input[type=text]{
+  font:inherit;font-size:var(--t-sm);
+  padding:.38rem .7rem;border-radius:var(--r-sm);
+  background:var(--panel-alto);color:var(--text);border:1px solid var(--line2);
+  transition:border-color .12s, color .12s, background .12s;
+}
+button, .btn{cursor:pointer}
+button:hover, .btn:hover{border-color:var(--gold);color:var(--gold);text-decoration:none}
+button.on, .btn.on{background:var(--gold);color:#1a1407;border-color:var(--gold);font-weight:650}
+button.on:hover, .btn.on:hover{color:#1a1407}
+input:focus, select:focus, button:focus-visible{outline:2px solid rgba(240,185,74,.5);outline-offset:1px}
+::placeholder{color:var(--label)}
+
+.barra{display:flex;gap:var(--s2);flex-wrap:wrap;align-items:center;margin-bottom:var(--s3)}
+.barra .spinta{margin-left:auto;color:var(--muted);font-size:var(--t-sm)}
+
+/* ---------- Tabelle ---------- */
+.tabella{font-size:var(--t-sm)}
+.tabella th{
+  text-align:left;font-weight:600;font-size:var(--t-xs);
+  text-transform:uppercase;letter-spacing:.07em;color:var(--label);
+  padding:var(--s2) var(--s3);border-bottom:1px solid var(--line2);white-space:nowrap;
+}
+.tabella td{padding:var(--s2) var(--s3);border-bottom:1px solid var(--line)}
+.tabella tbody tr{transition:background .1s}
+.tabella tbody tr:hover{background:var(--panel2)}
+.tabella .n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+.tabella .val{color:var(--good)}
+
+/* ---------- Riquadro numerico ---------- */
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:var(--s3)}
+.kpi > div{
+  background:var(--panel2);border:1px solid var(--line);border-radius:var(--r);
+  padding:var(--s3);
+}
+.kpi b{display:block;font-size:var(--t-lg);font-family:var(--mono);font-variant-numeric:tabular-nums;line-height:1.2}
+.kpi span{
+  display:block;margin-top:var(--s1);
+  font-size:var(--t-xs);color:var(--label);text-transform:uppercase;letter-spacing:.06em;
+}
+
+/* ---------- Pillola di rarità ---------- */
+.tag{
+  font-size:var(--t-xs);font-weight:600;padding:.05rem .4rem;border-radius:var(--r-sm);
+  background:var(--unique);color:#1a1008;margin-left:var(--s1);
+}
+
+/* ---------- Piè di pagina ---------- */
+.pie{
+  margin-top:var(--s8);padding:var(--s5) 0;border-top:1px solid var(--line);
+  color:var(--label);font-size:var(--t-sm);
+}
+.pie a{color:var(--muted)}
+
+/* ---------- Utilità ---------- */
+.muto{color:var(--muted)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.nowrap{white-space:nowrap}
+@media(max-width:720px){
+  .scorri-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+}

@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Heist — cosa tenere, cosa buttare</title>
+<link rel="stylesheet" href="../stile.css">
 <style>
   :root {
     --bg: #0b0c0e; --panel: #15171d; --panel-2: #101216;
@@ -20,12 +21,6 @@
   .wrap { max-width: 62rem; margin: 0 auto; }
   a { color: var(--gold); }
 
-  header { margin-bottom: 1.4rem; }
-  .back { font-size: .8rem; }
-  h1 { margin: .7rem 0 .3rem; font-size: 1.5rem; }
-  .sub { margin: 0; color: var(--muted); font-size: .92rem; max-width: 46rem; }
-  .badges { margin-top: .8rem; display: flex; gap: .4rem; flex-wrap: wrap; }
-  .badge { padding: .15rem .55rem; border: 1px solid var(--line-soft); border-radius: 999px; font-size: .72rem; color: var(--muted); }
   .badge.live { border-color: rgba(96,211,148,.5); color: var(--good); }
 
   .verdict-top {
@@ -95,7 +90,6 @@
   summary { cursor: pointer; color: var(--text); font-size: .88rem; }
   details p { color: var(--muted); font-size: .84rem; }
 
-  footer { margin-top: 2.5rem; padding-top: 1.2rem; border-top: 1px solid var(--line-soft); color: var(--muted); font-size: .82rem; }
   footer p { margin: 0 0 .6rem; max-width: 52rem; }
   footer b { color: var(--text); }
 
@@ -107,10 +101,24 @@
 </style>
 </head>
 <body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="marchio" href="../index.html">PoE <span>Tools</span></a>
+    <div class="nav-link">
+      <a href="../atlante/">Atlante</a>
+      <a href="../farming/">Farming</a>
+      <a href="../mappe/">Mod mappa</a>
+      <a href="../build-confronto/">Build</a>
+      <a href="../heist/" aria-current="page">Heist</a>
+    </div>
+    <span class="nav-patch">patch 3.29.2</span>
+  </div>
+</nav>
+
 <div class="wrap">
 
-  <header>
-    <div class="back"><a href="../index.html">← Tutti gli strumenti</a></div>
+  <header class="testata">
     <h1>Heist — cosa tenere, cosa buttare</h1>
     <p class="sub">Prezzi misurati sull'API di trade, non stimati. Tutto ciò che stava sotto i 10 chaos è stato tolto da questa pagina.</p>
     <div class="badges">
@@ -122,7 +130,7 @@
 
   <div class="verdict-top">
     <h2>Tre cose. Il resto è spazzatura.</h2>
-    <p>Misurando ogni categoria su trade, <b>solo tre voci superano i 10 chaos</b>: un contratto unique e due enchant. Tutti e nove i tipi di blueprint hanno il pavimento a <b>1 chaos</b> e i nove tipi di contratto a <b>1 Orb of Alchemy</b>: il tipo da solo non vale niente.</p>
+    <p>Misurando ogni categoria su trade, <b>solo tre voci superano i 10 chaos</b>: un contratto unique e due enchant. Tutti e nove i tipi di blueprint hanno il pavimento a <b>1 chaos</b> e i nove tipi di contratto a <b>1 Orb of Chance</b>: il tipo da solo non vale niente.</p>
     <p>La regola pratica: <b>guarda il nome se è un unique, l'enchant se è un blueprint.</b> Fuori da questi tre casi, butta senza nemmeno aprire trade.</p>
   </div>
 
@@ -185,7 +193,7 @@ const KEEP = [
     name: "Contract: The Twins",
     sub: [["Classe base", "Vengeful Contract"], ["Come cercarlo", "per nome, non per tipo"]],
     price: "149c", floor: "il più basso stava a 140c", listings: "242 inserzioni",
-    why: "Il contratto più caro del gioco, e l'unico dei cinque unique che vale qualcosa: gli altri quattro stanno fra 1 alch e 3 chaos. È anche il più raro — 242 inserzioni contro le 850–1200 degli altri.",
+    why: "Il contratto più caro del gioco, e l'unico dei cinque unique che vale qualcosa: gli altri quattro stanno fra 1 alch e 3 chaos. È anche il più raro — 242 inserzioni contro le 307–1216 degli altri.",
     trade: { name: "Contract: The Twins", type: "Vengeful Contract" }
   },
   {

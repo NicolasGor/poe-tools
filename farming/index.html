@@ -4,28 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Farming — cosa conviene davvero, misurato</title>
+<link rel="stylesheet" href="../stile.css">
 <style>
-  :root{
-    --bg:#12151c; --panel:#1a1f2a; --panel2:#151a23; --line:#2b3342; --line2:#39435a;
-    --text:#e6e9ef; --muted:#8b95a8; --label:#78839a;
-    --gold:#f0b94a; --good:#60d394; --bad:#e07a6f; --magic:#8888ff;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;padding:1.4rem 1rem 5rem;background:var(--bg);color:var(--text);
-       font:14px/1.55 Inter,ui-sans-serif,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
-  .wrap{max-width:72rem;margin:0 auto}
-  a{color:var(--gold)}
-  header{margin-bottom:1.2rem}
-  .back{font-size:.8rem}
-  h1{margin:.6rem 0 .3rem;font-size:1.5rem}
-  .sub{margin:0;color:var(--muted);font-size:.9rem;max-width:54rem}
-  .badges{margin-top:.7rem;display:flex;gap:.4rem;flex-wrap:wrap}
-  .badge{padding:.15rem .55rem;border:1px solid var(--line2);border-radius:999px;font-size:.72rem;color:var(--muted)}
   .badge.live{border-color:rgba(96,211,148,.5);color:var(--good)}
-
-  .avviso{background:rgba(240,185,74,.08);border:1px solid rgba(240,185,74,.35);border-radius:6px;
-          padding:.85rem 1rem;margin:1rem 0 1.4rem;font-size:.88rem;color:var(--muted)}
-  .avviso b{color:var(--text)}
 
   h2.sec{font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);
          margin:2rem 0 .7rem;padding-bottom:.3rem;border-bottom:1px solid var(--line)}
@@ -52,15 +33,28 @@
 
   details{border:1px solid var(--line);border-radius:6px;background:var(--panel2);padding:.6rem .8rem;margin-top:.6rem}
   summary{cursor:pointer;font-size:.82rem;color:var(--muted)}
-  footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem}
   footer p{margin:0 0 .6rem;max-width:56rem}
   footer b{color:var(--text)}
 </style>
 </head>
 <body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="marchio" href="../index.html">PoE <span>Tools</span></a>
+    <div class="nav-link">
+      <a href="../atlante/">Atlante</a>
+      <a href="../farming/" aria-current="page">Farming</a>
+      <a href="../mappe/">Mod mappa</a>
+      <a href="../build-confronto/">Build</a>
+      <a href="../heist/">Heist</a>
+    </div>
+    <span class="nav-patch">patch 3.29.2</span>
+  </div>
+</nav>
+
 <div class="wrap">
-  <header>
-    <div class="back"><a href="../index.html">← Tutti gli strumenti</a></div>
+  <header class="testata">
     <h1>Farming — cosa conviene davvero</h1>
     <p class="sub">Classifica delle meccaniche costruita sul <b>prezzo dei loro scarab</b>, letto da poe.ninja. Non è una tier list copiata da un articolo: è quello che il mercato paga adesso.</p>
     <div class="badges">

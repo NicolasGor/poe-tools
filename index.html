@@ -3,109 +3,117 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PoE Tools</title>
+<title>PoE Tools — strumenti misurati per Path of Exile</title>
+<meta name="description" content="Cinque strumenti per Path of Exile 1 costruiti su numeri misurati: atlante e divination card, farming degli scarab, mod di mappa, confronto build, triage Heist.">
+<link rel="stylesheet" href="stile.css">
 <style>
-  :root {
-    --bg: #f7f6f3;
-    --surface: #ffffff;
-    --border: #e2ded6;
-    --text: #22201c;
-    --muted: #6b665e;
-    --accent: #9a6b2f;
-    --radius: 10px;
+  .hero{padding:var(--s8) 0 var(--s7);text-align:center}
+  .hero h1{font-size:clamp(2.2rem,6vw,3.4rem);letter-spacing:-.03em;margin-bottom:var(--s3)}
+  .hero h1 span{color:var(--gold)}
+  .hero .sub{color:var(--muted);font-size:var(--t-md);max-width:44rem;margin:0 auto}
+  .hero .badges{justify-content:center}
+
+  .griglia{display:grid;gap:var(--s3);grid-template-columns:repeat(auto-fit,minmax(20rem,1fr))}
+  .strumento{display:flex;flex-direction:column;gap:var(--s2);padding:var(--s4) var(--s4) var(--s5)}
+  .strumento .etichetta{
+    font-size:var(--t-xs);text-transform:uppercase;letter-spacing:.1em;
+    color:var(--label);font-weight:600;
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #16150f;
-      --surface: #1e1d16;
-      --border: #322f24;
-      --text: #ece7dc;
-      --muted: #9b9485;
-      --accent: #d3a35f;
-    }
+  .strumento h3{font-size:var(--t-md)}
+  .strumento p{color:var(--muted);font-size:var(--t-sm);flex:1}
+  .strumento .dato{
+    width:100%;margin-top:var(--s2);padding-top:var(--s3);
+    border-top:1px solid var(--line);
+    font-size:var(--t-xs);color:var(--label);
   }
-  :root[data-theme="dark"] {
-    --bg: #16150f;
-    --surface: #1e1d16;
-    --border: #322f24;
-    --text: #ece7dc;
-    --muted: #9b9485;
-    --accent: #d3a35f;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    padding: 3rem 1.25rem 5rem;
-    background: var(--bg);
-    color: var(--text);
-    font: 16px/1.6 ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
-  }
-  .wrap { max-width: 62rem; margin: 0 auto; }
-  header { border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; margin-bottom: 2.5rem; }
-  h1 { margin: 0 0 .4rem; font-size: 1.9rem; letter-spacing: -.02em; }
-  h1 span { color: var(--accent); }
-  .sub { margin: 0; color: var(--muted); }
-  .patch {
-    display: inline-block; margin-top: .9rem; padding: .2rem .6rem;
-    border: 1px solid var(--border); border-radius: 999px;
-    font-size: .8rem; color: var(--muted);
-  }
-  h2 {
-    font-size: .8rem; text-transform: uppercase; letter-spacing: .09em;
-    color: var(--muted); font-weight: 600; margin: 0 0 1rem;
-  }
-  .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); }
-  .card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 1.1rem 1.2rem;
-  }
-  .card h3 { margin: 0 0 .35rem; font-size: 1rem; }
-  .card p { margin: 0; color: var(--muted); font-size: .9rem; }
-  .card.empty { border-style: dashed; background: transparent; }
-  a.card { display: block; text-decoration: none; color: inherit; transition: border-color .15s; }
-  a.card:hover { border-color: var(--accent); }
-  a.card:hover h3 { color: var(--accent); }
-  footer {
-    margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--border);
-    color: var(--muted); font-size: .85rem;
-  }
+  .strumento .dato b{color:var(--gold);font-family:var(--mono);font-weight:600}
+
+  .metodo{margin-top:var(--s8)}
+  .metodo .card{padding:var(--s5)}
+  .metodo p{color:var(--muted);margin-bottom:var(--s3)}
+  .metodo p:last-child{margin-bottom:0}
+  .metodo b{color:var(--text)}
 </style>
 </head>
 <body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="marchio" href="index.html">PoE <span>Tools</span></a>
+    <div class="nav-link">
+      <a href="atlante/">Atlante</a>
+      <a href="farming/">Farming</a>
+      <a href="mappe/">Mod mappa</a>
+      <a href="build-confronto/">Build</a>
+      <a href="heist/">Heist</a>
+    </div>
+    <span class="nav-patch">patch 3.29.2</span>
+  </div>
+</nav>
+
 <div class="wrap">
 
-  <header>
+  <header class="hero">
     <h1>PoE <span>Tools</span></h1>
-    <p class="sub">Strumenti per Path of Exile 1 — calcolatori e utilità, uno per scheda.</p>
-    <span class="patch">patch 3.29.2 · Curse of the Allflame</span>
+    <p class="sub">Cinque strumenti per Path of Exile 1, costruiti su <b>numeri misurati</b> — prezzi letti dall'API di trade e da poe.ninja, non tier list copiate. Ogni pagina dichiara anche cosa il numero <b>non</b> dice.</p>
+    <div class="badges">
+      <span class="badge oro">patch <b>3.29.2</b></span>
+      <span class="badge">lega <b>Curse of the Allflame</b></span>
+      <span class="badge">misurato l'<b>8 agosto 2026</b></span>
+    </div>
   </header>
 
-  <h2>Strumenti</h2>
-  <div class="grid">
-    <a class="card" href="atlante/">
-      <h3>Atlante — mappe da farmare</h3>
-      <p>154 mappe con divination card e punteggi layout/densità/boss, da mapsofexile.com. Con link diretto alla mappa visuale.</p>
+  <h2 class="sec">Strumenti</h2>
+  <div class="griglia">
+
+    <a class="card strumento" href="atlante/">
+      <span class="etichetta">Atlante</span>
+      <h3>Mappe da farmare</h3>
+      <p>Le mappe dell'atlante con le divination card che ci cadono e i punteggi layout, densità e boss. Vista a elenco ordinabile o mappa navigabile.</p>
+      <span class="dato"><b>154</b> mappe · <b>144</b> con carte</span>
     </a>
-    <a class="card" href="farming/">
-      <h3>Farming — cosa conviene davvero</h3>
-      <p>Classifica delle meccaniche sul prezzo misurato dei loro scarab, con le tre da preferire e come potenziarle.</p>
+
+    <a class="card strumento" href="farming/">
+      <span class="etichetta">Farming</span>
+      <h3>Cosa conviene davvero</h3>
+      <p>Classifica delle meccaniche sul prezzo misurato dei loro scarab. Smentisce le tier list: Abyss, data fra le migliori, ha scarab da 4 chaos.</p>
+      <span class="dato"><b>27</b> meccaniche a confronto</span>
     </a>
-    <a class="card" href="mappe/">
-      <h3>Mod di mappa da evitare</h3>
-      <p>Spunti i modificatori che non vuoi e ottieni la regex minima per la ricerca nella stash, sotto il limite dei 50 caratteri.</p>
+
+    <a class="card strumento" href="mappe/">
+      <span class="etichetta">Mod di mappa</span>
+      <h3>Quali rerollare</h3>
+      <p>Spunti i modificatori che non vuoi e ottieni la regex minima da incollare nella ricerca della stash, sotto il limite dei 50 caratteri.</p>
+      <span class="dato"><b>355</b> mod · <b>18</b> in 34 caratteri</span>
     </a>
-    <a class="card" href="build-confronto/">
-      <h3>Confronto build</h3>
-      <p>La mia contro <em>High Budget No Whispers</em>, due colonne: gear, gemme e albero, con evidenziati gli slot che differiscono.</p>
+
+    <a class="card strumento" href="build-confronto/">
+      <span class="etichetta">Build</span>
+      <h3>Confronto a due colonne</h3>
+      <p>Incolla un codice PoB o un link pobb.in: gear con la griglia in stile pobb.in, gemme e albero passivo disegnato, con gli slot che differiscono evidenziati.</p>
+      <span class="dato">gear · gemme · albero</span>
     </a>
-    <a class="card" href="heist/">
-      <h3>Heist — cosa tenere, cosa buttare</h3>
-      <p>Prezzi misurati sull'API di trade: solo due enchant superano i 10 chaos, tutto il resto è pavimento a 1c.</p>
+
+    <a class="card strumento" href="heist/">
+      <span class="etichetta">Heist</span>
+      <h3>Cosa tenere, cosa buttare</h3>
+      <p>Prezzi misurati sull'API di trade: solo tre voci superano i 10 chaos, tutto il resto è pavimento a 1c. Con la ricerca già filtrata sull'enchant.</p>
+      <span class="dato"><b>3</b> voci sopra i 10 chaos</span>
     </a>
+
   </div>
 
-  <footer>
-    Sito statico servito da GitHub Pages. Gli appunti di gioco restano altrove, in locale.
+  <section class="metodo">
+    <h2 class="sec">Il metodo</h2>
+    <div class="card">
+      <p><b>Misurare, non dedurre.</b> Il ragionamento strutturale su Path of Exile produce ipotesi plausibili e sbagliate: le Replica «che non si spengono mai» valgono 3 chaos, i Trinkets «pari alla Currency» ne valgono 1 contro 115, i contratti «tutti spazzatura» nascondono un unique da 149.</p>
+      <p>Ogni numero qui viene da una misura datata, e ogni pagina dichiara il proprio limite. Il più importante di tutti: <b>la frequenza di drop delle divination card non è pubblica</b>, quindi «valore delle carte per mappa» è potenziale, non guadagno atteso.</p>
+    </div>
+  </section>
+
+  <footer class="pie">
+    Sito statico su GitHub Pages · nessuna dipendenza esterna, funziona offline.
+    Gli appunti di gioco restano altrove, in locale.
   </footer>
 
 </div>

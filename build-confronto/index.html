@@ -4,24 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Confronto build — la mia contro High Budget No Whispers</title>
+<link rel="stylesheet" href="../stile.css">
 <style>
-  :root{
-    --bg:#12151c; --panel:#1a1f2a; --panel2:#151a23; --line:#2b3342; --line2:#39435a;
-    --text:#e6e9ef; --muted:#8b95a8; --label:#78839a;
-    --normal:#c8c8c8; --magic:#8888ff; --rare:#ffff77; --unique:#af6025;
-    --gold:#f0b94a; --good:#60d394; --bad:#e07a6f;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;padding:1.4rem 1rem 5rem;background:var(--bg);color:var(--text);
-       font:14px/1.5 Inter,ui-sans-serif,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
-  .wrap{max-width:88rem;margin:0 auto}
-  a{color:var(--gold)}
-  header{margin-bottom:1.3rem}
-  .back{font-size:.8rem}
-  h1{margin:.6rem 0 .3rem;font-size:1.4rem}
-  .sub{margin:0;color:var(--muted);font-size:.9rem;max-width:52rem}
-  .badges{margin-top:.7rem;display:flex;gap:.4rem;flex-wrap:wrap}
-  .badge{padding:.15rem .55rem;border:1px solid var(--line2);border-radius:999px;font-size:.72rem;color:var(--muted)}
 
   /* pannello di import */
   .imp{margin:.5rem 0 .8rem}
@@ -201,7 +185,6 @@
   .note{background:rgba(240,185,74,.08);border:1px solid rgba(240,185,74,.35);border-radius:5px;
         padding:.7rem .85rem;margin:.8rem 0 0;font-size:.83rem;color:var(--muted)}
   .note b{color:var(--text)}
-  footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem}
   footer p{margin:0 0 .55rem;max-width:56rem}
 
   @media(max-width:900px){
@@ -212,9 +195,23 @@
 </style>
 </head>
 <body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="marchio" href="../index.html">PoE <span>Tools</span></a>
+    <div class="nav-link">
+      <a href="../atlante/">Atlante</a>
+      <a href="../farming/">Farming</a>
+      <a href="../mappe/">Mod mappa</a>
+      <a href="../build-confronto/" aria-current="page">Build</a>
+      <a href="../heist/">Heist</a>
+    </div>
+    <span class="nav-patch">patch 3.29.2</span>
+  </div>
+</nav>
+
 <div class="wrap">
-  <header>
-    <div class="back"><a href="../index.html">← Tutti gli strumenti</a></div>
+  <header class="testata">
     <h1>Confronto build</h1>
     <p class="sub">A sinistra il personaggio come è adesso, a destra il set <em>High Budget No Whispers</em> della guida. I pezzi evidenziati in giallo sono quelli che differiscono per base o per unique.</p>
     <div class="badges">
