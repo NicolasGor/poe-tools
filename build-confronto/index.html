@@ -23,6 +23,27 @@
   .badges{margin-top:.7rem;display:flex;gap:.4rem;flex-wrap:wrap}
   .badge{padding:.15rem .55rem;border:1px solid var(--line2);border-radius:999px;font-size:.72rem;color:var(--muted)}
 
+  /* pannello di import */
+  .imp{margin:.5rem 0 .8rem}
+  .imp button.apri{font-size:.75rem;padding:.3rem .7rem;cursor:pointer;
+       background:#181b21;color:var(--text);border:1px solid var(--line2);border-radius:4px}
+  .imp button.apri:hover{border-color:var(--gold);color:var(--gold)}
+  .imp form{display:none;margin-top:.5rem;background:var(--panel2);border:1px solid var(--line);
+       border-radius:6px;padding:.7rem .8rem}
+  .imp.aperto form{display:block}
+  .imp label{display:block;font-size:.72rem;color:var(--muted);margin-bottom:.25rem}
+  .imp textarea{width:100%;height:4.5rem;resize:vertical;background:#0e1218;color:var(--text);
+       border:1px solid var(--line2);border-radius:4px;padding:.4rem .5rem;font-size:.72rem;
+       font-family:"Source Code Pro",Menlo,monospace}
+  .imp .riga{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center;margin-top:.5rem}
+  .imp select{background:#0e1218;color:var(--text);border:1px solid var(--line2);border-radius:4px;
+       padding:.25rem .4rem;font-size:.75rem;max-width:14rem}
+  .imp button.ok{font-size:.75rem;padding:.3rem .8rem;cursor:pointer;background:var(--gold);
+       color:#1b1608;border:0;border-radius:4px;font-weight:600}
+  .imp .esito{font-size:.74rem;margin-top:.45rem}
+  .imp .esito.ko{color:var(--bad)} .imp .esito.ok{color:var(--good)}
+  .imp .nota{font-size:.7rem;color:var(--muted);margin-top:.4rem;line-height:1.45}
+
   .cols{display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:start}
   .col{min-width:0}
   .colhead{position:sticky;top:0;z-index:5;background:var(--bg);padding:.5rem 0 .6rem;border-bottom:1px solid var(--line)}
@@ -295,9 +316,28 @@ function treeHtml(col){
   </div>`;
 }
 
+function impHtml(side){
+  return `<div class="imp" data-side="${side}">
+    <button class="apri" type="button">⇄ Cambia build in questa colonna</button>
+    <form>
+      <label>Incolla qui il codice Path of Building (da PoB, pob.cool o Mobalytics → Export)</label>
+      <textarea placeholder="eNrsfWtz4ji3..." spellcheck="false"></textarea>
+      <div class="riga">
+        <select class="set" title="Gear"></select>
+        <select class="spec" title="Albero"></select>
+        <select class="skill" title="Gemme"></select>
+        <button class="ok" type="submit">Carica</button>
+      </div>
+      <div class="esito"></div>
+      <p class="nota">I selettori compaiono dopo aver incollato il codice: un PoB contiene tutte le varianti, e vanno scelte a mano. Un link pobb.in o il nome account non funzionano da qui — il browser li blocca per CORS, e questa pagina non ha un proxy.</p>
+    </form>
+  </div>`;
+}
+
 function colHtml(col, cls){
   return `<div class="col">
     <div class="colhead ${cls}"><h2>${esc(col.titolo)}</h2><div class="s">${esc(col.sub)}</div></div>
+    ${impHtml(cls === "mine" ? "left" : "right")}
     <div class="statrow">${Object.entries(col.stats).map(([k,v])=>
       `<div class="stat"><b>${esc(v)}</b><span>${esc(k)}</span></div>`).join("")}</div>
     <h3 class="sec">Gear</h3>${padHtml(col)}${gearHtml(col)}
@@ -306,17 +346,178 @@ function colHtml(col, cls){
   </div>`;
 }
 
-document.getElementById("cols").innerHTML =
-  colHtml(DATA.left,"mine") + colHtml(DATA.right,"target");
+let TREE = null;          // documento SVG dell'albero, caricato una volta
+let NODI = new Map();     // id nodo → {nome, tipo}
 
-const slots = new Set([...DATA.left.gear.map(i=>i.slot), ...DATA.right.gear.map(i=>i.slot)]);
-const nd = [...slots].filter(isDiff).length;
-document.getElementById("diffcount").textContent = nd + " slot differenti";
+function render(){
+  document.getElementById("cols").innerHTML =
+    colHtml(DATA.left,"mine") + colHtml(DATA.right,"target");
+  const slots = new Set([...DATA.left.gear.map(i=>i.slot), ...DATA.right.gear.map(i=>i.slot)]);
+  document.getElementById("diffcount").textContent =
+    [...slots].filter(isDiff).length + " slot differenti";
+  if (TREE) disegnaAlberi();
+  collegaImport();
+}
+
+// ================= import di un codice PoB =================
+function daBase64Url(s){
+  s = s.replace(/\s+/g,"").replace(/-/g,"+").replace(/_/g,"/");
+  s += "=".repeat((4 - s.length % 4) % 4);
+  const bin = atob(s), out = new Uint8Array(bin.length);
+  for (let i=0;i<bin.length;i++) out[i] = bin.charCodeAt(i);
+  return out;
+}
+async function decodePoB(code){
+  const raw = daBase64Url(code);
+  const ds = new DecompressionStream("deflate");        // zlib
+  const buf = await new Response(new Blob([raw]).stream().pipeThrough(ds)).arrayBuffer();
+  const xml = new TextDecoder().decode(buf);
+  const doc = new DOMParser().parseFromString(xml, "application/xml");
+  if (doc.querySelector("parsererror")) throw new Error("XML non valido");
+  if (!doc.querySelector("PathOfBuilding")) throw new Error("non sembra un codice PoB");
+  return doc;
+}
+
+const META = /^(Unique ID|Crafted:|Selected|Has \d+ Socket|Sockets:|LevelReq|Prefix:|Suffix:|Radius:|Limited to:|Requires |Item Level:|.*BasePercentile|League:|Variant:|Catalyst)/;
+const INFL = /^(Searing Exarch|Eater of Worlds|Shaper|Elder|Crusader|Hunter|Redeemer|Warlord) Item$/;
+function parseItem(txt){
+  const L = txt.trim().split("\n").map(s=>s.trim()).filter(Boolean);
+  const rar = (L.find(l=>l.startsWith("Rarity:"))||"Rarity: NORMAL").split(":")[1].trim().toUpperCase();
+  const name = L[1] || "?";
+  let base = "";
+  if (L[2] && !/^(Unique ID|Item Level|Crafted|Implicits|Quality|Sockets|LevelReq|Selected|Requires)/.test(L[2])) base = L[2];
+  const props = {}, impl = [], mods = [], tags = [];
+  const pulisci = m => ({ t: m.replace(/\{[a-z]+(?::[^}]*)?\}/g,"").trim(), c: m.includes("{crafted}") });
+  for (let i = base ? 3 : 2; i < L.length; i++){
+    const l = L[i];
+    let m = /^Implicits:\s*(\d+)/.exec(l);
+    if (m){ const n=+m[1]; for(let k=0;k<n && i+1<L.length;k++){ const x=L[++i]; if(!META.test(x)) impl.push(x); } continue; }
+    m = /^(Quality|Armour|Evasion|Energy Shield|Ward|Intangibility):\s*(.+)$/.exec(l);
+    if (m){ props[m[1]] = m[2].trim(); continue; }
+    if (INFL.test(l)){ tags.push(l); continue; }
+    if (META.test(l)) continue;
+    mods.push(l);
+  }
+  const ordine = ["Quality","Armour","Evasion","Energy Shield","Ward"];
+  if (props["Intangibility"]) impl.unshift("Intangibility: " + props["Intangibility"]);
+  return { rarity: rar, name, base, tags,
+           props: ordine.filter(k=>props[k]).map(k=>[k,props[k]]),
+           impl: impl.slice(0,4).map(pulisci), mods: mods.slice(0,14).map(pulisci) };
+}
+
+const ORD_SLOT = ["Weapon 1","Weapon 2","Helmet","Body Armour","Gloves","Boots","Amulet","Ring 1","Ring 2","Belt","Belt Abyssal Socket 1","Flask 1","Flask 2","Flask 3","Flask 4","Flask 5"];
+
+function datiDaPoB(doc, sel){
+  const q = s => doc.querySelector(s);
+  const items = q("Items"), skills = q("Skills"), tree = q("Tree"), build = q("Build");
+  const byId = {}; items.querySelectorAll("Item").forEach(i => byId[i.getAttribute("id")] = i.textContent);
+
+  const setEls = [...items.querySelectorAll("ItemSet")];
+  const set = setEls.find(s=>s.getAttribute("id")===sel.set) || setEls[0];
+  const gear = [];
+  if (set){
+    const bySlot = {};
+    set.querySelectorAll("Slot").forEach(s => bySlot[s.getAttribute("name")] = s.getAttribute("itemId"));
+    ORD_SLOT.forEach(slot => {
+      const t = byId[bySlot[slot]];
+      if (t) gear.push(Object.assign({slot}, parseItem(t)));
+    });
+  }
+
+  const ssEls = [...skills.querySelectorAll("SkillSet")];
+  const ss = ssEls.find(s=>s.getAttribute("id")===sel.skill) || ssEls[0] || skills;
+  const gems = [];
+  (ss ? [...ss.querySelectorAll("Skill")] : []).forEach(g => {
+    const gl = [...g.querySelectorAll("Gem")].filter(x=>x.getAttribute("nameSpec"))
+      .map(x=>({n:x.getAttribute("nameSpec"), l:x.getAttribute("level"), q:x.getAttribute("quality"),
+                on:x.getAttribute("enabled")!=="false"}));
+    if (gl.length) gems.push({slot:g.getAttribute("slot")||"", gems:gl});
+  });
+
+  const specs = [...tree.querySelectorAll("Spec")];
+  const spec = specs[(+sel.spec||1)-1] || specs[specs.length-1];
+  const ids = spec ? (spec.getAttribute("nodes")||"").split(",").filter(Boolean) : [];
+  const jewels = [];
+  if (spec) spec.querySelectorAll("Socket").forEach(s => {
+    const t = byId[s.getAttribute("itemId")]; if (t) jewels.push(parseItem(t));
+  });
+  const nome = id => NODI.get(id);
+  const keystones = [...new Set(ids.map(nome).filter(x=>x&&x.tipo==="Keystone").map(x=>x.nome))].sort();
+
+  const stats = {};
+  build.querySelectorAll("PlayerStat").forEach(s => stats[s.getAttribute("stat")] = +s.getAttribute("value"));
+  const f = (v,d=0) => v==null ? "—" : v.toLocaleString("it-IT",{minimumFractionDigits:d,maximumFractionDigits:d});
+
+  return {
+    titolo: (build.getAttribute("className")||"") + " / " + (build.getAttribute("ascendClassName")||""),
+    sub: "importato · livello " + (build.getAttribute("level")||"?") +
+         (set ? " · set: " + (set.getAttribute("title")||"senza titolo") : ""),
+    stats: {"DPS totale": f(stats.TotalDPS), "EHP": f(stats.TotalEHP),
+            "Energy Shield": f(stats.EnergyShield), "Vita": f(stats.Life),
+            "Max hit fisico": f(stats.PhysicalMaximumHitTaken), "Cast/s": f(stats.Speed,2)},
+    gear, gems, keystones, masteries: [],
+    tree: { title: spec ? (spec.getAttribute("title")||"(senza titolo)") : "—",
+            nodes: ids.length, ids, jewels, keystones,
+            url: spec ? (spec.querySelector("URL")?.textContent||"").trim() : "",
+            asc: build.getAttribute("ascendClassName")||"" }
+  };
+}
+
+function collegaImport(){
+  document.querySelectorAll(".imp").forEach(box => {
+    const side = box.dataset.side;
+    const form = box.querySelector("form");
+    const ta = box.querySelector("textarea");
+    const esito = box.querySelector(".esito");
+    const sel = { set: box.querySelector(".set"), spec: box.querySelector(".spec"), skill: box.querySelector(".skill") };
+    let doc = null;
+
+    box.querySelector(".apri").onclick = () => box.classList.toggle("aperto");
+
+    const leggi = async () => {
+      const code = ta.value.trim();
+      if (!code) return;
+      esito.className = "esito"; esito.textContent = "decodifico…";
+      try {
+        doc = await decodePoB(code);
+        const items = [...doc.querySelectorAll("Items ItemSet")];
+        const skills = [...doc.querySelectorAll("Skills SkillSet")];
+        const specs = [...doc.querySelectorAll("Tree Spec")];
+        const opz = (el, arr, val) => {
+          el.innerHTML = arr.map((x,i) =>
+            `<option value="${val(x,i)}">${(x.getAttribute("title")||"(senza titolo)").replace(/</g,"&lt;")}</option>`).join("");
+        };
+        opz(sel.set, items, x=>x.getAttribute("id"));
+        opz(sel.skill, skills.length?skills:[], x=>x.getAttribute("id"));
+        opz(sel.spec, specs, (x,i)=>i+1);
+        sel.set.value = doc.querySelector("Items").getAttribute("activeItemSet") || sel.set.value;
+        sel.skill.value = doc.querySelector("Skills").getAttribute("activeSkillSet") || sel.skill.value;
+        sel.spec.value = doc.querySelector("Tree").getAttribute("activeSpec") || "1";
+        esito.className = "esito ok";
+        esito.textContent = `letto: ${items.length} set di gear, ${specs.length} alberi, ${skills.length} set di gemme. Scegli e premi Carica.`;
+      } catch (e) {
+        doc = null; esito.className = "esito ko"; esito.textContent = "non riesco a leggerlo: " + e.message;
+      }
+    };
+    ta.addEventListener("paste", () => setTimeout(leggi, 30));
+    ta.addEventListener("change", leggi);
+
+    form.onsubmit = ev => {
+      ev.preventDefault();
+      if (!doc) { esito.className="esito ko"; esito.textContent="prima incolla un codice valido"; return; }
+      try {
+        DATA[side] = datiDaPoB(doc, { set: sel.set.value, spec: sel.spec.value, skill: sel.skill.value });
+        render();
+      } catch (e) {
+        esito.className="esito ko"; esito.textContent="errore nel caricamento: " + e.message;
+      }
+    };
+  });
+}
 
 // ---- albero passivo: un solo scaricamento, una copia per colonna ----
-fetch("albero.svg").then(r => r.text()).then(txt => {
-  const doc = new DOMParser().parseFromString(txt, "image/svg+xml");
-  const base = doc.documentElement;
+function disegnaAlberi(){
+  const base = TREE;
   document.querySelectorAll(".albero").forEach(box => {
     const ids = new Set((box.dataset.ids || "").split(",").filter(Boolean));
     const asc = (box.dataset.asc || "").trim();
@@ -378,6 +579,16 @@ fetch("albero.svg").then(r => r.text()).then(txt => {
       }
     });
   });
+}
+
+// avvio: prima la pagina, poi l'albero (che è il file più pesante)
+render();
+fetch("albero.svg").then(r => r.text()).then(txt => {
+  TREE = new DOMParser().parseFromString(txt, "image/svg+xml").documentElement;
+  TREE.querySelectorAll(".nodes circle[data-name]").forEach(c => {
+    NODI.set((c.id||"").slice(1), { nome: c.getAttribute("data-name"), tipo: c.getAttribute("data-kind") });
+  });
+  disegnaAlberi();
 }).catch(e => {
   document.querySelectorAll(".albero .caric").forEach(d => d.textContent = "albero non caricato: " + e.message);
 });
