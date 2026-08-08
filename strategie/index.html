@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Strategie di farming — tre strade misurate</title>
+<link rel="stylesheet" href="../stile.css">
+<style>
+  /* la scheda strategia: intestazione, misuratori, due colonne */
+  .strat{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-lg);
+         margin:var(--s6) 0;overflow:hidden;box-shadow:var(--ombra)}
+  .strat > header{padding:var(--s5) var(--s6) var(--s4)}
+  .strat h2{margin:0 0 var(--s2);font-size:var(--t-xl);color:var(--gold);display:flex;
+            align-items:center;gap:var(--s3);flex-wrap:wrap}
+  .strat .sommario{margin:0;color:var(--text);font-size:var(--t-md)}
+  .strat .quando{margin:var(--s3) 0 0;font-size:var(--t-xs);color:var(--muted);
+                 text-transform:uppercase;letter-spacing:.09em}
+
+  .misure{display:grid;gap:var(--s5);grid-template-columns:repeat(4,1fr);
+          padding:var(--s4) var(--s6);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+          background:var(--panel2)}
+  .misura .et{font-size:var(--t-xs);color:var(--muted);text-transform:uppercase;letter-spacing:.09em}
+  .misura .val{font-size:var(--t-base);margin:.15rem 0 .4rem}
+  .tacche{display:flex;gap:4px}
+  .tacche i{flex:1;height:5px;border-radius:2px;background:var(--line2)}
+  .tacche i.on{background:var(--gold)}
+  .tacche.rischio i.on{background:var(--bad)}
+  .tacche.resa i.on{background:var(--good)}
+  .misura .val small{display:block;font-size:var(--t-xs);color:var(--muted);font-weight:400}
+
+  /* il blocco albero sta nella colonna larga, sotto il testo */
+  .blocco-albero{background:var(--panel2);border:1px solid var(--line);
+                 border-radius:var(--r);padding:var(--s4);margin-top:var(--s2)}
+  .blocco-albero h3{margin-bottom:var(--s3)}
+  .punti{display:grid;grid-template-columns:repeat(auto-fit,minmax(8rem,1fr));gap:var(--s2) var(--s4)}
+
+  .corpo{display:grid;gap:var(--s6);grid-template-columns:1.55fr 1fr;padding:var(--s5) var(--s6) var(--s6)}
+  @media(max-width:880px){.corpo{grid-template-columns:1fr}
+                          .misure{grid-template-columns:repeat(2,1fr)}}
+  .corpo h3{font-size:var(--t-xs);text-transform:uppercase;letter-spacing:.09em;
+            color:var(--gold);margin:0 0 var(--s2)}
+  .corpo h3.rosso{color:var(--bad)}
+  .corpo p{margin:0 0 var(--s4);font-size:var(--t-sm);line-height:1.62;color:var(--muted)}
+  .corpo p b,.corpo li b{color:var(--text)}
+  .corpo ul{margin:0 0 var(--s4);padding-left:1.1rem;font-size:var(--t-sm);
+            line-height:1.62;color:var(--muted)}
+  .corpo li{margin-bottom:.25rem}
+
+  .pannello{background:var(--panel2);border:1px solid var(--line);border-radius:var(--r);
+            padding:var(--s4);margin-bottom:var(--s4)}
+  .pannello h3{margin-bottom:var(--s3)}
+  .voce{display:flex;justify-content:space-between;gap:var(--s3);padding:.3rem 0;
+        border-bottom:1px dashed var(--line);font-size:var(--t-sm)}
+  .voce:last-child{border-bottom:0}
+  .voce .p{font-family:var(--mono);color:var(--gold);white-space:nowrap}
+  .voce .p.nulla{color:var(--muted)}
+  .voce .n{display:flex;align-items:center;gap:.45rem;min-width:0}
+  .voce img{width:26px;height:26px;object-fit:contain;flex:none;
+            filter:drop-shadow(0 1px 2px rgba(0,0,0,.6))}
+  .albero{display:block;text-align:center;padding:.55rem;border-radius:var(--r-sm);
+          background:var(--gold);color:#161310;font-weight:600;font-size:var(--t-sm);
+          text-decoration:none;margin-top:var(--s3)}
+  .albero:hover{filter:brightness(1.08)}
+  .nota{font-size:var(--t-xs);color:var(--muted);margin:var(--s3) 0 0;line-height:1.55}
+
+  .bottoni{display:flex;gap:var(--s2);margin-top:var(--s3)}
+  .bottoni .albero{flex:1;margin-top:0}
+  .albero.secondario{background:transparent;color:var(--gold);border:1px solid var(--gold)}
+  /* l'albero incorporato va a tutta larghezza della scheda: nella colonna
+     laterale poe.ninja sta in 440px e la sua pagina non ci entra */
+  .incorpora{margin:0 var(--s6) var(--s6);border:1px solid var(--line);
+             border-radius:var(--r);overflow:hidden;background:var(--bg)}
+  .incorpora .capo{display:flex;justify-content:space-between;align-items:center;
+                   gap:var(--s3);padding:var(--s3) var(--s4);background:var(--panel2);
+                   border-bottom:1px solid var(--line);font-size:var(--t-xs);color:var(--muted)}
+  .incorpora .capo button{background:none;border:0;color:var(--muted);cursor:pointer;
+                          font-size:var(--t-xs);text-decoration:underline}
+  .incorpora iframe{display:block;width:100%;height:40rem;border:0}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="marchio" href="../index.html">PoE <span>Tools</span></a>
+    <div class="nav-link">
+      <a href="../atlante/">Atlante</a>
+      <a href="../strategie/" aria-current="page">Strategie</a>
+      <a href="../farming/">Farming</a>
+      <a href="../mappe/">Mod mappa</a>
+      <a href="../build-confronto/">Build</a>
+      <a href="../heist/">Heist</a>
+    </div>
+    <span class="nav-patch">patch 3.29.2</span>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="testata">
+    <h1>Tre strategie di farming</h1>
+    <p class="sub">Tarate su un <b>channeller che deve stare fermo</b> e su mappe <b>senza ostacoli</b>. Ogni numero qui è misurato o citato con la sua fonte — e dove non lo è, c'è scritto.</p>
+    <div class="badges">
+      <span class="badge">patch 3.29.2</span>
+      <span class="badge">lega Allflame</span>
+      <span class="badge">8 agosto 2026</span>
+    </div>
+  </header>
+
+  <div class="avviso">
+    <b>Cosa sono davvero questi numeri.</b> Il <b>prezzo di uno scarab</b> è il costo d'ingresso, non il profitto. L'<b>adozione</b> (100.000 alberi censiti su poe.ninja) dice cosa fa la gente, cioè moda e concorrenza — non redditività. I punteggi <b>densità e layout</b> sono voti della community. L'unica cosa vicina al profitto che si può misurare è il <b>prezzo di ciò che una meccanica produce</b>, ed è la colonna «resa misurata» qui sotto.
+    <br><br><b>Nessuno misura le frequenze di drop</b>, che non sono pubbliche. Quindi non esiste qui un chaos/ora, e chi te lo dà se lo sta inventando.
+    <br><br><b>Le mappe sono filtrate per tag, non per opinione</b>: solo quelle marcate <code>few_obstacles</code> <em>e</em> <code>linear</code> nei dati di mapsofexile.com, ordinate per densità.
+  </div>
+
+  <!-- ============ 1 · ECONOMICA ============ -->
+  <article class="strat">
+    <header>
+      <h2>1 · Abyss <span class="badge">economica</span> <span class="badge">0–6 c/mappa</span></h2>
+      <p class="sommario">Le pit si aprono da sole e i mostri vengono verso di te. Non insegui niente, e uccidi in continuazione.</p>
+      <p class="quando">Quando: sempre, anche senza budget — è la strada che funziona a mani nude</p>
+    </header>
+
+    <div class="misure">
+      <div class="misura"><div class="et">Difficoltà</div><div class="val">Bassa</div>
+        <div class="tacche rischio"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div></div>
+      <div class="misura"><div class="et">Investimento</div><div class="val">Minimo</div>
+        <div class="tacche"><i class="on"></i><i></i><i></i><i></i><i></i></div></div>
+      <div class="misura"><div class="et">Profittabilità</div><div class="val">Media<small>stima, non misura</small></div>
+        <div class="tacche resa"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
+      <div class="misura"><div class="et">Concorrenza</div><div class="val">Alta — 15% degli alberi</div>
+        <div class="tacche rischio"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
+    </div>
+
+    <div class="corpo">
+      <div>
+        <h3>Perché funziona su questa build</h3>
+        <p>La skill è <b>canalizzata</b>: ogni secondo speso a inseguire un pacco è danno non fatto. Abyss è l'opposto dell'inseguimento — la pit avanza e i mostri arrivano addosso, quindi si sta fermi e si canalizza.</p>
+        <p>E c'è un effetto difensivo che vale più del bottino: il <b>Tempest Band</b> dà <code>4% chance to gain an Endurance Charge on Kill</code>, e Abyss produce uccisioni in continuazione. Con le 4 cariche su, la riduzione del danno fisico passa da <b>63% a 90%</b>, cioè il max hit fisico da 6.983 a <b>17.888</b>.</p>
+        <h3 class="rosso">Cosa la rovina</h3>
+        <ul>
+          <li>Mod di mappa che riducono il <b>recupero</b>: la ricarica dell'ES è già spenta dal Righteous Fire, resta solo la rigenerazione.</li>
+          <li>Mappe con ostacoli: la pit si incastra e il valore della meccanica crolla.</li>
+        </ul>
+        <div class="blocco-albero">
+          <h3>Albero atlas</h3>
+          <div class="punti">
+          <div class="voce"><span>Abyss</span><span class="p">27 punti</span></div>
+          <div class="voce"><span>Beyond</span><span class="p">20</span></div>
+          <div class="voce"><span>Map Monsters</span><span class="p">11</span></div>
+          <div class="voce"><span>Scarabs</span><span class="p">7</span></div>
+          </div>
+          <div class="bottoni"><button class="albero" type="button" data-albero="https://poeplanner.com/atlas-tree/AAAABgAAiwAbAB8AugqqC3EOvhC8EooVixfLGDkcQh2lH1QiRyQWJHoo0CjpKV8phyqEKsAtky9GMAMySzlgOY4-X0GMQ6lHz0hkSMJPiVGCV71Ym1k8Ws5b2V1PYCFiuWO1ZaRmtWfpadxrAmx-baVvf3ErcXVxoHOldfZ2OnbCd1F3k3jqecN6CHsKg_iGWYhtjoOP1JGMkiySnZQZlySdXp2HnbGh0aLeovCkNqSsp4KoL6quq6ysNq_BsGewxLRZtIa2brcrt8y5gLsqu-u8qLzQv2DA7sQbxEnG0Mw1zZzPHtCi0STRY9SH1tvavdxN4Gvhi-Kn4rvjN-N85Cnlj-nT6o3rfuzl9Az35PkO-jD6svra-8H7zv3JAAA">Mostra l'albero qui ↓</button><a class="albero secondario" href="https://poeplanner.com/atlas-tree/AAAABgAAiwAbAB8AugqqC3EOvhC8EooVixfLGDkcQh2lH1QiRyQWJHoo0CjpKV8phyqEKsAtky9GMAMySzlgOY4-X0GMQ6lHz0hkSMJPiVGCV71Ym1k8Ws5b2V1PYCFiuWO1ZaRmtWfpadxrAmx-baVvf3ErcXVxoHOldfZ2OnbCd1F3k3jqecN6CHsKg_iGWYhtjoOP1JGMkiySnZQZlySdXp2HnbGh0aLeovCkNqSsp4KoL6quq6ysNq_BsGewxLRZtIa2brcrt8y5gLsqu-u8qLzQv2DA7sQbxEnG0Mw1zZzPHtCi0STRY9SH1tvavdxN4Gvhi-Kn4rvjN-N85Cnlj-nT6o3rfuzl9Az35PkO-jD6svra-8H7zv3JAAA" target="_blank" rel="noopener">Apri ↗</a></div>
+          <p class="nota">139 punti. È la spartizione usata da <b>168 alberi</b> su 100.000.</p>
+        </div>
+      </div>
+      <div>
+        <div class="pannello">
+          <h3>Scarab</h3>
+          <div class="voce"><span>Nessuno</span><span class="p nulla">0c</span></div>
+          <div class="voce"><span class="n"><img src="img/abyss-scarab-of-the-consort.png" alt="" loading="lazy"><span>Abyss Scarab of the Consort</span></span><span class="p">3,8c</span></div>
+          <div class="voce"><span class="n"><img src="img/abyss-scarab.png" alt="" loading="lazy"><span>Abyss Scarab</span></span><span class="p">2,8c</span></div>
+          <div class="voce"><span class="n"><img src="img/abyss-scarab-of-multitudes.png" alt="" loading="lazy"><span>Abyss Scarab of Multitudes</span></span><span class="p">2,6c</span></div>
+          <p class="nota">Tutta la famiglia sta sotto i 4 chaos: è la meccanica con la barriera d'ingresso più bassa fra le tre.</p>
+        </div>
+        <div class="pannello">
+          <h3>Mappa</h3>
+          <div class="voce"><span><b>Crater</b></span><span class="p">D10 · L6 · B10</span></div>
+          <div class="voce"><span>Desert Spring</span><span class="p">D10 · L8 · B2</span></div>
+          <p class="nota">Entrambe <code>linear</code> e <code>few_obstacles</code>. Crater ha il boss più veloce (10), Desert Spring il layout migliore ma un boss lento (2).</p>
+        </div>
+        <div class="pannello">
+          <h3>Resa misurata</h3>
+          <p class="nota">Abyss non produce una valuta scambiabile: il suo output sono <b>Stygian Vise</b> e <b>Abyssal Jewel</b>, di cui ha il monopolio. Sono item, quindi il prezzo dipende dai mod e non si riassume in un numero. <b>Non misurato.</b></p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ 2 · MEDIA ============ -->
+  <article class="strat">
+    <header>
+      <h2>2 · Legion <span class="badge">media</span> <span class="badge">2–88 c/mappa</span></h2>
+      <p class="sommario">Congeli un esercito e ci canalizzi dentro da fermo. È la meccanica che assomiglia di più a come questa build fa danno.</p>
+      <p class="quando">Quando: appena l'albero regge 30 punti su un cluster solo</p>
+    </header>
+
+    <div class="misure">
+      <div class="misura"><div class="et">Difficoltà</div><div class="val">Media</div>
+        <div class="tacche rischio"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
+      <div class="misura"><div class="et">Investimento</div><div class="val">Scalabile</div>
+        <div class="tacche"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
+      <div class="misura"><div class="et">Profittabilità</div><div class="val">Media-alta<small>splinter misurati a 10c</small></div>
+        <div class="tacche resa"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
+      <div class="misura"><div class="et">Concorrenza</div><div class="val">La più bassa — 5% degli alberi</div>
+        <div class="tacche rischio"><i class="on"></i><i></i><i></i><i></i><i></i></div></div>
+    </div>
+
+    <div class="corpo">
+      <div>
+        <h3>Perché funziona su questa build</h3>
+        <p>Legion è <b>l'unica meccanica in cui stare fermi è il modo corretto di giocarla</b>: il monolito congela l'esercito, tu ti pianti e canalizzi. Il moltiplicatore da 5 stadi di channelling — che in mappa non riesci quasi mai a caricare — qui si carica sempre.</p>
+        <p>Ed è la <b>meno battuta</b> delle tre: la prendono il <b>5%</b> degli alberi contro il 15% di Abyss. Meno gente dentro significa meno concorrenza sui prezzi di ciò che produce.</p>
+        <h3 class="rosso">Cosa la rovina</h3>
+        <ul>
+          <li>Mappe con ostacoli o dislivelli: l'esercito spawna spezzato e ne raggiungi metà.</li>
+          <li>Non uccidere abbastanza in fretta: se il timer scade prima, il grosso del bottino resta congelato.</li>
+        </ul>
+        <div class="blocco-albero">
+          <h3>Albero atlas</h3>
+          <div class="punti">
+          <div class="voce"><span>Legion</span><span class="p">30 punti</span></div>
+          <div class="voce"><span>Beyond</span><span class="p">19</span></div>
+          <div class="voce"><span>Map Monsters</span><span class="p">9</span></div>
+          <div class="voce"><span>Memory Tears</span><span class="p">4</span></div>
+          </div>
+          <div class="bottoni"><button class="albero" type="button" data-albero="https://poeplanner.com/atlas-tree/AAAABgAAiwC6AM4IPwqqCwoLcQzgDrMOvg_sEOESKhZiFxQXyxxCHaUefR9UJooo0CmHKoQqwCt-K9ctkzADMeU0pjYSOG85jjqvPl9BjEJoQwhDqUfPSl9RglZGV71ZPFrOW9lb814qYCFge2O1ZExmeGa1Z-loQGnVb39xdXGgc6V0wXX2djp2wndRegh7Cn-kgPCBD4OUhBGGWYhtj9SSLJKdlBmcnJ1enYegXaPGp4KoL6quq3yvwbDEtFm0hrX9tgK3zLmAuyq767yov2DFAsYzxjjG0Mw1zpHPHtCi0STUh9ce2r3dF90c4Yviu-M35Y_l-uYm6Ijqjet-7OXyZfKT82z0DPfk-Q76MPqy-vz7LfvB-8789v3JAAA">Mostra l'albero qui ↓</button><a class="albero secondario" href="https://poeplanner.com/atlas-tree/AAAABgAAiwC6AM4IPwqqCwoLcQzgDrMOvg_sEOESKhZiFxQXyxxCHaUefR9UJooo0CmHKoQqwCt-K9ctkzADMeU0pjYSOG85jjqvPl9BjEJoQwhDqUfPSl9RglZGV71ZPFrOW9lb814qYCFge2O1ZExmeGa1Z-loQGnVb39xdXGgc6V0wXX2djp2wndRegh7Cn-kgPCBD4OUhBGGWYhtj9SSLJKdlBmcnJ1enYegXaPGp4KoL6quq3yvwbDEtFm0hrX9tgK3zLmAuyq767yov2DFAsYzxjjG0Mw1zpHPHtCi0STUh9ce2r3dF90c4Yviu-M35Y_l-uYm6Ijqjet-7OXyZfKT82z0DPfk-Q76MPqy-vz7LfvB-8789v3JAAA" target="_blank" rel="noopener">Apri ↗</a></div>
+          <p class="nota">139 punti. Usata da <b>102 alberi</b> su 100.000.</p>
+        </div>
+      </div>
+      <div>
+        <div class="pannello">
+          <h3>Scarab</h3>
+          <div class="voce"><span class="n"><img src="img/legion-scarab.png" alt="" loading="lazy"><span>Legion Scarab</span></span><span class="p">1,3c</span></div>
+          <div class="voce"><span class="n"><img src="img/legion-scarab-of-officers.png" alt="" loading="lazy"><span>Legion Scarab of Officers</span></span><span class="p">1,3c</span></div>
+          <div class="voce"><span class="n"><img src="img/legion-scarab-of-command.png" alt="" loading="lazy"><span>Legion Scarab of Treasures</span></span><span class="p">2,6c</span></div>
+          <div class="voce"><span class="n"><img src="img/legion-scarab-of-eternal-conflict.png" alt="" loading="lazy"><span><b>of Eternal Conflict</b></span></span><span class="p">88c</span></div>
+          <p class="nota">Si entra con <b>1,3 chaos</b> e si sale fino a 88 quando il personaggio regge. Verificato indipendentemente su trade: 75c al quartile alto su 17 inserzioni.</p>
+        </div>
+        <div class="pannello">
+          <h3>Mappa</h3>
+          <div class="voce"><span><b>Dunes</b></span><span class="p">L10 · D4 · B10</span></div>
+          <div class="voce"><span>Desert Spring</span><span class="p">L8 · D10 · B2</span></div>
+          <p class="nota">Per Legion conta lo <b>spazio aperto</b>, non la densità: l'esercito è fisso. Dunes è <code>outdoors</code>, <code>linear</code>, <code>few_obstacles</code> con layout 10.</p>
+        </div>
+        <div class="pannello">
+          <h3>Resa misurata</h3>
+          <div class="voce"><span class="n"><img src="img/timeless-karui-splinter.png" alt="" loading="lazy"><span>Timeless Karui Splinter</span></span><span class="p">10c</span></div>
+          <p class="nota">Mediana su <b>71 inserzioni</b>, misurata sull'endpoint di scambio l'8 agosto. È l'unica delle tre strategie di cui ho potuto misurare l'output per unità.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ 3 · SPINTA ============ -->
+  <article class="strat">
+    <header>
+      <h2>3 · Harvest <span class="badge">spinta</span> <span class="badge">55–76 c/mappa</span></h2>
+      <p class="sommario">Il prezzo d'ingresso più alto di tutte le meccaniche, e la minor concorrenza. Si sta fermi davanti al Grove e si raccoglie.</p>
+      <p class="quando">Quando: c'è budget da rimettere in gioco ogni mappa</p>
+    </header>
+
+    <div class="misure">
+      <div class="misura"><div class="et">Difficoltà</div><div class="val">Bassa</div>
+        <div class="tacche rischio"><i class="on"></i><i></i><i></i><i></i><i></i></div></div>
+      <div class="misura"><div class="et">Investimento</div><div class="val">Alto</div>
+        <div class="tacche"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
+      <div class="misura"><div class="et">Profittabilità</div><div class="val">Alta<small>mediana scarab più alta</small></div>
+        <div class="tacche resa"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
+      <div class="misura"><div class="et">Concorrenza</div><div class="val">La più bassa in assoluto — 7%</div>
+        <div class="tacche rischio"><i class="on"></i><i></i><i></i><i></i><i></i></div></div>
+    </div>
+
+    <div class="corpo">
+      <div>
+        <h3>Perché funziona su questa build</h3>
+        <p>È l'unica delle tre che <b>non chiede di uccidere niente di pericoloso</b>. Con 4.112 di Energy Shield e una diagnosi che dice che si muore ai danni nel tempo, non esporsi è un vantaggio che vale quanto il bottino.</p>
+        <p>Ed è il caso più netto di <b>prezzo alto, folla bassa</b>: la famiglia ha la <b>mediana più alta di tutte</b> (21c) mentre solo il <b>7%</b> degli alberi specializza gli scarab su Harvest — contro il 20% di Ambush, che ha una mediana di 5 chaos.</p>
+        <h3 class="rosso">Cosa la rovina</h3>
+        <ul>
+          <li>Mappe lente: il Grove non dipende dal layout, quindi ogni secondo di attraversamento è puro costo.</li>
+          <li>Comprare Cornucopia e poi correre mappe povere: a 55c a mappa il margine si assottiglia in fretta.</li>
+        </ul>
+        <div class="blocco-albero">
+          <h3>Albero atlas</h3>
+          <div class="punti">
+          <div class="voce"><span>Harvest</span><span class="p">30 punti</span></div>
+          <div class="voce"><span>Scarabs</span><span class="p">21</span></div>
+          <div class="voce"><span>Map Monsters</span><span class="p">10</span></div>
+          <div class="voce"><span>Map Tiers</span><span class="p">9</span></div>
+          </div>
+          <div class="bottoni"><button class="albero" type="button" data-albero="https://poeplanner.com/atlas-tree/AAAABgAAiwAfBaQKqgtxDH4M8w-3EOEXyxjEG04fxCPaJOko0CjpKoQqwCvaLZMuizA1MiQySzSIOPI5jjufPl8_BEB-QYxCwUOpR89KDkwhTatRglWHVadWbVjBWTxafVrOW9ldt13HYCFi1WO1ZrVp1WvobNRxC3ErcXVxoHX2djp2gHbCeOp6CH0TgBCGWYhtiWiLGIyWjSmOIo_UkX2SLJQZlySZbJ1enYeetJ-xoYakNqeCrBGvka-ar8GyYLLVtIa3zLsqu-u8qMIjxbLF_sabxtDHs8huzyPPt9Ci01XUh9S51lrYntq930vhi-KX4qfjN-WP6ObptOqN7OXvrvJM8-P1TPfk9_P5Dvow-rL7zv3J_kH-3v-4AAA">Mostra l'albero qui ↓</button><a class="albero secondario" href="https://poeplanner.com/atlas-tree/AAAABgAAiwAfBaQKqgtxDH4M8w-3EOEXyxjEG04fxCPaJOko0CjpKoQqwCvaLZMuizA1MiQySzSIOPI5jjufPl8_BEB-QYxCwUOpR89KDkwhTatRglWHVadWbVjBWTxafVrOW9ldt13HYCFi1WO1ZrVp1WvobNRxC3ErcXVxoHX2djp2gHbCeOp6CH0TgBCGWYhtiWiLGIyWjSmOIo_UkX2SLJQZlySZbJ1enYeetJ-xoYakNqeCrBGvka-ar8GyYLLVtIa3zLsqu-u8qMIjxbLF_sabxtDHs8huzyPPt9Ci01XUh9S51lrYntq930vhi-KX4qfjN-WP6ObptOqN7OXvrvJM8-P1TPfk9_P5Dvow-rL7zv3J_kH-3v-4AAA" target="_blank" rel="noopener">Apri ↗</a></div>
+          <p class="nota">139 punti. La usano <b>27 alberi</b> su 100.000: è la strada meno battuta di tutte.</p>
+        </div>
+      </div>
+      <div>
+        <div class="pannello">
+          <h3>Scarab</h3>
+          <div class="voce"><span class="n"><img src="img/harvest-scarab.png" alt="" loading="lazy"><span>Harvest Scarab</span></span><span class="p">1,1c</span></div>
+          <div class="voce"><span class="n"><img src="img/harvest-scarab-of-doubling.png" alt="" loading="lazy"><span>Harvest Scarab of Doubling</span></span><span class="p">21c</span></div>
+          <div class="voce"><span class="n"><img src="img/harvest-scarab-of-cornucopia.png" alt="" loading="lazy"><span><b>of Cornucopia</b></span></span><span class="p">55c</span></div>
+          <p class="nota">Cornucopia verificato indipendentemente su trade: <b>54c</b> al quartile alto su 25 inserzioni. Le due fonti coincidono al chaos.</p>
+        </div>
+        <div class="pannello">
+          <h3>Mappa</h3>
+          <div class="voce"><span><b>Toxic Sewer</b></span><span class="p">L10 · D7 · B10</span></div>
+          <div class="voce"><span>Dunes</span><span class="p">L10 · D4 · B10</span></div>
+          <p class="nota">Il Grove è fisso: conta solo attraversare in fretta. Toxic Sewer è l'unica con layout 10 che non sacrifichi la densità, ed è <code>boss_rushable</code>.</p>
+        </div>
+        <div class="pannello">
+          <h3>Resa misurata</h3>
+          <div class="voce"><span class="n"><img src="img/sacred-lifeforce.png" alt="" loading="lazy"><span>Sacred Lifeforce</span></span><span class="p">40c</span></div>
+          <div class="voce"><span class="n"><img src="img/wild-lifeforce.png" alt="" loading="lazy"><span>Wild Lifeforce</span></span><span class="p">3c</span></div>
+          <div class="voce"><span class="n"><img src="img/vivid-lifeforce.png" alt="" loading="lazy"><span>Vivid · Primal Lifeforce</span></span><span class="p">1c</span></div>
+          <p class="nota">Per unità. La Sacred è su <b>2 sole inserzioni</b>: numero fragile, da non prendere per buono. Le altre su 12–13.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <footer>
+    <p><strong>Da dove vengono i numeri.</strong> Prezzi degli scarab da <b>poe.ninja</b>, verificati su 17 scarab con l'API di trade. Alberi atlas e percentuali di adozione da <b>poe.ninja/atlas-trees</b>, 100.000 alberi censiti per la lega Allflame. Punteggi e tag delle mappe da <b>mapsofexile.com</b>. Resa delle meccaniche misurata sull'endpoint di scambio di trade l'8 agosto.</p>
+    <p><strong>Cosa manca, e non per pigrizia.</strong> Le frequenze di drop non sono pubbliche: senza quelle nessuno può calcolare un guadagno per ora, nemmeno approssimato. Queste tre strade si scelgono per <b>costo d'ingresso, concorrenza e compatibilità con la build</b>, non perché una renda un numero preciso più dell'altra.</p>
+    <p><strong>Rimisura quando la data invecchia.</strong> I prezzi si muovono ogni settimana e l'adozione cambia col meta.</p>
+  </footer>
+</div>
+
+<script>
+// L'albero di poe.ninja si carica **solo se richiesto**, non all'apertura della
+// pagina: cosi' la regola «zero dipendenze esterne a runtime» resta rispettata —
+// senza rete la pagina funziona per intero, manca solo un riquadro che nessuno
+// ha chiesto di aprire. Il link diretto resta sempre disponibile accanto.
+document.querySelectorAll("button[data-albero]").forEach(b => {
+  b.onclick = () => {
+    const url = b.dataset.albero;
+    const box = document.createElement("div");
+    box.className = "incorpora";
+    box.innerHTML = '<div class="capo"><span>Albero completo — poeplanner</span>'
+      + '<button type="button">chiudi</button></div>'
+      + '<iframe src="' + url + '" loading="lazy" '
+      + 'title="Albero atlas completo su poe.ninja" referrerpolicy="no-referrer"></iframe>';
+    // in coda alla scheda, fuori dalla griglia a due colonne
+    b.closest("article.strat").appendChild(box);
+    box.querySelector("button").onclick = () => { box.remove(); b.style.display = ""; };
+    b.style.display = "none";
+    box.scrollIntoView({behavior: "smooth", block: "nearest"});
+  };
+});
+</script>
+
+</body>
+</html>

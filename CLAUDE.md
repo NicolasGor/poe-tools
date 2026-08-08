@@ -28,6 +28,14 @@ dato della wiki serve a uno strumento, si copia il singolo valore, non la pagina
 
 - **Zero dipendenze esterne a runtime**: niente CDN, niente font remoti, niente
   fetch verso altri host. La pagina deve funzionare offline.
+  - **Unica eccezione, e solo a queste condizioni: gli `<iframe>` su richiesta.**
+    In `strategie/` gli alberi atlas si incorporano in pagina da **poeplanner**
+    (`poeplanner.com/atlas-tree/<codice>` apre direttamente un albero: il codice
+    e' quello ufficiale, lo stesso che poe.ninja mette nei suoi URL), ma
+    l'iframe **non esiste finché non lo si chiede**: viene creato da un pulsante.
+    Senza rete la pagina funziona per intero — manca solo un riquadro che nessuno
+    ha aperto — e accanto al pulsante c'è sempre il link diretto. Un iframe
+    caricato all'apertura sarebbe invece una dipendenza vera, e resta vietato.
 - **Il design sta in [stile.css](stile.css), condiviso da tutte le pagine**: token
   (colori, scala tipografica, spaziatura), barra di navigazione, e i componenti
   ricorrenti — `.card`, `.badge`, `.avviso`, `.tabella`, `.kpi`, `.sec`. È un file
