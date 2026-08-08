@@ -28,11 +28,12 @@ dato della wiki serve a uno strumento, si copia il singolo valore, non la pagina
 
 - **Zero dipendenze esterne a runtime**: niente CDN, niente font remoti, niente
   fetch verso altri host. La pagina deve funzionare offline.
-- **Le icone si scaricano, non si linkano.** Gli asset di gioco stanno in
-  `<tool>/img/` e sono committati nel repo. Un `<img>` puntato a
-  `web.poecdn.com` è una dipendenza esterna travestita: si rompe se GGG blocca
-  l'hotlink e non funziona offline. CSS e JS restano inline nella pagina; le
-  immagini sono file locali, stesso origin.
+- **Le icone si scaricano, non si linkano — tranne quando il contenuto è
+  dinamico.** Per una pagina a contenuto fisso gli asset stanno in `<tool>/img/`
+  e sono committati. Ma una pagina che **importa build arbitrarie** non può avere
+  una copia locale di ogni item del gioco: lì si usa l'archivio remoto
+  (`assets.pobb.in/1/<Nome>.webp`), con ripiego sul nome scritto se l'icona manca.
+  La regola resta valida per tutto il resto: CSS e JS inline, nessun CDN.
 - **I link in uscita sono ammessi** — un `<a href>` verso `pathofexile.com/trade`
   è navigazione, non una dipendenza: la pagina si carica lo stesso se il sito
   remoto è giù.
