@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Confronto build — la mia contro High Budget No Whispers</title>
+<style>
+  :root{
+    --bg:#12151c; --panel:#1a1f2a; --panel2:#151a23; --line:#2b3342; --line2:#39435a;
+    --text:#e6e9ef; --muted:#8b95a8; --label:#78839a;
+    --normal:#c8c8c8; --magic:#8888ff; --rare:#ffff77; --unique:#af6025;
+    --gold:#f0b94a; --good:#60d394; --bad:#e07a6f;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:1.4rem 1rem 5rem;background:var(--bg);color:var(--text);
+       font:14px/1.5 Inter,ui-sans-serif,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+  .wrap{max-width:88rem;margin:0 auto}
+  a{color:var(--gold)}
+  header{margin-bottom:1.3rem}
+  .back{font-size:.8rem}
+  h1{margin:.6rem 0 .3rem;font-size:1.4rem}
+  .sub{margin:0;color:var(--muted);font-size:.9rem;max-width:52rem}
+  .badges{margin-top:.7rem;display:flex;gap:.4rem;flex-wrap:wrap}
+  .badge{padding:.15rem .55rem;border:1px solid var(--line2);border-radius:999px;font-size:.72rem;color:var(--muted)}
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:start}
+  .col{min-width:0}
+  .colhead{position:sticky;top:0;z-index:5;background:var(--bg);padding:.5rem 0 .6rem;border-bottom:1px solid var(--line)}
+  .colhead h2{margin:0 0 .1rem;font-size:1rem}
+  .colhead .s{color:var(--muted);font-size:.8rem}
+  .colhead.mine h2{color:var(--good)}
+  .colhead.target h2{color:var(--gold)}
+
+  .statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;margin:.7rem 0 1rem}
+  .stat{background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:.45rem .55rem}
+  .stat b{display:block;font-size:.95rem}
+  .stat span{color:var(--label);font-size:.68rem;text-transform:uppercase;letter-spacing:.06em}
+
+  h3.sec{font-size:.72rem;text-transform:uppercase;letter-spacing:.11em;color:var(--muted);
+         margin:1.4rem 0 .55rem;padding-bottom:.3rem;border-bottom:1px solid var(--line)}
+
+  .item{background:var(--panel);border:1px solid var(--line);border-radius:5px;margin-bottom:.4rem;overflow:hidden}
+  .item .top{display:flex;justify-content:space-between;gap:.5rem;padding:.4rem .55rem;background:var(--panel2);border-bottom:1px solid var(--line)}
+  .item .slot{color:var(--label);font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+  .item .nm{font-weight:600;font-size:.86rem;line-height:1.3}
+  .item .bs{color:var(--muted);font-size:.76rem}
+  .NORMAL .nm{color:var(--normal)} .MAGIC .nm{color:var(--magic)}
+  .RARE .nm{color:var(--rare)} .UNIQUE .nm{color:var(--unique)} .RELIC .nm{color:var(--unique)}
+  .mods{padding:.4rem .55rem;font-size:.75rem;line-height:1.45;color:#a9b2c4;
+        font-family:"Source Code Pro",Menlo,Consolas,monospace}
+  .mods div{white-space:normal}
+  .diff{outline:1px solid var(--gold);outline-offset:-1px}
+  .diffbadge{font-size:.6rem;font-weight:700;letter-spacing:.06em;background:var(--gold);color:#1b1608;
+             border-radius:3px;padding:0 .3rem;margin-left:.35rem;vertical-align:middle}
+
+  .grp{background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:.45rem .55rem;margin-bottom:.4rem}
+  .grp .slotlbl{color:var(--label);font-size:.66rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.2rem}
+  .gem{font-size:.8rem;line-height:1.5}
+  .gem.main{font-weight:600;color:#cfd8ea}
+  .gem.sup{color:#93a0b8;padding-left:.7rem;border-left:1px solid var(--line2);margin-left:.15rem}
+  .gem .lvl{color:var(--label);font-size:.7rem}
+  .gem.off{opacity:.45;text-decoration:line-through}
+
+  .treebox{background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:.7rem .8rem}
+  .treebox .n{font-size:1.5rem;font-weight:700}
+  .treebox .n span{font-size:.75rem;font-weight:400;color:var(--muted)}
+  .treelink{display:inline-block;margin-top:.5rem;font-size:.78rem;padding:.3rem .6rem;
+            border:1px solid var(--line2);border-radius:4px;background:var(--panel2);color:var(--text);text-decoration:none}
+  .treelink:hover{border-color:var(--gold);color:var(--gold)}
+  .jw{margin-top:.6rem;font-size:.78rem}
+  .jw div{color:var(--muted);padding:.12rem 0}
+  .jw b{color:var(--text);font-weight:500}
+
+  .note{background:rgba(240,185,74,.08);border:1px solid rgba(240,185,74,.35);border-radius:5px;
+        padding:.7rem .85rem;margin:.8rem 0 0;font-size:.83rem;color:var(--muted)}
+  .note b{color:var(--text)}
+  footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem}
+  footer p{margin:0 0 .55rem;max-width:56rem}
+
+  @media(max-width:900px){
+    .cols{grid-template-columns:1fr}
+    .colhead{position:static}
+    .col+.col{margin-top:2rem;border-top:2px solid var(--line2);padding-top:1rem}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="back"><a href="../index.html">← Tutti gli strumenti</a></div>
+    <h1>Confronto build</h1>
+    <p class="sub">A sinistra il personaggio come è adesso, a destra il set <em>High Budget No Whispers</em> della guida. I pezzi evidenziati in giallo sono quelli che differiscono per base o per unique.</p>
+    <div class="badges">
+      <span class="badge">patch 3.29.2</span>
+      <span class="badge">dati dai PoB, 8 agosto 2026</span>
+      <span class="badge" id="diffcount"></span>
+    </div>
+  </header>
+
+  <div class="cols" id="cols"></div>
+
+  <footer>
+    <p><strong>I numeri della colonna destra non ci sono, e non è una svista.</strong> Un export PoB porta le statistiche calcolate <em>solo</em> per il set attivo al momento del salvataggio — nel file della guida è «High Budget Whisper Setup», non questo. Per avere DPS ed EHP di <em>High Budget No Whispers</em> bisogna aprirlo in PoB e selezionare i tre menu su quel set.</p>
+    <p><strong>L'albero è un conteggio più un link, non un disegno.</strong> Il PoB esporta gli id dei nodi, non i loro nomi: senza i dati dell'albero non si possono elencare keystone e mastery. Il pulsante apre l'albero vero su pathofexile.com.</p>
+    <p><strong>Attenzione ai menu.</strong> In PoB gear, gemme e albero si scelgono con tre selettori indipendenti: è facile confrontare per sbaglio il gear di un set con le gemme di un altro. Qui sono allineati tutti e tre su <em>High Budget No Whispers</em>.</p>
+  </footer>
+</div>
+
+<script>
+const DATA = {"left": {"titolo": "TrincoEL — la mia build", "sub": "Witch / Elementalist · livello 93", "stats": {"DPS totale": "4,023,544", "EHP": "45,363", "Energy Shield": "4,212", "Vita": "1,423", "Max hit fisico": "6,945", "Cast/s": "11.30"}, "gear": [{"rarity": "UNIQUE", "name": "Duskdawn", "base": "Maelstrom Staff", "mods": ["+25% Chance to Block Attack Damage", "+27% Chance to Block Attack Damage while wielding a Staff", "64% increased Spell Critical Strike Chance", "Gain 18% of Elemental Damage as Extra Chaos Damage", "+1% to Critical Strike Multiplier per 1% Chance to Block Attack Damage", "+60% to Critical Strike Multiplier if you've dealt a Non-Critical Strike Recently", "135% increased Spell Damage if you've dealt a Critical Strike Recently"], "slot": "Weapon 1"}, {"rarity": "RARE", "name": "Glyph Guardian", "base": "Paladin Crown", "mods": ["ArmourBasePercentile: 0.7439", "EnergyShieldBasePercentile: 0.7884", "Searing Exarch Item", "Eater of Worlds Item", "7% increased Mana Reservation Efficiency of Skills", "8% increased Cast Speed", "+41 to Strength", "32% increased Armour and Energy Shield", "23% increased Rarity of Items found", "+33% to Chaos Resistance", "13% increased Stun and Block Recovery", "{crafted}67% increased Armour and Energy Shield"], "slot": "Helmet"}, {"rarity": "RARE", "name": "Tempest Curtain", "base": "Sacred Chainmail", "mods": ["ArmourBasePercentile: 0.9368", "EnergyShieldBasePercentile: 0.9617", "Intangibility: 10%", "Searing Exarch Item", "Eater of Worlds Item", "1% less Damage Taken per 220 Dexterity", "Flasks gain a Charge every 3 seconds", "32% reduced Attribute Requirements", "+296 to Armour", "90% increased Armour and Energy Shield", "+72 to maximum Energy Shield", "+95 to maximum Life", "Regenerate 124.9 Life per second", "{crafted}+23 to Strength"], "slot": "Body Armour"}, {"rarity": "RARE", "name": "Carrion Mitts", "base": "Martyr Gloves", "mods": ["ArmourBasePercentile: 0.6642", "EnergyShieldBasePercentile: 0.6951", "Searing Exarch Item", "Eater of Worlds Item", "Inflict Lightning Exposure on Hit, applying -11% to Lightning Resistance", "8% increased Attack Speed", "+42 to Dexterity", "+40 to Intelligence", "117% increased Armour and Energy Shield", "16% increased Stun and Block Recovery", "{crafted}24% chance to Avoid being Stunned"], "slot": "Gloves"}, {"rarity": "RARE", "name": "Entropy Goad", "base": "Paladin Boots", "mods": ["ArmourBasePercentile: 0.7761", "EnergyShieldBasePercentile: 0.8019", "+32 to Strength", "91% increased Armour and Energy Shield", "38% increased Energy Shield Recharge Rate", "+43 to maximum Mana", "+30% to Chaos Resistance", "{crafted}20% increased Movement Speed", "{crafted}12% chance to gain Onslaught for 4 seconds on Kill"], "slot": "Boots"}, {"rarity": "UNIQUE", "name": "Marylene's Fallacy", "base": "Lapis Amulet", "mods": ["Catalyst: Unstable", "CatalystQuality: 10", "{crafted}Allocates Whispers of Doom", "+23 to Intelligence", "+87 to Accuracy Rating", "+258% to Global Critical Strike Multiplier", "+84 to Evasion Rating", "10% increased Light Radius", "44% less Critical Strike Chance", "Critical Strikes have Culling Strike"], "slot": "Amulet"}, {"rarity": "RARE", "name": "Tempest Band", "base": "Unset Ring", "mods": ["+2 to Level of Socketed Gems", "+68 to maximum Mana", "23% increased Rarity of Items found", "+1 to Minimum Endurance Charges", "4% chance to gain an Endurance Charge on Kill", "{crafted}16% increased Global Critical Strike Chance", "{crafted}+22% to Critical Strike Multiplier if you've Shattered an Enemy Recently"], "slot": "Ring 1"}, {"rarity": "UNIQUE", "name": "Foulborn Lori's Lantern", "base": "Prismatic Ring", "mods": ["+8% to all Elemental Resistances", "+10% to all Elemental Resistances", "7% increased Movement Speed when on Low Life", "31% increased Light Radius", "+23% to Chaos Resistance when on Low Life", "{mutated}Your Damage with Hits is Lucky while on Low Life"], "slot": "Ring 2"}, {"rarity": "RARE", "name": "Plague Girdle", "base": "Stygian Vise", "mods": ["Intangibility: 15%", "Has 1 Abyssal Socket", "+36 to maximum Energy Shield", "Regenerate 85.5 Life per second", "+50 to maximum Mana", "+31% to Chaos Resistance", "33% increased Flask Charges gained", "{crafted}16% increased Damage"], "slot": "Belt"}, {"rarity": "RARE", "name": "Hollow Stare", "base": "Murderous Eye Jewel", "mods": ["+8 to Strength and Dexterity", "+10 to Strength and Intelligence", "+35 to maximum Energy Shield", "4 to 5 Added Physical Damage with Staff Attacks", "2 to 23 Added Lightning Damage with Staff Attacks", "Corrupted"], "slot": "Belt Abyssal Socket 1"}, {"rarity": "UNIQUE", "name": "Coruscating Elixir", "base": "Ruby Flask", "mods": ["{crafted}Reused at the end of this Flask's effect", "25% increased Duration", "Chaos Damage taken does not bypass Energy Shield during effect", "Removes all but one Life on use", "Removed life is Regenerated as Energy Shield over 2 seconds"], "slot": "Flask 1"}, {"rarity": "MAGIC", "name": "Experimenter's Topaz Flask of the Crystal", "base": "", "mods": ["{crafted}Reused at the end of this Flask's effect", "37% increased Duration", "14% additional Elemental Resistances during Effect"], "slot": "Flask 2"}, {"rarity": "MAGIC", "name": "Clinician's Sapphire Flask of Persistence", "base": "", "mods": ["{crafted}Reused at the end of this Flask's effect", "32% increased Duration", "41% Chance to Avoid being Stunned during Effect"], "slot": "Flask 3"}, {"rarity": "UNIQUE", "name": "The Wise Oak", "base": "Bismuth Flask", "mods": ["{crafted}Reused at the end of this Flask's effect", "During Effect, 6% reduced Damage taken of each Element for which your Uncapped Elemental Resistance is lowest", "During Effect, Damage Penetrates 5% Resistance of each Element for which your Uncapped Elemental Resistance is highest"], "slot": "Flask 4"}], "gems": [{"slot": "Ring 1", "gems": [{"n": "Sigil of Power", "l": "20", "q": "0", "on": true}]}, {"slot": "Body Armour", "gems": [{"n": "Annihilation", "l": "2", "q": "20", "on": true}, {"n": "Controlled Destruction", "l": "20", "q": "0", "on": true}, {"n": "Inspiration", "l": "20", "q": "0", "on": true}, {"n": "Infused Channelling", "l": "20", "q": "0", "on": true}, {"n": "Lightning Tendrils of Eccentricity", "l": "20", "q": "20", "on": true}, {"n": "Arcane Surge", "l": "20", "q": "0", "on": true}]}, {"slot": "Boots", "gems": [{"n": "Frostblink of Wintry Blast", "l": "20", "q": "0", "on": true}, {"n": "Faster Casting", "l": "20", "q": "0", "on": true}, {"n": "Discipline", "l": "20", "q": "0", "on": true}, {"n": "Summon Flame Golem", "l": "20", "q": "0", "on": true}]}, {"slot": "Helmet", "gems": [{"n": "Arcanist Brand", "l": "20", "q": "0", "on": true}, {"n": "Conductivity", "l": "20", "q": "0", "on": true}, {"n": "Elemental Weakness", "l": "20", "q": "0", "on": true}, {"n": "Purity of Elements", "l": "20", "q": "0", "on": true}]}, {"slot": "Gloves", "gems": [{"n": "Clarity", "l": "7", "q": "1", "on": true}, {"n": "Herald of Ice", "l": "20", "q": "1", "on": true}, {"n": "Arctic Armour", "l": "20", "q": "1", "on": true}, {"n": "Arrogance", "l": "20", "q": "8", "on": true}]}, {"slot": "Weapon 1", "gems": [{"n": "Summon Stone Golem", "l": "20", "q": "0", "on": true}]}, {"slot": "Weapon 1", "gems": [{"n": "Summon Chaos Golem", "l": "20", "q": "0", "on": true}]}, {"slot": "Weapon 1", "gems": [{"n": "Wrath", "l": "20", "q": "0", "on": true}]}, {"slot": "Weapon 1", "gems": [{"n": "Righteous Fire of Arcane Devotion", "l": "20", "q": "0", "on": true}]}, {"slot": "Weapon 1", "gems": [{"n": "Pact of Lycia", "l": "20", "q": "0", "on": true}]}, {"slot": "Weapon 1", "gems": [{"n": "Summon Lightning Golem", "l": "20", "q": "0", "on": true}]}], "tree": {"title": "(senza titolo)", "nodes": 126, "url": "https://www.pathofexile.com/passive-skill-tree/AAAABgMCcmaerIki9K-nHMR-_caKVdYVVox22V9G_o_7wiLvS5MJjRnVi7-4TIskwHQQ4BKGyk0ULX2XtMNtidj60h0ULwD31zs_Si6-iuq1uZB90kyzkPq3Me9QVanadtQHHxjBtD7x0B-ci92M7-uESGEom6HlwOS8LR_fihcvtYWnpf753I1qq9eWwfM7DcauxYpyqcT2gKSfat9tzRaPRvPQUftmVDYmdrloWKyqHu6DX6yYpfUwu1SSon-hL8F-hXsRD5mk7Dg8LVxre9eTJz0PagFUrvfBLdJZ82TnTC1sC5UguF1-rwoAIgCgAKoAogSABIQAIAAqAKYApwm85n79ku6TCccx5cB7RGqrb63z0P1rNiYhzXa5xq-ZpFxFuF0=", "jewels": [{"rarity": "RARE", "name": "Rapture Sliver", "base": "Large Cluster Jewel", "mods": ["Intangibility: 15%", "Cluster Jewel Skill: affliction_spell_damage", "Cluster Jewel Node Count: 8", "{crafted}Adds 8 Passive Skills", "{crafted}2 Added Passive Skills are Jewel Sockets", "{crafted}Added Small Passive Skills grant: 10% increased Spell Damage", "Added Small Passive Skills also grant: Regenerate 0.1% of Life per Second", "1 Added Passive Skill is Arcane Adept", "1 Added Passive Skill is Conjured Wall", "1 Added Passive Skill is Essence Rush"]}, {"rarity": "RARE", "name": "Oblivion Wisdom", "base": "Cobalt Jewel", "mods": ["Intangibility: 20%", "4% increased Attack Speed", "2% increased Cast Speed", "+17% to Critical Strike Multiplier with Lightning Skills", "7% increased maximum Energy Shield"]}, {"rarity": "UNIQUE", "name": "The Light of Meaning", "base": "Prismatic Jewel", "mods": ["Passive Skills in Radius also grant 6% increased Lightning Damage", "Corrupted"]}, {"rarity": "UNIQUE", "name": "Watcher's Eye", "base": "Prismatic Jewel", "mods": ["5% increased maximum Energy Shield", "4% increased maximum Life", "6% increased maximum Mana", "53% increased Cold Damage while affected by Hatred", "Gain 28 Energy Shield per Enemy Hit while affected by Discipline"]}, {"rarity": "RARE", "name": "Phoenix Joy", "base": "Large Cluster Jewel", "mods": ["Cluster Jewel Skill: affliction_lightning_damage", "Cluster Jewel Node Count: 8", "{crafted}Adds 8 Passive Skills", "{crafted}2 Added Passive Skills are Jewel Sockets", "{crafted}Added Small Passive Skills grant: 12% increased Lightning Damage", "1 Added Passive Skill is Overshock", "1 Added Passive Skill is Snowstorm", "1 Added Passive Skill is Widespread Destruction"]}, {"rarity": "UNIQUE", "name": "Brutal Restraint", "base": "Timeless Jewel", "mods": ["Denoted service of 5085 dekhara in the akhara of Balbala", "Passives in radius are Conquered by the Maraketh", "Historic"]}, {"rarity": "RARE", "name": "Foe Curio", "base": "Cobalt Jewel", "mods": ["Intangibility: 11%", "5% increased Cast Speed with Lightning Skills", "9% increased Global Critical Strike Chance", "+15% to Critical Strike Multiplier for Spell Damage", "7% increased maximum Energy Shield"]}, {"rarity": "RARE", "name": "Blight Ornament", "base": "Small Cluster Jewel", "mods": ["Intangibility: 17%", "Cluster Jewel Skill: affliction_armour", "Cluster Jewel Node Count: 2", "{crafted}Adds 2 Passive Skills", "{crafted}Added Small Passive Skills grant: 15% increased Armour", "Added Small Passive Skills also grant: +4% to Chaos Resistance", "Added Small Passive Skills also grant: 2% increased Damage", "Added Small Passive Skills also grant: +7 to Intelligence", "1 Added Passive Skill is Enduring Composure"]}]}}, "right": {"titolo": "Guida — High Budget No Whispers", "sub": "Witch / Elementalist · PoB della guida, livello 97", "stats": {"DPS totale": "—", "EHP": "—", "Energy Shield": "—", "Vita": "—", "Max hit fisico": "—", "Cast/s": "—"}, "gear": [{"rarity": "RARE", "name": "Skull Pillar", "base": "Lathi", "mods": ["{crafted}8% increased Explicit Caster Damage Modifier magnitudes", "+25% Chance to Block Spell Damage", "+2 to Level of all Spell Skill Gems", "+4 to Level of all Lightning Spell Skill Gems", "14% chance to deal Double Damage", "{crafted}Can have up to 3 Crafted Modifiers", "{crafted}111% increased Spell Damage", "{crafted}32% increased Mana Regeneration Rate", "{crafted}+13% Chance to Block Attack Damage"], "slot": "Weapon 1"}, {"rarity": "RARE", "name": "High Budget", "base": "Divine Crown", "mods": ["ArmourBasePercentile: 1", "EnergyShieldBasePercentile: 1", "Searing Exarch Item", "Eater of Worlds Item", "Prefix: {range:0.063}LocalIncreasedArmourAndEnergyShield7", "Prefix: {range:0.137}LocalBaseArmourAndEnergyShield5", "Prefix: {range:0.88}LocalIncreasedArmourAndEnergyShieldAndStunRecovery5", "Suffix: {range:0.965}ChaosResist5", "Suffix: None", "Suffix: None", "7% increased Mana Reservation Efficiency of Skills", "26% increased Mana Cost Efficiency", "{prefix}+94 to Armour", "{prefix}130% increased Armour and Energy Shield"], "slot": "Helmet"}, {"rarity": "RARE", "name": "High Budget", "base": "Sacred Chainmail", "mods": ["ArmourBasePercentile: 1", "EnergyShieldBasePercentile: 1", "Searing Exarch Item", "Eater of Worlds Item", "Prefix: {range:0.239}LocalIncreasedArmourAndEnergyShieldAndStunRecovery6", "Prefix: {range:0.873}LocalBaseArmourAndEnergyShield7", "Prefix: {range:0.07}LocalIncreasedArmourAndEnergyShield8", "Suffix: {range:0.901}ChaosResist2", "Suffix: None", "Suffix: None", "{crafted}8% increased Explicit Defence Modifier magnitudes", "7% Chance to Block Attack Damage", "Flasks gain a Charge every 3 seconds", "{prefix}+290 to Armour"], "slot": "Body Armour"}, {"rarity": "RARE", "name": "High Budget", "base": "Paladin Gloves", "mods": ["ArmourBasePercentile: 1", "EnergyShieldBasePercentile: 1", "Searing Exarch Item", "Eater of Worlds Item", "Prefix: {range:0.493}LocalBaseArmourAndEnergyShield4", "Prefix: {range:0.989}LocalIncreasedArmourAndEnergyShield6", "Prefix: {range:0.986}LocalIncreasedArmourAndEnergyShieldAndStunRecovery5", "Suffix: {range:0.746}Dexterity8", "Suffix: {range:0.877}Strength7", "Suffix: None", "Inflict Lightning Exposure on Hit, applying -13% to Lightning Resistance", "15% chance to Unnerve Enemies for 4 seconds on Hit", "{suffix}+42 to Strength", "{suffix}+48 to Dexterity"], "slot": "Gloves"}, {"rarity": "RARE", "name": "High Budget", "base": "Paladin Boots", "mods": ["ArmourBasePercentile: 1", "EnergyShieldBasePercentile: 1", "Searing Exarch Item", "Eater of Worlds Item", "Prefix: {range:0.482}LocalIncreasedArmourAndEnergyShield7", "Prefix: {range:0.648}LocalBaseArmourAndEnergyShield4", "Prefix: {range:0.493}LocalIncreasedArmourAndEnergyShieldAndStunRecovery6", "Suffix: {range:0.944}ChaosResist5", "Suffix: None", "Suffix: None", "41% chance to Avoid Bleeding", "5% increased Action Speed", "{prefix}+72 to Armour", "{prefix}136% increased Armour and Energy Shield"], "slot": "Boots"}, {"rarity": "UNIQUE", "name": "Early Endgame Marylene's Fallacy", "base": "Lapis Amulet", "mods": ["Catalyst: Unstable", "CatalystQuality: 20", "Variant: Pre 1.3.0", "Variant: Pre 2.0.0", "Variant: Pre 2.2.0", "Variant: Pre 2.6.0", "Variant: Current", "{crafted}Allocates Whispers of Doom", "{tags:attribute}{range:1}+(20-30) to Intelligence", "{tags:attack}{range:0.5}+(80-120) to Accuracy Rating", "{tags:critical}{variant:1,2,3}{range:0.5}+(140-160)% to Global Critical Strike Multiplier", "{tags:critical}{variant:5,4}{range:0.927}+(210-240)% to Global Critical Strike Multiplier", "{tags:defences}{range:0.5}+(80-100) to Evasion Rating", "{range:0.5}(10-15)% increased Light Radius"], "slot": "Amulet"}, {"rarity": "RARE", "name": "Pariah these nuts 2", "base": "Unset Ring", "mods": ["Prefix: {range:0.676}IncreasedEnergyShield9", "Prefix: {range:1}LocalIncreaseSocketedGemUnsetRing3", "Prefix: None", "Suffix: None", "Suffix: {range:0.239}IncreasedCastSpeed3", "Suffix: {range:0.5}AllResistances3", "{fractured}+3 to Level of Socketed Gems", "{suffix}14% increased Cast Speed", "{prefix}+35 to maximum Energy Shield", "{suffix}+10% to all Elemental Resistances", "{tags:resource,mana}{custom}{range:0.768}(70-76)% increased Mana Regeneration Rate", "{tags:resource,unveiled_mod,mana}{crafted}Channelling Skills have -3 to Total Mana Cost"], "slot": "Ring 1"}, {"rarity": "UNIQUE", "name": "Foulborn Lori's Lantern", "base": "Prismatic Ring", "mods": ["+10% to All Elemental Resistances", "+10% to all Elemental Resistances", "8% increased Movement Speed when on Low Life", "31% increased Light Radius", "+21% to Chaos Resistance when on Low Life", "{mutated}Your Damage with Hits is Lucky while on Low Life", "Corrupted"], "slot": "Ring 2"}, {"rarity": "RARE", "name": "High Budget", "base": "Stygian Vise", "mods": ["Prefix: None", "Prefix: {range:0.803}IncreasedEnergyShield10", "Prefix: None", "Suffix: {range:0.958}Strength8", "Suffix: {range:0.923}BeltIncreasedFlaskChargesGained5_", "Suffix: {range:0.831}ChaosResist6", "Has 1 Abyssal Socket", "{suffix}+50 to Strength", "{prefix}+42 to maximum Energy Shield", "{suffix}+34% to Chaos Resistance", "{suffix}34% increased Flask Charges gained", "{tags:unveiled_mod,damage}{crafted}{range:1}(15-17)% increased Damage"], "slot": "Belt"}, {"rarity": "RARE", "name": "Whispering Leer", "base": "Hypnotic Eye Jewel", "mods": ["Adds 7 to 54 Lightning Damage to Spells", "+11% to Global Critical Strike Multiplier", "11 to 15 Added Spell Chaos Damage while wielding a Two Handed Weapon", "1 to 45 Added Spell Lightning Damage while wielding a Two Handed Weapon", "6% increased Cast Speed if you've dealt a Critical Strike Recently", "Corrupted"], "slot": "Belt Abyssal Socket 1"}, {"rarity": "UNIQUE", "name": "Coruscating Elixir", "base": "Ruby Flask", "mods": ["{crafted}Reused at the end of this Flask's effect", "25% increased Duration", "Chaos Damage taken does not bypass Energy Shield during effect", "Removes all but one Life on use", "Removed life is Regenerated as Energy Shield over 2 seconds"], "slot": "Flask 1"}, {"rarity": "MAGIC", "name": "Clinician's Topaz Flask of the Rainbow", "base": "", "mods": ["{crafted}Reused at the end of this Flask's effect", "33% increased Duration", "20% additional Elemental Resistances during Effect"], "slot": "Flask 2"}, {"rarity": "MAGIC", "name": "Perpetual Sapphire Flask of Craft", "base": "", "mods": ["{crafted}Reused at the end of this Flask's effect", "48% increased Charge Recovery", "{crafted}50% Chance to Avoid being Stunned during Effect"], "slot": "Flask 3"}, {"rarity": "UNIQUE", "name": "The Wise Oak", "base": "Bismuth Flask", "mods": ["{crafted}Reused at the end of this Flask's effect", "During Effect, 6% reduced Damage taken of each Element for which your Uncapped Elemental Resistance is lowest", "During Effect, Damage Penetrates 8% Resistance of each Element for which your Uncapped Elemental Resistance is highest"], "slot": "Flask 4"}], "gems": [{"slot": "Body Armour", "gems": [{"n": "Lightning Tendrils of Eccentricity", "l": "21", "q": "30", "on": true}, {"n": "Inspiration", "l": "20", "q": "33", "on": true}, {"n": "Arcane Surge", "l": "20", "q": "20", "on": true}, {"n": "Infused Channelling", "l": "20", "q": "30", "on": true}, {"n": "Controlled Destruction", "l": "20", "q": "30", "on": true}, {"n": "Focused Channelling", "l": "20", "q": "30", "on": true}, {"n": "Annihilation", "l": "3", "q": "20", "on": false}]}, {"slot": "Weapon 1", "gems": [{"n": "Summon Chaos Golem", "l": "20", "q": "30", "on": true}]}, {"slot": "Weapon 1", "gems": [{"n": "Wrath", "l": "21", "q": "0", "on": true}]}, {"slot": "Weapon 1", "gems": [{"n": "Righteous Fire of Arcane Devotion", "l": "20", "q": "30", "on": true}]}, {"slot": "Weapon 1", "gems": [{"n": "Pact of Lycia", "l": "20", "q": "0", "on": true}]}, {"slot": "Weapon 1", "gems": [{"n": "Summon Lightning Golem", "l": "20", "q": "30", "on": true}]}, {"slot": "Weapon 1", "gems": [{"n": "Summon Stone Golem", "l": "20", "q": "30", "on": true}]}, {"slot": "Ring 1", "gems": [{"n": "Sigil of Power", "l": "21", "q": "30", "on": true}]}, {"slot": "Helmet", "gems": [{"n": "Discipline", "l": "20", "q": "0", "on": true}, {"n": "Summon Flame Golem", "l": "20", "q": "30", "on": true}]}, {"slot": "Gloves", "gems": [{"n": "Clarity", "l": "6", "q": "0", "on": true}, {"n": "Arrogance", "l": "20", "q": "20", "on": true}, {"n": "Arctic Armour", "l": "20", "q": "0", "on": true}, {"n": "Herald of Ice", "l": "20", "q": "20", "on": true}, {"n": "Flesh and Stone", "l": "20", "q": "0", "on": false}]}, {"slot": "Helmet", "gems": [{"n": "Frostblink of Wintry Blast", "l": "20", "q": "0", "on": true}, {"n": "Faster Casting", "l": "20", "q": "30", "on": true}]}, {"slot": "Boots", "gems": [{"n": "Purity of Elements", "l": "20", "q": "30", "on": true}]}, {"slot": "Boots", "gems": [{"n": "Arcanist Brand", "l": "1", "q": "0", "on": true}, {"n": "Elemental Weakness", "l": "21", "q": "0", "on": true}, {"n": "Conductivity", "l": "21", "q": "0", "on": true}]}], "tree": {"title": "High Budget No Whispers", "nodes": 132, "url": "https://www.pathofexile.com/passive-skill-tree/AAAABgMCdx7um6FR-1nzj_vdjN9thXuhI0yLe9cVVmZUNia_uO_roS8zbKX1wbS4XUoucqlUrnQQ6rVmntyNxopoWMWKj0b60qyJ2nasqna5fdKGymEowfMRD9lfHMTkvB0U5cDsOM0WJMDfiqel15ZsCxcvgKTGrn79LX1xheASPQ_vUIx2TLNNFD7xjRmZpJ9qrJiif5e0kyf31_PQtYV-r9Af7GD3wbcxkPpca4Nf2rmvp5MJIvRG_jsNLwBV1rmQVJKciy3SwX7Dbf75vopk50wt70uESMIiMLvVi9QHVamVIC0fPC0fGInYagHE9mqrOz8LAKIAJgCqBIQAIAAiACoEgACAAKAAJwr9azYmXEW4XSHNdrnHMeXAvOZ-_cavmaRvrfPQxtrsYJLukwl7RGqr", "jewels": [{"rarity": "RARE", "name": "Glyph Desire", "base": "Small Cluster Jewel", "mods": ["{crafted}Adds 2 Passive Skills", "{crafted}Added Small Passive Skills grant: 15% increased Armour", "Added Small Passive Skills also grant: +3% to Chaos Resistance", "Added Small Passive Skills also grant: 2% increased Damage", "Added Small Passive Skills also grant: 4% increased Mana Regeneration Rate", "1 Added Passive Skill is Enduring Composure"]}, {"rarity": "RARE", "name": "Brood Splinter", "base": "Large Cluster Jewel", "mods": ["{crafted}Adds 8 Passive Skills", "{crafted}2 Added Passive Skills are Jewel Sockets", "{crafted}Added Small Passive Skills grant: 12% increased Lightning Damage", "Added Small Passive Skills also grant: +2% to all Elemental Resistances", "1 Added Passive Skill is Overshock", "1 Added Passive Skill is Storm Drinker", "1 Added Passive Skill is Widespread Destruction"]}, {"rarity": "RARE", "name": "Hypnotic Star", "base": "Large Cluster Jewel", "mods": ["{crafted}Adds 8 Passive Skills", "{crafted}2 Added Passive Skills are Jewel Sockets", "{crafted}Added Small Passive Skills grant: 10% increased Spell Damage", "Added Small Passive Skills also grant: +3% to Chaos Resistance", "1 Added Passive Skill is Arcane Adept", "1 Added Passive Skill is Conjured Wall", "1 Added Passive Skill is Essence Rush"]}, {"rarity": "UNIQUE", "name": "Brutal Restraint", "base": "Timeless Jewel", "mods": ["Denoted service of 4621 dekhara in the akhara of Balbala", "Passives in radius are Conquered by the Maraketh", "Historic"]}, {"rarity": "UNIQUE", "name": "Watcher's Eye", "base": "Prismatic Jewel", "mods": ["Variant: None", "Variant: Anger: Fire Damage Life Leech", "Variant: Anger: Fire Penetration", "Variant: Anger: Inc Crit Strike Mult", "Variant: Anger: Inc Fire Damage", "Variant: Anger: Phys Added As Fire", "Variant: Anger: Phys Converted To Fire", "Variant: Clarity: Damage Taken From Mana Before Life", "Variant: Clarity: Damage Taken Gained As Mana", "Variant: Clarity: Mana Added As ES (Pre 3.12.0)", "Variant: Clarity: Mana Added As ES", "Variant: Clarity: Mana Recovery Rate (Pre 3.12.0)", "Variant: Clarity: Mana Recovery Rate", "Variant: Clarity: Recover Mana On Skill Use"]}, {"rarity": "UNIQUE", "name": "Replica Reckless Defence", "base": "Cobalt Jewel", "mods": ["Damage Penetrates 1% Elemental Resistances", "+5% Chance to Block Attack Damage", "+6% Chance to Block Spell Damage", "+10% chance to be Frozen, Shocked and Ignited", "Corrupted"]}, {"rarity": "RARE", "name": "Damnation Star", "base": "Cobalt Jewel", "mods": ["+15% to Critical Strike Multiplier for Spell Damage", "+17% to Critical Strike Multiplier with Lightning Skills", "7% increased maximum Energy Shield", "3% increased Attack and Cast Speed"]}, {"rarity": "RARE", "name": "Carrion Breath", "base": "Cobalt Jewel", "mods": ["3% increased Cast Speed", "+15% to Critical Strike Multiplier for Spell Damage", "+16% to Critical Strike Multiplier with Lightning Skills", "8% increased maximum Energy Shield"]}, {"rarity": "UNIQUE", "name": "The Light of Meaning", "base": "Prismatic Jewel", "mods": ["Passive Skills in Radius also grant 6% increased Lightning Damage", "Corrupted"]}, {"rarity": "UNIQUE", "name": "Natural Affinity", "base": "Small Cluster Jewel", "mods": ["Corrupted Blood cannot be inflicted on you", "Adds Nature's Patience", "Corrupted"]}]}}};
+
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const norm = s => (s||"").toLowerCase().replace(/[^a-z ]/g,"").trim();
+
+// quali slot differiscono per base/unique
+const baseOf = it => norm(it.base || it.name);
+const leftBySlot = Object.fromEntries(DATA.left.gear.map(i=>[i.slot,i]));
+const rightBySlot = Object.fromEntries(DATA.right.gear.map(i=>[i.slot,i]));
+function isDiff(slot){
+  const a=leftBySlot[slot], b=rightBySlot[slot];
+  if(!a||!b) return true;
+  if(a.rarity==="UNIQUE"||b.rarity==="UNIQUE") return norm(a.name)!==norm(b.name);
+  return baseOf(a)!==baseOf(b);
+}
+
+function gearHtml(col){
+  return col.gear.map(it=>{
+    const d = isDiff(it.slot);
+    return `<div class="item ${esc(it.rarity)}${d?' diff':''}">
+      <div class="top">
+        <div><div class="nm">${esc(it.name)}${d?'<span class="diffbadge">DIVERSO</span>':''}</div>
+             ${it.base?`<div class="bs">${esc(it.base)}</div>`:''}</div>
+        <div class="slot">${esc(it.slot)}</div>
+      </div>
+      ${it.mods.length?`<div class="mods">${it.mods.map(m=>`<div>${esc(m)}</div>`).join("")}</div>`:""}
+    </div>`;
+  }).join("");
+}
+
+function gemsHtml(col){
+  return col.gems.map(g=>{
+    const rows = g.gems.map((x,i)=>
+      `<div class="gem ${i===0?'main':'sup'}${x.on?'':' off'}">${esc(x.n)}
+        <span class="lvl">${x.l}${x.q&&x.q!=="0"?" / "+x.q+"%":""}</span></div>`).join("");
+    return `<div class="grp">${g.slot?`<div class="slotlbl">${esc(g.slot)}</div>`:""}${rows}</div>`;
+  }).join("");
+}
+
+function treeHtml(col){
+  const t = col.tree||{};
+  return `<div class="treebox">
+    <div class="n">${t.nodes||"—"} <span>punti passivi allocati</span></div>
+    <div style="color:var(--muted);font-size:.8rem;margin-top:.2rem">spec: ${esc(t.title||"—")}</div>
+    ${t.url?`<a class="treelink" target="_blank" rel="noopener" href="${esc(t.url)}">Apri l'albero su pathofexile.com →</a>`:""}
+    ${(t.jewels&&t.jewels.length)?`<div class="jw"><b>Jewel nell'albero (${t.jewels.length})</b>
+      ${t.jewels.map(j=>`<div>${esc(j.name)}${j.base?" — "+esc(j.base):""}</div>`).join("")}</div>`:""}
+  </div>`;
+}
+
+function colHtml(col, cls){
+  return `<div class="col">
+    <div class="colhead ${cls}"><h2>${esc(col.titolo)}</h2><div class="s">${esc(col.sub)}</div></div>
+    <div class="statrow">${Object.entries(col.stats).map(([k,v])=>
+      `<div class="stat"><b>${esc(v)}</b><span>${esc(k)}</span></div>`).join("")}</div>
+    <h3 class="sec">Gear</h3>${gearHtml(col)}
+    <h3 class="sec">Gemme</h3>${gemsHtml(col)}
+    <h3 class="sec">Albero</h3>${treeHtml(col)}
+  </div>`;
+}
+
+document.getElementById("cols").innerHTML =
+  colHtml(DATA.left,"mine") + colHtml(DATA.right,"target");
+
+const slots = new Set([...DATA.left.gear.map(i=>i.slot), ...DATA.right.gear.map(i=>i.slot)]);
+const nd = [...slots].filter(isDiff).length;
+document.getElementById("diffcount").textContent = nd + " slot differenti";
+</script>
+</body>
+</html>
