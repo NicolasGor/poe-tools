@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atlante interattivo — riconosci i nodi e assegna i nomi</title>
+<style>
+  :root{
+    --bg:#0f131a; --panel:#171d27; --panel2:#131923; --line:#28313f; --line2:#3a4658;
+    --text:#e6e9ef; --muted:#8b95a8; --label:#78839a;
+    --gold:#f0b94a; --good:#60d394; --bad:#e07a6f; --uni:#af6025;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:1.2rem 1rem 4rem;background:var(--bg);color:var(--text);
+       font:14px/1.5 Inter,ui-sans-serif,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+  .wrap{max-width:98rem;margin:0 auto}
+  a{color:var(--gold)}
+  .back{font-size:.8rem}
+  h1{margin:.5rem 0 .25rem;font-size:1.4rem}
+  .sub{margin:0 0 .9rem;color:var(--muted);font-size:.88rem;max-width:60rem}
+
+  .drop{border:2px dashed var(--line2);border-radius:10px;padding:2.2rem 1rem;text-align:center;
+        color:var(--muted);cursor:pointer;background:var(--panel2);margin-bottom:1rem}
+  .drop.on{border-color:var(--gold);color:var(--gold)}
+  .drop b{color:var(--text)}
+
+  .strumenti{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin-bottom:.8rem}
+  .strumenti label{font-size:.72rem;color:var(--muted);display:flex;gap:.35rem;align-items:center}
+  input[type=range]{width:8rem}
+  button{font-size:.76rem;padding:.32rem .7rem;cursor:pointer;border-radius:4px;
+         background:#1a212c;color:var(--text);border:1px solid var(--line2)}
+  button:hover{border-color:var(--gold);color:var(--gold)}
+  button.p{background:var(--gold);color:#1b1608;border-color:var(--gold);font-weight:600}
+  .conta{margin-left:auto;color:var(--muted);font-size:.78rem}
+
+  .scena{position:relative;display:inline-block;max-width:100%;border:1px solid var(--line);
+         border-radius:8px;overflow:hidden;background:#000}
+  .scena img{display:block;max-width:100%;height:auto}
+  .pallino{position:absolute;transform:translate(-50%,-50%);border-radius:50%;
+           border:2px solid var(--gold);background:rgba(240,185,74,.14);
+           display:flex;align-items:center;justify-content:center;
+           font-size:9px;font-weight:700;color:#fff;text-shadow:0 0 3px #000;cursor:pointer}
+  .pallino:hover{background:rgba(240,185,74,.45);z-index:5}
+  .pallino.fatto{border-color:var(--good);background:rgba(96,211,148,.2)}
+  .pallino.sel{border-color:#fff;border-width:3px;z-index:6}
+  .selarea{position:absolute;border:2px dashed var(--good);background:rgba(96,211,148,.06);
+           cursor:move;z-index:3}
+  .maniglia{position:absolute;width:14px;height:14px;background:var(--good);border-radius:3px;
+            right:-7px;bottom:-7px;cursor:nwse-resize}
+  .etich{position:absolute;transform:translate(-50%,0);font-size:9px;color:#fff;
+         text-shadow:0 0 4px #000,0 0 4px #000;pointer-events:none;white-space:nowrap}
+
+  .lista{margin-top:1.2rem}
+  .lista h2{font-size:.74rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);
+            margin:0 0 .5rem;padding-bottom:.3rem;border-bottom:1px solid var(--line)}
+  .campi{display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:.3rem}
+  .campo{display:flex;gap:.4rem;align-items:center;background:var(--panel2);border:1px solid var(--line);
+         border-radius:5px;padding:.2rem .4rem}
+  .campo.ok{border-color:rgba(96,211,148,.5)}
+  .campo b{font-size:.7rem;color:var(--label);min-width:1.8rem;text-align:right;font-variant-numeric:tabular-nums}
+  .campo input{flex:1;min-width:0;background:transparent;border:0;color:var(--text);font:inherit;font-size:.78rem;outline:none}
+  .campo input:focus{color:var(--gold)}
+
+  .avviso{background:rgba(240,185,74,.07);border:1px solid rgba(240,185,74,.3);border-radius:6px;
+          padding:.7rem .9rem;margin:1rem 0;font-size:.83rem;color:var(--muted)}
+  .avviso b{color:var(--text)}
+  datalist{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="back"><a href="index.html">← Atlante (elenco)</a> · <a href="../index.html">Tutti gli strumenti</a></div>
+  <h1>Atlante interattivo — riconoscimento dei nodi</h1>
+  <p class="sub">Trascina qui lo screenshot del tuo atlante. La pagina riconosce i pallini, li <b>numera</b>, e sotto trovi la lista da compilare. I nomi restano salvati e si esportano.</p>
+
+  <div class="drop" id="drop">
+    <b>Trascina qui lo screenshot</b> — oppure clicca per sceglierlo<br>
+    <span style="font-size:.8rem">più è grande la risoluzione, più preciso il riconoscimento</span>
+    <input type="file" id="file" accept="image/*" hidden>
+  </div>
+
+  <div id="lavoro" hidden>
+    <div class="strumenti">
+      <label>tono oro <input type="range" id="s1" min="20" max="140" value="60"></label>
+      <label>luminosità <input type="range" id="s2" min="60" max="240" value="120"></label>
+      <label>dimensione <input type="range" id="s3" min="3" max="40" value="8"></label>
+      <button id="ridetect">Rileva di nuovo</button>
+      <button id="mostraNomi">Mostra nomi</button>
+      <button class="p" id="esporta">Esporta JSON</button>
+      <button id="importa">Importa JSON</button>
+      <span class="conta" id="conta"></span>
+    </div>
+
+    <div class="scena" id="scena">
+      <img id="img" alt="">
+      <div id="sel" class="selarea"><span class="maniglia br"></span></div>
+    </div>
+    <p style="font-size:.78rem;color:var(--muted);margin:.4rem 0 0">
+      Trascina <b>dentro</b> il riquadro per spostarlo, o l'angolo in basso a destra per ridimensionarlo:
+      il riconoscimento guarda solo lì dentro. Serve a lasciare fuori globi, flask e barra delle abilità.
+    </p>
+
+    <div class="avviso">
+      <b>Come funziona il riconoscimento.</b> Cerca gruppi di pixel dorati e ne calcola il centro. I tre cursori regolano quanto dev'essere “oro” il colore, quanto luminoso, e quanto grande il gruppo perché conti come nodo. Se ne trova troppi o troppo pochi, muovili e premi <b>Rileva di nuovo</b>: i nomi già scritti non si perdono, restano agganciati alla posizione.
+      <br><br><b>I nomi non sono ricavabili dall'immagine</b> — in gioco compaiono solo al passaggio del mouse. Per questo li scrivi tu una volta sola: da lì in poi l'atlante è tuo e si arricchisce da solo con i dati delle carte.
+    </div>
+
+    <div class="lista">
+      <h2>Nomi dei nodi — <span id="fatti">0</span> compilati</h2>
+      <div class="campi" id="campi"></div>
+    </div>
+  </div>
+</div>
+
+<datalist id="mappe"></datalist>
+
+<script>
+let IMG=null, PUNTI=[], NOMI={}, sel=null, mostraNomi=false, NOTI=[];
+// area di ricerca in percentuale sull'immagine; il fondo esclude la UI di gioco
+let AREA = JSON.parse(localStorage.getItem("atlante-area") || '{"x":2,"y":4,"w":96,"h":80}');
+const $ = s => document.querySelector(s);
+const salva = () => localStorage.setItem("atlante-nomi", JSON.stringify(NOMI));
+
+// elenco dei nomi di mappa già noti, per l'autocompletamento
+fetch("atlante.json").then(r=>r.json()).then(d=>{
+  NOTI = d.nodi.map(n=>n.nome).sort();
+  $("#mappe").innerHTML = NOTI.map(n=>`<option value="${n.replace(/"/g,"&quot;")}">`).join("");
+}).catch(()=>{});
+try { NOMI = JSON.parse(localStorage.getItem("atlante-nomi")||"{}"); } catch(e){}
+
+// ---------- caricamento immagine ----------
+const drop = $("#drop");
+drop.onclick = () => $("#file").click();
+drop.ondragover = e => { e.preventDefault(); drop.classList.add("on"); };
+drop.ondragleave = () => drop.classList.remove("on");
+drop.ondrop = e => { e.preventDefault(); drop.classList.remove("on"); carica(e.dataTransfer.files[0]); };
+$("#file").onchange = e => carica(e.target.files[0]);
+
+function carica(f){
+  if (!f) return;
+  const url = URL.createObjectURL(f);
+  const im = new Image();
+  im.onload = () => { IMG = im; $("#img").src = url; $("#lavoro").hidden = false;
+                      drop.style.display="none"; pos(); rileva(); };
+  im.src = url;
+}
+
+// ---------- riconoscimento dei pallini ----------
+function rileva(){
+  const cv = document.createElement("canvas");
+  cv.width = IMG.naturalWidth; cv.height = IMG.naturalHeight;
+  const cx = cv.getContext("2d", { willReadFrequently: true });
+  cx.drawImage(IMG, 0, 0);
+  const { data, width:W, height:H } = cx.getImageData(0,0,cv.width,cv.height);
+
+  const tono = +$("#s1").value, lum = +$("#s2").value, dim = +$("#s3").value;
+  // area selezionata: fuori da lì non si guarda (globi, flask, barra abilità)
+  const x0 = Math.round(AREA.x/100*W), x1 = Math.round((AREA.x+AREA.w)/100*W);
+  const y0 = Math.round(AREA.y/100*H), y1 = Math.round((AREA.y+AREA.h)/100*H);
+  // maschera: pixel "oro" = rosso e verde alti, blu basso
+  const m = new Uint8Array(W*H);
+  for (let y=y0; y<y1; y++) for (let x=x0; x<x1; x++){
+    const p = y*W+x, i = p*4;
+    const r=data[i], g=data[i+1], b=data[i+2];
+    if (r>lum && g>lum*0.72 && r-b>tono && g-b>tono*0.55) m[p]=1;
+  }
+  // componenti connesse (scansione iterativa, niente ricorsione)
+  const visto = new Uint8Array(W*H), out=[];
+  const pila = new Int32Array(W*H);
+  for (let p=0; p<W*H; p++){
+    if (!m[p] || visto[p]) continue;
+    let n=0, sx=0, sy=0, cnt=0, minx=1e9,maxx=-1,miny=1e9,maxy=-1;
+    pila[n++]=p; visto[p]=1;
+    while(n){
+      const q=pila[--n], x=q%W, y=(q/W)|0;
+      sx+=x; sy+=y; cnt++;
+      if(x<minx)minx=x; if(x>maxx)maxx=x; if(y<miny)miny=y; if(y>maxy)maxy=y;
+      for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){
+        const nx=x+dx, ny=y+dy;
+        if(nx<0||ny<0||nx>=W||ny>=H) continue;
+        const k=ny*W+nx;
+        if(m[k]&&!visto[k]){ visto[k]=1; pila[n++]=k; }
+      }
+    }
+    const w=maxx-minx+1, h=maxy-miny+1;
+    // scarta ciò che è troppo piccolo, troppo grande o troppo allungato
+    if (cnt < dim*dim*0.35 || w>dim*7 || h>dim*7) continue;
+    if (w/h > 2.2 || h/w > 2.2) continue;
+    out.push({ x:sx/cnt, y:sy/cnt, r:Math.max(w,h)/2 });
+  }
+  // L'anello dorato di un nodo viene spezzato dall'icona che ha dentro, quindi
+  // un solo nodo produce due o tre macchie vicine: qui si fondono in una.
+  const rMed = out.length ? out.map(p=>p.r).sort((a,b)=>a-b)[out.length>>1] : dim;
+  const dmin = Math.max(rMed*1.8, dim*1.6);
+  const fusi = [];
+  out.sort((a,b)=>b.r-a.r).forEach(p => {
+    const v = fusi.find(f => Math.hypot(f.x-p.x, f.y-p.y) < dmin);
+    if (v){ const n=v.k+1; v.x=(v.x*v.k+p.x)/n; v.y=(v.y*v.k+p.y)/n; v.r=Math.max(v.r,p.r); v.k=n; }
+    else fusi.push({ ...p, k:1 });
+  });
+  out.length = 0; out.push(...fusi);
+
+  // Numerazione in ordine di lettura. Ordinare solo per y non basta: i nodi di
+  // una stessa riga hanno altezze leggermente diverse e i numeri si mescolano.
+  // Quindi prima si raggruppano in righe, poi dentro ogni riga si va da sinistra.
+  out.sort((a,b)=> a.y-b.y);
+  const rAvg = out.reduce((s,p)=>s+p.r,0) / Math.max(1,out.length);
+  const soglia = Math.max(rAvg*2.2, 18);
+  const righe = [];
+  out.forEach(p => {
+    const r = righe.find(r => Math.abs(r.y - p.y) < soglia);
+    if (r){ r.p.push(p); r.y = (r.y*r.p.length + p.y)/(r.p.length+1); }
+    else righe.push({ y:p.y, p:[p] });
+  });
+  righe.sort((a,b)=>a.y-b.y).forEach(r => r.p.sort((a,b)=>a.x-b.x));
+  const ordinati = righe.flatMap(r => r.p);
+  PUNTI = ordinati.map((p,i)=>({ ...p, n:i+1,
+                            px:p.x/IMG.naturalWidth*100, py:p.y/IMG.naturalHeight*100 }));
+  disegna();
+}
+
+function chiave(p){ return `${Math.round(p.px*10)}_${Math.round(p.py*10)}`; }
+
+function disegna(){
+  const sc = $("#scena");
+  sc.querySelectorAll(".pallino,.etich").forEach(e=>e.remove());
+  const scala = sc.clientWidth / IMG.naturalWidth;
+  PUNTI.forEach(p => {
+    const d = document.createElement("div");
+    const nome = NOMI[chiave(p)] || "";
+    d.className = "pallino" + (nome?" fatto":"") + (sel===p.n?" sel":"");
+    const size = Math.max(14, p.r*2*scala*1.25);
+    d.style.cssText += `left:${p.px}%;top:${p.py}%;width:${size}px;height:${size}px`;
+    d.textContent = p.n;
+    d.title = nome || ("nodo " + p.n);
+    d.onclick = () => { sel = p.n; disegna();
+      const inp = document.querySelector(`#campi input[data-n="${p.n}"]`);
+      if (inp) { inp.scrollIntoView({block:"center",behavior:"smooth"}); inp.focus(); } };
+    sc.appendChild(d);
+    if (mostraNomi && nome){
+      const e = document.createElement("div");
+      e.className = "etich";
+      e.style.cssText = `left:${p.px}%;top:calc(${p.py}% + ${size/2+2}px)`;
+      e.textContent = nome;
+      sc.appendChild(e);
+    }
+  });
+  campi();
+  const fatti = PUNTI.filter(p=>NOMI[chiave(p)]).length;
+  $("#conta").textContent = `${PUNTI.length} nodi rilevati · ${fatti} con nome`;
+  $("#fatti").textContent = fatti;
+}
+
+function campi(){
+  $("#campi").innerHTML = PUNTI.map(p => {
+    const v = NOMI[chiave(p)] || "";
+    return `<div class="campo ${v?"ok":""}"><b>${p.n}</b>
+      <input list="mappe" data-n="${p.n}" data-k="${chiave(p)}" value="${v.replace(/"/g,"&quot;")}"
+             placeholder="nome della mappa…"></div>`;
+  }).join("");
+  $("#campi").querySelectorAll("input").forEach(inp => {
+    inp.onchange = inp.onblur = () => {
+      const k = inp.dataset.k, v = inp.value.trim();
+      if (v) NOMI[k] = v; else delete NOMI[k];
+      salva(); disegna();
+    };
+    inp.onkeydown = e => {
+      if (e.key === "Enter"){
+        e.preventDefault();
+        const n = +inp.dataset.n;
+        const succ = document.querySelector(`#campi input[data-n="${n+1}"]`);
+        inp.blur(); if (succ) succ.focus();
+      }
+    };
+  });
+}
+
+// ---------- riquadro di selezione dell'area ----------
+function pos(){
+  const s = $("#sel");
+  s.style.cssText = `left:${AREA.x}%;top:${AREA.y}%;width:${AREA.w}%;height:${AREA.h}%`;
+}
+(function trascina(){
+  const s = $("#sel"), sc = $("#scena");
+  let modo=null, ox=0, oy=0, base=null;
+  const perc = e => { const r = sc.getBoundingClientRect();
+    return { x:(e.clientX-r.left)/r.width*100, y:(e.clientY-r.top)/r.height*100 }; };
+  s.addEventListener("pointerdown", e => {
+    base = {...AREA}; const p = perc(e); ox=p.x; oy=p.y;
+    modo = e.target.classList.contains("maniglia") ? "ridim" : "sposta";
+    s.setPointerCapture(e.pointerId); e.preventDefault();
+  });
+  s.addEventListener("pointermove", e => {
+    if (!modo) return;
+    const p = perc(e), dx=p.x-ox, dy=p.y-oy;
+    if (modo==="sposta"){
+      AREA.x = Math.min(100-base.w, Math.max(0, base.x+dx));
+      AREA.y = Math.min(100-base.h, Math.max(0, base.y+dy));
+    } else {
+      AREA.w = Math.min(100-AREA.x, Math.max(10, base.w+dx));
+      AREA.h = Math.min(100-AREA.y, Math.max(10, base.h+dy));
+    }
+    pos();
+  });
+  s.addEventListener("pointerup", e => {
+    if (!modo) return; modo=null;
+    localStorage.setItem("atlante-area", JSON.stringify(AREA));
+    rileva();
+  });
+})();
+
+["s1","s2","s3"].forEach(id => $("#"+id).onchange = rileva);
+$("#ridetect").onclick = rileva;
+$("#mostraNomi").onclick = () => { mostraNomi = !mostraNomi; disegna(); };
+$("#esporta").onclick = () => {
+  const dati = PUNTI.map(p => ({ n:p.n, x:+p.px.toFixed(3), y:+p.py.toFixed(3), nome: NOMI[chiave(p)]||"" }));
+  const b = new Blob([JSON.stringify({aggiornato:new Date().toISOString().slice(0,10), nodi:dati}, null, 1)],
+                     {type:"application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(b); a.download = "atlante-nodi.json"; a.click();
+};
+$("#importa").onclick = () => {
+  const i = document.createElement("input"); i.type="file"; i.accept="application/json";
+  i.onchange = async e => {
+    const d = JSON.parse(await e.target.files[0].text());
+    (d.nodi||[]).forEach(n => { if (n.nome) NOMI[`${Math.round(n.x*10)}_${Math.round(n.y*10)}`] = n.nome; });
+    salva(); disegna();
+  };
+  i.click();
+};
+addEventListener("resize", () => { if (IMG) disegna(); });
+</script>
+</body>
+</html>
