@@ -42,6 +42,8 @@
            font-size:9px;font-weight:700;color:#fff;text-shadow:0 0 3px #000;cursor:pointer}
   .pallino:hover{background:rgba(240,185,74,.45);z-index:5}
   .pallino.fatto{border-color:var(--good);background:rgba(96,211,148,.2)}
+  .pallino.ricco{border-color:#ffd166;
+     background:color-mix(in srgb, #ffd166 calc(var(--v,0) * 75%), rgba(96,211,148,.15))}
   .pallino.sel{border-color:#fff;border-width:3px;z-index:6}
   .selarea{position:absolute;border:2px dashed var(--good);background:rgba(96,211,148,.06);
            cursor:move;z-index:3}
@@ -60,6 +62,7 @@
   .campo b{font-size:.7rem;color:var(--label);min-width:1.8rem;text-align:right;font-variant-numeric:tabular-nums}
   .campo input{flex:1;min-width:0;background:transparent;border:0;color:var(--text);font:inherit;font-size:.78rem;outline:none}
   .campo input:focus{color:var(--gold)}
+  .campo .val{font-size:.68rem;color:#ffd166;font-family:"Source Code Pro",Menlo,monospace;white-space:nowrap}
 
   .avviso{background:rgba(240,185,74,.07);border:1px solid rgba(240,185,74,.3);border-radius:6px;
           padding:.7rem .9rem;margin:1rem 0;font-size:.83rem;color:var(--muted)}
@@ -86,6 +89,11 @@
       <label>dimensione <input type="range" id="s3" min="3" max="40" value="8"></label>
       <button id="ridetect">Rileva di nuovo</button>
       <button id="mostraNomi">Mostra nomi</button>
+      <select id="colora" title="cosa colorare">
+        <option value="valore">colora per totale carte</option>
+        <option value="media">colora per media</option>
+        <option value="mediana">colora per mediana</option>
+      </select>
       <button class="p" id="esporta">Esporta JSON</button>
       <button id="importa">Importa JSON</button>
       <span class="conta" id="conta"></span>
@@ -115,17 +123,22 @@
 <datalist id="mappe"></datalist>
 
 <script>
-let IMG=null, PUNTI=[], NOMI={}, sel=null, mostraNomi=false, NOTI=[];
+let IMG=null, PUNTI=[], NOMI={}, sel=null, mostraNomi=false, NOTI=[], campo="valore";
 // area di ricerca in percentuale sull'immagine; il fondo esclude la UI di gioco
 let AREA = JSON.parse(localStorage.getItem("atlante-area") || '{"x":2,"y":4,"w":96,"h":80}');
 const $ = s => document.querySelector(s);
 const salva = () => localStorage.setItem("atlante-nomi", JSON.stringify(NOMI));
 
 // elenco dei nomi di mappa già noti, per l'autocompletamento
+let CARTE = {};   // nome mappa → {valore, media, mediana, nCarte, carte[]}
 fetch("atlante.json").then(r=>r.json()).then(d=>{
-  NOTI = d.nodi.map(n=>n.nome).sort();
+  const tutte = [...d.nodi, ...(d.fuoriAtlante||[])];
+  tutte.forEach(n => { if (n.nCarte) CARTE[n.nome.toLowerCase()] = n; });
+  NOTI = [...new Set(tutte.map(n=>n.nome))].sort();
   $("#mappe").innerHTML = NOTI.map(n=>`<option value="${n.replace(/"/g,"&quot;")}">`).join("");
+  if (PUNTI.length) disegna();
 }).catch(()=>{});
+const dati = nome => CARTE[(nome||"").toLowerCase().trim()] || null;
 try { NOMI = JSON.parse(localStorage.getItem("atlante-nomi")||"{}"); } catch(e){}
 
 // ---------- caricamento immagine ----------
@@ -228,11 +241,19 @@ function disegna(){
   PUNTI.forEach(p => {
     const d = document.createElement("div");
     const nome = NOMI[chiave(p)] || "";
-    d.className = "pallino" + (nome?" fatto":"") + (sel===p.n?" sel":"");
+    const c = dati(nome);
+    d.className = "pallino" + (nome?" fatto":"") + (c?" ricco":"") + (sel===p.n?" sel":"");
+    if (c){
+      const max = Math.max(1, ...Object.values(CARTE).map(x=>x[campo]||0));
+      d.style.setProperty("--v", Math.sqrt((c[campo]||0)/max).toFixed(3));
+    }
     const size = Math.max(14, p.r*2*scala*1.25);
     d.style.cssText += `left:${p.px}%;top:${p.py}%;width:${size}px;height:${size}px`;
     d.textContent = p.n;
-    d.title = nome || ("nodo " + p.n);
+    d.title = c
+      ? `${nome} — ${c.valore} c in ${c.nCarte} carte · media ${c.media} · mediana ${c.mediana}\n` +
+        c.carte.slice(0,5).map(x=>`  ${x.nome}: ${x.chaos} c`).join("\n")
+      : (nome || ("nodo " + p.n));
     d.onclick = () => { sel = p.n; disegna();
       const inp = document.querySelector(`#campi input[data-n="${p.n}"]`);
       if (inp) { inp.scrollIntoView({block:"center",behavior:"smooth"}); inp.focus(); } };
@@ -254,9 +275,11 @@ function disegna(){
 function campi(){
   $("#campi").innerHTML = PUNTI.map(p => {
     const v = NOMI[chiave(p)] || "";
+    const c = dati(v);
     return `<div class="campo ${v?"ok":""}"><b>${p.n}</b>
       <input list="mappe" data-n="${p.n}" data-k="${chiave(p)}" value="${v.replace(/"/g,"&quot;")}"
-             placeholder="nome della mappa…"></div>`;
+             placeholder="nome della mappa…">
+      ${c?`<span class="val" title="${c.nCarte} carte · media ${c.media} · mediana ${c.mediana}">${c.valore} c</span>`:""}</div>`;
   }).join("");
   $("#campi").querySelectorAll("input").forEach(inp => {
     inp.onchange = inp.onblur = () => {
@@ -312,9 +335,14 @@ function pos(){
 ["s1","s2","s3"].forEach(id => $("#"+id).onchange = rileva);
 $("#ridetect").onclick = rileva;
 $("#mostraNomi").onclick = () => { mostraNomi = !mostraNomi; disegna(); };
+$("#colora").onchange = e => { campo = e.target.value; disegna(); };
 $("#esporta").onclick = () => {
-  const dati = PUNTI.map(p => ({ n:p.n, x:+p.px.toFixed(3), y:+p.py.toFixed(3), nome: NOMI[chiave(p)]||"" }));
-  const b = new Blob([JSON.stringify({aggiornato:new Date().toISOString().slice(0,10), nodi:dati}, null, 1)],
+  const nodi = PUNTI.map(p => {
+    const nome = NOMI[chiave(p)]||"", c = dati(nome);
+    return { n:p.n, x:+p.px.toFixed(3), y:+p.py.toFixed(3), nome,
+             valore: c?c.valore:0, media: c?c.media:0, mediana: c?c.mediana:0, nCarte: c?c.nCarte:0 };
+  });
+  const b = new Blob([JSON.stringify({aggiornato:new Date().toISOString().slice(0,10), nodi}, null, 1)],
                      {type:"application/json"});
   const a = document.createElement("a");
   a.href = URL.createObjectURL(b); a.download = "atlante-nodi.json"; a.click();
