@@ -101,6 +101,22 @@
      zoomare l'iframe e basta. L'iframe e' cross-origin, quindi il suo evento
      wheel non e' intercettabile da qui — l'unico rimedio e' togliere lo scroll
      alla pagina finche' il puntatore sta sopra. */
+  /* elenco dei downside d'altare: lungo, quindi a scomparsa */
+  .elenco{margin-top:var(--s3)}
+  .elenco summary{cursor:pointer;font-size:var(--t-sm);color:var(--gold);padding:.35rem 0}
+  .elenco summary:hover{filter:brightness(1.15)}
+  .dw{display:grid;grid-template-columns:1fr;gap:.15rem;margin:.3rem 0 var(--s4)}
+  .dw .r{display:grid;grid-template-columns:auto 1fr;gap:.5rem;padding:.4rem 0;
+         border-bottom:1px dashed var(--line);font-size:var(--t-sm);line-height:1.5}
+  .dw .r:last-child{border-bottom:0}
+  .dw code{font-size:var(--t-xs);display:block;color:var(--text)}
+  .dw .perche{display:block;color:var(--muted);font-size:var(--t-xs);margin-top:.15rem}
+  .dw .g{font-family:var(--mono);font-size:var(--t-xs);padding:.05rem .35rem;border-radius:3px;
+         height:fit-content;white-space:nowrap}
+  .g.mai{background:var(--bad);color:#1a1110}
+  .g.quasi{background:var(--gold);color:#161310}
+  .g.evita{background:var(--line2);color:var(--text)}
+  .g.ok{background:transparent;color:var(--muted);border:1px solid var(--line)}
   html.albero-attivo{overflow:hidden}
 </style>
 </head>
@@ -184,6 +200,46 @@
           <li>Mod di mappa che riducono il <b>recupero</b>: la ricarica dell'ES è già spenta dal Righteous Fire, resta solo la rigenerazione.</li>
           <li>Mappe con ostacoli: la pit si incastra e il valore della meccanica crolla.</li>
         </ul>
+
+        <h3 class="rosso">Gli altari: i 24 debuff che possono toccare te</h3>
+        <p>Gli altari eldritch hanno <b>79 modificatori di svantaggio</b>, ma <b>55 potenziano i mostri</b> e solo <b>24 colpiscono te</b>. Questi. Ordinati per quanto fanno male <i>a questa build</i>, non in astratto — e tre di loro scalano <b>per carica</b>, il che qui cambia tutto: <b>4 cariche di resistenza</b> (sempre piene, in Abyss), <b>3 di potere</b>, <b>0 di frenesia</b>.</p>
+
+        <div class="avviso" style="border-color:var(--bad)">
+          <b>Il peggiore di tutti è peggiore proprio perché stai facendo Abyss.</b>
+          <code>(20-10)% reduced Recovery Rate of Life, Mana and Energy Shield per Endurance Charge</code>
+          — con le <b>4 cariche</b> che il Tempest Band tiene su uccidendo, diventa <b>40–80% di recupero in meno</b>.
+          Al massimo del range: rigenerazione da <b>550/s a 110/s</b> contro <b>132/s</b> di degen del tuo Righteous Fire.
+          <b>Saldo negativo: muori stando fermo, senza che nessuno ti colpisca.</b>
+          Le cariche sono ciò che rende Abyss buona per te — e sono ciò che rende questo altare letale.
+        </div>
+
+        <details class="elenco">
+          <summary>Apri l'elenco completo dei 24 →</summary>
+          <div class="dw">
+          <div class="r"><span class="g mai">MAI</span><span><code>(20-10)% reduced Recovery Rate of Life, Mana and Energy Shield per Endurance Charge</code><span class="perche">4 cariche sempre attive → fino a 80% di recupero in meno: 110/s contro 132/s di degen. Morte da fermo.</span></span></div>
+          <div class="r"><span class="g mai">MAI</span><span><code>Take 600.0 Chaos Damage per second during any Flask Effect</code><span class="perche">600/s contro 418/s di rigenerazione netta, e le flask sono su in permanenza.</span></span></div>
+          <div class="r"><span class="g mai">MAI</span><span><code>(20-40)% increased Flask Charges used · (60-40)% reduced Flask Effect Duration</code><span class="perche">Spegne il Coruscating Elixir — il caos torna sui 40 punti di vita non riservata — e fa scendere lo stun avoid da 100% a 50%.</span></span></div>
+          <div class="r"><span class="g mai">MAI</span><span><code>30% chance to be targeted by a Meteor when you use a Flask</code><span class="perche">Le flask hanno «Reused at the end of this Flask's effect»: si riusano da sole di continuo.</span></span></div>
+          <div class="r"><span class="g mai">MAI</span><span><code>-(60-40)% to Fire Resistance · -(60-40)% to Chaos Resistance</code><span class="perche">Overcap 26 e 28: non basta. E rompe The Wise Oak, che sceglie in base a quale resistenza è la più bassa.</span></span></div>
+          <div class="r"><span class="g mai">MAI</span><span><code>-(60-40)% to Cold Resistance · -(60-40)% to Lightning Resistance</code><span class="perche">Overcap 26 e 25: stessa storia, e stesso danno collaterale al Wise Oak.</span></span></div>
+          <div class="r"><span class="g quasi">QUASI</span><span><code>-(40-20)% to Critical Strike Multiplier per Power Charge</code><span class="perche">3 cariche di potere → da −60% a −120% su un moltiplicatore di 655%. Non uccide: annulla la mappa.</span></span></div>
+          <div class="r"><span class="g quasi">QUASI</span><span><code>-(60-40)% additional Physical Damage Reduction</code><span class="perche">Il fisico è già il tuo max hit più basso (21.959 contro 35.287 del caos).</span></span></div>
+          <div class="r"><span class="g quasi">QUASI</span><span><code>Curses you inflict are reflected back to you</code><span class="perche">Lanci Conductivity ed Elemental Weakness con l'Arcanist Brand, e Whispers of Doom te ne fa avere due addosso.</span></span></div>
+          <div class="r"><span class="g quasi">QUASI</span><span><code>Non-Damaging Ailments you inflict are reflected back to you</code><span class="perche">Shocchi al 65% di effetto e chilli con Herald of Ice: lo shock riflesso ti fa prendere più danno.</span></span></div>
+          <div class="r"><span class="g evita">EVITA</span><span><code>Nearby Enemies Gain 100% of their Physical Damage as Extra Fire / Chaos / Cold / Lightning Damage</code><span class="perche">Quattro varianti. «Nearby» è sempre vero per un channeller: stai in mezzo ai mostri per definizione.</span></span></div>
+          <div class="r"><span class="g evita">EVITA</span><span><code>(15-20)% chance for Enemies to drop Burning Ground when Hitting you</code><span class="perche">Terreno infuocato è un DoT, e i DoT sono ciò che ti uccide. Stai fermo: non ne esci.</span></span></div>
+          <div class="r"><span class="g evita">EVITA</span><span><code>(25-35)% chance for Enemies to drop Shocked Ground when Hitting you</code><span class="perche">Lo shock aumenta il danno che subisci, e ci stai dentro fermo.</span></span></div>
+          <div class="r"><span class="g evita">EVITA</span><span><code>(25-35)% chance for Enemies to drop Chilled Ground when Hitting you</code><span class="perche">Meno grave, ma rallenta l'action speed mentre canalizzi.</span></span></div>
+          <div class="r"><span class="g evita">EVITA</span><span><code>(25-35)% chance to be Scorched when Hit · All Damage taken from Hits can Scorch you</code><span class="perche">Scorch abbassa le resistenze, quindi peggiora tutto il resto.</span></span></div>
+          <div class="r"><span class="g evita">EVITA</span><span><code>(25-35)% chance to be Sapped when Hit · All Damage taken from Hits can Sap you</code><span class="perche">Sap abbassa il danno che fai.</span></span></div>
+          <div class="r"><span class="g evita">EVITA</span><span><code>-3000 to Armour -3000 to Evasion Rating</code><span class="perche">Il 17% dei tuoi 17.732 di armour. Fastidioso, non letale.</span></span></div>
+          <div class="r"><span class="g ok">OK</span><span><code>(50-30)% reduced Defences per Frenzy Charge</code><span class="perche"><b>Hai 0 cariche di frenesia</b>: per te vale esattamente zero. Prendilo a occhi chiusi.</span></span></div>
+          <div class="r"><span class="g ok">OK</span><span><code>Projectiles are fired in random directions</code><span class="perche">Lightning Tendrils non è un proiettile.</span></span></div>
+          <div class="r"><span class="g ok">OK</span><span><code>Spell Hits have (20-35)% chance to Hinder you</code><span class="perche">Hinder è velocità di movimento. Due varianti, Exarch ed Eater. Canalizzi da fermo.</span></span></div>
+          </div>
+          <p class="nota">Fonte: <a href="https://www.poewiki.net/wiki/Eldritch_altar" target="_blank" rel="noopener">poewiki.net/wiki/Eldritch_altar</a>. Cariche e resistenze lette dal PoB del 9 agosto. <b>I downside non si sommano</b>: ne prendi uno per altare, e il tetto è 10 altari (Exarch) o 12 (Eater) per mappa.</p>
+        </details>
+
         <div class="blocco-albero">
           <h3>Albero atlas</h3>
           <div class="punti">
@@ -309,15 +365,33 @@
       <div>
         <div class="pannello">
           <h3>Scarab</h3>
-          <div class="carico"><div class="tit"><span>Base · 1 slot</span><span class="tot">1,1 chaos</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/harvest-scarab.png" alt="" loading="lazy"><span class="nm">Harvest Scarab<span class="ef">L'area contiene il Sacred Grove · <span class="lim">max 1</span></span></span><span class="pz">1,1c</span></div>
+          <div class="carico"><div class="tit"><span>Quello che usa la strategia misurata</span><span class="tot">1 chaos</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/harvest-scarab.png" alt="" loading="lazy"><span class="nm">Harvest Scarab<span class="ef">L'area contiene il Sacred Grove · <span class="lim">max 1</span></span></span><span class="pz">1c</span></div>
           </div>
-          <div class="carico"><div class="tit"><span>Spinta · 3 slot</span><span class="tot">≈ 82 chaos</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/harvest-scarab.png" alt="" loading="lazy"><span class="nm">Harvest Scarab<span class="ef">L'area contiene il Sacred Grove · <span class="lim">max 1</span></span></span><span class="pz">1,1c</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/harvest-scarab-of-doubling.png" alt="" loading="lazy"><span class="nm">Harvest Scarab of Doubling<span class="ef">Lifeforce raddoppiata · mostri +100% vita · <span class="lim">max 1</span></span></span><span class="pz">26c</span></div>
+          <p class="nota">Gli <b>8,6 divine/ora sono misurati con questo solo</b>. Tutto ciò che segue è un aggiunta: migliora la resa ma <b>non è nei numeri</b>.</p>
+
+          <div class="carico"><div class="tit"><span>Aggiunta che conviene</span><span class="tot">24 chaos</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/harvest-scarab-of-doubling.png" alt="" loading="lazy"><span class="nm">Harvest Scarab of Doubling<span class="ef">Lifeforce raddoppiata · mostri +100% vita · <span class="lim">max 1</span></span></span><span class="pz">24c</span></div>
+          </div>
+          <div class="carico"><div class="tit"><span>Aggiunta da verificare</span><span class="tot">56 chaos</span></div>
           <div class="sc"><span class="q">1×</span><img src="img/harvest-scarab-of-cornucopia.png" alt="" loading="lazy"><span class="nm">Harvest Scarab of Cornucopia<span class="ef">Un seme Tier 4 in più di ogni tipo · <span class="lim">max 1</span></span></span><span class="pz">56c</span></div>
           </div>
-          <p class="nota"><b>Harvest ha tutti e tre gli scarab a limite 1</b>: con la sua famiglia riempie solo tre slot, il quarto va per forza a un generico. La strategia misurata ne usa <b>uno solo</b>.</p>
+
+          <div class="avviso">
+            <b>Il conto che decide quale dei due mettere, e non sono equivalenti.</b>
+            La lifeforce è il <b>66%</b> di un ricavo da 8,9d su 20 mappe: circa <b>63 chaos di lifeforce a mappa</b>.
+            <br><br>Il <b>Doubling la raddoppia</b>: <b>+63c per 24c di costo</b>, cioè <b>+39 chaos netti a mappa</b>.
+            Il suo prezzo è <code>mostri +100% vita</code>, che con 17,1M di DPS non è un prezzo. <b>Va messo.</b>
+            <br><br>Il <b>Cornucopia costa 56c</b> e deve quindi restituire più di 56 chaos di lifeforce <i>in quella mappa</i>.
+            Con il Doubling già dentro la base sale a ~126c, quindi al Cornucopia serve <b>+44%</b> sopra il raddoppio.
+            «Un seme Tier 4 in più di ogni tipo» potrebbe farcela o non farcela: <b>non è misurato</b>, e a 56 chaos
+            un colpo a vuoto costa quasi un'ora intera della strategia base.
+          </div>
+
+          <div class="carico quinto"><div class="tit"><span>Il quarto slot resta libero, per forza</span></div>
+          <div class="sc"><span class="q">—</span><img src="img/harvest-scarab.png" alt="" loading="lazy" style="opacity:.35"><span class="nm">un generico, non di Harvest<span class="ef">La famiglia Harvest è esaurita a tre</span></span><span class="pz">—</span></div>
+          </div>
+          <p class="nota"><b>Tutti e tre gli scarab Harvest hanno limite 1</b>: la famiglia riempie <b>tre slot su quattro</b> e il quarto va per forza a un generico — a differenza di Abyss, che del suo scarab base ne impila cinque. <b>Quale generico, qui non è misurato</b>: il criterio giusto è puntare al <b>boss</b>, che è da dove viene il 34% del ricavo (invitation 148c, astrolabi 154c, Nightmare 169c) — non alla densità, che in una mappa che si attraversa di corsa non incassi.</p>
         </div>
         <div class="pannello">
           <h3>Mappa</h3>
