@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Strategie di farming — tre strade misurate</title>
+<title>Strategie di farming — due strade misurate</title>
 <link rel="stylesheet" href="../stile.css">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <style>
@@ -123,25 +123,33 @@
 
 <div class="wrap">
   <header class="testata">
-    <h1>Tre strategie di farming</h1>
-    <p class="sub">Tarate su un <b>channeller che deve stare fermo</b> e su mappe <b>senza ostacoli</b>. Ogni numero qui è misurato o citato con la sua fonte — e dove non lo è, c'è scritto.</p>
+    <h1>Due strategie di farming</h1>
+    <p class="sub">Tarate su un <b>channeller che deve stare fermo</b> e su mappe <b>senza ostacoli</b>. Ogni numero qui è misurato o citato con la sua fonte — e dove non lo è, c'è scritto. <b>Abyss dà livelli, Harvest dà currency</b>: non sono due gradini della stessa scala.</p>
     <div class="badges">
       <span class="badge">patch 3.29.2</span>
       <span class="badge">lega Allflame</span>
-      <span class="badge">8 agosto 2026</span>
+      <span class="badge">9 agosto 2026</span>
     </div>
   </header>
 
   <div class="avviso">
     <b>Cosa sono davvero questi numeri.</b> Il <b>prezzo di uno scarab</b> è il costo d'ingresso, non il profitto. L'<b>adozione</b> (100.000 alberi censiti su poe.ninja) dice cosa fa la gente, cioè moda e concorrenza — non redditività. I punteggi <b>densità e layout</b> sono voti della community. L'unica cosa vicina al profitto che si può misurare è il <b>prezzo di ciò che una meccanica produce</b>, ed è la colonna «resa misurata» qui sotto.
-    <br><br><b>Nessuno misura le frequenze di drop</b>, che non sono pubbliche. Quindi non esiste qui un chaos/ora, e chi te lo dà se lo sta inventando.
+    <br><br><b>Le frequenze di drop non sono pubbliche</b>, quindi un guadagno per ora non si può <em>calcolare a priori</em>. <b>Si può però misurare a posteriori</b>, e qui sotto lo è: <b>Wealthy Exile</b> fotografa il patrimonio prima e dopo una sessione, quindi il suo profit/ora è una <b>differenza misurata</b>, non una stima. Vale per la scheda Harvest; per Abyss no, e c'è scritto.
     <br><br><b>Le mappe sono filtrate per tag, non per opinione</b>: solo quelle marcate <code>few_obstacles</code> <em>e</em> <code>linear</code> nei dati di mapsofexile.com, ordinate per densità.
+  </div>
+
+  <div class="avviso" style="border-color:var(--bad)">
+    <b>Prima di correrle: gli altari eldritch.</b> Entrambe le strategie ne cliccano, e ogni altare offre <b>due opzioni, ciascuna con un vantaggio e uno svantaggio</b>. Tre svantaggi della categoria «Player» <b>spengono le flask</b>, e questa build senza flask muore — il Coruscating Elixir è l'unica cosa che tiene il caos fuori dai 40 punti di vita non riservata.
+    <br><br><code>Take 600 Chaos Damage per second during any Flask Effect</code> — contro <b>418 ES/s</b> di rigenerazione netta è una morte programmata, e le flask sono su in permanenza.
+    <br><code>(20-40)% increased Flask Charges used</code> + <code>(60-40)% reduced Flask Effect Duration</code> — attacca l'uptime del Coruscating Elixir.
+    <br><code>30% chance to be targeted by a Meteor when you use a Flask</code> — le flask si riusano da sole di continuo.
+    <br><br><b>Regola: se una delle due opzioni nomina le flask, prendi l'altra.</b> E nota che <b>uccidere il boss di mappa spegne la categoria «Map Boss»</b> per tutti gli altari successivi, lasciando solo Minions o Player — cioè proprio nella fase in cui se ne cliccano di più.
   </div>
 
   <!-- ============ 1 · ECONOMICA ============ -->
   <article class="strat">
     <header>
-      <h2>1 · Abyss <span class="badge">economica</span> <span class="badge">0–6 c/mappa</span></h2>
+      <h2>1 · Abyss <span class="badge">livelli</span> <span class="badge">0–6 c/mappa</span></h2>
       <p class="sommario">Le pit si aprono da sole e i mostri vengono verso di te. Non insegui niente, e uccidi in continuazione.</p>
       <p class="quando">Quando: sempre, anche senza budget — è la strada che funziona a mani nude</p>
     </header>
@@ -162,6 +170,15 @@
         <h3>Perché funziona su questa build</h3>
         <p>La skill è <b>canalizzata</b>: ogni secondo speso a inseguire un pacco è danno non fatto. Abyss è l'opposto dell'inseguimento — la pit avanza e i mostri arrivano addosso, quindi si sta fermi e si canalizza.</p>
         <p>E c'è un effetto difensivo che vale più del bottino: il <b>Tempest Band</b> dà <code>4% chance to gain an Endurance Charge on Kill</code>, e Abyss produce uccisioni in continuazione. Con le 4 cariche su, la riduzione del danno fisico passa da <b>63% a 90%</b>, cioè il max hit fisico da 6.983 a <b>17.888</b>.</p>
+        <h3>Come si corre la mappa</h3>
+        <p><b>Si pulisce</b>, ed è l'opposto esatto di Harvest. Discende da cosa produce: qui il valore è <b>sparso su tutta la mappa</b> — esperienza, bottino generico, pit — non concentrato in un punto.</p>
+        <ul>
+          <li><b>Entra e uccidi normalmente</b>, senza fretta di arrivare da nessuna parte.</li>
+          <li>Le <b>pit si aprono da sole</b> (dal 3.29 non si insegue più la crepa) e <b>le anime dei nemici uccisi le alimentano</b>: uccidere vicino a una pit non è tempo perso, è ciò che la fa crescere.</li>
+          <li><b>Segui la catena di pit fino all'ultima</b>, che è quella che paga.</li>
+          <li>Il boss di mappa non è il punto: fallo se è comodo.</li>
+        </ul>
+        <p>Se corri non uccidi; se non uccidi le pit non si alimentano, e l'esperienza — che è il prodotto vero — non arriva.</p>
         <h3 class="rosso">Cosa la rovina</h3>
         <ul>
           <li>Mod di mappa che riducono il <b>recupero</b>: la ricarica dell'ES è già spenta dal Righteous Fire, resta solo la rigenerazione.</li>
@@ -221,157 +238,112 @@
     </div>
   </article>
 
-  <!-- ============ 2 · MEDIA ============ -->
+  <!-- ============ 2 · CURRENCY ============ -->
   <article class="strat">
     <header>
-      <h2>2 · Legion <span class="badge">media</span> <span class="badge">2–88 c/mappa</span></h2>
-      <p class="sommario">Congeli un esercito e ci canalizzi dentro da fermo. È la meccanica che assomiglia di più a come questa build fa danno.</p>
-      <p class="quando">Quando: appena l'albero regge 30 punti su un cluster solo</p>
-    </header>
-
-    <div class="misure">
-      <div class="misura"><div class="et">Difficoltà</div><div class="val">Media</div>
-        <div class="tacche rischio"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
-      <div class="misura"><div class="et">Investimento</div><div class="val">Scalabile</div>
-        <div class="tacche"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
-      <div class="misura"><div class="et">Profittabilità</div><div class="val">Media-alta<small>splinter misurati a 10c</small></div>
-        <div class="tacche resa"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
-      <div class="misura"><div class="et">Concorrenza</div><div class="val">La più bassa — 5% degli alberi</div>
-        <div class="tacche rischio"><i class="on"></i><i></i><i></i><i></i><i></i></div></div>
-    </div>
-
-    <div class="corpo">
-      <div>
-        <h3>Perché funziona su questa build</h3>
-        <p>Legion è <b>l'unica meccanica in cui stare fermi è il modo corretto di giocarla</b>: il monolito congela l'esercito, tu ti pianti e canalizzi. Il moltiplicatore da 5 stadi di channelling — che in mappa non riesci quasi mai a caricare — qui si carica sempre.</p>
-        <p>Ed è la <b>meno battuta</b> delle tre: la prendono il <b>5%</b> degli alberi contro il 15% di Abyss. Meno gente dentro significa meno concorrenza sui prezzi di ciò che produce.</p>
-        <h3 class="rosso">Cosa la rovina</h3>
-        <ul>
-          <li>Mappe con ostacoli o dislivelli: l'esercito spawna spezzato e ne raggiungi metà.</li>
-          <li>Non uccidere abbastanza in fretta: se il timer scade prima, il grosso del bottino resta congelato.</li>
-        </ul>
-        <div class="blocco-albero">
-          <h3>Albero atlas</h3>
-          <div class="punti">
-          <div class="voce"><span>Legion</span><span class="p">30 punti</span></div>
-          <div class="voce"><span>Beyond</span><span class="p">19</span></div>
-          <div class="voce"><span>Map Monsters</span><span class="p">9</span></div>
-          <div class="voce"><span>Memory Tears</span><span class="p">4</span></div>
-          </div>
-          <div class="bottoni"><button class="albero" type="button" data-albero="https://poeplanner.com/atlas-tree/AAAABgAAiwC6AM4IPwqqCwoLcQzgDrMOvg_sEOESKhZiFxQXyxxCHaUefR9UJooo0CmHKoQqwCt-K9ctkzADMeU0pjYSOG85jjqvPl9BjEJoQwhDqUfPSl9RglZGV71ZPFrOW9lb814qYCFge2O1ZExmeGa1Z-loQGnVb39xdXGgc6V0wXX2djp2wndRegh7Cn-kgPCBD4OUhBGGWYhtj9SSLJKdlBmcnJ1enYegXaPGp4KoL6quq3yvwbDEtFm0hrX9tgK3zLmAuyq767yov2DFAsYzxjjG0Mw1zpHPHtCi0STUh9ce2r3dF90c4Yviu-M35Y_l-uYm6Ijqjet-7OXyZfKT82z0DPfk-Q76MPqy-vz7LfvB-8789v3JAAA">Mostra l'albero qui ↓</button><a class="albero secondario" href="https://poeplanner.com/atlas-tree/AAAABgAAiwC6AM4IPwqqCwoLcQzgDrMOvg_sEOESKhZiFxQXyxxCHaUefR9UJooo0CmHKoQqwCt-K9ctkzADMeU0pjYSOG85jjqvPl9BjEJoQwhDqUfPSl9RglZGV71ZPFrOW9lb814qYCFge2O1ZExmeGa1Z-loQGnVb39xdXGgc6V0wXX2djp2wndRegh7Cn-kgPCBD4OUhBGGWYhtj9SSLJKdlBmcnJ1enYegXaPGp4KoL6quq3yvwbDEtFm0hrX9tgK3zLmAuyq767yov2DFAsYzxjjG0Mw1zpHPHtCi0STUh9ce2r3dF90c4Yviu-M35Y_l-uYm6Ijqjet-7OXyZfKT82z0DPfk-Q76MPqy-vz7LfvB-8789v3JAAA" target="_blank" rel="noopener">Apri ↗</a></div>
-          <p class="nota">139 punti. Usata da <b>102 alberi</b> su 100.000.</p>
-        </div>
-      </div>
-      <div>
-        <div class="pannello">
-          <h3>Scarab</h3>
-          <div class="carico"><div class="tit"><span>Budget · 4 slot</span><span class="tot">≈ 5 chaos</span></div>
-          <div class="sc"><span class="q">3×</span><img src="img/legion-scarab.png" alt="" loading="lazy"><span class="nm">Legion Scarab<span class="ef">Un Legion Encounter in più · <span class="lim">max 5</span></span></span><span class="pz">3,9c</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/legion-scarab-of-officers.png" alt="" loading="lazy"><span class="nm">Legion Scarab of Officers<span class="ef">5 Sergenti in più per fazione · <span class="lim">max 1</span></span></span><span class="pz">1,3c</span></div>
-          </div>
-          <div class="carico"><div class="tit"><span>Spinta · 4 slot</span><span class="tot">≈ 92 chaos</span></div>
-          <div class="sc"><span class="q">2×</span><img src="img/legion-scarab.png" alt="" loading="lazy"><span class="nm">Legion Scarab<span class="ef">Un Legion Encounter in più · <span class="lim">max 5</span></span></span><span class="pz">2,6c</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/legion-scarab-of-officers.png" alt="" loading="lazy"><span class="nm">Legion Scarab of Officers<span class="ef">5 Sergenti in più per fazione · <span class="lim">max 1</span></span></span><span class="pz">1,3c</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/legion-scarab-of-eternal-conflict.png" alt="" loading="lazy"><span class="nm">Legion Scarab of Eternal Conflict<span class="ef">I mostri escono dalla stasi più volte · <span class="lim">max 1</span></span></span><span class="pz">88c</span></div>
-          </div>
-          <div class="carico quinto"><div class="tit"><span>Quinto slot, quando lo sblocchi</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/legion-scarab-of-command.png" alt="" loading="lazy"><span class="nm">Legion Scarab of Treasures<span class="ef">I forzieri spargono i premi sui mostri · <span class="lim">max 3</span></span></span><span class="pz">2,6c</span></div>
-          </div>
-        </div>
-        <div class="pannello">
-          <h3>Mappa</h3>
-          <div class="voce"><span><b>Dunes</b></span><span class="p">L10 · D4 · B10</span></div>
-          <div class="voce"><span>Desert Spring</span><span class="p">L8 · D10 · B2</span></div>
-          <p class="nota">Per Legion conta lo <b>spazio aperto</b>, non la densità: l'esercito è fisso. Dunes è <code>outdoors</code>, <code>linear</code>, <code>few_obstacles</code> con layout 10.</p>
-        </div>
-        <div class="pannello">
-          <h3>Resa misurata</h3>
-          <div class="voce"><span class="n"><img src="img/timeless-karui-splinter.png" alt="" loading="lazy"><span>Timeless Karui Splinter</span></span><span class="p">10c</span></div>
-          <p class="nota">Mediana su <b>71 inserzioni</b>, misurata sull'endpoint di scambio l'8 agosto. È l'unica delle tre strategie di cui ho potuto misurare l'output per unità.</p>
-        </div>
-      </div>
-    </div>
-  </article>
-
-  <!-- ============ 3 · SPINTA ============ -->
-  <article class="strat">
-    <header>
-      <h2>3 · Harvest <span class="badge">spinta</span> <span class="badge">55–76 c/mappa</span></h2>
-      <p class="sommario">Il prezzo d'ingresso più alto di tutte le meccaniche, e la minor concorrenza. Si sta fermi davanti al Grove e si raccoglie.</p>
-      <p class="quando">Quando: c'è budget da rimettere in gioco ogni mappa</p>
+      <h2>2 · Harvest + Heist + Exarch <span class="badge">currency</span> <span class="badge">8,6 divine/ora</span></h2>
+      <p class="sommario">L'unica scheda con un profitto <b>misurato</b> e non stimato: Wealthy Exile fotografa il patrimonio prima e dopo. Costa 65 chaos l'ora.</p>
+      <p class="quando">Quando: appena l'albero regge il cluster Harvest completo — è la strategia da currency</p>
     </header>
 
     <div class="misure">
       <div class="misura"><div class="et">Difficoltà</div><div class="val">Bassa</div>
-        <div class="tacche rischio"><i class="on"></i><i></i><i></i><i></i><i></i></div></div>
-      <div class="misura"><div class="et">Investimento</div><div class="val">Alto</div>
-        <div class="tacche"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
-      <div class="misura"><div class="et">Profittabilità</div><div class="val">Alta<small>mediana scarab più alta</small></div>
-        <div class="tacche resa"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
-      <div class="misura"><div class="et">Concorrenza</div><div class="val">La più bassa in assoluto — 7%</div>
+        <div class="tacche rischio"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div></div>
+      <div class="misura"><div class="et">Investimento</div><div class="val">65c/ora<small>20 mappe, scarab, frammento</small></div>
+        <div class="tacche"><i class="on"></i><i></i><i></i><i></i><i></i></div></div>
+      <div class="misura"><div class="et">Profittabilità</div><div class="val">8,6 divine/ora<small>misurata sullo stash, fascia 7,7–11d</small></div>
+        <div class="tacche resa"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+      <div class="misura"><div class="et">Concorrenza</div><div class="val">Bassa — 7% degli alberi</div>
         <div class="tacche rischio"><i class="on"></i><i></i><i></i><i></i><i></i></div></div>
     </div>
 
     <div class="corpo">
       <div>
         <h3>Perché funziona su questa build</h3>
-        <p>È l'unica delle tre che <b>non chiede di uccidere niente di pericoloso</b>. Con 4.112 di Energy Shield e una diagnosi che dice che si muore ai danni nel tempo, non esporsi è un vantaggio che vale quanto il bottino.</p>
-        <p>Ed è il caso più netto di <b>prezzo alto, folla bassa</b>: la famiglia ha la <b>mediana più alta di tutte</b> (21c) mentre solo il <b>7%</b> degli alberi specializza gli scarab su Harvest — contro il 20% di Ambush, che ha una mediana di 5 chaos.</p>
+        <p>Il Grove si fa <b>da fermi</b>: si sta davanti ai plot e si canalizza, che è esattamente come questa build fa danno. E il ritmo dichiarato — <b>20 mappe l'ora</b> — è misurato su una build da <b>2 divine</b>: con 17,1M di DPS le mappe all'ora sono di più, e la lifeforce è lineare in quel numero.</p>
+        <p>Il <b>66% del ricavo è lifeforce</b>, il resto viene dal <b>boss di mappa</b> — ed è la ragione per cui questa non è solo una strategia Harvest.</p>
+
+        <h3>Come si corre la mappa — e no, non si pulisce</h3>
+        <p>È la domanda che si fa chiunque legga «Harvest» e pensi di dover finire la mappa prima. L'autore della strategia la riassume in una riga: <i>«Get into the map, kill the boss, rush to the Sacred Grove, and get out.»</i></p>
+        <ul>
+          <li><b>Prima il boss.</b> Non per il suo bottino: è ciò che fa avanzare l'<b>invitation di Searing Exarch</b> (148c) e che può droppare un <b>Astrolabe</b> (73–81c). Con il beacon acceso avanza anche le <b>Maven Invitation</b> mancanti.</li>
+          <li><b>Poi dritti al Grove</b>, aprendo casse e cliccando altari <b>solo se stanno sulla strada</b>. Testuale: <i>«Don't go too far out of your way for them.»</i></li>
+          <li><b>Dentro il Grove si sceglie, non si raccoglie tutto:</b> si <b>saltano i plot viola</b> e i blu scadenti; priorità ai <b>gialli con almeno un seme tier 3</b>; un blu solo se ha molti semi tier 3/4 e nessun giallo ha un tier 3.</li>
+          <li><b>E si esce.</b> Il resto della mappa non si tocca.</li>
+        </ul>
+        <p>Il perché è aritmetico: a 20 mappe l'ora <b>una mappa dura tre minuti</b>. Non c'è materialmente il tempo di pulire una T16, e non serve — la lifeforce sta tutta in un punto solo.</p>
+
+        <h3>Come si tira la mappa</h3>
+        <ul>
+          <li><b>T16 a 8 mod</b>, con almeno <b>100% di item quantity</b> e <b>40% di pack size</b>. Non si corrono mappe bianche.</li>
+          <li><b>1 Harvest Scarab</b> e <b>1 Sacrifice at Dusk</b> nel map device.</li>
+          <li>I due frammenti <b>si possono saltare</b> se sull'albero si prendono i nodi che danno alle proprie mappe una probabilità di contenere il Sacred Grove. L'autore consiglia comunque l'Harvest Scarab, che costa 1,1c.</li>
+        </ul>
+
         <h3 class="rosso">Cosa la rovina</h3>
         <ul>
-          <li>Mappe lente: il Grove non dipende dal layout, quindi ogni secondo di attraversamento è puro costo.</li>
-          <li>Comprare Cornucopia e poi correre mappe povere: a 55c a mappa il margine si assottiglia in fretta.</li>
+          <li><b>Un downside d'altare che tocca le flask</b> — vedi l'avviso in cima: qui gli altari si cliccano andando al Grove, e il boss ucciso per primo toglie dal mazzo la categoria più innocua.</li>
+          <li>Mod di mappa che riducono il <b>recupero</b>: resta solo la rigenerazione, la ricarica dell'ES va sulla vita per keystone.</li>
+          <li><b>Pulire la mappa.</b> Non è un errore di bottino, è un errore di ritmo: dimezza le mappe all'ora e con esse la lifeforce.</li>
         </ul>
+
         <div class="blocco-albero">
           <h3>Albero atlas</h3>
           <div class="punti">
-          <div class="voce"><span>Harvest</span><span class="p">30 punti</span></div>
-          <div class="voce"><span>Scarabs</span><span class="p">21</span></div>
-          <div class="voce"><span>Map Monsters</span><span class="p">10</span></div>
-          <div class="voce"><span>Map Tiers</span><span class="p">9</span></div>
+          <div class="voce"><span>Harvest</span><span class="p">completo</span></div>
+          <div class="voce"><span>Heist</span><span class="p">completo</span></div>
+          <div class="voce"><span>Searing Exarch</span><span class="p">sì</span></div>
+          <div class="voce"><span>Expedition · Ritual · Blight · Delirium</span><span class="p nulla">spenti</span></div>
           </div>
-          <div class="bottoni"><button class="albero" type="button" data-albero="https://poeplanner.com/atlas-tree/AAAABgAAiwAfBaQKqgtxDH4M8w-3EOEXyxjEG04fxCPaJOko0CjpKoQqwCvaLZMuizA1MiQySzSIOPI5jjufPl8_BEB-QYxCwUOpR89KDkwhTatRglWHVadWbVjBWTxafVrOW9ldt13HYCFi1WO1ZrVp1WvobNRxC3ErcXVxoHX2djp2gHbCeOp6CH0TgBCGWYhtiWiLGIyWjSmOIo_UkX2SLJQZlySZbJ1enYeetJ-xoYakNqeCrBGvka-ar8GyYLLVtIa3zLsqu-u8qMIjxbLF_sabxtDHs8huzyPPt9Ci01XUh9S51lrYntq930vhi-KX4qfjN-WP6ObptOqN7OXvrvJM8-P1TPfk9_P5Dvow-rL7zv3J_kH-3v-4AAA">Mostra l'albero qui ↓</button><a class="albero secondario" href="https://poeplanner.com/atlas-tree/AAAABgAAiwAfBaQKqgtxDH4M8w-3EOEXyxjEG04fxCPaJOko0CjpKoQqwCvaLZMuizA1MiQySzSIOPI5jjufPl8_BEB-QYxCwUOpR89KDkwhTatRglWHVadWbVjBWTxafVrOW9ldt13HYCFi1WO1ZrVp1WvobNRxC3ErcXVxoHX2djp2gHbCeOp6CH0TgBCGWYhtiWiLGIyWjSmOIo_UkX2SLJQZlySZbJ1enYeetJ-xoYakNqeCrBGvka-ar8GyYLLVtIa3zLsqu-u8qMIjxbLF_sabxtDHs8huzyPPt9Ci01XUh9S51lrYntq930vhi-KX4qfjN-WP6ObptOqN7OXvrvJM8-P1TPfk9_P5Dvow-rL7zv3J_kH-3v-4AAA" target="_blank" rel="noopener">Apri ↗</a></div>
-          <p class="nota">139 punti. La usano <b>27 alberi</b> su 100.000: è la strada meno battuta di tutte.</p>
+          <div class="bottoni"><button class="albero" type="button" data-albero="https://poeplanner.com/atlas-tree/BQAcAACKAIfU29ZfPi_JSzLru7L6kBdsmSx3tOmGtCySCHqEKv7F8VRtiLj_wCrKZup4PFkhYCIpMPpL3yVCcMaTLfI4jEG1ZqtNEIBenYqCzlrJ_R_pjep846i8KrvZW8y3vdrj8x19YLLk9x8Ai-F9kQp73GkOSt7-qgqfO2iJT10iSAQ_RsDUj4ed0LzQxtwhqc7OnJfiayGCp445h1VZhlf8glGAdjfjBCvPRwCRs8e3z5vGXWtOG6LQTZHLFyFMNTDHXdEqNqTEH-bofkAO-YWj9nUZlBiLwa8LcTp25ezBk9VicQtj0Y_lAzAzxtib1WkjwsJ2qUO1YxGsoHFmH7SexBhM8pGv6SSQZM77K7fpZ7nUuNnQKBQAH4sIAAAAAAAAAwMAAAAAAAAAAAA=">Mostra l'albero qui ↓</button><a class="albero secondario" href="https://poeplanner.com/atlas-tree/BQAcAACKAIfU29ZfPi_JSzLru7L6kBdsmSx3tOmGtCySCHqEKv7F8VRtiLj_wCrKZup4PFkhYCIpMPpL3yVCcMaTLfI4jEG1ZqtNEIBenYqCzlrJ_R_pjep846i8KrvZW8y3vdrj8x19YLLk9x8Ai-F9kQp73GkOSt7-qgqfO2iJT10iSAQ_RsDUj4ed0LzQxtwhqc7OnJfiayGCp445h1VZhlf8glGAdjfjBCvPRwCRs8e3z5vGXWtOG6LQTZHLFyFMNTDHXdEqNqTEH-bofkAO-YWj9nUZlBiLwa8LcTp25ezBk9VicQtj0Y_lAzAzxtib1WkjwsJ2qUO1YxGsoHFmH7SexBhM8pGv6SSQZM77K7fpZ7nUuNnQKBQAH4sIAAAAAAAAAwMAAAAAAAAAAAA=" target="_blank" rel="noopener">Apri ↗</a></div>
+          <p class="nota">Non è un albero Harvest. Le quattro meccaniche spente <b>non guadagnano niente: fanno risparmiare tempo</b>, che a 20 mappe l'ora è il moltiplicatore vero.</p>
+          <div class="avviso">
+            <b>I due nodi che sono il vero trucco, e si ottimizzano per sottrazione.</b>
+            <code>45% reduced chance to grow Blue Plants</code> e <code>45% reduced chance to grow Purple Plants</code>
+            non aumentano niente: <b>tolgono i plot che salteresti comunque</b>, così il Grove è quasi tutto giallo.
+            <br><br><b>Exarch e non Eater</b>, e la ragione è nella resa: l'Incandescent Invitation vale <b>148c</b>, la Polaric <b>10c</b>. Sedici volte tanto per lo stesso lavoro.
+            <br><br><b>Heist è un secondo reddito su ogni mappa</b>: <code>+100% chance to contain a Smuggler's Cache</code>, blueprint al doppio, Huck che accompagna.
+          </div>
         </div>
       </div>
       <div>
         <div class="pannello">
           <h3>Scarab</h3>
-          <div class="carico"><div class="tit"><span>Budget · 4 slot</span><span class="tot">≈ 30 chaos</span></div>
+          <div class="carico"><div class="tit"><span>Base · 1 slot</span><span class="tot">1,1 chaos</span></div>
           <div class="sc"><span class="q">1×</span><img src="img/harvest-scarab.png" alt="" loading="lazy"><span class="nm">Harvest Scarab<span class="ef">L'area contiene il Sacred Grove · <span class="lim">max 1</span></span></span><span class="pz">1,1c</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/harvest-scarab-of-doubling.png" alt="" loading="lazy"><span class="nm">Harvest Scarab of Doubling<span class="ef">Lifeforce raddoppiata · mostri +100% vita · <span class="lim">max 1</span></span></span><span class="pz">21c</span></div>
-          <div class="sc"><span class="q">2×</span><img src="img/scarab-of-monstrous-lineage.png" alt="" loading="lazy"><span class="nm">Scarab of Monstrous Lineage<span class="ef">+40% dimensione dei pacchi magici · <span class="lim">max 2</span></span></span><span class="pz">7,6c</span></div>
           </div>
-          <div class="carico"><div class="tit"><span>Spinta · 4 slot</span><span class="tot">≈ 81 chaos</span></div>
+          <div class="carico"><div class="tit"><span>Spinta · 3 slot</span><span class="tot">≈ 82 chaos</span></div>
           <div class="sc"><span class="q">1×</span><img src="img/harvest-scarab.png" alt="" loading="lazy"><span class="nm">Harvest Scarab<span class="ef">L'area contiene il Sacred Grove · <span class="lim">max 1</span></span></span><span class="pz">1,1c</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/harvest-scarab-of-doubling.png" alt="" loading="lazy"><span class="nm">Harvest Scarab of Doubling<span class="ef">Lifeforce raddoppiata · mostri +100% vita · <span class="lim">max 1</span></span></span><span class="pz">21c</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/harvest-scarab-of-cornucopia.png" alt="" loading="lazy"><span class="nm">Harvest Scarab of Cornucopia<span class="ef">Un seme Tier 4 in più di ogni tipo · <span class="lim">max 1</span></span></span><span class="pz">55c</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/scarab-of-monstrous-lineage.png" alt="" loading="lazy"><span class="nm">Scarab of Monstrous Lineage<span class="ef">+40% dimensione dei pacchi magici · <span class="lim">max 2</span></span></span><span class="pz">3,8c</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/harvest-scarab-of-doubling.png" alt="" loading="lazy"><span class="nm">Harvest Scarab of Doubling<span class="ef">Lifeforce raddoppiata · mostri +100% vita · <span class="lim">max 1</span></span></span><span class="pz">26c</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/harvest-scarab-of-cornucopia.png" alt="" loading="lazy"><span class="nm">Harvest Scarab of Cornucopia<span class="ef">Un seme Tier 4 in più di ogni tipo · <span class="lim">max 1</span></span></span><span class="pz">56c</span></div>
           </div>
-          <div class="carico quinto"><div class="tit"><span>Quinto slot, quando lo sblocchi</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/scarab-of-monstrous-lineage.png" alt="" loading="lazy"><span class="nm">Scarab of Monstrous Lineage<span class="ef">Il secondo: il limite è 2 · <span class="lim">max 2</span></span></span><span class="pz">3,8c</span></div>
-          </div>
+          <p class="nota"><b>Harvest ha tutti e tre gli scarab a limite 1</b>: con la sua famiglia riempie solo tre slot, il quarto va per forza a un generico. La strategia misurata ne usa <b>uno solo</b>.</p>
         </div>
         <div class="pannello">
           <h3>Mappa</h3>
-          <div class="voce"><span><b>Toxic Sewer</b></span><span class="p">L10 · D7 · B10</span></div>
-          <div class="voce"><span>Dunes</span><span class="p">L10 · D4 · B10</span></div>
-          <p class="nota">Il Grove è fisso: conta solo attraversare in fretta. Toxic Sewer è l'unica con layout 10 che non sacrifichi la densità, ed è <code>boss_rushable</code>.</p>
+          <div class="voce"><span><b>Toxic Sewer</b></span><span class="p">L10 · B10</span></div>
+          <div class="voce"><span>City Square</span><span class="p">quella dell'autore</span></div>
+          <p class="nota">Toxic Sewer è <code>boss_rushable</code> con layout 10 e boss 10 — e sta nel quadrante già acceso. L'autore corre City Square.</p>
         </div>
         <div class="pannello">
-          <h3>Resa misurata</h3>
-          <div class="voce"><span class="n"><img src="img/sacred-lifeforce.png" alt="" loading="lazy"><span>Sacred Lifeforce</span></span><span class="p">40c</span></div>
-          <div class="voce"><span class="n"><img src="img/wild-lifeforce.png" alt="" loading="lazy"><span>Wild Lifeforce</span></span><span class="p">3c</span></div>
-          <div class="voce"><span class="n"><img src="img/vivid-lifeforce.png" alt="" loading="lazy"><span>Vivid · Primal Lifeforce</span></span><span class="p">1c</span></div>
-          <p class="nota">Per unità. La Sacred è su <b>2 sole inserzioni</b>: numero fragile, da non prendere per buono. Le altre su 12–13.</p>
+          <h3>Resa misurata — 8,9d/ora</h3>
+          <div class="voce"><span class="n"><img src="img/vivid-lifeforce.png" alt="" loading="lazy"><span>Vivid Lifeforce · 16.434</span></span><span class="p">4,1d</span></div>
+          <div class="voce"><span class="n"><img src="img/primal-lifeforce.png" alt="" loading="lazy"><span>Primal Lifeforce · 8.074</span></span><span class="p">1,3d</span></div>
+          <div class="voce"><span>Nightmare Map · 4</span><span class="p">169c</span></div>
+          <div class="voce"><span>Incandescent Invitation · 1</span><span class="p">148c</span></div>
+          <div class="voce"><span>Chaotic + Templar Astrolabe · 2</span><span class="p">154c</span></div>
+          <div class="voce"><span class="n"><img src="img/wild-lifeforce.png" alt="" loading="lazy"><span>Wild Lifeforce · 2.996</span></span><span class="p">60c</span></div>
+          <div class="voce"><span>Polaric Invitation · 1</span><span class="p">10c</span></div>
+          <p class="nota">Differenza fra il patrimonio prima e dopo un'ora, non una stima. <b>Le 4 Nightmare Map sono anche punti atlas</b>, uno per tipo la prima volta. Fonte: <a href="https://wealthyexile.com/strategies/7580/almost_zero_investment_harvest_farm" target="_blank" rel="noopener">Almost Zero Investment Harvest Farm</a> di xars#9607.</p>
         </div>
       </div>
     </div>
   </article>
 
   <footer>
-    <p><strong>Da dove vengono i numeri.</strong> Prezzi degli scarab da <b>poe.ninja</b>, verificati su 17 scarab con l'API di trade. Alberi atlas e percentuali di adozione da <b>poe.ninja/atlas-trees</b>, 100.000 alberi censiti per la lega Allflame. Punteggi e tag delle mappe da <b>mapsofexile.com</b>. Resa delle meccaniche misurata sull'endpoint di scambio di trade l'8 agosto.</p>
-    <p><strong>Cosa manca, e non per pigrizia.</strong> Le frequenze di drop non sono pubbliche: senza quelle nessuno può calcolare un guadagno per ora, nemmeno approssimato. Queste tre strade si scelgono per <b>costo d'ingresso, concorrenza e compatibilità con la build</b>, non perché una renda un numero preciso più dell'altra.</p>
+    <p><strong>Da dove vengono i numeri.</strong> Il <b>profit/ora di Harvest è misurato</b>: <a href="https://wealthyexile.com/strategies/7580/almost_zero_investment_harvest_farm" target="_blank" rel="noopener">Wealthy Exile</a> fotografa il patrimonio prima e dopo la sessione, quindi è una differenza, non una stima. Prezzi degli scarab da <b>poe.ninja</b>, verificati su 17 scarab con l'API di trade. Alberi e adozione da <b>poe.ninja/atlas-trees</b>, 100.000 alberi censiti. Punteggi e tag delle mappe da <b>mapsofexile.com</b>. Downside degli altari da <b>poewiki.net</b>.</p>
+    <p><strong>Dove i numeri non ci sono, c'è scritto.</strong> <b>Abyss non ha una resa misurata</b>: produce item — Stygian Vise e Abyssal Jewel — il cui prezzo dipende dai mod. È la strategia da <b>livelli</b>, e va scelta per quello.</p>
+    <p><strong>Lo slot ad alto ritorno è vuoto, di proposito.</strong> Qui stava <b>Legion</b>, ritirata il 9 agosto: dichiarava il Timeless Karui Splinter a <b>10c</b> quando ne vale <b>0,5</b>. L'errore era di metodo — veniva dall'endpoint <code>trade/exchange</code>, che sugli item poco liquidi restituisce quattro inserzioni-spazzatura. Al suo posto è stata valutata <b>Breach</b>: <b>26 divine l'ora</b> di profitto, ma <b>29 di costo</b>, e quasi tutto in un item solo — l'<i>Horned Scarab of Bloodlines</i>, che non è nemmeno uno scarab di Breach. Torna quando il patrimonio la regge.</p>
     <p><strong>Rimisura quando la data invecchia.</strong> I prezzi si muovono ogni settimana e l'adozione cambia col meta.</p>
   </footer>
 </div>
