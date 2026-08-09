@@ -293,6 +293,8 @@
 
         <h3>Come si tira la mappa</h3>
         <p><b>T16 a 8 mod</b>, con almeno <b>100% di item quantity</b> e <b>40% di pack size</b>. Cosa mettere nel map device sta nel pannello <b>Scarab</b> qui accanto.</p>
+        <p><a class="albero" href="https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22online%22%7D%2C%22filters%22%3A%7B%22type_filters%22%3A%7B%22filters%22%3A%7B%22category%22%3A%7B%22option%22%3A%22map%22%7D%7D%7D%2C%22map_filters%22%3A%7B%22filters%22%3A%7B%22map_tier%22%3A%7B%22min%22%3A16%2C%22max%22%3A16%7D%2C%22map_iiq%22%3A%7B%22min%22%3A100%7D%2C%22map_packsize%22%3A%7B%22min%22%3A40%7D%7D%7D%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22not%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22explicit.stat_1910157106%22%7D%2C%7B%22id%22%3A%22explicit.stat_1890969167%22%7D%2C%7B%22id%22%3A%22explicit.stat_4181072906%22%7D%2C%7B%22id%22%3A%22explicit.stat_36406748%22%7D%2C%7B%22id%22%3A%22explicit.stat_2549889921%22%7D%2C%7B%22id%22%3A%22explicit.stat_3551025193%22%7D%2C%7B%22id%22%3A%22explicit.stat_3776150692%22%7D%2C%7B%22id%22%3A%22explicit.stat_984774803%22%7D%2C%7B%22id%22%3A%22explicit.stat_3753748365%22%7D%2C%7B%22id%22%3A%22explicit.stat_3376488707%22%7D%2C%7B%22id%22%3A%22explicit.stat_2073168229%22%7D%2C%7B%22id%22%3A%22explicit.stat_2764017512%22%7D%5D%2C%22disabled%22%3Afalse%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D" target="_blank" rel="noopener">Cercale su trade, già filtrate ↗</a></p>
+        <p class="nota">La ricerca applica i tre requisiti <b>ed esclude dodici modificatori che questa build non può correre</b>: <code>cannot Regenerate</code> e <code>no Life or Mana Regeneration</code> (Zealot's Oath converte la rigenerazione <i>vita</i>: se la mappa la azzera, non resta niente da convertire), <code>less Recovery Rate</code>, i due che tolgono cariche alle flask, i tre <code>Block is Unlucky</code>, <code>Unlucky while on Low Life</code> — dove stai sempre — le <code>maximum Resistances</code> negative, il reflect elementale e le rune di Exarch.</p>
 
         <h3>Beacon</h3>
         <p><b>Exarch</b> è il default e vale la differenza: Incandescent <b>148c</b> contro Polaric <b>10c</b>, quindici volte per lo stesso boss. I tre beacon si escludono, quindi ogni mappa corsa con Exarch <b>non</b> avanza il Maven — che si accende a blocchi, quando insegui i 4 punti mancanti o i tre guardiani di <i>The Remembered</i>.</p>
@@ -323,7 +325,7 @@
           <h3>Scarab</h3>
           <div class="carico"><div class="tit"><span>Quello della resa misurata</span><span class="tot">1,2 chaos</span></div>
           <div class="sc"><span class="q">1×</span><img src="img/harvest-scarab.png" alt="" loading="lazy"><span class="nm">Harvest Scarab<span class="ef">L'area contiene il Sacred Grove · <span class="lim">max 1</span></span></span><span class="pz">1c</span></div>
-          <div class="sc"><span class="q">1×</span><span></span><span class="nm">Sacrifice at Dusk<span class="ef">frammento: non occupa uno dei 4 slot</span></span><span class="pz">0,2c</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/dusk.png" alt="" loading="lazy"><span class="nm">Sacrifice at Dusk<span class="ef">frammento: non occupa uno dei 4 slot</span></span><span class="pz">0,2c</span></div>
           </div>
           <div class="carico"><div class="tit"><span>Aggiunta che conviene</span><span class="tot">24 chaos</span></div>
           <div class="sc"><span class="q">1×</span><img src="img/harvest-scarab-of-doubling.png" alt="" loading="lazy"><span class="nm">Harvest Scarab of Doubling<span class="ef">Lifeforce raddoppiata · mostri +100% vita · <span class="lim">max 1</span></span></span><span class="pz">24c</span></div>
@@ -336,9 +338,14 @@
         </div>
         <div class="pannello">
           <h3>Mappa</h3>
-          <div class="voce"><span><b>Toxic Sewer</b></span><span class="p">L10 · B10</span></div>
-          <div class="voce"><span>City Square</span><span class="p">quella dell'autore</span></div>
-          <p class="nota">Toxic Sewer è <code>boss_rushable</code> e sta nel quadrante già acceso.</p>
+          <div class="voce"><span><b>Dunes</b></span><span class="p">L10 · B10 · D4</span></div>
+          <div class="voce"><span>Shore</span><span class="p">L8 · B10 · D4</span></div>
+          <div class="voce"><span>Arid Lake</span><span class="p">L8 · B8 · D7</span></div>
+          <div class="voce"><span>Castle Ruins</span><span class="p">L8 · B8 · D7</span></div>
+          <div class="voce"><span>City Square <i>(l'autore)</i></span><span class="p">L10 · B6 · D4</span></div>
+          <p class="nota"><b>Il filtro è il profilo di City Square:</b> <code>few_obstacles</code> + <code>league_mechanics</code> + layout alto, e in più <b><code>boss_rushable</code></b>, che qui conta perché <b>il boss si uccide per primo</b>. <b>Dunes batte City Square</b> su boss (10 contro 6) ed è anche <code>linear</code>.</p>
+          <p class="nota">⚠️ <b>Toxic Sewer, che questa scheda consigliava, è marcata <code>league_mechanics: false</code></b> — probabilmente il motivo per cui l'autore non la usa. La densità qui <b>non conta</b>: la mappa si attraversa, non si pulisce.</p>
+          <p class="nota">💡 <b>Arid Lake</b> è anche la mappa dove si cattura <b>Drought-Maddened Rhoa</b> col Divine Vessel: <code>+40% Chaos Resistance against Damage Over Time</code> per il pantheon Arakaali.</p>
         </div>
         <div class="pannello">
           <h3>Resa misurata — 8,9d/ora</h3>
