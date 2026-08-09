@@ -201,6 +201,20 @@
           <li>Mappe con ostacoli: la pit si incastra e il valore della meccanica crolla.</li>
         </ul>
 
+        <h3>Quale beacon accendere</h3>
+          <div class="avviso" style="border-color:var(--bad)">
+            <b>I tre beacon si escludono a vicenda.</b> Testuale dal manuale del map device:
+            <i>«Only one of these beacons can be active at a time.»</i> Non esiste la mappa con Exarch
+            <b>e</b> Maven insieme — ogni mappa è una scelta fra tre, e <b>solo Exarch ed Eater generano altari</b>.
+          </div>
+        <p><b>Su Abyss la risposta è Maven, e per due ragioni che si sommano.</b></p>
+        <ul>
+          <li><b>L'invitation di Exarch qui non ti serve.</b> Abyss è la strategia da livelli: il boss di mappa non è il punto, e i 148 chaos dell'Incandescent Invitation sono il premio di un'altra strada.</li>
+          <li><b>Exarch ed Eater portano gli altari, e su Abyss l'altare peggiore è al suo massimo.</b> <code>reduced Recovery Rate per Endurance Charge</code> fa male in proporzione alle cariche, e qui ne hai <b>4 sempre</b>: è l'unica strategia in cui quel debuff ti uccide da fermo. Scegliere Maven <b>toglie di mezzo tutti e 24 i debuff</b>, perché senza influenza eldritch gli altari non compaiono.</li>
+          <li><b>E il Maven ti serve davvero:</b> ti mancano <b>4 Maven Invitation</b>, che sono 4 punti atlas. Ogni boss ucciso col beacon acceso ne avanza una.</li>
+        </ul>
+        <p>Detto in breve: su Abyss il beacon Maven <b>ti dà qualcosa che ti manca e ti toglie il rischio più grosso</b>. Non è un compromesso.</p>
+
         <h3 class="rosso">Gli altari: i 24 debuff che possono toccare te</h3>
         <p>Gli altari eldritch hanno <b>79 modificatori di svantaggio</b>, ma <b>55 potenziano i mostri</b> e solo <b>24 colpiscono te</b>. Questi. Ordinati per quanto fanno male <i>a questa build</i>, non in astratto — e tre di loro scalano <b>per carica</b>, il che qui cambia tutto: <b>4 cariche di resistenza</b> (sempre piene, in Abyss), <b>3 di potere</b>, <b>0 di frenesia</b>.</p>
 
@@ -332,8 +346,24 @@
         <h3>Come si tira la mappa</h3>
         <ul>
           <li><b>T16 a 8 mod</b>, con almeno <b>100% di item quantity</b> e <b>40% di pack size</b>. Non si corrono mappe bianche.</li>
-          <li><b>1 Harvest Scarab</b> e <b>1 Sacrifice at Dusk</b> nel map device.</li>
-          <li>I due frammenti <b>si possono saltare</b> se sull'albero si prendono i nodi che danno alle proprie mappe una probabilità di contenere il Sacred Grove. L'autore consiglia comunque l'Harvest Scarab, che costa 1,1c.</li>
+          <li>Cosa mettere nel map device sta nel pannello <b>Scarab</b> qui accanto — è l'unico posto dove è scritto, così non può divergere.</li>
+        </ul>
+
+        <h3>Quale beacon accendere</h3>
+          <div class="avviso" style="border-color:var(--bad)">
+            <b>I tre beacon si escludono a vicenda.</b> Testuale dal manuale del map device:
+            <i>«Only one of these beacons can be active at a time.»</i> Non esiste la mappa con Exarch
+            <b>e</b> Maven insieme — ogni mappa è una scelta fra tre, e <b>solo Exarch ed Eater generano altari</b>.
+          </div>
+        <p><b>Qui la scelta è vera, e costa.</b> La strategia misurata gira su <b>Exarch</b>, ed è giusto: l'Incandescent Invitation vale <b>148c</b>, la Polaric <b>10c</b> — quindici volte tanto per lo stesso boss. <b>Eater non si accende mai.</b></p>
+        <div class="avviso">
+          <b>Correzione a quanto scritto l'8 agosto.</b> La wiki dava per buono che questa strategia facesse avanzare le Maven Invitation <i>gratis</i>, «tanto il boss lo uccidi comunque». <b>Non è così: i beacon non convivono.</b> Ogni mappa corsa con Exarch è una mappa che <b>non</b> avanza il Maven, e viceversa.
+        </div>
+        <p>Quindi il beacon si <b>alterna</b>, e conviene sapere cosa costa ciascuna mappa:</p>
+        <ul>
+          <li><b>Exarch — il default.</b> 148c di invitation ogni 20 mappe, più gli altari (con la regola di lettura qui sopra).</li>
+          <li><b>Maven — a blocchi, quando insegui i punti.</b> Ti mancano <b>4 Maven Invitation</b>, e ognuna vale <b>un punto atlas</b>. Sono anche i tre boss dei memory thread di <i>The Remembered</i>: quelli <b>vanno uccisi col Maven acceso</b>, altrimenti la catena è sprecata e serve un'altra Memory.</li>
+          <li><b>Il costo del cambio</b> è misurabile: rinunciare a Exarch per un'ora significa lasciare lì <b>148 chaos</b>. Un punto atlas vale molto di più.</li>
         </ul>
 
         <h3 class="rosso">Cosa la rovina</h3>
@@ -365,10 +395,11 @@
       <div>
         <div class="pannello">
           <h3>Scarab</h3>
-          <div class="carico"><div class="tit"><span>Quello che usa la strategia misurata</span><span class="tot">1 chaos</span></div>
+          <div class="carico"><div class="tit"><span>Quello che usa la strategia misurata</span><span class="tot">1,2 chaos</span></div>
           <div class="sc"><span class="q">1×</span><img src="img/harvest-scarab.png" alt="" loading="lazy"><span class="nm">Harvest Scarab<span class="ef">L'area contiene il Sacred Grove · <span class="lim">max 1</span></span></span><span class="pz">1c</span></div>
+          <div class="sc"><span class="q">1×</span><span></span><span class="nm">Sacrifice at Dusk<span class="ef">frammento, non scarab: non occupa uno dei quattro slot</span></span><span class="pz">0,2c</span></div>
           </div>
-          <p class="nota">Gli <b>8,6 divine/ora sono misurati con questo solo</b>. Tutto ciò che segue è un aggiunta: migliora la resa ma <b>non è nei numeri</b>.</p>
+          <p class="nota">Gli <b>8,6 divine/ora sono misurati con questi due</b>. Tutto ciò che segue è aggiunta: migliora la resa ma <b>non è nei numeri</b>. ⚠️ <b>Entrambi si possono saltare</b> se sull'albero prendi i nodi che danno alle tue mappe una probabilità di contenere il Sacred Grove — l'autore tiene comunque l'Harvest Scarab, che costa 1 chaos.</p>
 
           <div class="carico"><div class="tit"><span>Aggiunta che conviene</span><span class="tot">24 chaos</span></div>
           <div class="sc"><span class="q">1×</span><img src="img/harvest-scarab-of-doubling.png" alt="" loading="lazy"><span class="nm">Harvest Scarab of Doubling<span class="ef">Lifeforce raddoppiata · mostri +100% vita · <span class="lim">max 1</span></span></span><span class="pz">24c</span></div>
