@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scrying Orb — quanto vale il tuo</title>
+<link rel="stylesheet" href="../stile.css">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+  /* solo ciò che è davvero di questa pagina */
+  .orb-mis{display:grid;grid-template-columns:repeat(auto-fit,minmax(10.5rem,1fr));gap:var(--s3)}
+  .orb{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--line2);
+       border-radius:var(--r);padding:var(--s3) var(--s4);display:flex;flex-direction:column;gap:.15rem}
+  .orb.alto{border-left-color:var(--gold)}
+  .orb.basso{border-left-color:var(--line2);opacity:.72}
+  .orb .p{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:var(--t-lg);line-height:1.2;color:var(--gold)}
+  .orb.basso .p{color:var(--muted)}
+  .orb .m{font-size:var(--t-base);color:var(--text);font-weight:600}
+  .orb .d{font-size:var(--t-xs);color:var(--label);line-height:1.45}
+  .filtri{display:flex;gap:var(--s2);flex-wrap:wrap;align-items:center;margin-bottom:var(--s3)}
+  .filtri input{background:var(--panel2);border:1px solid var(--line);border-radius:var(--r-sm);
+       color:var(--text);font:inherit;font-size:var(--t-sm);padding:.4rem .6rem;min-width:11rem}
+  .filtri input:focus-visible{outline:2px solid var(--gold);outline-offset:1px}
+  .chip{background:var(--panel2);border:1px solid var(--line);border-radius:var(--r-full);
+       color:var(--muted);font:inherit;font-size:var(--t-xs);padding:.3rem .7rem;cursor:pointer}
+  .chip[aria-pressed="true"]{border-color:var(--gold);color:var(--gold);background:rgba(240,185,74,.08)}
+  .chip:focus-visible{outline:2px solid var(--gold);outline-offset:1px}
+  .scroll{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--panel2)}
+  .tabella th[data-k]{cursor:pointer;user-select:none}
+  .tabella th[data-k]:hover{color:var(--text)}
+  .pass{color:var(--gold);font-weight:600}
+  .mis{color:var(--good);font-weight:600}
+  .nota-riga{font-size:var(--t-xs);color:var(--label)}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="marchio" href="../index.html">PoE <span>Tools</span></a>
+    <div class="nav-link">
+      <a href="../atlante/">Atlante</a>
+      <a href="../strategie/">Strategie</a>
+      <a href="../farming/">Farming</a>
+      <a href="../scrying/" aria-current="page">Scrying</a>
+      <a href="../mappe/">Mod mappa</a>
+      <a href="../build-confronto/">Build</a>
+      <a href="../heist/">Heist</a>
+    </div>
+    <span class="nav-patch">patch 3.29.2</span>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero">
+    <h1>Scrying <span>Orb</span></h1>
+    <p class="sub">Ogni orb porta il nome della mappa in cui è caduto e <b>trasferisce il pool di divination card di quella mappa su una mappa a scelta dell'Atlas</b>. Vale quanto valgono le carte che sposta &mdash; e su <b>100 mappe normali solo sei</b> superano i 200 chaos.</p>
+    <div class="badges">
+      <span class="badge oro">patch <b>3.29.2</b></span>
+      <span class="badge">misurato il <b>10 agosto 2026</b></span>
+      <span class="badge">trade, <b>Instant Buyout</b></span>
+      <span class="badge">divine a <b>201,9 c</b></span>
+    </div>
+  </header>
+
+  <div class="avviso">
+    <b>Cosa fa, testualmente.</b> <i>&laquo;Scrying causes the Divination Cards found in a Map to instead be the
+    Divination Cards found in the Map area listed on the Scrying Orb.&raquo;</i> Si trasferisce <b>solo il pool di
+    carte</b>: niente layout, niente boss, niente densità. Si usa col tasto destro sull'orb e il sinistro su un nodo
+    dell'Atlas, e vale solo <b>da e verso mappe non uniche con l'obiettivo bonus completato</b>. Una mappa può stare
+    in <b>una sola coppia</b> alla volta.
+  </div>
+
+  <h2 class="sec">Le dieci misure</h2>
+  <div class="orb-mis" id="misure"></div>
+  <p class="nota-riga" style="margin-top:var(--s3)">Prezzo = offerta più bassa in <b>Instant Buyout</b>
+    (<code>status: securable</code>), non la mediana. Le inserzioni accanto sono la liquidità: un prezzo su cinque
+    inserzioni è un'indicazione, non un mercato.</p>
+
+  <h2 class="sec">Il criterio, e la mappa che lo ha corretto</h2>
+  <p style="color:var(--muted);font-size:var(--t-base);max-width:70ch;line-height:1.6">
+    Il prezzo <b>non</b> segue il prezzo della carta migliore da solo. <b>Crater</b> lo dimostra: la sua carta vale
+    3.029 c, più di quella di Shrine, e il suo orb ne vale <b>20</b> &mdash; perché esce una volta ogni 5.800 mappe.
+    Nemmeno il reddito funziona: <b>Cemetery</b> ha il miglior valore incassabile del gruppo basso e il suo orb vale
+    65 c, otto volte meno di quello di Cage il cui incassabile è 0,27. Servono <b>due</b> soglie insieme.
+  </p>
+  <div class="kpi" style="margin:var(--s4) 0">
+    <div><b>&ge; 3.000 c</b><span>prezzo della carta migliore</span></div>
+    <div><b>&le; 2.500</b><span>mappe di attesa per una copia</span></div>
+    <div><b>6 / 6</b><span>orb sopra i 200 c che il criterio prende</span></div>
+    <div><b>0</b><span>falsi positivi sulle 10 misure</span></div>
+  </div>
+  <p style="color:var(--muted);font-size:var(--t-base);max-width:70ch;line-height:1.6">
+    Applicato alle <b>100 mappe normali</b>, il criterio ne seleziona esattamente sei &mdash; e sono le sei già
+    misurate. Le altre sette candidate sono tutte <b>mappe speciali o uniche</b>, dove la meccanica dice che lo scry
+    non si applica o non è verificato. In pratica: <b>l'elenco degli orb che valgono qualcosa è completo</b>.
+  </p>
+
+  <h2 class="sec">Tutte le mappe</h2>
+  <div class="filtri">
+    <input id="q" type="search" placeholder="Cerca una mappa&hellip;" aria-label="Cerca una mappa">
+    <button class="chip" id="f-pass" aria-pressed="false">Solo chi passa il criterio</button>
+    <button class="chip" id="f-mis" aria-pressed="false">Solo misurate</button>
+    <button class="chip" id="f-norm" aria-pressed="false">Solo mappe normali</button>
+    <span class="nota-riga" id="conta"></span>
+  </div>
+  <div class="scroll">
+    <table class="tabella" style="width:100%;border-collapse:collapse">
+      <thead><tr>
+        <th data-k="n">Mappa</th>
+        <th data-k="t">Tipo</th>
+        <th data-k="c">Carta migliore</th>
+        <th data-k="cp" class="n">Prezzo carta</th>
+        <th data-k="cn" class="n">1 ogni</th>
+        <th data-k="ev" class="n">Carte c/mappa</th>
+        <th data-k="orb" class="n">Orb</th>
+        <th data-k="ins" class="n">Inserz.</th>
+      </tr></thead>
+      <tbody id="righe"></tbody>
+    </table>
+  </div>
+
+  <h2 class="sec">Cosa questi numeri non dicono</h2>
+  <div class="avviso">
+    <b>Le carte senza peso di drop sono escluse, non valutate a zero.</b> Bazaar, Arcade, Chateau, Grave Trough e
+    Promenade hanno carte costose di cui <b>non si conosce la frequenza</b>: il loro orb non è basso, è ignoto.<br><br>
+    <b>Il tasso di drop degli orb non è misurato.</b> Gira una cifra del 4% su mappe T14+ con la passiva
+    <i>Altered Prophecy</i>, ma viene da una fonte secondaria e non è verificata.<br><br>
+    <b>Né che lo scry sia permanente sul nodo.</b> Il testo dell'item e il linguaggio su donatrice/ricevente lo
+    suggeriscono, ma se si consumasse a mappa il valore d'uso di un orb crollerebbe di tre ordini di grandezza. Il
+    prezzo di mercato qui sopra resta valido comunque: è quello che la gente paga oggi.<br><br>
+    <b>Perché dal trade e non da poe.ninja.</b> poe.ninja non prezza gli Scrying Orb in nessuna delle 13 categorie
+    provate. E <code>securable</code> su questi non torna zero (196 inserzioni su 220 per Graveyard), quindi non
+    passano dal Currency Exchange e la ricerca per oggetti è la fonte giusta.
+  </div>
+
+</div>
+
+<script>
+const D = [{"n":"Sanctuary","t":"special map","c":"Damnation","cp":98940,"cn":1740.6,"cb":0,"ev":68.44,"inc":11.6,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"Graveyard","t":"map","c":"Damnation","cp":98940,"cn":1739.9,"cb":0,"ev":58.12,"inc":1.25,"lay":8,"den":6,"bos":4,"ig":0,"orb":690,"ins":196},{"n":"Forge of the Phoenix","t":"special map","c":"Father's Love","cp":12286,"cn":1739.4,"cb":0,"ev":7.3,"inc":0.24,"lay":null,"den":null,"bos":null,"ig":1,"orb":null,"ins":null},{"n":"Lair of the Hydra","t":"special map","c":"Father's Love","cp":12286,"cn":1739.4,"cb":0,"ev":7.3,"inc":0.24,"lay":null,"den":null,"bos":null,"ig":1,"orb":null,"ins":null},{"n":"Maze of the Minotaur","t":"special map","c":"Father's Love","cp":12286,"cn":1739.4,"cb":0,"ev":7.3,"inc":0.24,"lay":null,"den":null,"bos":null,"ig":1,"orb":null,"ins":null},{"n":"Pit of the Chimera","t":"special map","c":"Father's Love","cp":12286,"cn":1739.4,"cb":0,"ev":7.2,"inc":0.11,"lay":null,"den":null,"bos":null,"ig":1,"orb":null,"ins":null},{"n":"Cage","t":"map","c":"The Apothecary","cp":9072,"cn":968.5,"cb":0,"ev":9.66,"inc":0.27,"lay":8,"den":4,"bos":8,"ig":0,"orb":500,"ins":230},{"n":"Vaal Temple","t":"special map","c":"Unrequited Love","cp":6936,"cn":2187.0,"cb":0,"ev":5.13,"inc":1.96,"lay":2,"den":6,"bos":2,"ig":0,"orb":null,"ins":null},{"n":"Vaal Pyramid","t":"map","c":"Unrequited Love","cp":6936,"cn":2180.3,"cb":0,"ev":3.4,"inc":0.22,"lay":2,"den":8,"bos":4,"ig":0,"orb":1200,"ins":5},{"n":"Poorjoy's Asylum","t":"unique map","c":"The Progeny of Lunaris","cp":3516,"cn":272.1,"cb":0,"ev":18.11,"inc":18.11,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"Shrine","t":"map","c":"The Progeny of Lunaris","cp":3516,"cn":272.2,"cb":0,"ev":14.32,"inc":14.32,"lay":4,"den":10,"bos":6,"ig":0,"orb":845,"ins":74},{"n":"Pier","t":"map","c":"Fire Of Unknown Origin","cp":3468,"cn":561.7,"cb":0,"ev":7.62,"inc":1.44,"lay":8,"den":8,"bos":2,"ig":0,"orb":404,"ins":22},{"n":"Ghetto","t":"map","c":"Fire Of Unknown Origin","cp":3468,"cn":561.6,"cb":0,"ev":6.21,"inc":0.04,"lay":6,"den":6,"bos":4,"ig":0,"orb":202,"ins":38},{"n":"Crater","t":"map","c":"The Demon","cp":3029,"cn":5799.7,"cb":0,"ev":1.2,"inc":0.68,"lay":6,"den":10,"bos":10,"ig":0,"orb":20,"ins":74},{"n":"Seething Chyme","t":"unique map","c":"Choking Guilt","cp":1224,"cn":24845.7,"cb":1,"ev":0.05,"inc":0.0,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"Burial Chambers","t":"map","c":"The Doctor","cp":1210,"cn":562.4,"cb":0,"ev":2.54,"inc":0.39,"lay":8,"den":9,"bos":6,"ig":0,"orb":null,"ins":null},{"n":"Foundry","t":"map","c":"The Fiend","cp":1138,"cn":1740.0,"cb":0,"ev":1.93,"inc":1.27,"lay":6,"den":4,"bos":4,"ig":0,"orb":null,"ins":null},{"n":"Cemetery","t":"map","c":"Brother's Gift","cp":1107,"cn":154.0,"cb":0,"ev":8.03,"inc":8.03,"lay":8,"den":5,"bos":8,"ig":0,"orb":65,"ins":276},{"n":"Basilica","t":"map","c":"Seven Years Bad Luck","cp":449.2,"cn":119.3,"cb":0,"ev":9.13,"inc":9.13,"lay":8,"den":6,"bos":0,"ig":0,"orb":null,"ins":null},{"n":"Arcade","t":"map","c":"I See Brothers","cp":407.1,"cn":334.5,"cb":0,"ev":3.58,"inc":3.58,"lay":8,"den":6,"bos":10,"ig":1,"orb":null,"ins":null},{"n":"Plateau","t":"map","c":"I See Brothers","cp":407.1,"cn":340.2,"cb":0,"ev":2.49,"inc":2.49,"lay":8,"den":3,"bos":6,"ig":0,"orb":null,"ins":null},{"n":"Abomination","t":"special map","c":"The Soul","cp":343.1,"cn":512.1,"cb":0,"ev":13.63,"inc":12.96,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"The Putrid Cloister","t":"unique map","c":"The Soul","cp":343.1,"cn":512.5,"cb":0,"ev":1.32,"inc":0.65,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"Phantasmagoria","t":"map","c":"The Soul","cp":343.1,"cn":513.1,"cb":0,"ev":1.08,"inc":0.41,"lay":8,"den":5,"bos":4,"ig":0,"orb":null,"ins":null},{"n":"Citadel","t":"special map","c":"Wealth and Power","cp":284.7,"cn":220.4,"cb":0,"ev":10.38,"inc":10.34,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"Fortress","t":"special map","c":"Auspicious Ambitions","cp":242.2,"cn":1160.5,"cb":0,"ev":11.97,"inc":11.75,"lay":null,"den":null,"bos":null,"ig":1,"orb":null,"ins":null},{"n":"Absence of Mercy and Empathy","t":"unique map","c":"Auspicious Ambitions","cp":242.2,"cn":11594.7,"cb":1,"ev":0.02,"inc":0.0,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"Absence of Patience and Wisdom","t":"unique map","c":"Auspicious Ambitions","cp":242.2,"cn":11594.7,"cb":1,"ev":0.02,"inc":0.0,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"Absence of Symmetry and Harmony","t":"unique map","c":"Auspicious Ambitions","cp":242.2,"cn":11594.7,"cb":1,"ev":0.02,"inc":0.0,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"The Shaper's Realm","t":"unique map","c":"Auspicious Ambitions","cp":242.2,"cn":11594.7,"cb":1,"ev":0.02,"inc":0.0,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"Residence","t":"map","c":"Squandered Prosperity","cp":222.5,"cn":230.8,"cb":0,"ev":3.8,"inc":3.8,"lay":6,"den":9,"bos":6,"ig":0,"orb":null,"ins":null},{"n":"Chateau","t":"map","c":"Squandered Prosperity","cp":222.5,"cn":228.9,"cb":0,"ev":1.0,"inc":1.0,"lay":6,"den":7,"bos":10,"ig":1,"orb":null,"ins":null},{"n":"Palace","t":"map","c":"The Sephirot","cp":193.9,"cn":25.6,"cb":0,"ev":8.75,"inc":8.75,"lay":4,"den":10,"bos":4,"ig":0,"orb":null,"ins":null},{"n":"Core","t":"map","c":"The Nurse","cp":140.6,"cn":66.1,"cb":0,"ev":3.08,"inc":3.08,"lay":4,"den":5,"bos":0,"ig":0,"orb":null,"ins":null},{"n":"City Square","t":"map","c":"The Mayor","cp":130.7,"cn":56.0,"cb":0,"ev":3.81,"inc":3.81,"lay":10,"den":4,"bos":6,"ig":0,"orb":null,"ins":null},{"n":"Strand","t":"map","c":"The Journey","cp":129.4,"cn":8.8,"cb":0,"ev":15.86,"inc":15.86,"lay":10,"den":0,"bos":10,"ig":0,"orb":null,"ins":null},{"n":"Maelström of Chaos","t":"unique map","c":"Divine Beauty","cp":123.9,"cn":17.5,"cb":0,"ev":7.31,"inc":7.31,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"Arachnid Nest","t":"map","c":"Mawr Blaidd","cp":114.6,"cn":31.8,"cb":0,"ev":7.44,"inc":7.44,"lay":6,"den":5,"bos":2,"ig":0,"orb":null,"ins":null},{"n":"Bramble Valley","t":"map","c":"Mawr Blaidd","cp":114.6,"cn":31.7,"cb":0,"ev":4.93,"inc":4.93,"lay":6,"den":6,"bos":4,"ig":0,"orb":null,"ins":null},{"n":"Olmec's Sanctum","t":"unique map","c":"The Rabbit's Foot","cp":103.7,"cn":138.2,"cb":0,"ev":2.34,"inc":2.34,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"The Coward's Trial","t":"unique map","c":"The Rabbit's Foot","cp":103.7,"cn":136.0,"cb":0,"ev":1.69,"inc":1.69,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"Museum","t":"map","c":"Temperance","cp":102.5,"cn":98.9,"cb":0,"ev":1.37,"inc":1.37,"lay":2,"den":8,"bos":6,"ig":1,"orb":null,"ins":null},{"n":"Ziggurat","t":"special map","c":"The Samurai's Eye","cp":83.33,"cn":104.2,"cb":0,"ev":10.44,"inc":10.43,"lay":null,"den":null,"bos":null,"ig":1,"orb":null,"ins":null},{"n":"Belfry","t":"map","c":"The Enlightened","cp":79.52,"cn":104.2,"cb":0,"ev":2.0,"inc":2.0,"lay":8,"den":6,"bos":0,"ig":0,"orb":null,"ins":null},{"n":"Relic Chambers","t":"map","c":"The Enlightened","cp":79.52,"cn":104.2,"cb":0,"ev":1.02,"inc":1.02,"lay":6,"den":6,"bos":6,"ig":1,"orb":null,"ins":null},{"n":"Atoll","t":"map","c":"The Destination","cp":77.33,"cn":543.5,"cb":0,"ev":0.21,"inc":0.06,"lay":8,"den":1,"bos":8,"ig":0,"orb":null,"ins":null},{"n":"Channel","t":"map","c":"The Destination","cp":77.33,"cn":543.7,"cb":0,"ev":0.17,"inc":0.03,"lay":4,"den":7,"bos":8,"ig":0,"orb":null,"ins":null},{"n":"Cortex","t":"unique map","c":"Monochrome","cp":72.54,"cn":15.7,"cb":0,"ev":4.88,"inc":4.84,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"Moment of Loneliness","t":"unique map","c":"Monochrome","cp":72.54,"cn":157.3,"cb":1,"ev":0.46,"inc":0.46,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"Siege","t":"map","c":"Home","cp":57.7,"cn":82.9,"cb":0,"ev":0.82,"inc":0.82,"lay":8,"den":8,"bos":6,"ig":1,"orb":null,"ins":null},{"n":"Colonnade","t":"map","c":"The Dungeon Master","cp":41.83,"cn":20.3,"cb":0,"ev":4.09,"inc":4.09,"lay":6,"den":7,"bos":6,"ig":0,"orb":null,"ins":null},{"n":"Cells","t":"map","c":"The Dungeon Master","cp":41.83,"cn":20.3,"cb":0,"ev":3.19,"inc":3.19,"lay":4,"den":9,"bos":8,"ig":0,"orb":null,"ins":null},{"n":"Doryani's Machinarium","t":"unique map","c":"Doryani's Epiphany","cp":39.43,"cn":66.2,"cb":0,"ev":2.06,"inc":2.06,"lay":null,"den":null,"bos":null,"ig":1,"orb":null,"ins":null},{"n":"Dunes","t":"map","c":"The Fortunate","cp":36.05,"cn":7.0,"cb":0,"ev":6.09,"inc":6.09,"lay":10,"den":4,"bos":10,"ig":0,"orb":20,"ins":555},{"n":"Fields","t":"map","c":"The Fortunate","cp":36.05,"cn":7.0,"cb":0,"ev":5.69,"inc":5.66,"lay":8,"den":4,"bos":6,"ig":0,"orb":null,"ins":null},{"n":"Malformation","t":"map","c":"The Prince of Darkness","cp":28.22,"cn":38.8,"cb":0,"ev":3.08,"inc":3.05,"lay":8,"den":6,"bos":2,"ig":0,"orb":null,"ins":null},{"n":"Primordial Pool","t":"map","c":"The Prince of Darkness","cp":28.22,"cn":38.8,"cb":0,"ev":1.87,"inc":1.87,"lay":8,"den":1,"bos":8,"ig":0,"orb":null,"ins":null},{"n":"Stagnation","t":"map","c":"Avian Pursuit","cp":27.8,"cn":90.2,"cb":0,"ev":0.7,"inc":0.7,"lay":6,"den":4,"bos":4,"ig":0,"orb":null,"ins":null},{"n":"Crystal Ore","t":"map","c":"Friendship","cp":25.8,"cn":119.3,"cb":0,"ev":0.5,"inc":0.5,"lay":8,"den":8,"bos":4,"ig":0,"orb":null,"ins":null},{"n":"The Sacred Grove","t":"unique map","c":"The Aspirant","cp":25.1,"cn":3478.4,"cb":1,"ev":0.01,"inc":0.0,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"Arsenal","t":"map","c":"Last Stand","cp":25,"cn":1090.5,"cb":0,"ev":1.33,"inc":1.31,"lay":4,"den":10,"bos":4,"ig":0,"orb":null,"ins":null},{"n":"Volcano","t":"map","c":"Lonely Warrior","cp":23.3,"cn":1449.5,"cb":0,"ev":0.44,"inc":0.43,"lay":6,"den":7,"bos":8,"ig":0,"orb":null,"ins":null},{"n":"Caldera","t":"map","c":"Lonely Warrior","cp":23.3,"cn":1449.8,"cb":0,"ev":0.18,"inc":0.17,"lay":8,"den":6,"bos":8,"ig":0,"orb":null,"ins":null},{"n":"Grotto","t":"map","c":"Lachrymal Necrosis","cp":23.16,"cn":10.8,"cb":0,"ev":3.69,"inc":3.69,"lay":6,"den":8,"bos":6,"ig":0,"orb":null,"ins":null},{"n":"Waterways","t":"map","c":"Lachrymal Necrosis","cp":23.16,"cn":10.8,"cb":0,"ev":2.42,"inc":2.4,"lay":4,"den":6,"bos":8,"ig":0,"orb":null,"ins":null},{"n":"Port","t":"map","c":"Matryoshka","cp":22.77,"cn":5803.4,"cb":0,"ev":0.57,"inc":0.57,"lay":8,"den":7,"bos":6,"ig":0,"orb":null,"ins":null},{"n":"Gardens","t":"map","c":"Matryoshka","cp":22.77,"cn":5809.2,"cb":0,"ev":0.24,"inc":0.23,"lay":4,"den":8,"bos":6,"ig":0,"orb":null,"ins":null},{"n":"Alleyways","t":"map","c":"The Side Quest","cp":21.38,"cn":11.9,"cb":0,"ev":2.33,"inc":2.33,"lay":8,"den":6,"bos":10,"ig":0,"orb":null,"ins":null},{"n":"Geode","t":"map","c":"Terrible Secret of Space","cp":18.03,"cn":1451.8,"cb":0,"ev":2.91,"inc":2.9,"lay":6,"den":6,"bos":8,"ig":0,"orb":null,"ins":null},{"n":"Mesa","t":"map","c":"Tranquillity","cp":17.96,"cn":601.6,"cb":0,"ev":0.57,"inc":0.53,"lay":8,"den":3,"bos":8,"ig":0,"orb":null,"ins":null},{"n":"Hive Colony","t":"unique map","c":"Something Dark","cp":17.14,"cn":119.4,"cb":1,"ev":0.16,"inc":0.16,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"Mao Kun","t":"unique map","c":"The Formless Sea","cp":15.99,"cn":15.7,"cb":0,"ev":1.09,"inc":1.09,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"Primordial Blocks","t":"map","c":"The Last Supper","cp":15.36,"cn":756.3,"cb":0,"ev":0.8,"inc":0.78,"lay":4,"den":9,"bos":2,"ig":1,"orb":null,"ins":null},{"n":"Oba's Cursed Trove","t":"unique map","c":"Rebirth and Renewal","cp":14.58,"cn":12.0,"cb":0,"ev":1.57,"inc":1.57,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"Colosseum","t":"map","c":"The Last One Standing","cp":14.56,"cn":437.9,"cb":0,"ev":1.39,"inc":1.39,"lay":6,"den":10,"bos":2,"ig":0,"orb":null,"ins":null},{"n":"Acton's Nightmare","t":"unique map","c":"The Garish Power","cp":14.02,"cn":90.2,"cb":0,"ev":2.49,"inc":2.49,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"Overgrown Shrine","t":"map","c":"The Garish Power","cp":14.02,"cn":90.2,"cb":0,"ev":1.54,"inc":1.54,"lay":6,"den":5,"bos":4,"ig":0,"orb":null,"ins":null},{"n":"The Temple of Atzoatl","t":"unique map","c":"Chasing Risk","cp":13.57,"cn":316.8,"cb":1,"ev":0.04,"inc":0.04,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"Eye of the Storm","t":"special map","c":"A Fate Worse Than Death","cp":13.52,"cn":1041.4,"cb":1,"ev":0.01,"inc":0.0,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"Orchard","t":"map","c":"Peaceful Moments","cp":13.33,"cn":31.7,"cb":0,"ev":1.15,"inc":1.15,"lay":6,"den":10,"bos":2,"ig":0,"orb":null,"ins":null},{"n":"Conservatory","t":"map","c":"Peaceful Moments","cp":13.33,"cn":31.8,"cb":0,"ev":0.7,"inc":0.7,"lay":4,"den":6,"bos":8,"ig":1,"orb":null,"ins":null},{"n":"Arid Lake","t":"map","c":"The Eye of the Dragon","cp":12.44,"cn":136.1,"cb":0,"ev":0.5,"inc":0.5,"lay":8,"den":7,"bos":8,"ig":0,"orb":null,"ins":null},{"n":"Caer Blaidd, Wolfpack's Den","t":"unique map","c":"Pride of the First Ones","cp":11.29,"cn":85.7,"cb":0,"ev":0.79,"inc":0.79,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"Tropical Island","t":"map","c":"Pride of the First Ones","cp":11.29,"cn":85.3,"cb":0,"ev":0.53,"inc":0.53,"lay":10,"den":5,"bos":10,"ig":1,"orb":null,"ins":null},{"n":"Sulphur Vents","t":"map","c":"The Bitter Blossom","cp":11.24,"cn":66.2,"cb":0,"ev":0.61,"inc":0.61,"lay":8,"den":5,"bos":8,"ig":0,"orb":null,"ins":null},{"n":"Shipyard","t":"map","c":"The Pact","cp":11.07,"cn":20.3,"cb":0,"ev":0.9,"inc":0.9,"lay":8,"den":4,"bos":4,"ig":0,"orb":null,"ins":null},{"n":"Estuary","t":"map","c":"Costly Curio","cp":10.25,"cn":15.7,"cb":0,"ev":0.96,"inc":0.96,"lay":8,"den":5,"bos":8,"ig":0,"orb":null,"ins":null},{"n":"Spider Lair","t":"map","c":"The Tinkerer's Table","cp":8.93,"cn":31.7,"cb":0,"ev":0.63,"inc":0.63,"lay":6,"den":5,"bos":8,"ig":0,"orb":null,"ins":null},{"n":"Hallowed Ground","t":"unique map","c":"The Enforcer","cp":8.69,"cn":968.8,"cb":0,"ev":0.26,"inc":0.26,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"Beach","t":"map","c":"The Catch","cp":8.28,"cn":562.2,"cb":0,"ev":0.02,"inc":0.0,"lay":10,"den":3,"bos":10,"ig":1,"orb":null,"ins":null},{"n":"Sunken City","t":"map","c":"The Wedding Gift","cp":8.18,"cn":119.3,"cb":0,"ev":2.91,"inc":2.91,"lay":6,"den":7,"bos":4,"ig":0,"orb":null,"ins":null},{"n":"Frozen Cabins","t":"map","c":"The Pack Leader","cp":8,"cn":5.5,"cb":0,"ev":2.76,"inc":2.76,"lay":8,"den":6,"bos":8,"ig":0,"orb":null,"ins":null},{"n":"Summit","t":"map","c":"The Pack Leader","cp":8,"cn":5.5,"cb":0,"ev":1.71,"inc":1.71,"lay":8,"den":5,"bos":6,"ig":0,"orb":null,"ins":null},{"n":"Factory","t":"map","c":"Who Asked","cp":7.89,"cn":697.2,"cb":0,"ev":1.94,"inc":1.93,"lay":4,"den":7,"bos":6,"ig":0,"orb":null,"ins":null},{"n":"Flooded Mine","t":"map","c":"Underground Forest","cp":7.0,"cn":29.4,"cb":0,"ev":1.54,"inc":1.54,"lay":6,"den":9,"bos":6,"ig":0,"orb":null,"ins":null},{"n":"Mastermind's Lair","t":"unique map","c":"Keeper's Corruption","cp":6.71,"cn":5435.0,"cb":1,"ev":0.0,"inc":0.0,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"Toxic Sewer","t":"map","c":"The Darkest Dream","cp":6.24,"cn":27.9,"cb":0,"ev":0.73,"inc":0.73,"lay":10,"den":7,"bos":10,"ig":0,"orb":null,"ins":null},{"n":"Whakawairua Tuahu","t":"unique map","c":"The Deep Ones","cp":5.8,"cn":121.1,"cb":0,"ev":1.68,"inc":1.68,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"Desert","t":"map","c":"Gift of Asenath","cp":5.45,"cn":66.2,"cb":0,"ev":3.35,"inc":3.35,"lay":6,"den":8,"bos":4,"ig":0,"orb":null,"ins":null},{"n":"Pillars of Arun","t":"unique map","c":"Gift of Asenath","cp":5.45,"cn":66.2,"cb":0,"ev":0.89,"inc":0.89,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"Dark Forest","t":"map","c":"The Road to Power","cp":5.21,"cn":31.7,"cb":0,"ev":0.26,"inc":0.26,"lay":8,"den":5,"bos":4,"ig":0,"orb":null,"ins":null},{"n":"Haunted Mansion","t":"map","c":"The Transformation","cp":5.17,"cn":25.6,"cb":0,"ev":0.55,"inc":0.54,"lay":6,"den":5,"bos":8,"ig":0,"orb":null,"ins":null},{"n":"Forbidden Woods","t":"map","c":"Alivia's Grace","cp":5.15,"cn":4.4,"cb":0,"ev":4.96,"inc":4.96,"lay":4,"den":6,"bos":6,"ig":0,"orb":null,"ins":null},{"n":"Jungle Valley","t":"map","c":"Alivia's Grace","cp":5.15,"cn":4.4,"cb":0,"ev":4.11,"inc":4.11,"lay":10,"den":6,"bos":6,"ig":0,"orb":3,"ins":578},{"n":"Desert Spring","t":"map","c":"The Tumbleweed","cp":5,"cn":272.9,"cb":0,"ev":6.81,"inc":6.81,"lay":8,"den":10,"bos":2,"ig":0,"orb":null,"ins":null},{"n":"Reef","t":"map","c":"The Fathomless Depths","cp":5,"cn":4.3,"cb":0,"ev":5.86,"inc":5.86,"lay":8,"den":5,"bos":0,"ig":1,"orb":null,"ins":null},{"n":"The Twilight Temple","t":"unique map","c":"The Army of Blood","cp":5,"cn":1.0,"cb":0,"ev":5.17,"inc":5.17,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"Ivory Temple","t":"map","c":"Light and Truth","cp":4.97,"cn":10.8,"cb":0,"ev":0.5,"inc":0.5,"lay":4,"den":8,"bos":6,"ig":0,"orb":null,"ins":null},{"n":"Arachnid Tomb","t":"map","c":"Draped in Dreams","cp":4.59,"cn":183.3,"cb":0,"ev":1.6,"inc":1.6,"lay":6,"den":5,"bos":8,"ig":0,"orb":null,"ins":null},{"n":"Coral Ruins","t":"map","c":"The Vast","cp":4.47,"cn":1243.4,"cb":0,"ev":0.84,"inc":0.84,"lay":6,"den":6,"bos":4,"ig":0,"orb":null,"ins":null},{"n":"Vault","t":"map","c":"Chaotic Disposition","cp":4.4,"cn":2.1,"cb":0,"ev":2.67,"inc":2.67,"lay":6,"den":3,"bos":8,"ig":0,"orb":null,"ins":null},{"n":"Mineral Pools","t":"map","c":"Chaotic Disposition","cp":4.4,"cn":2.1,"cb":0,"ev":2.37,"inc":2.37,"lay":4,"den":5,"bos":6,"ig":0,"orb":null,"ins":null},{"n":"Forking River","t":"map","c":"The Fishmonger","cp":4.33,"cn":395.8,"cb":0,"ev":1.08,"inc":1.08,"lay":8,"den":6,"bos":6,"ig":0,"orb":null,"ins":null},{"n":"Courthouse","t":"map","c":"Sambodhi's Wisdom","cp":4.32,"cn":136.1,"cb":0,"ev":0.93,"inc":0.93,"lay":6,"den":5,"bos":6,"ig":0,"orb":null,"ins":null},{"n":"Ramparts","t":"map","c":"Lingering Remnants","cp":4.16,"cn":6.1,"cb":0,"ev":1.33,"inc":1.33,"lay":8,"den":7,"bos":10,"ig":0,"orb":null,"ins":null},{"n":"Death and Taxes","t":"unique map","c":"The Encroaching Darkness","cp":4,"cn":8.5,"cb":0,"ev":2.43,"inc":2.43,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"Vaults of Atziri","t":"unique map","c":"The Encroaching Darkness","cp":4,"cn":8.5,"cb":0,"ev":1.37,"inc":1.37,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null},{"n":"Silo","t":"map","c":"Haunting Shadows","cp":3.82,"cn":7.9,"cb":0,"ev":1.87,"inc":1.87,"lay":10,"den":6,"bos":4,"ig":0,"orb":null,"ins":null},{"n":"Temple","t":"map","c":"The Opulent","cp":3.71,"cn":0.8,"cb":0,"ev":4.99,"inc":4.99,"lay":6,"den":8,"bos":8,"ig":0,"orb":null,"ins":null},{"n":"Mausoleum","t":"map","c":"The Celestial Justicar","cp":3.68,"cn":9.9,"cb":0,"ev":1.11,"inc":1.11,"lay":8,"den":5,"bos":4,"ig":0,"orb":null,"ins":null},{"n":"Grave Trough","t":"map","c":"Brother's Stash","cp":3.59,"cn":154.0,"cb":0,"ev":0.47,"inc":0.47,"lay":4,"den":8,"bos":4,"ig":1,"orb":null,"ins":null},{"n":"Bazaar","t":"map","c":"The Drunken Aristocrat","cp":3.1,"cn":3.8,"cb":0,"ev":0.82,"inc":0.82,"lay":8,"den":10,"bos":8,"ig":3,"orb":null,"ins":null},{"n":"Tower","t":"map","c":"The Aesthete","cp":3,"cn":1.7,"cb":0,"ev":2.4,"inc":2.4,"lay":8,"den":9,"bos":4,"ig":1,"orb":null,"ins":null},{"n":"Excavation","t":"map","c":"The Jeweller's Boon","cp":3,"cn":2.3,"cb":0,"ev":2.01,"inc":2.01,"lay":8,"den":8,"bos":4,"ig":0,"orb":null,"ins":null},{"n":"Park","t":"map","c":"The Poet","cp":2.84,"cn":3.8,"cb":0,"ev":1.26,"inc":1.26,"lay":8,"den":4,"bos":8,"ig":0,"orb":null,"ins":null},{"n":"Fungal Hollow","t":"map","c":"The Shepherd's Sandals","cp":2.82,"cn":29.4,"cb":0,"ev":0.82,"inc":0.82,"lay":8,"den":2,"bos":10,"ig":0,"orb":null,"ins":null},{"n":"Iceberg","t":"map","c":"The Whiteout","cp":2.65,"cn":15.7,"cb":0,"ev":0.86,"inc":0.86,"lay":8,"den":3,"bos":8,"ig":0,"orb":null,"ins":null},{"n":"Laboratory","t":"map","c":"The Academic","cp":2.58,"cn":51.0,"cb":0,"ev":0.33,"inc":0.33,"lay":6,"den":6,"bos":2,"ig":0,"orb":null,"ins":null},{"n":"Terrace","t":"map","c":"The Wilted Rose","cp":2.54,"cn":3.8,"cb":0,"ev":0.9,"inc":0.9,"lay":8,"den":6,"bos":2,"ig":1,"orb":null,"ins":null},{"n":"Infested Valley","t":"map","c":"Death","cp":2.48,"cn":6.5,"cb":0,"ev":0.61,"inc":0.61,"lay":8,"den":6,"bos":6,"ig":0,"orb":null,"ins":null},{"n":"Lookout","t":"map","c":"The Coming Storm","cp":1.57,"cn":4.4,"cb":0,"ev":1.45,"inc":1.45,"lay":8,"den":5,"bos":6,"ig":0,"orb":null,"ins":null},{"n":"Cold River","t":"map","c":"A Chilling Wind","cp":1.44,"cn":25.6,"cb":0,"ev":0.3,"inc":0.3,"lay":6,"den":6,"bos":4,"ig":0,"orb":null,"ins":null},{"n":"Pit","t":"map","c":"Unchained","cp":1.24,"cn":15.8,"cb":0,"ev":0.08,"inc":0.08,"lay":4,"den":10,"bos":4,"ig":0,"orb":null,"ins":null},{"n":"Lava Lake","t":"map","c":"The Wrath","cp":1.1,"cn":1.2,"cb":0,"ev":1.7,"inc":1.7,"lay":8,"den":7,"bos":0,"ig":0,"orb":null,"ins":null},{"n":"Lair","t":"map","c":"The Wolf's Shadow","cp":1,"cn":2.2,"cb":0,"ev":1.09,"inc":1.09,"lay":8,"den":8,"bos":6,"ig":0,"orb":null,"ins":null},{"n":"Marshes","t":"map","c":"The Survivalist","cp":1,"cn":1.3,"cb":0,"ev":0.81,"inc":0.81,"lay":8,"den":8,"bos":8,"ig":0,"orb":null,"ins":null},{"n":"Promenade","t":"map","c":"Jack in the Box","cp":0.88,"cn":1.9,"cb":0,"ev":0.64,"inc":0.64,"lay":8,"den":4,"bos":6,"ig":1,"orb":null,"ins":null},{"n":"The Vinktar Square","t":"unique map","c":"The Rusted Bard","cp":0.75,"cn":55.9,"cb":0,"ev":0.01,"inc":0.01,"lay":null,"den":null,"bos":null,"ig":1,"orb":null,"ins":null},{"n":"Plaza","t":"map","c":"Emperor's Luck","cp":0.5,"cn":0.2,"cb":0,"ev":2.87,"inc":2.87,"lay":4,"den":7,"bos":2,"ig":0,"orb":null,"ins":null},{"n":"Absence of Value and Meaning","t":"unique map","c":"Void of the Elements","cp":0,"cn":4831.1,"cb":1,"ev":0.0,"inc":0.0,"lay":null,"den":null,"bos":null,"ig":0,"orb":null,"ins":null}];
+const passa = x => x.cp >= 3000 && x.cn <= 2500;
+const c = n => n >= 1000 ? Math.round(n).toLocaleString('it-IT') : (n >= 10 ? Math.round(n) : n.toFixed(2).replace('.', ','));
+
+const ordine = ['Vaal Pyramid','Shrine','Graveyard','Cage','Pier','Ghetto','Cemetery','Crater','Dunes','Jungle Valley'];
+document.getElementById('misure').innerHTML = ordine.map(nome => {
+  const x = D.find(y => y.n === nome);
+  return '<div class="orb ' + (x.orb >= 200 ? 'alto' : 'basso') + '">' +
+    '<span class="p">' + c(x.orb) + ' c</span>' +
+    '<span class="m">' + x.n + '</span>' +
+    '<span class="d">' + x.c + ' &middot; ' + c(x.cp) + ' c<br>' +
+    'una ogni ' + Math.round(x.cn).toLocaleString('it-IT') + ' mappe &middot; ' + x.ins + ' inserzioni</span></div>';
+}).join('');
+
+let sortK = 'orb', sortDir = -1;
+const stato = { pass: false, mis: false, norm: false };
+
+function vista() {
+  const q = document.getElementById('q').value.trim().toLowerCase();
+  let r = D.filter(x => (!q || x.n.toLowerCase().includes(q) || x.c.toLowerCase().includes(q))
+    && (!stato.pass || passa(x)) && (!stato.mis || x.orb != null) && (!stato.norm || x.t === 'map'));
+  r.sort((a, b) => {
+    let va = a[sortK], vb = b[sortK];
+    if (va == null) va = sortDir === -1 ? -Infinity : Infinity;
+    if (vb == null) vb = sortDir === -1 ? -Infinity : Infinity;
+    if (typeof va === 'string') return va.localeCompare(vb) * sortDir * -1;
+    return (va - vb) * sortDir;
+  });
+  document.getElementById('conta').textContent = r.length + ' mappe su ' + D.length;
+  document.getElementById('righe').innerHTML = r.map(x =>
+    '<tr>' +
+      '<td>' + (passa(x) ? '<span class="pass">' + x.n + '</span>' : x.n) + '</td>' +
+      '<td style="color:var(--label)">' + (x.t === 'map' ? 'normale' : x.t === 'unique map' ? 'unica' : 'speciale') + '</td>' +
+      '<td style="color:var(--muted)">' + x.c + (x.cb ? ' <span class="nota-riga">(boss)</span>' : '') + '</td>' +
+      '<td class="n">' + c(x.cp) + '</td>' +
+      '<td class="n">' + Math.round(x.cn).toLocaleString('it-IT') + '</td>' +
+      '<td class="n">' + c(x.ev) + '</td>' +
+      '<td class="n">' + (x.orb != null ? '<span class="mis">' + c(x.orb) + ' c</span>' : '<span style="color:var(--label)">&mdash;</span>') + '</td>' +
+      '<td class="n" style="color:var(--label)">' + (x.ins != null ? x.ins : '') + '</td>' +
+    '</tr>').join('');
+}
+
+document.querySelectorAll('th[data-k]').forEach(th => th.addEventListener('click', () => {
+  const k = th.dataset.k;
+  if (k === sortK) sortDir *= -1; else { sortK = k; sortDir = -1; }
+  vista();
+}));
+document.getElementById('q').addEventListener('input', vista);
+[['f-pass', 'pass'], ['f-mis', 'mis'], ['f-norm', 'norm']].forEach(([id, key]) => {
+  const b = document.getElementById(id);
+  b.addEventListener('click', () => {
+    stato[key] = !stato[key];
+    b.setAttribute('aria-pressed', String(stato[key]));
+    vista();
+  });
+});
+vista();
+</script>
+</body>
+</html>
