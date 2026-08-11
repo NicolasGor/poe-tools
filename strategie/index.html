@@ -33,7 +33,9 @@
   .blocco-albero{background:var(--panel2);border:1px solid var(--line);
                  border-radius:var(--r);padding:var(--s4);margin-top:var(--s2)}
   .blocco-albero h3{margin-bottom:var(--s3)}
-  .punti{display:grid;grid-template-columns:repeat(auto-fit,minmax(8rem,1fr));gap:var(--s2) var(--s4)}
+  .punti{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:var(--s1) var(--s5)}
+  .punti .voce{align-items:baseline;gap:var(--s2)}
+  .punti .voce > span:first-child{display:flex;flex-direction:column;line-height:1.35}
   .spente{display:flex;flex-wrap:wrap;align-items:center;gap:.3rem;margin-top:var(--s3)}
   .spente .et{font-size:var(--t-xs);text-transform:uppercase;letter-spacing:.09em;color:var(--label);margin-right:.35rem}
   .spente .ch{font-size:var(--t-xs);color:var(--muted);background:var(--panel-alto);
@@ -307,9 +309,21 @@
           <li><b>Nel Grove si sceglie:</b> salta i <b>plot viola</b> e i blu scadenti, priorità ai <b>gialli con almeno un seme tier 3</b>. Un blu solo se ha molti tier 3/4 e nessun giallo ha un tier 3.</li>
         </ul>
         <h3>Come si tira la mappa</h3>
-        <p><b>T16 a 8 mod</b>, con almeno <b>100% di item quantity</b> e <b>40% di pack size</b>. Cosa mettere nel map device sta nel pannello <b>Scarab</b> qui accanto.</p>
+        <p>Prerequisiti della mappa:</p>
+        <ul>
+          <li><b>T16</b>, <b>8 mod</b></li>
+          <li><b>Item quantity ≥ 100%</b> — vale metà tariffa sulla lifeforce: +1% ogni +2% di quantity</li>
+          <li><b>Pack size ≥ 40%</b> — più mostri per seme dentro al Grove</li>
+          <li>Un mod <code>increased number of Rare Monsters</code> — i rari alimentano il nodo degli scarab</li>
+        </ul>
+        <p>Cosa mettere nel map device sta nel pannello <b>Scarab</b> qui accanto.</p>
         <a class="albero" href="https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22filters%22%3A%7B%22type_filters%22%3A%7B%22filters%22%3A%7B%22category%22%3A%7B%22option%22%3A%22map%22%7D%7D%7D%2C%22map_filters%22%3A%7B%22filters%22%3A%7B%22map_tier%22%3A%7B%22min%22%3A16%2C%22max%22%3A16%7D%2C%22map_iiq%22%3A%7B%22min%22%3A100%7D%2C%22map_packsize%22%3A%7B%22min%22%3A40%7D%7D%7D%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22not%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22explicit.stat_1910157106%22%7D%2C%7B%22id%22%3A%22explicit.stat_1890969167%22%7D%2C%7B%22id%22%3A%22explicit.stat_4181072906%22%7D%2C%7B%22id%22%3A%22explicit.stat_36406748%22%7D%2C%7B%22id%22%3A%22explicit.stat_2549889921%22%7D%2C%7B%22id%22%3A%22explicit.stat_3729221884%22%7D%2C%7B%22id%22%3A%22explicit.stat_3551025193%22%7D%2C%7B%22id%22%3A%22explicit.stat_3776150692%22%7D%2C%7B%22id%22%3A%22explicit.stat_984774803%22%7D%2C%7B%22id%22%3A%22explicit.stat_2450628570%22%7D%2C%7B%22id%22%3A%22explicit.stat_1026390635%22%7D%2C%7B%22id%22%3A%22explicit.stat_3753748365%22%7D%2C%7B%22id%22%3A%22explicit.stat_3376488707%22%7D%2C%7B%22id%22%3A%22explicit.stat_2073168229%22%7D%2C%7B%22id%22%3A%22explicit.stat_2764017512%22%7D%2C%7B%22id%22%3A%22implicit.stat_1792283443%7C1%22%7D%2C%7B%22id%22%3A%22implicit.stat_1792283443%7C2%22%7D%2C%7B%22id%22%3A%22implicit.stat_3624393862%7C1%22%7D%2C%7B%22id%22%3A%22implicit.stat_3624393862%7C2%22%7D%2C%7B%22id%22%3A%22implicit.stat_3624393862%7C3%22%7D%2C%7B%22id%22%3A%22implicit.stat_3624393862%7C4%22%7D%2C%7B%22id%22%3A%22enchant.stat_1715784068%22%7D%5D%2C%22disabled%22%3Afalse%7D%2C%7B%22type%22%3A%22count%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22explicit.stat_3126771445%22%7D%5D%2C%22value%22%3A%7B%22min%22%3A1%7D%2C%22disabled%22%3Afalse%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D" target="_blank" rel="noopener">Cerca le mappe da correre ↗</a>
-        <p class="nota"><b>Instant Buyout</b>, T16, quantity ≥100, pack size ≥40, e in più un mod <code>increased number of Rare Monsters</code>. <b>3.257 mappe.</b></p><ul class="nota"><li><b>15 mod</b> esclusi che questa build non regge: rigenerazione, cariche delle flask, block, resistenze massime.</li><li><b>6 influenze</b> escluse — Shaper, Elder, i quattro Conquistatori. Hanno un boss diverso.</li><li><b>Delirious</b> escluse: nebbia e mostri che costano tempo.</li><li>I <b>rari</b> sono richiesti, non i magici: alimentano <code>Rare Monsters ... increased chance to drop Scarabs per Monster Modifier</code>.</li></ul>
+        <p class="nota">Il link è già filtrato: <b>Instant Buyout</b>, i prerequisiti qui sopra e <b>22 esclusioni</b>. Restano <b>3.257 mappe</b>.</p>
+        <ul class="nota">
+          <li><b>15 mod</b> che questa build non regge: rigenerazione, cariche delle flask, block, resistenze massime.</li>
+          <li><b>6 influenze</b> — Shaper, Elder, i quattro Conquistatori. Hanno un boss diverso.</li>
+          <li><b>Delirious</b>: nebbia e mostri che costano tempo.</li>
+        </ul>
 
         <div class="blocco-albero">
           <h3>Albero atlas</h3>
@@ -317,7 +331,6 @@
           <div class="voce"><span>Harvest <span class="lim">Sacred Grove garantito</span></span><span class="p">completo</span></div>
           <div class="voce"><span>Scarab <span class="lim">Divination ×2</span></span><span class="p">81%</span></div>
           <div class="voce"><span>Searing Exarch</span><span class="p">sì</span></div>
-          <div class="voce"><span>Heist</span><span class="p nulla">tagliato</span></div>
 
           </div>
           <p class="spente"><span class="et">8 meccaniche spente</span><span class="ch">Expedition</span><span class="ch">Ritual</span><span class="ch">Delirium</span><span class="ch">Blight</span><span class="ch">Abyss</span><span class="ch">Breach</span><span class="ch">Ultimatum</span><span class="ch">Kalguuran</span></p>
