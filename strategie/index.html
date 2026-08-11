@@ -34,6 +34,10 @@
                  border-radius:var(--r);padding:var(--s4);margin-top:var(--s2)}
   .blocco-albero h3{margin-bottom:var(--s3)}
   .punti{display:grid;grid-template-columns:repeat(auto-fit,minmax(8rem,1fr));gap:var(--s2) var(--s4)}
+  .spente{display:flex;flex-wrap:wrap;align-items:center;gap:.3rem;margin-top:var(--s3)}
+  .spente .et{font-size:var(--t-xs);text-transform:uppercase;letter-spacing:.09em;color:var(--label);margin-right:.35rem}
+  .spente .ch{font-size:var(--t-xs);color:var(--muted);background:var(--panel-alto);
+              border:1px solid var(--line);border-radius:var(--r-full);padding:.1rem .55rem}
 
   .corpo{display:grid;gap:var(--s6);grid-template-columns:1.55fr 1fr;padding:var(--s5) var(--s6) var(--s6)}
   @media(max-width:880px){.corpo{grid-template-columns:1fr}
@@ -311,16 +315,6 @@
         <a class="albero" href="https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22filters%22%3A%7B%22type_filters%22%3A%7B%22filters%22%3A%7B%22category%22%3A%7B%22option%22%3A%22map%22%7D%7D%7D%2C%22map_filters%22%3A%7B%22filters%22%3A%7B%22map_tier%22%3A%7B%22min%22%3A16%2C%22max%22%3A16%7D%2C%22map_iiq%22%3A%7B%22min%22%3A100%7D%2C%22map_packsize%22%3A%7B%22min%22%3A40%7D%7D%7D%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22not%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22explicit.stat_1910157106%22%7D%2C%7B%22id%22%3A%22explicit.stat_1890969167%22%7D%2C%7B%22id%22%3A%22explicit.stat_4181072906%22%7D%2C%7B%22id%22%3A%22explicit.stat_36406748%22%7D%2C%7B%22id%22%3A%22explicit.stat_2549889921%22%7D%2C%7B%22id%22%3A%22explicit.stat_3729221884%22%7D%2C%7B%22id%22%3A%22explicit.stat_3551025193%22%7D%2C%7B%22id%22%3A%22explicit.stat_3776150692%22%7D%2C%7B%22id%22%3A%22explicit.stat_984774803%22%7D%2C%7B%22id%22%3A%22explicit.stat_2450628570%22%7D%2C%7B%22id%22%3A%22explicit.stat_1026390635%22%7D%2C%7B%22id%22%3A%22explicit.stat_3753748365%22%7D%2C%7B%22id%22%3A%22explicit.stat_3376488707%22%7D%2C%7B%22id%22%3A%22explicit.stat_2073168229%22%7D%2C%7B%22id%22%3A%22explicit.stat_2764017512%22%7D%2C%7B%22id%22%3A%22implicit.stat_1792283443%7C1%22%7D%2C%7B%22id%22%3A%22implicit.stat_1792283443%7C2%22%7D%2C%7B%22id%22%3A%22implicit.stat_3624393862%7C1%22%7D%2C%7B%22id%22%3A%22implicit.stat_3624393862%7C2%22%7D%2C%7B%22id%22%3A%22implicit.stat_3624393862%7C3%22%7D%2C%7B%22id%22%3A%22implicit.stat_3624393862%7C4%22%7D%2C%7B%22id%22%3A%22enchant.stat_1715784068%22%7D%5D%2C%22disabled%22%3Afalse%7D%2C%7B%22type%22%3A%22count%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22explicit.stat_3126771445%22%7D%5D%2C%22value%22%3A%7B%22min%22%3A1%7D%2C%22disabled%22%3Afalse%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D" target="_blank" rel="noopener">Cerca le mappe da correre ↗</a>
         <p class="nota"><b>Instant Buyout</b>, T16, quantity ≥100, pack size ≥40, e in più un mod <code>increased number of Rare Monsters</code>. <b>3.257 mappe.</b></p><ul class="nota"><li><b>15 mod</b> esclusi che questa build non regge: rigenerazione, cariche delle flask, block, resistenze massime.</li><li><b>6 influenze</b> escluse — Shaper, Elder, i quattro Conquistatori. Hanno un boss diverso.</li><li><b>Delirious</b> escluse: nebbia e mostri che costano tempo.</li><li>I <b>rari</b> sono richiesti, non i magici: alimentano <code>Rare Monsters ... increased chance to drop Scarabs per Monster Modifier</code>.</li></ul>
 
-        <h3>Beacon</h3>
-        <p><b>Exarch</b> è il default. Non per il prezzo dell'invitation: perché l'albero ha i punti su quel lato.</p><table class="mini"><thead><tr><th>Invitation</th><th>Lato</th><th>Prezzo</th></tr></thead><tbody><tr><td>Writhing <span class="lim">sgherro</span></td><td>Eater</td><td>4-6c</td></tr><tr class="ex"><td>Polaric <span class="lim">sgherro</span></td><td>Exarch</td><td>7-9c</td></tr><tr><td>Screaming <span class="lim">finale</span></td><td>Eater</td><td>130-165c</td></tr><tr class="ex"><td>Incandescent <span class="lim">finale</span></td><td>Exarch</td><td>140-150c</td></tr></tbody></table><ul class="nota"><li>Il divario è <b>sgherro contro finale</b>, non Exarch contro Eater. Cambiare lato vale <b>~3 chaos</b>.</li><li>⚠️ <b>La Polaric non si vende</b> a 8 chaos. Apre The Black Star, ed è il gradino verso l'Incandescent.</li><li>I tre beacon si escludono: ogni mappa con Exarch <b>non</b> avanza il Maven.</li><li>Maven si accende <b>a blocchi</b>, per i 4 punti mancanti o i guardiani di <i>The Remembered</i>.</li></ul>
-
-        <h3 class="rosso">Cosa la rovina</h3>
-        <ul>
-          <li><b>Un downside d'altare che tocca le flask.</b> Qui gli altari si cliccano andando al Grove, e il boss ucciso per primo toglie dal mazzo la categoria più innocua. L'elenco è nella scheda Abyss.</li>
-          <li><b>Pulire la mappa.</b> Non è un errore di bottino, è di ritmo: dimezza le mappe all'ora e con esse la lifeforce.</li>
-          <li>Mod di mappa che riducono il <b>recupero</b>.</li>
-        </ul>
-
         <div class="blocco-albero">
           <h3>Albero atlas</h3>
           <div class="punti">
@@ -328,8 +322,9 @@
           <div class="voce"><span>Scarab <span class="lim">Divination ×2</span></span><span class="p">81%</span></div>
           <div class="voce"><span>Searing Exarch</span><span class="p">sì</span></div>
           <div class="voce"><span>Heist</span><span class="p nulla">tagliato</span></div>
-          <div class="voce"><span>Expedition · Ritual · Delirium · Blight · Abyss · Breach · Ultimatum · Kalguuran</span><span class="p nulla">8 spente</span></div>
+
           </div>
+          <p class="spente"><span class="et">8 meccaniche spente</span><span class="ch">Expedition</span><span class="ch">Ritual</span><span class="ch">Delirium</span><span class="ch">Blight</span><span class="ch">Abyss</span><span class="ch">Breach</span><span class="ch">Ultimatum</span><span class="ch">Kalguuran</span></p>
           <div class="bottoni"><button class="albero" type="button" data-albero="https://poeplanner.com/atlas-tree/BQAcAACBAIfU29ZfPksy67tM9SSXsvpsmbTpiy6GtCySCHqEKv7F8VRtiLj_wCqn4up4PFkhYCIpMPpL35Mt8jiMQbVmq00QgF6dzlrJ_Y3qfOOovCq72VvMt73a4_PzDGCy5PcfAIvhfZEKe9xpDkqqCp876GtoiU9dntgEP0bA1I-HndC80MaX4k40gqcpjcFYjjmHVVmGV_yCUYB2N-PPRwCRt8_hEJvGXWvBQtojMmpOG6LQTZHLFyFMNTDHXTakxB_m6BN9fkBYFvZ1GZTaK8GvOnbl7NVicQtj0Y_l2JvVaSPCwnapQ1rWfgy1YxGsoHG0nsQYbVZM8pGv6STO-yu3udTQKBQAH4sIAAAAAAAAAwMAAAAAAAAAAAA=">Mostra l'albero qui ↓</button><a class="albero secondario" href="https://poeplanner.com/atlas-tree/BQAcAACBAIfU29ZfPksy67tM9SSXsvpsmbTpiy6GtCySCHqEKv7F8VRtiLj_wCqn4up4PFkhYCIpMPpL35Mt8jiMQbVmq00QgF6dzlrJ_Y3qfOOovCq72VvMt73a4_PzDGCy5PcfAIvhfZEKe9xpDkqqCp876GtoiU9dntgEP0bA1I-HndC80MaX4k40gqcpjcFYjjmHVVmGV_yCUYB2N-PPRwCRt8_hEJvGXWvBQtojMmpOG6LQTZHLFyFMNTDHXTakxB_m6BN9fkBYFvZ1GZTaK8GvOnbl7NVicQtj0Y_l2JvVaSPCwnapQ1rWfgy1YxGsoHG0nsQYbVZM8pGv6STO-yu3udTQKBQAH4sIAAAAAAAAAwMAAAAAAAAAAAA=" target="_blank" rel="noopener">Apri ↗</a></div>
           <ul class="nota"><li>Le meccaniche spente <b>non guadagnano</b>. Fanno risparmiare tempo, che a 20 mappe l'ora è il moltiplicatore vero.</li><li>Il vero trucco è <b>per sottrazione</b>: <code>45% reduced chance to grow Blue Plants</code>, e lo stesso sulle viola.</li><li>Tolgono i plot che salteresti. Il Grove resta quasi tutto giallo.</li></ul>
           <p class="nota">⚠️ L'albero è quello di <b>xars#9607</b>, e il profitto misurato valida <b>il pacchetto, non ogni nodo</b>. <b>Exarch si difende da solo</b>; <b>Heist rende ~7 chaos l'ora su 8,9 divine</b> — che quei punti resi a Harvest rendano di più è plausibile ma <b>non misurato</b>.</p>
@@ -339,14 +334,12 @@
       <div>
         <div class="pannello">
           <h3>Scarab</h3>
-          <div class="carico"><div class="tit"><span>Quello della resa misurata</span><span class="tot">1,2 chaos</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/harvest-scarab.png" alt="" loading="lazy"><span class="nm">Harvest Scarab<span class="ef">L'area contiene il Sacred Grove · <span class="lim">max 1</span></span></span><span class="pz">1c</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/dusk.png" alt="" loading="lazy"><span class="nm">Sacrifice at Dusk<span class="ef">+5% quantity e una Vaal Side Area · <span class="lim">da verificare se occupa uno slot</span></span></span><span class="pz">0,2c</span></div>
+          <div class="carico"><div class="tit"><span>Cosa carichi</span><span class="tot">≈ 25 chaos</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/harvest-scarab-of-doubling.png" alt="" loading="lazy"><span class="nm">Harvest Scarab of Doubling<span class="ef">Lifeforce raddoppiata · <span class="lim">+38 netti a mappa</span></span></span><span class="pz">24c</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/titanic-scarab-of-treasures.png" alt="" loading="lazy"><span class="nm">Titanic Scarab of Treasures<span class="ef">Un premio in più dal boss · <span class="lim">30% toughness, non danno</span></span></span><span class="pz">1,1c</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/dusk.png" alt="" loading="lazy"><span class="nm">Sacrifice at Dusk<span class="ef">+5% quantity e una Vaal Side Area</span></span><span class="pz">0,2c</span></div>
           </div>
-          <p class="nota">⚠️ <b>L'Harvest Scarab è ridondante</b> se l'albero ha <code>Your Maps contain The Sacred Grove</code>. Lo slot si libera: mettici <b>Titanic Scarab of Treasures</b> (1,09c), <i>«Unique Monsters have an additional Reward»</i>.</p>
-          <div class="carico"><div class="tit"><span>Aggiunta che conviene</span><span class="tot">24 chaos</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/harvest-scarab-of-doubling.png" alt="" loading="lazy"><span class="nm">Harvest Scarab of Doubling<span class="ef">Lifeforce raddoppiata · mostri +100% vita · <span class="lim">max 1</span></span></span><span class="pz">24c</span></div>
-          </div>
+          <p class="nota">⚠️ <b>L'Harvest Scarab non serve più.</b> Il suo unico effetto è <code>L'area contiene il Sacred Grove</code>, che l'albero ora garantisce. Lo slot va al <b>Titanic Scarab of Treasures</b>: il boss lo uccidi in ogni mappa.</p>
           <div class="carico"><div class="tit"><span>Aggiunta da verificare</span><span class="tot">56 chaos</span></div>
           <div class="sc"><span class="q">1×</span><img src="img/harvest-scarab-of-cornucopia.png" alt="" loading="lazy"><span class="nm">Harvest Scarab of Cornucopia<span class="ef">Un seme Tier 4 in più di ogni tipo · <span class="lim">max 1</span></span></span><span class="pz">56c</span></div>
           </div>

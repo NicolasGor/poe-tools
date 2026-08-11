@@ -14,13 +14,18 @@
   --panel:     #171c24;
   --panel2:    #131820;
   --panel-alto:#1d232d;
-  --line:      #262d39;
-  --line2:     #384354;
+  /* alzati l'11 agosto: a #262d39 e #384354 i bordi stavano a 1,7:1 sul
+     pannello, sotto il 3:1 che WCAG chiede ai componenti non testuali. */
+  --line:      #353f4f;
+  --line2:     #5d6f8a;
 
   /* testo */
+  /* contrasti misurati sulla superficie piu' chiara (--panel-alto #1d232d),
+     cosi' passano su tutte le altre. Prima: label 3,86:1, sotto la soglia AA
+     di 4,5. Ora label 4,54 e muted 7,05, cioe' AAA sul corpo del testo. */
   --text:  #e8ebf1;
-  --muted: #939eb2;
-  --label: #737e93;
+  --muted: #a4aebe;
+  --label: #808a9d;
 
   /* accento e semantica */
   --gold:      #f0b94a;
@@ -42,13 +47,16 @@
   --mono: ui-monospace, "SF Mono", "Source Code Pro", Menlo, Consolas, monospace;
 
   /* scala tipografica */
-  --t-xs:  .72rem;
-  --t-sm:  .8rem;
-  --t-base:.875rem;
-  --t-md:  1rem;
-  --t-lg:  1.25rem;
-  --t-xl:  1.6rem;
-  --t-2xl: 2.1rem;
+  /* base a 1rem, chiesta l'11 agosto: il sito era illeggibile. Gli scalini
+     sotto e sopra sono stati alzati in proporzione (x1,14) per non rompere
+     i rapporti. */
+  --t-xs:  .82rem;
+  --t-sm:  .91rem;
+  --t-base:1rem;
+  --t-md:  1.14rem;
+  --t-lg:  1.4rem;
+  --t-xl:  1.8rem;
+  --t-2xl: 2.4rem;
 
   /* spaziatura */
   --s1:.25rem; --s2:.5rem; --s3:.75rem; --s4:1rem;
@@ -81,6 +89,10 @@ body{
 img{max-width:100%}
 a{color:var(--gold);text-decoration:none}
 a:hover{text-decoration:underline}
+/* i link dentro al testo corrente sono sottolineati: il colore da solo non
+   basta a distinguerli (WCAG 1.4.1, uso del colore). Barra, schede e pulsanti
+   restano puliti perche' il contesto li rende gia' riconoscibili. */
+p a, li a, td a, .nota a{text-decoration:underline;text-underline-offset:.18em}
 h1,h2,h3{margin:0;line-height:1.25;letter-spacing:-.015em;font-weight:650}
 p{margin:0}
 table{border-collapse:collapse;width:100%}
@@ -185,7 +197,10 @@ button, .btn{cursor:pointer}
 button:hover, .btn:hover{border-color:var(--gold);color:var(--gold);text-decoration:none}
 button.on, .btn.on{background:var(--gold);color:#1a1407;border-color:var(--gold);font-weight:650}
 button.on:hover, .btn.on:hover{color:#1a1407}
-input:focus, select:focus, button:focus-visible{outline:2px solid rgba(240,185,74,.5);outline-offset:1px}
+/* messa piena e piu' spessa l'11 agosto: al 50% di alfa l'anello di focus
+   stava sotto il 3:1 che WCAG chiede agli indicatori. */
+input:focus, select:focus, button:focus-visible, a:focus-visible,
+[tabindex]:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:2px}
 ::placeholder{color:var(--label)}
 
 .barra{display:flex;gap:var(--s2);flex-wrap:wrap;align-items:center;margin-bottom:var(--s3)}
@@ -235,4 +250,15 @@ input:focus, select:focus, button:focus-visible{outline:2px solid rgba(240,185,7
 .nowrap{white-space:nowrap}
 @media(max-width:720px){
   .scorri-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+}
+
+/* ---------- Accessibilità ---------- */
+/* Chi ha chiesto meno animazioni non deve subirle: transizioni e trasformazioni
+   si spengono, il resto della pagina resta identico. */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;animation-iteration-count:1!important;
+    transition-duration:.01ms!important;scroll-behavior:auto!important;
+  }
+  a.card:hover{transform:none}
 }
