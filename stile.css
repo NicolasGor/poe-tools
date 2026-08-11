@@ -23,9 +23,9 @@
   /* contrasti misurati sulla superficie piu' chiara (--panel-alto #1d232d),
      cosi' passano su tutte le altre. Prima: label 3,86:1, sotto la soglia AA
      di 4,5. Ora label 4,54 e muted 7,05, cioe' AAA sul corpo del testo. */
-  --text:  #e8ebf1;
-  --muted: #a4aebe;
-  --label: #808a9d;
+  --text:  #eef1f6;
+  --muted: #c4ccd8;
+  --label: #9fabbd;
 
   /* accento e semantica */
   --gold:      #f0b94a;
@@ -50,13 +50,13 @@
   /* base a 1rem, chiesta l'11 agosto: il sito era illeggibile. Gli scalini
      sotto e sopra sono stati alzati in proporzione (x1,14) per non rompere
      i rapporti. */
-  --t-xs:  .82rem;
-  --t-sm:  .91rem;
-  --t-base:1rem;
-  --t-md:  1.14rem;
-  --t-lg:  1.4rem;
-  --t-xl:  1.8rem;
-  --t-2xl: 2.4rem;
+  --t-xs:  .88rem;
+  --t-sm:  .97rem;
+  --t-base:1.06rem;
+  --t-md:  1.2rem;
+  --t-lg:  1.45rem;
+  --t-xl:  1.85rem;
+  --t-2xl: 2.45rem;
 
   /* spaziatura */
   --s1:.25rem; --s2:.5rem; --s3:.75rem; --s4:1rem;
@@ -80,8 +80,10 @@ body{
   margin:0;
   background:var(--bg);
   color:var(--text);
-  font:var(--t-base)/1.6 var(--font);
-  -webkit-font-smoothing:antialiased;
+  font:var(--t-base)/1.65 var(--font);
+  /* NIENTE -webkit-font-smoothing:antialiased. Su fondo scuro assottiglia il
+     testo chiaro e lo rende slavato: e' la causa principale del «font troppo
+     sottile» segnalato l'11 agosto. Il rendering di sistema e' piu' pieno. */
   /* alone caldo appena percettibile, richiama la pergamena dell'atlante */
   background-image:radial-gradient(120rem 40rem at 50% -10rem, rgba(240,185,74,.05), transparent 70%);
   background-repeat:no-repeat;
@@ -262,3 +264,12 @@ input:focus, select:focus, button:focus-visible, a:focus-visible,
   }
   a.card:hover{transform:none}
 }
+
+
+/* ---------- Leggibilità ---------- */
+/* Il testo chiaro su fondo scuro ha bisogno di piu' peso, non solo di piu'
+   contrasto: a 400 su #0e1116 le aste sottili spariscono. */
+body{font-weight:420}
+b,strong{font-weight:700}
+.nota{font-size:var(--t-sm);line-height:1.6}
+.lim{font-weight:420}
