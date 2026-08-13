@@ -472,390 +472,83 @@
         </div>
 
         <div class="blocco-albero" id="syndicate">
-          <h3>🕵 Syndicate — spiegato da zero</h3>
-          <p class="nota"><b>Quattro divisioni</b> — Transportation, Fortification, Research, Intervention. I membri sono <b>17</b>, ma il tabellone ne tiene <b>14</b>: gli altri stanno in <b>riserva</b> e non li incontri mai.</p>
-          <p><b>Il ciclo, in tre passaggi:</b></p>
+          <h3>🕵 Syndicate</h3>
+          <p class="nota">Uccidi i membri che ti compaiono in mappa, riempi la barra di una divisione, e al <b>100%</b> apri la sua <b>Safehouse</b>. <b>La safehouse è l'unico momento in cui incassi</b> — tutto il resto è accumulo.</p>
+
+          <h3 style="margin-top:var(--s4)">In mappa — cosa premere</h3>
           <ol class="passi">
-            <li><b>Uccidi il membro</b> che ti compare in mappa.</li>
-            <li>Premi <b>Interroga</b>: raccogli <b>intelligence sulla divisione dell'incontro</b>.</li>
-            <li>Al <b>100%</b> apri la <b>Safehouse</b>. <b>È l'unico momento in cui incassi</b> — il resto è accumulo.</li>
+            <li><b>Execute</b> su tutti i membri a terra, tranne l'ultimo.</li>
+            <li>Sull'ultimo <b>Interroga</b>, ma <b>solo se ha 2 o 3 stelle</b>. Con 1 stella o zero rende quasi niente: premi <b>Release</b>.</li>
+            <li>Se compare <b>Betray</b>, premilo. Crea rivalità, e le rivalità fanno comparire <b>più gente insieme</b> — che è il modo per riempire la barra in fretta.</li>
           </ol>
-          <p class="nota">⚠️ <b>Quali divisioni incontri non è casuale.</b> In ogni mappa: <b>Research sempre</b>, <b>Intervention sempre</b>, e poi <b>Transportation <i>oppure</i> Fortification</b>, a testa o croce. Le due si dividono lo stesso slot, quindi riempiono la barra a <b>metà velocità</b> — e ignorarne una non fa spawnare l'altra di più.</p>
-
-          <h3 style="margin-top:var(--s4)">🔴 Il leader paga più dei membri</h3>
-          <p class="nota">Il leader ha tre tiri <b>fissi</b>, che dipendono <b>solo dal suo rango</b>. Al rango 3:</p>
-          <table class="mini"><thead><tr><th>Tiro</th><th>Prob.</th><th>Valore</th><th>Atteso</th></tr></thead><tbody>
-          <tr class="ex"><td><b>Syndicate Medallion</b></td><td>~12,5%</td><td><b>1.014 c</b></td><td><b>126,75 c</b></td></tr>
-          <tr><td>Veiled Chaos Orb</td><td>~50%</td><td>93,74 c</td><td>46,87 c</td></tr>
-          <tr><td>unica della divisione</td><td>~5%</td><td>1 – 100 c</td><td>0,05 – 5 c</td></tr>
-          <tr><td>Allflame Ember</td><td colspan="3">🔴 <b>tolti dalla 3.29</b> — le guide vecchie li elencano ancora</td></tr>
-          <tr class="ex"><td colspan="3"><b>totale dal solo leader</b></td><td><b>~174 c · 0,90 div</b></td></tr>
-          </tbody></table>
-          <p class="nota">⚠️ Il Medallion cade solo da <b>area level 78+</b> (red tier). Su T16 c'è.</p>
-          <p class="nota">🔴 <b>Ne segue la regola più importante: il leader è uno slot di consumo.</b> Alla fine della safehouse sei <b>obbligato a giustiziarlo</b> e lui <b>perde tutti i ranghi</b>; al suo posto sale uno a caso, a rango 0. Gli altri membri <b>restano</b>. Quindi <b>non ci va mai chi ti serve</b> — ci va lo scarto, portato a rango 3.</p>
           <ul class="nota">
-            <li><b>Non interrogare mai il leader</b>: lo toglie subito dalla carica.</li>
-            <li><b>Portalo a rango 3 con Execute</b>, poi non toccarlo più.</li>
-            <li>Il collo di bottiglia <b>non è la barra</b> (si ferma al 90% e aspetta): è <b>incontrarlo</b>, perché i leader compaiono solo come rinforzo.</li>
+            <li>🔴 <b>Mai interrogare un leader</b> — è quello con la <b>barra gialla</b> sotto il ritratto.</li>
+            <li>🔴 <b>Mai</b> il Bargain <i>«remove all rivalries»</i>: cancella il lavoro fatto.</li>
+            <li>🔴 <b>Mai aprire una safehouse col leader sotto le 3 stelle.</b> Il leader da solo vale <b>174 c</b>, e conta solo il suo rango.</li>
           </ul>
 
-          <h3 style="margin-top:var(--s4)">🔴 Il setup si chiama 5-5-2-2</h3>
-          <p class="nota">Le <b>stanze della safehouse sono i membri</b> — fino a 5, una a testa. Più gente = più stanze. E il tabellone tiene 14, con minimo 2 e massimo 5 per divisione: <b>5 + 5 + 2 + 2 = 14</b> è l'unico modo di portarne <b>due</b> al massimo.</p>
-          <table class="mini"><thead><tr><th>Chi</th><th>Divisioni aperte</th><th>Discarica</th><th>Stanze</th></tr></thead><tbody>
-          <tr><td>Master T</td><td>2 × 5</td><td>2 × 2</td><td>10</td></tr>
-          <tr class="ex"><td><b>Tre divisioni (qui)</b></td><td><b>3 × 4</b></td><td>1 × 2</td><td><b>12</b></td></tr>
-          </tbody></table>
-          <p class="nota">⚠️ <b>Correzione</b>: qui prima c'era scritto che tenere le divisioni <b>al minimo di 2</b> fosse la tecnica, leggendo la board di Master T. <b>Non lo è</b> — e lo dice lui nei commenti: <i>«I didn't do any minmax setup for syndicate»</i>. Quei due membri erano un caso.</p>
-
-          <h3 style="margin-top:var(--s4)">Le mosse, in concreto</h3>
+          <h3 style="margin-top:var(--s4)">🎯 Il tuo piano, in ordine</h3>
           <ol class="passi">
-            <li><b>Interroga</b> chi non vuoi finché è a <b>rango 0</b>: esce dalla divisione e resta non assegnato.</li>
-            <li>Ricompare come <b>rinforzo</b>. Incontralo <b>mentre rinforza la divisione giusta</b> e premi <b>Execute</b>: <i>«if their rank was zero, they will be assigned to the division of whoever they were reinforcing»</i>.</li>
-            <li>Se il membro <b>non è sul tabellone</b>, è in riserva: va estratto con <b>Betray → «remove from the Immortal Syndicate»</b>, che ne tira dentro un altro a caso.</li>
+            <li><b>Korell</b> e <b>Jorgin</b> → <b>Execute</b> quando rinforzano una <b>Fortification</b>. Zero interrogatori: sono già a rango 0.</li>
+            <li><b>Vorici</b> e <b>Leo</b> → <b>1 interrogatorio a testa</b> in Research, poi <b>Execute</b> quando li rivedi in <b>Intervention</b>. È la mossa più economica e la più redditizia.</li>
+            <li><b>Janus</b> → <b>1 interrogatorio</b>: scende da leader e resta in Fortification.</li>
+            <li><b>Vagan</b> → <b>2 interrogatori</b>, poi Execute in <b>Transportation</b>.</li>
+            <li><b>It That Fled</b> → <b>3 interrogatori</b>, poi Execute in <b>Transportation</b>. È il più caro: va per ultimo.</li>
+            <li>Poi porta a <b>3 stelle</b> i quattro leader, con Execute.</li>
           </ol>
-          <p class="nota">🔴 <b>Le amicizie e le rivalità sono la vera leva.</b> Fanno comparire più gente per incontro, e chi arriva <b>da un'altra divisione</b> paga comunque <b>la divisione dell'incontro</b>: riempi la barra <b>senza abbassare il rango</b> di chi ci tieni dentro. È tutta la strategia di Master T: <i>«all I did was have as many friendships and rivalries everywhere»</i>. Si creano col <b>Betray</b>.</p>
-          <p class="nota">⚠️ <b>Interroga solo dal rango 2 in su</b> — sotto rende quasi niente. <b>Mai il Bargain «remove all rivalries»</b>: cancella il lavoro fatto. Per il resto <b>non si rompe niente</b>: <i>«nothing can Break it or Ruin it forever»</i>.</p>
+          <p class="nota">⚠️ <b>Il passo 1 va prima del 3</b>, o interrogando Janus il leader di Fortification diventa <b>Haku</b> — e alla prima safehouse lo perdi.</p>
+          <p class="nota"><b>Otto interrogatori in tutto</b>, di cui solo due sprecati. ✅ Guff è già al posto giusto e non si tocca.</p>
 
-          <h3 style="margin-top:var(--s4)">Chi ci va, e quanto paga</h3>
-          <p class="nota">Le chest danno <b>x4 / x6 / x8</b> scarab per rango 1 / 2 / 3. ⚠️ <b>Chest</b> = prendi tutto; <b>Trapped Stash</b> = <b>ne scegli uno solo</b> in 15 secondi.</p>
-          <table class="mini"><thead><tr><th>Divisione</th><th>Chi</th><th>Cosa paga</th><th>×8 al rango 3</th></tr></thead><tbody>
-          <tr class="ex"><td rowspan="2"><b>Intervention</b></td><td><b>Vorici</b></td><td>scarab <b>Harvest</b></td><td><b>251 c</b></td></tr>
-          <tr><td>Leo</td><td>scarab Ultimatum</td><td>12 – 325 c</td></tr>
-          <tr><td rowspan="2"><b>Transportation</b></td><td>It That Fled</td><td>uniche <b>Foulborn</b> (ne scegli 1 su 5)</td><td>—</td></tr>
-          <tr><td>Guff</td><td>4-6 stack di valuta, <i>«consistently drops divines»</i></td><td>—</td></tr>
-          <tr><td rowspan="2">Fortification</td><td>Janus</td><td>scarab Kalguuran</td><td>12 – 116 c</td></tr>
-          <tr><td>Haku</td><td>scarab Domination</td><td>10 – 110 c</td></tr>
+          <table class="mini"><thead><tr><th>Divisione</th><th>Leader <span class="lim">sacrificabile</span></th><th>Chi paga</th></tr></thead><tbody>
+          <tr><td><b>Transportation</b></td><td>Hillock</td><td>Guff · It That Fled · <b>Vagan</b></td></tr>
+          <tr class="ex"><td><b>Intervention</b></td><td>Riker</td><td><b>Vorici</b> · Leo · Elreon</td></tr>
+          <tr><td><b>Fortification</b></td><td>Korell <i>o</i> Jorgin</td><td>Janus · Haku</td></tr>
+          <tr><td>Research</td><td>Rin</td><td><i>la discarica</i> — Tora</td></tr>
           </tbody></table>
-          <p class="nota">🔴 <b>Vorici è l'unico numero che non è una scommessa</b>: gli Harvest sono <b>tre soli</b> e <b>due su tre sono cari</b> (61,73 · 31,40 · 1,28), quindi pavimento e soffitto coincidono. Ogni altra famiglia ha un solo scarab caro su quattro o cinque.</p>
-          <p class="nota">⚠️ <b>Fortification non vale la pena ottimizzarla</b>: Janus e Haku insieme fanno <b>22 c</b> al pavimento contro i <b>174 c</b> del leader — otto volte meno. Mettici un leader a rango 3 e corrila. 💡 <b>Aisling</b> è un banco su un <b>item a caso</b>, non sul tuo: non serve per l'elmo in craft.</p>
 
-          <h3 style="margin-top:var(--s4)">🔴 Le passive atlas che nessuna guida nomina</h3>
-          <ul class="nota">
-            <li><b>Lethal Extraction</b> — <i>Execute</i> dà <b>anche intelligence</b>, pari a <b>2× il rango</b>. Toglie il compromesso fra alzare il rango e riempire la barra.</li>
-            <li><b>Test of Loyalty</b> — <b>+2 ranghi</b> per Execute invece di +1: un leader nuovo va da 0 a 3 in <b>due</b> incontri.</li>
-            <li><b>Effective Leadership</b> — i leader compaiono <b>il doppio</b>, ed è esattamente il collo di bottiglia.</li>
-            <li><b>Bribery</b> — <b>200%</b> più Bargain per item, e 200% più item.</li>
-          </ul>
+          <details class="elenco">
+            <summary>Perché il leader è sacrificabile, e quanto paga →</summary>
+            <p class="nota">Alla fine della safehouse sei <b>obbligato a giustiziare il leader</b>, e lui <b>perde tutti i ranghi</b>. Gli altri membri restano. Quindi in quello slot <b>non ci va mai chi ti serve</b>: ci va lo scarto, portato a 3 stelle.</p>
+            <table class="mini"><thead><tr><th>Tiro del leader a 3 stelle</th><th>Prob.</th><th>Valore</th><th>Atteso</th></tr></thead><tbody>
+            <tr class="ex"><td><b>Syndicate Medallion</b></td><td>~12,5%</td><td><b>1.014 c</b></td><td><b>126,75 c</b></td></tr>
+            <tr><td>Veiled Chaos Orb</td><td>~50%</td><td>93,74 c</td><td>46,87 c</td></tr>
+            <tr><td>unica della divisione</td><td>~5%</td><td>1 – 100 c</td><td>0,05 – 5 c</td></tr>
+            <tr><td>Allflame Ember</td><td colspan="3">🔴 <b>tolti dalla 3.29</b> — le guide vecchie li elencano ancora</td></tr>
+            <tr class="ex"><td colspan="3"><b>totale, dal solo leader</b></td><td><b>~174 c</b></td></tr>
+            </tbody></table>
+            <p class="nota">Il <b>Medallion</b> è il 73% di quel numero, e cade solo da <b>area level 78+</b> (red tier).</p>
+            <p class="nota"><b>Quanto paga un membro</b>: la sua stanza dà <b>4 / 6 / 8</b> scarab per 1 / 2 / 3 stelle.</p>
+            <table class="mini"><thead><tr><th>Chi</th><th>Cosa</th><th>×8 a 3 stelle</th></tr></thead><tbody>
+            <tr class="ex"><td><b>Vorici</b> · Intervention</td><td>Harvest</td><td><b>251 c</b></td></tr>
+            <tr class="ex"><td><b>Vagan</b> · Transportation</td><td>Trarthan</td><td><b>159 c</b></td></tr>
+            <tr><td>Leo · Intervention</td><td>Ultimatum</td><td>12 – 325 c</td></tr>
+            <tr><td>Janus · Fortification</td><td>Kalguuran</td><td>12 – 116 c</td></tr>
+            <tr><td>Haku · Fortification</td><td>Domination</td><td>10 – 110 c</td></tr>
+            </tbody></table>
+            <p class="nota">🔴 <b>Vorici è l'unico numero che non è una scommessa</b>: gli Harvest sono tre soli e due su tre sono cari. ⚠️ <b>Fortification non vale la pena ottimizzarla</b>: Janus e Haku insieme fanno 22 c contro i 174 del leader.</p>
+          </details>
 
-          <h3 style="margin-top:var(--s4)">🎯 La tua board — otto interrogatori</h3>
-          <p class="nota"><b>Il tabellone è pieno: 14 su 14.</b> ✅ E i quattro membri che servono <b>ci sono già tutti</b> — niente da pescare dalla riserva, dove restano Aisling, Cameria e <b>Gravicius</b>.</p>
-          <table class="mini"><thead><tr><th>Divisione</th><th>Chi c'è ora</th><th>Che fare</th></tr></thead><tbody>
-          <tr><td><b>Transportation</b></td><td>Hillock [1] · <b>Guff [1]</b></td><td>✅ Guff è già a posto. Hillock resta leader</td></tr>
-          <tr><td><b>Fortification</b></td><td>Janus [3] · Haku [3] 🔒</td><td>Janus giù dalla carica; dentro Korell e Jorgin</td></tr>
-          <tr class="ex"><td><b>Research</b></td><td>Rin [2] · Tora [1] · <b>Leo [1]</b> · <b>Vorici [1]</b></td><td>🔴 <b>Leo e Vorici vanno tolti da qui</b></td></tr>
-          <tr><td><b>Intervention</b></td><td>Riker [2] · <b>It That Fled [3]</b> · Vagan [2] · Elreon [3] 🔒</td><td>Riker resta leader; It That Fled e Vagan vanno in Transportation</td></tr>
-          <tr><td colspan="2">non assegnati: <b>Korell</b>, <b>Jorgin</b></td><td>rango 0: basta un <b>Execute</b>, zero interrogatori</td></tr>
-          </tbody></table>
-          <p class="nota">🔒 Haku esce di prigione fra <b>1 turno</b>, Elreon fra <b>2</b>.</p>
-          <table class="mini"><thead><tr><th>Chi</th><th>Da → a</th><th>Interrogatori</th><th>L'intel va a</th></tr></thead><tbody>
-          <tr class="ex"><td><b>Vorici</b> [1]</td><td>Research → Intervention</td><td><b>1</b></td><td>Research · <i>sprecata</i></td></tr>
-          <tr class="ex"><td><b>Leo</b> [1]</td><td>Research → Intervention</td><td><b>1</b></td><td>Research · <i>sprecata</i></td></tr>
-          <tr><td>Janus [3]</td><td>leader → subordinato</td><td>1</td><td>Fortification ✅</td></tr>
-          <tr><td>Vagan [2]</td><td>Intervention → Transportation</td><td>2</td><td>Intervention ✅</td></tr>
-          <tr><td>It That Fled [3]</td><td>Intervention → Transportation</td><td>3</td><td>Intervention ✅</td></tr>
-          <tr><td>Korell · Jorgin</td><td>→ Fortification</td><td><b>0</b></td><td>—</td></tr>
-          <tr class="ex"><td colspan="2"><b>totale</b></td><td><b>8</b></td><td>solo <b>2</b> sprecati</td></tr>
-          </tbody></table>
-          <p class="nota">🔴 <b>Vorici e Leo costano un interrogatorio a testa</b> — sono già a rango 1 — e Vorici è il membro che paga di più di tutti (251 c). <b>È la mossa più economica del tabellone: falla per prima.</b></p>
-          <p class="nota">⚠️ <b>Un ordine da rispettare, o ci perdi Haku.</b> Interrogare Janus promuove leader <b>un subordinato a caso</b>: se Korell e Jorgin non sono ancora dentro, l'unico candidato è <b>Haku [3]</b> — uno dei due che paga, nello slot che perde tutti i ranghi. <b>Prima i due non assegnati, poi Janus.</b></p>
-          <p class="nota">💡 <b>Vagan in Transportation</b> paga <b>Trarthan Scarabs</b> — pavimento <b>159 c</b>, ed è uno dei tre scarab fissi che questa strategia consuma. In Intervention paga Legion, che non serve.</p>
-          <p class="nota">💡 <b>Come si legge la board</b>: l'icona in alto a sinistra della carta è la divisione — <b>ruota</b> = Transportation, <b>palizzata</b> = Fortification, <b>lampada</b> = Research, <b>cappuccio con lame</b> = Intervention. Chi non ce l'ha è non assegnato. I ranghi si contano dalla <b>forma</b> del badge: 1 = una stella, 2 = due <b>in colonna</b>, 3 = una sopra e <b>due sotto</b>.</p>
+          <details class="elenco">
+            <summary>Come si legge la board →</summary>
+            <p class="nota"><b>L'icona in alto a sinistra della carta è la divisione</b>: <b>ruota di carro</b> = Transportation · <b>palizzata</b> = Fortification · <b>lampada</b> = Research · <b>cappuccio con lame</b> = Intervention. Chi non ce l'ha è <b>non assegnato</b>, e non ha nemmeno le stelle.</p>
+            <p class="nota"><b>Le stelle si contano dalla forma</b>, non dal colore: <b>1</b> = una stella su fondo rosso · <b>2</b> = due <b>in colonna</b> · <b>3</b> = una sopra e <b>due sotto</b>. Due in colonna e due in fila sono ranghi diversi.</p>
+            <p class="nota">Le <b>linee gialle</b> uniscono i membri della stessa divisione. Verdi e rosse sono amicizie e rivalità, e non dicono niente sulla divisione.</p>
+          </details>
 
-          <ul class="nota">
-            <li><b>In mappa costa meno di 10 secondi</b> a incontro: spawnano addosso, uccidi, premi e vai.</li>
-            <li>⚠️ <b>Massimo tre interrogatori insieme</b>: il quarto libera il più vecchio <b>senza darti la sua intelligence</b>.</li>
-            <li>⚠️ <b>Reddito a scatti</b>: nel video di strategia, in un'intera sessione, non apre nessuna safehouse.</li>
-            <li>💡 Dentro la safehouse c'è <b>+100% esperienza</b>.</li>
-          </ul>
-        </div>
-
-        <div class="blocco-albero">
-          <h3>Albero atlas</h3>
-          <div class="punti">
-          <div class="voce"><span>Abyss</span><span class="p">27 punti</span></div>
-          <div class="voce"><span>Beyond</span><span class="p">20</span></div>
-          <div class="voce"><span>Map Monsters</span><span class="p">11</span></div>
-          <div class="voce"><span>Scarabs</span><span class="p">7</span></div>
-          </div>
-          <div class="bottoni"><button class="albero" type="button" data-albero="https://poeplanner.com/atlas-tree/AAAABgAAiwAbAB8AugqqC3EOvhC8EooVixfLGDkcQh2lH1QiRyQWJHoo0CjpKV8phyqEKsAtky9GMAMySzlgOY4-X0GMQ6lHz0hkSMJPiVGCV71Ym1k8Ws5b2V1PYCFiuWO1ZaRmtWfpadxrAmx-baVvf3ErcXVxoHOldfZ2OnbCd1F3k3jqecN6CHsKg_iGWYhtjoOP1JGMkiySnZQZlySdXp2HnbGh0aLeovCkNqSsp4KoL6quq6ysNq_BsGewxLRZtIa2brcrt8y5gLsqu-u8qLzQv2DA7sQbxEnG0Mw1zZzPHtCi0STRY9SH1tvavdxN4Gvhi-Kn4rvjN-N85Cnlj-nT6o3rfuzl9Az35PkO-jD6svra-8H7zv3JAAA">Mostra l'albero qui ↓</button><a class="albero secondario" href="https://poeplanner.com/atlas-tree/AAAABgAAiwAbAB8AugqqC3EOvhC8EooVixfLGDkcQh2lH1QiRyQWJHoo0CjpKV8phyqEKsAtky9GMAMySzlgOY4-X0GMQ6lHz0hkSMJPiVGCV71Ym1k8Ws5b2V1PYCFiuWO1ZaRmtWfpadxrAmx-baVvf3ErcXVxoHOldfZ2OnbCd1F3k3jqecN6CHsKg_iGWYhtjoOP1JGMkiySnZQZlySdXp2HnbGh0aLeovCkNqSsp4KoL6quq6ysNq_BsGewxLRZtIa2brcrt8y5gLsqu-u8qLzQv2DA7sQbxEnG0Mw1zZzPHtCi0STRY9SH1tvavdxN4Gvhi-Kn4rvjN-N85Cnlj-nT6o3rfuzl9Az35PkO-jD6svra-8H7zv3JAAA" target="_blank" rel="noopener">Apri ↗</a></div>
-          <p class="nota">139 punti, la spartizione di <b>168 alberi</b> su 100.000.</p>
-        </div>
-      </div>
-
-      <div>
-        <div class="pannello">
-          <h3>Scarab</h3>
-          <div class="carico"><div class="tit"><span>Budget · 4 slot</span><span class="tot">≈ 9 chaos</span></div>
-          <div class="sc"><span class="q">2×</span><img src="img/abyss-scarab.png" alt="" loading="lazy"><span class="nm">Abyss Scarab<span class="ef">Un Abyss in più nell'area · <span class="lim">max 5</span></span></span><span class="pz">5,6c</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/abyss-scarab-of-multitudes.png" alt="" loading="lazy"><span class="nm">Abyss Scarab of Multitudes<span class="ef">+100% mostri per anima consumata · <span class="lim">max 2</span></span></span><span class="pz">2,6c</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/abyss-scarab-of-descending.png" alt="" loading="lazy"><span class="nm">Abyss Scarab of Descending<span class="ef">L'area contiene un Abyssal Depths · <span class="lim">max 1</span></span></span><span class="pz">1c</span></div>
-          </div>
-          <div class="carico"><div class="tit"><span>Spinta · 4 slot</span><span class="tot">≈ 17 chaos</span></div>
-          <div class="sc"><span class="q">2×</span><img src="img/abyss-scarab.png" alt="" loading="lazy"><span class="nm">Abyss Scarab<span class="ef">Un Abyss in più nell'area · <span class="lim">max 5</span></span></span><span class="pz">5,6c</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/abyss-scarab-of-descending.png" alt="" loading="lazy"><span class="nm">Abyss Scarab of Descending<span class="ef">L'area contiene un Abyssal Depths · <span class="lim">max 1</span></span></span><span class="pz">1c</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/horned-scarab-of-nemeses.png" alt="" loading="lazy"><span class="nm">Horned Scarab of Nemeses<span class="ef">I rari hanno 2 modificatori in più · <span class="lim">max 2</span></span></span><span class="pz">10c</span></div>
-          </div>
-          <div class="carico quinto"><div class="tit"><span>Quinto slot</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/abyss-scarab-of-the-consort.png" alt="" loading="lazy"><span class="nm">Abyss Scarab of the Consort<span class="ef">Una pit genera un Abyssal Consort · <span class="lim">max 1</span></span></span><span class="pz">3,8c</span></div>
-          </div>
-        </div>
-        <div class="pannello">
-          <h3>Mappa</h3>
-          <div class="voce"><span><b>Crater</b></span><span class="p">D10 · L6 · B10</span></div>
-          <div class="voce"><span>Desert Spring</span><span class="p">D10 · L8 · B2</span></div>
-          <p class="nota">Entrambe <code>linear</code> e <code>few_obstacles</code>.</p>
-        </div>
-        <div class="pannello">
-          <h3>Resa</h3>
-          <p class="nota"><b>Non misurabile in un numero.</b> Abyss produce <b>item</b> — Stygian Vise e Abyssal Jewel, di cui ha il monopolio — e il prezzo dipende dai mod. Il gioiello medio vale <b>1 chaos</b>. Il valore di Abyss sono i <b>livelli</b>.</p>
-        </div>
-      </div>
-    </div>
-  </article>
-
-  <article class="strat">
-    <header>
-      <h2>2 · Harvest + Exarch <span class="badge">currency</span> <span class="badge">6,3 divine/ora</span></h2>
-
-      <p class="sommario">Profitto <b>misurato</b>: Wealthy Exile fotografa il patrimonio prima e dopo. Su Graveyard, uccidendo invece di rushare.</p>
-      <p class="quando">Quando: appena l'albero regge il cluster Harvest completo</p>
-    </header>
-
-    <div class="misure">
-      <div class="misura"><div class="et">Difficoltà</div><div class="val">Bassa</div>
-        <div class="tacche rischio"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div></div>
-      <div class="misura"><div class="et">Investimento</div><div class="val">~21c/ora<small>~9 mappe l'ora · scarab · frammento</small></div>
-        <div class="tacche"><i class="on"></i><i></i><i></i><i></i><i></i></div></div>
-      <div class="misura"><div class="et">Resa</div><div class="val">6,3 divine/ora<small>misurata · sessione da 2h42m</small></div>
-        <div class="tacche resa"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
-      <div class="misura"><div class="et">Concorrenza</div><div class="val">7% degli alberi</div>
-        <div class="tacche rischio"><i class="on"></i><i></i><i></i><i></i><i></i></div></div>
-    </div>
-
-    <div class="corpo">
-      <div>
-        <h3>Come si corre</h3>
-        <p>L'ordine dipende da quanto uccidi. Il boss non perde niente ad aspettare: invitation, Nightmare Map e <b>Scrying Orb</b> arrivano uguali.</p>
-        <table class="mini"><thead><tr><th>Stile</th><th>Ordine</th><th>Perché</th></tr></thead><tbody>
-        <tr><td>rush</td><td>boss → Grove → esci</td><td>di altari se ne vedono pochi</td></tr>
-        <tr class="ex"><td>si pulisce</td><td><b>altari → boss → Grove</b></td><td>gli altari col boss vivo danno 2-4 Divination Scarab</td></tr>
-        </tbody></table>
-        <ul>
-          <li>⚠️ <b>Uccidere il boss spegne la categoria «Map Boss»</b> degli altari successivi. Con essa se ne va <code>Final Boss drops 2-4 additional Divination Scarabs</code>, che vale <b>54-107 c</b>.</li>
-          <li><b>Il boss</b> fa avanzare l'<b>invitation di Exarch</b> (140-150c) e droppa lo <b>Scrying Orb</b> al 4% <i>on Completion</i>.</li>
-          <li><b>Nel Grove si sceglie:</b> salta i <b>plot viola</b> e i blu scadenti, priorità ai <b>gialli con almeno un seme tier 3</b>. Un blu solo se ha molti tier 3/4 e nessun giallo ha un tier 3.</li>
-        </ul>
-          <div class="blocco-albero" id="in-gioco">
-            <h3>🎮 Da tenere aperto mentre giochi</h3>
-            <p class="nota">Le due regex stanno nei <b>64 caratteri</b> della tastiera dello Steam Deck. Accendono le mappe <b>da correre</b>: quelle spente si rirollano.</p>
-            <div class="frammento">
-              <span class="et"><b>1 · Le esclusioni</b> — 15 mod su 16, tutti e nove i letali · 62 caratteri</span>
-              <div class="riga"><code id="box1">"!k ch|ss r|expo|ng e|l we|e ef|na o|on-c|um r|rom$|ock$|our$"</code><button type="button" data-copia="box1">copia</button></div>
-              <span class="et"><b>2 · Temporal Chains e i due requisiti</b> — quantity ≥ 100%, pack size ≥ 40% · 45 caratteri</span>
-              <div class="riga"><code id="box2">"!h tem" "m q.*[1-9]..%" "iz.*([4-9].|\d..)%"</code><button type="button" data-copia="box2">copia</button></div>
-            </div>
-            <div class="bottoni" style="margin-top:var(--s3)">
-              <a class="albero" href="https://www.pathofexile.com/trade/search/Allflame/2K3mZl0VFk" target="_blank" rel="noopener">Comprare le mappe ↗</a><a class="albero secondario" href="https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22filters%22%3A%7B%22type_filters%22%3A%7B%22filters%22%3A%7B%22category%22%3A%7B%22option%22%3A%22map%22%7D%2C%22rarity%22%3A%7B%22option%22%3A%22nonunique%22%7D%7D%7D%2C%22map_filters%22%3A%7B%22filters%22%3A%7B%22map_tier%22%3A%7B%22min%22%3A16%2C%22max%22%3A16%7D%2C%22map_iiq%22%3A%7B%22min%22%3A100%7D%2C%22map_packsize%22%3A%7B%22min%22%3A40%7D%7D%7D%2C%22misc_filters%22%3A%7B%22filters%22%3A%7B%22foil_variation%22%3A%7B%22option%22%3A%22none%22%7D%7D%7D%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22not%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22explicit.stat_1910157106%22%7D%2C%7B%22id%22%3A%22explicit.stat_4181072906%22%7D%2C%7B%22id%22%3A%22explicit.stat_36406748%22%7D%2C%7B%22id%22%3A%22explicit.stat_2549889921%22%7D%2C%7B%22id%22%3A%22explicit.stat_3729221884%22%7D%2C%7B%22id%22%3A%22explicit.stat_419810844%22%7D%2C%7B%22id%22%3A%22explicit.stat_2450628570%22%7D%2C%7B%22id%22%3A%22explicit.stat_1026390635%22%7D%2C%7B%22id%22%3A%22explicit.stat_3376488707%22%7D%2C%7B%22id%22%3A%22explicit.stat_2073168229%22%7D%2C%7B%22id%22%3A%22implicit.stat_1792283443%7C1%22%7D%2C%7B%22id%22%3A%22implicit.stat_1792283443%7C2%22%7D%2C%7B%22id%22%3A%22implicit.stat_3624393862%7C1%22%7D%2C%7B%22id%22%3A%22implicit.stat_3624393862%7C2%22%7D%2C%7B%22id%22%3A%22implicit.stat_3624393862%7C3%22%7D%2C%7B%22id%22%3A%22implicit.stat_3624393862%7C4%22%7D%2C%7B%22id%22%3A%22enchant.stat_1715784068%22%7D%2C%7B%22id%22%3A%22explicit.stat_558910024%22%7D%2C%7B%22id%22%3A%22explicit.stat_1140978125%22%7D%2C%7B%22id%22%3A%22explicit.stat_3938822425%22%7D%2C%7B%22id%22%3A%22explicit.stat_2326202293%22%7D%2C%7B%22id%22%3A%22explicit.stat_272758639%22%7D%2C%7B%22id%22%3A%22explicit.stat_1207482628%22%7D%5D%2C%22disabled%22%3Afalse%7D%2C%7B%22type%22%3A%22count%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22explicit.stat_3126771445%22%7D%5D%2C%22value%22%3A%7B%22min%22%3A1%7D%2C%22disabled%22%3Afalse%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D" target="_blank" rel="noopener">Versione completa ↗</a>
-            </div>
+          <details class="elenco">
+            <summary>Il resto della meccanica →</summary>
             <ul class="nota">
-              <li>Le due regex insieme fanno <b>16 su 16</b> più i requisiti di resa.</li>
-              <li><b>Comprare le mappe</b> esclude <b>14</b> mod, <b>Versione completa</b> ne esclude <b>23</b> — in più <code>reduced Chance to Block</code>, <code>cannot Block</code>, <code>cannot gain Flask Charges</code>, <code>Elemental Weakness</code>, Delirious e i quattro Guardiani Elder. Entrambi filtrano <b>Instant Buyout</b>, <b>T16</b>, <b>quantity ≥ 100%</b> — vale metà tariffa sulla lifeforce, +1% ogni +2% — <b>pack size ≥ 40%</b> e un mod <code>increased number of Rare Monsters</code>, che alimenta il nodo degli scarab.</li>
-            <li>Cosa mettere nel map device sta nel pannello <b>Scarab</b> qui accanto.</li>
+              <li>Il tabellone tiene <b>14 membri su 17</b>: gli altri sono <b>in riserva</b> e non li incontri. Se ti serve uno che non c'è, va prima buttato fuori qualcuno.</li>
+              <li>Ogni divisione ne ospita <b>da 2 a 5</b>. Le <b>stanze della safehouse sono i membri</b>, quindi più gente = più bottino: con tre divisioni aperte la partizione è <b>4-4-4-2</b>.</li>
+              <li>In ogni mappa: <b>Research sempre</b>, <b>Intervention sempre</b>, e poi <b>Transportation <i>oppure</i> Fortification</b> a testa o croce.</li>
+              <li>Per <b>spostare</b> un membro: interrogalo fino a <b>rango 0</b>, poi <b>Execute</b> quando lo reincontri <b>mentre rinforza la divisione che vuoi</b>.</li>
+              <li>Al massimo <b>tre interrogatori insieme</b>: il quarto libera il più vecchio <b>senza darti la sua intelligence</b>.</li>
+              <li>Se non corri la safehouse, l'intelligence scende a <b>90%</b> e resta lì. Si può parcheggiare aspettando il leader.</li>
+              <li>Dentro la safehouse c'è <b>+100% esperienza</b>.</li>
+              <li>✅ <b>Non si può rompere niente</b>: anche l'opzione peggiore costa tempo, non il salvataggio.</li>
             </ul>
-          </div>
-
-        <div class="blocco-albero">
-          <h3>Albero atlas</h3>
-          <div class="punti">
-          <div class="voce"><span>Harvest <span class="lim">Sacred Grove garantito</span></span><span class="p">completo</span></div>
-          <div class="voce"><span>Scarab <span class="lim">Divination ×2</span></span><span class="p">105%</span></div>
-          <div class="voce"><span>Searing Exarch</span><span class="p">sì</span></div>
-
-          </div>
-          <p class="spente"><span class="et">8 meccaniche spente</span><span class="ch">Expedition</span><span class="ch">Ritual</span><span class="ch">Delirium</span><span class="ch">Blight</span><span class="ch">Abyss</span><span class="ch">Breach</span><span class="ch">Ultimatum</span><span class="ch">Kalguuran</span></p>
-          <div class="bottoni"><button class="albero" type="button" data-albero="https://poeplanner.com/atlas-tree/BQAcAACGAIfU8_fb1l8-Ri9LMuu7TPUkl7L6bJm06YsuhrSxnyySCHqEKv7F8VRtiLj_wCqn4up4PFkhYCIpMPpL35Mt8jiMQbVmq00QgF6dzlrJ_Y3qfOOovCq72VvMt4ahvdrj8_MMYLLk9x8Ai-F9kQp73GkOSqoKnzvoa2iJT12e2AQ_RsDUj4ed0LzQxpfigqcpjcFYjjmHVVmGa-BX_IJRgHY3489HAJG3z-EQm8Zda8FC2iOkBU4botBNkcsXIUw1MMddNqTEH-boE31-QPZ1GZTaK8GvOnbl7NVicQtj0Y_l2Ju3D9VpI8LCdqlDWtZ-DLVjEaygcbSexBhtVpqvTPKRr-kkzvsrt7nU0CgUAB-LCAAAAAAAAAMDAAAAAAAAAAAA">Mostra l'albero qui ↓</button><a class="albero secondario" href="https://poeplanner.com/atlas-tree/BQAcAACGAIfU8_fb1l8-Ri9LMuu7TPUkl7L6bJm06YsuhrSxnyySCHqEKv7F8VRtiLj_wCqn4up4PFkhYCIpMPpL35Mt8jiMQbVmq00QgF6dzlrJ_Y3qfOOovCq72VvMt4ahvdrj8_MMYLLk9x8Ai-F9kQp73GkOSqoKnzvoa2iJT12e2AQ_RsDUj4ed0LzQxpfigqcpjcFYjjmHVVmGa-BX_IJRgHY3489HAJG3z-EQm8Zda8FC2iOkBU4botBNkcsXIUw1MMddNqTEH-boE31-QPZ1GZTaK8GvOnbl7NVicQtj0Y_l2Ju3D9VpI8LCdqlDWtZ-DLVjEaygcbSexBhtVpqvTPKRr-kkzvsrt7nU0CgUAB-LCAAAAAAAAAMDAAAAAAAAAAAA" target="_blank" rel="noopener">Apri ↗</a></div>
-          <ul class="nota"><li>Le meccaniche spente <b>non guadagnano</b>. Fanno risparmiare tempo, e concentrano il drop pool degli scarab sulle famiglie rimaste.</li><li>Il vero trucco è <b>per sottrazione</b>: <code>45% reduced chance to grow Blue Plants</code>, e lo stesso sulle viola.</li><li>Tolgono i plot che salteresti. Il Grove resta quasi tutto giallo.</li></ul>
-          <p class="nota">L'albero è mantenuto su questa build e <b>non ha un profitto misurato dietro</b>. Misurata è la resa di chi lo corre: <b>6,3 divine/ora</b>.</p>
-        </div>
-      </div>
-
-      <div>
-        <div class="pannello">
-          <h3>Scarab</h3>
-          <div class="carico"><div class="tit"><span>Basso</span><span class="tot">5,38 chaos</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/titanic-scarab-of-treasures.png" alt="" loading="lazy"><span class="nm">Titanic Scarab of Treasures<span class="ef">Un premio in più dal boss</span></span><span class="pz">1,1c</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/scarab-of-adversaries.png" alt="" loading="lazy"><span class="nm">Scarab of Adversaries<span class="ef">4 pacchi di rari specchiati</span></span><span class="pz">1,2c</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/scarab-of-divinity.png" alt="" loading="lazy"><span class="nm">Scarab of Divinity<span class="ef">3 rari Pantheon-Touched</span></span><span class="pz">1,2c</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/domination-scarab.png" alt="" loading="lazy"><span class="nm">Domination Scarab<span class="ef">3 shrine · <span class="lim">buffano te, non i mostri</span></span></span><span class="pz">1,9c</span></div>
-          </div>
-          <div class="carico"><div class="tit"><span>Medio</span><span class="tot">12,24 chaos</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/horned-scarab-of-nemeses.png" alt="" loading="lazy"><span class="nm">Horned Scarab of Nemeses<span class="ef">2 modificatori in più su <b>ogni</b> raro</span></span><span class="pz">8,3c</span></div>
-          <p class="nota">Prende il posto della Domination. Col nodo <code>50% increased chance to drop Scarabs per Monster Modifier</code> vale <b>+100% per raro</b> — e con Adversaries e Divinity i rari sono molti di più.</p>
-          </div>
-          <div class="carico"><div class="tit"><span>Alto — serve il 5° slot</span><span class="tot">39,38 chaos</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/harvest-scarab-of-doubling.png" alt="" loading="lazy"><span class="nm">Harvest Scarab of Doubling<span class="ef">Lifeforce raddoppiata · <span class="lim">+24 netti a mappa</span></span></span><span class="pz">27,2c</span></div>
-          <p class="nota">Si aggiunge ai quattro del Medio. È l'unico che tocca la <b>lifeforce</b>, cioè il 34% del ricavo: +48c per 27, quindi <b>+21 netti</b>. Il più debole per chaos speso, ma copre l'unico canale che gli altri non toccano.</p>
-          </div>
-          <p class="nota">Il <b>5° slot</b> si apre <b>uccidendo il boss di una Nightmare Map</b> — testo del map device. Serve la <b>mappa</b>, non un boss qualsiasi. Ne sono cadute <b>4 in una sessione da 2h42m</b>.</p>
-          <p class="nota">Ognuna delle cinque dà anche un <b>punto atlas</b> la prima volta, più il suo frammento: Ziggurat <b>165c</b> · Fortress 118 · Abomination 117 · Sanctuary 92 · Citadel 2.</p>
-          <a class="albero secondario" href="https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22type%22%3A%22Nightmare%20Map%22%2C%22stats%22%3A%5B%7B%22type%22%3A%22not%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22explicit.stat_1910157106%22%7D%2C%7B%22id%22%3A%22explicit.stat_4181072906%22%7D%2C%7B%22id%22%3A%22explicit.stat_36406748%22%7D%2C%7B%22id%22%3A%22explicit.stat_2549889921%22%7D%2C%7B%22id%22%3A%22explicit.stat_3729221884%22%7D%2C%7B%22id%22%3A%22explicit.stat_419810844%22%7D%2C%7B%22id%22%3A%22explicit.stat_2450628570%22%7D%2C%7B%22id%22%3A%22explicit.stat_1026390635%22%7D%2C%7B%22id%22%3A%22explicit.stat_3376488707%22%7D%2C%7B%22id%22%3A%22explicit.stat_2073168229%22%7D%2C%7B%22id%22%3A%22explicit.stat_558910024%22%7D%2C%7B%22id%22%3A%22explicit.stat_1140978125%22%7D%2C%7B%22id%22%3A%22explicit.stat_3938822425%22%7D%2C%7B%22id%22%3A%22explicit.stat_2326202293%22%7D%2C%7B%22id%22%3A%22explicit.stat_272758639%22%7D%2C%7B%22id%22%3A%22explicit.stat_1207482628%22%7D%5D%2C%22disabled%22%3Afalse%7D%5D%2C%22filters%22%3A%7B%7D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D" target="_blank" rel="noopener">Nightmare Map corribili ↗</a>
-          <p class="nota">Filtrate coi <b>15 mod</b> più <b>Elemental Weakness</b>, <b>Temporal Chains</b>, <b>cannot be Leeched</b> e gli <b>Elemental Thorns</b>, in Instant Buyout. Nel device basta lo <b>Scarab of Stability</b>: il frammento cade dal boss e il punto è incondizionato, quindi non serve nient'altro.</p>
-          <p class="nota">Il <b>Sacred Grove</b> è garantito dall'albero, quindi l'Harvest Scarab non entra in nessuna delle tre. Fuori anche <code>Scarab of the Dextral</code>: raddoppia i suffissi, cioè i mod che questa build non regge.</p>
-        </div>
-        <div class="pannello">
-          <h3>Mappa — Graveyard</h3>
-          <div class="voce"><span>Layout</span><span class="p">8 <span class="lim">92° percentile</span></span></div>
-          <div class="voce"><span>Densità</span><span class="p">6</span></div>
-          <div class="voce"><span>Boss</span><span class="p">4 <span class="lim">senza fasi</span></span></div>
-          <div class="voce"><span>Damnation</span><span class="p">120.059c <span class="lim">1 ogni 1.740</span></span></div>
-          <div class="voce"><span>Scrying Orb (Graveyard)</span><span class="p">690c <span class="lim">4% a mappa</span></span></div>
-          <p class="nota">Il <b>4</b> al boss misura la <b>distanza</b>, non lo scontro. Graveyard non ha il tag delle fasi, e le fasi sono l'unica cosa che il DPS non salta: i tag che abbassano il voto sono <code>boss_phases</code> (media 3,18) e <code>boss_not_twinnable</code> (3,50).</p>
-          <p class="nota">Le altre tre carte: <b>Azyran's Reward</b> 7,8c una ogni 20 mappe · <b>The One With All</b> 2,7c una ogni 3,3 · Bowyer's Dream, sotto soglia.</p>
-        </div>
-        <div class="pannello">
-          <h3>Resa misurata — 6,3d/ora</h3>
-          <p class="nota">Misurata su una sessione di 2h42m, ~9 mappe l'ora invece di 20. Meno all'ora, <b>più a mappa</b>: 0,68d contro 0,43d.</p>
-          <div class="voce"><span>Lifeforce <i>(le tre)</i></span><span class="p">6,0d · 34%</span></div>
-          <div class="voce"><span>Scarab · 53 pezzi</span><span class="p">516c · 15%</span></div>
-          <div class="voce"><span>Valdo's Puzzle Box · 2</span><span class="p">2,4d</span></div>
-          <div class="voce"><span>Divine Orb · 2</span><span class="p">2,0d</span></div>
-          <div class="voce"><span>Map T16 · 45</span><span class="p">1,0d</span></div>
-          <div class="voce"><span>Rogue's Marker + blueprint <i>(Heist)</i></span><span class="p nulla">0</span></div>
-          <p class="nota">Uccidendo i mostri il reddito si diversifica: la lifeforce scende dal <b>66% al 34%</b>. L'Heist ha reso <b>zero su 87 righe</b> — per questo è fuori dall'albero.</p>
-        </div>
-      </div>
-    </div>
-  </article>
-
-  <article class="strat">
-    <header>
-      <h2>3 · Destructive Play <span class="badge">currency</span> <span class="badge">1,30 divine/mappa</span></h2>
-
-      <p class="sommario">Quattro meccaniche su <b>City Square</b>, dall'autore della build che gioco. Non è un albero da lifeforce: si vive di <b>mappe da rivendere</b>, di <b>zaini dei mercenari</b> e del <b>Syndicate</b>. Il numero trasportabile è <b>per mappa</b>, non per ora: l'autore fa 20 mappe in 30 minuti, ed è il suo record.</p>
-      <p class="quando">Quando: quando il tempo di raccolta di Harvest diventa il vincolo</p>
-    </header>
-
-    <div class="misure">
-      <div class="misura"><div class="et">Difficoltà</div><div class="val">Media<small>7-8 boss a mappa · merc che one-shottano</small></div>
-        <div class="tacche rischio"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
-      <div class="misura"><div class="et">Investimento</div><div class="val">~43c a mappa<small>850c per un ciclo da 20 · mappe + 5 scarab, fascia media</small></div>
-        <div class="tacche"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
-      <div class="misura"><div class="et">Resa</div><div class="val">1,30 divine/mappa<small>sessione dell'autore da 13 mappe, riprezzata</small></div>
-        <div class="tacche resa"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
-      <div class="misura"><div class="et">Concorrenza</div><div class="val">non misurata<small>nessun albero censito su poe.ninja</small></div>
-        <div class="tacche"><i></i><i></i><i></i><i></i><i></i></div></div>
-    </div>
-
-    <div class="corpo">
-      <div>
-        <h3>Come si corre</h3>
-        <p>Quattro cose insieme, e <b>nessuna è il ground loot</b>: in questa lega non ne cade.</p>
-        <ul>
-          <li><b>Destructive Play</b> — la Maven guarda e spawna <b>fino a 3 boss extra</b>. Da lì cadono Synthesis, Elder/Shaper Guardian e Conqueror map, che si rivendono in bulk.</li>
-          <li><b>Betrayal</b> — i membri spawnano addosso, <b>meno di 10 secondi</b> a encounter. Il Syndicate Medallion vale 4-5 divine.</li>
-          <li><b>Mercenari di Trarthus</b> — merc garantito più uno <b>infamous</b> con due vile. Gli zaini contengono divine e ancient orb, e i <i>warrant</i> si rivendono ai Luminary.</li>
-          <li><b>Kingsmarch</b> — <i>Refiner's Bargain</i> converte il sulfite in ore. Spedizione da 13M per tattoo e divine, da <b>50M per un mirror shard garantito</b>.</li>
-        </ul>
-        <p>⚠️ <b>Non rushare il boss</b>: la Maven spawna i suoi tre solo se uccidi abbastanza mostri. E <b>non fermarsi nelle meccaniche che non stai juicing</b> — un Harvest da 5c di lifeforce è tempo buttato.</p>
-        <table class="mini"><thead><tr><th>Cosa</th><th>Come</th><th>Perché</th></tr></thead><tbody>
-        <tr><td>mercenari</td><td>i <b>vile</b> in qualsiasi ordine</td><td>dal 13 agosto non diventano più NPC uccidendo il main</td></tr>
-        <tr class="ex"><td>anomalie</td><td>solo <b>Gambling District</b> e <b>Manor Foyer</b></td><td>le altre si lasciano lì, così la prossima è una buona</td></tr>
-        <tr><td>invitation</td><td>alch, ed exalt se la build regge</td><td>le conqueror exalt scalano con la quant del boss</td></tr>
-        </tbody></table>
-        <ul class="nota">
-          <li>⚠️ Entrare in un'anomalia <b>butta fuori gli scarab dal map device</b>.</li>
-          <li>⚠️ Il merc col <b>flame quiver</b> tira una freccia in cielo che one-shotta: quella si schiva.</li>
-        </ul>
-
-          <div class="blocco-albero" id="in-gioco-3">
-            <h3>🎮 Da tenere aperto mentre giochi</h3>
-            <p class="nota">Le due regex stanno nei <b>64 caratteri</b> della tastiera dello Steam Deck. Accendono le mappe <b>da correre</b>: quelle spente si rirollano.</p>
-            <div class="frammento">
-              <span class="et"><b>1 · Le esclusioni</b> — 15 mod su 16, tutti e nove i letali · 62 caratteri</span>
-              <div class="riga"><code id="box5">"!k ch|ss r|expo|ng e|l we|e ef|na o|on-c|um r|rom$|ock$|our$"</code><button type="button" data-copia="box5">copia</button></div>
-              <span class="et"><b>2 · Temporal Chains e i due requisiti</b> — quantity ≥ 100%, pack size ≥ 40% · 45 caratteri</span>
-              <div class="riga"><code id="box6">"!h tem" "m q.*[1-9]..%" "iz.*([4-9].|\d..)%"</code><button type="button" data-copia="box6">copia</button></div>
-            </div>
-            <p class="nota"><b>Un pulsante per conquistatore</b> — ne servono <b>cinque a testa</b> per un ciclo da 20. Il perché è nel pannello della mappa.</p>
-            <div class="bottoni">
-              <a class="albero" href="https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22filters%22%3A%7B%22type_filters%22%3A%7B%22filters%22%3A%7B%22category%22%3A%7B%22option%22%3A%22map%22%7D%2C%22rarity%22%3A%7B%22option%22%3A%22nonunique%22%7D%7D%7D%2C%22misc_filters%22%3A%7B%22filters%22%3A%7B%22foil_variation%22%3A%7B%22option%22%3A%22none%22%7D%7D%7D%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22and%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22implicit.stat_2563183002%7C1%22%7D%5D%2C%22disabled%22%3Afalse%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D" target="_blank" rel="noopener">Baran ↗</a>
-              <a class="albero secondario" href="https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22filters%22%3A%7B%22type_filters%22%3A%7B%22filters%22%3A%7B%22category%22%3A%7B%22option%22%3A%22map%22%7D%2C%22rarity%22%3A%7B%22option%22%3A%22nonunique%22%7D%7D%7D%2C%22misc_filters%22%3A%7B%22filters%22%3A%7B%22foil_variation%22%3A%7B%22option%22%3A%22none%22%7D%7D%7D%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22and%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22implicit.stat_2563183002%7C2%22%7D%5D%2C%22disabled%22%3Afalse%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D" target="_blank" rel="noopener">Veritania ↗</a>
-              <a class="albero secondario" href="https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22filters%22%3A%7B%22type_filters%22%3A%7B%22filters%22%3A%7B%22category%22%3A%7B%22option%22%3A%22map%22%7D%2C%22rarity%22%3A%7B%22option%22%3A%22nonunique%22%7D%7D%7D%2C%22misc_filters%22%3A%7B%22filters%22%3A%7B%22foil_variation%22%3A%7B%22option%22%3A%22none%22%7D%7D%7D%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22and%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22implicit.stat_2563183002%7C3%22%7D%5D%2C%22disabled%22%3Afalse%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D" target="_blank" rel="noopener">Al-Hezmin ↗</a>
-              <a class="albero secondario" href="https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22filters%22%3A%7B%22type_filters%22%3A%7B%22filters%22%3A%7B%22category%22%3A%7B%22option%22%3A%22map%22%7D%2C%22rarity%22%3A%7B%22option%22%3A%22nonunique%22%7D%7D%7D%2C%22misc_filters%22%3A%7B%22filters%22%3A%7B%22foil_variation%22%3A%7B%22option%22%3A%22none%22%7D%7D%7D%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22and%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22implicit.stat_2563183002%7C4%22%7D%5D%2C%22disabled%22%3Afalse%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D" target="_blank" rel="noopener">Drox ↗</a>
-            </div>
-            <ul class="nota">
-              <li>Le due regex insieme fanno <b>16 su 16</b> più i requisiti di resa.</li>
-            <li>I quattro link cercano l'implicito <code>Map contains … Citadel</code>, <b>Instant Buyout</b>, mappe non uniche e non foil. <b>Senza filtri sui mod</b>: si comprano al minor prezzo e si rollano dopo.</li>
-            <li>Cosa mettere nel map device sta nel pannello <b>Scarab</b> qui accanto.</li>
-            </ul>
-          </div>
-
-        <div class="blocco-albero" id="mercenari">
-          <h3>🎯 Mercenari — quando fermarsi</h3>
-          <p class="nota">Un merc con le gemme giuste vale <b>1-15 divine</b>: il <b>Luminary combatte attraverso il mercenario</b>, quindi per lui è il pezzo centrale della build. 🔴 <b><code>Returning Projectiles</code> è il filtro</b>: compare in tre archetipi su quattro, e senza quello non serve guardare il resto.</p>
-          <table class="mini"><thead><tr><th>Archetipo</th><th>Deve avere</th><th>Non deve avere</th><th>Vale</th></tr></thead><tbody>
-          <tr class="ex"><td><b>Kineticist</b></td><td>Kinetic Blast of Clustering + Multiple Projectiles + <b>Returning</b> + un clear support</td><td>🔴 Kinetic Bolt</td><td><b>15d+</b></td></tr>
-          <tr><td><b>Manyshot</b></td><td>Ice Shot <i>e</i> Vaal Ice Shot, entrambi con <b>Returning</b> + Ele Damage with Attacks</td><td>🔴 Icicle Rain</td><td><b>5d+</b></td></tr>
-          <tr><td><b>Blade Ambusher</b></td><td>Spectral Helix of Trarthus + Multiple Traps + Trap and Mine Damage</td><td>—</td><td>boss</td></tr>
-          <tr><td><b>Combatant</b></td><td>Static Strike <i>e</i> Frost Blades insieme, con <b>Returning</b></td><td>🔴 Wild Strike · Spectral Helix · Elemental Hit</td><td>tuttofare</td></tr>
-          </tbody></table>
-          <ul class="nota">
-            <li>🔴 <b>Le gemme sbagliate azzerano il merc, non lo peggiorano.</b> <code>Kinetic Bolt</code> <b>brikka l'IA</b> del Kineticist, che smette di usare Clustering; <code>Icicle Rain</code> <b>interrompe il Vaal Ice Shot</b>.</li>
-            <li><b>L'ordine che costa meno tempo</b>: c'è Returning? → quale skill principale → c'è la gemma che lo squalifica? → solo allora <i>rematch</i> e warrant.</li>
-            <li>Fonte: la guida di <a href="https://mobalytics.gg/poe/builds/captainlance9-luminary-merc-bot" target="_blank" rel="noopener">CaptainLance9</a>, cioè la lista della spesa di chi quei merc li <b>compra</b>.</li>
-          </ul>
-        </div>
-
-        <div class="blocco-albero" id="syndicate">
-          <h3>🕵 Syndicate — spiegato da zero</h3>
-          <p class="nota">Il Syndicate ha <b>quattro divisioni</b> — Transportation, Fortification, Research, Intervention — e <b>diciassette membri</b> distribuiti fra loro. In una mappa ne incontri fino a tre.</p>
-          <p><b>Il ciclo è questo, e sono tre passaggi:</b></p>
-          <ol class="passi">
-            <li><b>Uccidi il membro</b> che ti compare in mappa.</li>
-            <li>Ti si aprono tre pulsanti. Premi <b>Interroga</b>: raccogli <b>intelligence sulla divisione di quel membro</b>. È l'unico che c'è sempre.</li>
-            <li>Quando l'intelligence di una divisione arriva al <b>100%</b>, apri la sua <b>Safehouse</b>. <b>La safehouse è il pagamento</b> — tutto il resto è accumulo.</li>
-          </ol>
-          <p class="nota">🔴 <b>Chi sta in quale divisione decide cosa ti paga la safehouse.</b> Non è un dettaglio: è tutto il gioco. Ogni membro ha la sua ricompensa, e la incassi solo se è nella divisione che stai svuotando.</p>
-          <h3 style="margin-top:var(--s4)">🔴 Come ci arrivi — il minimo è 2</h3>
-          <p class="nota"><b>Una divisione non si può svuotare</b>: il minimo è <b>2 membri</b>, il massimo 5. Ed è questo che spiega la sua board — non è fortunata, è <b>potata fino al pavimento</b>.</p>
-          <table class="mini"><thead><tr><th>Divisione</th><th>Quanti</th><th>Chi</th></tr></thead><tbody>
-          <tr class="ex"><td><b>Transportation</b></td><td><b>2</b> ← minimo</td><td>Guff, It That Fled</td></tr>
-          <tr class="ex"><td><b>Intervention</b></td><td><b>2</b> ← minimo</td><td>Vorici, Leo</td></tr>
-          <tr><td>Fortification</td><td>3+</td><td>Aisling, Korell, Hillock…</td></tr>
-          <tr><td>Research</td><td>4+</td><td>Janus, Jorgin, Vagan, Gravicius, Riker</td></tr>
-          </tbody></table>
-          <p class="nota">Tutto lo scarto è <b>stipato nelle due divisioni che non apre mai</b>: gli fanno da <b>discarica</b>. Con soli 2 membri, ogni incontro di quella divisione è per forza uno dei due — salgono di rango in fretta e la safehouse è fatta solo della loro roba.</p>
-          <p><b>Le due mosse, in concreto:</b></p>
-          <ol class="passi">
-            <li><b>Interroga</b> chi non vuoi, finché è a rango 0: <b>esce dalla divisione</b> e resta non assegnato. Sotto 2 non scendi.</li>
-            <li>Chi non è assegnato ricompare come <b>rinforzo</b>. Incontralo <b>mentre rinforza la divisione che vuoi</b> e premi <b>Execute</b>: <i>«if their rank was zero, they will be assigned to the division of whoever they were reinforcing»</i>.</li>
-            <li>Su chi è già al posto giusto, <b>Execute</b> ogni tanto: il rango è quanto paga.</li>
-          </ol>
-          <p class="nota">💡 <b>Il leader si riconosce dalla barra gialla</b> sotto il ritratto. Chi conta «un membro per divisione» sta guardando i quattro leader, non la board.</p>
-          <h3 style="margin-top:var(--s4)">Come lo fa lui</h3>
-          <p class="nota">Usa <b>due divisioni su quattro</b> e ignora le altre. Sono anche le due più veloci: l'Intervention ti viene addosso da sola, la Transportation è una carovana che insegui e basta. Fortification vuole abbattere un cancello, Research è un laboratorio a tempo.</p>
-          <table class="mini"><thead><tr><th>Divisione</th><th>Chi ci mette</th><th>Cosa paga</th></tr></thead><tbody>
-          <tr class="ex"><td><b>Transportation</b></td><td>It That Fled</td><td>uniche <b>Foulborn</b></td></tr>
-          <tr class="ex"><td><b>Transportation</b></td><td>Guff</td><td>valuta grezza, <i>a volte un divine</i></td></tr>
-          <tr><td><b>Intervention</b></td><td>Leo</td><td>scarab <b>Ultimatum</b></td></tr>
-          <tr><td><b>Intervention</b></td><td>Vorici</td><td>scarab <b>Harvest</b></td></tr>
-          </tbody></table>
-          <h3 style="margin-top:var(--s4)">La variante a 3 divisioni</h3>
-          <p class="nota">Lui ne corre <b>due</b>. Correndo anche <b>Fortification</b> — e usando <b>Research</b> come unica discarica — entrano due membri che vale la pena cercare. Solo due su diciassette pagano scarab lì.</p>
-          <table class="mini"><thead><tr><th>Chi</th><th>Paga in Fortification</th><th>Il pezzo grosso</th></tr></thead><tbody>
-          <tr class="ex"><td><b>Janus</b></td><td><b>Kalguuran Scarabs</b></td><td><b>of Refinement 53,75 c</b></td></tr>
-          <tr class="ex"><td><b>Aisling</b></td><td>banco <b>Veiled Exalted Orb</b></td><td>l'orb costa <b>2.507 c</b></td></tr>
-          <tr><td>Haku</td><td>Domination Scarabs</td><td><i>of Terrors</i> 51,30 c</td></tr>
-          </tbody></table>
-          <p class="nota">🔴 <b>Janus paga la famiglia che questa strategia consuma</b>: in cima alle Kalguuran c'è il <b>Refinement da 53,75 c</b>, cioè il quinto scarab che qui si salta perché costa troppo.</p>
-          <p class="nota">💡 <b>Aisling è il premio più alto del Syndicate</b>, ma è un <b>banco</b>, non valuta in tasca: vale 2.507 c solo se hai il pezzo su cui usarlo. ⚠️ Il costo della variante è che <b>Fortification è l'incontro lento</b>, col cancello da abbattere — è il motivo per cui lui la salta.</p>
-          <ul class="nota">
-            <li><b>In mappa costa meno di 10 secondi</b>: spawnano addosso, li uccidi, premi Interroga e vai. Se vedi una <b>Fortification</b> o una <b>Research</b>, le salti.</li>
-            <li>🔴 <b>Interrogare abbassa il rango del membro</b>, e a rango zero <b>esce dalla divisione</b>. È il motivo per cui ogni tanto va <b>giustiziato</b> invece: <i>Execute</i> alza il rango, e un rango alto paga di più (ma il membro diventa più duro).</li>
-            <li>⚠️ <b>Puoi tenerne al massimo tre sotto interrogatorio insieme.</b> Il quarto libera il più vecchio <b>senza darti la sua intelligence</b>.</li>
-            <li>⚠️ <b>Le safehouse non arrivano spesso</b>, e lo dice lui nel video: in tutta la sessione non ne apre nessuna perché non gli escono i membri giusti. È un reddito a scatti, non costante — il <b>Syndicate Medallion</b> vale 4-5 divine.</li>
-            <li>💡 Quando apri una safehouse c'è <b>+100% esperienza</b> nella zona: se sei a caccia di livelli, è lì che conviene uccidere.</li>
-          </ul>
+            <p class="nota">🔴 <b>Quattro passive atlas su Jun che l'albero non ha</b>: <b>Lethal Extraction</b> (Execute dà <b>anche</b> intelligence), <b>Test of Loyalty</b> (+2 stelle per Execute), <b>Effective Leadership</b> (i leader compaiono il doppio), <b>Bribery</b>.</p>
+          </details>
         </div>
 
         <div class="blocco-albero">
