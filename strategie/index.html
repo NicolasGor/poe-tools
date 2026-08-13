@@ -234,24 +234,6 @@
           <p class="nota">I downside <b>non si sommano</b>: uno per altare, con un tetto di 10 (Exarch) o 12 (Eater) a mappa. Fonte: <a href="https://www.poewiki.net/wiki/Eldritch_altar" target="_blank" rel="noopener">poewiki</a>.</p>
         </details>
 
-        <h3>Rollare le mappe dallo Steam Deck</h3>
-        <p>Il link qui sopra filtra le mappe che <b>compri</b>. Queste si <b>rollano a mano</b>, e lì serve la barra di ricerca dello stash: accetta regex e legge il testo dei mod.</p>
-        <div class="rx">
-          <span class="et">Scarta le bricate — 84 caratteri, copre tutte e 18 le esclusioni</span>
-          <div class="riga"><code id="rx1">egen|rate of|lask charg|lock|aura|posur|nlucky|um res|rune|weak|eeche|tal thorn|oral</code><button type="button" data-copia="rx1">copia</button></div>
-          <span class="et">Se la barra tronca — esattamente 50 caratteri</span>
-          <div class="riga"><code id="rx2">egen|lask|lock|aura|posu|m res|eech|weak|rune|oral</code><button type="button" data-copia="rx2">copia</button></div>
-          <span class="et">Tieni solo quelle col mod buono</span>
-          <div class="riga"><code id="rx3">magic monst|rare monst</code><button type="button" data-copia="rx3">copia</button></div>
-        </div>
-        <ul class="nota">
-          <li><b>Mappe identificate</b>, poi incolla: <b>quelle che restano illuminate si rirollano</b>.</li>
-          <li>La versione da 50 lascia fuori <code>Recovery Rate</code>, <code>Unlucky on Low Life</code> ed <code>Elemental Thorns</code>: usala solo se la lunga non entra.</li>
-          <li>Qualche <b>falso positivo</b> è voluto. Costa una rirollata; un falso negativo costa una mappa bricata a metà.</li>
-          <li>Ogni frammento è stato provato contro i <b>379 mod di mappa</b>: <code>tal thorn</code> prende l'Elemental e non il Physical, che qui è innocuo.</li>
-          <li>⚠️ <b>Da provare in gioco</b>: che la barra accetti 84 caratteri e che ignori le maiuscole.</li>
-        </ul>
-
         <div class="blocco-albero">
           <h3>Albero atlas</h3>
           <div class="punti">
@@ -346,6 +328,25 @@
           <li><b>Temporal Chains</b>: rallenta tutto — cast, flask, cooldown. Su una skill canalizzata è tempo, e il tempo è il ricavo.</li>
           <li><b>Monsters cannot be Leeched from</b>.</li>
           <li><b>Elemental Thorns</b>: è il reflect del 3.29, 2.500 a danno fisso. I <b>fisici</b> restano dentro — con 4 cariche la riduzione è al <b>90%</b>, quindi 800 diventano 80.</li>
+        </ul>
+
+        <h3>Rollare le mappe dallo Steam Deck</h3>
+        <p>I link di trade filtrano le mappe che <b>compri</b>. Queste si <b>rollano a mano</b>, e lì serve la barra di ricerca dello stash: accetta regex, ignora le maiuscole e legge il testo dei mod.</p>
+        <p class="nota">Per comporne una tua c'è il <a href="../mappe/">generatore di regex</a>, che ha il preset <b>★ Questa build</b> già pronto.</p>
+        <div class="frammento">
+          <span class="et">Scarta le bricate — 84 caratteri, copre tutte e 18 le esclusioni</span>
+          <div class="riga"><code id="rx1">egen|rate of|lask charg|lock|aura|posur|nlucky|um res|rune|weak|eeche|tal thorn|oral</code><button type="button" data-copia="rx1">copia</button></div>
+          <span class="et">Se la barra tronca — esattamente 50 caratteri</span>
+          <div class="riga"><code id="rx2">egen|lask|lock|aura|posu|m res|eech|weak|rune|oral</code><button type="button" data-copia="rx2">copia</button></div>
+          <span class="et">Tieni solo quelle col mod buono</span>
+          <div class="riga"><code id="rx3">magic monst|rare monst</code><button type="button" data-copia="rx3">copia</button></div>
+        </div>
+        <ul class="nota">
+          <li><b>Mappe identificate</b>, poi incolla: <b>quelle che restano illuminate si rirollano</b>.</li>
+          <li>La versione da 50 lascia fuori <code>Recovery Rate</code>, <code>Unlucky on Low Life</code> ed <code>Elemental Thorns</code>: usala solo se la lunga non entra.</li>
+          <li>Qualche <b>falso positivo</b> è voluto. Costa una rirollata; un falso negativo costa una mappa bricata a metà.</li>
+          <li>Ogni frammento è stato provato contro i <b>379 mod di mappa</b>: <code>tal thorn</code> prende l'Elemental e non il Physical, che qui è innocuo.</li>
+          <li>⚠️ <b>Da provare in gioco</b>: che la barra accetti 84 caratteri e che ignori le maiuscole.</li>
         </ul>
 
         <div class="blocco-albero">

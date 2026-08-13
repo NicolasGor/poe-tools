@@ -98,6 +98,14 @@
 
 <script>
 const PRESET = {
+  // Le 16 esclusioni della build in uso (low life, energy shield, block).
+  // Sta per prima perche' e' quella che si usa a ogni rotazione di mappe.
+  // Il criterio non e' «fa male» ma «spegne un pilastro»: rigenerazione,
+  // cariche delle flask, block, resistenze massime, aure.
+  "★ Questa build": ["cannot Regenerate","no Life or Mana","less Recovery Rate",
+    "cannot gain Flask Charges","reduced Flask Charges","reduced Chance to Block",
+    "Players cannot Block","Non-Curse Auras","Exposure","maximum Resistances",
+    "Runes of the Searing","Elemental Weakness","Leeched","Temporal Chains"],
   "Build su Energy Shield": ["Recover","Regenerat","Leech","maximum Resistances","less Recovery"],
   "Riflesso e Thorns": ["Reflect","Thorns"],
   "Maledizioni": ["Cursed with"],
