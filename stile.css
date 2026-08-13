@@ -286,3 +286,9 @@ b,strong{font-weight:700}
 .frammento button{font-family:inherit;font-size:var(--t-xs);color:var(--gold);background:transparent;
            border:1px solid var(--line);border-radius:4px;padding:.35rem .55rem;cursor:pointer;white-space:nowrap}
 .frammento button:hover{filter:brightness(1.2)}
+
+/* .passi — passaggi numerati. Componente: serve a chiunque spieghi una procedura. */
+ol.passi{margin:0 0 var(--s4);padding-left:1.4rem;font-size:var(--t-sm);line-height:1.62;color:var(--muted)}
+ol.passi li{margin-bottom:.35rem}
+ol.passi li b{color:var(--text)}
+ol.passi::marker,ol.passi li::marker{color:var(--gold);font-weight:700}
