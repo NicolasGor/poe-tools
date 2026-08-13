@@ -404,7 +404,7 @@
     <div class="misure">
       <div class="misura"><div class="et">Difficoltà</div><div class="val">Media<small>7-8 boss a mappa · merc che one-shottano</small></div>
         <div class="tacche rischio"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
-      <div class="misura"><div class="et">Investimento</div><div class="val">~37c a mappa<small>739c per un ciclo da 20 · mappe + 3 scarab</small></div>
+      <div class="misura"><div class="et">Investimento</div><div class="val">~43c a mappa<small>850c per un ciclo da 20 · mappe + 5 scarab, fascia media</small></div>
         <div class="tacche"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
       <div class="misura"><div class="et">Resa</div><div class="val">1,30 divine/mappa<small>sessione dell'autore da 13 mappe, riprezzata</small></div>
         <div class="tacche resa"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
@@ -433,21 +433,24 @@
           <li>⚠️ Il merc col <b>flame quiver</b> tira una freccia in cielo che one-shotta: quella si schiva.</li>
         </ul>
 
-        <div class="blocco-albero">
-          <h3>🎮 Da tenere aperto mentre giochi</h3>
-          <p class="nota">Le stesse due regex della scheda Harvest — la build è la stessa, le esclusioni pure. Stanno nei <b>64 caratteri</b> della tastiera dello Steam Deck.</p>
-          <div class="frammento">
-            <span class="et"><b>1 · Le esclusioni</b> — 15 mod su 16, tutti e nove i letali · 62 caratteri</span>
-            <div class="riga"><code id="box3">"!k ch|ss r|expo|ng e|l we|e ef|na o|on-c|um r|rom$|ock$|our$"</code><button type="button" data-copia="box3">copia</button></div>
-            <span class="et"><b>2 · Temporal Chains</b> — qui senza i requisiti di quantity, che sulle conqueror non si tirano · 8 caratteri</span>
-            <div class="riga"><code id="box4">"!h tem"</code><button type="button" data-copia="box4">copia</button></div>
+          <div class="blocco-albero" id="in-gioco-3">
+            <h3>🎮 Da tenere aperto mentre giochi</h3>
+            <p class="nota">Le due regex stanno nei <b>64 caratteri</b> della tastiera dello Steam Deck. Accendono le mappe <b>da correre</b>: quelle spente si rirollano.</p>
+            <div class="frammento">
+              <span class="et"><b>1 · Le esclusioni</b> — 15 mod su 16, tutti e nove i letali · 62 caratteri</span>
+              <div class="riga"><code id="box5">"!k ch|ss r|expo|ng e|l we|e ef|na o|on-c|um r|rom$|ock$|our$"</code><button type="button" data-copia="box5">copia</button></div>
+              <span class="et"><b>2 · Temporal Chains e i due requisiti</b> — quantity ≥ 100%, pack size ≥ 40% · 45 caratteri</span>
+              <div class="riga"><code id="box6">"!h tem" "m q.*[1-9]..%" "iz.*([4-9].|\d..)%"</code><button type="button" data-copia="box6">copia</button></div>
+            </div>
+            <div class="bottoni" style="margin-top:var(--s3)">
+              <a class="albero" href="https://www.pathofexile.com/trade/search/Allflame/2K3mZl0VFk" target="_blank" rel="noopener">Comprare le mappe ↗</a><a class="albero secondario" href="https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22filters%22%3A%7B%22type_filters%22%3A%7B%22filters%22%3A%7B%22category%22%3A%7B%22option%22%3A%22map%22%7D%2C%22rarity%22%3A%7B%22option%22%3A%22nonunique%22%7D%7D%7D%2C%22map_filters%22%3A%7B%22filters%22%3A%7B%22map_tier%22%3A%7B%22min%22%3A16%2C%22max%22%3A16%7D%2C%22map_iiq%22%3A%7B%22min%22%3A100%7D%2C%22map_packsize%22%3A%7B%22min%22%3A40%7D%7D%7D%2C%22misc_filters%22%3A%7B%22filters%22%3A%7B%22foil_variation%22%3A%7B%22option%22%3A%22none%22%7D%7D%7D%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22not%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22explicit.stat_1910157106%22%7D%2C%7B%22id%22%3A%22explicit.stat_4181072906%22%7D%2C%7B%22id%22%3A%22explicit.stat_36406748%22%7D%2C%7B%22id%22%3A%22explicit.stat_2549889921%22%7D%2C%7B%22id%22%3A%22explicit.stat_3729221884%22%7D%2C%7B%22id%22%3A%22explicit.stat_419810844%22%7D%2C%7B%22id%22%3A%22explicit.stat_2450628570%22%7D%2C%7B%22id%22%3A%22explicit.stat_1026390635%22%7D%2C%7B%22id%22%3A%22explicit.stat_3376488707%22%7D%2C%7B%22id%22%3A%22explicit.stat_2073168229%22%7D%2C%7B%22id%22%3A%22implicit.stat_1792283443%7C1%22%7D%2C%7B%22id%22%3A%22implicit.stat_1792283443%7C2%22%7D%2C%7B%22id%22%3A%22implicit.stat_3624393862%7C1%22%7D%2C%7B%22id%22%3A%22implicit.stat_3624393862%7C2%22%7D%2C%7B%22id%22%3A%22implicit.stat_3624393862%7C3%22%7D%2C%7B%22id%22%3A%22implicit.stat_3624393862%7C4%22%7D%2C%7B%22id%22%3A%22enchant.stat_1715784068%22%7D%2C%7B%22id%22%3A%22explicit.stat_558910024%22%7D%2C%7B%22id%22%3A%22explicit.stat_1140978125%22%7D%2C%7B%22id%22%3A%22explicit.stat_3938822425%22%7D%2C%7B%22id%22%3A%22explicit.stat_2326202293%22%7D%2C%7B%22id%22%3A%22explicit.stat_272758639%22%7D%2C%7B%22id%22%3A%22explicit.stat_1207482628%22%7D%5D%2C%22disabled%22%3Afalse%7D%2C%7B%22type%22%3A%22count%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22explicit.stat_3126771445%22%7D%5D%2C%22value%22%3A%7B%22min%22%3A1%7D%2C%22disabled%22%3Afalse%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D" target="_blank" rel="noopener">Versione completa ↗</a>
+            </div>
+            <ul class="nota">
+              <li>Le due regex insieme fanno <b>16 su 16</b> più i requisiti di resa.</li>
+              <li><b>Comprare le mappe</b> esclude <b>14</b> mod, <b>Versione completa</b> ne esclude <b>23</b> — in più <code>reduced Chance to Block</code>, <code>cannot Block</code>, <code>cannot gain Flask Charges</code>, <code>Elemental Weakness</code>, Delirious e i quattro Guardiani Elder. Entrambi filtrano <b>Instant Buyout</b>, <b>T16</b>, <b>quantity ≥ 100%</b> — vale metà tariffa sulla lifeforce, +1% ogni +2% — <b>pack size ≥ 40%</b> e un mod <code>increased number of Rare Monsters</code>, che alimenta il nodo degli scarab.</li>
+            <li>Cosa mettere nel map device sta nel pannello <b>Scarab</b> qui accanto.</li>
+            </ul>
           </div>
-          <p class="nota">🔴 <b>Il link d'acquisto non c'è, ed è dichiarato.</b> Le conqueror map non hanno un identificativo nei dati statici del trade — nessun tipo di item, nessuno stat «Map is occupied by» per i quattro Elderslayer. Il link che avevo costruito tornava <b>0 risultati</b>, quindi non si consegna. Si comprano come nel video: cercare <code>conqueror</code> nella ricerca del trade, <b>count 1</b>, e prenderle in blocco da un solo venditore.</p>
-          <ul class="nota">
-            <li>⚠️ Le conqueror map <b>si comprano identificate e si rollano poco</b>: alch ed exalt per la quant, scour su quelle bricate. Non si cercano quantity e pack size come su Harvest — <b>quello che conta è il conqueror</b>, e ne servono set completi di tutti e quattro.</li>
-            <li>Il <b>Blessed Orb</b> rerolla <i>quale</i> conqueror c'è sopra: è così che si completano i set.</li>
-          </ul>
-        </div>
 
         <div class="blocco-albero">
           <h3>Albero atlas</h3>
@@ -466,17 +469,32 @@
 
       <div>
         <div class="pannello">
-          <h3>Scarab</h3>
-          <div class="carico"><div class="tit"><span>I tre fissi</span><span class="tot">18,74 chaos</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/trarthan-scarab.png" alt="" loading="lazy"><span class="nm">Trarthan Scarab<span class="ef">un mercenario garantito</span></span><span class="pz">1,32c</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/trarthan-scarab-of-infamy.png" alt="" loading="lazy"><span class="nm">Trarthan Scarab of Infamy<span class="ef">merc infamous + 2 vile · zaini migliori</span></span><span class="pz">15,21c</span></div>
-          <div class="sc"><span class="q">1×</span><span class="senzaicona"></span><span class="nm">Influencing Scarab of Interference<span class="ef">un boss extra attorno a ogni boss di mappa</span></span><span class="pz">2,21c</span></div>
+          <h3>Scarab — 5 slot</h3>
+          <div class="carico"><div class="tit"><span>Basso</span><span class="tot">10,27 chaos</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/trarthan-scarab.png" alt="" loading="lazy"><span class="nm">Trarthan Scarab<span class="ef">un mercenario in area</span></span><span class="pz">1,32c</span></div>
+          <div class="sc"><span class="q">1×</span><span class="senzaicona"></span><span class="nm">Influencing Scarab of Interference<span class="ef">un boss extra attorno al boss di mappa</span></span><span class="pz">2,21c</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/kalguuran-scarab.png" alt="" loading="lazy"><span class="nm">Kalguuran Scarab<span class="ef">2 giacimenti di ore in più</span></span><span class="pz">1,75c</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/betrayal-scarab.png" alt="" loading="lazy"><span class="nm">Betrayal Scarab<span class="ef">garantisce Jun in area</span></span><span class="pz">1,22c</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/scarab-of-monstrous-lineage.png" alt="" loading="lazy"><span class="nm">Scarab of Monstrous Lineage<span class="ef">+40% magic pack size — più uccisioni, la Maven spawna prima</span></span><span class="pz">3,77c</span></div>
           </div>
-          <div class="carico"><div class="tit"><span>Il quarto slot — dipende da come corri</span><span class="tot">69,76 chaos</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/horned-scarab-of-awakening.png" alt="" loading="lazy"><span class="nm">Horned Scarab of Awakening<span class="ef">boss risorti che droppano chisel</span></span><span class="pz">69,76c</span></div>
+          <div class="carico"><div class="tit"><span>Medio — si compra il mercenario buono</span><span class="tot">24,26 chaos</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/trarthan-scarab.png" alt="" loading="lazy"><span class="nm">Trarthan Scarab<span class="ef">un mercenario in area</span></span><span class="pz">1,32c</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/trarthan-scarab-of-infamy.png" alt="" loading="lazy"><span class="nm">Trarthan Scarab of Infamy<span class="ef">merc infamous + 2 vile — zaini migliori</span></span><span class="pz">15,21c</span></div>
+          <div class="sc"><span class="q">1×</span><span class="senzaicona"></span><span class="nm">Influencing Scarab of Interference<span class="ef">un boss extra attorno al boss di mappa</span></span><span class="pz">2,21c</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/kalguuran-scarab.png" alt="" loading="lazy"><span class="nm">Kalguuran Scarab<span class="ef">2 giacimenti di ore in più</span></span><span class="pz">1,75c</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/scarab-of-monstrous-lineage.png" alt="" loading="lazy"><span class="nm">Scarab of Monstrous Lineage<span class="ef">+40% magic pack size</span></span><span class="pz">3,77c</span></div>
+          </div>
+          <div class="carico"><div class="tit"><span>Alto</span><span class="tot">142,25 chaos</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/trarthan-scarab.png" alt="" loading="lazy"><span class="nm">Trarthan Scarab<span class="ef">un mercenario in area</span></span><span class="pz">1,32c</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/trarthan-scarab-of-infamy.png" alt="" loading="lazy"><span class="nm">Trarthan Scarab of Infamy<span class="ef">merc infamous + 2 vile</span></span><span class="pz">15,21c</span></div>
+          <div class="sc"><span class="q">1×</span><span class="senzaicona"></span><span class="nm">Influencing Scarab of Interference<span class="ef">un boss extra attorno al boss di mappa</span></span><span class="pz">2,21c</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/horned-scarab-of-awakening.png" alt="" loading="lazy"><span class="nm">Horned Scarab of Awakening<span class="ef">i boss di una Maven Invitation a caso — i chisel</span></span><span class="pz">69,76c</span></div>
+          <div class="sc"><span class="q">1×</span><img src="img/kalguuran-scarab-of-refinement.png" alt="" loading="lazy"><span class="nm">Kalguuran Scarab of Refinement<span class="ef">i giacimenti danno bar invece di ore grezzo</span></span><span class="pz">53,75c</span></div>
           </div>
           <ul class="nota">
-            <li>🔴 <b>Il quarto scarab non è buono o cattivo: dipende se vai a cercare i pacchetti.</b> Facendo clear come nel video rende <b>+7,6c a mappa</b>, cioè rumore. In una strategia misurata che li insegue apposta rende <b>+57c</b>.</li>
+            <li>🔴 <b>L'Awakening non è buono o cattivo: dipende se vai a cercare i pacchetti.</b> Facendo clear come nel video rende <b>+7,6c a mappa</b>, cioè rumore. In una strategia misurata che li insegue apposta rende <b>+57c</b>. Sta nella fascia alta per questo, non perché costi.</li>
+            <li>⚠️ Il <b>Refinement</b> è la voce meno sicura della fascia alta: i bar valgono più dell'ore grezzo, ma <b>quanto di più non l'ho misurato</b>. A 53,75c a mappa è la prima da togliere se il conto non torna.</li>
+            <li>Fuori da tutte e tre: il <b>Trarthan Scarab of Renown</b> (24,49c), che rende uniche le equipaggiate dei merc. È caccia al Mageblood — l'autore del video dice di non averne mai trovato uno.</li>
             <li>Su City Square i boss di mappa sono <b>tre</b>: con l'Interference si arriva a <b>7-8 boss extra</b>, più i tre della Maven. Ognuno ha il 25% di droppare uno scarab.</li>
           </ul>
         </div>
@@ -486,7 +504,20 @@
           <div class="voce"><span>Densità</span><span class="p">4 <span class="lim">bassa: media 6,29</span></span></div>
           <div class="voce"><span>Boss</span><span class="p">6 <span class="lim">tre boss di mappa</span></span></div>
           <div class="voce"><span>Scrying Orb consigliato</span><span class="p">Strand <span class="lim">3c · +4,1c a mappa</span></span></div>
-          <ul class="nota"><li>Si sceglie per il <b>layout</b>, non per la densità. Ed è la stessa mappa della scheda Harvest, quindi le due si confrontano a parità di pathing.</li></ul>
+          <ul class="nota">
+            <li>Si sceglie per il <b>layout</b>, non per la densità. Ed è la stessa mappa della scheda Harvest, quindi le due si confrontano a parità di pathing.</li>
+          </ul>
+          <h3 style="margin-top:var(--s4)">Che valori deve avere la mappa</h3>
+          <p class="nota">🔴 <b>Non 100% quantity e 40% pack size come su Harvest</b>, e il motivo è che qui le mappe <b>non si rirollano</b>: si comprano già con un conqueror sopra, e servono <b>set completi di tutti e quattro</b>. Rirollare per la quantity ti rompe il set.</p>
+          <div class="voce"><span>1 · Quale conqueror</span><span class="p">vincolo assoluto</span></div>
+          <div class="voce"><span>2 · Che la build la corra</span><span class="p">la regex</span></div>
+          <div class="voce"><span>3 · Quantity, più alta possibile</span><span class="p">nessuna soglia</span></div>
+          <div class="voce"><span>4 · Pack size</span><span class="p nulla">quasi irrilevante</span></div>
+          <ul class="nota">
+            <li><b>La quantity conta più che su Harvest</b>, e per un motivo preciso: le <b>conqueror exalt scalano con la quantity del boss</b>. Non c'è una soglia da raggiungere, si alza e basta — <b>alch ed exalt</b> su tutto quello che la build regge, <b>scour solo sulle bricate</b>.</li>
+            <li><b>Il pack size qui non alimenta niente.</b> Su Harvest servono mostri per seme dentro al Grove; qui servono solo a far spawnare prima i tre boss della Maven, che arrivano comunque.</li>
+            <li>⚠️ Se la build non regge le 8 mod si corrono <b>scoured</b>, ed è l'alternativa che dà il video: meno quantity e conqueror exalt più bassi, ma si corre.</li>
+          </ul>
         </div>
         <div class="pannello">
           <h3>Resa — 1,30 divine/mappa</h3>
