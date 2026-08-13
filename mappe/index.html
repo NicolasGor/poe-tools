@@ -89,6 +89,8 @@
   <div id="lista"></div>
 
   <footer>
+    <p><strong>Se la regex supera i 50 caratteri.</strong> Non è un difetto del generatore: <b>ogni famiglia di mod costa almeno 4 caratteri più il separatore</b>, quindi 12 famiglie non stanno in 50 nemmeno in teoria. Si <b>spezza in due passate</b> — spunti metà mod, copi, poi l'altra metà — oppure si rinuncia ai mod meno pericolosi.</p>
+    <p><strong>Da dove viene la lista.</strong> Da <code>api/trade/data/stats</code>. ⚠️ Comparirci <b>non</b> vuol dire esistere sulle mappe: i mod <code>… is Unlucky</code> ci sono ma su <b>0</b> mappe T14+, misurato il 13 agosto, contro le 10.000 di un mod di controllo. Per questo non sono nell'elenco.</p>
     <p><strong>Come si usa.</strong> Copia la regex, aprila nel campo di ricerca della stash delle mappe (o del map device). PoE accetta le espressioni regolari e <b>ignora maiuscole e minuscole</b>. Le mappe evidenziate hanno almeno uno dei mod che hai escluso.</p>
     <p><strong>Perché è così corta.</strong> Il campo di ricerca di PoE accetta <b>50 caratteri</b>. Per ogni mod scelto la pagina cerca la <b>sottostringa più breve che non compare in nessun altro mod di mappa</b>, così la regex resta minuscola pur essendo precisa. Se il contatore diventa rosso hai superato il limite: togli qualche voce.</p>
     <p><strong>Da dove vengono i mod.</strong> Da <code>api/trade/data/stats</code>, l'elenco ufficiale dei filtri di ricerca — non da una lista scritta a mano. Sono <span id="tot">…</span> modificatori.</p>
@@ -98,14 +100,18 @@
 
 <script>
 const PRESET = {
-  // Le 16 esclusioni della build in uso (low life, energy shield, block).
+  // Le 15 esclusioni della build in uso (low life, energy shield, block).
   // Sta per prima perche' e' quella che si usa a ogni rotazione di mappe.
   // Il criterio non e' «fa male» ma «spegne un pilastro»: rigenerazione,
   // cariche delle flask, block, resistenze massime, aure.
+  // ⚠️ Erano 19: quattro erano fantasmi. I mod «... is Unlucky» non esistono
+  // sulle mappe — misurati sul trade il 13 agosto, 0 inserzioni T14+ contro le
+  // 10.000 del controllo. Restano esclusi dal link di trade, dove non costano.
   "★ Questa build": ["cannot Regenerate","no Life or Mana","less Recovery Rate",
     "cannot gain Flask Charges","reduced Flask Charges","reduced Chance to Block",
     "Players cannot Block","Non-Curse Auras","Exposure","maximum Resistances",
-    "Runes of the Searing","Elemental Weakness","Leeched","Temporal Chains"],
+    "Runes of the Searing","Elemental Weakness","Leeched","Temporal Chains",
+    "Elemental Thorns"],
   "Build su Energy Shield": ["Recover","Regenerat","Leech","maximum Resistances","less Recovery"],
   "Riflesso e Thorns": ["Reflect","Thorns"],
   "Maledizioni": ["Cursed with"],

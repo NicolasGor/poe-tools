@@ -362,7 +362,9 @@
   "Monsters Reflect Hexes",
   "Monsters reflect #% of Elemental Damage",
   "Monsters reflect #% of Physical Damage",
-  "Players reflect #% of Melee Physical Damage taken"
+  "Players reflect #% of Melee Physical Damage taken",
+  "Rare Monsters have Elemental Thorns reflecting # Elemental Damage",
+  "Rare Monsters have Physical Thorns reflecting # Physical Damage"
  ],
  "Maledizioni": [
   "Players are Cursed with Conductivity",
