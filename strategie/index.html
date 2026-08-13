@@ -334,18 +334,16 @@
         <p>I link di trade filtrano le mappe che <b>compri</b>. Queste si <b>rollano a mano</b>, e lì serve la barra di ricerca dello stash: accetta regex, ignora le maiuscole e legge il testo dei mod.</p>
         <p class="nota">Per comporne una tua c'è il <a href="../mappe/">generatore di regex</a>, che ha il preset <b>★ Questa build</b> già pronto.</p>
         <div class="frammento">
-          <span class="et">Tutte e quindici — 64 caratteri. Copia da qui, incolla in gioco.</span>
-          <div class="riga"><code id="rx3">egen|ate of|lask|lock|uras|posur|m res|rune|weak|eeche|horn|oral</code><button type="button" data-copia="rx3">copia</button></div>
+          <span class="et">1 · Tredici esclusioni su quindici, tutti i mod letali — 49 caratteri</span>
+          <div class="riga"><code id="rx1">rege|to a|thor|of l|be l|bloc|flas|of n|expo|rune</code><button type="button" data-copia="rx1">copia</button></div>
+          <span class="et">2 · Le ultime due, Elemental Weakness e Temporal Chains — 9 caratteri</span>
+          <div class="riga"><code id="rx2">weak|oral</code><button type="button" data-copia="rx2">copia</button></div>
           <span class="et">Tieni solo quelle col mod buono</span>
           <div class="riga"><code id="rx4">magic monst|rare monst</code><button type="button" data-copia="rx4">copia</button></div>
-          <span class="et">Se preferisci digitarla: 1 · quelli che ti ammazzano, 33 caratteri</span>
-          <div class="riga"><code id="rx1">egen|ate of|lock|m res|eeche|horn</code><button type="button" data-copia="rx1">copia</button></div>
-          <span class="et">2 · quelli che costano tempo o danno, 30 caratteri</span>
-          <div class="riga"><code id="rx2">lask|uras|posur|rune|weak|oral</code><button type="button" data-copia="rx2">copia</button></div>
         </div>
         <ul class="nota">
           <li><b>Mappe identificate</b>, poi incolla: <b>quelle che restano illuminate si rirollano</b>.</li>
-          <li><b>Sullo Steam Deck si incolla</b>: copi da qui e incolli nel campo di ricerca. Con la clipboard la lunghezza non è più un problema, quindi la <b>stringa unica</b> è quella giusta.</li><li><b>Le due corte servono se preferisci digitare</b> (tastiera a schermo con <b>STEAM + X</b>). In quel caso digita la prima: sono gli otto mod che tolgono rigenerazione, recupero, block, resistenze massime, leech o mettono i Thorns. Gli altri sette costano tempo o danno, non la vita.</li><li>Le stringhe sono <b>tutte minuscole apposta</b>: sulla tastiera a schermo lo shift raddoppia i tocchi.</li><li>15 esclusioni stanno in <b>12 famiglie</b> e ogni famiglia costa almeno 4 caratteri più il separatore: sotto i <b>59</b> la copertura completa <b>non esiste</b>, in nessuna forma.</li>
+          <li>🔴 <b>La barra di ricerca si ferma a 50 caratteri</b> — provato in gioco. Per questo sono due: nessuna stringa sola può coprire tutto, e queste due insieme fanno <b>15 su 15</b>.</li><li><b>Incolli la prima, rirolli quelle illuminate, incolli la seconda.</b> La prima da sola copre <b>tutti e otto i mod che possono ucciderti</b>: se hai fretta, fermati lì.</li><li>I frammenti sono calcolati contro i <b>357 mod di mappa</b>, i <b>nomi delle mappe</b> e il testo fisso dell'item — un frammento che cadesse sul nome accenderebbe la mappa sempre. ⚠️ Sono tarati su <b>City Square</b>: su altre mappe vanno ricontrollati.</li><li>Qualche <b>falso positivo</b> è voluto: costa una rirollata, mentre un falso negativo costa una mappa bricata a metà.</li>
           <li>Qualche <b>falso positivo</b> è voluto. Costa una rirollata; un falso negativo costa una mappa bricata a metà.</li>
           <li>⚠️ <b>Da provare in gioco</b>: quanti caratteri accetta davvero la barra. Se ne accetta 64, la terza stringa basta da sola.</li>
         </ul>
