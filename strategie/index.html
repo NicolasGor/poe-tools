@@ -334,18 +334,18 @@
         <p>I link di trade filtrano le mappe che <b>compri</b>. Queste si <b>rollano a mano</b>, e lì serve la barra di ricerca dello stash: accetta regex, ignora le maiuscole e legge il testo dei mod.</p>
         <p class="nota">Per comporne una tua c'è il <a href="../mappe/">generatore di regex</a>, che ha il preset <b>★ Questa build</b> già pronto.</p>
         <div class="frammento">
-          <span class="et">Passata 1 — recupero, flask, block · 21 caratteri</span>
-          <div class="riga"><code id="rx1">egen|ate of|lask|lock</code><button type="button" data-copia="rx1">copia</button></div>
-          <span class="et">Passata 2 — il resto · 42 caratteri</span>
-          <div class="riga"><code id="rx2">uras|posur|m res|rune|weak|eeche|horn|oral</code><button type="button" data-copia="rx2">copia</button></div>
-          <span class="et">Tutto insieme · 64 caratteri, se la barra li accetta</span>
+          <span class="et">1 · Quelli che ti ammazzano — 33 caratteri</span>
+          <div class="riga"><code id="rx1">egen|ate of|lock|m res|eeche|horn</code><button type="button" data-copia="rx1">copia</button></div>
+          <span class="et">2 · Quelli che costano tempo o danno — 30 caratteri</span>
+          <div class="riga"><code id="rx2">lask|uras|posur|rune|weak|oral</code><button type="button" data-copia="rx2">copia</button></div>
+          <span class="et">Tutte e quindici insieme — 64 caratteri, se la barra li accetta</span>
           <div class="riga"><code id="rx3">egen|ate of|lask|lock|uras|posur|m res|rune|weak|eeche|horn|oral</code><button type="button" data-copia="rx3">copia</button></div>
           <span class="et">Tieni solo quelle col mod buono</span>
           <div class="riga"><code id="rx4">magic monst|rare monst</code><button type="button" data-copia="rx4">copia</button></div>
         </div>
         <ul class="nota">
           <li><b>Mappe identificate</b>, poi incolla: <b>quelle che restano illuminate si rirollano</b>.</li>
-          <li><b>Due passate e non una</b>: 15 esclusioni stanno in 12 famiglie, quindi il minimo teorico è <b>59 caratteri</b>. Sotto i 50 la copertura completa in una stringa sola <b>non esiste</b>.</li>
+          <li><b>Se ne digiti una sola, digita la prima.</b> Sono gli otto mod che tolgono rigenerazione, recupero, block, resistenze massime, leech o mettono i Thorns: gli altri sette costano tempo o danno, non la vita.</li><li><b>Due passate e non una</b>: 15 esclusioni stanno in 12 famiglie, quindi il minimo teorico è <b>59 caratteri</b>. Sotto i 50 la copertura completa in una stringa sola <b>non esiste</b>.</li><li><b>Sul Deck</b>: tastiera a schermo con <b>STEAM + X</b>. Le stringhe sono tutte <b>minuscole apposta</b>, così non serve lo shift.</li>
           <li>Qualche <b>falso positivo</b> è voluto. Costa una rirollata; un falso negativo costa una mappa bricata a metà.</li>
           <li>⚠️ <b>Da provare in gioco</b>: quanti caratteri accetta davvero la barra. Se ne accetta 64, la terza stringa basta da sola.</li>
         </ul>
