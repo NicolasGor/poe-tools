@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Craft dell'armatura — il metodo a strand</title>
+<meta name="description" content="Come craftare petto, elmo, guanti e stivali con triplo prefisso T1 su basi sovra-qualità: memory strand, imprint, Allflame Bench. Il metodo di Master T, con i prezzi dei materiali misurati su poe.ninja.">
+<link rel="stylesheet" href="../stile.css">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+  /* solo ciò che è davvero di questa pagina */
+  .verdetto{
+    background:linear-gradient(180deg,rgba(240,185,74,.10),rgba(240,185,74,.02));
+    border:1px solid rgba(240,185,74,.42);border-radius:6px;
+    padding:1rem 1.15rem;margin-bottom:var(--s5);
+  }
+  .verdetto h2{margin:0 0 .5rem;font-size:var(--t-base);color:var(--gold)}
+  .verdetto p{margin:0 0 .5rem;font-size:var(--t-sm);color:var(--muted);line-height:1.62}
+  .verdetto p:last-child{margin:0}
+  .verdetto b{color:var(--text)}
+
+  .fase{margin-bottom:var(--s3)}
+  .fase > h3{display:flex;align-items:baseline;gap:.6rem;font-size:var(--t-md);margin-bottom:.2rem}
+  .fase > h3 .num{
+    font-family:var(--mono);font-size:var(--t-sm);color:var(--gold);
+    border:1px solid var(--line2);border-radius:3px;padding:.05rem .45rem;flex:none;
+  }
+  .fase > h3 .num.grave{color:var(--bad);border-color:rgba(229,120,109,.45)}
+  .fase > .quando{font-size:var(--t-xs);color:var(--label);margin-bottom:var(--s3);
+    text-transform:uppercase;letter-spacing:.08em}
+
+  ol.spunte{list-style:none;margin:0;padding:0}
+  ol.spunte > li{
+    display:grid;grid-template-columns:1.4rem 1fr;gap:.6rem;
+    padding:.6rem 0;border-bottom:1px solid var(--line);align-items:start;
+  }
+  ol.spunte > li:last-child{border-bottom:0}
+  ol.spunte input[type=checkbox]{
+    width:1.05rem;height:1.05rem;margin-top:.15rem;accent-color:var(--gold);cursor:pointer;
+  }
+  ol.spunte .testo{font-size:var(--t-sm);line-height:1.6}
+  ol.spunte .testo b{color:var(--text)}
+  ol.spunte .testo em{color:var(--label);font-style:normal;font-size:var(--t-xs);display:block;margin-top:.25rem}
+  li.fatto .testo{opacity:.45;text-decoration:line-through;text-decoration-color:var(--line2)}
+
+  .stop{border-left:3px solid var(--bad);padding-left:.8rem;margin:var(--s3) 0 0}
+  .stop b{color:var(--bad)}
+
+  .errori li{margin-bottom:.6rem;font-size:var(--t-sm);line-height:1.58}
+  .errori b{color:var(--bad)}
+
+  .fonte{font-size:var(--t-xs);color:var(--label);line-height:1.65}
+  .fonte b{color:var(--muted)}
+  .su{color:var(--bad)} .giu{color:var(--good)}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="marchio" href="../index.html">PoE <span>Tools</span></a>
+    <div class="nav-link">
+      <a href="../atlante/">Atlante</a>
+      <a href="../strategie/">Strategie</a>
+      <a href="../farming/">Farming</a>
+      <a href="../scrying/">Scrying</a>
+      <a href="../mappe/">Mod mappa</a>
+      <a href="../build-confronto/">Build</a>
+      <a href="../heist/">Heist</a>
+      <a href="../whisper/">Whisper</a>
+      <a href="../craft/" aria-current="page">Craft</a>
+    </div>
+    <span class="nav-patch">patch 3.29.2</span>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="testata">
+    <h1>Craft dell'armatura — il metodo a strand</h1>
+    <p class="sub">Petto, elmo, guanti e stivali si craftano <b>con gli stessi identici passi</b>. Il metodo è quello di Master T; i <b>prezzi dei materiali sono rimisurati qui</b> su poe.ninja, non copiati dal video.</p>
+    <div class="badges">
+      <span class="badge">patch 3.29.2</span>
+      <span class="badge">lega Allflame</span>
+      <span class="badge">armour/ES · ES puro · evasion</span>
+      <span class="badge oro">prezzi del 15 agosto 2026</span>
+    </div>
+  </header>
+
+  <div class="verdetto">
+    <h2>Cosa compra questo metodo, in una riga</h2>
+    <p><b>Tre prefissi T1 su una base sovra-qualità</b> — cioè l'unica cosa che il recombinator <b>non può</b> fare.</p>
+    <p>Le basi a 27-29% di qualità <b>non esistono in quantità</b>: per recombinare ne servirebbero cento da alt-spammare, e sul trade ce ne sono ventinove in tutto, quasi tutte già craftate. Gli strand aggirano il problema perché <b>non servono cento tentativi: serve un tentativo su cui i tier alti sono quasi garantiti</b>.</p>
+    <p>⚠️ <b>Sotto il 26-27% di qualità non vale la pena.</b> Lì il metodo giusto resta recombinare o comprare la base già fatta: lo dice l'autore stesso in chiusura.</p>
+  </div>
+
+  <h2 class="sec">I numeri del video</h2>
+  <div class="kpi">
+    <div><b class="val">180 div</b><span>quattro pezzi, basi incluse</span></div>
+    <div><b class="val">~1 h 30</b><span>tempo dichiarato</span></div>
+    <div><b>~300 div</b><span>gli stessi pezzi sul trade</span></div>
+    <div><b style="color:var(--gold)">92 c</b><span>Orb of Remembrance oggi</span></div>
+  </div>
+  <p class="nota muto" style="margin-top:var(--s3)">
+    100 div sono i tre pezzi piccoli con le loro basi; <b>180 con la base del petto</b>, Sacred Orb e Tailoring compresi. Il confronto col trade è la sua misura, non la mia: <b>elmo 1600 armour / 370 ES = 90 div</b>, guanti da 950 armour / 200 ES <b>zero inserzioni</b>, stivali <b>zero inserzioni</b>, e il petto da 1360 ES aveva <b>una</b> inserzione che da sola costava quanto tutti e quattro i pezzi.
+  </p>
+
+  <h2 class="sec">Prima di comprare: l'item level della base</h2>
+  <table class="tabella">
+    <thead><tr><th>Pezzo</th><th class="n">per la difesa T1</th><th class="n">per l'altro T1 che conta</th></tr></thead>
+    <tbody>
+      <tr><td><b>Petto</b></td><td class="n"><b>86</b></td><td class="n">—</td></tr>
+      <tr><td><b>Elmo</b></td><td class="n">84</td><td class="n"><b>85</b> per l'intelligenza T1</td></tr>
+      <tr><td><b>Guanti</b></td><td class="n">84</td><td class="n"><b>85</b> per la destrezza T1</td></tr>
+      <tr><td><b>Stivali</b></td><td class="n">84</td><td class="n"><b>86</b> per il movimento 35%</td></tr>
+    </tbody>
+  </table>
+  <p class="nota muto" style="margin-top:var(--s3)">
+    Regola corta: <b>84 per elmo e guanti, 86 per petto e stivali</b>. Sugli stivali l'86 serve <b>solo</b> se vuoi il 35% di movimento invece del 30 — se non ti interessa, 84 e risparmi.
+    <br>Sui guanti la destrezza è il modificatore universale che <b>chiede sempre l'ilvl più alto</b>: è lei a decidere, non la difesa.
+  </p>
+
+  <h2 class="sec">Quale base, e quanta qualità</h2>
+  <table class="tabella">
+    <thead><tr><th>Slot</th><th>Base ES più alta</th><th>Come si sceglie in generale</th></tr></thead>
+    <tbody>
+      <tr><td>Petto</td><td><b>Twilight Regalia</b></td><td rowspan="4" style="vertical-align:top;color:var(--muted)">Nella lista delle basi per tipo, <b>l'ultima in basso a destra è quella con la difesa più alta</b>. Per l'endgame si prende <b>solo</b> quella: 30 punti di difesa base sembrano pochi, ma vengono moltiplicati da tutte le percentuali e diventano centinaia.</td></tr>
+      <tr><td>Elmo</td><td><b>Lich Circlet</b></td></tr>
+      <tr><td>Guanti</td><td><b>Warlord Gloves</b></td></tr>
+      <tr><td>Stivali</td><td><b>Warlord Boots</b></td></tr>
+    </tbody>
+  </table>
+  <p class="nota muto" style="margin-top:var(--s3)">
+    <b>La qualità è la variabile di spesa, ed è dove finisce quasi tutto il budget.</b> Un Twilight Regalia ilvl 86 senza qualità sta sui <b>20 chaos</b>; a <b>29%</b> ce n'erano <b>29 in tutto</b> sul trade, quasi tutti già craftati.
+    <br>🔴 <b>Non puntare al 30%.</b> Fra 29 e 30 il prezzo passa da decine di divine a <b>un mirror</b>, e le basi non craftate al 30 praticamente non esistono. Se il budget è corto si scende di qualità, non di tipo di base.
+    <br>⚠️ Le basi vanno comprate <b>non corrotte, non fratturate e senza influenza</b>.
+  </p>
+
+  <h2 class="sec">Il craft, passo per passo</h2>
+
+  <section class="fase card" style="padding:var(--s4)">
+    <h3><span class="num">1</span> Mettere gli strand</h3>
+    <div class="quando">Orb of Remembrance · è il cuore di tutto</div>
+    <ol class="spunte">
+      <li data-p="scour"><input type="checkbox"><div class="testo"><b>Scour la base</b> fino a item normale.</div></li>
+      <li data-p="strand"><input type="checkbox"><div class="testo">🔴 <b>Orb of Remembrance finché non vedi 70 strand o più.</b> Il tiro va da <b>0 a 100</b>.<em>60 e passa è accettabile con poco budget, ma <b>gli strand che avanzano sono quelli che ti salvano dopo</b>: la fase 6 li spende tutti in una volta.<br>Nel video sono serviti una ventina di tiri per vedere un 89.</em></div></li>
+      <li data-p="capire-strand"><input type="checkbox"><div class="testo"><b>Cosa fanno:</b> ogni orbo che <b>slammi</b> sull'item ha una probabilità altissima di uscire <b>tier alto</b>.<em>Non ripuliscono il pool: accuracy, riflessione e le altre schifezze possono ancora uscire — ma escono a T1. E non è una garanzia assoluta: ogni tanto passa un T3-T4.<br>⚠️ <b>Harvest e fossili non consumano strand — e non ne ricevono nessun beneficio.</b> Gli strand valgono solo sugli slam di orbi.</em></div></li>
+      <li data-p="craft-bench"><input type="checkbox"><div class="testo"><b>Crafta un modificatore qualsiasi al banco</b> — mana o vita, i primi della lista.</div></li>
+    </ol>
+  </section>
+
+  <section class="fase card" style="padding:var(--s4)">
+    <h3><span class="num">2</span> Imprint, poi Regal</h3>
+    <div class="quando">Beastcraft · è la rete di sicurezza, non un extra</div>
+    <ol class="spunte">
+      <li data-p="bestie"><input type="checkbox"><div class="testo"><b>Compra le bestie:</b> un <b>Craicic Chimeral</b> (~124 c nel video) più <b>3 bestie rare gialle</b> (~3 c l'una) per ogni imprint.<em>💡 Prendi i Chimeral con <b>20% chance to not be consumed</b>: costano uguale e uno su cinque te lo tieni.<br>Le bestie gialle si riconoscono perché hanno <b>una sola riga rossa</b>.</em></div></li>
+      <li data-p="imprint"><input type="checkbox"><div class="testo"><b>Fai l'imprint del magic</b> nel Menagerie. È una copia a cui puoi tornare.<em>Se hai currency, fanne <b>più di uno</b> subito: eviti di tornare al Menagerie a ogni fallimento.</em></div></li>
+      <li data-p="regal"><input type="checkbox"><div class="testo">🔴 <b>Regal.</b> Il Regal <b>mangia da 0 a 16 strand</b>: è qui che si perde il tiro buono.<em>Se ne toglie troppi, <b>reimprint e si rifà</b>. Nel video un Regal ne ha tolto 1, un altro 13.<br>✅ <b>Non buttare l'imprint dopo</b>: resta valido come ripristino anche nelle fasi successive.</em></div></li>
+    </ol>
+  </section>
+
+  <section class="fase card" style="padding:var(--s4)">
+    <h3><span class="num">3</span> Due prefissi T1</h3>
+    <div class="quando">Harvest reforge defence · qui va via il grosso della lifeforce</div>
+    <ol class="spunte">
+      <li data-p="reforge"><input type="checkbox"><div class="testo"><b>Reforge defence</b> finché non hai <b>due prefissi T1</b>: il piatto e la percentuale.<em>Suffissi e terzo prefisso <b>non contano</b>, si sistemano dopo.<br>Costa <b>75 Primal Lifeforce</b> a tiro = <b>2,7 chaos</b>. Il video ne mette in conto <b>75.000</b> per quattro pezzi, cioè circa mille tiri: <b>~2.700 chaos, ~14 divine</b>.<br>💡 Il Dense Fossil fa lo stesso lavoro ma costa <b>11,78 c</b> più il risuonatore: <b>quattro volte tanto</b>, oltre al clic in più.</em></div></li>
+      <li data-p="pob-numero"><input type="checkbox"><div class="testo">💡 <b>Non leggere i mod a ogni tiro: guarda il numero della difesa in cima.</b><em>In Path of Building costruisci la stessa base e leggi cosa fa un doppio T1. Nel video, su un elmo 29%: <b>T1 piatto + T1 percentuale = 1237 armour</b>, l'ibrido T1 col piatto T1 = 891, la terza combinazione 1224. <b>Sopra ~890 vale la pena fermarsi a guardare</b>, sotto si continua a cliccare.</em></div></li>
+      <li data-p="exarch"><input type="checkbox"><div class="testo"><b>Metti l'influenza Searing Exarch</b> (Eldritch Ember) <b>prima</b>, non dopo.<em>Serve a togliere con un <b>Eldritch Annul</b> un terzo prefisso morto senza toccare gli altri due. L'Ember dev'essere il <b>maggiore</b> dei due impliciti.</em></div></li>
+    </ol>
+    <div class="stop"><b>Attenzione.</b> È il passo che l'autore sbaglia due volte nel video: annulla senza controllare quale implicito è maggiore, e <b>cancella il prefisso T1 invece del suffisso</b>. Ember maggiore ⇒ tocca i prefissi. Ichor maggiore ⇒ tocca i suffissi.</div>
+  </section>
+
+  <section class="fase card" style="padding:var(--s4)">
+    <h3><span class="num">4</span> Riempire i suffissi</h3>
+    <div class="quando">Prima dello slam, sempre</div>
+    <ol class="spunte">
+      <li data-p="riempire"><input type="checkbox"><div class="testo">🔴 <b>Tutti e tre i suffissi devono essere occupati.</b> Altrimenti l'exalt della fase 5 può finire lì invece che sul prefisso.</div></li>
+      <li data-p="multimod"><input type="checkbox"><div class="testo">✅ <b>Il modo migliore non è nel video, è nei commenti — e l'autore l'ha accettato.</b> <i>Can have up to 3 crafted modifiers</i> (multimod) e poi ci crafti sopra i suffissi che mancano: <b>lo slam è garantito sul prefisso</b>.<em>Costa <b>2 divine</b> di multimod, contro <b>1-3 divine</b> di lifeforce spesi a riprovare. Parole dell'autore: <i>«spending the 2D would be much better»</i>.<br>💡 Alternativa dai commenti: il beastcraft <b>add 1 suffix / remove 1 prefix</b>.</em></div></li>
+      <li data-p="exalt-suffissi"><input type="checkbox"><div class="testo">⚠️ <b>Il modo del video</b> — exaltare i suffissi vuoti — <b>consuma strand</b> (0-32 a slam) e su una base da 70 divine è il rischio da non correre.</div></li>
+    </ol>
+  </section>
+
+  <section class="fase card" style="padding:var(--s4)">
+    <h3><span class="num">5</span> Lo slam del terzo prefisso</h3>
+    <div class="quando">Allflame Bench · 4 copie fra cui scegliere</div>
+    <ol class="spunte">
+      <li data-p="slam"><input type="checkbox"><div class="testo"><b>Exalted Orb dentro l'Allflame Bench.</b> Ti mostra <b>quattro copie fantasma</b> e ne scegli una.<em>Consuma <b>0-32 strand</b>.</em></div></li>
+      <li data-p="exalt-normale"><input type="checkbox"><div class="testo">🔴 <b>Exalted Orb normale, non Foulborn.</b> <b>1,78 c contro 967 c</b> — <b>543 volte</b> il prezzo.<em>Il Foulborn dà <b>meno</b> copie e alza appena le probabilità di tier alto: gli strand fanno già quel lavoro.</em></div></li>
+      <li data-p="pesi"><input type="checkbox"><div class="testo">⚠️ <b>Aspettati vita e mana.</b> Hanno il peso più alto nel pool; ES, armour e ibridi ne hanno meno.<em>Nel video il petto ha richiesto <b>tre giri</b> prima di vedere il piatto di ES.</em></div></li>
+      <li data-p="scelta-copia"><input type="checkbox"><div class="testo"><b>Fra due copie equivalenti scegli quella con <i>intangibility</i> più bassa</b>, e a parità quella con più strand.<em>L'intangibility è la probabilità che il banco <b>non</b> ti dia le copie extra la volta dopo: cresce a ogni uso e sopra il 28% comincia a farsi sentire.</em></div></li>
+    </ol>
+  </section>
+
+  <section class="fase card" style="padding:var(--s4)">
+    <h3><span class="num">6</span> Alzare di tier — Orb of Unravelling</h3>
+    <div class="quando">6 chaos · è il recupero quando lo slam esce T2</div>
+    <ol class="spunte">
+      <li data-p="unravel"><input type="checkbox"><div class="testo"><b>Consuma <i>tutti</i> gli strand rimasti</b> e prova ad alzare di tier <b>tutti</b> i modificatori.<em>Più strand restano, più alta è la probabilità. È qui che il 70 iniziale ripaga: dopo Regal e slam, da 89 ne restavano 41 — e sono bastati.<br>Nel banco dà <b>2 copie</b>, non 4.</em></div></li>
+      <li data-p="pulire"><input type="checkbox"><div class="testo">🔴 <b>Prima togli i suffissi che non sono T1.</b> Altrimenti si prendono loro l'upgrade.<em>Si fa con <b>Ichor maggiore + Ember minore</b> ed Eldritch Annul: <b>0,28 c + 0,07 c</b>, praticamente gratis.</em></div></li>
+      <li data-p="rischio-unravel"><input type="checkbox"><div class="testo">⚠️ <b>Usarlo dentro il banco brucia l'imprint</b>: da lì non si torna più indietro, e ristrandare aggiunge intangibility.<em>Regola dell'autore: <b>si rischia solo con doppio T1 + un T2</b>. Con T2 e T3 in mano non vale la pena.</em></div></li>
+    </ol>
+  </section>
+
+  <section class="fase card" style="padding:var(--s4)">
+    <h3><span class="num">7</span> I suffissi</h3>
+    <div class="quando">Il trucco vero è sulla resistenza al caos</div>
+    <ol class="spunte">
+      <li data-p="chaos-res"><input type="checkbox"><div class="testo">🔴 <b>Resistenza al caos: «Prefixes cannot be changed» + Harvest reforge chaos.</b> È <b>garantita</b>.<em>Sull'armatura <b>l'unico suffisso con tag caos è la resistenza al caos</b>: il reforge non ha altro da darti. Il <b>tier</b> però è casuale — se esce T4 si ripete.<br>Confronto: con l'Eldritch Chaos la res caos ha <b>0,2%</b> di probabilità (contro l'8% di un attributo). Il reforge costa <b>100 Vivid = 6,4 chaos</b> a tiro.</em></div></li>
+      <li data-p="altri-suffissi"><input type="checkbox"><div class="testo"><b>Gli altri suffissi:</b> <b>Ichor maggiore + Ember minore</b>, poi Eldritch Chaos (29,6 c) e Eldritch Annul (30,4 c) finché non esce quello che vuoi.<em>💡 <b>Blocca al banco il modificatore col peso più alto</b> — di solito le resistenze — così il pool si stringe su quello che cerchi.<br>💡 Con strand residui l'Eldritch Chaos dà <b>due copie</b> invece di una: usali qui se ne sono avanzati.</em></div></li>
+      <li data-p="attributi"><input type="checkbox"><div class="testo"><b>Due attributi sullo stesso pezzo</b> si fanno con il <b>Kishara's Ducat</b>, che converte un attributo in un altro.<em>Metodo: prendi l'intelligenza → crafti destrezza per bloccarla → il Ducat è costretto a darti forza → ora l'intelligenza è di nuovo tirabile.<br>⚠️ <b>Lo dice lui stesso: non copiarlo.</b> Lo ha fatto solo perché aveva già gli attributi sugli stivali. La via semplice è <b>attributi su stivali, resistenza al caos sul petto</b>.</em></div></li>
+    </ol>
+  </section>
+
+  <section class="fase card" style="padding:var(--s4)">
+    <h3><span class="num grave">8</span> Tailoring Orb — solo sul petto, e solo se non è linkato</h3>
+    <div class="quando">210 chaos · l'unico passo che può distruggere il lavoro fatto</div>
+    <ol class="spunte">
+      <li data-p="tailoring"><input type="checkbox"><div class="testo"><b>Dà l'enchant <i>increased explicit Defence Modifier magnitudes</i></b>: 8% secco, 6%+6% resistenze, 6%+6% attributi, <b>12% con −50% resistenze</b>, 10% con tutti i socket blu.<em>Tre copie fra cui scegliere. Nel video è uscito l'8% secco.</em></div></li>
+      <li data-p="tailoring-socket"><input type="checkbox"><div class="testo">🔴 <b>L'esito «all sockets are linked» ha cancellato i socket del petto, in diretta.</b> Reazione dell'autore: <i>«That's not supposed to happen»</i>.<em><b>Su un petto 6-linkato questo passo si salta.</b> Il pool degli enchant è largo e il premio vale una cinquantina di ES: non si scommette un 6-link.</em></div></li>
+    </ol>
+  </section>
+
+  <section class="fase card" style="padding:var(--s4)">
+    <h3><span class="num">9</span> Divine e percentile della base</h3>
+    <div class="quando">Ultimo · è ottimizzazione, non craft</div>
+    <ol class="spunte">
+      <li data-p="divine"><input type="checkbox"><div class="testo"><b>Divine dentro l'Allflame Bench</b>: un Divine dà <b>quattro tiri</b> fra cui scegliere.<em>⚠️ Ma il controllo di intangibility può fallire — nel video era al <b>47%</b> di fallimento.</em></div></li>
+      <li data-p="sacred"><input type="checkbox"><div class="testo"><b>Sacred Orb</b> (41 c) per il <b>percentile della base</b>, cioè il range stampato in cima all'item.<em>Nel video ne sono serviti <b>una quarantina</b> — circa 10 divine — per arrivare a uno scarto dal massimo. <b>È facoltativo</b>: è l'ultimo 1%.</em></div></li>
+      <li data-p="divine-suffissi"><input type="checkbox"><div class="testo">💡 <b>Si possono divinare anche i soli suffissi:</b> «Prefixes cannot be changed» e poi Divine.</div></li>
+    </ol>
+  </section>
+
+  <h2 class="sec">I materiali, coi prezzi di oggi</h2>
+  <table class="tabella">
+    <thead><tr><th>Materiale</th><th class="n">chaos</th><th class="n">volume</th><th class="n">7 giorni</th><th>A cosa serve</th></tr></thead>
+    <tbody>
+      <tr><td><b>Orb of Remembrance</b></td><td class="n"><b>91,95</b></td><td class="n">92.288</td><td class="n su">+34%</td><td>gli strand — fase 1</td></tr>
+      <tr><td>Orb of Unravelling</td><td class="n">5,99</td><td class="n">1.859</td><td class="n giu">−17%</td><td>alzare di tier — fase 6</td></tr>
+      <tr><td>Exalted Orb</td><td class="n">1,78</td><td class="n">141.983</td><td class="n giu">−3%</td><td>lo slam — fase 5</td></tr>
+      <tr><td class="muto">Foulborn Exalted Orb</td><td class="n muto">967,00</td><td class="n muto">108.945</td><td class="n muto">+2%</td><td class="muto">🔴 <b>non serve</b>: 543× e dà meno copie</td></tr>
+      <tr><td>Primal Lifeforce</td><td class="n">0,0355</td><td class="n">495.976</td><td class="n su">+12%</td><td><b>75</b> a reforge defence = 2,7 c</td></tr>
+      <tr><td>Vivid Lifeforce</td><td class="n">0,0644</td><td class="n">2.852.393</td><td class="n su">+34%</td><td><b>100</b> a reforge chaos = 6,4 c</td></tr>
+      <tr><td>Dead Man's Sulphur</td><td class="n">0,0079</td><td class="n">1.179.369</td><td class="n su">+21%</td><td>alimenta l'Allflame Bench — <b>126 al chaos</b></td></tr>
+      <tr><td>Eldritch Chaos Orb</td><td class="n">29,58</td><td class="n">157.163</td><td class="n giu">−32%</td><td>i suffissi — fase 7</td></tr>
+      <tr><td>Eldritch Orb of Annulment</td><td class="n">30,36</td><td class="n">119.644</td><td class="n giu">−30%</td><td>togliere un mod di un lato solo</td></tr>
+      <tr><td>Greater Eldritch Ichor</td><td class="n">0,28</td><td class="n">7.951</td><td class="n giu">−38%</td><td>rende bersaglio i <b>suffissi</b></td></tr>
+      <tr><td>Lesser Eldritch Ember</td><td class="n">0,07</td><td class="n">2.689</td><td class="n giu">−55%</td><td>la metà minore della coppia</td></tr>
+      <tr><td>Sacred Orb</td><td class="n">40,94</td><td class="n">49.276</td><td class="n giu">−11%</td><td>percentile della base — fase 9</td></tr>
+      <tr><td>Tailoring Orb</td><td class="n">209,60</td><td class="n">192.551</td><td class="n su">+16%</td><td>enchant del petto — fase 8</td></tr>
+      <tr><td>Divine Orb</td><td class="n">196,20</td><td class="n">21.623.201</td><td class="n giu">−9%</td><td>il cambio, e il divine finale</td></tr>
+    </tbody>
+  </table>
+  <p class="nota muto" style="margin-top:var(--s3)">
+    Letti dall'<b>API di poe.ninja</b> il 15 agosto 2026, lega Allflame, in chaos espliciti. <b>Il volume sta accanto al prezzo perché sotto ~100 scambi un prezzo non è un mercato</b> — qui il più sottile è l'Orb of Unravelling con 1.859, ampiamente sopra soglia.
+    <br>🔴 <b>L'Orb of Remembrance è già salito del 34% in sette giorni</b>, e l'autore lo dice esplicitamente: <i>«use this and abuse this while you can before the prices of the Strand Orbs go super high»</i>. Nel video costava 70 c. Un commentatore ne segnalava <b>190 c</b> sul trade un'ora dopo la pubblicazione.
+    <br>⚠️ <b>Fuori misura:</b> il <b>Kishara's Ducat</b> non è su poe.ninja e non l'ho misurato altrove — se serve, il prezzo va guardato prima. Le <b>bestie</b> non sono su poe.ninja per definizione: i 124 c del Craicic Chimeral vengono dal video.
+  </p>
+
+  <h2 class="sec">Le trappole</h2>
+  <div class="card" style="padding:var(--s4)">
+    <ol class="errori" style="margin:0;padding-left:1.2rem;color:var(--muted)">
+      <li><b>Annullare senza guardare quale implicito eldritch è maggiore.</b> Costa il prefisso T1 invece del suffisso, ed è successo <b>due volte nello stesso video</b>. Ember maggiore ⇒ prefissi. Ichor maggiore ⇒ suffissi.</li>
+      <li><b>Slammare con un suffisso libero.</b> L'exalt ci finisce dentro e il terzo prefisso non arriva. I suffissi si riempiono <b>prima</b>, e col multimod invece che con la lifeforce.</li>
+      <li><b>Usare l'Orb of Unravelling nel banco quando la mano è mediocre.</b> Brucia l'imprint: da T2+T3 non si torna indietro, e ristrandare aggiunge intangibility.</li>
+      <li><b>Il Tailoring Orb su un petto linkato.</b> «All sockets are linked» ha <b>cancellato i socket</b> in diretta.</li>
+      <li><b>Inseguire la base al 30% di qualità.</b> Il salto di prezzo da 29 a 30 è di ordini di grandezza e le basi non craftate non esistono.</li>
+      <li><b>Applicare tutto questo a gear di metà partita.</b> Sotto il 26-27% di qualità è denaro e tempo buttati: si recombina o si compra.</li>
+    </ol>
+  </div>
+
+  <h2 class="sec">Due cose che valgono per la Whispering Tendrils</h2>
+  <div class="card" style="padding:var(--s4)">
+    <ol class="errori" style="margin:0;padding-left:1.2rem;color:var(--muted)">
+      <li><b>Sui suffissi, mai una resistenza elementale singola.</b> <i>The Wise Oak</i> paga in base a <b>quale</b> resistenza non cappata è la più alta e quale la più bassa: un pezzo che ne alza una sola sposta l'ordine e sposta il bonus. Il blocco al banco della fase 7 va messo <b>lì</b>, e la resistenza al caos del reforge chaos è invece sempre sicura.</li>
+      <li><b>Il petto è 6-linkato, quindi la fase 8 non si fa.</b> Era già la regola della wiki per il rischio di reforge dei socket; adesso quel rischio si è visto accadere.</li>
+    </ol>
+  </div>
+
+  <h2 class="sec">Da dove viene tutto questo</h2>
+  <div class="card" style="padding:var(--s4)">
+    <p class="fonte" style="margin:0 0 .6rem">
+      <b>Il metodo:</b> Master T, <a href="https://www.youtube.com/watch?v=6K3sSGUth0A" target="_blank" rel="noopener">«The ONLY Guide You Will Ever Need For Endgame Crafting — Strand Allflame Crafting Guide»</a>, 54:34, pubblicato il <b>15 agosto 2026</b>. È l'autore della guida <i>Whispering Tendrils Elementalist</i>. Trascrizione e commenti scaricati e riletti per intero, non riassunti dal titolo.
+    </p>
+    <p class="fonte" style="margin:0 0 .6rem">
+      <b>Due passaggi vengono dai commenti, non dal parlato:</b> il multimod per riempire i suffissi (accettato dall'autore in risposta) e il beastcraft <i>add suffix / remove prefix</i>.
+    </p>
+    <p class="fonte" style="margin:0 0 .6rem">
+      <b>I costi delle Harvest:</b> 75 Primal per il reforge defence, 100 Vivid per il reforge chaos, letti su poedb — non stimati dal video, che dice solo «blue juice».
+    </p>
+    <p class="fonte" style="margin:0">
+      <b>I prezzi:</b> API JSON di poe.ninja, lega Allflame, <b>15 agosto 2026</b>, col volume accanto. I costi in divine del video (180 per quattro pezzi, ~300 di valore sul trade) sono <b>le sue misure</b>, riportate come tali: dipendono dalle basi che ha comprato lui.
+    </p>
+  </div>
+
+  <footer class="pie">
+    Sito statico su GitHub Pages · nessuna dipendenza esterna, funziona offline.
+  </footer>
+
+</div>
+<script>
+// Segnaposto dei passi fatti, in locale. Nessuna rete, nessuna dipendenza.
+// La chiave e' l'id del passo (data-p), non la sua posizione: cosi' aggiungere
+// un passo in mezzo non sposta le spunte di tutti quelli dopo.
+(function(){
+  var CHIAVE='craft-armatura-strand';
+  var stato={};
+  try{ stato=JSON.parse(localStorage.getItem(CHIAVE)||'{}'); }catch(e){ stato={}; }
+  document.querySelectorAll('ol.spunte > li[data-p]').forEach(function(li){
+    var c=li.querySelector('input[type=checkbox]'), id=li.dataset.p;
+    if(!c) return;
+    if(stato[id]){ c.checked=true; li.classList.add('fatto'); }
+    c.addEventListener('change',function(){
+      li.classList.toggle('fatto',c.checked);
+      stato[id]=c.checked;
+      try{ localStorage.setItem(CHIAVE,JSON.stringify(stato)); }catch(e){}
+    });
+  });
+})();
+</script>
+</body>
+</html>
