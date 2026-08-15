@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Passare al Whisper — la scaletta completa</title>
-<meta name="description" content="Come convertire la Lightning Tendrils Elementalist alla versione Coiling Whisper: ordine dei passi, cosa comprare con i link di trade collaudati, e il vincolo di mana che decide se si può partire.">
+<title>Whisper — cosa manca</title>
+<meta name="description" content="Cosa resta da fare sulla Lightning Tendrils Whisper: il vincolo di mana che blocca tutto, i pezzi che valgono davvero e quelli che sembrano upgrade e non lo sono. Ogni riga misurata in Path of Building.">
 <link rel="stylesheet" href="../stile.css">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <style>
@@ -20,13 +20,12 @@
   .verdetto b{color:var(--text)}
 
   .fase{margin-bottom:var(--s4)}
-  .fase > h3{
-    display:flex;align-items:baseline;gap:.6rem;font-size:var(--t-md);margin-bottom:.2rem;
-  }
+  .fase > h3{display:flex;align-items:baseline;gap:.6rem;font-size:var(--t-md);margin-bottom:.2rem}
   .fase > h3 .num{
     font-family:var(--mono);font-size:var(--t-sm);color:var(--gold);
     border:1px solid var(--line2);border-radius:3px;padding:.05rem .45rem;flex:none;
   }
+  .fase > h3 .num.grave{color:var(--bad);border-color:rgba(229,120,109,.45)}
   .fase > .quando{font-size:var(--t-xs);color:var(--label);margin-bottom:var(--s3);
     text-transform:uppercase;letter-spacing:.08em}
 
@@ -57,6 +56,10 @@
   .errori li{margin-bottom:.5rem;font-size:var(--t-sm);line-height:1.55}
   .errori b{color:var(--bad)}
 
+  .fatto-elenco{font-size:var(--t-sm);color:var(--muted);line-height:1.9;margin:0;padding:0;list-style:none;
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:0 var(--s4)}
+  .fatto-elenco b{color:var(--text)}
+
   .fonte{font-size:var(--t-xs);color:var(--label);line-height:1.6}
 </style>
 </head>
@@ -82,283 +85,126 @@
 <div class="wrap">
 
   <header class="testata">
-    <h1>Passare al Whisper</h1>
-    <p class="sub">La scaletta completa per convertire la Lightning Tendrils Elementalist alla versione con <b>Coiling Whisper</b>. Ogni passo nell'ordine giusto, ogni acquisto con il link già filtrato.</p>
+    <h1>Whisper — cosa manca</h1>
+    <p class="sub">La conversione è fatta. Questa pagina è solo ciò che <b>resta da fare</b>, nell'ordine in cui morde. Ogni riga è misurata in Path of Building headless sulla build vera, non stimata.</p>
     <div class="badges">
       <span class="badge">patch 3.29.2</span>
       <span class="badge">lega Allflame</span>
-      <span class="badge oro">prezzi misurati il 12 e il 14 agosto 2026</span>
-      <span class="badge oro">unveil misurato il 15</span>
+      <span class="badge">TrincoEL liv 97</span>
+      <span class="badge oro">misurato il 15 agosto 2026</span>
     </div>
   </header>
 
   <div class="verdetto">
-    <h2>Leggi questo prima di comprare qualsiasi cosa</h2>
-    <p><b>Il vincolo non è il danno né la difesa: è il mana.</b> Il Coiling Whisper raddoppia la cast speed, e il costo al secondo la segue.</p>
-    <p>Misurato montando la conversione su una build <i>Endgame No Whispers</i> completa: il margine di mana passa da <b>+48/s</b> a <b>−156/s</b> a 25 stack e <b>−250/s</b> a 45.</p>
-    <p><b>Montare l'anello prima del pacchetto mana rompe la build proprio quando funziona</b>: più stack accumuli, più il canale si spegne.</p>
+    <h2>Il vincolo è uno solo: il mana</h2>
+    <p><b>A 25 anime il margine è −42/s. A 45 è −125/s.</b> Il canale si spegne intorno alle <b>15 anime</b>, e in mappa ne accumuli 20-30 da solo.</p>
+    <p><b>Vuol dire che la build si rompe di più quanto meglio va</b>: più anime prendi, più veloce casti, più mana bruci.</p>
+    <p>Finché quel numero è negativo, ogni altro acquisto lo stai facendo per una build che si ferma a metà mappa. <b>Il blocco che lo sistema costa 9 chaos.</b></p>
   </div>
 
-  <h2 class="sec">Cosa cambia, misurato</h2>
+  <h2 class="sec">Dove sei adesso</h2>
   <div class="kpi">
-    <div><b class="val">+66%</b><span>danno a 25 stack</span></div>
-    <div><b class="val">+115%</b><span>danno a 45 stack</span></div>
-    <div><b style="color:var(--bad)">−41%</b><span>hit pool</span></div>
-    <div><b style="color:var(--bad)">−250/s</b><span>mana, senza l'anello</span></div>
+    <div><b class="val">101,7 M</b><span>DPS con Eccentricity</span></div>
+    <div><b class="val">182 k</b><span>hit pool</span></div>
+    <div><b class="val">66 / 72</b><span>block att. / magie</span></div>
+    <div><b style="color:var(--bad)">−42/s</b><span>mana a 25 anime</span></div>
   </div>
 
-  <div class="card" style="margin-top:var(--s3);padding:var(--s4)">
-    <p class="nota" style="margin:0;color:var(--muted)">
-      Il calo di hit pool è quasi tutto una gemma: la versione Whisper <b>non ha un socket libero per il Frost Shield</b>.
-      In compenso <b>in mappa non servono 45 stack</b> — 20-30 sono la norma, e si accumulano da soli. I 45 si caricano a mano sul boss: un nemico unico vale 20 anime, quindi tre blink addosso bastano.
-    </p>
-  </div>
-
-  <h2 class="sec">Come funziona il motore, in quattro righe</h2>
-  <div class="card" style="padding:var(--s4)">
-    <ul class="nota" style="margin:0;padding-left:1.1rem;color:var(--muted)">
-      <li><b>Non maledici per il debuff: maledici per far scadere la maledizione.</b> L'anello dice <i>Targets are Unaffected by your Hexes</i> — resta solo il timer.</li>
-      <li>Al <b>90% della durata</b> mangi <b>un'anima per potenza del nemico</b>: 1 normale, 2 magico, <b>10 raro</b>, <b>20 unico</b>.</li>
-      <li>Le anime sono <b>Soul Eater</b>, cioè cast speed. Circa <b>+0,11 cast/s per stack</b>.</li>
-      <li><b>Less Duration</b> porta la maledizione a ~1,26 s: più corta è, più anime al minuto.</li>
-    </ul>
-  </div>
-
-  <div class="avviso" style="margin-top:var(--s3)">
-    <b>La regola di gioco che nessuno indovina:</b> sul primo pacchetto <b>non uccidere niente</b>. Le anime le dà chi <i>non</i> muore subito. Prendi gli stack, poi inizia a sparare.
-  </div>
-
-  <h2 class="sec">La scaletta</h2>
+  <h2 class="sec">Le cose da fare</h2>
 
   <section class="fase card" style="padding:var(--s4)">
-    <h3><span class="num">FASE 0</span> Preparazione</h3>
-    <div class="quando">Gratis e reversibile · si può fare adesso</div>
+    <h3><span class="num">GRATIS</span> Prima di comprare qualsiasi cosa</h3>
+    <div class="quando">Non costa niente · si fa adesso</div>
     <ol class="passi">
-      <li data-p="fase-0-porta-clarity-a-livello"><input type="checkbox"><div class="testo"><b>Porta Clarity a livello 9.</b> È il livello che tiene in piedi la riserva di vita di Arrogance.<em>Per scendere di livello: vendi 1 Orb of Scouring + la gemma, −1 livello per volta.</em></div></li>
-      <li data-p="fase-0-compra-le-gemme-e"><input type="checkbox"><div class="testo"><b>Compra le gemme</b> e mettile a livellare in un'arma di scorta. La build non si tocca ancora.</div></li>
-      <li data-p="fase-0-raise-spectre-livello-20"><input type="checkbox"><div class="testo"><b>Raise Spectre livello 20</b>, non corrotta <a class="compra" target="_blank" rel="noopener" href="https://www.pathofexile.com/trade/search/Allflame/V5GnrRMPCp">25 c →</a><em>La 21 costa 105 c e non serve finché gli spettri sono due: il terzo arriva a livello 25, non a 21.</em></div></li>
-      <li data-p="fase-0-minion-life-l20-q20"><input type="checkbox"><div class="testo"><b>Minion Life</b> L20 Q20 <a class="compra" target="_blank" rel="noopener" href="https://www.pathofexile.com/trade/search/Allflame/glD8bXVjsQ">34 c →</a></div></li>
-      <li data-p="fase-0-meat-shield-l20-q20"><input type="checkbox"><div class="testo"><b>Meat Shield</b> L20 Q20 <a class="compra" target="_blank" rel="noopener" href="https://www.pathofexile.com/trade/search/Allflame/7nRg2l3ru5">50 c →</a></div></li>
-      <li data-p="fase-0-less-duration-qualita-alta"><input type="checkbox"><div class="testo"><b>Less Duration</b>, qualità alta <a class="compra" target="_blank" rel="noopener" href="https://www.pathofexile.com/trade/search/Allflame/veYd9kzLIE">cerca →</a><em>La qualità qui conta: accorcia la maledizione, quindi accelera le anime.</em></div></li>
-      <li data-p="fase-0-automation-q20-26-c"><input type="checkbox"><div class="testo"><b>Automation</b> Q20 <a class="compra" target="_blank" rel="noopener" href="https://www.pathofexile.com/trade/search/Allflame/EBP9ERgyS5">26 c →</a></div></li>
-      <li data-p="fase-0-sblocca-al-banco-le"><input type="checkbox"><div class="testo">🔴 <b>Sblocca al banco le ricette 2, 3 e 4 Linked Sockets.</b> Stanno tutte e tre in <b>Kaom's Stronghold</b>, Atto 4 — c'è il waypoint.<em>Servono davvero: elmo e guanti vanno a <b>4-link</b>, lo staff vuole un <b>2-link</b> per Convocation + Automation. Costo al banco: <b>1 · 3 · 5 Orb of Fusing</b>. Se hai solo «Five» e «Six» è perché quelle vengono da Plaza e Grotto, non da lì.</em></div></li>
-      <li data-p="fase-0-hextouch-temporal-chains-e"><input type="checkbox"><div class="testo"><b>Hextouch</b>, <b>Temporal Chains</b> e <b>Convocation</b> dal venditore, e <b>lasciale a livello 1</b>.<em>Servono corte e a costo zero: livellarle peggiora il ciclo e costa mana.</em></div></li>
+      <li data-p="gemma-eccentricity"><input type="checkbox"><div class="testo">🔴 <b>Passa a Lightning Tendrils <i>of Eccentricity</i>.</b> Vale <b>+74,4%</b> di danno e costa <b>28 mana/s in meno</b>.<em>58.360.123 → <b>101.750.309</b>, e il costo mana scende da 350,49 a 322,67/s. È il singolo cambiamento più grande della lista, ed è una gemma.<br>⚠️ In PoB guarda che <code>skillPart</code> sia <b>1</b>: sulla 2 legge 17 M e sembra un disastro. È una trappola già vista tre volte.</em></div></li>
+      <li data-p="clarity-l9"><input type="checkbox"><div class="testo"><b>Clarity da L7 a L9.</b><em>È il livello che la guida prescrive per la riserva di vita di Arrogance. Per scendere: vendi 1 Orb of Scouring + la gemma, −1 livello per volta.</em></div></li>
+      <li data-p="qualita-gemme"><input type="checkbox"><div class="testo"><b>Qualità sulle gemme che ce l'hanno a zero:</b> Purity of Elements <b>Q0</b>, Discipline <b>Q0</b>, Pact of Lycia <b>Q0</b>, Summon Flame Golem <b>Q0</b>, Arctic Armour <b>Q1</b>, Arrogance <b>Q8</b>.<em>Priorità dell'autore: Tendrils › Less Duration › i golem › Infused Channelling › Arrogance › Chaos Golem › RF › Purity of Elements.<br>⚠️ <b>Convocation è a L2</b>: se è voluto va bene, altrimenti è rimasta indietro.<br>Su maledizioni e Wave of Conviction la qualità <b>non fa niente</b>: non sprecarci gemcutter.</em></div></li>
     </ol>
   </section>
 
   <section class="fase card" style="padding:var(--s4)">
-    <h3><span class="num">FASE 1</span> L'anello del mana</h3>
-    <div class="quando">È il cancello · prima di questo la build non gira</div>
+    <h3><span class="num grave">CANCELLO</span> Il mana</h3>
+    <div class="quando">Prima di ogni altro acquisto · costa 9 chaos</div>
     <ol class="passi">
-      <li data-p="fase-1-scorciatoia-comprarlo-gia-fatto"><input type="checkbox"><div class="testo">✅ <b>Scorciatoia: comprarlo già fatto.</b> Solaris + mana regen ≥70% + <i>Channelling -3</i>, niente resistenze singole <a class="compra" target="_blank" rel="noopener" href="https://www.pathofexile.com/trade/search/Allflame/G6PnM4oYib">da 10 div →</a><em><b>57 inserzioni.</b> Craftarlo costa ~3,3 divine attese, <b>ma senza Ducat non puoi metterci l'Aspect of Solaris</b>, che vale <b>+22% di danno</b>. Dieci divine sono anche quanto costa <b>la sola base fratturata +2</b>: comprando, la base è gratis.<br>⚠️ Guarda l'<b>ilvl</b>: sotto 82 il mana regen non può essere tier 1, e un «72%» è un tiro (60-69) gonfiato dalla qualità. Un ilvl 83+ arriva a 91%, che vale <b>+12/s di mana</b>.<br>Se lo compri, salta ai tattoo in fondo alla fase.</em></div></li>
-      <li data-p="fase-1-base-unset-ring-ilvl"><input type="checkbox"><div class="testo"><b>Base: unset ring ilvl 82+</b> <a class="compra" target="_blank" rel="noopener" href="https://www.pathofexile.com/trade/search/Allflame/glmra8ydhQ">1 c →</a><em><b>82 è la soglia vera</b>, non 84: il mana regen (70-76)% è un gruppo di mod a sé e il suo tier massimo parte da lì. La versione fratturata con <b>+2 gemme</b> costa <b>10 divine</b> e vale <b>+1,65% di danno</b>: non serve.</em></div></li>
-      <li data-p="fase-1-se-la-base-e"><input type="checkbox"><div class="testo">🔴 <b>Se la base è magic, prima un Regal.</b><em>Un fratturato scourato resta <b>magic</b>, e sulle magic le essenze non si possono usare. Serve una base <b>rara</b>: Regal se è magic, Alchemy se è bianca.</em></div></li>
-      <li data-p="fase-1-deafening-essence-of-misery"><input type="checkbox"><div class="testo"><b>Deafening Essence of Misery</b> finché non hai <b>tutte e quattro</b> queste cose insieme:<em>① il <b>mana regen</b> — garantito dall'essenza · ② <b>un suffisso che ti serve</b>: all-res, oppure Forza se ti mancano attributi, oppure chaos res (anche cast speed, ma senza esagerare: costa mana) · ③ <b>un suffisso libero</b> · ④ <b>un prefisso libero</b>.<br>⚠️ Se manca il suffisso libero, <b>annulla a caso</b> per aprirne uno.<br>~20 essenze in media (5,027% a tiro), cioè <b>46 chaos</b>.</em></div></li>
-      <li data-p="fase-1-aspect-of-solaris-adesso"><input type="checkbox"><div class="testo">🔴 <b>Aspect of Solaris — adesso, non dopo.</b> Allflame Crafting Bench + <b>Brinehook's Ducat</b>, <b>1 possibilità su 4</b>.<em>Va nel suffisso libero, e va fatto <b>prima</b> di toccare i prefissi: dopo il metamod i suffissi sono bloccati. Se sbagli, <b>annulla</b> per toglierlo; <b>se sbagli l'annul si ricomincia dalle essenze</b>.<br>Serve un Ducat: senza, l'anello funziona lo stesso ma perdi il +22% di danno dell'exposure.</em></div></li>
-      <li data-p="fase-1-suffixes-cannot-be-changed"><input type="checkbox"><div class="testo"><b>Suffixes cannot be changed</b> (banco, <b>2 Divine Orb</b>) poi <b>Veiled Chaos Orb</b> (60,6 c).<em>In alternativa un <b>Veiled Exalted Orb</b>, che non rirolla i prefissi ma li riempie.<br>⚠️ Se la veiled chaos ti riempie i prefissi, <b>annulla a caso</b> — e se sbagli, si ricomincia.<br>💡 Farlo <b>nell'Allflame bench</b> aiuta molto: puoi scegliere l'esito senza altri suffissi.</em></div></li>
-      <li data-p="fase-1-controllo-suffissi-finiti-1"><input type="checkbox"><div class="testo"><b>Controllo</b>: suffissi finiti, <b>1 prefisso velato</b>, <b>almeno 1 prefisso libero</b>.</div></li>
-      <li data-p="fase-1-crafta-mana-sul-prefisso"><input type="checkbox"><div class="testo"><b>Crafta mana sul prefisso</b> (3 Orb of Augmentation) <b>e svela</b>: <b>3 su 4</b> di prendere <i>+vita e mana regen</i>.<em>Il craft del mana blocca i mod spazzatura. La vita non serve, serve il mana regen attaccato.<br>⚠️ Se becchi l'1 su 4 sbagliato, si rifà <b>metamod + veiled chaos o exalt</b>.</em></div></li>
-      <li data-p="fase-1-crafta-channelling-skills-have"><input type="checkbox"><div class="testo"><b>Crafta <i>Channelling Skills have -3 to Total Mana Cost</i></b> nell'ultimo prefisso — 4 Chaos Orb.</div></li>
-      <li data-p="fase-1-catalizzatori-fertile-per-la"><input type="checkbox"><div class="testo"><b>Catalizzatori Fertile</b> per la qualità sul mana.<em>La qualità gonfia i mod di mana: è la differenza fra leggere 76% e leggere 91%.</em></div></li>
-      <li data-p="fase-1-2-3-tattoo-di"><input type="checkbox"><div class="testo"><b>2-3 tattoo di mana regen</b> sull'albero.<em>Non sono opzionali: con il solo anello il margine a 45 stack resta a −58/s.</em></div></li>
+      <li data-p="militant-faith"><input type="checkbox"><div class="testo">🔴 <b>Militant Faith di Dominus</b> — <i>3% increased Mana Cost Efficiency per 10 Devotion</i> <a class="compra" target="_blank" rel="noopener" href="https://www.pathofexile.com/trade/search/Allflame/3q6eGRLkI5">9 c →</a><em><b>10.000 inserzioni a 7-9 chaos.</b> Attacca il problema dal lato del <b>costo</b>, non della rigenerazione — ed è così che Shadex sta a +162/s di margine invece che a −42.<br>⚠️ <b>Il prezzo non è il criterio, il seed sì</b>: la Devotion dipende da quali passive finiscono nel raggio e da dove lo allochi. A 9 chaos si prova, ma <b>va simulato in PoB prima</b>, non comprato e infilato.</em></div></li>
+      <li data-p="tattoo-mana"><input type="checkbox"><div class="testo"><b>2-3 tattoo di mana regen</b> sull'albero.<em>Sono quelli che la guida prescrive, e servono comunque: nemmeno il pacchetto completo dell'anello chiude il buco da solo a stack pieni.</em></div></li>
+      <li data-p="checkpoint-mana"><input type="checkbox"><div class="testo">🔴 <b>Checkpoint: rimisura.</b> Il margine a <b>25 anime</b> deve essere <b>positivo</b>.<em>Non a 45 — in mappa 45 anime non ci sono. Se a 25 sei ancora sotto, il resto della lista non si compra.</em></div></li>
     </ol>
-    <div class="stop"><b>STOP.</b> Rimisura prima di andare avanti. Se il margine di mana a 25 stack non è positivo, la Fase 2 non si fa.</div>
+    <div class="stop"><b>STOP.</b> Sotto questa riga tutto costa divine. Sopra, nove chaos.</div>
   </section>
 
   <section class="fase card" style="padding:var(--s4)">
-    <h3><span class="num">FASE 2</span> Lo swap</h3>
-    <div class="quando">Tutto insieme, in una sola sessione</div>
+    <h3><span class="num">POI</span> I pezzi che pagano</h3>
+    <div class="quando">In ordine di resa per chaos speso</div>
     <ol class="passi">
-      <li data-p="fase-2-coiling-whisper-al-posto"><input type="checkbox"><div class="testo"><b>Coiling Whisper</b> al posto dell'anello 2 <a class="compra" target="_blank" rel="noopener" href="https://www.pathofexile.com/trade/search/Allflame/aL06BqoMSe">10 c →</a><em>Il link è già filtrato: solo quelli con <b>reduced Area of Effect of Hex Skills</b> fino a −30%. Meno area = meno nemici maledetti = meno anime.</em></div></li>
-      <li data-p="fase-2-elmo-serve-un-4"><input type="checkbox"><div class="testo"><b>Elmo — serve un 4-link:</b> Frostblink of Wintry Blast + Less Duration + Hextouch + Temporal Chains.<em>Escono Arcanist Brand, Elemental Weakness e Conductivity: con l'anello le maledizioni non fanno più effetto.</em></div></li>
-      <li data-p="fase-2-guanti-serve-un-4"><input type="checkbox"><div class="testo"><b>Guanti — serve un 4-link:</b> Raise Spectre + Minion Life + Meat Shield + Summon Lightning Golem.</div></li>
-      <li data-p="fase-2-staff-serve-un-2"><input type="checkbox"><div class="testo"><b>Staff — serve un 2-link:</b> Convocation + Automation collegate, poi Stone Golem, Discipline, Flame Golem, Purity of Elements.<em>Escono Frost Shield, Chaos Golem e la gemma Wrath — il Wrath lo dà lo spettro.</em></div></li>
-      <li data-p="fase-2-stivali-clarity-9-arrogance"><input type="checkbox"><div class="testo"><b>Stivali:</b> Clarity 9, Arrogance, Pact of Lycia, Arctic Armour.</div></li>
-      <li data-p="fase-2-albero-fuori-la-carica"><input type="checkbox"><div class="testo"><b>Albero:</b> fuori la carica di resistenza, Sovereignty, Reservation Mastery, 2 Reservation Efficiency, Aura AoE e uno Spell Block. Dentro <b>Roiling Tempest</b>, <b>Death Attunement</b>, <b>Grave Intentions</b>, i nodi Minion Life e due Spell Block and Elemental Resistances.</div></li>
-      <li data-p="fase-2-anoint-da-whispers-of"><input type="checkbox"><div class="testo"><b>Anoint:</b> da <i>Whispers of Doom</i> a <b>Disciple of the Slaughter</b> — Amber + Verdant + <b>Golden Oil</b>, ~354 c su poe.ninja.</div></li>
+      <li data-p="watchers-eye"><input type="checkbox"><div class="testo">🔴 <b>Watcher's Eye — quello che hai ha un mod morto.</b> Porta <i>53% increased Cold Damage while affected by Hatred</i>, e <b>Hatred non è in build</b>. <a class="compra" target="_blank" rel="noopener" href="https://www.pathofexile.com/trade/search/Allflame/G6GobEGOcb">15 c →</a><em>Quello che serve ha <b><i>Damage Penetrates X% Lightning Resistance while affected by Wrath</i></b> — il Wrath te lo dà lo spettro, quindi si applica.<br>⚠️ <b>I più economici hanno solo quel mod.</b> Il tuo porta anche <i>28 Energy Shield per Enemy Hit while affected by Discipline</i>, che è buono e non va buttato: cerca <b>tutti e due</b> e paga la differenza.</em></div></li>
+      <li data-p="amuleto"><input type="checkbox"><div class="testo"><b>Amuleto:</b> <i>Focused Amulet</i> raro con <b>+2 gemme fulmine</b> e <b>crit multi alto</b> <a class="compra" target="_blank" rel="noopener" href="https://www.pathofexile.com/trade/search/Allflame/q90J9byksg">da 160 div →</a><em>Su Eccentricity vale <b>+27,2%</b> (101,7 → 129,5 M). ⚠️ Ma il mercato parte da <b>160 divine</b>: oggi è un bersaglio, non un acquisto.<br>Il link esclude già <b>fuoco, freddo e fulmine singoli</b>: alzarne una sposta l'ordine su cui The Wise Oak decide dove cade il bonus.<br>💡 Su <b>Escalation</b> lo stesso amuleto varrebbe <b>+80,9%</b>, perché Marylene's dimezza la crit chance e quella skill ne ha bisogno. Su Eccentricity il colpo garantito la rende meno importante.</em></div></li>
+      <li data-p="forbidden"><input type="checkbox"><div class="testo"><b>Forbidden Flesh + Forbidden Flame</b> per <i>Forbidden Power</i>.<em>🔴 <b>Zero inserzioni in Instant Buyout</b>, entrambi. Oggi non si compra: è una riga da riguardare fra qualche giorno, non un piano.</em></div></li>
     </ol>
   </section>
 
   <section class="fase card" style="padding:var(--s4)">
-    <h3><span class="num">FASE 3</span> Gli spettri</h3>
-    <div class="quando">Due bastano · si comprano, non si farmano</div>
+    <h3><span class="num">ULTIMO</span> Il pacchetto flask</h3>
+    <div class="quando">54 divine · e su Eccentricity paga poco</div>
     <ol class="passi">
-      <li data-p="fase-3-perfect-spirit-of-fortune"><input type="checkbox"><div class="testo"><b>Perfect Spirit of Fortune</b> — aura di Wrath e <b>lucky lightning damage</b> <a class="compra" target="_blank" rel="noopener" href="https://www.pathofexile.com/trade/search/Allflame/RJGWdRQqI7">35 c →</a></div></li>
-      <li data-p="fase-3-perfect-warlord-cariche-di"><input type="checkbox"><div class="testo"><b>Perfect Warlord</b> — cariche di resistenza ad area e Vitality <a class="compra" target="_blank" rel="noopener" href="https://www.pathofexile.com/trade/search/Allflame/8r8BWJPZUV">879 c →</a></div></li>
-      <li data-p="fase-3-click-destro-sull-oggetto"><input type="checkbox"><div class="testo"><b>Click destro sull'oggetto</b> → appare il cadavere → <b>Raise Spectre</b>.<em>Passano fra le zone, sono salvati al logout, e <b>respawnano se muoiono</b>: è una spesa una tantum.</em></div></li>
+      <li data-p="mageblood"><input type="checkbox"><div class="testo"><b>Mageblood</b> <a class="compra" target="_blank" rel="noopener" href="https://www.pathofexile.com/trade/search/Allflame/zbBXkR02I4">54 div →</a><em>🔴 <b>Non serve per fare posto: lo slot ce l'hai.</b> <code>Flask 5</code> è vuoto — e quello slot vuoto <b>è il motore</b>: il Brutal Restraint di <b>Balbala</b> dà 4 cariche ogni 5 secondi <b>per ogni slot vuoto</b>, ed è da lì che viene l'uptime permanente degli altri quattro, <b>Coruscating Elixir compreso</b>, cioè il Righteous Fire e tutto l'Energy Shield.<br><b>Riempire lo slot spegne il motore che tiene su ciò che ci metti dentro.</b> Il Mageblood serve a sostituire Balbala, non a fare spazio.</em></div></li>
+      <li data-p="flask-crit"><input type="checkbox"><div class="testo"><b>I flask crit sono due:</b> <i>Diamond</i> (crit <b>Lucky</b>) e <i>Amethyst of Incision</i> (<i>55% increased Critical Strike Chance during Effect</i>).<em>⚠️ <b>Su Eccentricity il Diamond vale +2,1%.</b> Su Escalation ne varrebbe +10,9%, cinque volte tanto — stessa ragione dell'amuleto: il colpo che critta sempre non ha bisogno di crit chance.<br>Con Eccentricity scelta, <b>questo blocco scende in fondo</b> e 54 divine comprano il 2%.</em></div></li>
     </ol>
   </section>
 
-  <section class="fase card" style="padding:var(--s4)">
-    <h3><span class="num">FASE 4</span> High Budget</h3>
-    <div class="quando">Solo dopo · non si mescolano i livelli</div>
-    <ol class="passi">
-      <li data-p="fase-4-staff-lathi-con-2"><input type="checkbox"><div class="testo"><b>Staff Lathi</b> con +2 gemme magia, +4 gemme magia fulmine e 13% block attacchi craftato <a class="compra" target="_blank" rel="noopener" href="https://www.pathofexile.com/trade/search/Allflame/rPojVOQ7TQ">17 div →</a><em>L'autore la crafta e sconsiglia di comprarla: <b>ai prezzi di oggi ha torto</b>. Craft <b>25-29 div</b>, comprata <b>17</b>. Tutto il conto e le sei mosse <a href="#staff" style="color:var(--gold)">qui sotto</a>.</em></div></li>
-      <li data-p="fase-4-ricostruisci-il-block-replica"><input type="checkbox"><div class="testo"><b>Ricostruisci il block:</b> Replica Reckless Defence, implicito eldritch <i>7% Chance to Block Attack Damage</i> sul petto, block tattoo, e i 13% craftati sullo staff.<em>Lo staff porta 13 punti di block attacchi dove il Duskdawn ne portava 52.</em></div></li>
-      <li data-p="fase-4-raise-spectre-livello-21"><input type="checkbox"><div class="testo"><b>Raise Spectre livello 21</b> — con +2 dallo staff e +2 da Empower arriva a <b>25</b>, che è dove si sblocca il <b>terzo spettro</b>.</div></li>
-      <li data-p="fase-4-empower-livello-3-al"><input type="checkbox"><div class="testo"><b>Empower livello 3</b> al posto di Meat Shield.</div></li>
-      <li data-p="fase-4-perfect-guardian-turtle-aura"><input type="checkbox"><div class="testo"><b>Perfect Guardian Turtle</b> — aura di Determination <a class="compra" target="_blank" rel="noopener" href="https://www.pathofexile.com/trade/search/Allflame/mkgwKwZaI6">790 c →</a></div></li>
-      <li data-p="fase-4-secondo-unveil-sull-anello"><input type="checkbox"><div class="testo"><b>Secondo unveil sull'anello:</b> <i>Mana Cost Efficiency</i> al posto della vita.</div></li>
-    </ol>
-  </section>
-
-  <h2 class="sec" id="staff">Lo staff, passo per passo</h2>
-
-  <div class="verdetto">
-    <h2>Prima di tutto: conviene comprarlo</h2>
-    <p><b>17 divine già fatto, 25-29 per craftarlo.</b> Senza il Tempering Orb il craft scende a 16-18, cioè pari — si paga varianza per risparmiare zero.</p>
-    <p>🔴 <b>Ma su questo ramo l'unveil da avere è il double damage, e comprato costa 30 divine.</b> Lì il craft torna in gioco: 25-29 per farlo contro 30 per comprarlo.</p>
-    <p><b>È lo stesso identico item nei due rami della guida</b> — il PoB lo monta sia in <i>High Budget Whisper</i> sia in <i>High Budget No Whispers</i>. Non è una scommessa sul Whisper.</p>
-  </div>
-
-  <section class="fase card" style="padding:var(--s4)">
-    <h3><span class="num">STAFF</span> Le sei mosse</h3>
-    <div class="quando">Solo dentro la Fase 4 · e mai senza il pacchetto block</div>
-    <ol class="passi">
-      <li data-p="staff-scorciatoia-comprarlo-cast-speed"><input type="checkbox"><div class="testo">✅ <b>Scorciatoia: comprarlo.</b> <a class="compra" target="_blank" rel="noopener" href="https://www.pathofexile.com/trade/search/Allflame/rPojVOQ7TQ">cast speed, 17 div →</a> <a class="compra" target="_blank" rel="noopener" href="https://www.pathofexile.com/trade/search/Allflame/wv9P5JZBFb">double damage, 30 div →</a><em><b>26 e 21 inserzioni.</b> I link chiedono il <b>+11-13% block attacchi craftato</b>: senza quel filtro compaiono staff da 10 divine che hanno il cast speed <b>craftato</b> invece che unveiled e <b>zero block</b> — cioè gli manca proprio la riga che serve qui.<br>⚠️ A 19 div ce n'è uno con l'enchant del Tempering già fatto, <b>ma porta anche <i>Has no Red Sockets</i></b>: leggi l'enchant intero, la Lathi vuole due socket rossi.</em></div></li>
-      <li data-p="staff-1-due-basi-magic"><input type="checkbox"><div class="testo"><b>1 · Due basi magic <i>Archon's</i></b> (+2 all spell) <a class="compra" target="_blank" rel="noopener" href="https://www.pathofexile.com/trade/search/Allflame/2K3r5lnYuk">129 c →</a> <b>e due <i>Typhoon Lord's</i></b> (+4 lightning) <a class="compra" target="_blank" rel="noopener" href="https://www.pathofexile.com/trade/search/Allflame/jWQj4DzRUX">295 c →</a><em>🔴 <b>Implicito 25%, mai 22%</b>: sono gli unici due valori che escono. Non corrotte, non fratturate, nessuna influenza — i link filtrano già tutto.<br><b>Magic e non rare</b>: costano meno, sono 500 inserzioni contro 116, e saltano il passo del Kishara's Ducat.</em></div></li>
-      <li data-p="staff-2-solo-con-basi"><input type="checkbox"><div class="testo"><b>2 · <i>(solo con basi rare)</i> Kishara's Ducat</b> nell'Allflame bench: spezza l'item in 4 copie a un mod.<em>Con le basi magic questo passo <b>non esiste</b>: il prefisso è già isolato. Se lo fai, tieni sempre la copia con <b>Intangibility più bassa</b>.</em></div></li>
-      <li data-p="staff-3-recombinator-con-enable"><input type="checkbox"><div class="testo"><b>3 · Recombinator</b> con <i>enable unpredictable recombination</i>.<em>100% di riuscita, <b>~40%</b> di prendere i due prefissi giusti. Ogni tentativo consuma <b>due</b> basi e ne restituisce una: <b>2+2 basi = 3 tentativi</b>, che coprono l'attesa di 2,5.<br>Gold e dust sono gratis: un item da 1 divine nel Duster fa 2,8 M di dust.</em></div></li>
-      <li data-p="staff-4-3-crafted-mods"><input type="checkbox"><div class="testo"><b>4 · <i>3 crafted mods</i> → <i>Prefixes Cannot Be Changed</i> → prefisso mana → Veiled Chaos Orb dentro l'Allflame bench.</b><em>🔴 Il primo multimod è <b>a perdere</b>: la veiled chaos cancella i suffissi craftati. Sono 4 divine di banco che servono solo a tenere fermo il resto.<br>⚠️ <b>Dentro</b> il bench, non da solo: fuori, se ti riempie i suffissi servono un annul fortunato e uno scour.<br>Crafta anche <b>fire damage over time multiplier</b>: blocca tutti i DoT multi e toglie un esito dal sorteggio.</em></div></li>
-      <li data-p="staff-5-svela-13-esiti"><input type="checkbox"><div class="testo"><b>5 · Svela.</b> 13 esiti, ne servono <b>2</b>: <b>cast speed</b> oppure <b>double damage</b>.<em>🔴 <b>Sul Whisper punta al double damage</b>, non al cast speed: misurato <b>+12,50%</b> contro <b>+6,87%</b> a 45 anime. Il cast speed vinceva sul ramo No Whispers, e la ragione per cui qui perde è che <b>Soul Eater dà <i>increased</i> cast speed</b>: gli increased si sommano nello stesso paniere, e a stack alti altri 30% comprano solo +6,9% di velocità vera. Il double damage non si diluisce, e non costa mana.<br>Il cast speed si porta dietro <b>15% Arcane Surge on Kill</b> nello stesso mod, ma non basta.<br>⚠️ <b>«while Focused» non è il double damage</b>: è un altro esito, e il suo 36-40% va moltiplicato per l'uptime del Focus.<br>Sbagliare non rompe l'item, ma ricominciare costa <b>~4 divine</b> più un'altra veiled chaos.</em></div></li>
-      <li data-p="staff-6-multimod-di-nuovo"><input type="checkbox"><div class="testo"><b>6 · Multimod di nuovo → <i>spell damage / mana regen</i> (6 c) → <i>+block attacchi</i> (3 c) → Divine Orb nel bench per il roll.</b><em>💡 <b>C'è anche un craft di spell damage puro</b>, 96-115% senza mana regen, ma <b>non vale la pena</b>: dai 99% al 115% massimo ci sono <b>+1,60%</b> di danno, e la riga di mana regen che perdi vale <b>26,6/s</b>. Sedici punti di <i>increased</i> si diluiscono, esattamente come il cast speed.<br>🔴 <b>I due craft si decidono adesso</b>: dal multimod in poi un craft non si sostituisce più uno alla volta. Toglierli tutti costa ~387 c, l'annul ha 3 possibilità su 6 di distruggere un esplicito.<br>Il Divine <b>dentro il bench</b> dà 4 esiti per un Divine solo. Punta al <b>13% di block</b>.</em></div></li>
-      <li data-p="staff-7-rifiniture-tempering-orb"><input type="checkbox"><div class="testo"><b>7 · Rifiniture:</b> Tempering Orb per l'enchant, Jeweller's per <b>slegare</b> i socket, Chromatic per i colori.<em>Lo staff vuole <b>un 2-link solo</b> — Convocation + Automation — e il resto slegato: si porta a 3-4-5-6 socket coi Jeweller's apposta.<br>⚠️ <b>Il Tempering è la coda lunga</b>: nel video sette tentativi a vuoto su uno dei due staff. È la prima voce da tagliare, e tagliandola il craft scende a 16-18 divine.</em></div></li>
-    </ol>
-    <div class="stop"><b>STOP.</b> Lo staff non si monta da solo: porta <b>13</b> punti di block attacchi dove il Duskdawn ne porta <b>52</b>. Senza Replica Reckless Defence, implicito eldritch del petto, nodi staff block e tattoo, l'hit pool cala del <b>55%</b>.</div>
-  </section>
-
-  <h2 class="sec">Quanto costa lo staff</h2>
+  <h2 class="sec">Perché Eccentricity, e cosa costa</h2>
   <table class="tabella" style="width:100%">
-    <thead><tr><th>Voce</th><th class="n">Costo</th></tr></thead>
+    <thead><tr><th>Setup</th><th class="n">of Escalation</th><th class="n">of Eccentricity</th><th class="n">divario</th></tr></thead>
     <tbody>
-      <tr><td>2× base magic <i>Archon's</i> (+2 all spell)</td><td class="n">258 c</td></tr>
-      <tr><td>2× base magic <i>Typhoon Lord's</i> (+4 lightning)</td><td class="n">590 c</td></tr>
-      <tr><td>2× Veiled Chaos Orb</td><td class="n">175 c</td></tr>
-      <tr><td><b>Banco: <i>3 crafted mods</i> ×2</b> — 4 Divine Orb</td><td class="n"><b>772 c</b></td></tr>
-      <tr><td><b>Banco: <i>Prefixes Cannot Be Changed</i></b> — 2 Divine Orb</td><td class="n"><b>386 c</b></td></tr>
-      <tr><td>Banco: i due craft utili + il prefisso spazzatura</td><td class="n">19 c</td></tr>
-      <tr><td>3× Divine Orb per il roll nel bench</td><td class="n">579 c</td></tr>
-      <tr><td><b>5× Tempering Orb</b></td><td class="n"><b>1.243 c</b></td></tr>
-      <tr><td>~20 Chromatic</td><td class="n">47 c</td></tr>
-      <tr><td><b>Subtotale currency</b></td><td class="n"><b>4.069 c</b> · 21,1 div</td></tr>
-      <tr><td>Dead Man's Sulphur — 100-200k, 5-10 passaggi nel bench</td><td class="n">767-1.534 c · 4,0-7,9 div</td></tr>
-      <tr><td><b>Totale</b></td><td class="n"><b>25-29 div</b></td></tr>
-      <tr><td><b>Totale senza Tempering Orb</b> — 2-4 passaggi nel bench</td><td class="n"><b>16-18 div</b></td></tr>
-      <tr><td><b>Comprato già fatto</b></td><td class="n"><b>17 div</b></td></tr>
+      <tr><td><b>oggi</b> — Marylene's, niente Diamond</td><td class="n">58,4 M</td><td class="n"><b>101,7 M</b></td><td class="n"><b>+74,4%</b></td></tr>
+      <tr><td>+ Focused Amulet</td><td class="n">105,6 M</td><td class="n">129,5 M</td><td class="n">+22,7%</td></tr>
+      <tr><td>+ Diamond Flask</td><td class="n">64,7 M</td><td class="n">103,9 M</td><td class="n">+60,5%</td></tr>
+      <tr><td><b>pacchetto completo</b></td><td class="n">119,1 M</td><td class="n"><b>133,8 M</b></td><td class="n">+12,3%</td></tr>
     </tbody>
   </table>
   <p class="nota" style="margin-top:var(--s3);color:var(--muted)">
-    <b>Sei divine e mezzo sono l'enchant, altre sei sono il permesso di craftare</b> — i due multimod più <i>Prefixes Cannot Be Changed</i>. I craft che finiscono davvero sull'item, spell damage/mana regen e block attacchi, costano <b>9 chaos</b>.
-    <br>Le due voci cresciute dall'11 agosto sono <b>Veiled Chaos +43%</b> e <b>Tempering +24%</b>; le basi magic <i>+4 lightning</i> invece <b>−25%</b>.
+    <b>Sono due skill opposte, non due versioni della stessa.</b> <i>of Escalation</i> ha una <code>baseEffectiveness</code> di <b>1,81</b> contro <b>0,42</b> — quattro volte tanto per colpo — ma casta a 0,3 s invece che 0,2, e il suo raggio <b>cresce da 26 a 46</b> mentre canalizzi. <i>of Eccentricity</i> fa un colpo piccolo e veloce, ma ogni <b>quinto impulso</b> fa <b>500% more damage</b> e <b>critta sempre</b>.
+    <br><b>Quel colpo garantito moltiplica per il crit multi senza passare dalla crit chance</b>: è la ragione per cui la build monta <i>Marylene's Fallacy</i>, che regala multi in cambio di chance. Su Escalation lo stesso scambio si paga a prezzo pieno — ed è per questo che Escalation, con l'amuleto giusto, quasi raddoppia.
+    <br>⚠️ <b>Il +12,3% finale è su bersaglio singolo</b>, l'unica cosa che PoB conta. Escalation compra <b>area</b>, e quello in un numero non ci va: è la scelta di chi gioca la build davvero. Se un giorno il clear ti sembra corto, è lì che si torna.
   </p>
 
-  <h2 class="sec">Cast speed o double damage — sul Whisper vince il caro</h2>
-  <table class="tabella" style="width:100%">
-    <thead><tr><th>Unveil</th><th class="n">25 anime</th><th class="n">45 anime</th><th class="n">mana/s</th></tr></thead>
-    <tbody>
-      <tr><td>senza unveil <i>(controllo)</i></td><td class="n">133,2 M</td><td class="n">172,8 M</td><td class="n">175,6 · 228,5</td></tr>
-      <tr><td><b>double damage 14%</b></td><td class="n"><b>149,8 M</b> <span style="color:var(--label)">+12,50%</span></td><td class="n"><b>194,4 M</b> <span style="color:var(--label)">+12,50%</span></td><td class="n">175,6 · 228,5</td></tr>
-      <tr><td>cast speed 30% + arcane surge</td><td class="n">145,1 M <span style="color:var(--label)">+8,94%</span></td><td class="n">184,7 M <span style="color:var(--label)">+6,87%</span></td><td class="n">191,3 · 244,2</td></tr>
-      <tr><td><b>Quanto il double damage batte il cast speed</b></td><td class="n"><b>+3,3%</b></td><td class="n"><b>+5,3%</b></td><td class="n">−15,7 di spesa</td></tr>
-    </tbody>
-  </table>
-  <p class="nota" style="margin-top:var(--s3);color:var(--muted)">
-    <b>Perché qui si ribalta:</b> Soul Eater dà <i>increased</i> cast speed, e gli increased si sommano nello stesso paniere. A 45 anime quel paniere è già enorme, quindi altri 30% comprano <b>+6,9% di velocità reale</b> (29,0 → 31,0 cast/s). Il double damage è un moltiplicatore che non si diluisce: <b>+12,50% esatto</b> a qualunque numero di anime.
-    <br>Sul ramo <b>No Whispers</b>, dove la cast speed è 12-14 e non 29, vinceva il cast speed: +14,6% contro +14,0%. <b>Le due misure sono coerenti</b> — è il valore del cast speed a crollare con le anime, non quello del double damage a salire.
-    <br>⚠️ <b>Quanto costa avere ragione:</b> 30 divine contro 17, cioè <b>13 divine per +3,3% mappando</b>. La misura dice che è il mod giusto, non che il prezzo sia buono.
-    <br><span style="color:var(--label)">Path of Building headless su <i>High Budget Whisper Setup</i>, cambiando solo la riga dell'unveil. La riga double damage a 45 anime dà 194.425.990, cioè cifra per cifra il numero pubblicato dalla guida per quel set: il banco è verificato.</span>
-  </p>
-
-  <h2 class="sec">Il craft di spell damage: puro o con la mana regen</h2>
-  <table class="tabella" style="width:100%">
-    <thead><tr><th>Craft sul prefisso</th><th class="n">25 anime</th><th class="n">45 anime</th><th class="n">rigen. mana</th></tr></thead>
-    <tbody>
-      <tr><td>ibrido <b>99% + 29%</b></td><td class="n">148,0 M</td><td class="n">192,1 M</td><td class="n"><b>313,0/s</b></td></tr>
-      <tr><td>puro <b>105%</b></td><td class="n">148,9 M <span style="color:var(--label)">+0,60%</span></td><td class="n">193,3 M <span style="color:var(--label)">+0,60%</span></td><td class="n">286,4/s</td></tr>
-      <tr><td>puro <b>115%</b> <i>(massimo)</i></td><td class="n">150,4 M <span style="color:var(--label)">+1,60%</span></td><td class="n">195,2 M <span style="color:var(--label)">+1,60%</span></td><td class="n">286,4/s</td></tr>
-      <tr><td>ibrido <b>105% + 30%</b> <i>(massimo)</i></td><td class="n">148,9 M</td><td class="n">193,3 M</td><td class="n"><b>313,9/s</b></td></tr>
-    </tbody>
-  </table>
-  <p class="nota" style="margin-top:var(--s3);color:var(--muted)">
-    <b>Il mod spell damage conta pochissimo.</b> Dal 99% scarso al 115% massimo del craft puro ci sono <b>+1,60%</b> di danno: sedici punti di <i>increased</i> su una build che ne ha centinaia si diluiscono, come il cast speed nel paniere di Soul Eater.
-    <br><b>E la mana regen non costa danno:</b> ibrido a 105+30 e puro a 105 danno lo stesso identico DPS. La scelta non è fra danno e mana — è fra <b>+1,0% di danno</b> e <b>26,6/s di rigenerazione</b>. Margine a 45 anime: <b>+84,5/s</b> con la mana regen, <b>+57,9/s</b> senza.
-    <br>⚠️ <b>L'enchant gonfia quello che leggi:</b> l'ibrido arriva a 105%/30%, quindi un item che mostra <b>111%/32%</b> non ha rolli fuori scala — sono 103/30 per 1,08. Con l'enchant addosso, <b>dividi per 1,08</b> per sapere il tiro vero.
-  </p>
-
-  <h2 class="sec">Il conto</h2>
-  <table class="tabella" style="width:100%">
-    <thead><tr><th>Voce</th><th class="n">Prezzo</th><th>Fase</th></tr></thead>
-    <tbody>
-      <tr><td>Coiling Whisper</td><td class="n">10 c</td><td>2</td></tr>
-      <tr><td>Raise Spectre L20</td><td class="n">25 c</td><td>0</td></tr>
-      <tr><td>Automation Q20</td><td class="n">26 c</td><td>0</td></tr>
-      <tr><td>Minion Life L20 Q20</td><td class="n">34 c</td><td>0</td></tr>
-      <tr><td>Perfect Spirit of Fortune</td><td class="n">35 c</td><td>3</td></tr>
-      <tr><td>Meat Shield L20 Q20</td><td class="n">50 c</td><td>0</td></tr>
-      <tr><td>Anoint <i>Disciple of the Slaughter</i></td><td class="n">354 c</td><td>2</td></tr>
-      <tr><td><b>Perfect Warlord</b></td><td class="n">879 c</td><td>3</td></tr>
-      <tr><td><b>Anello del mana</b> — 392 c di metamod, 61 di Veiled Chaos, il resto spiccioli</td><td class="n">460 c min · <b>656 atteso</b></td><td>1</td></tr>
-      <tr><td colspan="3" style="color:var(--label);font-size:var(--t-xs);padding-top:.7rem">Poi, per l'High Budget: <b>staff 17 div comprata</b> (25-29 craftata, 16-18 saltando il Tempering), Perfect Guardian Turtle 790 c, Raise Spectre L21 105 c, Empower L3.</td></tr>
-    </tbody>
-  </table>
-  <p class="nota" style="margin-top:var(--s3);color:var(--muted)">
-    <b>La voce cara non è quella che sembra.</b> L'anello che dà il nome alla build costa 10 chaos, e l'anello del mana si crafta per circa 460 — <b>a patto di non comprare la base fratturata da 10 divine</b>, che serve solo a tenere due livelli di Righteous Fire e vale l'1,65% di danno.
-    A costare davvero è <b>il Perfect Warlord</b>, 879 chaos.
-  </p>
-
-  <h2 class="sec">Quanto costa l'anello del mana</h2>
-  <table class="tabella" style="width:100%">
-    <thead><tr><th>Voce</th><th class="n">Costo</th></tr></thead>
-    <tbody>
-      <tr><td>Unset Ring ilvl 84+, normale</td><td class="n">1 c</td></tr>
-      <tr><td>Deafening Essence of Misery</td><td class="n">2,3 c</td></tr>
-      <tr><td><b>Banco: Suffixes Cannot Be Changed</b> — 2 Divine Orb</td><td class="n"><b>392 c</b></td></tr>
-      <tr><td>Veiled Chaos Orb</td><td class="n">61 c</td></tr>
-      <tr><td>Banco: mana sul prefisso — 3 Orb of Augmentation</td><td class="n">0,1 c</td></tr>
-      <tr><td>Banco: Channelling Skills have -3 to Total Mana Cost — 4 Chaos Orb</td><td class="n">4 c</td></tr>
-      <tr><td><b>Minimo, tutto al primo colpo</b></td><td class="n"><b>460 c</b> · 2,3 div</td></tr>
-      <tr><td><b>Atteso</b> — l'unveil è 3/4, quindi ~1,33 cicli di metamod + veiled, più una ventina di essenze</td><td class="n"><b>656 c</b> · 3,3 div</td></tr>
-    </tbody>
-  </table>
-  <p class="nota" style="margin-top:var(--s3);color:var(--muted)">
-    <b>Le essenze non sono il costo:</b> a 2,3 chaos l'una, anche cinquanta tentativi sono 116 chaos. A pesare è il <b>metamod da 2 Divine</b>, che si ripaga solo se lo si usa una volta sola — cioè se si arriva alla veiled chaos con i suffissi già a posto.
-  </p>
-
-  <h2 class="sec">Cinque errori che rompono la build</h2>
+  <h2 class="sec">Cosa non comprare</h2>
   <div class="card" style="padding:var(--s4)">
     <ol class="errori" style="margin:0;padding-left:1.2rem;color:var(--muted)">
-      <li><b>Montare il Whisper prima del pacchetto mana.</b> Il canale si spegne quando gli stack salgono.</li>
-      <li><b>Mettere <i>Used when Charges Reach Full</i> sui flask.</b> Ci vuole <b>Reused at the End of Flask Effect</b> su tutti: altrimenti il Coruscating Elixir viene spammato, la vita non risale e il Righteous Fire si spegne.</li>
-      <li><b>Togliere la gemma Raise Spectre dentro una mappa.</b> Gli spettri non diventano cadaveri: spariscono per sempre.</li>
-      <li><b>Livellare Hextouch e Temporal Chains.</b> Devono restare a 1.</li>
-      <li><b>Prendere l'altare rosso che blocca le cariche dei flask.</b> Tutta la difesa è appesa al loro uptime.</li>
+      <li><b>Stormshroud.</b> Misurato: <b>+0,82% di danno e −1,24% di hit pool</b>. La riga che gli dà il nome — <i>avoid Shock applies to all Elemental Ailments</i> — <b>su di te vale zero</b>, perché non hai nessuna fonte di avoid shock. Shadex ne ha 52% da un flask tenuto su dal Mageblood: è un pezzo di quel combo. E il suo <b>+15% Lightning Resistance ti costa 2.263 di hit pool</b>, perché sposta l'ordine su cui The Wise Oak decide dove cade il bonus.</li>
+      <li><b>I flask di Shadex, copiati.</b> Quattro su cinque hanno <i>Gains no Charges during Effect</i> e <i>reduced Duration</i>: <b>senza Mageblood sono mod strettamente cattivi</b>. Li prende per incassare 70% + 25% di increased effect, e funzionano solo perché il Mageblood rende durata e cariche irrilevanti.</li>
+      <li><b>Un altro staff.</b> Ce l'hai già: <i>Maelstrom Beam</i>, implicito 25% block magie, +2/+4, 13% double damage, 105% spell damage e +13% block attacchi.</li>
+      <li><b>Il craft ibrido al posto del puro sullo staff.</b> Vale +20,8/s di mana e −0,64% di danno: <b>non chiude il buco</b>, che resta a −105/s a 45 anime. Il mana si sistema con Militant Faith, non col prefisso dello staff.</li>
+      <li><b>I numeri del PoB di Shadex.</b> Ha <b>zero input di Config</b>: anche copiandoci la tua restituisce EHP 9.095 e chaos max hit 30. Si legge per gear e albero, mai per le statistiche.</li>
     </ol>
   </div>
 
-  <h2 class="sec">Regole che valgono comunque</h2>
-  <table class="tabella" style="width:100%">
-    <tbody>
-      <tr><td><b>Righteous Fire che si spegne</b></td><td>Serve <b>Eternal Youth</b> allocato: impedisce alla vita di restare a 1 dopo il Coruscating Elixir.</td></tr>
-      <tr><td><b>Degen dell'RF</b></td><td><b>Stone Golem a qualità 20-30</b>, e <b>mai oltre 1.200 di mana</b>: l'RF di Arcane Devotion brucia in proporzione al mana.</td></tr>
-      <tr><td><b>Slot flask vuoto</b></td><td>È voluto. Brutal Restraint di <b>Balbala</b> dà 4 cariche ogni 5 secondi <b>per ogni slot vuoto</b>.</td></tr>
-      <tr><td><b>Prefissi dei flask</b></td><td>Minimo <b>30%</b> di increased Duration <b>oppure</b> Charge Recovery, o l'uptime non regge.</td></tr>
-      <tr><td><b>The Wise Oak</b></td><td>Funziona solo con le resistenze bilanciate: <b>niente resistenze elementali sul gear</b>, vengono tutte dai flask.</td></tr>
-      <tr><td><b>Attributi finali</b></td><td><b>173 Forza · 98 Destrezza · 173 Intelligenza</b>, di cui 88 Str e 53 Dex dal gear.</td></tr>
-      <tr><td><b>Qualità e colori</b></td><td>Priorità: Lightning Tendrils › Less Duration › i golem › Infused Channelling › Arrogance › Chaos Golem › RF › Purity of Elements › Annihilation.</td></tr>
-      <tr><td><b>Debolezza vera</b></td><td>È una build low life: <b>Culling Strike</b> su mercenari ed Expedition uccide.</td></tr>
-    </tbody>
-  </table>
+  <h2 class="sec">Quello che è già fatto</h2>
+  <div class="card" style="padding:var(--s4)">
+    <ul class="fatto-elenco">
+      <li>✅ <b>Coiling Whisper</b></li>
+      <li>✅ <b>Anello del mana</b> — Bramble Finger</li>
+      <li>✅ Anoint <b>Disciple of the Slaughter</b></li>
+      <li>✅ Elmo con <b>25% Mana Cost Efficiency</b></li>
+      <li>✅ Frostblink + Hextouch/Temporal Chains <b>L1</b></li>
+      <li>✅ Spettri, Minion Life, i golem</li>
+      <li>✅ Albero: <b>Roiling Tempest</b>, Grave Intentions</li>
+      <li>✅ <b>Lo staff</b> — Maelstrom Beam</li>
+      <li>✅ I tattoo</li>
+      <li>✅ Focused Channelling nel petto</li>
+    </ul>
+  </div>
 
   <h2 class="sec">Da dove vengono questi numeri</h2>
   <div class="card" style="padding:var(--s4)">
     <p class="fonte" style="margin:0 0 .6rem">
-      <b>Prezzi:</b> API di trade di pathofexile.com, lega Allflame, filtro <b>Instant Buyout</b>, ordinati per prezzo crescente. Ogni link di questa pagina è stato collaudato: risponde 200 con un numero di inserzioni sensato. Misurati il <b>12 agosto 2026</b>, e quelli dello <b>staff il 14</b> — i prezzi si muovono, i link no.
+      <b>Danno, hit pool e mana:</b> Path of Building in <b>headless</b> sul salvataggio vero, cambiando <b>una cosa alla volta</b>. Le anime sono l'interruttore <code>multiplierSoulEater</code>. Prima di ogni confronto si verifica che <code>activeItemSet</code>, <code>activeSpec</code> e <code>activeConfigSet</code> siano allineati: sono tre interruttori che falsano una misura senza dare nessun segnale.
     </p>
     <p class="fonte" style="margin:0 0 .6rem">
-      <b>Oli e valuta:</b> poe.ninja, che è pesato sul volume di scambio. Non si misurano dalla ricerca per oggetti: quella roba passa dal Currency Exchange e le inserzioni non vendono.
+      <b>Le due gemme:</b> lette in <code>Data/Skills/act_int.lua</code>, non dedotte dalle descrizioni.
     </p>
     <p class="fonte" style="margin:0">
-      <b>Danno, hit pool e mana:</b> Path of Building in headless, stessa build e stessa Config, cambiando una cosa alla volta. I valori di stack sono l'interruttore <code>multiplierSoulEater</code>. Il confronto fra i due unveil è fatto sul set <i>High Budget Whisper Setup</i> della guida, con <code>activeItemSet</code>, <code>activeSpec</code> e <code>activeConfigSet</code> allineati — sono i tre interruttori silenziosi che falsano una misura senza dare segnali.
+      <b>Prezzi:</b> API di trade di pathofexile.com, lega Allflame, filtro <b>Instant Buyout</b>, ordinati per prezzo crescente. Ogni link è stato collaudato: risponde 200 con un numero di inserzioni sensato. Misurati il <b>15 agosto 2026</b> — i prezzi si muovono, i link no.
     </p>
   </div>
 
@@ -366,10 +212,9 @@
 <script>
 // Segnaposto dei passi fatti, in locale. Nessuna rete, nessuna dipendenza.
 // La chiave e' l'id del passo (data-p), non la sua posizione: cosi' aggiungere
-// un passo in mezzo non sposta le spunte di tutti quelli dopo. Prima era
-// l'indice, e ogni modifica alla pagina falsava la scaletta di chi la seguiva.
+// un passo in mezzo non sposta le spunte di tutti quelli dopo.
 (function(){
-  var CHIAVE='whisper-passi-2';
+  var CHIAVE='whisper-cosa-manca';
   var stato={};
   try{ stato=JSON.parse(localStorage.getItem(CHIAVE)||'{}'); }catch(e){ stato={}; }
   document.querySelectorAll('ol.passi > li[data-p]').forEach(function(li){
