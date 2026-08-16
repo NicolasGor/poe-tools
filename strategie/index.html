@@ -105,8 +105,14 @@
   .mb.vuoto{color:var(--muted);background:none;border:1px dashed var(--line)}
   .albero{display:block;text-align:center;padding:.55rem;border-radius:var(--r-sm);
           background:var(--gold);color:#161310;font-weight:600;font-size:var(--t-sm);
-          text-decoration:none;margin-top:var(--s3)}
-  .albero:hover{filter:brightness(1.08)}
+          text-decoration:none;margin-top:var(--s3);border:1px solid transparent;
+          transition:filter .12s, background .12s, color .12s, border-color .12s}
+  /* ⚠️ stile.css ha un `button:hover` globale che mette `color:var(--gold)`.
+     Su un pulsante col **fondo** gold quello e' oro su oro: il testo sparisce.
+     Va riaffermato qui, ed e' il motivo per cui non basta il filtro. */
+  .albero:hover{filter:brightness(1.1)}
+  button.albero:hover{color:#161310;border-color:transparent}
+  .albero.secondario:hover{background:var(--gold);color:#161310;filter:none}
   /* icona dentro al pulsante: si riconosce il link prima di leggerlo */
   .albero img{height:1.25em;width:auto;vertical-align:-.28em;margin-right:.3rem}
   .nota{font-size:var(--t-xs);color:var(--muted);margin:var(--s3) 0 0;line-height:1.55}
@@ -323,15 +329,15 @@
 
   <article class="strat" id="fortress">
     <header>
-      <h2>2 · Breach Hive Fortress <span class="badge">scarab</span> <span class="badge">2c a mappa</span></h2>
-      <p class="sommario">Un solo scarab da <b>2 chaos</b> e ogni Breach della mappa diventa una <b>Hive Fortress</b>: un'arena chiusa, <b>26 ondate</b> da difendere e tutto l'Hiveblood pagato in un colpo all'uscita. Restano <b>quattro slot liberi</b> nel map device.</p>
+      <h2>2 · Breach Hive Fortress <span class="badge">scarab</span> <span class="badge">45c a mappa</span></h2>
+      <p class="sommario">Un solo scarab da <b>2 chaos</b> e ogni Breach diventa una <b>Hive Fortress</b>: un'arena chiusa, <b>26 ondate</b> da difendere e tutto l'Hiveblood pagato in un colpo all'uscita. Restano <b>quattro slot liberi</b> nel map device.</p>
       <p class="quando">Quando: adesso — è la strategia che sto correndo</p>
     </header>
 
     <div class="misure">
       <div class="misura"><div class="et">Difficoltà</div><div class="val">Media<small>26 ondate, poi la fuga</small></div>
         <div class="tacche rischio"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
-      <div class="misura"><div class="et">Investimento</div><div class="val">2c a mappa<small>solo il Marshal · gli altri 4 slot a piacere</small></div>
+      <div class="misura"><div class="et">Investimento</div><div class="val">~45c a mappa<small>43c la mappa · 2c il Marshal</small></div>
         <div class="tacche"><i class="on"></i><i></i><i></i><i></i><i></i></div></div>
       <div class="misura"><div class="et">Resa</div><div class="val nulla">Non misurata<small>🔴 da nessuno, nemmeno dall'autore</small></div>
         <div class="tacche resa"><i class="on"></i><i></i><i></i><i></i><i></i></div></div>
@@ -376,6 +382,24 @@
         </tbody></table>
         <p class="nota">🔴 <b>I debuff sul giocatore entrano</b>, quindi la mappa si compra con le <b>19 esclusioni</b> di questa build. Anche il danno della fuga li subisce.</p>
 
+
+        <div class="blocco-albero" id="in-gioco-2">
+          <h3>🎮 Comprare le mappe</h3>
+          <p class="nota">Serve <b>densità</b>, non mappe: pack size e quantity fanno l'Hiveblood. 🔴 <b>Niente <code>More Maps</code></b> — è il filtro caro della scheda 1 e qui non serve a niente.</p>
+          <div class="bottoni">
+            <a class="albero" href="https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22filters%22%3A%7B%22type_filters%22%3A%7B%22filters%22%3A%7B%22category%22%3A%7B%22option%22%3A%22map%22%7D%2C%22rarity%22%3A%7B%22option%22%3A%22nonunique%22%7D%7D%7D%2C%22map_filters%22%3A%7B%22filters%22%3A%7B%22map_tier%22%3A%7B%22min%22%3A16%7D%2C%22map_iiq%22%3A%7B%22min%22%3A100%7D%2C%22map_packsize%22%3A%7B%22min%22%3A55%7D%7D%7D%2C%22misc_filters%22%3A%7B%22filters%22%3A%7B%22foil_variation%22%3A%7B%22option%22%3A%22none%22%7D%7D%7D%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22not%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22explicit.stat_1910157106%22%7D%2C%7B%22id%22%3A%22explicit.stat_1890969167%22%7D%2C%7B%22id%22%3A%22explicit.stat_4181072906%22%7D%2C%7B%22id%22%3A%22explicit.stat_36406748%22%7D%2C%7B%22id%22%3A%22explicit.stat_2549889921%22%7D%2C%7B%22id%22%3A%22explicit.stat_3729221884%22%7D%2C%7B%22id%22%3A%22explicit.stat_3551025193%22%7D%2C%7B%22id%22%3A%22explicit.stat_3776150692%22%7D%2C%7B%22id%22%3A%22explicit.stat_984774803%22%7D%2C%7B%22id%22%3A%22explicit.stat_2450628570%22%7D%2C%7B%22id%22%3A%22explicit.stat_1026390635%22%7D%2C%7B%22id%22%3A%22explicit.stat_3753748365%22%7D%2C%7B%22id%22%3A%22explicit.stat_3376488707%22%7D%2C%7B%22id%22%3A%22explicit.stat_2073168229%22%7D%2C%7B%22id%22%3A%22explicit.stat_558910024%22%7D%2C%7B%22id%22%3A%22explicit.stat_1140978125%22%7D%2C%7B%22id%22%3A%22explicit.stat_3938822425%22%7D%2C%7B%22id%22%3A%22explicit.stat_2326202293%22%7D%2C%7B%22id%22%3A%22enchant.stat_1715784068%22%7D%5D%2C%22disabled%22%3Afalse%7D%2C%7B%22type%22%3A%22and%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22implicit.stat_2696470877%22%7D%5D%2C%22disabled%22%3Afalse%7D%2C%7B%22type%22%3A%22count%22%2C%22value%22%3A%7B%22min%22%3A1%7D%2C%22filters%22%3A%5B%7B%22id%22%3A%22pseudo.pseudo_map_more_currency_drops%22%2C%22value%22%3A%7B%22min%22%3A50%7D%7D%2C%7B%22id%22%3A%22pseudo.pseudo_map_more_scarab_drops%22%2C%22value%22%3A%7B%22min%22%3A50%7D%7D%5D%2C%22disabled%22%3Afalse%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D" target="_blank" rel="noopener">T16.5 · +50% currency o scarab ↗</a><a class="albero secondario" href="https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22filters%22%3A%7B%22type_filters%22%3A%7B%22filters%22%3A%7B%22category%22%3A%7B%22option%22%3A%22map%22%7D%2C%22rarity%22%3A%7B%22option%22%3A%22nonunique%22%7D%7D%7D%2C%22map_filters%22%3A%7B%22filters%22%3A%7B%22map_tier%22%3A%7B%22min%22%3A16%7D%2C%22map_iiq%22%3A%7B%22min%22%3A100%7D%2C%22map_packsize%22%3A%7B%22min%22%3A55%7D%7D%7D%2C%22misc_filters%22%3A%7B%22filters%22%3A%7B%22foil_variation%22%3A%7B%22option%22%3A%22none%22%7D%7D%7D%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22not%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22explicit.stat_1910157106%22%7D%2C%7B%22id%22%3A%22explicit.stat_1890969167%22%7D%2C%7B%22id%22%3A%22explicit.stat_4181072906%22%7D%2C%7B%22id%22%3A%22explicit.stat_36406748%22%7D%2C%7B%22id%22%3A%22explicit.stat_2549889921%22%7D%2C%7B%22id%22%3A%22explicit.stat_3729221884%22%7D%2C%7B%22id%22%3A%22explicit.stat_3551025193%22%7D%2C%7B%22id%22%3A%22explicit.stat_3776150692%22%7D%2C%7B%22id%22%3A%22explicit.stat_984774803%22%7D%2C%7B%22id%22%3A%22explicit.stat_2450628570%22%7D%2C%7B%22id%22%3A%22explicit.stat_1026390635%22%7D%2C%7B%22id%22%3A%22explicit.stat_3753748365%22%7D%2C%7B%22id%22%3A%22explicit.stat_3376488707%22%7D%2C%7B%22id%22%3A%22explicit.stat_2073168229%22%7D%2C%7B%22id%22%3A%22explicit.stat_558910024%22%7D%2C%7B%22id%22%3A%22explicit.stat_1140978125%22%7D%2C%7B%22id%22%3A%22explicit.stat_3938822425%22%7D%2C%7B%22id%22%3A%22explicit.stat_2326202293%22%7D%2C%7B%22id%22%3A%22enchant.stat_1715784068%22%7D%5D%2C%22disabled%22%3Afalse%7D%2C%7B%22type%22%3A%22and%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22implicit.stat_2696470877%22%7D%5D%2C%22disabled%22%3Afalse%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D" target="_blank" rel="noopener">T16.5 economica ↗</a>
+          </div>
+          <div class="punti">
+          <div class="voce"><span><b>T16.5 Originator</b> · ps ≥ 55 · +50% currency/scarab <span class="lim">1.156 offerte</span></span><span class="p"><b>43c</b></span></div>
+          <div class="voce"><span>T16.5 Originator · ps ≥ 55 <span class="lim">3.520 offerte</span></span><span class="p">27c</span></div>
+          <div class="voce"><span class="nulla">la mappa della scheda 1 <span class="lim">con More Maps ≥ 100%</span></span><span class="p nulla">176c</span></div>
+          </div>
+          <ul class="nota">
+            <li>🎯 <b>La mappa qui costa un sesto di quella della scheda 1</b>, e il motivo è tutto in <code>More Maps</code>: lì è il motore, qui è inutile.</li>
+            <li><b>Le T16.5 partono da pack size 68-73</b> contro il ~40 di una T16 normale: è quello che le rende la scelta migliore, non il tier.</li>
+            <li>⚠️ <b>Delirious escluse</b> dal filtro: sono la scelta migliore per chiunque altro, la peggiore per una build che canalizza da ferma.</li>
+          </ul>
+        </div>
         <div class="blocco-albero">
           <h3>Albero atlas — 138 punti</h3>
           <p class="nota">Parte da quello della guida, con tre correzioni misurate. <b>Verificato: 138/138, tutti gli id validi, grafo interamente connesso.</b></p>
@@ -412,6 +436,14 @@
           </div>
         </div>
 
+        <div class="pannello">
+          <h3>Mappa — il layout non conta</h3>
+          <div class="voce"><span><b>Dunes</b> <span class="lim">quella dell'autore</span></span><span class="p">L10 · B10</span></div>
+          <div class="voce"><span>T16.5 Originator</span><span class="p">ps 68-73</span></div>
+          <div class="voce"><span class="nulla">T16 normale</span><span class="p nulla">ps ~40</span></div>
+          <p class="nota">🔴 <b>La Fortress è identica in qualunque mappa</b> — <i>«the fortress is going to be the same setup regardless of what map you're in»</i>. Quindi <b>si sceglie la più veloce</b>, non la più aperta: è il contrario della scheda 1, dove il cerchio della Breach ha bisogno di spazio.</p>
+          <p class="nota">Quello che conta è la <b>densità</b>: 8 mod meglio di 6, pack size e quantity più alti possibile, e <b>+50% more currency o more scarab</b> come moltiplicatore.</p>
+        </div>
         <div class="pannello">
           <h3>Astrolabio — Templar, non Grasping</h3>
           <div class="voce"><span><b>Templar Astrolabe</b> <span class="lim">6 in tab</span></span><span class="p">91c</span></div>
