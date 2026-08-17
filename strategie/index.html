@@ -44,15 +44,16 @@
   /* accordion: chiuse, le quattro schede diventano quattro righe di misuratori
      incolonnati, che e' il modo per confrontarle. Fatto con <details>, non con
      JS: senza script la pagina resta apribile. */
+  /* la riga e' gold pieno come i pulsanti `.albero`, non solo il testo: da chiusa
+     e' l'unica cosa cliccabile della scheda e deve leggersi come un pulsante. */
   .dettaglio > summary{list-style:none;cursor:pointer;padding:var(--s3) var(--s6);
                        font-size:var(--t-xs);text-transform:uppercase;letter-spacing:.09em;
-                       color:var(--gold);display:flex;align-items:center;gap:var(--s2)}
+                       background:var(--gold);color:#161310;font-weight:600;
+                       display:flex;align-items:center;gap:var(--s2)}
   .dettaglio > summary::-webkit-details-marker{display:none}
-  .dettaglio > summary::before{content:"▸";color:var(--gold);font-size:.9em;
-                               transition:transform .12s}
-  .dettaglio[open] > summary{border-bottom:1px solid var(--line)}
+  .dettaglio > summary::before{content:"▸";font-size:.9em;transition:transform .12s}
   .dettaglio[open] > summary::before{transform:rotate(90deg)}
-  .dettaglio > summary:hover{filter:brightness(1.15)}
+  .dettaglio > summary:hover{filter:brightness(1.1)}
 
   .comandi{display:flex;gap:var(--s2);margin-top:var(--s4)}
 
@@ -242,7 +243,7 @@
 
   <article class="strat">
     <header>
-      <h2>1 · Breach + mappe 8-mod <span class="badge">mappe</span> <span class="badge">3,8 div/mappa dichiarate</span></h2>
+      <h2>1 · Breach + mappe 8-mod <span class="badge">mappe</span> <span class="badge">3,8 div/mappa dichiarate</span> <span class="badge">+ astrolabio Grasping</span></h2>
       <p class="sommario">Compri <b>una</b> mappa T16.5 a 8 mod e ne escono <b>venticinque</b>. Le Breach non pagano in valuta: pagano in <b>Hiveblood</b>, che al Genesis Tree diventa <b>basi fratturate</b> da vendere.</p>
       <p class="quando">Quando: subito — i cinque scarab sono già in stash, manca solo la mappa</p>
     </header>
@@ -250,7 +251,7 @@
     <div class="misure">
       <div class="misura"><div class="et">Difficoltà</div><div class="val">Alta<small>T16.5 a 8 mod · 5 Breach aperte</small></div>
         <div class="tacche rischio"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
-      <div class="misura"><div class="et">Investimento</div><div class="val">145c a mappa<small>111c la mappa · 20c i cinque scarab · 14c l'astrolabio</small></div>
+      <div class="misura"><div class="et">Investimento</div><div class="val">145c a mappa<small>111c la mappa · 20c i 5 scarab · <b>13,9c l'astrolabio Grasping</b></small></div>
         <div class="tacche"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
       <div class="misura"><div class="et">Resa</div><div class="val">3,8 div/mappa<small>🔴 <b>dichiarata dall'autore</b> · zero mappe misurate in casa</small></div>
         <div class="tacche resa"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
@@ -372,7 +373,7 @@
     <div class="misure">
       <div class="misura"><div class="et">Difficoltà</div><div class="val">Bassa<small>si pulisce senza fretta · nessun boss forzato</small></div>
         <div class="tacche rischio"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div></div>
-      <div class="misura"><div class="et">Investimento</div><div class="val">49c a mappa<small>4,9c la mappa · 44,3c i cinque scarab, di cui <b>39,2 il Doubling</b></small></div>
+      <div class="misura"><div class="et">Investimento</div><div class="val">49c a mappa<small>4,9c la mappa · 44,3c i 5 scarab (39,2 il Doubling) · <b>nessun astrolabio</b></small></div>
         <div class="tacche"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div></div>
       <div class="misura"><div class="et">Resa</div><div class="val">0,70 div/mappa<small>✅ <b>misurata su snapshot</b> (6,3 div/ora su 2h42m) · in casa 1,15 l'11 ago</small></div>
         <div class="tacche resa"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div></div>
@@ -463,7 +464,7 @@
 
   <article class="strat">
     <header>
-      <h2>3 · Destructive Play <span class="badge">currency</span> <span class="badge">0,77 div/mappa misurate</span></h2>
+      <h2>3 · Destructive Play <span class="badge">currency</span> <span class="badge">0,77 div/mappa misurate</span> <span class="badge">+ astrolabio Templar</span></h2>
 
       <p class="sommario">Quattro meccaniche su <b>City Square</b>, dall'autore della build che gioco. Non è un albero da lifeforce: si vive di <b>mappe da rivendere</b>, di <b>zaini dei mercenari</b> e del <b>Syndicate</b>. Il numero trasportabile è <b>per mappa</b>, non per ora: l'autore fa 20 mappe in 30 minuti, ed è il suo record.</p>
       <p class="quando">Quando: quando il tempo di raccolta di Harvest diventa il vincolo</p>
@@ -472,7 +473,7 @@
     <div class="misure">
       <div class="misura"><div class="et">Difficoltà</div><div class="val">Media<small>7-8 boss a mappa · merc che one-shottano</small></div>
         <div class="tacche rischio"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
-      <div class="misura"><div class="et">Investimento</div><div class="val">52-83c a mappa<small>34c i 5 scarab + la mappa: <b>17,6c a 6 mod</b>, 48,7c a 8 mod</small></div>
+      <div class="misura"><div class="et">Investimento</div><div class="val">61-97c a mappa<small>34c i 5 scarab · mappa <b>17,6c a 6 mod</b> o 48,7 a 8 · <b>9,8-14,7c l'astrolabio Templar</b></small></div>
         <div class="tacche"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
       <div class="misura"><div class="et">Resa</div><div class="val">0,77 div/mappa<small>✅ <b>20 mappe misurate in casa</b> · l'autore dichiara 1,28 su 13</small></div>
         <div class="tacche resa"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div></div>
@@ -720,7 +721,7 @@
     <div class="misure">
       <div class="misura"><div class="et">Difficoltà</div><div class="val">Media<small>molti boss a mappa · The Feared è l'unico duro</small></div>
         <div class="tacche rischio"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
-      <div class="misura"><div class="et">Investimento</div><div class="val">120c a mappa<small>i 5 scarab 75,0 · la Conqueror 8-mod filtrata 45,0</small></div>
+      <div class="misura"><div class="et">Investimento</div><div class="val">120c a mappa<small>45,0c la Conqueror 8-mod filtrata · 75,0c i 5 scarab · <b>nessun astrolabio, di proposito</b></small></div>
         <div class="tacche"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
       <div class="misura"><div class="et">Resa</div><div class="val">0,73 div/mappa<small>⚠️ <b>le sue 100 mappe riprezzate</b>, zero in casa · lui dichiara 1,1</small></div>
         <div class="tacche resa"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div></div>
