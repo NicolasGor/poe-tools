@@ -54,14 +54,7 @@
   .dettaglio[open] > summary::before{transform:rotate(90deg)}
   .dettaglio > summary:hover{color:var(--gold)}
 
-  /* la legenda delle scale: senza, incolonnare le tacche non vuol dire niente */
-  .scale{margin:var(--s4) 0 0;padding:var(--s3) var(--s4);background:var(--panel2);
-         border:1px solid var(--line);border-radius:var(--r);font-size:var(--t-xs);
-         color:var(--muted);line-height:1.6}
-  .scale b{color:var(--text)}
-  .scale .riga{display:flex;flex-wrap:wrap;gap:var(--s1) var(--s4)}
-  .scale code{font-size:var(--t-xs)}
-  .comandi{display:flex;gap:var(--s2);margin-top:var(--s3)}
+  .comandi{display:flex;gap:var(--s2);margin-top:var(--s4)}
   .comandi button{background:transparent;border:1px solid var(--line);color:var(--muted);
                   border-radius:var(--r-full);padding:.2rem .7rem;font-size:var(--t-xs);
                   cursor:pointer;font-family:inherit}
@@ -217,19 +210,12 @@
       <span class="badge">lega Allflame</span>
       <span class="badge">17 agosto 2026</span>
     </div>
-    <div class="scale">
-      <b>Le quattro colonne si leggono in colonna, coi dettagli chiusi</b> — stesse unità e stesse soglie su tutte le schede:
-      <div class="riga">
-        <span><b>Difficoltà</b> — quanto chiede alla build</span>
-        <span><b>Investimento</b> — chaos a mappa: <code>1</code> ≤10 · <code>2</code> ≤50 · <code>3</code> ≤100 · <code>4</code> ≤200 · <code>5</code> oltre</span>
-        <span><b>Resa</b> — divine a mappa: <code>1</code> ≤0,5 · <code>2</code> ≤1 · <code>3</code> ≤2 · <code>4</code> ≤3 · <code>5</code> oltre</span>
-        <span><b>Ritmo</b> — minuti a mappa: <code>5</code> ≤2 · <code>4</code> ≤3 · <code>3</code> ≤5 · <code>2</code> ≤8 · <code>1</code> oltre</span>
-      </div>
-      🔴 <b>Resa e Ritmo si leggono insieme</b>, altrimenti una strategia veloce sembra povera: divine a mappa × 60 ÷ minuti = <b>divine l'ora</b>, ed è scritto nel riquadro del ritmo. ⚠️ <b>E non hanno tutte la stessa fonte</b>: chi ha misurato e su quante mappe sta nella riga piccola di ogni riquadro — «dichiarata» non vale «misurata in casa».
-      <div class="comandi">
-        <button type="button" data-tutti="apri">Apri tutti i dettagli</button>
-        <button type="button" data-tutti="chiudi">Chiudi tutti</button>
-      </div>
+    <!-- Le soglie delle tacche dei quattro misuratori (investimento in c/mappa,
+         resa in div/mappa, ritmo in min/mappa) stanno in
+         wiki/meta/strumenti-del-sito.md: sul sito i numeri, il perche' nella wiki. -->
+    <div class="comandi">
+      <button type="button" data-tutti="apri">Apri tutti i dettagli</button>
+      <button type="button" data-tutti="chiudi">Chiudi tutti</button>
     </div>
   </header>
 
