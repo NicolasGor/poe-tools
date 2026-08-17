@@ -41,6 +41,32 @@
   .spente .ch{font-size:var(--t-xs);color:var(--muted);background:var(--panel-alto);
               border:1px solid var(--line);border-radius:var(--r-full);padding:.1rem .55rem}
 
+  /* accordion: chiuse, le quattro schede diventano quattro righe di misuratori
+     incolonnati, che e' il modo per confrontarle. Fatto con <details>, non con
+     JS: senza script la pagina resta apribile. */
+  .dettaglio > summary{list-style:none;cursor:pointer;padding:var(--s3) var(--s6);
+                       font-size:var(--t-xs);text-transform:uppercase;letter-spacing:.09em;
+                       color:var(--muted);display:flex;align-items:center;gap:var(--s2)}
+  .dettaglio > summary::-webkit-details-marker{display:none}
+  .dettaglio > summary::before{content:"▸";color:var(--gold);font-size:.9em;
+                               transition:transform .12s}
+  .dettaglio[open] > summary{color:var(--gold);border-bottom:1px solid var(--line)}
+  .dettaglio[open] > summary::before{transform:rotate(90deg)}
+  .dettaglio > summary:hover{color:var(--gold)}
+
+  /* la legenda delle scale: senza, incolonnare le tacche non vuol dire niente */
+  .scale{margin:var(--s4) 0 0;padding:var(--s3) var(--s4);background:var(--panel2);
+         border:1px solid var(--line);border-radius:var(--r);font-size:var(--t-xs);
+         color:var(--muted);line-height:1.6}
+  .scale b{color:var(--text)}
+  .scale .riga{display:flex;flex-wrap:wrap;gap:var(--s1) var(--s4)}
+  .scale code{font-size:var(--t-xs)}
+  .comandi{display:flex;gap:var(--s2);margin-top:var(--s3)}
+  .comandi button{background:transparent;border:1px solid var(--line);color:var(--muted);
+                  border-radius:var(--r-full);padding:.2rem .7rem;font-size:var(--t-xs);
+                  cursor:pointer;font-family:inherit}
+  .comandi button:hover{border-color:var(--gold)}
+
   .corpo{display:grid;gap:var(--s6);grid-template-columns:1.55fr 1fr;padding:var(--s5) var(--s6) var(--s6)}
   @media(max-width:880px){.corpo{grid-template-columns:1fr}
                           .misure{grid-template-columns:repeat(2,1fr)}}
@@ -191,11 +217,25 @@
       <span class="badge">lega Allflame</span>
       <span class="badge">17 agosto 2026</span>
     </div>
+    <div class="scale">
+      <b>Le quattro colonne si leggono in colonna, coi dettagli chiusi</b> — stesse unità e stesse soglie su tutte le schede:
+      <div class="riga">
+        <span><b>Difficoltà</b> — quanto chiede alla build</span>
+        <span><b>Investimento</b> — chaos a mappa: <code>1</code> ≤10 · <code>2</code> ≤50 · <code>3</code> ≤100 · <code>4</code> ≤200 · <code>5</code> oltre</span>
+        <span><b>Resa</b> — divine a mappa: <code>1</code> ≤0,5 · <code>2</code> ≤1 · <code>3</code> ≤2 · <code>4</code> ≤3 · <code>5</code> oltre</span>
+        <span><b>Ritmo</b> — minuti a mappa: <code>5</code> ≤2 · <code>4</code> ≤3 · <code>3</code> ≤5 · <code>2</code> ≤8 · <code>1</code> oltre</span>
+      </div>
+      🔴 <b>Resa e Ritmo si leggono insieme</b>, altrimenti una strategia veloce sembra povera: divine a mappa × 60 ÷ minuti = <b>divine l'ora</b>, ed è scritto nel riquadro del ritmo. ⚠️ <b>E non hanno tutte la stessa fonte</b>: chi ha misurato e su quante mappe sta nella riga piccola di ogni riquadro — «dichiarata» non vale «misurata in casa».
+      <div class="comandi">
+        <button type="button" data-tutti="apri">Apri tutti i dettagli</button>
+        <button type="button" data-tutti="chiudi">Chiudi tutti</button>
+      </div>
+    </div>
   </header>
 
   <article class="strat">
     <header>
-      <h2>1 · Breach + mappe 8-mod <span class="badge">mappe</span> <span class="badge">152c a mappa</span></h2>
+      <h2>1 · Breach + mappe 8-mod <span class="badge">mappe</span> <span class="badge">3,8 div/mappa dichiarate</span></h2>
       <p class="sommario">Compri <b>una</b> mappa T16.5 a 8 mod e ne escono <b>venticinque</b>. Le Breach non pagano in valuta: pagano in <b>Hiveblood</b>, che al Genesis Tree diventa <b>basi fratturate</b> da vendere.</p>
       <p class="quando">Quando: subito — i cinque scarab sono già in stash, manca solo la mappa</p>
     </header>
@@ -204,13 +244,15 @@
       <div class="misura"><div class="et">Difficoltà</div><div class="val">Alta<small>T16.5 a 8 mod · 5 Breach aperte</small></div>
         <div class="tacche rischio"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
       <div class="misura"><div class="et">Investimento</div><div class="val">152c a mappa<small>110c la mappa · 27c i cinque scarab · 14c l'astrolabio</small></div>
-        <div class="tacche"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div></div>
-      <div class="misura"><div class="et">Resa</div><div class="val">3,8 div/mappa<small>dichiarata · non misurata su snapshot</small></div>
+        <div class="tacche"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
+      <div class="misura"><div class="et">Resa</div><div class="val">3,8 div/mappa<small>🔴 <b>dichiarata dall'autore</b> · zero mappe misurate in casa</small></div>
         <div class="tacche resa"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
-      <div class="misura"><div class="et">Varianza</div><div class="val">Alta<small>il 27% sta in 5 basi da craft</small></div>
-        <div class="tacche rischio"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
+      <div class="misura"><div class="et">Ritmo</div><div class="val">non misurato<small>nessuno ha cronometrato queste mappe: <b>il d/ora non è calcolabile</b></small></div>
+        <div class="tacche resa"><i></i><i></i><i></i><i></i><i></i></div></div>
     </div>
 
+    <details class="dettaglio">
+      <summary>Dettaglio — i due motori, le regex per vendere, l'albero, i cinque scarab</summary>
     <div class="corpo">
       <div>
         <h3>I due motori, e il bottino per terra non è nessuno dei due</h3>
@@ -219,6 +261,7 @@
         <tr class="ex"><td><b>Breach → Genesis Tree</b></td><td>4-5 Unstable Breach → ~4.500 Hiveblood</td><td>basi fratturate da 1 a 12 divine</td></tr>
         <tr><td>bottino per terra</td><td>densità</td><td>22 div su 92 — il <b>24%</b></td></tr>
         </tbody></table>
+        <p class="nota">🔴 <b>Varianza alta, ed è la più alta delle quattro schede</b>: il <b>27%</b> del bottino sta in <b>5 basi da craft</b>. Un ciclo che non le tira vale molto meno della cifra in cima.</p>
 
         <h3>Come si corre</h3>
         <ul>
@@ -308,27 +351,30 @@
 
       </div>
     </div>
+    </details>
   </article>
 
   <article class="strat">
     <header>
-      <h2>2 · Harvest + Exarch <span class="badge">currency</span> <span class="badge">6,3 divine/ora</span></h2>
+      <h2>2 · Harvest + Exarch <span class="badge">currency</span> <span class="badge">0,70 div/mappa · 6,3 div/ora</span></h2>
 
       <p class="sommario">Profitto <b>misurato</b>: Wealthy Exile fotografa il patrimonio prima e dopo. Su Graveyard, uccidendo invece di rushare.</p>
       <p class="quando">Quando: appena l'albero regge il cluster Harvest completo</p>
     </header>
 
     <div class="misure">
-      <div class="misura"><div class="et">Difficoltà</div><div class="val">Bassa</div>
+      <div class="misura"><div class="et">Difficoltà</div><div class="val">Bassa<small>si pulisce senza fretta · nessun boss forzato</small></div>
         <div class="tacche rischio"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div></div>
-      <div class="misura"><div class="et">Investimento</div><div class="val">~21c/ora<small>~9 mappe l'ora · scarab · frammento</small></div>
+      <div class="misura"><div class="et">Investimento</div><div class="val">2,3c a mappa<small>~21c l'ora su ~9 mappe · <b>la più economica delle quattro</b></small></div>
         <div class="tacche"><i class="on"></i><i></i><i></i><i></i><i></i></div></div>
-      <div class="misura"><div class="et">Resa</div><div class="val">6,3 divine/ora<small>misurata · sessione da 2h42m</small></div>
-        <div class="tacche resa"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
-      <div class="misura"><div class="et">Concorrenza</div><div class="val">7% degli alberi</div>
-        <div class="tacche rischio"><i class="on"></i><i></i><i></i><i></i><i></i></div></div>
+      <div class="misura"><div class="et">Resa</div><div class="val">0,70 div/mappa<small>✅ <b>misurata su snapshot</b> (6,3 div/ora su 2h42m) · in casa 1,15 l'11 ago</small></div>
+        <div class="tacche resa"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div></div>
+      <div class="misura"><div class="et">Ritmo</div><div class="val">6,7 min/mappa<small>→ <b>6,3 div/ora</b> · in casa 7,6 min</small></div>
+        <div class="tacche resa"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div></div>
     </div>
 
+    <details class="dettaglio">
+      <summary>Dettaglio — come si corre, le regex, l'albero, gli scarab, la resa misurata</summary>
     <div class="corpo">
       <div>
         <h3>Come si corre</h3>
@@ -363,6 +409,7 @@
 
           </div>
           <p class="spente"><span class="et">8 meccaniche spente</span><span class="ch">Expedition</span><span class="ch">Ritual</span><span class="ch">Delirium</span><span class="ch">Blight</span><span class="ch">Abyss</span><span class="ch">Breach</span><span class="ch">Ultimatum</span><span class="ch">Kalguuran</span></p>
+          <p class="nota"><b>Concorrenza: il 7% degli alberi censiti su poe.ninja</b> — è l'unica delle quattro schede per cui questo numero esista. ⚠️ Per le altre tre servirebbe rileggere la pagina degli atlas tree, e nessuno l'ha fatto.</p>
           <div class="bottoni"><button class="albero" type="button" data-albero="https://poeplanner.com/atlas-tree/BQAcAACGAIfU8_fb1l8-Ri9LMuu7TPUkl7L6bJm06YsuhrSxnyySCHqEKv7F8VRtiLj_wCqn4up4PFkhYCIpMPpL35Mt8jiMQbVmq00QgF6dzlrJ_Y3qfOOovCq72VvMt4ahvdrj8_MMYLLk9x8Ai-F9kQp73GkOSqoKnzvoa2iJT12e2AQ_RsDUj4ed0LzQxpfigqcpjcFYjjmHVVmGa-BX_IJRgHY3489HAJG3z-EQm8Zda8FC2iOkBU4botBNkcsXIUw1MMddNqTEH-boE31-QPZ1GZTaK8GvOnbl7NVicQtj0Y_l2Ju3D9VpI8LCdqlDWtZ-DLVjEaygcbSexBhtVpqvTPKRr-kkzvsrt7nU0CgUAB-LCAAAAAAAAAMDAAAAAAAAAAAA">Mostra l'albero qui ↓</button><a class="albero secondario" href="https://poeplanner.com/atlas-tree/BQAcAACGAIfU8_fb1l8-Ri9LMuu7TPUkl7L6bJm06YsuhrSxnyySCHqEKv7F8VRtiLj_wCqn4up4PFkhYCIpMPpL35Mt8jiMQbVmq00QgF6dzlrJ_Y3qfOOovCq72VvMt4ahvdrj8_MMYLLk9x8Ai-F9kQp73GkOSqoKnzvoa2iJT12e2AQ_RsDUj4ed0LzQxpfigqcpjcFYjjmHVVmGa-BX_IJRgHY3489HAJG3z-EQm8Zda8FC2iOkBU4botBNkcsXIUw1MMddNqTEH-boE31-QPZ1GZTaK8GvOnbl7NVicQtj0Y_l2Ju3D9VpI8LCdqlDWtZ-DLVjEaygcbSexBhtVpqvTPKRr-kkzvsrt7nU0CgUAB-LCAAAAAAAAAMDAAAAAAAAAAAA" target="_blank" rel="noopener">Apri ↗</a></div>
         </div>
       </div>
@@ -404,11 +451,12 @@
         </div>
       </div>
     </div>
+    </details>
   </article>
 
   <article class="strat">
     <header>
-      <h2>3 · Destructive Play <span class="badge">currency</span> <span class="badge">1,28 divine/mappa</span></h2>
+      <h2>3 · Destructive Play <span class="badge">currency</span> <span class="badge">0,77 div/mappa misurate</span></h2>
 
       <p class="sommario">Quattro meccaniche su <b>City Square</b>, dall'autore della build che gioco. Non è un albero da lifeforce: si vive di <b>mappe da rivendere</b>, di <b>zaini dei mercenari</b> e del <b>Syndicate</b>. Il numero trasportabile è <b>per mappa</b>, non per ora: l'autore fa 20 mappe in 30 minuti, ed è il suo record.</p>
       <p class="quando">Quando: quando il tempo di raccolta di Harvest diventa il vincolo</p>
@@ -417,14 +465,16 @@
     <div class="misure">
       <div class="misura"><div class="et">Difficoltà</div><div class="val">Media<small>7-8 boss a mappa · merc che one-shottano</small></div>
         <div class="tacche rischio"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
-      <div class="misura"><div class="et">Investimento</div><div class="val">~41c a mappa<small>810c per un ciclo da 20 · mappa + i 5 scarab</small></div>
-        <div class="tacche"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
-      <div class="misura"><div class="et">Resa</div><div class="val">1,28 divine/mappa<small>sessione dell'autore da 13 mappe, riprezzata</small></div>
-        <div class="tacche resa"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
-      <div class="misura"><div class="et">Concorrenza</div><div class="val">non misurata<small>nessun albero censito su poe.ninja</small></div>
-        <div class="tacche"><i></i><i></i><i></i><i></i><i></i></div></div>
+      <div class="misura"><div class="et">Investimento</div><div class="val">41c a mappa<small>810c per un ciclo da 20 · mappa + i 5 scarab</small></div>
+        <div class="tacche"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div></div>
+      <div class="misura"><div class="et">Resa</div><div class="val">0,77 div/mappa<small>✅ <b>20 mappe misurate in casa</b> · l'autore dichiara 1,28 su 13</small></div>
+        <div class="tacche resa"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div></div>
+      <div class="misura"><div class="et">Ritmo</div><div class="val">1,5 min/mappa<small>🔴 <b>record dell'autore</b>, non nostro → 31 div/ora al suo ritmo, <b>12 a 4 min</b></small></div>
+        <div class="tacche resa"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
     </div>
 
+    <details class="dettaglio">
+      <summary>Dettaglio — Syndicate, mercenari, l'albero, i cinque scarab, la resa</summary>
     <div class="corpo">
       <div>
         <h3>Come si corre</h3>
@@ -649,11 +699,12 @@
         </div>
       </div>
     </div>
+    </details>
   </article>
 
   <article class="strat">
     <header>
-      <h2>4 · Awakened Boss Rush <span class="badge">variante della 3</span> <span class="badge">0,73 divine/mappa</span></h2>
+      <h2>4 · Awakened Boss Rush <span class="badge">variante della 3</span> <span class="badge">0,73 div/mappa riprezzate</span></h2>
 
       <p class="sommario">Stessa mappa e stesso keystone della scheda 3, ma con lo <b>Horned Scarab of Awakening</b> e <b>inseguendo il pacco di boss</b> invece di ignorarlo. Su <b>100 mappe</b> dell'autore fa <b>3,82 Maven Chisel a mappa</b> contro gli <b>0,90</b> misurati in casa, e i chisel sono il <b>47% del ricavo</b>.</p>
       <p class="quando">Quando: come test da 20 mappe sopra la scheda 3 — è un innesto, non una strada nuova</p>
@@ -663,13 +714,15 @@
       <div class="misura"><div class="et">Difficoltà</div><div class="val">Media<small>molti boss a mappa · The Feared è l'unico duro</small></div>
         <div class="tacche rischio"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
       <div class="misura"><div class="et">Investimento</div><div class="val">120c a mappa<small>i 5 scarab 75,0 · la Conqueror 8-mod filtrata 45,0</small></div>
-        <div class="tacche"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
-      <div class="misura"><div class="et">Resa</div><div class="val">0,73 div/mappa<small>le sue 100 mappe riprezzate oggi · lui dichiara 1,1</small></div>
-        <div class="tacche resa"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
-      <div class="misura"><div class="et">Ritmo</div><div class="val">2 min/mappa<small>i suoi · a 4 minuti scende sotto la scheda 3</small></div>
-        <div class="tacche resa"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
+        <div class="tacche"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
+      <div class="misura"><div class="et">Resa</div><div class="val">0,73 div/mappa<small>⚠️ <b>le sue 100 mappe riprezzate</b>, zero in casa · lui dichiara 1,1</small></div>
+        <div class="tacche resa"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div></div>
+      <div class="misura"><div class="et">Ritmo</div><div class="val">2 min/mappa<small>🔴 <b>i suoi</b> → 22 div/ora al suo ritmo, <b>11 a 4 min</b></small></div>
+        <div class="tacche resa"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
     </div>
 
+    <details class="dettaglio">
+      <summary>Dettaglio — il conto dei chisel, l'albero, i cinque scarab, cosa innestare</summary>
     <div class="corpo">
       <div>
         <h3 class="rosso">3,82 chisel a mappa — e non basta a riabilitare lo scarab</h3>
@@ -804,6 +857,7 @@
         </div>
       </div>
     </div>
+    </details>
   </article>
 
   <footer>
@@ -830,6 +884,16 @@ function scrollPagina(attivo){
     doc.style.paddingRight = "";
   }
 }
+
+// I due pulsanti sopra le schede aprono o chiudono tutti i dettagli in un colpo.
+// Agiscono solo sulle <details class="dettaglio">: quelle dentro al corpo
+// (`.elenco`, la board del Syndicate) restano come le ha lasciate chi legge.
+document.querySelectorAll("button[data-tutti]").forEach(b => {
+  b.onclick = () => {
+    const apri = b.dataset.tutti === "apri";
+    document.querySelectorAll("details.dettaglio").forEach(d => { d.open = apri; });
+  };
+});
 
 document.querySelectorAll("button[data-copia]").forEach(b => {
   b.addEventListener("click", async () => {
