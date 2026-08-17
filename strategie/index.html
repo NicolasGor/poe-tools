@@ -55,6 +55,15 @@
   .dettaglio > summary:hover{filter:brightness(1.15)}
 
   .comandi{display:flex;gap:var(--s2);margin-top:var(--s4)}
+
+  /* le Chart cadono in ogni strategia, quindi la loro regex sta fuori dalle schede
+     e non dentro a una: e' l'unico blocco condiviso della pagina. `.frammento` e
+     `.riga` vengono da stile.css, il titolo va riaffermato perche' le regole del
+     `h3` piccolo valgono solo dentro `.corpo`. */
+  .condiviso{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);
+             padding:var(--s4) var(--s5);margin:var(--s6) 0}
+  .condiviso h3{font-size:var(--t-xs);text-transform:uppercase;letter-spacing:.09em;
+                color:var(--gold);margin:0}
   .comandi button{background:transparent;border:1px solid var(--line);color:var(--gold);
                   border-radius:var(--r-full);padding:.2rem .7rem;font-size:var(--t-xs);
                   cursor:pointer;font-family:inherit}
@@ -218,6 +227,18 @@
       <button type="button" data-tutti="chiudi">Chiudi tutti</button>
     </div>
   </header>
+
+  <div class="condiviso">
+    <h3>🎮 Chart — quali tenere · vale per tutte e quattro</h3>
+    <div class="frammento">
+      <span class="et"><b>1 · Non rivelate che valgono più delle normali</b> — le due che contano sono <b>Anchorfield</b> e <b>Kishara's Rest</b> · 46 caratteri</span>
+      <div class="riga"><code id="box20">anchor|kishara|infested|Hazardous|Pelagic|Ruin</code><button type="button" data-copia="box20">copia</button></div>
+      <span class="et"><b>2 · Rivelate buone</b> — 🔴 <b>89 caratteri: la tastiera dello Steam Deck ne accetta 64 e taglia senza avvisare</b>, quindi si incolla in due volte</span>
+      <div class="riga"><code id="box21">"at least|cannot drop|poss|fract|bottle|divine|arca|oper|star"</code><button type="button" data-copia="box21">copia</button></div>
+      <div class="riga"><code id="box22">"pantheon|belt|lantern|wisp"</code><button type="button" data-copia="box22">copia</button></div>
+      <span class="et">62 + 28 caratteri · cercano le stesse 13 parole della riga intera</span>
+    </div>
+  </div>
 
   <article class="strat">
     <header>
