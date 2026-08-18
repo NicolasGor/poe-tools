@@ -97,13 +97,17 @@
     applicazioni OAuth, quindi il tasto «autorizza» degli altri siti oggi non è
     ripetibile — questo lo sostituisce.</p>
     <ol>
-      <li>Incolla qui la <b>chiave</b> di sincronizzazione (te la do io una volta sola, resta nel browser):<br>
+      <li><b>Indirizzo del server</b> (quello del progetto, finisce in <code>.deno.dev</code>):<br>
+        <input id="indirizzo" type="text" placeholder="https://....deno.dev" autocomplete="off" spellcheck="false"></li>
+      <li><b>Chiave</b> di sincronizzazione — la stessa che hai messo nelle variabili d'ambiente del server. Resta in questo browser:<br>
         <input id="chiave" type="password" placeholder="chiave" autocomplete="off"></li>
       <li>Trascina questo nella barra dei segnalibri:
-        <a class="segnalibro" id="bookmarklet" href="#">Sincronizza warrant</a></li>
+        <a class="segnalibro" id="bookmarklet" href="#">Sincronizza warrant</a>
+        <span class="stato" id="pronto"></span></li>
       <li>Apri <a href="https://www.pathofexile.com/my-account" target="_blank" rel="noopener">pathofexile.com</a> da loggato e cliccalo: legge le tab e manda qui i warrant trovati.</li>
       <li>Torna qui e premi <b>Aggiorna prezzi</b>.</li>
     </ol>
+    <p class="stato" style="margin-top:var(--s3)">🔴 <b>Indirizzo e chiave finiscono dentro al segnalibro nel momento in cui lo trascini.</b> Se ne cambi uno, il vecchio segnalibro va buttato e ritrascinato — altrimenti continua a usare quelli di prima.</p>
     <p class="stato" style="margin-top:var(--s3)">Sullo Steam Deck il segnalibro non serve: leggi l'ultima sincronizzazione fatta dal Mac.</p>
   </div>
 
@@ -231,9 +235,9 @@
 /* L'indirizzo del pezzo di server. Si puo' scavalcare con `?api=...` — serve per
    provarlo in locale e per cambiarlo di host senza toccare il file. Senza, la
    pagina resta leggibile: quello che sparisce sono i numeri, non il metodo. */
-const API = (() => {
+let API = (() => {
   const q = new URLSearchParams(location.search).get("api");
-  if (q !== null) { localStorage.setItem("warrant-api", q); return q; }
+  if (q !== null) { localStorage.setItem("warrant-api", q.replace(/\/$/, "")); }
   return localStorage.getItem("warrant-api") || "";
 })();
 
@@ -305,6 +309,17 @@ async function aggiornaPrezzi() {
    non sta scritta in una pagina pubblica. */
 function costruisciSegnalibro() {
   const k = chiave();
+  const a = $("bookmarklet"), avviso = $("pronto");
+  // Un segnalibro trascinato senza indirizzo o chiave nasce gia' rotto e lo scopri
+  // solo dopo, su un'altra pagina: meglio non lasciarlo trascinare.
+  if (!API || !k) {
+    a.removeAttribute("href");
+    a.style.opacity = ".45";
+    avviso.textContent = !API ? " ← prima l'indirizzo del server" : " ← prima la chiave";
+    return;
+  }
+  a.style.opacity = "1";
+  avviso.textContent = " pronto: trascinalo";
   const codice = `(async()=>{const A=${JSON.stringify(API)},K=${JSON.stringify(k)};
 if(!A||!K){alert('manca API o chiave');return}
 const acc=(document.body.innerText.match(/Logged in as ([^\\s]+)/)||[])[1];
@@ -341,11 +356,17 @@ async function stato() {
 $("b-prezzi").addEventListener("click", aggiornaPrezzi);
 $("b-stash").addEventListener("click", () => {
   const p = $("p-stash"); p.hidden = !p.hidden;
-  if (!p.hidden) { $("chiave").value = chiave(); costruisciSegnalibro(); stato(); }
+  if (!p.hidden) { $("chiave").value = chiave(); $("indirizzo").value = API; costruisciSegnalibro(); stato(); }
 });
 $("chiave").addEventListener("input", (e) => {
   localStorage.setItem("warrant-chiave", e.target.value.trim());
   costruisciSegnalibro();
+});
+$("indirizzo").addEventListener("input", (e) => {
+  API = e.target.value.trim().replace(/\/$/, "");
+  localStorage.setItem("warrant-api", API);
+  costruisciSegnalibro();
+  stato();
 });
 
 const cache = leggiCache();
