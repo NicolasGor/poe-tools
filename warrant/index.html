@@ -26,6 +26,7 @@
   .reggono{font-size:var(--t-xs);color:var(--muted);max-width:34ch}
   .reggono i{color:var(--label);font-style:normal}
   .conf{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;color:var(--muted)}
+  .conf.magro{color:var(--warn)}
   .oltre{display:block;font-size:var(--t-xs);color:var(--label)}
   .tr-link{color:var(--gold);white-space:nowrap;font-size:var(--t-xs)}
   .vuoto{padding:var(--s5);color:var(--label);text-align:center}
@@ -56,11 +57,11 @@
   .scheda-cima .conta b{color:var(--text)}
   .scheda-cima .floor b{color:var(--good)}
   .scheda-cima .floor.magro b{color:var(--warn)}
-  .gemme{display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:var(--s3)}
+  .gemme{display:grid;grid-template-columns:repeat(auto-fit,minmax(21rem,1fr));gap:var(--s3)}
   .gemma{border:1px solid var(--line);border-radius:var(--r);background:var(--panel2);padding:var(--s3)}
   .gemma h4{color:var(--gold);font-size:var(--t-sm);margin:0 0 var(--s2);display:flex;justify-content:space-between;gap:var(--s2)}
   .gemma h4 em{color:var(--label);font-style:normal;font-family:var(--mono);font-size:var(--t-xs)}
-  .sup{display:grid;grid-template-columns:1rem 1fr auto auto;gap:var(--s2);align-items:baseline;
+  .sup{display:grid;grid-template-columns:1rem minmax(0,1fr) 4.5rem 3rem;gap:var(--s2);align-items:baseline;
        padding:.15rem 0;cursor:pointer;font-size:var(--t-xs);color:var(--label)}
   .sup:hover{color:var(--text)}
   .sup.on{color:var(--text);font-weight:600}
@@ -71,7 +72,11 @@
   .sup .resta.magro{color:var(--bad)}
   .scheda-pie{margin-top:var(--s3);display:flex;gap:var(--s3);align-items:center;flex-wrap:wrap;
               font-size:var(--t-xs);color:var(--label)}
-  .scheda-pie a{color:var(--gold);font-weight:600}
+  .scheda-pie a.trade-btn{background:var(--gold);color:#171208;font-weight:700;text-decoration:none;
+                          padding:var(--s2) var(--s4);border-radius:var(--r);white-space:nowrap;
+                          font-size:var(--t-sm)}
+  .scheda-pie a.trade-btn:hover{background:var(--gold-scuro)}
+  .scheda-pie a.trade-btn em{font-style:normal;font-weight:500;opacity:.75}
 </style>
 </head>
 <body>
@@ -145,8 +150,8 @@
       <thead>
         <tr>
           <th>Mercenario</th>
-          <th class="n">Floor</th>
-          <th class="n">Confronti</th>
+          <th class="n">Valore</th>
+          <th class="n">Simili</th>
           <th>Confronto ristretto a</th>
           <th></th>
         </tr>
@@ -160,6 +165,12 @@
   <h2 class="sec">Come si legge questo numero</h2>
 
   <div class="card">
+    <p><b>Il numero nella colonna <i>Valore</i> è il prezzo a cui saresti il più
+    economico fra i mercenari simili al tuo</b> — quello che in gergo si chiama
+    <i>floor</i>. Sotto c'è fin dove arrivano gli altri: insieme sono la fascia in
+    cui quel tipo di mercenario viene chiesto. Accanto, quante inserzioni reggono
+    il conto: <b>sotto la decina il numero è un venditore, non un mercato</b>.</p>
+
     <p><b>Il pool di partenza è inutile, e va stretto.</b> Le inserzioni che
     condividono le <i>skill</i> del tuo mercenario sono migliaia e contengono ogni
     scarto: il loro floor è sempre <b>1c</b>. Si chiede allora un supporto alla
@@ -298,13 +309,18 @@ function disegna(dati) {
     const passi = w.passi.slice(0, 4).map((p) => `${esc(p.supporto)} <i>su ${esc(p.skill)}</i>`).join(" · ")
       || "<i>nessun supporto regge la soglia</i>";
     const piu = w.passi.length > 4 ? ` <i>+${w.passi.length - 4}</i>` : "";
-    const oltre = w.oltre ? `<span class="oltre">oltre soglia: ${w.oltre.floor.toFixed(0)} c su ${w.oltre.confronti}</span>` : "";
-    const quinto = w.quinto ? `<span class="oltre">5&deg; a ${w.quinto.toFixed(0)} c</span>` : "";
+    // «Floor» non dice niente a chi legge: il numero grande e' **il prezzo a cui
+    // saresti il piu' economico fra i mercenari simili al tuo**, e sotto c'e' fin
+    // dove arrivano gli altri. Sono due estremi di cio' che il libro chiede, non
+    // una promessa di vendita.
+    const quinto = w.quinto && w.quinto > w.prezzo
+      ? `<span class="oltre">gli altri fino a ${w.quinto.toFixed(0)} c</span>` : "";
+    const magro = w.confronti < 10 ? " magro" : "";
     const vend = VENDIBILI.has(w.build) ? "arche vend" : "arche";
     return `<tr>
       <td><span class="nome">${esc(w.nome)}</span><span class="${vend}">${esc(w.build)}${w.infamous ? " · Infamous" : ""} · lvl ${esc(w.livello)}</span></td>
       <td class="n"><span class="prezzo${w.prezzo >= 10 ? "" : " basso"}">${w.prezzo.toFixed(0)} c</span>${quinto}</td>
-      <td class="conf">${w.confronti}${oltre}</td>
+      <td class="conf${magro}">${w.confronti}<span class="oltre">inserzioni simili</span></td>
       <td class="reggono">${passi}${piu}</td>
       <td><button class="apri" aria-expanded="false" data-i="${i}">gemme &#9662;</button></td>
     </tr>
@@ -453,6 +469,7 @@ function disegnaScheda(i) {
     return `<div class="gemma"><h4>${esc(skill)} <em>${spuntati}/${sups.length}</em></h4>${righe}</div>`;
   }).join("");
 
+  const scelti = dati.supporti.filter((s) => sel & (1 << s.i)).length;
   box.innerHTML = `
     <div class="scheda-cima">
       <div class="conta"><span>inserzioni simili</span><b>${ora.n.toLocaleString("it")}</b></div>
@@ -461,7 +478,7 @@ function disegnaScheda(i) {
     </div>
     <div class="gemme">${carte}</div>
     <div class="scheda-pie">
-      <a href="${esc(linkTrade(dati, sel))}" target="_blank" rel="noopener">cerca sul trade &rarr;</a>
+      <a class="trade-btn" href="${esc(linkTrade(dati, sel))}" target="_blank" rel="noopener">Cerca sul trade <em>&middot; ${Math.min(scelti, 4)} gemme${scelti > 4 ? " su " + scelti : ""}</em></a>
       <span>Ogni riga dice cosa succede a cliccarla: di quanto si sposta il floor e quante inserzioni resterebbero. <b>Sotto le 5 il prezzo e' un venditore, non un mercato.</b></span>
       ${dati.tagliate ? `<span>\u26a0\ufe0f ${dati.tagliate} supporti non mostrati: la maschera ne regge 31.</span>` : ""}
     </div>`;
