@@ -489,7 +489,7 @@
         <h3>Come si corre</h3>
         <ul>
           <li><b>Destructive Play</b> — la Maven spawna fino a 3 boss extra.</li>
-          <li><b>Betrayal</b> — Syndicate Medallion 4-5 divine.</li>
+          <li><b>Betrayal</b> — Syndicate Medallion <b>1.110 c</b> <span class="lim">5,6 divine, 18 ago</span>, il 12,5% dei tiri del leader a 3 stelle.</li>
           <li><b>Mercenari</b> — merc garantito + uno infamous. Zaini con divine e ancient orb.</li>
           <li><b>Kingsmarch</b> — <i>Refiner's Bargain</i> converte il sulfite in ore. Spedizione da 13M per tattoo e divine, da <b>50M per un mirror shard garantito</b>.</li>
         </ul>
@@ -544,84 +544,113 @@
 
         <div class="blocco-albero" id="syndicate">
           <h3>🕵 Syndicate</h3>
+          <p class="nota">🔴 <b>Riscritto il 18 agosto</b> su <a href="https://www.youtube.com/watch?v=bQ7A6TP_xU8" target="_blank" rel="noopener">Hax — «I Did the Math on Betrayal»</a>, che incrocia <b>34.267 scarab droppati</b> coi prezzi del Currency Exchange. Prezzi riletti qui da poe.ninja il 18 agosto.</p>
 
           <h3 style="margin-top:var(--s4)">In mappa — cosa premere</h3>
           <ol class="passi">
-            <li><b>Execute</b> su tutti i membri a terra, tranne l'ultimo.</li>
-            <li>Sull'ultimo <b>Interroga</b>, ma <b>solo se ha 2 o 3 stelle</b>. Con 1 stella o zero rende quasi niente: premi <b>Release</b>.</li>
-            <li>Se compare <b>Betray</b>, premilo: più gente insieme.</li>
+            <li><b>Il pagatore</b> della divisione: <b>Execute</b>. Lo riporta a 3 stelle e — col nodo giusto — dà intelligence.</li>
+            <li><b>Gli scarti</b> che compaiono con lui: <b>Interroga</b>. <b>+6 a turno</b> per 3 turni se sono a 3 stelle.</li>
+            <li>Con <b>1 stella o zero</b> l'interrogatorio non rende: <b>Release</b>.</li>
+            <li>Se compare <b>Betray</b> fra un pagatore e uno scarto: <b>premilo</b>. È l'unico modo di creare rivalità.</li>
           </ol>
-          <p class="nota">🔴 <b>Mai interrogare un leader</b> (barra gialla sotto il ritratto). 🔴 <b>Mai il Bargain.</b></p>
+          <p class="nota">🔴 <b>Mai interrogare un leader</b> (barra gialla sotto il ritratto): lo toglie dalla carica e promuove un subordinato. 🔴 <b>L'unico Bargain da non premere è «remove all rivalries»</b> — il resto del Bargain serve, vedi sotto.</p>
 
-          <h3 style="margin-top:var(--s4)">🎯 Come deve diventare la board</h3>
+          <h3 style="margin-top:var(--s4)">🎯 La terza opzione è deterministica</h3>
+          <table class="mini"><thead><tr><th>Membri a terra</th><th>Legame</th><th>Terza opzione</th></tr></thead><tbody>
+          <tr><td><b>3</b></td><td>qualunque</td><td>Execute</td></tr>
+          <tr><td><b>2</b></td><td>nessuno, o già rivali</td><td>Execute</td></tr>
+          <tr class="ex"><td><b>2</b></td><td><b>si fidano</b></td><td><b>Betray</b></td></tr>
+          <tr><td><b>1</b></td><td>—</td><td>Bargain</td></tr>
+          </tbody></table>
+          <p class="nota">💡 <b>Il Betray si costruisce</b>: con 3 a terra elimini il terzo, e la coppia rimasta te lo offre. La catena è <code>Bargain → amicizia → Betray → rivalità → più gente per incontro</code>.</p>
+          <p class="nota">🔴 <b>Ogni rivalità unisce un pagatore a uno scarto.</b> Mai fra due pagatori, mai fra due scarti: serve a far comparire lo scarto <i>dentro</i> l'incontro del pagatore, dove interrogarlo riempie la barra giusta.</p>
+
+          <h3 style="margin-top:var(--s4)">🎯 Come deve diventare la board — 2·5·5·2</h3>
           <div class="board">
             <div class="divis">
-              <div class="tit"><span class="ico">🛞</span>Transportation</div>
-              <div class="mb capo"><b>Hillock</b><span class="ruolo">leader · a 3 stelle</span></div>
-              <div class="mb paga"><b>Vagan</b><span class="ruolo">Trarthan · 159 c</span></div>
-              <div class="mb paga"><b>It That Fled</b><span class="ruolo">uniche Foulborn</span></div>
-              <div class="mb paga"><b>Guff</b><span class="ruolo">valuta grezza</span></div>
+              <div class="tit"><span class="ico">🗡</span>Intervention</div>
+              <div class="mb paga"><b>Rin</b><span class="ruolo">Cartography · 313 c</span></div>
+              <div class="mb paga"><b>Gravicius</b><span class="ruolo">Divination · 169 c</span></div>
+              <div class="mb vuoto">solo due — il pagatore è sempre quello che incontri</div>
             </div>
             <div class="divis">
+              <div class="tit"><span class="ico">🛞</span>Transportation</div>
+              <div class="mb paga"><b>Vagan</b><span class="ruolo">Trarthan · 137 c</span></div>
+              <div class="mb paga"><b>It That Fled</b><span class="ruolo">uniche Foulborn</span></div>
+              <div class="mb vuoto">alternativa: <b>Cameria</b> · Abyss · 27 c</div>
+            </div>
+            <div class="divis scarto">
               <div class="tit"><span class="ico">🛡</span>Fortification</div>
-              <div class="mb capo"><b>Korell <span style="font-weight:400">o</span> Jorgin</b><span class="ruolo">leader · a 3 stelle</span></div>
-              <div class="mb"><b>l'altro dei due</b><span class="ruolo">riempie la stanza</span></div>
-              <div class="mb"><b>Janus</b><span class="ruolo">Kalguuran · 12-116 c</span></div>
-              <div class="mb"><b>Haku</b><span class="ruolo">Domination · 10-110 c</span></div>
+              <div class="mb"><b>cinque scarti</b><span class="ruolo">non si apre mai</span></div>
+              <div class="mb vuoto">restano a 3 stelle per sempre: sono il motore dell'intelligence</div>
             </div>
             <div class="divis scarto">
               <div class="tit"><span class="ico">💡</span>Research</div>
-              <div class="mb capo"><b>Rin</b><span class="ruolo">leader</span></div>
-              <div class="mb"><b>Tora</b><span class="ruolo">riempie la stanza</span></div>
-              <div class="mb vuoto">la discarica — qui finisce chi non serve altrove</div>
-            </div>
-            <div class="divis">
-              <div class="tit"><span class="ico">🗡</span>Intervention</div>
-              <div class="mb capo"><b>Riker</b><span class="ruolo">leader · a 3 stelle</span></div>
-              <div class="mb paga"><b>Vorici</b><span class="ruolo">Harvest · 251 c</span></div>
-              <div class="mb paga"><b>Leo</b><span class="ruolo">Ultimatum · 12-325 c</span></div>
-              <div class="mb"><b>Elreon</b><span class="ruolo">riempie la stanza</span></div>
+              <div class="mb"><b>cinque scarti</b><span class="ruolo">non si apre mai</span></div>
+              <div class="mb vuoto">l'intelligence va alla divisione <b>dell'incontro</b>, non alla loro</div>
             </div>
           </div>
+          <p class="nota">🔴 <b>Riempi Fortification e non correrla</b>: una barra piena toglie la divisione dal sorteggio, e Transportation esce <b>ogni mappa</b> invece che una su due.</p>
+
           <details class="elenco">
-            <summary>Come arrivarci — otto interrogatori, nell'ordine giusto →</summary>
-            <ol class="passi">
-              <li><b>Korell</b> e <b>Jorgin</b> → <b>Execute</b> quando rinforzano una Fortification. Zero interrogatori: sono già a rango 0.</li>
-              <li><b>Vorici</b> e <b>Leo</b> → <b>1 interrogatorio a testa</b> in Research, poi Execute quando li rivedi in <b>Intervention</b>.</li>
-              <li><b>Janus</b> → <b>1 interrogatorio</b>: scende da leader e resta in Fortification.</li>
-              <li><b>Vagan</b> → <b>2 interrogatori</b>, poi Execute in <b>Transportation</b>.</li>
-              <li><b>It That Fled</b> → <b>3 interrogatori</b>, poi Execute in <b>Transportation</b>. Il più caro: per ultimo.</li>
-              <li>Poi porta a <b>3 stelle</b> i quattro leader, con Execute.</li>
-            </ol>
-            <p class="nota">⚠️ <b>Il passo 1 va prima del 3</b>, o il leader di Fortification diventa Haku.</p>
+            <summary>Quanto paga ogni casella — pesato sui drop, non sulla mediana →</summary>
+            <table class="mini"><thead><tr><th>Chi → dove</th><th>Famiglia</th><th>Chest da 8</th><th>se uniforme</th></tr></thead><tbody>
+            <tr class="ex"><td><b>Rin</b> → Intervention</td><td>Cartography</td><td><b>313 c</b></td><td>548 c</td></tr>
+            <tr class="ex"><td><b>Gravicius</b> → Intervention</td><td>Divination</td><td><b>169 c</b></td><td>209 c</td></tr>
+            <tr><td><b>Vagan</b> → Transportation</td><td>Trarthan</td><td>137 c</td><td>207 c</td></tr>
+            <tr><td>Vorici → Intervention</td><td>Harvest</td><td>95 c</td><td>243 c</td></tr>
+            <tr><td>Leo → Intervention</td><td>Ultimatum</td><td>45 c</td><td>369 c</td></tr>
+            <tr><td>Cameria → Transportation</td><td>Abyss</td><td>27 c</td><td>32 c</td></tr>
+            <tr><td>Janus → Fortification</td><td>Kalguuran</td><td>22 c</td><td>132 c</td></tr>
+            <tr><td>Haku → Fortification</td><td>Domination</td><td>20 c</td><td>124 c</td></tr>
+            <tr class="ex"><td colspan="2"><b>leader a 3 stelle</b> — Medallion 12,5% + Veiled Chaos 50%</td><td colspan="2"><b>~179 c</b></td></tr>
+            </tbody></table>
+            <p class="nota">🔴 <b>La classifica vecchia era sbagliata perché usava la mediana della famiglia.</b> In ogni famiglia lo scarab base comune è <b>metà o più dei tiri</b>: Cartography 43,7% a 1,29 c, Harvest 72,8% a 1,25 c. Vorici passa da primo a quarto, Rin da terzo a primo.</p>
+            <p class="nota">⚠️ <b>Trarthan è modellato</b>: la famiglia è nuova della 3.29 e non ha pesi misurati. Il vero valore sta fra 137 e 207 c.</p>
+            <p class="nota">⚠️ <b>Le due colonne sono i due estremi di un'incognita</b>: nessuno sa se la chest peschi coi pesi di drop o a caso nella famiglia. <b>L'ordine dei primi due non cambia in nessuno dei due casi.</b></p>
+            <p class="nota">💡 <b>Divination è la più solida delle quattro</b>: il 74% dei tiri è già un <i>Cloister</i> da 23,77 c. Cartography vale di più ma <b>dipende per il 94% da un solo scarab</b> — il <i>Risk</i> a 262 c, che esce 14 volte su 100.</p>
           </details>
 
           <details class="elenco">
-            <summary>Perché il leader è sacrificabile, e quanto paga →</summary>
-            <table class="mini"><thead><tr><th>Tiro del leader a 3 stelle</th><th>Prob.</th><th>Valore</th><th>Atteso</th></tr></thead><tbody>
-            <tr class="ex"><td><b>Syndicate Medallion</b></td><td>~12,5%</td><td><b>1.212 c</b></td><td><b>151,50 c</b></td></tr>
-            <tr><td>Veiled Chaos Orb</td><td>~50%</td><td>82,09 c</td><td>41,05 c</td></tr>
-            <tr><td>unica della divisione</td><td>~5%</td><td>1 – 100 c</td><td>0,05 – 5 c</td></tr>
-            <tr class="ex"><td colspan="3"><b>totale, dal solo leader</b></td><td><b>~195 c</b></td></tr>
+            <summary>🎮 Un punto d'albero da spostare — <code>Lethal Extraction</code> →</summary>
+            <p class="nota">L'albero ha già <b>Bribery</b>, <b>Effective Leadership</b> e <b>Test of Loyalty</b>. 🔴 <b>Manca <code>Lethal Extraction</code></b>: <i>«Executing Syndicate Members grants intelligence equal to 2 times their Rank»</i>.</p>
+            <table class="mini"><thead><tr><th>Da dove</th><th>Costo</th></tr></thead><tbody>
+            <tr><td>è adiacente a <b>Betrayal Syndicate Reinforcement Chance</b>, già preso</td><td><b>1 punto</b></td></tr>
+            <tr><td>l'albero è a 138/138 → togli una foglia <b>Map Drop Chance</b> <span class="lim">+2% mappe trovate</span></td><td>−1 punto</td></tr>
             </tbody></table>
-            <table class="mini"><thead><tr><th>Chi</th><th>Cosa</th><th>×8 a 3 stelle</th></tr></thead><tbody>
-            <tr class="ex"><td><b>Vorici</b> · Intervention</td><td>Harvest</td><td><b>251 c</b></td></tr>
-            <tr class="ex"><td><b>Vagan</b> · Transportation</td><td>Trarthan</td><td><b>159 c</b></td></tr>
-            <tr><td>Leo · Intervention</td><td>Ultimatum</td><td>12 – 325 c</td></tr>
-            <tr><td>Janus · Fortification</td><td>Kalguuran</td><td>12 – 116 c</td></tr>
-            <tr><td>Haku · Fortification</td><td>Domination</td><td>10 – 110 c</td></tr>
+            <p class="nota">🔴 <b>Senza quel nodo l'Execute non paga intelligence</b> e ogni pulsante torna a essere «rango <i>oppure</i> barra». Con il nodo: 36 dai due interrogatori + 6 dall'Execute = <b>42 per incontro</b>, su <b>100</b> che servono per una safehouse.</p>
+          </details>
+
+          <details class="elenco">
+            <summary>Come arrivarci dalla board di oggi →</summary>
+            <p class="nota">⚠️ <b>Prima serve uno screenshot della board attuale</b>: l'ultimo letto è del 14 agosto e la board si muove in ore.</p>
+            <ol class="passi">
+              <li>🔴 <b>Prima Gravicius, che è in riserva.</b> Si tira dentro con <b>Betray → «remove from the Immortal Syndicate»</b> o <b>Bargain → «leave»</b>, ripetuto finché esce lui: chi entra al posto di chi esce <b>è casuale</b>. Va fatto <b>prima</b> di sistemare chiunque altro, o le rimozioni buttano fuori il lavoro già fatto.</li>
+              <li><b>Rin</b> [2] da Research: <b>2 interrogatori</b> → rango 0, poi <b>Execute</b> in un incontro Intervention.</li>
+              <li><b>Vorici</b> e <b>Leo</b> fuori da Intervention: interrogatori — e qui <b>l'intelligence non è sprecata</b>, va a Intervention.</li>
+              <li>Porta i pagatori a <b>3 stelle</b> con Execute. Con <b>Test of Loyalty</b>, già nell'albero, ogni Execute vale <b>+2 ranghi</b>.</li>
+            </ol>
+            <p class="nota">💡 <b>Il pezzo economico è Rin</b>: cinque incontri, e da sola aggiunge <b>313 c a ogni raid</b> — più di quanto paghino oggi Vorici, Leo ed Elreon messi insieme (150 c). <b>Gravicius è l'altra metà del guadagno ed è tutto il rischio</b>, perché passa da un'estrazione a caso.</p>
+          </details>
+
+          <details class="elenco">
+            <summary>La disputa: 2·5·5·2 contro 5·5·2·2 →</summary>
+            <table class="mini"><thead><tr><th>Setup</th><th>Chi</th><th>Stanze per raid</th><th>Per raid</th></tr></thead><tbody>
+            <tr><td><b>2·5·5·2</b></td><td>Rin + Gravicius</td><td>2</td><td><b>666 c</b></td></tr>
+            <tr><td><b>5·5·2·2</b></td><td>+ Vorici, Korell, Jorgin</td><td>5</td><td><b>899 c</b></td></tr>
+            <tr><td>5·5·2·2, dal 2º raid</td><td>gli stessi, scesi a 2 stelle</td><td>5</td><td>720 c</td></tr>
             </tbody></table>
+            <p class="nota">🔴 <b>Il raid costa un rango a tutti i subordinati</b>: con cinque membri il raid dopo paga <b>x6 invece di x8</b>, e rialzarli richiede <i>«at least four intervention turns»</i> senza garanzia che si presentino. Con due, l'unico da rialzare <b>è l'unico che puoi incontrare</b>.</p>
+            <p class="nota">⚖️ <b>Il 5·5·2·2 vince del 35% per raid, dell'8% se i ranghi si degradano.</b> Perché il 2·5·5·2 lo batta basta che i raid arrivino da <b>1,1 a 1,35 volte</b> più spesso. Hax dichiara <b>una safehouse ogni due mappe</b>; Master T, nel video di strategia, <b>non ne apre nessuna in un'intera sessione</b>.</p>
+            <p class="nota">🔬 <b>La disputa non si decide sul foglio</b>: si decide su quanto spesso apri davvero una safehouse, e non l'abbiamo mai contato. 🔴 <b>Ma <i>chi</i> ci sta dentro non dipende dalla disputa</b>: Rin e Gravicius pagano 3,2 volte i tre di adesso, con qualunque partizione.</p>
           </details>
 
           <details class="elenco">
             <summary>Come si legge la board →</summary>
             <p class="nota">Divisione = icona in alto a sinistra: <b>ruota</b> Transportation · <b>palizzata</b> Fortification · <b>lampada</b> Research · <b>occhio</b> Intervention.</p>
             <p class="nota">Stelle: <b>1</b> una su fondo rosso · <b>2</b> due in colonna · <b>3</b> una sopra due.</p>
-          </details>
-
-          <details class="elenco">
-            <summary>Il resto della meccanica →</summary>
-            
+            <p class="nota">Le linee <b>gialle</b> uniscono i membri della stessa divisione. <b>Verdi</b> = amicizia, <b>rosse</b> = rivalità: non dicono niente sulla divisione.</p>
+            <p class="nota">💡 Un incontro contiene al massimo <b>4 membri</b>: quello che trovi, fino a <b>2</b> collegati da linea verde o rossa, e <b>1 non assegnato</b> a caso.</p>
           </details>
         </div>
 
@@ -630,7 +659,7 @@
           <div class="punti">
           <div class="voce"><span>Destructive Play <span class="lim">3 boss extra</span></span><span class="p">sì</span></div>
           <div class="voce"><span>Synthesised Stability <span class="lim">rifà la stessa mappa sotto astrolabio</span></span><span class="p">sì</span></div>
-          <div class="voce"><span>Betrayal <span class="lim">Syndicate in mappa</span></span><span class="p">completo</span></div>
+          <div class="voce"><span>Betrayal <span class="lim">Bribery · Effective Leadership · Test of Loyalty</span></span><span class="p">manca <a href="#syndicate">Lethal Extraction</a></span></div>
           <div class="voce"><span>Mercenari <span class="lim">zaini pieni · 10% droppa tutto · +45% unico</span></span><span class="p">completo</span></div>
           <div class="voce"><span>Kingsmarch <span class="lim">ore dai giacimenti · bismuto + verisium</span></span><span class="p">completo</span></div>
           <div class="voce"><span>Amplified Artefacts <span class="lim">+50% scarab per ogni mod sul raro</span></span><span class="p">sì</span></div>
