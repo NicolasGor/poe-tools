@@ -238,7 +238,7 @@
 let API = (() => {
   const q = new URLSearchParams(location.search).get("api");
   if (q !== null) { localStorage.setItem("warrant-api", q.replace(/\/$/, "")); }
-  return localStorage.getItem("warrant-api") || "";
+  return localStorage.getItem("warrant-api") || "https://poe-tools.nicolasgor.deno.net";
 })();
 
 const VENDIBILI = new Set(["Kineticist","Manyshot","Sniper","Cruel Mistress","Stormhand","Combatant","Blade Ambusher"]);
