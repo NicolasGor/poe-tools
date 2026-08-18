@@ -228,7 +228,11 @@ export default {
       if (url.pathname === "/stato") {
         const m = await magazzino(env);
         const s = await m.leggi("stash");
-        return json({ ok: true, magazzino: m.tipo, warrant: s?.warrant?.length ?? 0, sincronizzato: s?.quando ?? null });
+        // `chiave` e' un booleano di proposito: dice se il server ne ha una, non
+        // quale sia. Senza, un "chiave sbagliata" e' indistinguibile da un
+        // "variabile d'ambiente mai arrivata", e si tira a indovinare.
+        return json({ ok: true, magazzino: m.tipo, warrant: s?.warrant?.length ?? 0,
+                      sincronizzato: s?.quando ?? null, chiave: !!chiave, lunghezzaChiave: chiave.length });
       }
 
       // l'indice grezzo, per chi vuole calcolare nel browser
