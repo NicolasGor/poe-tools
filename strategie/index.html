@@ -471,7 +471,6 @@
 
       <p class="sommario">Quattro meccaniche su <b>City Square</b>. Non è un albero da lifeforce: si vive di <b>zaini dei mercenari</b>, del <b>Syndicate</b> e dei <b>blueprint delle Smuggler's Cache</b>. Il numero trasportabile è <b>per mappa</b>, non per ora.</p>
       <p class="quando">Quando: quando non vuoi più gestire le spedizioni di Kingsmarch, e vuoi un reddito che non chiede manutenzione fuori dalla mappa</p>
-      <p class="quando">Quando: quando il tempo di raccolta di Harvest diventa il vincolo</p>
     </header>
 
     <div class="misure">
@@ -496,9 +495,7 @@
           <li><b>Mercenari</b> — merc garantito + uno infamous. Zaini con divine e ancient orb.</li>
           <li><b>Heist</b> — clicca le <b>Smuggler's Cache</b> mentre mappi. Guarda solo l'<b>enchant</b> del blueprint: <i>Experimented Items</i> <b>120c</b> e <i>Currency or Scarabs</i> <b>115c</b>. Fuori da quei due, un item Heist vale <b>1 chaos</b> — non aprire il trade.</li>
         </ul>
-        <p class="nota">🔴 <b>Pulisci tutta la mappa prima di ingaggiare il boss.</b> La Maven evoca <b>1-3</b> boss extra, e il numero scala coi <b>mostri ancora vivi</b> quando lancia. 💡 <b>Rushare non fa perdere i boss</b> — dal 3.23 non se ne va più a mani vuote — <b>fa perdere il numero</b>: la differenza fra +1 e +3.</p>
-        <p class="nota">⚠️ <b>Conta qualunque mostro vivo</b>, mercenario e membri del Syndicate compresi: si risolvono <b>prima</b> del boss. E i pacchi in più di <b>Adversaries</b> e <b>Invasive Adversaries</b> alimentano Amplified Artefacts <b>solo se li uccidi</b> — se li salti sono mostri rimasti.</p>
-        <p class="nota">🔬 <b>Le soglie non le pubblica nessuno</b>: poedb ha lo stat id ma nessun valore, e l'unico video che conta i boss mappa per mappa è del <b>3.22</b>, cioè prima che la regola dei mostri esistesse. Da misurare: 10 mappe pulite contro 10 rushate.</p>
+        <p class="nota">🔴 <b>Pulisci tutta la mappa prima del boss</b>: la Maven evoca <b>1-3</b> boss extra, e il numero scala coi <b>mostri ancora vivi</b> quando lancia. Conta <b>qualunque</b> mostro — mercenario e Syndicate compresi. 💡 Rushare non fa perdere i boss, fa perdere il <b>numero</b>.</p>
         <table class="mini"><thead><tr><th>Cosa</th><th>Come</th><th>Perché</th></tr></thead><tbody>
         <tr><td>mercenari</td><td>i <b>vile</b> in qualsiasi ordine</td><td>dal 13 agosto non diventano più NPC uccidendo il main</td></tr>
         <tr class="ex"><td>anomalie</td><td>solo <b>Gambling District</b> e <b>Manor Foyer</b></td><td>le altre si lasciano lì, così la prossima è una buona</td></tr>
@@ -549,7 +546,6 @@
 
         <div class="blocco-albero" id="syndicate">
           <h3>🕵 Syndicate</h3>
-          <p class="nota">Fonte dei numeri: <a href="https://www.youtube.com/watch?v=bQ7A6TP_xU8" target="_blank" rel="noopener">Hax — «I Did the Math on Betrayal»</a>, che incrocia <b>34.267 scarab droppati</b> coi prezzi del Currency Exchange. Prezzi riletti da poe.ninja il <b>18 agosto</b>.</p>
 
           <h3 style="margin-top:var(--s4)">In mappa — cosa premere</h3>
           <ol class="passi">
@@ -558,7 +554,7 @@
             <li>Con <b>1 stella o zero</b> l'interrogatorio non rende: <b>Release</b>.</li>
             <li>Se compare <b>Betray</b> fra un pagatore e uno scarto: <b>premilo</b>. È l'unico modo di creare rivalità.</li>
           </ol>
-          <p class="nota">🔴 <b>Mai interrogare un leader</b> (barra gialla sotto il ritratto): lo toglie dalla carica e promuove un subordinato. 🔴 <b>L'unico Bargain da non premere è «remove all rivalries»</b> — il resto del Bargain serve, vedi sotto.</p>
+          <p class="nota">🔴 <b>Mai interrogare un leader</b> <span class="lim">barra gialla sotto il ritratto</span> · 🔴 <b>del Bargain, mai «remove all rivalries»</b> — l'unico da non premere, e ora è circoscritto a una divisione.</p>
 
           <h3 style="margin-top:var(--s4)">🎯 La terza opzione è deterministica</h3>
           <table class="mini"><thead><tr><th>Membri a terra</th><th>Legame</th><th>Terza opzione</th></tr></thead><tbody>
@@ -567,8 +563,7 @@
           <tr class="ex"><td><b>2</b></td><td><b>si fidano</b></td><td><b>Betray</b></td></tr>
           <tr><td><b>1</b></td><td>—</td><td>Bargain</td></tr>
           </tbody></table>
-          <p class="nota">💡 <b>Il Betray si costruisce</b>: con 3 a terra elimini il terzo, e la coppia rimasta te lo offre. La catena è <code>Bargain → amicizia → Betray → rivalità → più gente per incontro</code>.</p>
-          <p class="nota">🔴 <b>Ogni rivalità unisce un pagatore a uno scarto.</b> Mai fra due pagatori, mai fra due scarti: serve a far comparire lo scarto <i>dentro</i> l'incontro del pagatore, dove interrogarlo riempie la barra giusta.</p>
+          <p class="nota">💡 <b>Il Betray si costruisce</b>: con 3 a terra elimini il terzo e la coppia rimasta te lo offre. <code>Bargain → amicizia → Betray → rivalità</code>. 🔴 <b>Ogni rivalità unisce un pagatore a uno scarto</b>, mai due pari.</p>
 
           <h3 style="margin-top:var(--s4)">🎯 Come deve diventare la board — 2·5·5·2</h3>
           <div class="board">
@@ -595,86 +590,18 @@
               <div class="mb vuoto">l'intelligence va alla divisione <b>dell'incontro</b>, non alla loro</div>
             </div>
           </div>
-          <p class="nota">🔴 <b>Riempi Fortification e non correrla</b>: una barra piena toglie la divisione dal sorteggio, e Transportation esce <b>ogni mappa</b> invece che una su due.</p>
-          <p class="nota">🔴 <b>Non correre due safehouse buone di fila</b> — il leader appena giustiziato torna a rango 0 e la seconda paga poco.</p>
+          <p class="nota">🔴 <b>Riempi Fortification e non correrla</b>: una barra piena toglie la divisione dal sorteggio e Transportation esce ogni mappa. <b>E mai due safehouse buone di fila</b> — il leader torna a rango 0.</p>
 
-          <details class="elenco">
-            <summary>🔧 Come si sistemano i collegamenti — <b>non si cancellano tutti</b> →</summary>
-            <p class="nota">🔴 <b>Il «cancella tutte le rivalità» della board non esiste più.</b> Patch GGG: <i>«Removing all rivalries in the Immortal Syndicate is <b>no longer an option offered</b>… though there is a new option to remove all rivalries in the <b>current division</b>.»</i></p>
-            <table class="mini"><thead><tr><th>Cosa vuoi</th><th>Come</th><th>Da dove</th></tr></thead><tbody>
-            <tr class="ex"><td><b>togliere <u>una</u> rivalità</b></td><td><i>Gain Intelligence and become <b>Neutral with a Rival</b></i> — e <b>paga intelligence</b></td><td>Bargain</td></tr>
-            <tr><td>ripulire <b>una divisione</b></td><td><i>Remove all rivalries from all members on the <b>same division</b></i></td><td>Bargain</td></tr>
-            <tr class="ex"><td><b>trasformare un verde in rosso</b></td><td><b>Betray</b>: consuma l'amicizia e crea la rivalità</td><td>Betray</td></tr>
-            <tr><td>creare un verde</td><td>Bargain, ripetuto — non lo dà sempre</td><td>Bargain</td></tr>
-            </tbody></table>
-            <p class="nota">⚠️ <b>Il Bargain compare solo quando il membro è <u>solo</u></b>: se a terra ce n'è più d'uno, quelle due gomme non te le offre.</p>
-            <p class="nota">🔴 <b>E non serve cancellarli tutti.</b> Contano solo i collegamenti <b>sui membri che incontri davvero</b> — i due pagatori e i quattro leader. Una linea fra due scarti non fa danno: al massimo li fa comparire insieme in una divisione che non apri, dove premi <b>Release</b>. Un incontro contiene comunque al massimo <b>4</b> membri, quindi la terza linea sullo stesso pagatore è già sprecata.</p>
-            <p class="nota">💡 <b>Prima i membri, poi i collegamenti.</b> Ogni rimozione dal Syndicate per pescare un membro dalla riserva rimescola le carte: sistemare le linee prima di aver finito di spostare la gente è lavoro da rifare.</p>
-          </details>
 
-          <details class="elenco">
-            <summary>Quanto paga ogni casella — pesato sui drop, non sulla mediana →</summary>
-            <table class="mini"><thead><tr><th>Chi → dove</th><th>Famiglia</th><th>Chest da 8</th><th>se uniforme</th></tr></thead><tbody>
-            <tr class="ex"><td><b>Rin</b> → Intervention</td><td>Cartography</td><td><b>313 c</b></td><td>548 c</td></tr>
-            <tr class="ex"><td><b>Gravicius</b> → Intervention</td><td>Divination</td><td><b>169 c</b></td><td>209 c</td></tr>
-            <tr><td><b>Vagan</b> → Transportation</td><td>Trarthan</td><td>137 c</td><td>207 c</td></tr>
-            <tr><td>Vorici → Intervention</td><td>Harvest</td><td>95 c</td><td>243 c</td></tr>
-            <tr><td>Leo → Intervention</td><td>Ultimatum</td><td>45 c</td><td>369 c</td></tr>
-            <tr><td>Cameria → Transportation</td><td>Abyss</td><td>27 c</td><td>32 c</td></tr>
-            <tr><td>Janus → Fortification</td><td>Kalguuran</td><td>22 c</td><td>132 c</td></tr>
-            <tr><td>Haku → Fortification</td><td>Domination</td><td>20 c</td><td>124 c</td></tr>
-            <tr class="ex"><td colspan="2"><b>leader a 3 stelle</b> — Medallion 12,5% + Veiled Chaos 50%</td><td colspan="2"><b>~179 c</b></td></tr>
-            </tbody></table>
-            <p class="nota">🔴 <b>I valori sono il valore atteso pesato sui pesi di drop, non la mediana della famiglia.</b> In ogni famiglia lo scarab base comune vale <b>metà o più dei tiri</b> — Cartography 43,7% a 1,29 c, Harvest 72,8% a 1,25 c — quindi una media che li tratta come equiprobabili sbaglia di parecchie posizioni.</p>
-            <p class="nota">⚠️ <b>Trarthan è modellato</b>: la famiglia è nuova della 3.29 e non ha pesi misurati. Il vero valore sta fra 137 e 207 c.</p>
-            <p class="nota">⚠️ <b>Le due colonne sono i due estremi di un'incognita</b>: nessuno sa se la chest peschi coi pesi di drop o a caso nella famiglia. <b>L'ordine dei primi due non cambia in nessuno dei due casi.</b></p>
-            <p class="nota">💡 <b>Divination è la più solida delle quattro</b>: il 74% dei tiri è già un <i>Cloister</i> da 23,77 c. Cartography vale di più ma <b>dipende per il 94% da un solo scarab</b> — il <i>Risk</i> a 262 c, che esce 14 volte su 100.</p>
-          </details>
 
-          <details class="elenco">
-            <summary>🎮 Un punto d'albero da spostare — <code>Lethal Extraction</code> →</summary>
-            <p class="nota">L'albero ha già <b>Bribery</b>, <b>Effective Leadership</b> e <b>Test of Loyalty</b>. 🔴 <b>Manca <code>Lethal Extraction</code></b>: <i>«Executing Syndicate Members grants intelligence equal to 2 times their Rank»</i>.</p>
-            <table class="mini"><thead><tr><th>Da dove</th><th>Costo</th></tr></thead><tbody>
-            <tr><td>è adiacente a <b>Betrayal Syndicate Reinforcement Chance</b>, già preso</td><td><b>1 punto</b></td></tr>
-            <tr><td>l'albero è a 138/138 → togli una foglia <b>Map Drop Chance</b> <span class="lim">+2% mappe trovate</span></td><td>−1 punto</td></tr>
-            </tbody></table>
-            <p class="nota">🔴 <b>Senza quel nodo l'Execute non paga intelligence</b> e ogni pulsante torna a essere «rango <i>oppure</i> barra». Con il nodo: 36 dai due interrogatori + 6 dall'Execute = <b>42 per incontro</b>, su <b>100</b> che servono per una safehouse.</p>
-          </details>
 
-          <details class="elenco">
-            <summary>Come arrivarci dalla board di oggi →</summary>
-            <p class="nota">⚠️ <b>Prima serve uno screenshot della board attuale</b>: l'ultimo letto è del 14 agosto e la board si muove in ore.</p>
-            <ol class="passi">
-              <li>🔴 <b>Prima Gravicius, che è in riserva.</b> Si tira dentro con <b>Betray → «remove from the Immortal Syndicate»</b> o <b>Bargain → «leave»</b>, ripetuto finché esce lui: chi entra al posto di chi esce <b>è casuale</b>. Va fatto <b>prima</b> di sistemare chiunque altro, o le rimozioni buttano fuori il lavoro già fatto.</li>
-              <li><b>Rin</b> [2] da Research: <b>2 interrogatori</b> → rango 0, poi <b>Execute</b> in un incontro Intervention.</li>
-              <li><b>Vorici</b> e <b>Leo</b> fuori da Intervention: interrogatori — e qui <b>l'intelligence non è sprecata</b>, va a Intervention.</li>
-              <li>Porta i pagatori a <b>3 stelle</b> con Execute. Con <b>Test of Loyalty</b>, già nell'albero, ogni Execute vale <b>+2 ranghi</b>.</li>
-            </ol>
-            <p class="nota">💡 <b>Il pezzo economico è Rin</b>: cinque incontri, e da sola aggiunge <b>313 c a ogni raid</b> — più di quanto paghino oggi Vorici, Leo ed Elreon messi insieme (150 c). <b>Gravicius è l'altra metà del guadagno ed è tutto il rischio</b>, perché passa da un'estrazione a caso.</p>
-          </details>
 
-          <details class="elenco">
-            <summary>La disputa: 2·5·5·2 contro 5·5·2·2 →</summary>
-            <table class="mini"><thead><tr><th>Setup</th><th>Chi</th><th>Stanze per raid</th><th>Per raid</th></tr></thead><tbody>
-            <tr><td><b>2·5·5·2</b></td><td>Rin + Gravicius</td><td>2</td><td><b>666 c</b></td></tr>
-            <tr><td><b>5·5·2·2</b></td><td>+ Vorici, Korell, Jorgin</td><td>5</td><td><b>899 c</b></td></tr>
-            <tr><td>5·5·2·2, dal 2º raid</td><td>gli stessi, scesi a 2 stelle</td><td>5</td><td>720 c</td></tr>
-            </tbody></table>
-            <p class="nota">🔴 <b>Il raid costa un rango a tutti i subordinati</b>: con cinque membri il raid dopo paga <b>x6 invece di x8</b>, e rialzarli richiede <i>«at least four intervention turns»</i> senza garanzia che si presentino. Con due, l'unico da rialzare <b>è l'unico che puoi incontrare</b>.</p>
-            <p class="nota">⚖️ <b>Il 5·5·2·2 vince del 35% per raid, dell'8% se i ranghi si degradano.</b> Perché il 2·5·5·2 lo batta basta che i raid arrivino da <b>1,1 a 1,35 volte</b> più spesso. Hax dichiara <b>una safehouse ogni due mappe</b>; Master T, nel video di strategia, <b>non ne apre nessuna in un'intera sessione</b>.</p>
-            <p class="nota">🔴 <b>E poewiki sta col 2·5·5·2</b>, per una terza ragione che non è né la sua né la nostra: <i>«the ten members assigned to undesirable divisions will <b>never become the leader</b> after completing a desirable Safehouse, allowing two members per desirable safehouse to provide their rewards <b>repeatedly and deterministically</b>»</i>. Cioè il ciclo si chiude da solo, e il pagatore non finisce mai nello slot che si brucia.</p>
-            <p class="nota">🔬 <b>Resta comunque da contare quanto spesso apri davvero una safehouse</b>, che è l'unico numero che deciderebbe. 🔴 <b>Ma <i>chi</i> ci sta dentro non dipende dalla disputa</b>: Rin e Gravicius pagano 3,2 volte i tre di adesso, con qualunque partizione.</p>
-          </details>
 
           <details class="elenco">
             <summary>Come si legge la board →</summary>
-            <p class="nota">🔴 <b>Il tabellone è un 2×2</b>, e le scritte rosse stanno agli angoli delle loro zone: <b>Transportation</b> in alto a sinistra · <b>Intervention</b> in alto a destra · <b>Fortification</b> a metà sinistra · <b>Research</b> a metà destra. Sotto stanno i <b>non assegnati</b>, e in fondo la scatola dei <b>prigionieri</b> col conto dei turni.</p>
-            <p class="nota">Divisione = icona in alto a sinistra della carta: <b>ruota</b> Transportation · <b>palizzata</b> Fortification · <b>lampada</b> Research · <b>occhio</b> Intervention. Chi non ce l'ha è <b>non assegnato</b>, e non ha nemmeno le stelle.</p>
-            <p class="nota">Il <b>leader</b> ha la <b>barra gialla</b> sotto il ritratto e la cornice rossa: quella barra è l'intelligence della <b>sua divisione</b>.</p>
-            <p class="nota">💡 Una carta con <b>?</b> è un membro entrato dalla riserva che <b>non hai ancora incontrato</b>: l'identità si scopre incontrandolo, e non costa niente.</p>
-            <p class="nota">Stelle: <b>1</b> una su fondo rosso · <b>2</b> due in colonna · <b>3</b> una sopra due.</p>
-            <p class="nota">Le linee <b>gialle</b> uniscono i membri della stessa divisione. <b>Verdi</b> = amicizia, <b>rosse</b> = rivalità: non dicono niente sulla divisione.</p>
-            <p class="nota">💡 Un incontro contiene al massimo <b>4 membri</b>: quello che trovi, fino a <b>2</b> collegati da linea verde o rossa, e <b>1 non assegnato</b> a caso.</p>
+            <p class="nota">🔴 <b>Tabellone 2×2</b>: Transportation in alto a sinistra, <b>Intervention in alto a destra</b>, Fortification a metà sinistra, Research a metà destra. Sotto i <b>non assegnati</b>, in fondo i <b>prigionieri</b>.</p>
+            <p class="nota">Icona in alto a sinistra = divisione: <b>ruota</b> Transportation · <b>palizzata</b> Fortification · <b>lampada</b> Research · <b>occhio</b> Intervention. Il <b>leader</b> ha barra gialla e cornice rossa; chi non ha icona è <b>non assegnato</b>.</p>
+            <p class="nota">Stelle: <b>1</b> su fondo rosso · <b>2</b> in colonna · <b>3</b> una sopra due. Linee <b>gialle</b> = stessa divisione, verdi = amicizia, rosse = rivalità. 💡 Una carta <b>?</b> è un membro mai incontrato; un incontro tiene al massimo <b>4</b> membri.</p>
           </details>
         </div>
 
@@ -691,11 +618,8 @@
           <div class="voce"><span>Amplified Artefacts <span class="lim">+50% scarab per ogni mod sul raro</span></span><span class="p">sì</span></div>
           <div class="voce"><span>Scarab <span class="lim">per i boss extra, non per il ground loot</span></span><span class="p">66%</span></div>
           </div>
-          <p class="nota">🔴 <b>Il motore è Amplified Artefacts</b>, che dà scarab <i>«per <b>ogni</b> modificatore che affligge il raro»</i>. Tutto il ramo dei mod di mappa lo moltiplica: <b>Mounting Modifiers</b> su una mappa a 8 mod vale <b>+16%</b> di effetto, <b>Multiplying Modifiers</b> <b>+15%</b> coi 5 scarab nel dispositivo — gli scarab contano come fragment — e <b>Shaping the Mountains</b> più i <code>Map Rare Monsters</code> aumentano i rari da affliggere.</p>
-          <p class="nota">🔴 <b>Il mercenario in mappa è solo al +10%, e i 9 punti sui mercenari sono tutti di <i>qualità</i></b> — item in più, support in più, unique chance. Pagano solo se il mercenario c'è: per questo il <b>Trarthan Scarab da 1,30c è obbligatorio</b> e non opzionale. È lo scambio buono: 1,30c comprano ciò che dall'albero costava <b>9 punti</b>.</p>
-          <p class="nota">💡 <b>Jun invece è garantita dall'albero</b> — <b>+104%</b> — quindi il <i>Betrayal Scarab</i> non serve. ⚠️ E i <code>Betrayal Chance</code> non si possono nemmeno riciclare: <b>7 dei 10 sono il corridoio</b> che tiene attaccati Bribery, Effective Leadership, Test of Loyalty e i Veiled Item Chance. Toglierli libera <b>3 punti</b> e fa scendere Jun a ~80%: non conviene.</p>
-          <p class="nota">⚠️ <b>I 3 <code>Map Pack Size</code> e <code>Invasive Adversaries</code> costano solo se non pulisci.</b> Il keystone dice <i>«higher if there are <b>fewer monsters remaining</b>»</i>: se pulisci la mappa i rimasti tendono a zero comunque, e il pack size ti costa <b>tempo di clear</b>, non boss. 🔬 <b>E dipende da un dettaglio che nessuno ha misurato</b>: se il gioco conti i mostri rimasti <b>in assoluto</b> o <b>in percentuale</b>. Nel secondo caso quei nodi non costano niente.</p>
-          <p class="nota">🔬 <b>The Dutiful Soldier è il punto che non so difendere</b>: dà <i>«15% chance to have a special implicit»</i>, ma i due mod che pagano — <i>Experimented Items</i> e <i>Currency or Scarabs</i> — sono <b>enchant, non implicit</b>, e l'unico implicit noto sui blueprint ha <b>zero inserzioni</b>. Sono 7 punti da riprendersi se in dieci mappe non paga.</p>
+          <p class="nota">🔴 <b>Il motore è Amplified Artefacts</b>: scarab <i>«per <b>ogni</b> modificatore che affligge il raro»</i>. Il ramo dei mod di mappa e i rari in più lo moltiplicano.</p>
+          <p class="nota">🔴 <b>Mercenario solo al +10%, ma 9 punti di qualità</b> → il Trarthan Scarab è obbligatorio. ✅ <b>Jun garantita a +104%</b>, quindi niente Betrayal Scarab. 🔬 <b>The Dutiful Soldier è da verificare</b>: dà un <i>implicit</i>, ma i due mod che pagano sono <b>enchant</b>.</p>
           <p class="spente"><span class="et">meccaniche spente</span><span class="ch">Harvest</span><span class="ch">Kingsmarch</span><span class="ch">Delve</span><span class="ch">Expedition</span><span class="ch">Ritual</span><span class="ch">Blight</span><span class="ch">Delirium</span><span class="ch">Legion</span><span class="ch">Breach</span></p>
           <div class="bottoni"><button class="albero" type="button" data-albero="https://poeplanner.com/atlas-tree/BQAcAACKAIfUUIZfPpTuBPMvyUsy67tM9Z12JJey-tRJ77qQF6nvLHeLLki3hrSxn3kACHqEKozsbYjAKspmHs8tD6fi6ng8WSFgNcww-pyccMaTLZSDvjSM5LVmzgBenYqCzlpDdXyrH-kLT43qazFx9ZPy_YzMt4ahHX3k9x8Ai-F9kc01qgrXKx2PIki39ntgJ8lc7rvb1I-HndDG3CGpzs6cF-hN2mshUXeCp0lSWYaeq3TSglE34wQr56713lGCrZX-TKVz6-H14mHxThsE_MsXpR3RKjakxB9Uh67vE30O-WIWhaP2dQ4wGZSqwyxIjtg6duXswZNrZcOXKraP5TPGwna1Y6BxZh-5Yn-X0ujO-1yluNnQKBQAH4sIAAAAAAAAAwMAAAAAAAAAAAA=">Mostra l'albero qui ↓</button><a class="albero secondario" href="https://poeplanner.com/atlas-tree/BQAcAACKAIfUUIZfPpTuBPMvyUsy67tM9Z12JJey-tRJ77qQF6nvLHeLLki3hrSxn3kACHqEKozsbYjAKspmHs8tD6fi6ng8WSFgNcww-pyccMaTLZSDvjSM5LVmzgBenYqCzlpDdXyrH-kLT43qazFx9ZPy_YzMt4ahHX3k9x8Ai-F9kc01qgrXKx2PIki39ntgJ8lc7rvb1I-HndDG3CGpzs6cF-hN2mshUXeCp0lSWYaeq3TSglE34wQr56713lGCrZX-TKVz6-H14mHxThsE_MsXpR3RKjakxB9Uh67vE30O-WIWhaP2dQ4wGZSqwyxIjtg6duXswZNrZcOXKraP5TPGwna1Y6BxZh-5Yn-X0ujO-1yluNnQKBQAH4sIAAAAAAAAAwMAAAAAAAAAAAA=" target="_blank" rel="noopener">Apri ↗</a></div>
         </div>
@@ -710,17 +634,13 @@
           <div class="sc"><span class="q">1×</span><img src="img/horned-scarab-of-nemeses.png" alt="" loading="lazy"><span class="nm">Horned Scarab of Nemeses<span class="ef"><b>2 modificatori in più su ogni raro</b> — Amplified Artefacts paga per modificatore</span></span><span class="pz">9,52c</span></div>
           <div class="sc"><span class="q"><b>2×</b></span><img src="img/scarab-of-adversaries.png" alt="" loading="lazy"><span class="nm">Scarab of Adversaries<span class="ef">4 pacchi di <b>rari specchiati</b> in più ciascuno — <b>limite 2</b></span></span><span class="pz">2,86c</span></div>
           </div>
-          <p class="nota">🔴 <b>Il Trarthan Scarab non è più opzionale.</b> L'albero dà solo <b>+10%</b> di avere un mercenario, ma ci tiene <b>9 punti di qualità</b> — item in più, support in più, unique chance — che pagano solo se il mercenario c'è. 1,30c comprano ciò che dall'albero costerebbe nove punti.</p>
-          <p class="nota">💡 <b>Nemeses e Adversaries spingono lo stesso motore da due lati</b>: <b>Amplified Artefacts</b> dà scarab <i>«per <b>ogni</b> modificatore che affligge il raro»</i>, quindi Nemeses aggiunge <b>modificatori per raro</b> e Adversaries aggiunge <b>rari</b>. I secondi costano <b>1,43c</b> contro 9,52: se la base è bassa pagano prima.</p>
-          <p class="nota">⚠️ <b>Il Betrayal Scarab non serve</b>: Jun è già garantita dall'albero a <b>+104%</b>.</p>
+          <p class="nota">💡 <b>Nemeses aggiunge modificatori per raro, Adversaries aggiunge rari</b> — i secondi costano 1,43c contro 9,52. ⚠️ <b>Niente Betrayal Scarab</b>: Jun è già garantita dall'albero.</p>
           <div class="carico"><div class="tit"><span>Gli scambi possibili</span><span class="tot">nessuno è di default</span></div>
           <div class="sc"><span class="q">2°</span><img src="img/horned-scarab-of-nemeses.png" alt="" loading="lazy"><span class="nm">Horned Scarab of Nemeses<span class="ef">il <b>limite è 2</b>: il secondo porta i modificatori da +2 a +4 su ogni raro</span></span><span class="pz">+9,52c</span></div>
           <div class="sc"><span class="q">1×</span><img src="img/trarthan-scarab-of-infamy.png" alt="" loading="lazy"><span class="nm">Trarthan Scarab of Infamy<span class="ef">merc <b>infamous garantito</b> + 2 wild mercenaries</span></span><span class="pz">28,31c</span></div>
           <div class="sc"><span class="q">1×</span><img src="img/horned-scarab-of-awakening.png" alt="" loading="lazy"><span class="nm">Horned Scarab of Awakening<span class="ef">i boss di una <b>Maven Invitation</b> a caso — solo su <b>T16+</b></span></span><span class="pz">57,89c</span></div>
           </div>
-          <p class="nota">🔬 <b>Il secondo Nemeses è da misurare, non da comprare al buio.</b> Da solo vale <b>190c sul ciclo da 20 mappe</b>, e il moltiplicatore che raddoppia agisce su una base — quanti scarab produca davvero Amplified Artefacts — che <b>non è mai stata misurata</b>. È un A/B da 10 mappe con una variabile sola.</p>
-          <p class="nota">⚠️ <b>Infamy e Awakening costano da soli quasi sei volte tutto il carico</b> — 86,20c contro 15,42c: entrano quando li vuoi, non di default.</p>
-          <p class="nota">⚠️ <b>I 4 nodi infamous dell'albero non sostituiscono l'Infamy.</b> I nodi danno <i>«10% <b>increased</b> chance to be Infamous»</i> ×4 = <b>+40% increased</b>, cioè un moltiplicatore sulla probabilità di base — non 40 punti percentuali. Lo scarab dice <i>«Mercenaries found in Area <b>are</b> Infamous»</i>: è una <b>garanzia</b>, e porta <b>2 wild mercenaries</b> che i nodi non danno affatto. Su 20 mappe però costa <b>566c</b>, quasi 3 divine: è la voce che va decisa contando gli zaini.</p>
+          <p class="nota">🔬 <b>Il secondo Nemeses vale 190c sul ciclo da 20</b>: è un A/B, non un acquisto. ⚠️ <b>Infamy e Awakening costano sei volte il carico</b> — e i 4 nodi infamous <b>non</b> lo sostituiscono: danno <i>«increased chance»</i>, lo scarab una <b>garanzia</b> più 2 wild mercenaries.</p>
         </div>
         <div class="pannello">
           <h3>Astrolabio — Templar</h3>
@@ -750,7 +670,7 @@
         </div>
         <div class="pannello">
           <h3>Resa — 🔬 da misurare</h3>
-          <p class="nota">🔴 <b>I campioni misurati in casa sono stati azzerati</b>: erano ciclo da 20 mappe e ciclo da 10 con astrolabio, entrambi corsi con <b>Kingsmarch acceso</b> e un carico scarab diverso. Non descrivono questa strategia, e tenerli come riferimento vorrebbe dire confrontare due cose diverse.</p>
+          <p class="nota">🔴 <b>I campioni vecchi sono azzerati</b>: corsi con Kingsmarch acceso e un carico diverso. 💡 Il ciclo deve chiudere anche <b>quanti blueprint per mappa</b> e se il <b>secondo Nemeses</b> si ripaga; 10 mappe pulite contro 10 rushate dicono quanto spesso esce <b>+3</b>.</p>
           <div class="carico"><div class="tit"><span>🔬 Il ciclo da misurare</span><span class="tot">10 mappe</span></div>
           <div class="voce"><span>Blueprint dalle Smuggler's Cache</span><span class="p nulla">quanti · quali enchant</span></div>
           <div class="voce"><span>Zaini dei mercenari</span><span class="p nulla">—</span></div>
@@ -760,8 +680,6 @@
           <div class="voce"><span>Scarab raccolti</span><span class="p nulla">— <span class="lim">è ciò che misura Amplified Artefacts</span></span></div>
           <div class="voce"><span>Costo</span><span class="p">15,42c scarab + mappa + astrolabio</span></div>
           </div>
-          <p class="nota">💡 <b>Le due domande che il ciclo deve chiudere</b>, oltre alla resa: quanti <b>blueprint</b> escono per mappa — sappiamo quanto valgono i due enchant (120c e 115c), non con che frequenza cadono — e se il <b>secondo Nemeses</b> da 9,52c si ripaga.</p>
-          <p class="nota">⚠️ <b>Contando anche i boss extra</b>: 10 mappe pulite al 100% contro 10 rushate dicono quanto spesso esce <b>+3</b> e quanto costa non pulire.</p>
         </div>
       </div>
     </div>
