@@ -115,8 +115,10 @@
   .quinto .tit{color:var(--good)}
 
   /* board del syndicate: le quattro divisioni come si vedono in gioco */
-  .board{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s2);margin:var(--s3) 0}
-  @media(max-width:820px){.board{grid-template-columns:repeat(2,1fr)}}
+  /* 🔴 2x2 come sul tabellone in gioco: Transportation e Intervention in alto,
+     Fortification e Research sotto. Non e' una scelta estetica - il blocco si
+     legge con la board aperta davanti, e una fila di quattro non ci combacia. */
+  .board{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s2);margin:var(--s3) 0}
   @media(max-width:430px){.board{grid-template-columns:1fr}}
   .divis{border:1px solid var(--line);border-radius:var(--r-sm);padding:var(--s2);
          background:rgba(255,255,255,.02);display:flex;flex-direction:column;gap:.35rem}
@@ -573,6 +575,12 @@
               <div class="mb paga"><b>It That Fled</b><span class="ruolo">uniche Foulborn</span></div>
               <div class="mb vuoto">alternativa: <b>Cameria</b> · Abyss · 27 c</div>
             </div>
+            <div class="divis">
+              <div class="tit"><span class="ico">🗡</span>Intervention</div>
+              <div class="mb paga"><b>Rin</b><span class="ruolo">Cartography · 313 c</span></div>
+              <div class="mb paga"><b>Gravicius</b><span class="ruolo">Divination · 169 c</span></div>
+              <div class="mb vuoto">solo due — il pagatore è sempre quello che incontri</div>
+            </div>
             <div class="divis scarto">
               <div class="tit"><span class="ico">🛡</span>Fortification</div>
               <div class="mb"><b>cinque scarti</b><span class="ruolo">non si apre mai</span></div>
@@ -583,14 +591,23 @@
               <div class="mb"><b>cinque scarti</b><span class="ruolo">non si apre mai</span></div>
               <div class="mb vuoto">l'intelligence va alla divisione <b>dell'incontro</b>, non alla loro</div>
             </div>
-            <div class="divis">
-              <div class="tit"><span class="ico">🗡</span>Intervention</div>
-              <div class="mb paga"><b>Rin</b><span class="ruolo">Cartography · 313 c</span></div>
-              <div class="mb paga"><b>Gravicius</b><span class="ruolo">Divination · 169 c</span></div>
-              <div class="mb vuoto">solo due — il pagatore è sempre quello che incontri</div>
-            </div>
           </div>
           <p class="nota">🔴 <b>Riempi Fortification e non correrla</b>: una barra piena toglie la divisione dal sorteggio, e Transportation esce <b>ogni mappa</b> invece che una su due.</p>
+          <p class="nota">🔴 <b>Non correre due safehouse buone di fila</b> — il leader appena giustiziato torna a rango 0 e la seconda paga poco.</p>
+
+          <details class="elenco">
+            <summary>🔧 Come si sistemano i collegamenti — <b>non si cancellano tutti</b> →</summary>
+            <p class="nota">🔴 <b>Il «cancella tutte le rivalità» della board non esiste più.</b> Patch GGG: <i>«Removing all rivalries in the Immortal Syndicate is <b>no longer an option offered</b>… though there is a new option to remove all rivalries in the <b>current division</b>.»</i></p>
+            <table class="mini"><thead><tr><th>Cosa vuoi</th><th>Come</th><th>Da dove</th></tr></thead><tbody>
+            <tr class="ex"><td><b>togliere <u>una</u> rivalità</b></td><td><i>Gain Intelligence and become <b>Neutral with a Rival</b></i> — e <b>paga intelligence</b></td><td>Bargain</td></tr>
+            <tr><td>ripulire <b>una divisione</b></td><td><i>Remove all rivalries from all members on the <b>same division</b></i></td><td>Bargain</td></tr>
+            <tr class="ex"><td><b>trasformare un verde in rosso</b></td><td><b>Betray</b>: consuma l'amicizia e crea la rivalità</td><td>Betray</td></tr>
+            <tr><td>creare un verde</td><td>Bargain, ripetuto — non lo dà sempre</td><td>Bargain</td></tr>
+            </tbody></table>
+            <p class="nota">⚠️ <b>Il Bargain compare solo quando il membro è <u>solo</u></b>: se a terra ce n'è più d'uno, quelle due gomme non te le offre.</p>
+            <p class="nota">🔴 <b>E non serve cancellarli tutti.</b> Contano solo i collegamenti <b>sui membri che incontri davvero</b> — i due pagatori e i quattro leader. Una linea fra due scarti non fa danno: al massimo li fa comparire insieme in una divisione che non apri, dove premi <b>Release</b>. Un incontro contiene comunque al massimo <b>4</b> membri, quindi la terza linea sullo stesso pagatore è già sprecata.</p>
+            <p class="nota">💡 <b>Prima i membri, poi i collegamenti.</b> Ogni rimozione dal Syndicate per pescare un membro dalla riserva rimescola le carte: sistemare le linee prima di aver finito di spostare la gente è lavoro da rifare.</p>
+          </details>
 
           <details class="elenco">
             <summary>Quanto paga ogni casella — pesato sui drop, non sulla mediana →</summary>
@@ -642,12 +659,16 @@
             </tbody></table>
             <p class="nota">🔴 <b>Il raid costa un rango a tutti i subordinati</b>: con cinque membri il raid dopo paga <b>x6 invece di x8</b>, e rialzarli richiede <i>«at least four intervention turns»</i> senza garanzia che si presentino. Con due, l'unico da rialzare <b>è l'unico che puoi incontrare</b>.</p>
             <p class="nota">⚖️ <b>Il 5·5·2·2 vince del 35% per raid, dell'8% se i ranghi si degradano.</b> Perché il 2·5·5·2 lo batta basta che i raid arrivino da <b>1,1 a 1,35 volte</b> più spesso. Hax dichiara <b>una safehouse ogni due mappe</b>; Master T, nel video di strategia, <b>non ne apre nessuna in un'intera sessione</b>.</p>
-            <p class="nota">🔬 <b>La disputa non si decide sul foglio</b>: si decide su quanto spesso apri davvero una safehouse, e non l'abbiamo mai contato. 🔴 <b>Ma <i>chi</i> ci sta dentro non dipende dalla disputa</b>: Rin e Gravicius pagano 3,2 volte i tre di adesso, con qualunque partizione.</p>
+            <p class="nota">🔴 <b>E poewiki sta col 2·5·5·2</b>, per una terza ragione che non è né la sua né la nostra: <i>«the ten members assigned to undesirable divisions will <b>never become the leader</b> after completing a desirable Safehouse, allowing two members per desirable safehouse to provide their rewards <b>repeatedly and deterministically</b>»</i>. Cioè il ciclo si chiude da solo, e il pagatore non finisce mai nello slot che si brucia.</p>
+            <p class="nota">🔬 <b>Resta comunque da contare quanto spesso apri davvero una safehouse</b>, che è l'unico numero che deciderebbe. 🔴 <b>Ma <i>chi</i> ci sta dentro non dipende dalla disputa</b>: Rin e Gravicius pagano 3,2 volte i tre di adesso, con qualunque partizione.</p>
           </details>
 
           <details class="elenco">
             <summary>Come si legge la board →</summary>
-            <p class="nota">Divisione = icona in alto a sinistra: <b>ruota</b> Transportation · <b>palizzata</b> Fortification · <b>lampada</b> Research · <b>occhio</b> Intervention.</p>
+            <p class="nota">🔴 <b>Il tabellone è un 2×2</b>, e le scritte rosse stanno agli angoli delle loro zone: <b>Transportation</b> in alto a sinistra · <b>Intervention</b> in alto a destra · <b>Fortification</b> a metà sinistra · <b>Research</b> a metà destra. Sotto stanno i <b>non assegnati</b>, e in fondo la scatola dei <b>prigionieri</b> col conto dei turni.</p>
+            <p class="nota">Divisione = icona in alto a sinistra della carta: <b>ruota</b> Transportation · <b>palizzata</b> Fortification · <b>lampada</b> Research · <b>occhio</b> Intervention. Chi non ce l'ha è <b>non assegnato</b>, e non ha nemmeno le stelle.</p>
+            <p class="nota">Il <b>leader</b> ha la <b>barra gialla</b> sotto il ritratto e la cornice rossa: quella barra è l'intelligence della <b>sua divisione</b>.</p>
+            <p class="nota">💡 Una carta con <b>?</b> è un membro entrato dalla riserva che <b>non hai ancora incontrato</b>: l'identità si scopre incontrandolo, e non costa niente.</p>
             <p class="nota">Stelle: <b>1</b> una su fondo rosso · <b>2</b> due in colonna · <b>3</b> una sopra due.</p>
             <p class="nota">Le linee <b>gialle</b> uniscono i membri della stessa divisione. <b>Verdi</b> = amicizia, <b>rosse</b> = rivalità: non dicono niente sulla divisione.</p>
             <p class="nota">💡 Un incontro contiene al massimo <b>4 membri</b>: quello che trovi, fino a <b>2</b> collegati da linea verde o rossa, e <b>1 non assegnato</b> a caso.</p>
