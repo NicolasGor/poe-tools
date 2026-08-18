@@ -111,7 +111,13 @@ function quintoDi(pool, divine, mirror) {
   return +pool.map((r) => inChaos(r, divine, mirror)).sort((a, b) => a - b)[4].toFixed(2);
 }
 
-function prezzaWarrant(build, warrant, divine, mirror, minimo) {
+/**
+ * Il mercenario tradotto negli indici del mercato, piu' il suo gruppo di
+ * confronto. Sta a parte perche' lo usano in due: la prezzatura automatica e la
+ * scheda con le spunte, che devono partire dagli stessi numeri o direbbero due
+ * cose diverse sullo stesso pezzo.
+ */
+function contesto(build, warrant) {
   const perSkill = new Map(build.skills.map((s, i) => [s.name, i]));
   const perSup = new Map(build.supports.map((s, i) => [s.name, i]));
 
@@ -137,6 +143,11 @@ function prezzaWarrant(build, warrant, divine, mirror, minimo) {
     for (const v of voluti) if (!mappa.has(v)) { ok = false; break; }
     if (ok) pool.push({ ...r, mappa });
   }
+  return { skillIdx, coppie, ignoti, pool };
+}
+
+function prezzaWarrant(build, warrant, divine, mirror, minimo) {
+  const { coppie, ignoti, pool } = contesto(build, warrant);
 
   // peso: quanto ogni supporto alza la probabilita' di stare sopra 5 divine
   const soglia = 5 * divine;
@@ -183,6 +194,9 @@ function prezzaWarrant(build, warrant, divine, mirror, minimo) {
     passi: passi.map(({ si, sj, ...resto }) => resto),
     oltre: scartato && { skill: scartato.skill, supporto: scartato.supporto, confronti: scartato.confronti, floor: scartato.floor },
     ignoti: [...new Set(ignoti)],
+    // le gemme tornano indietro cosi' come sono arrivate: servono alla scheda
+    // per richiedere il pool senza dover rileggere lo stash
+    gemme: warrant.skills.filter((g) => (g.sup || []).length),
     trade: linkTrade(build, passi, "Allflame"),
   };
 }
@@ -292,7 +306,58 @@ export default {
         });
       }
 
-      return json({ errore: "rotta sconosciuta", rotte: ["/stato", "/mercato/<archetipo>", "/stash", "/prezzo"] }, 404);
+      // la scheda con le spunte: il pool di UN mercenario, ridotto all'osso
+      // perche' il browser possa rifare il conto a ogni click senza tornare qui
+      if (url.pathname === "/dettaglio" && req.method === "POST") {
+        const corpo = await req.json();
+        const w = corpo.warrant;
+        if (!w || !w.build) return json({ errore: "manca warrant" }, 400);
+
+        const builder = await indice("builder");
+        const divine = builder.divineRate;
+        const mirror = Number(corpo.mirror || 884);
+        const build = await indice(slugDi(w.build));
+        build._righe = decodifica(build.listings);
+
+        const { coppie, pool } = contesto(build, w);
+        // ⚠️ Una maschera a 31 bit: un mercenario ne ha al massimo 30 (sei skill
+        // per cinque supporti), ma se un giorno ne avesse di piu' il taglio va
+        // detto, non subito in silenzio.
+        const usate = coppie.slice(0, 31);
+        const tagliate = coppie.length - usate.length;
+
+        const soglia = 5 * divine;
+        const quotaBase = pool.length
+          ? pool.filter((r) => inChaos(r, divine, mirror) >= soglia).length / pool.length
+          : 0;
+
+        const supporti = usate.map((c, i) => {
+          const con = pool.filter((r) => r.mappa.get(c.si)?.has(c.sj));
+          const sopra = con.filter((r) => inChaos(r, divine, mirror) >= soglia).length;
+          return {
+            i, skill: c.skill, supporto: c.supporto,
+            peso: (con.length < 50 || !quotaBase) ? 1 : +((sopra / con.length) / quotaBase).toFixed(2),
+            skillHash: build.skills[c.si].hash, supHash: build.supports[c.sj].hash,
+          };
+        });
+
+        // Ogni inserzione diventa [prezzo, maschera]: quali dei SUOI supporti ha.
+        // Tutto il resto del mercato non serve a questa scheda, e mandarlo
+        // significherebbe spedire megabyte per farci un filtro da nulla.
+        const righe = pool.map((r) => {
+          let m = 0;
+          usate.forEach((c, i) => { if (r.mappa.get(c.si)?.has(c.sj)) m |= (1 << i); });
+          return [+inChaos(r, divine, mirror).toFixed(2), m];
+        });
+
+        return json({
+          nome: w.name, build: build.build, divine: +divine.toFixed(2),
+          lega: builder.league, signature: build.signature || [],
+          tradeTypes: build.tradeTypes || [], supporti, righe, tagliate,
+        });
+      }
+
+      return json({ errore: "rotta sconosciuta", rotte: ["/stato", "/mercato/<archetipo>", "/stash", "/prezzo", "/dettaglio"] }, 404);
     } catch (e) {
       return json({ errore: String(e && e.message || e) }, 502);
     }

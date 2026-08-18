@@ -43,6 +43,35 @@
   .griglia td{padding:var(--s2) var(--s3);border-bottom:1px solid var(--line);vertical-align:top}
   .griglia td:first-child{color:var(--gold);white-space:nowrap;font-weight:600}
   .no{color:var(--bad)}
+
+  /* la scheda delle gemme, aperta sotto la riga */
+  .apri{background:none;border:1px solid var(--line2);color:var(--muted);border-radius:var(--r);
+        font:inherit;font-size:var(--t-xs);padding:.15rem .5rem;cursor:pointer;white-space:nowrap}
+  .apri[aria-expanded="true"]{border-color:var(--gold);color:var(--gold)}
+  tr.scheda > td{padding:0;border-bottom:1px solid var(--line);background:var(--bg-alt)}
+  .scheda-in{padding:var(--s4)}
+  .scheda-cima{display:flex;gap:var(--s5);align-items:baseline;flex-wrap:wrap;margin-bottom:var(--s3)}
+  .scheda-cima b{font-family:var(--mono);font-size:var(--t-lg);font-variant-numeric:tabular-nums}
+  .scheda-cima span{font-size:var(--t-xs);color:var(--label);text-transform:uppercase;letter-spacing:.06em;display:block}
+  .scheda-cima .conta b{color:var(--text)}
+  .scheda-cima .floor b{color:var(--good)}
+  .scheda-cima .floor.magro b{color:var(--warn)}
+  .gemme{display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:var(--s3)}
+  .gemma{border:1px solid var(--line);border-radius:var(--r);background:var(--panel2);padding:var(--s3)}
+  .gemma h4{color:var(--gold);font-size:var(--t-sm);margin:0 0 var(--s2);display:flex;justify-content:space-between;gap:var(--s2)}
+  .gemma h4 em{color:var(--label);font-style:normal;font-family:var(--mono);font-size:var(--t-xs)}
+  .sup{display:grid;grid-template-columns:1rem 1fr auto auto;gap:var(--s2);align-items:baseline;
+       padding:.15rem 0;cursor:pointer;font-size:var(--t-xs);color:var(--label)}
+  .sup:hover{color:var(--text)}
+  .sup.on{color:var(--text);font-weight:600}
+  .sup .segno{color:var(--gold)}
+  .sup .delta{font-family:var(--mono);color:var(--good);text-align:right}
+  .sup .delta.zero{color:var(--label)}
+  .sup .resta{font-family:var(--mono);color:var(--label);text-align:right;min-width:3rem}
+  .sup .resta.magro{color:var(--bad)}
+  .scheda-pie{margin-top:var(--s3);display:flex;gap:var(--s3);align-items:center;flex-wrap:wrap;
+              font-size:var(--t-xs);color:var(--label)}
+  .scheda-pie a{color:var(--gold);font-weight:600}
 </style>
 </head>
 <body>
@@ -265,7 +294,7 @@ function disegna(dati) {
     corpo.innerHTML = '<tr><td colspan="5" class="vuoto">Nessun warrant. Sincronizza lo stash, poi aggiorna i prezzi.</td></tr>';
     return;
   }
-  corpo.innerHTML = dati.warrant.map((w) => {
+  corpo.innerHTML = dati.warrant.map((w, i) => {
     const passi = w.passi.slice(0, 4).map((p) => `${esc(p.supporto)} <i>su ${esc(p.skill)}</i>`).join(" · ")
       || "<i>nessun supporto regge la soglia</i>";
     const piu = w.passi.length > 4 ? ` <i>+${w.passi.length - 4}</i>` : "";
@@ -277,8 +306,9 @@ function disegna(dati) {
       <td class="n"><span class="prezzo${w.prezzo >= 10 ? "" : " basso"}">${w.prezzo.toFixed(0)} c</span>${quinto}</td>
       <td class="conf">${w.confronti}${oltre}</td>
       <td class="reggono">${passi}${piu}</td>
-      <td><a class="tr-link" href="${esc(w.trade)}" target="_blank" rel="noopener">trade &rarr;</a></td>
-    </tr>`;
+      <td><button class="apri" aria-expanded="false" data-i="${i}">gemme &#9662;</button></td>
+    </tr>
+    <tr class="scheda" hidden><td colspan="5"><div class="scheda-in" id="scheda-${i}">Apri per caricare le inserzioni simili…</div></td></tr>`;
   }).join("");
 
   const tot = dati.warrant.reduce((s, w) => s + w.prezzo, 0);
@@ -367,6 +397,142 @@ $("indirizzo").addEventListener("input", (e) => {
   localStorage.setItem("warrant-api", API);
   costruisciSegnalibro();
   stato();
+});
+
+/* ------------------------------------------------------------------ la scheda
+ * Le spunte non descrivono il mercenario: **restringono il gruppo di confronto**.
+ * Spuntarle tutte non da' il prezzo giusto, da' zero risultati — nessun
+ * mercenario e' uguale a un altro. Il senso e' il contrario: si chiede solo cio'
+ * che il mercato paga, e si guarda quante inserzioni restano.
+ *
+ * Il server manda il pool una volta sola, ridotto a [prezzo, maschera]: da li' in
+ * poi ogni click e' un filtro su un array in memoria, senza rimbalzi.
+ */
+const SCHEDE = new Map();   // indice riga -> {dati, sel}
+
+const conta = (righe, sel) => {
+  let n = 0, floor = null;
+  for (const [prezzo, m] of righe) {
+    if ((m & sel) !== sel) continue;
+    n++;
+    if (floor === null || prezzo < floor) floor = prezzo;
+  }
+  return {n, floor};
+};
+
+function disegnaScheda(i) {
+  const stato = SCHEDE.get(i);
+  const box = $(`scheda-${i}`);
+  if (!stato) return;
+  const {dati, sel} = stato;
+  const ora = conta(dati.righe, sel);
+
+  const perSkill = new Map();
+  for (const s of dati.supporti) {
+    if (!perSkill.has(s.skill)) perSkill.set(s.skill, []);
+    perSkill.get(s.skill).push(s);
+  }
+
+  const carte = [...perSkill].map(([skill, sups]) => {
+    const spuntati = sups.filter((s) => sel & (1 << s.i)).length;
+    const righe = sups.sort((a, b) => b.peso - a.peso).map((s) => {
+      const acceso = !!(sel & (1 << s.i));
+      const dopo = conta(dati.righe, sel ^ (1 << s.i));
+      const salto = dopo.floor === null || ora.floor === null ? null : dopo.floor - ora.floor;
+      const testoSalto = salto === null ? "—"
+        : salto === 0 ? "0"
+        : (salto > 0 ? "+" : "\u2212") + Math.abs(salto).toFixed(salto % 1 ? 2 : 0) + " c";
+      return `<div class="sup ${acceso ? "on" : ""}" data-i="${i}" data-bit="${s.i}"
+                   title="peso ${s.peso}\u00d7 sulla probabilita' di stare sopra 5 divine">
+        <span class="segno">${acceso ? "\u2713" : ""}</span>
+        <span>${esc(s.supporto)}</span>
+        <span class="delta ${salto ? "" : "zero"}">${testoSalto}</span>
+        <span class="resta ${dopo.n < 5 ? "magro" : ""}">${dopo.n}</span>
+      </div>`;
+    }).join("");
+    return `<div class="gemma"><h4>${esc(skill)} <em>${spuntati}/${sups.length}</em></h4>${righe}</div>`;
+  }).join("");
+
+  box.innerHTML = `
+    <div class="scheda-cima">
+      <div class="conta"><span>inserzioni simili</span><b>${ora.n.toLocaleString("it")}</b></div>
+      <div class="floor ${ora.n < 5 ? "magro" : ""}"><span>floor</span><b>${ora.floor === null ? "\u2014" : ora.floor.toFixed(ora.floor % 1 ? 2 : 0) + " c"}</b></div>
+      <div><span>quinto prezzo</span><b>${quintoDi(dati.righe, sel)}</b></div>
+    </div>
+    <div class="gemme">${carte}</div>
+    <div class="scheda-pie">
+      <a href="${esc(linkTrade(dati, sel))}" target="_blank" rel="noopener">cerca sul trade &rarr;</a>
+      <span>Ogni riga dice cosa succede a cliccarla: di quanto si sposta il floor e quante inserzioni resterebbero. <b>Sotto le 5 il prezzo e' un venditore, non un mercato.</b></span>
+      ${dati.tagliate ? `<span>\u26a0\ufe0f ${dati.tagliate} supporti non mostrati: la maschera ne regge 31.</span>` : ""}
+    </div>`;
+}
+
+function quintoDi(righe, sel) {
+  const prezzi = righe.filter(([, m]) => (m & sel) === sel).map(([p]) => p).sort((a, b) => a - b);
+  return prezzi.length < 5 ? "\u2014" : prezzi[4].toFixed(prezzi[4] % 1 ? 2 : 0) + " c";
+}
+
+/* Il link di ricerca, con le stesse regole del server: un gruppo `mercenary` per
+   ogni skill vincolata piu' le skill firma, e non piu' di quattro supporti —
+   oltre, il trade risponde `400 Query is too complex`. */
+function linkTrade(dati, sel) {
+  const scelti = dati.supporti.filter((s) => sel & (1 << s.i)).sort((a, b) => b.peso - a.peso).slice(0, 4);
+  const perSkill = new Map();
+  for (const s of scelti) {
+    if (!perSkill.has(s.skillHash)) perSkill.set(s.skillHash, []);
+    perSkill.get(s.skillHash).push(s.supHash);
+  }
+  const stats = [...perSkill].map(([h, sups]) => ({
+    type: "mercenary",
+    filters: [{id: `mercenary.skill_${h}`}, ...sups.map((x) => ({id: `mercenary.support_${x}`}))],
+  }));
+  for (const h of dati.signature || []) {
+    if (!perSkill.has(h)) stats.push({type: "mercenary", filters: [{id: `mercenary.skill_${h}`}]});
+  }
+  const q = {query: {status: {option: "securable"}, stats}, sort: {price: "asc"}};
+  return `https://www.pathofexile.com/trade/search/${dati.lega}?q=${encodeURIComponent(JSON.stringify(q))}`;
+}
+
+async function apriScheda(i, bottone) {
+  const riga = bottone.closest("tr").nextElementSibling;
+  const aperta = bottone.getAttribute("aria-expanded") === "true";
+  bottone.setAttribute("aria-expanded", String(!aperta));
+  bottone.innerHTML = aperta ? "gemme \u25be" : "gemme \u25b4";
+  riga.hidden = aperta;
+  if (aperta || SCHEDE.has(i)) { if (!aperta) disegnaScheda(i); return; }
+
+  const cache = leggiCache();
+  const w = cache && cache.warrant[i];
+  if (!w) return;
+  $(`scheda-${i}`).textContent = "carico le inserzioni simili…";
+  try {
+    const r = await fetch(`${API}/dettaglio`, {
+      method: "POST", headers: {"content-type": "application/json"},
+      body: JSON.stringify({warrant: {name: w.nome, build: (w.infamous ? "Infamous " : "") + w.build,
+                                      level: w.livello, skills: w.gemme || []}}),
+    });
+    const dati = await r.json();
+    if (dati.errore) { $(`scheda-${i}`).textContent = dati.errore; return; }
+    // si apre come la apre la fonte: il supporto di peso maggiore, e nient'altro
+    const migliore = dati.supporti.reduce((a, b) => (b.peso > a.peso ? b : a), dati.supporti[0]);
+    SCHEDE.set(i, {dati, sel: migliore ? (1 << migliore.i) : 0});
+    disegnaScheda(i);
+  } catch (e) {
+    $(`scheda-${i}`).textContent = "il server non risponde: " + e.message;
+  }
+}
+
+document.addEventListener("click", (e) => {
+  const apri = e.target.closest(".apri");
+  if (apri) { apriScheda(Number(apri.dataset.i), apri); return; }
+  const sup = e.target.closest(".sup");
+  if (sup) {
+    const i = Number(sup.dataset.i), bit = Number(sup.dataset.bit);
+    const stato = SCHEDE.get(i);
+    if (!stato) return;
+    stato.sel ^= (1 << bit);
+    disegnaScheda(i);
+  }
 });
 
 const cache = leggiCache();
