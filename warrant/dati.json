@@ -1364,6 +1364,154 @@
    "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_22227%22%7D%2C%7B%22id%22%3A%22mercenary.support_812%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_12262%22%7D%2C%7B%22id%22%3A%22mercenary.support_59784%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_14992%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
+   "nome": "Jax, the Halfwit",
+   "build": "Blade Ambusher",
+   "infamous": false,
+   "livello": "83",
+   "posizione": [
+    7,
+    10
+   ],
+   "vendibile": true,
+   "pool": 2724,
+   "floor_pool": 1,
+   "prezzo": 10,
+   "confronti": 46,
+   "quinto": 55,
+   "passi": [
+    {
+     "skill": "Spectral Helix of Trarthus",
+     "supporto": "Multiple Traps",
+     "peso": 1.04,
+     "confronti": 1635,
+     "floor": 1
+    },
+    {
+     "skill": "Spectral Throw of Trarthus",
+     "supporto": "Throwing Speed",
+     "peso": 1.04,
+     "confronti": 768,
+     "floor": 2
+    },
+    {
+     "skill": "Bear Trap",
+     "supporto": "Trigger Radius",
+     "peso": 1.04,
+     "confronti": 227,
+     "floor": 5
+    },
+    {
+     "skill": "Spectral Helix of Trarthus",
+     "supporto": "Greater Throwing Speed",
+     "peso": 1.03,
+     "confronti": 46,
+     "floor": 10
+    }
+   ],
+   "oltre": {
+    "skill": "Bear Trap",
+    "supporto": "Greater Cooldown Recovery",
+    "confronti": 5,
+    "floor": 10
+   },
+   "peso": [
+    {
+     "skill": "Spectral Throw of Trarthus",
+     "supporto": "Throwing Speed",
+     "confronti": 1261,
+     "peso": 1.04
+    },
+    {
+     "skill": "Spectral Helix of Trarthus",
+     "supporto": "Multiple Traps",
+     "confronti": 1635,
+     "peso": 1.04
+    },
+    {
+     "skill": "Bear Trap",
+     "supporto": "Trigger Radius",
+     "confronti": 782,
+     "peso": 1.04
+    },
+    {
+     "skill": "Blade Trap",
+     "supporto": "Charged Traps",
+     "confronti": 878,
+     "peso": 1.03
+    },
+    {
+     "skill": "Spectral Helix of Trarthus",
+     "supporto": "Greater Throwing Speed",
+     "confronti": 681,
+     "peso": 1.03
+    },
+    {
+     "skill": "Bear Trap",
+     "supporto": "Greater Cooldown Recovery",
+     "confronti": 361,
+     "peso": 1.03
+    }
+   ],
+   "aria_base": {
+    "n": 2724,
+    "sopra_1d": 76.9,
+    "sopra_5d": 33.2
+   },
+   "aria_stretto": {
+    "n": 46,
+    "sopra_1d": 87.0,
+    "sopra_5d": 45.7
+   },
+   "gemme": [
+    {
+     "skill": "Blade Trap",
+     "supporti": [
+      "Critical Damage",
+      "Greater Trigger Radius",
+      "Physical as Extra Chaos",
+      "Trigger Radius",
+      "Charged Traps"
+     ]
+    },
+    {
+     "skill": "Trarthan Agility",
+     "supporti": [
+      "Greater Area of Effect",
+      "Faster Casting"
+     ]
+    },
+    {
+     "skill": "Spectral Throw of Trarthus",
+     "supporti": [
+      "Greater Multiple Projectiles",
+      "Throwing Speed",
+      "Faster Projectiles",
+      "Greater Trigger Radius",
+      "Trigger Radius"
+     ]
+    },
+    {
+     "skill": "Spectral Helix of Trarthus",
+     "supporti": [
+      "Trap and Mine Damage",
+      "Charged Traps",
+      "Greater Throwing Speed",
+      "Greater Trigger Radius",
+      "Multiple Traps"
+     ]
+    },
+    {
+     "skill": "Bear Trap",
+     "supporti": [
+      "Greater Cooldown Recovery",
+      "Trigger Radius"
+     ]
+    }
+   ],
+   "ignoti": [],
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_28988%22%7D%2C%7B%22id%22%3A%22mercenary.support_2555%22%7D%2C%7B%22id%22%3A%22mercenary.support_58938%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_62393%22%7D%2C%7B%22id%22%3A%22mercenary.support_3465%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_13711%22%7D%2C%7B%22id%22%3A%22mercenary.support_819%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_11054%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_38072%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+  },
+  {
    "nome": "Secha, the Disdainful",
    "build": "Stormhand",
    "infamous": false,
