@@ -513,9 +513,20 @@ async function apriScheda(i, bottone) {
     });
     const dati = await r.json();
     if (dati.errore) { $(`scheda-${i}`).textContent = dati.errore; return; }
-    // si apre come la apre la fonte: il supporto di peso maggiore, e nient'altro
-    const migliore = dati.supporti.reduce((a, b) => (b.peso > a.peso ? b : a), dati.supporti[0]);
-    SCHEDE.set(i, {dati, sel: migliore ? (1 << migliore.i) : 0});
+    // 🔴 Si apre **sulla selezione della riga**, non su una di comodo. La fonte
+    // parte dal supporto piu' pesante e basta: qui darebbe 373 inserzioni sotto
+    // una riga che ne dichiara 35, cioe' due numeri diversi sullo stesso
+    // mercenario a due centimetri di distanza. Da qui si allarga o si stringe.
+    let sel = 0;
+    for (const passo of (w.passi || [])) {
+      const s = dati.supporti.find((x) => x.skill === passo.skill && x.supporto === passo.supporto);
+      if (s) sel |= (1 << s.i);
+    }
+    if (!sel && dati.supporti.length) {
+      const migliore = dati.supporti.reduce((a, b) => (b.peso > a.peso ? b : a));
+      sel = 1 << migliore.i;
+    }
+    SCHEDE.set(i, {dati, sel});
     disegnaScheda(i);
   } catch (e) {
     $(`scheda-${i}`).textContent = "il server non risponde: " + e.message;
