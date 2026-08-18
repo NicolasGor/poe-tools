@@ -194,9 +194,12 @@ function prezzaWarrant(build, warrant, divine, mirror, minimo) {
     passi: passi.map(({ si, sj, ...resto }) => resto),
     oltre: scartato && { skill: scartato.skill, supporto: scartato.supporto, confronti: scartato.confronti, floor: scartato.floor },
     ignoti: [...new Set(ignoti)],
-    // le gemme tornano indietro cosi' come sono arrivate: servono alla scheda
-    // per richiedere il pool senza dover rileggere lo stash
-    gemme: warrant.skills.filter((g) => (g.sup || []).length),
+    // 🔴 Le gemme tornano indietro **tutte**, anche le skill senza supporti.
+    // Filtrarle sembrava innocuo e non lo e': le skill sono cio' che definisce il
+    // gruppo di confronto, quindi togliere Flame Dash e Smoke Mine allargava il
+    // pool della scheda a 27.000 inserzioni contro le 2.500 della riga — due
+    // numeri diversi sullo stesso mercenario, nella stessa pagina.
+    gemme: warrant.skills,
     trade: linkTrade(build, passi, "Allflame"),
   };
 }
