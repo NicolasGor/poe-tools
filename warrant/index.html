@@ -457,7 +457,7 @@ function disegnaScheda(i) {
       const salto = dopo.floor === null || ora.floor === null ? null : dopo.floor - ora.floor;
       const testoSalto = salto === null ? "—"
         : salto === 0 ? "0"
-        : (salto > 0 ? "+" : "\u2212") + Math.abs(salto).toFixed(salto % 1 ? 2 : 0) + " c";
+        : (salto > 0 ? "+" : "\u2212") + chaos(Math.abs(salto));
       return `<div class="sup ${acceso ? "on" : ""}" data-i="${i}" data-bit="${s.i}"
                    title="peso ${s.peso}\u00d7 sulla probabilita' di stare sopra 5 divine">
         <span class="segno">${acceso ? "\u2713" : ""}</span>
@@ -473,8 +473,8 @@ function disegnaScheda(i) {
   box.innerHTML = `
     <div class="scheda-cima">
       <div class="conta"><span>inserzioni simili</span><b>${ora.n.toLocaleString("it")}</b></div>
-      <div class="floor ${ora.n < 5 ? "magro" : ""}"><span>floor</span><b>${ora.floor === null ? "\u2014" : ora.floor.toFixed(ora.floor % 1 ? 2 : 0) + " c"}</b></div>
-      <div><span>quinto prezzo</span><b>${quintoDi(dati.righe, sel)}</b></div>
+      <div class="floor ${ora.n < 10 ? "magro" : ""}"><span>quanto vale</span><b>${chaos(ora.floor)}</b></div>
+      <div><span>gli altri fino a</span><b>${quintoDi(dati.righe, sel)}</b></div>
     </div>
     <div class="gemme">${carte}</div>
     <div class="scheda-pie">
@@ -484,9 +484,13 @@ function disegnaScheda(i) {
     </div>`;
 }
 
+/* Sopra i 10 chaos i centesimi sono rumore: nessuno lista a 199,11. */
+const chaos = (n) => n === null || n === undefined ? "\u2014"
+  : (n >= 10 ? Math.round(n) : +n.toFixed(2)) + " c";
+
 function quintoDi(righe, sel) {
   const prezzi = righe.filter(([, m]) => (m & sel) === sel).map(([p]) => p).sort((a, b) => a - b);
-  return prezzi.length < 5 ? "\u2014" : prezzi[4].toFixed(prezzi[4] % 1 ? 2 : 0) + " c";
+  return prezzi.length < 5 ? "\u2014" : chaos(prezzi[4]);
 }
 
 /* Il link di ricerca, con le stesse regole del server: un gruppo `mercenary` per
