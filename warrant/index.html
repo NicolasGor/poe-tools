@@ -113,9 +113,10 @@
   </header>
 
   <div class="avviso">
-    <b>Sono prezzi richiesti, non prezzi di vendita.</b> Il floor dice a quanto
-    dovresti listare per stare in cima al libro, non quanto incassi: le inserzioni
-    sopra sono, per costruzione, quelle che <i>non</i> sono state comprate.
+    <b>Sono prezzi richiesti, non prezzi di vendita.</b> Il valore dice a quanto
+    dovresti listare per essere il più economico fra i simili, non quanto incassi:
+    le inserzioni sopra sono, per costruzione, quelle che <i>non</i> sono state
+    comprate.
   </div>
 
   <div class="barra">
@@ -328,7 +329,7 @@ function disegna(dati) {
   }).join("");
 
   const tot = dati.warrant.reduce((s, w) => s + w.prezzo, 0);
-  $("stato").innerHTML = `<b>${dati.warrant.length}</b> warrant · <b>${tot.toFixed(0)} c</b> al floor · dato del <b>${dataIt(dati.generato_il)}</b>` +
+  $("stato").innerHTML = `<b>${dati.warrant.length}</b> warrant · <b>${tot.toFixed(0)} c</b> in tutto · dato del <b>${dataIt(dati.generato_il)}</b>` +
     (dati.divine_in_chaos ? ` · divine a <b>${dati.divine_in_chaos.toFixed(0)} c</b>` : "");
 }
 
