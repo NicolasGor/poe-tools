@@ -156,7 +156,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_63468%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_7383%22%7D%2C%7B%22id%22%3A%22mercenary.support_38851%22%7D%2C%7B%22id%22%3A%22mercenary.support_3263%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_39669%22%7D%2C%7B%22id%22%3A%22mercenary.support_5293%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_11671%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_1911%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_56180%22%7D%2C%7B%22id%22%3A%22mercenary.support_26568%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_56180%22%7D%2C%7B%22id%22%3A%22mercenary.support_26568%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_39669%22%7D%2C%7B%22id%22%3A%22mercenary.support_5293%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_7383%22%7D%2C%7B%22id%22%3A%22mercenary.support_38851%22%7D%2C%7B%22id%22%3A%22mercenary.support_3263%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_63468%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Turik, the Unerring",
@@ -298,7 +298,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_40812%22%7D%2C%7B%22id%22%3A%22mercenary.support_64271%22%7D%2C%7B%22id%22%3A%22mercenary.support_19113%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_55917%22%7D%2C%7B%22id%22%3A%22mercenary.support_19113%22%7D%2C%7B%22id%22%3A%22mercenary.support_37259%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_47078%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_50866%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_63233%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_34212%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_40812%22%7D%2C%7B%22id%22%3A%22mercenary.support_19113%22%7D%2C%7B%22id%22%3A%22mercenary.support_64271%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_55917%22%7D%2C%7B%22id%22%3A%22mercenary.support_19113%22%7D%2C%7B%22id%22%3A%22mercenary.support_37259%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Alamond, the Smooth-talker",
@@ -432,7 +432,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_22227%22%7D%2C%7B%22id%22%3A%22mercenary.support_6927%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_14992%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_36446%22%7D%2C%7B%22id%22%3A%22mercenary.support_14517%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_16896%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_10320%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_1516%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_22227%22%7D%2C%7B%22id%22%3A%22mercenary.support_6927%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_36446%22%7D%2C%7B%22id%22%3A%22mercenary.support_14517%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_14992%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Whakani, the Bloodletter",
@@ -563,7 +563,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_52105%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_62530%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_12723%22%7D%2C%7B%22id%22%3A%22mercenary.support_50475%22%7D%2C%7B%22id%22%3A%22mercenary.support_64986%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_41915%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_40419%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_21036%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_12723%22%7D%2C%7B%22id%22%3A%22mercenary.support_50475%22%7D%2C%7B%22id%22%3A%22mercenary.support_64986%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_52105%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_62530%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Grynna, the Wounding",
@@ -695,7 +695,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_11495%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_58425%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_18232%22%7D%2C%7B%22id%22%3A%22mercenary.support_53145%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_65447%22%7D%2C%7B%22id%22%3A%22mercenary.support_49419%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_2792%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_10557%22%7D%2C%7B%22id%22%3A%22mercenary.support_65120%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_65447%22%7D%2C%7B%22id%22%3A%22mercenary.support_49419%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_10557%22%7D%2C%7B%22id%22%3A%22mercenary.support_65120%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_18232%22%7D%2C%7B%22id%22%3A%22mercenary.support_53145%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_11495%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_58425%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Mamoru, the Iron Hide",
@@ -832,7 +832,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_59259%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_2135%22%7D%2C%7B%22id%22%3A%22mercenary.support_987%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_18149%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_53235%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_6228%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_21036%22%7D%2C%7B%22id%22%3A%22mercenary.support_48875%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_2135%22%7D%2C%7B%22id%22%3A%22mercenary.support_987%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_21036%22%7D%2C%7B%22id%22%3A%22mercenary.support_48875%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_59259%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Dorian, the Azadin Seadog",
@@ -955,7 +955,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_8708%22%7D%2C%7B%22id%22%3A%22mercenary.support_60094%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_10557%22%7D%2C%7B%22id%22%3A%22mercenary.support_65120%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_22105%22%7D%2C%7B%22id%22%3A%22mercenary.support_27970%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_32807%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_13693%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_24482%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_22105%22%7D%2C%7B%22id%22%3A%22mercenary.support_27970%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_8708%22%7D%2C%7B%22id%22%3A%22mercenary.support_60094%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_10557%22%7D%2C%7B%22id%22%3A%22mercenary.support_65120%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Krana Valton",
@@ -1089,7 +1089,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_34665%22%7D%2C%7B%22id%22%3A%22mercenary.support_987%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_24179%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_59200%22%7D%2C%7B%22id%22%3A%22mercenary.support_53342%22%7D%2C%7B%22id%22%3A%22mercenary.support_50475%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_21962%22%7D%2C%7B%22id%22%3A%22mercenary.support_987%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_2792%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_60723%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_21962%22%7D%2C%7B%22id%22%3A%22mercenary.support_987%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_59200%22%7D%2C%7B%22id%22%3A%22mercenary.support_53342%22%7D%2C%7B%22id%22%3A%22mercenary.support_50475%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_34665%22%7D%2C%7B%22id%22%3A%22mercenary.support_987%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_24179%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Orvan, the Keitan Heretic",
@@ -1235,7 +1235,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_19034%22%7D%2C%7B%22id%22%3A%22mercenary.support_61471%22%7D%2C%7B%22id%22%3A%22mercenary.support_53342%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_14732%22%7D%2C%7B%22id%22%3A%22mercenary.support_64283%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_23225%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_45226%22%7D%2C%7B%22id%22%3A%22mercenary.support_62220%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_28757%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_38326%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_45226%22%7D%2C%7B%22id%22%3A%22mercenary.support_62220%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_14732%22%7D%2C%7B%22id%22%3A%22mercenary.support_64283%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_19034%22%7D%2C%7B%22id%22%3A%22mercenary.support_53342%22%7D%2C%7B%22id%22%3A%22mercenary.support_61471%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Ruthan Dark-tongue",
@@ -1361,7 +1361,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_22227%22%7D%2C%7B%22id%22%3A%22mercenary.support_812%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_14992%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_12262%22%7D%2C%7B%22id%22%3A%22mercenary.support_59784%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_36446%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_1516%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_2792%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_22227%22%7D%2C%7B%22id%22%3A%22mercenary.support_812%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_12262%22%7D%2C%7B%22id%22%3A%22mercenary.support_59784%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_14992%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Secha, the Disdainful",
@@ -1485,7 +1485,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_41484%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_33661%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_11879%22%7D%2C%7B%22id%22%3A%22mercenary.support_40212%22%7D%2C%7B%22id%22%3A%22mercenary.support_31052%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_30663%22%7D%2C%7B%22id%22%3A%22mercenary.support_50475%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_56180%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_63233%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_11879%22%7D%2C%7B%22id%22%3A%22mercenary.support_40212%22%7D%2C%7B%22id%22%3A%22mercenary.support_31052%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_30663%22%7D%2C%7B%22id%22%3A%22mercenary.support_50475%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_41484%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_33661%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Gek, the Azadin Madman",
@@ -1624,7 +1624,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_11054%22%7D%2C%7B%22id%22%3A%22mercenary.support_2555%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_38072%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_28988%22%7D%2C%7B%22id%22%3A%22mercenary.support_59079%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_62393%22%7D%2C%7B%22id%22%3A%22mercenary.support_31171%22%7D%2C%7B%22id%22%3A%22mercenary.support_2210%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_44296%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_2792%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_28988%22%7D%2C%7B%22id%22%3A%22mercenary.support_59079%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_62393%22%7D%2C%7B%22id%22%3A%22mercenary.support_2210%22%7D%2C%7B%22id%22%3A%22mercenary.support_31171%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_11054%22%7D%2C%7B%22id%22%3A%22mercenary.support_2555%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_38072%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Dagon, the Azadin Seafarer",
@@ -1754,7 +1754,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_8708%22%7D%2C%7B%22id%22%3A%22mercenary.support_40660%22%7D%2C%7B%22id%22%3A%22mercenary.support_44886%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_10557%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_32807%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_40957%22%7D%2C%7B%22id%22%3A%22mercenary.support_44886%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_60723%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_40470%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_8708%22%7D%2C%7B%22id%22%3A%22mercenary.support_40660%22%7D%2C%7B%22id%22%3A%22mercenary.support_44886%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_40957%22%7D%2C%7B%22id%22%3A%22mercenary.support_44886%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_10557%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Draxia, the Isolationist",
@@ -1884,7 +1884,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_41484%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_33661%22%7D%2C%7B%22id%22%3A%22mercenary.support_53342%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_3148%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_59005%22%7D%2C%7B%22id%22%3A%22mercenary.support_31052%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_28757%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_38326%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_59005%22%7D%2C%7B%22id%22%3A%22mercenary.support_31052%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_33661%22%7D%2C%7B%22id%22%3A%22mercenary.support_53342%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_41484%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Voltaire Klortin",
@@ -2005,7 +2005,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_46131%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_39265%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_28026%22%7D%2C%7B%22id%22%3A%22mercenary.support_53342%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_43812%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_60723%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_10823%22%7D%2C%7B%22id%22%3A%22mercenary.support_64271%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_10823%22%7D%2C%7B%22id%22%3A%22mercenary.support_64271%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_28026%22%7D%2C%7B%22id%22%3A%22mercenary.support_53342%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_46131%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_39265%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Gorna, the Broadhead",
@@ -2138,7 +2138,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_11495%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_58425%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_24409%22%7D%2C%7B%22id%22%3A%22mercenary.support_48875%22%7D%2C%7B%22id%22%3A%22mercenary.support_5293%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_65447%22%7D%2C%7B%22id%22%3A%22mercenary.support_50475%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_2792%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_10557%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_24409%22%7D%2C%7B%22id%22%3A%22mercenary.support_5293%22%7D%2C%7B%22id%22%3A%22mercenary.support_48875%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_65447%22%7D%2C%7B%22id%22%3A%22mercenary.support_50475%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_11495%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_58425%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Azroka, the Stormbow",
@@ -2266,7 +2266,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_11495%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_58425%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_65447%22%7D%2C%7B%22id%22%3A%22mercenary.support_50485%22%7D%2C%7B%22id%22%3A%22mercenary.support_31863%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_18232%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_24482%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_10722%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_65447%22%7D%2C%7B%22id%22%3A%22mercenary.support_31863%22%7D%2C%7B%22id%22%3A%22mercenary.support_50485%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_11495%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_58425%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Dalshon, the Flesh-lord",
@@ -2402,7 +2402,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_46739%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_39265%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_28026%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_61669%22%7D%2C%7B%22id%22%3A%22mercenary.support_59784%22%7D%2C%7B%22id%22%3A%22mercenary.support_987%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_2135%22%7D%2C%7B%22id%22%3A%22mercenary.support_64271%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_18793%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_61669%22%7D%2C%7B%22id%22%3A%22mercenary.support_59784%22%7D%2C%7B%22id%22%3A%22mercenary.support_987%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_2135%22%7D%2C%7B%22id%22%3A%22mercenary.support_64271%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_46739%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_39265%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Sem, the Dope",
@@ -2525,7 +2525,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_41484%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_25149%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_37561%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_8075%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_64528%22%7D%2C%7B%22id%22%3A%22mercenary.support_26568%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_14498%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_64528%22%7D%2C%7B%22id%22%3A%22mercenary.support_26568%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_41484%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_25149%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Krezin Ela",
@@ -2660,7 +2660,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_46739%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_39265%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_28026%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_37132%22%7D%2C%7B%22id%22%3A%22mercenary.support_59345%22%7D%2C%7B%22id%22%3A%22mercenary.support_40660%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_17105%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_2135%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_37132%22%7D%2C%7B%22id%22%3A%22mercenary.support_59345%22%7D%2C%7B%22id%22%3A%22mercenary.support_40660%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_46739%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_39265%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Nevron Tarik",
@@ -2789,7 +2789,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_32391%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_8295%22%7D%2C%7B%22id%22%3A%22mercenary.support_48875%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_42219%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_899%22%7D%2C%7B%22id%22%3A%22mercenary.support_28416%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_21036%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_50414%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_899%22%7D%2C%7B%22id%22%3A%22mercenary.support_28416%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_8295%22%7D%2C%7B%22id%22%3A%22mercenary.support_48875%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_32391%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Nytra, the Cyaxan Recluse",
@@ -2916,7 +2916,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_10557%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_6479%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_50009%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_33663%22%7D%2C%7B%22id%22%3A%22mercenary.support_54628%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_21708%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_28757%22%7D%2C%7B%22id%22%3A%22mercenary.support_53342%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_28757%22%7D%2C%7B%22id%22%3A%22mercenary.support_53342%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_33663%22%7D%2C%7B%22id%22%3A%22mercenary.support_54628%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_10557%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_6479%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Rivik, the Wayward",
@@ -3070,7 +3070,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_19034%22%7D%2C%7B%22id%22%3A%22mercenary.support_41256%22%7D%2C%7B%22id%22%3A%22mercenary.support_19113%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_14732%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_24685%22%7D%2C%7B%22id%22%3A%22mercenary.support_38851%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_45226%22%7D%2C%7B%22id%22%3A%22mercenary.support_53342%22%7D%2C%7B%22id%22%3A%22mercenary.support_41256%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_28757%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_38326%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_19034%22%7D%2C%7B%22id%22%3A%22mercenary.support_19113%22%7D%2C%7B%22id%22%3A%22mercenary.support_41256%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_45226%22%7D%2C%7B%22id%22%3A%22mercenary.support_53342%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_24685%22%7D%2C%7B%22id%22%3A%22mercenary.support_38851%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_14732%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Kreva Tarika",
@@ -3201,7 +3201,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_10320%22%7D%2C%7B%22id%22%3A%22mercenary.support_10608%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_26913%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_18986%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_38628%22%7D%2C%7B%22id%22%3A%22mercenary.support_26568%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_2792%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_38072%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_38628%22%7D%2C%7B%22id%22%3A%22mercenary.support_26568%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_10320%22%7D%2C%7B%22id%22%3A%22mercenary.support_10608%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_26913%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Kreva Rael",
@@ -3319,7 +3319,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_12667%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_27805%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_12260%22%7D%2C%7B%22id%22%3A%22mercenary.support_56267%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_44144%22%7D%2C%7B%22id%22%3A%22mercenary.support_11497%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_60723%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_2792%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_44144%22%7D%2C%7B%22id%22%3A%22mercenary.support_11497%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_12260%22%7D%2C%7B%22id%22%3A%22mercenary.support_56267%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_12667%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_27805%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Rika, the Reluctant",
@@ -3440,7 +3440,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_10557%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_6479%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_50009%22%7D%2C%7B%22id%22%3A%22mercenary.support_50475%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_57063%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_13693%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_40470%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_50009%22%7D%2C%7B%22id%22%3A%22mercenary.support_50475%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_10557%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_6479%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Kestel, the Azadin Executioner",
@@ -3580,7 +3580,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_22227%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_14992%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_16896%22%7D%2C%7B%22id%22%3A%22mercenary.support_31430%22%7D%2C%7B%22id%22%3A%22mercenary.support_57644%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_59831%22%7D%2C%7B%22id%22%3A%22mercenary.support_57644%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_1516%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_10320%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_59831%22%7D%2C%7B%22id%22%3A%22mercenary.support_57644%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_16896%22%7D%2C%7B%22id%22%3A%22mercenary.support_57644%22%7D%2C%7B%22id%22%3A%22mercenary.support_31430%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_22227%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_14992%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Trotha, the Hateful",
@@ -3660,7 +3660,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_57450%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_40521%22%7D%2C%7B%22id%22%3A%22mercenary.support_65120%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_30130%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_24099%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_50414%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_33728%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_40521%22%7D%2C%7B%22id%22%3A%22mercenary.support_65120%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_57450%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Bramric, the Keitan Oathbreaker",
@@ -3806,7 +3806,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_19034%22%7D%2C%7B%22id%22%3A%22mercenary.support_26815%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_14732%22%7D%2C%7B%22id%22%3A%22mercenary.support_53342%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_6651%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_45226%22%7D%2C%7B%22id%22%3A%22mercenary.support_64846%22%7D%2C%7B%22id%22%3A%22mercenary.support_61471%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_38326%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_56180%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_19034%22%7D%2C%7B%22id%22%3A%22mercenary.support_26815%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_14732%22%7D%2C%7B%22id%22%3A%22mercenary.support_53342%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_45226%22%7D%2C%7B%22id%22%3A%22mercenary.support_61471%22%7D%2C%7B%22id%22%3A%22mercenary.support_64846%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Zob, the Azadin Madman",
@@ -3961,7 +3961,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_11054%22%7D%2C%7B%22id%22%3A%22mercenary.support_31171%22%7D%2C%7B%22id%22%3A%22mercenary.support_2555%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_38072%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_28988%22%7D%2C%7B%22id%22%3A%22mercenary.support_5081%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_62393%22%7D%2C%7B%22id%22%3A%22mercenary.support_59079%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_56180%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_64528%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_62393%22%7D%2C%7B%22id%22%3A%22mercenary.support_59079%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_11054%22%7D%2C%7B%22id%22%3A%22mercenary.support_2555%22%7D%2C%7B%22id%22%3A%22mercenary.support_31171%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_28988%22%7D%2C%7B%22id%22%3A%22mercenary.support_5081%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_38072%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Mysra Driltor",
@@ -4091,7 +4091,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_41484%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_33661%22%7D%2C%7B%22id%22%3A%22mercenary.support_19113%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_50290%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_59005%22%7D%2C%7B%22id%22%3A%22mercenary.support_31052%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_28757%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_63233%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_33661%22%7D%2C%7B%22id%22%3A%22mercenary.support_19113%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_59005%22%7D%2C%7B%22id%22%3A%22mercenary.support_31052%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_41484%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Earkon, of Noble Stock",
@@ -4206,7 +4206,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_46131%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_39265%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_28026%22%7D%2C%7B%22id%22%3A%22mercenary.support_64271%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_12729%22%7D%2C%7B%22id%22%3A%22mercenary.support_64271%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_60723%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_27763%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_28026%22%7D%2C%7B%22id%22%3A%22mercenary.support_64271%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_12729%22%7D%2C%7B%22id%22%3A%22mercenary.support_64271%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_46131%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_39265%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Ryx Gorris",
@@ -4343,7 +4343,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_10320%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_26913%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_18986%22%7D%2C%7B%22id%22%3A%22mercenary.support_14517%22%7D%2C%7B%22id%22%3A%22mercenary.support_49419%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_28502%22%7D%2C%7B%22id%22%3A%22mercenary.support_37727%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_10722%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_1516%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_18986%22%7D%2C%7B%22id%22%3A%22mercenary.support_49419%22%7D%2C%7B%22id%22%3A%22mercenary.support_14517%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_28502%22%7D%2C%7B%22id%22%3A%22mercenary.support_37727%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_10320%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_26913%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Ivi Krevin",
@@ -4475,7 +4475,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_52491%22%7D%2C%7B%22id%22%3A%22mercenary.support_64271%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_21523%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_17409%22%7D%2C%7B%22id%22%3A%22mercenary.support_52472%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_57377%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_56180%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_26391%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_17409%22%7D%2C%7B%22id%22%3A%22mercenary.support_52472%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_52491%22%7D%2C%7B%22id%22%3A%22mercenary.support_64271%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_21523%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Pillard Killborn",
@@ -4585,7 +4585,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_57491%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_47031%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_53217%22%7D%2C%7B%22id%22%3A%22mercenary.support_61972%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_38103%22%7D%2C%7B%22id%22%3A%22mercenary.support_40660%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_13693%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_40470%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_38103%22%7D%2C%7B%22id%22%3A%22mercenary.support_40660%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_53217%22%7D%2C%7B%22id%22%3A%22mercenary.support_61972%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_57491%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_47031%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Vaknus, the Faithbound",
@@ -4731,7 +4731,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_28506%22%7D%2C%7B%22id%22%3A%22mercenary.support_44886%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_38655%22%7D%2C%7B%22id%22%3A%22mercenary.support_40660%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_7395%22%7D%2C%7B%22id%22%3A%22mercenary.support_19113%22%7D%2C%7B%22id%22%3A%22mercenary.support_987%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_3093%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_63233%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_34212%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_7395%22%7D%2C%7B%22id%22%3A%22mercenary.support_19113%22%7D%2C%7B%22id%22%3A%22mercenary.support_987%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_38655%22%7D%2C%7B%22id%22%3A%22mercenary.support_40660%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_28506%22%7D%2C%7B%22id%22%3A%22mercenary.support_44886%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Dax, the Dimwit",
@@ -4870,7 +4870,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_11054%22%7D%2C%7B%22id%22%3A%22mercenary.support_54156%22%7D%2C%7B%22id%22%3A%22mercenary.support_21489%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_38072%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_28988%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_62393%22%7D%2C%7B%22id%22%3A%22mercenary.support_58938%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_2792%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_64528%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_11054%22%7D%2C%7B%22id%22%3A%22mercenary.support_21489%22%7D%2C%7B%22id%22%3A%22mercenary.support_54156%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_62393%22%7D%2C%7B%22id%22%3A%22mercenary.support_58938%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_38072%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   },
   {
    "nome": "Portik Prowl-linger",
@@ -4960,7 +4960,7 @@
     }
    ],
    "ignoti": [],
-   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_26057%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_22724%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_17198%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_37202%22%7D%2C%7B%22id%22%3A%22mercenary.support_53342%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_60723%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_2792%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
+   "trade": "https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_37202%22%7D%2C%7B%22id%22%3A%22mercenary.support_53342%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_26057%22%7D%5D%7D%2C%7B%22type%22%3A%22mercenary%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22mercenary.skill_22724%22%7D%5D%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D"
   }
  ]
 }
