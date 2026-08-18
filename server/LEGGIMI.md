@@ -19,7 +19,21 @@ pathofexile.com, dove la sessione è già viva; qui arriva solo il JSON dei warr
 La `CHIAVE` serve a impedire che un estraneo sovrascriva la lista, non a proteggere
 un segreto di gioco.
 
-## Metterlo online (Deno Deploy, gratis)
+## Dov'è, adesso
+
+**<https://poe-tools.nicolasgor.deno.net>** — Deno Deploy, piano gratuito,
+distribuito a ogni push su `main`. Entrypoint `server/warrant-api.js`, database
+**Deno KV** agganciato (istanza `warrant`), variabile `CHIAVE` impostata come
+*secret*.
+
+⚠️ **Il KV va agganciato a mano**, e senza non è un errore rumoroso: il server
+ripiega sulla memoria del processo e i warrant spariscono al primo riavvio.
+Si controlla da `/stato`, che risponde `magazzino: "deno-kv"` quando è a posto e
+`"memoria-volatile"` quando non lo è. Stessa cosa per la chiave: `chiave: true`
+dice che la variabile è arrivata al runtime — ⚠️ **una variabile salvata nel
+pannello non basta**, serve un nuovo deploy perché entri nell'app.
+
+## Come è stato messo online (Deno Deploy, gratis)
 
 1. <https://deno.com/deploy> → accedi con GitHub.
 2. **New project** → collega `NicolasGor/poe-tools` → entrypoint

@@ -232,7 +232,7 @@ export default {
         // quale sia. Senza, un "chiave sbagliata" e' indistinguibile da un
         // "variabile d'ambiente mai arrivata", e si tira a indovinare.
         return json({ ok: true, magazzino: m.tipo, warrant: s?.warrant?.length ?? 0,
-                      sincronizzato: s?.quando ?? null, chiave: !!chiave, lunghezzaChiave: chiave.length });
+                      sincronizzato: s?.quando ?? null, chiave: !!chiave });
       }
 
       // l'indice grezzo, per chi vuole calcolare nel browser
