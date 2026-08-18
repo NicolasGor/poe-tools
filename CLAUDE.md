@@ -54,6 +54,16 @@ dato della wiki serve a uno strumento, si copia il singolo valore, non la pagina
 - **I link in uscita sono ammessi** — un `<a href>` verso `pathofexile.com/trade`
   è navigazione, non una dipendenza: la pagina si carica lo stesso se il sito
   remoto è giù.
+- **`server/` è l'eccezione alla regola di sopra, ed è dichiarata.** La pagina
+  `warrant/` ha bisogno di due cose che una pagina statica non può fare: leggere
+  l'indice di mercato di xddbsns.com (**risponde senza intestazione CORS**: una
+  fetch `no-cors` torna `opaque`) e tenere i warrant sincronizzati **fra Mac e
+  Steam Deck**. `server/warrant-api.js` fa solo questo — proxy con CORS, un
+  magazzino chiave-valore e il calcolo dei prezzi — e gira uguale su Deno Deploy
+  o Cloudflare Workers. ⚠️ **Non tocca credenziali**: lo stash lo legge un
+  segnalibro dentro pathofexile.com, dove la sessione è già viva, e qui arriva
+  solo il JSON risultante. Se il server è spento la pagina resta leggibile:
+  spariscono i numeri, non il metodo.
 - Un strumento = una cartella con il suo `index.html`, più una scheda nel
   catalogo in `index.html` alla radice.
 - Il sito dichiara la patch a cui si riferisce. Quando cambia, si aggiorna.

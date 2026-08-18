@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Warrant — quanto vale un mercenario</title>
+<meta name="description" content="Come si prezza un Mercenary Warrant: si stringe il confronto sui supporti che il mercato paga, e ci si ferma prima che le inserzioni diventino una manciata. Con la griglia di cosa raccogliere in mappa.">
+<link rel="stylesheet" href="../stile.css">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+  .barra{display:flex;gap:var(--s3);flex-wrap:wrap;align-items:center;margin-top:var(--s4)}
+  .barra button{font:inherit;font-weight:600;cursor:pointer;border-radius:var(--r);
+                padding:var(--s2) var(--s4);border:1px solid var(--line2);
+                background:var(--panel-alto);color:var(--text)}
+  .barra button.primario{background:var(--gold);border-color:var(--gold);color:#171208}
+  .barra button:disabled{opacity:.5;cursor:default}
+  .stato{font-size:var(--t-xs);color:var(--label)}
+  .stato b{color:var(--muted)}
+  .scroll{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--panel2);margin-top:var(--s4)}
+  table{width:100%;border-collapse:collapse}
+  .nome{font-weight:600}
+  .arche{display:block;font-size:var(--t-xs);color:var(--label)}
+  .arche.vend{color:var(--gold)}
+  .prezzo{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--good);white-space:nowrap}
+  .prezzo.basso{color:var(--muted)}
+  .reggono{font-size:var(--t-xs);color:var(--muted);max-width:34ch}
+  .reggono i{color:var(--label);font-style:normal}
+  .conf{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;color:var(--muted)}
+  .oltre{display:block;font-size:var(--t-xs);color:var(--label)}
+  .tr-link{color:var(--gold);white-space:nowrap;font-size:var(--t-xs)}
+  .vuoto{padding:var(--s5);color:var(--label);text-align:center}
+  .pannello{border:1px solid var(--line);border-radius:var(--r);background:var(--panel2);
+            padding:var(--s4);margin-top:var(--s3)}
+  .pannello[hidden]{display:none}
+  .pannello ol{margin:var(--s3) 0 0 1.1rem;color:var(--muted);font-size:var(--t-sm)}
+  .pannello li{margin-bottom:var(--s2)}
+  .pannello input{font:inherit;font-family:var(--mono);font-size:var(--t-xs);width:min(22rem,100%);
+                  padding:var(--s2);border-radius:var(--r);border:1px solid var(--line2);
+                  background:var(--bg);color:var(--text)}
+  .segnalibro{display:inline-block;margin-top:var(--s2);padding:var(--s2) var(--s3);
+              border:1px dashed var(--gold);border-radius:var(--r);color:var(--gold);font-weight:600}
+  .griglia{width:100%;border-collapse:collapse;font-size:var(--t-sm)}
+  .griglia td{padding:var(--s2) var(--s3);border-bottom:1px solid var(--line);vertical-align:top}
+  .griglia td:first-child{color:var(--gold);white-space:nowrap;font-weight:600}
+  .no{color:var(--bad)}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="marchio" href="../index.html">PoE <span>Tools</span></a>
+    <div class="nav-link">
+      <a href="../atlante/">Atlante</a>
+      <a href="../strategie/">Strategie</a>
+      <a href="../farming/">Farming</a>
+      <a href="../scrying/">Scrying</a>
+      <a href="../mappe/">Mod mappa</a>
+      <a href="../build-confronto/">Build</a>
+      <a href="../heist/">Heist</a>
+      <a href="../whisper/">Whisper</a>
+      <a href="../craft/">Craft</a>
+      <a href="../warrant/" aria-current="page">Warrant</a>
+    </div>
+    <span class="nav-patch">patch 3.29.2</span>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="testata">
+    <h1>Quanto vale <span>un mercenario</span></h1>
+    <p class="sub">Un Warrant non ha un prezzo di listino: ogni mercenario è diverso da ogni altro, e una ricerca per gemme esatte torna <b>vuota</b>. Si prezza per somiglianza — <b>quanto chiede chi ha un mercenario come il tuo</b>.</p>
+    <div class="badges" id="badge">
+      <span class="badge oro">patch <b>3.29.2</b></span>
+      <span class="badge">soglia <b>30 confronti</b></span>
+      <span class="badge">trade in <b>Instant Buyout</b></span>
+    </div>
+  </header>
+
+  <div class="avviso">
+    <b>Sono prezzi richiesti, non prezzi di vendita.</b> Il floor dice a quanto
+    dovresti listare per stare in cima al libro, non quanto incassi: le inserzioni
+    sopra sono, per costruzione, quelle che <i>non</i> sono state comprate.
+  </div>
+
+  <div class="barra">
+    <button id="b-prezzi" class="primario">Aggiorna prezzi</button>
+    <button id="b-stash">Sincronizza stash</button>
+    <span class="stato" id="stato">—</span>
+  </div>
+
+  <div class="pannello" id="p-stash" hidden>
+    <p><b>Lo stash lo legge un segnalibro, non questo sito.</b> Le tab si possono
+    leggere solo da dentro pathofexile.com, dove la tua sessione è già viva: nessun
+    token e nessuna password passano di qui. GGG non registra più nuove
+    applicazioni OAuth, quindi il tasto «autorizza» degli altri siti oggi non è
+    ripetibile — questo lo sostituisce.</p>
+    <ol>
+      <li>Incolla qui la <b>chiave</b> di sincronizzazione (te la do io una volta sola, resta nel browser):<br>
+        <input id="chiave" type="password" placeholder="chiave" autocomplete="off"></li>
+      <li>Trascina questo nella barra dei segnalibri:
+        <a class="segnalibro" id="bookmarklet" href="#">Sincronizza warrant</a></li>
+      <li>Apri <a href="https://www.pathofexile.com/my-account" target="_blank" rel="noopener">pathofexile.com</a> da loggato e cliccalo: legge le tab e manda qui i warrant trovati.</li>
+      <li>Torna qui e premi <b>Aggiorna prezzi</b>.</li>
+    </ol>
+    <p class="stato" style="margin-top:var(--s3)">Sullo Steam Deck il segnalibro non serve: leggi l'ultima sincronizzazione fatta dal Mac.</p>
+  </div>
+
+  <div class="scroll">
+    <table class="tabella">
+      <thead>
+        <tr>
+          <th>Mercenario</th>
+          <th class="n">Floor</th>
+          <th class="n">Confronti</th>
+          <th>Confronto ristretto a</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="righe">
+        <tr><td colspan="5" class="vuoto">Premi <b>Aggiorna prezzi</b>.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="sec">Come si legge questo numero</h2>
+
+  <div class="card">
+    <p><b>Il pool di partenza è inutile, e va stretto.</b> Le inserzioni che
+    condividono le <i>skill</i> del tuo mercenario sono migliaia e contengono ogni
+    scarto: il loro floor è sempre <b>1c</b>. Si chiede allora un supporto alla
+    volta fra quelli che il tuo ha davvero — il confronto si stringe su mercenari
+    somiglianti.</p>
+
+    <p><b>Ma quali supporti chiedere, e qui la prima versione sbagliava.</b>
+    Sceglievo quello che alzava di più il floor: sbagliato, perché <b>il minimo di
+    un campione piccolo è più alto per costruzione</b>. Quel criterio premiava le
+    gemme rare e inutili — Lesser Spell Cascade sul Frost Bomb, Minion Damage sul
+    Blink Arrow — e restituiva la dimensione del campione travestita da prezzo:
+    tutti e 39 i warrant finivano fra 20 e 50 chaos, che è il sintomo. Adesso
+    l'ordine lo decide il <b>peso</b> del supporto — quanto sposta la probabilità
+    che un'inserzione stia sopra 5 divine, misurato sull'intero pool di partenza e
+    quindi indipendente da quanto si è già stretto.</p>
+
+    <p><b>Poi c'è dove ci si ferma.</b> Sotto una manciata di inserzioni il floor
+    non è un mercato, è un venditore ottimista. Qui il taglio è a <b>30</b>
+    inserzioni, e il primo passo scartato per quella soglia resta scritto in
+    tabella — così si vede cosa è stato buttato via invece di doverlo indovinare.</p>
+
+    <p><b>Il quinto prezzo dice se sotto c'è mercato.</b> Il floor è una sola
+    inserzione. Se il quinto costa molto di più — e su parecchi è già <b>1
+    divine</b> — l'offerta a buon mercato è profonda due o tre righe, e sotto quella
+    soglia sei solo tu.</p>
+
+    <p><b>Niente mediana.</b> Sembra la statistica giusta e non lo è: circa un
+    quarto del mercato chiede <b>esattamente 1 divine</b> qualunque cosa abbia
+    tirato, quindi resta incollata a 1,0d per tutto il restringimento e non separa
+    un pezzo buono da uno scarto. Il floor almeno dice una cosa su cui un venditore
+    può agire.</p>
+  </div>
+
+  <h2 class="sec">Cosa raccogliere in mappa</h2>
+  <p class="sub" style="max-width:62ch">Il prezzo qui sopra risponde a «a quanto lo
+  listo». Non risponde a «vale la pena fermarsi»: quello lo decide la griglia di
+  chi <i>compra</i> — il Luminary, che combatte attraverso il mercenario assunto.</p>
+
+  <div class="scroll">
+    <table class="griglia">
+      <tr>
+        <td>Returning Projectiles</td>
+        <td>Il primo taglio su <b>Kineticist, Manyshot, Combatant e Cruel
+        Mistress</b>: se non ce l'ha, non serve guardare il resto. Fanno eccezione
+        <b>Sniper</b> (vuole GMP e il gilded +2 proiettili) e <b>Stormhand</b>, che
+        vive di chain.</td>
+      </tr>
+      <tr>
+        <td>Kineticist</td>
+        <td><b>15d+</b> — vuole <b>Greater Kinetic Blast of Clustering</b> e il
+        Kinetic Blast normale <i>insieme</i>. <span class="no">Kinetic Bolt e
+        Kinetic Rain lo azzerano</span>: rompono l'IA. Barrage no, è innocuo.</td>
+      </tr>
+      <tr>
+        <td>Manyshot</td>
+        <td><b>5d+</b> — <b>Ice Shot e Vaal Ice Shot</b>, Return su entrambi.
+        <span class="no">Icicle Rain lo squalifica</span>: interrompe il Vaal Ice
+        Shot.</td>
+      </tr>
+      <tr>
+        <td>Combatant</td>
+        <td><b>Frost Blades</b> o <b>Wild Strike</b> insieme a <b>Static
+        Strike</b>. <span class="no">Pierce lo azzera</span> — impedisce il ritorno
+        del proiettile, cioè spegne il supporto su cui si regge il valore.</td>
+      </tr>
+      <tr>
+        <td>Blade Ambusher</td>
+        <td>Il boss killer: <b>Spectral Helix of Trarthus</b> con Multiple Traps,
+        Trap and Mine Damage e Slower Projectiles — <i>sull'Helix</i>, non su
+        un'altra skill.</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="avviso" style="margin-top:var(--s4)">
+    <b>Le due domande non danno la stessa risposta, ed è normale.</b> Il floor
+    misura cosa chiede il libro delle inserzioni; la griglia misura cosa serve a
+    una build. Un mercenario con la gemma che squalifica può avere un floor
+    onesto — perché quel floor è fatto da venditori che la gemma sbagliata ce
+    l'hanno anche loro.
+  </div>
+
+  <footer class="pie">
+    <p><b>Due fonti, non una.</b> I warrant arrivano <b>direttamente da GGG</b>:
+    l'endpoint dello stash restituisce già tutte le gemme di ogni mercenario,
+    supporti compresi. Il <b>prezzo</b> viene dall'indice pubblico di
+    <a href="https://xddbsns.com/mercenary-price-check.html">xddbsns.com</a>, che
+    consuma il public stash river di GGG — un indice di tutto il mercato non si può
+    ricostruire da fermi: quel fiume richiede lo scope <code>service:psapi</code>, e
+    GGG <i>non registra più nuove applicazioni</i>. Soglia di confronti, ordine per
+    peso, quinto prezzo e link di ricerca sono nostri.</p>
+    <p><b>I link vogliono il login sul sito di trade.</b> Ogni skill vincolata è un
+    gruppo <code>mercenary</code>, e da sloggati il trade ne accetta <b>uno solo</b>:
+    risponde <code>400 Query is too complex</code>. Il link porta anche qualche
+    mercenario in più di quelli contati qui: i supporti spediti si fermano ai primi
+    quattro per peso.</p>
+  </footer>
+
+</div>
+
+<script>
+/* L'indirizzo del pezzo di server. Si puo' scavalcare con `?api=...` — serve per
+   provarlo in locale e per cambiarlo di host senza toccare il file. Senza, la
+   pagina resta leggibile: quello che sparisce sono i numeri, non il metodo. */
+const API = (() => {
+  const q = new URLSearchParams(location.search).get("api");
+  if (q !== null) { localStorage.setItem("warrant-api", q); return q; }
+  return localStorage.getItem("warrant-api") || "";
+})();
+
+const VENDIBILI = new Set(["Kineticist","Manyshot","Sniper","Cruel Mistress","Stormhand","Combatant","Blade Ambusher"]);
+const $ = (id) => document.getElementById(id);
+const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+const chiave = () => localStorage.getItem("warrant-chiave") || "";
+
+/* La cache locale non e' un'ottimizzazione: e' cio' che fa aprire la pagina sullo
+   Steam Deck e vedere subito l'ultima lettura, senza aspettare una richiesta. */
+function salvaCache(dati) { try { localStorage.setItem("warrant-dati", JSON.stringify(dati)); } catch (e) {} }
+function leggiCache() { try { return JSON.parse(localStorage.getItem("warrant-dati") || "null"); } catch (e) { return null; } }
+
+function dataIt(iso) {
+  if (!iso) return "mai";
+  const d = new Date(iso);
+  const mesi = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
+  return `${d.getDate()} ${mesi[d.getMonth()]}, ${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")}`;
+}
+
+function disegna(dati) {
+  const corpo = $("righe");
+  if (!dati || !dati.warrant || !dati.warrant.length) {
+    corpo.innerHTML = '<tr><td colspan="5" class="vuoto">Nessun warrant. Sincronizza lo stash, poi aggiorna i prezzi.</td></tr>';
+    return;
+  }
+  corpo.innerHTML = dati.warrant.map((w) => {
+    const passi = w.passi.slice(0, 4).map((p) => `${esc(p.supporto)} <i>su ${esc(p.skill)}</i>`).join(" · ")
+      || "<i>nessun supporto regge la soglia</i>";
+    const piu = w.passi.length > 4 ? ` <i>+${w.passi.length - 4}</i>` : "";
+    const oltre = w.oltre ? `<span class="oltre">oltre soglia: ${w.oltre.floor.toFixed(0)} c su ${w.oltre.confronti}</span>` : "";
+    const quinto = w.quinto ? `<span class="oltre">5&deg; a ${w.quinto.toFixed(0)} c</span>` : "";
+    const vend = VENDIBILI.has(w.build) ? "arche vend" : "arche";
+    return `<tr>
+      <td><span class="nome">${esc(w.nome)}</span><span class="${vend}">${esc(w.build)}${w.infamous ? " · Infamous" : ""} · lvl ${esc(w.livello)}</span></td>
+      <td class="n"><span class="prezzo${w.prezzo >= 10 ? "" : " basso"}">${w.prezzo.toFixed(0)} c</span>${quinto}</td>
+      <td class="conf">${w.confronti}${oltre}</td>
+      <td class="reggono">${passi}${piu}</td>
+      <td><a class="tr-link" href="${esc(w.trade)}" target="_blank" rel="noopener">trade &rarr;</a></td>
+    </tr>`;
+  }).join("");
+
+  const tot = dati.warrant.reduce((s, w) => s + w.prezzo, 0);
+  $("stato").innerHTML = `<b>${dati.warrant.length}</b> warrant · <b>${tot.toFixed(0)} c</b> al floor · dato del <b>${dataIt(dati.generato_il)}</b>` +
+    (dati.divine_in_chaos ? ` · divine a <b>${dati.divine_in_chaos.toFixed(0)} c</b>` : "");
+}
+
+async function aggiornaPrezzi() {
+  if (!API) { $("stato").textContent = "server non configurato"; return; }
+  const b = $("b-prezzi");
+  b.disabled = true; b.textContent = "scarico l'indice…";
+  try {
+    const r = await fetch(`${API}/prezzo?k=${encodeURIComponent(chiave())}`, {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ min: 30 }),
+    });
+    const dati = await r.json();
+    if (dati.errore) { $("stato").textContent = dati.errore; return; }
+    dati.letto_il = new Date().toISOString();
+    salvaCache(dati); disegna(dati);
+  } catch (e) {
+    $("stato").textContent = "il server non risponde: " + e.message;
+  } finally { b.disabled = false; b.textContent = "Aggiorna prezzi"; }
+}
+
+/* Il segnalibro gira dentro pathofexile.com: legge le tab con la sessione viva e
+   spedisce qui solo i warrant trovati. La chiave la mette chi lo trascina, cosi'
+   non sta scritta in una pagina pubblica. */
+function costruisciSegnalibro() {
+  const k = chiave();
+  const codice = `(async()=>{const A=${JSON.stringify(API)},K=${JSON.stringify(k)};
+if(!A||!K){alert('manca API o chiave');return}
+const acc=(document.body.innerText.match(/Logged in as ([^\\s]+)/)||[])[1];
+if(!acc){alert('apri pathofexile.com da loggato');return}
+const q=(p)=>fetch('/character-window/get-stash-items?'+p,{credentials:'include'}).then(r=>r.json());
+const t=await q('league=Allflame&tabs=1&tabIndex=0&accountName='+encodeURIComponent(acc)+'&realm=pc');
+const fuori=[];
+for(const tab of t.tabs){
+ const d=await q('league=Allflame&tabIndex='+tab.i+'&accountName='+encodeURIComponent(acc)+'&realm=pc');
+ for(const it of (d.items||[])) if(/Mercenary Warrant/.test(it.baseType||'')){
+  const v=(n)=>{const x=(it.properties||[]).find(p=>p.name===n);return x?x.values[0][0]:null};
+  fuori.push({id:it.id,name:(it.properties[0]||{values:[['?']]}).values[0][0],
+   build:v('Build'),level:v('Mercenary Level'),tab:tab.n,
+   skills:(it.mercenarySkills||[]).map(s=>({s:s.name,sup:(s.supports||[]).map(x=>x.name)}))});
+ }
+ await new Promise(r=>setTimeout(r,600));
+}
+const r=await fetch(A+'/stash?k='+encodeURIComponent(K),{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({warrant:fuori})});
+alert(r.ok?fuori.length+' warrant sincronizzati':'errore: '+await r.text());})()`;
+  $("bookmarklet").href = "javascript:" + encodeURIComponent(codice.replace(/\n/g, ""));
+}
+
+async function stato() {
+  if (!API) return;
+  try {
+    const s = await (await fetch(`${API}/stato?k=${encodeURIComponent(chiave())}`)).json();
+    if (s.sincronizzato) {
+      $("p-stash").insertAdjacentHTML("afterbegin",
+        `<p class="stato">Ultima sincronizzazione: <b>${dataIt(s.sincronizzato)}</b> · <b>${s.warrant}</b> warrant.</p>`);
+    }
+  } catch (e) {}
+}
+
+$("b-prezzi").addEventListener("click", aggiornaPrezzi);
+$("b-stash").addEventListener("click", () => {
+  const p = $("p-stash"); p.hidden = !p.hidden;
+  if (!p.hidden) { $("chiave").value = chiave(); costruisciSegnalibro(); stato(); }
+});
+$("chiave").addEventListener("input", (e) => {
+  localStorage.setItem("warrant-chiave", e.target.value.trim());
+  costruisciSegnalibro();
+});
+
+const cache = leggiCache();
+if (cache) { disegna(cache); }
+</script>
+</body>
+</html>
