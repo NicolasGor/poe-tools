@@ -412,7 +412,37 @@ export default {
         const build = await indice(slugDi(w.build));
         build._righe = decodifica(build.listings);
 
-        const { coppie, pool } = contesto(build, w);
+        // 🔴 Il pool della scheda parte piu' largo di quello del prezzo: contiene
+        // le inserzioni che hanno le **skill principali** del mercenario, non
+        // tutte. Serve a poter *togliere* una skill dalla ricerca e vedere il
+        // prezzo che ne consegue — con il pool stretto si potrebbe solo
+        // aggiungere, e la pagina direbbe un numero mentre il trade ne mostra un
+        // altro. Le skill di servizio restano richieste di default: si rilassano
+        // con un click, non per distrazione.
+        const gemmeSkill = gemmePerSkill(build);
+        const perNomeSkill = new Map(build.skills.map((x, i) => [x.name, i]));
+        const skillIdxW = w.skills.map((g) => perNomeSkill.get(g.s)).filter((i) => i !== undefined);
+        const principali = skillIdxW.filter((i) => gemmeSkill[i] >= SOGLIA_PRINCIPALE);
+        const base = principali.length ? principali : skillIdxW;
+
+        const { coppie } = contesto(build, w);
+        let pool = [];
+        for (const r of build._righe) {
+          const mappa = new Map();
+          for (const g of r.slot) if (g.length) mappa.set(g[0], new Set(g.slice(1)));
+          let ok = true;
+          for (const i of base) if (!mappa.has(i)) { ok = false; break; }
+          if (ok) pool.push({ ...r, mappa });
+        }
+        // ⚠️ Un tetto c'e', e quando scatta lo si dice: oltre, il pool andrebbe
+        // spedito a megabyte e la scheda diventerebbe lenta proprio sul Deck,
+        // dove serve leggera.
+        const TETTO = 30000;
+        let rilassabili = true;
+        if (pool.length > TETTO) {
+          rilassabili = false;
+          pool = pool.filter((r) => skillIdxW.every((i) => r.mappa.has(i)));
+        }
         // ⚠️ Una maschera a 31 bit: un mercenario ne ha al massimo 30 (sei skill
         // per cinque supporti), ma se un giorno ne avesse di piu' il taglio va
         // detto, non subito in silenzio.
@@ -438,9 +468,10 @@ export default {
         // Tutto il resto del mercato non serve a questa scheda, e mandarlo
         // significherebbe spedire megabyte per farci un filtro da nulla.
         const righe = pool.map((r) => {
-          let m = 0;
+          let m = 0, ms = 0;
           usate.forEach((c, i) => { if (r.mappa.get(c.si)?.has(c.sj)) m |= (1 << i); });
-          return [+inChaos(r, divine, mirror).toFixed(2), m];
+          skillIdxW.forEach((i, n) => { if (r.mappa.has(i)) ms |= (1 << n); });
+          return [+inChaos(r, divine, mirror).toFixed(2), m, ms];
         });
 
         // Quanto ogni skill del mercenario e' comune su TUTTO l'archetipo. Serve
@@ -465,6 +496,8 @@ export default {
             viste++; gemme += slot.length - 1;
           }
           skillWarrant.push({ nome: g.s, hash: build.skills[i].hash,
+                              bit: skillIdxW.indexOf(i),
+                              principale: gemmeSkill[i] >= SOGLIA_PRINCIPALE,
                               diffusione: +(quante / build._righe.length).toFixed(3),
                               gemmeMedie: viste ? +(gemme / viste).toFixed(2) : 0,
                               gemmeSue: (g.sup || []).length });
@@ -474,7 +507,7 @@ export default {
           nome: w.name, build: build.build, divine: +divine.toFixed(2),
           lega: builder.league, signature: build.signature || [],
           tradeTypes: build.tradeTypes || [], skill: skillWarrant,
-          supporti, righe, tagliate,
+          supporti, righe, tagliate, rilassabili,
         });
       }
 
