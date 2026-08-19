@@ -77,9 +77,11 @@
   .tuoi.grande{margin-left:var(--s2);vertical-align:middle}
   .tuoi.clic{cursor:pointer}
   .tuoi.clic:hover{background:rgba(95,211,160,.3)}
-  /* il mezzo aggancio non e' una buona notizia come quello pieno: si vede che e' un'altra cosa */
-  .tuoi.meta{background:rgba(212,163,74,.14);color:#d4a34a;font-weight:500}
-  .tuoi.meta.clic:hover{background:rgba(212,163,74,.28)}
+  /* «ne hai N, nessuno con queste combinazioni»: neutro, non verde — non e' una
+     buona notizia, e' solo una risposta */
+  .tuoi.vuoto{background:var(--panel2);color:var(--muted)}
+  .tuoi.vuoto.clic:hover{background:var(--panel-alto);color:var(--testo)}
+  .nessuno{margin-top:var(--s2)}
   .targa{display:inline-flex;align-items:center;gap:var(--s2)}
   .cerca-barra{margin-top:calc(var(--s2) * -1)}
   #cerca{flex:1;min-width:220px;max-width:420px;padding:6px 10px;border-radius:8px;
@@ -686,14 +688,10 @@ $("griglia-corpo").addEventListener("click", (e) => {
   const arch = b.dataset.arch;
   const ci = Number(b.dataset.ci);
   const c = ci >= 0 ? (COMBINAZIONI[arch] || [])[ci] : null;
-  const meta = b.dataset.modo === "meta";
-  const ids = new Set((ULTIMI && ULTIMI.warrant || []).filter((w) => {
-    if (w.build !== arch) return false;
-    if (!c) return true;
-    const q = (haCoppia(w, c.skill[0], c.gemme[0]) ? 1 : 0) + (haCoppia(w, c.skill[1], c.gemme[1]) ? 1 : 0);
-    return meta ? q === 1 : q === 2;
-  }).map((w) => w.id));
-  mostraSolo(ids, c ? `${arch} · ${c.gemme[0]} + ${c.gemme[1]}${meta ? " (a metà)" : ""}` : arch);
+  const ids = new Set((ULTIMI && ULTIMI.warrant || [])
+    .filter((w) => w.build === arch && (!c || (haCoppia(w, c.skill[0], c.gemme[0]) && haCoppia(w, c.skill[1], c.gemme[1]))))
+    .map((w) => w.id));
+  mostraSolo(ids, c ? `${arch} · ${c.gemme[0]} + ${c.gemme[1]}` : arch);
   apriGriglia(false);
 });
 document.addEventListener("keydown", (e) => {
@@ -1119,23 +1117,22 @@ function haCoppia(w, skill, gemma) {
   return !!g && (g.sup || []).includes(gemma);
 }
 
-/* 🔴 **Anche il mezzo aggancio va detto, o la scheda resta muta e sembra rotta.**
- * Misurato sui due Cruel Mistress di Nicolas: uno ha `Greater Multiple
- * Projectiles` su Soulrend, l'altro `Greater Critical Damage` su Void Sphere —
- * entrambi giusti — ma **a nessuno dei due manca solo un po'**: manca `Return`,
- * che di quell'archetipo e' il primo taglio. Con il solo conteggio pieno la
- * scheda non mostrava niente, e non si capiva se il conto fosse rotto o la
- * risposta fosse «nessuno». Dirlo a meta' risponde alla domanda vera: *quanto mi
- * manca*. */
+/* 🔴 **Niente «mezzi agganci», ed e' una correzione.** Per un giorno la riga
+ * diceva anche «1 a meta'» quando un warrant aveva una sola delle due gemme, per
+ * non lasciare mute le schede dove nessuno aggancia. Rilievo di Nicolas — *«quei
+ * cosi a meta' sono inutili»* — e aveva ragione per una ragione di gioco che non
+ * avevo verificato: **le gemme di un Warrant sono fissate alla generazione**. Un
+ * Warrant rievoca lo stesso mercenario *«with the same skills»*, e cambia solo
+ * l'equipaggiamento. Quindi «ti manca una gemma» e' un'informazione su cui non si
+ * potra' mai agire: non e' un quasi, e' un no.
+ *
+ * 💡 Il vuoto lo riempie una riga sola sulla scheda — «ne hai N, nessuno con
+ * queste combinazioni» — che dice la stessa cosa senza far sperare in un passo
+ * che non esiste. */
 function mieiSimili(archetipo, c) {
   const miei = (ULTIMI && ULTIMI.warrant || []).filter((w) => w.build === archetipo);
-  if (!c) return { pieni: miei.length, meta: 0 };
-  let pieni = 0, meta = 0;
-  for (const w of miei) {
-    const quante = (haCoppia(w, c.skill[0], c.gemme[0]) ? 1 : 0) + (haCoppia(w, c.skill[1], c.gemme[1]) ? 1 : 0);
-    if (quante === 2) pieni++; else if (quante === 1) meta++;
-  }
-  return { pieni, meta };
+  if (!c) return miei.length;
+  return miei.filter((w) => haCoppia(w, c.skill[0], c.gemme[0]) && haCoppia(w, c.skill[1], c.gemme[1])).length;
 }
 
 function disegnaGriglia(filtro = "") {
@@ -1158,17 +1155,24 @@ function disegnaGriglia(filtro = "") {
             <span class="ca">metà oltre ${div(c.mediana)}</span>
             <span class="ci">${c.inserzioni.toLocaleString("it")}</span>
             ${(() => {
-              const { pieni, meta } = mieiSimili(a.nome, c);
-              const dove = `${esc(c.gemme[0])} su ${esc(c.skill[0] || "?")} e ${esc(c.gemme[1])} su ${esc(c.skill[1] || "?")}`;
-              if (pieni) return `<span class="tuoi clic" role="button" tabindex="0" data-arch="${esc(a.nome)}" data-ci="${comb.indexOf(c)}" data-modo="pieno"
-                title="Mostra i tuoi con ${dove}">ne hai ${pieni}</span>`;
-              if (meta) return `<span class="tuoi meta clic" role="button" tabindex="0" data-arch="${esc(a.nome)}" data-ci="${comb.indexOf(c)}" data-modo="meta"
-                title="Ne hai ${meta} con una sola delle due: ${dove}">${meta} a metà</span>`;
-              return `<span class="ct"></span>`;
+              const n = mieiSimili(a.nome, c);
+              return n ? `<span class="tuoi clic" role="button" tabindex="0" data-arch="${esc(a.nome)}" data-ci="${comb.indexOf(c)}"
+                title="Mostra i tuoi con ${esc(c.gemme[0])} su ${esc(c.skill[0] || "?")} e ${esc(c.gemme[1])} su ${esc(c.skill[1] || "?")}">ne hai ${n}</span>`
+                       : `<span class="ct"></span>`;
             })()}
             <a class="cl" href="${esc(c.trade)}" target="_blank" rel="noopener"
                title="Cerca sul trade: ${esc(c.gemme[0])} su ${esc(c.skill[0] || "?")} + ${esc(c.gemme[1])} su ${esc(c.skill[1] || "?")}">cerca &rarr;</a>
           </div>`).join("")}</dd>`
+      : "";
+    /* Quando se ne possiede qualcuno ma nessuno aggancia: si dice una volta, in
+       fondo, invece di ripeterlo riga per riga. Ed e' cliccabile, perche'
+       «mostrami i miei Cruel Mistress» resta una domanda sensata anche quando la
+       risposta e' che non valgono. */
+    const quanti = mieiSimili(a.nome, null);
+    const nessuno = quanti && !comb.some((c) => mieiSimili(a.nome, c))
+      ? `<p class="nota nessuno"><span class="tuoi vuoto clic" role="button" tabindex="0"
+           data-arch="${esc(a.nome)}" data-ci="-1"
+           title="Mostra i tuoi ${esc(a.nome)}">ne hai ${quanti}</span>, nessuno con queste combinazioni.</p>`
       : "";
     return `<div class="arche-card${fuori}${a.fuori ? " extra" : ""}">
       <div>
@@ -1183,6 +1187,7 @@ function disegnaGriglia(filtro = "") {
           ${righeComb}
         </dl>
         ${a.nota ? `<p class="nota">${a.nota}</p>` : ""}
+        ${nessuno}
       </div>
     </div>`;
   }).join("");
