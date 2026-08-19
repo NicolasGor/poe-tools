@@ -68,8 +68,29 @@ magazzino (`env.WARRANT` invece di `Deno.openKv`), già previsto nel file.
 
 Deno Deploy free: **1M richieste/mese**, **15 h di CPU/mese**, **20 GB** in
 uscita, **1 GiB** di KV. Una prezzatura completa dei 39 warrant tocca ~23
-archetipi, cioè qualche decina di MB scaricati **dal server** (l'ingresso non
-conta sull'uscita) e pochi secondi di CPU: il tetto è lontanissimo.
+archetipi, cioè qualche decina di MB scaricati **dal server** e pochi secondi di
+CPU.
+
+🔴 **«Il tetto è lontanissimo» diceva questa riga, e il 19 agosto 2026 il servizio
+si è spento con `503 USAGE_EXCEEDED`.** Due cose che il conto non aveva:
+
+1. l'organizzazione **non era verificata**, e finché non si aggiunge una carta
+   Deno concede una **frazione** dei limiti del piano gratuito — quindi il numero
+   giusto non era 20 GB;
+2. la cache **non esisteva davvero**: a `fetch` veniva passata l'opzione
+   `cf: { cacheTtl }`, che è **di Cloudflare** e su Deno viene ignorata in
+   silenzio. Ogni click su *Aggiorna prezzi* riscaricava ~23 indici da 1-6 MB.
+
+💡 **La lezione che vale oltre a questo server**: un limite «lontanissimo» calcolato
+sul consumo *previsto* non dice niente se non si misura quello *vero*. Qui il
+divario era di ordini di grandezza, e nessuno se n'è accorto finché il servizio non
+si è fermato.
+
+**Cosa è cambiato dopo.** La parte **pubblica** — griglia degli archetipi,
+combinazioni, pesi — non passa più di qui: la calcola `genera-panorama.mjs` dentro
+una **GitHub Action**, una volta al giorno, e finisce in `warrant/panorama.json`
+(183 KB) servito da Pages sulla stessa origine della pagina. Al server resta solo
+ciò che dipende dallo stash di Nicolas.
 
 ⚠️ **La cache di 10 minuti non è un dettaglio**: senza, ogni click riscaricherebbe
 gli stessi megabyte dal loro server, che è un ottimo modo per diventare sgraditi.
