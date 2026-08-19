@@ -51,7 +51,21 @@ async function passa(env, chiave, seManca, statoSeManca = 404) {
   return new Response(flusso, { headers: intestazioni() });
 }
 
-const leggi = async (env, k) => env.WARRANT.get(k, "json");
+/* `attesa` e' il `cacheTtl` del KV, cioe' **per quanto una lettura puo' essere
+ * vecchia**. Non e' un dettaglio di prestazioni: KV e' consistente solo alla
+ * lunga, e la documentazione lo dice — *«writes or updates to the key made in
+ * other locations may take up to 60 seconds (or the duration of the cacheTtl) to
+ * display»*.
+ *
+ * 🔴 Misurato il 19 agosto: la prezzatura era pronta dopo **31 secondi**, ma la
+ * pagina che aspettava continuava a leggere lo stato vecchio e mostrava «calcolo
+ * i prezzi…» per oltre un minuto in piu'. Il lavoro era finito; a essere in
+ * ritardo era la notizia. */
+const leggi = async (env, k, attesa) =>
+  env.WARRANT.get(k, attesa ? { type: "json", cacheTtl: attesa } : "json");
+
+// 30 e' il minimo che Cloudflare accetta: sotto, il valore viene ignorato
+const FRESCO = 30;
 const scrivi = (env, k, v) => env.WARRANT.put(k, JSON.stringify(v));
 
 export default {
@@ -84,9 +98,13 @@ export default {
          * sulla rotta che la pagina interroga ogni pochi secondi mentre aspetta un
          * aggiornamento. I riassunti li scrive chi scrive i dati: la Action per i
          * prezzi, questo Worker per lo stash appena lo riceve. */
+        /* ⚠️ Solo **questi quattro** chiedono la lettura fresca: sono i riassunti,
+         * pochi byte, e sono ciò su cui la pagina decide se aspettare ancora. I
+         * valori grossi — `prezzi`, `scheda:*` — restano con la cache lunga, che
+         * su di loro e' un guadagno e non un danno. */
         const [p, s, a, rich] = await Promise.all([
-          leggi(env, "stato:prezzi"), leggi(env, "stato:stash"), leggi(env, "aggiornamento"),
-          leggi(env, "richiesta-stash"),
+          leggi(env, "stato:prezzi", FRESCO), leggi(env, "stato:stash", FRESCO),
+          leggi(env, "aggiornamento", FRESCO), leggi(env, "richiesta-stash", FRESCO),
         ]);
         return json({
           ok: true,
@@ -140,7 +158,8 @@ export default {
           return json({ errore: "il Worker non sa a chi chiedere il calcolo (GITHUB_TOKEN/GITHUB_REPO)" }, 500);
         }
         const [a, sp, ss] = await Promise.all([
-          leggi(env, "aggiornamento"), leggi(env, "stato:prezzi"), leggi(env, "stato:stash"),
+          leggi(env, "aggiornamento", FRESCO), leggi(env, "stato:prezzi", FRESCO),
+          leggi(env, "stato:stash", FRESCO),
         ]);
         const adesso = Date.now();
 
@@ -200,7 +219,7 @@ export default {
        * spesso non avrebbe senso comunque — il Mac ci mette ~1 minuto a
        * rispondere. */
       if (url.pathname === "/chiedi-stash" && req.method === "POST") {
-        const r = await leggi(env, "richiesta-stash");
+        const r = await leggi(env, "richiesta-stash", FRESCO);
         const adesso = Date.now();
         if (r?.quando && adesso - r.quando < 5 * 60000 && !r.servita) {
           return json({ inAttesa: true, chiestoIl: r.quando,
