@@ -51,6 +51,15 @@ dato della wiki serve a uno strumento, si copia il singolo valore, non la pagina
   una copia locale di ogni item del gioco: lì si usa l'archivio remoto
   (`assets.pobb.in/1/<Nome>.webp`), con ripiego sul nome scritto se l'icona manca.
   La regola resta valida per tutto il resto: nessun CDN, nessun host esterno.
+- 🔴 **I link al trade nascono filtrati sulle ultime 24 ore** (`indexed: "1day"`,
+  oltre a `status: "securable"`). «31 inserzioni simili» conta anche chi è fermo
+  da giorni: la mediana dell'età di quelle inserzioni è **165 ore**, e su 694
+  misurate solo **101** erano del giorno prima. Aprire il link e trovare poco è
+  quindi il segnale che quel mercato **adesso** non c'è. Sul trade il menu
+  *Listed* resta a un click, quindi la scelta preimpostata non chiude niente.
+  ⚠️ **Ma il campionatore quel filtro se lo toglie**: con una finestra che scorre
+  un'inserzione «sparirebbe» solo per aver compiuto 25 ore, e le sparizioni
+  confonderebbero *venduto* con *invecchiato*.
 - **I link in uscita sono ammessi** — un `<a href>` verso `pathofexile.com/trade`
   è navigazione, non una dipendenza: la pagina si carica lo stesso se il sito
   remoto è giù.
