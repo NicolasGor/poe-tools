@@ -596,6 +596,61 @@ export default {
         return json({ campioni: fuori, warrantInStash: s.warrant.length });
       }
 
+      /* ----------------------------------------------------------- panorama
+       * Quali archetipi hanno davvero un mercato caro, e con quali gemme.
+       * Nasce da una domanda di Nicolas — *«ci sono solo queste combinazioni?»* —
+       * a cui la griglia della wiki non puo' rispondere: viene da **una** fonte,
+       * e gli archetipi sono **35**. Qui invece si guarda il libro delle
+       * inserzioni, uno per uno.
+       *
+       * Si chiede a fette (`?da=&a=`) perche' scaricare 35 indici in una volta
+       * significa decine di megabyte e qualche minuto: meglio dieci per volta e
+       * poter vedere il risultato mentre arriva.
+       */
+      if (url.pathname === "/panorama") {
+        const builder = await indice("builder");
+        const divine = builder.divineRate, mirror = 884;
+        const da = Number(url.searchParams.get("da") || 0);
+        const a = Number(url.searchParams.get("a") || 6);
+        const fuori = [];
+        for (const b of builder.builds.slice(da, a)) {
+          let build;
+          try { build = await indice(b.slug); } catch { continue; }
+          const righe = decodifica(build.listings);
+          const prezzi = righe.map((r) => inChaos(r, divine, mirror));
+          const sopra1 = prezzi.filter((p) => p >= divine).length;
+          const sopra5 = prezzi.filter((p) => p >= 5 * divine).length;
+          const sopra20 = prezzi.filter((p) => p >= 20 * divine).length;
+
+          // le gemme che il mercato paga su questo archetipo: quante volte chi ce
+          // l'ha finisce sopra 5 divine, rispetto alla media
+          const quota = sopra5 / righe.length;
+          const pesi = [];
+          if (quota) {
+            for (let j = 0; j < build.supports.length; j++) {
+              let con = 0, caro = 0;
+              for (let i = 0; i < righe.length; i++) {
+                let ha = false;
+                for (const g of righe[i].slot) if (g.length && g.includes(j, 1)) { ha = true; break; }
+                if (!ha) continue;
+                con++; if (prezzi[i] >= 5 * divine) caro++;
+              }
+              if (con >= 200) pesi.push({ gemma: build.supports[j].name, viste: con, peso: +((caro / con) / quota).toFixed(2) });
+            }
+          }
+          pesi.sort((x, y) => y.peso - x.peso);
+          fuori.push({
+            archetipo: build.build, slug: b.slug, inserzioni: righe.length,
+            sopra1d: +(100 * sopra1 / righe.length).toFixed(1),
+            sopra5d: +(100 * sopra5 / righe.length).toFixed(1),
+            sopra20d: +(100 * sopra20 / righe.length).toFixed(1),
+            massimo: Math.round(Math.max(...prezzi)),
+            gemmeChePagano: pesi.slice(0, 5),
+          });
+        }
+        return json({ da, a, totale: builder.builds.length, archetipi: fuori });
+      }
+
       return json({ errore: "rotta sconosciuta", rotte: ["/stato", "/mercato/<archetipo>", "/stash", "/prezzo", "/dettaglio", "/campione/piano", "/campione", "/liquidita"] }, 404);
     } catch (e) {
       return json({ errore: String(e && e.message || e) }, 502);
