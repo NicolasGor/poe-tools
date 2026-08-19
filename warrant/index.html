@@ -335,10 +335,15 @@
 /* L'indirizzo del pezzo di server. Si puo' scavalcare con `?api=...` — serve per
    provarlo in locale e per cambiarlo di host senza toccare il file. Senza, la
    pagina resta leggibile: quello che sparisce sono i numeri, non il metodo. */
+/* 🔴 **L'unica riga da cambiare quando il Worker va online.** Deve essere giusta
+   qui dentro, non nelle impostazioni: se ogni dispositivo dovesse configurarsi,
+   la pagina non si aprirebbe "ovunque" — che e' esattamente cio' che si vuole. */
+const SERVER_PREDEFINITO = "https://warrant.nicolasgor.workers.dev";
+
 let API = (() => {
   const q = new URLSearchParams(location.search).get("api");
   if (q !== null) { localStorage.setItem("warrant-api", q.replace(/\/$/, "")); }
-  return localStorage.getItem("warrant-api") || "https://poe-tools.nicolasgor.deno.net";
+  return localStorage.getItem("warrant-api") || SERVER_PREDEFINITO;
 })();
 
 const VENDIBILI = new Set(["Kineticist","Manyshot","Sniper","Cruel Mistress","Stormhand","Combatant","Blade Ambusher"]);
@@ -393,22 +398,60 @@ function disegna(dati) {
     (dati.divine_in_chaos ? ` · divine a <b>${dati.divine_in_chaos.toFixed(0)} c</b>` : "");
 }
 
+/* **Leggere e ricalcolare sono due cose diverse, adesso.** Leggere e' una GET
+   senza chiave che torna il risultato gia' pronto dal KV: costa ~0,3 ms al
+   Worker e funziona su qualsiasi dispositivo appena aperto. Ricalcolare fa
+   partire una GitHub Action, perche' il piano gratuito di Cloudflare concede
+   **10 ms di CPU** per invocazione e una prezzatura ne vuole **2.774**. */
+async function leggiStato() {
+  try { return await (await fetch(`${API}/stato`)).json(); } catch (e) { return null; }
+}
+
+async function leggiPrezzi() {
+  const r = await fetch(`${API}/prezzo`);
+  const dati = await r.json();
+  if (dati.errore) return { errore: dati.errore };
+  dati.letto_il = new Date().toISOString();
+  salvaCache(dati); disegna(dati); caricaLiquidita(dati);
+  return dati;
+}
+
 async function aggiornaPrezzi() {
   if (!API) { $("stato").textContent = "server non configurato"; return; }
   const b = $("b-prezzi");
-  b.disabled = true; b.textContent = "scarico l'indice…";
+  b.disabled = true;
+  const etichetta = b.textContent;
   try {
-    const r = await fetch(`${API}/prezzo?k=${encodeURIComponent(chiave())}`, {
-      method: "POST", headers: { "content-type": "application/json" },
-      body: JSON.stringify({ min: 30 }),
-    });
-    const dati = await r.json();
-    if (dati.errore) { $("stato").textContent = dati.errore; return; }
-    dati.letto_il = new Date().toISOString();
-    salvaCache(dati); disegna(dati); caricaLiquidita(dati);
+    b.textContent = "chiedo il calcolo…";
+    const prima = (await leggiStato())?.prezzi?.generato || null;
+
+    const r = await fetch(`${API}/aggiorna`, { method: "POST" });
+    const d = await r.json().catch(() => ({}));
+
+    /* ⚠️ Il 429 non e' un errore: e' il Worker che dice che il conto e' stato
+       rifatto da poco. La fonte rigenera i suoi dati ogni ~10 minuti, quindi
+       rifarlo prima darebbe lo stesso numero — si mostra quello che c'e'. */
+    if (r.status === 429) {
+      const esito = await leggiPrezzi();
+      $("stato").insertAdjacentHTML("beforeend",
+        ` · <b>gia' aggiornato</b>: si puo' rifare fra ${d.restanoMinuti} min`);
+      return esito;
+    }
+    if (!r.ok || d.errore) { $("stato").textContent = d.errore || `il server risponde ${r.status}`; return; }
+
+    /* L'attesa. La Action gira in ~30 s (misurati: 23 s di calcolo piu' l'avvio),
+       ma la coda di GitHub puo' allungarli: si aspetta fino a due minuti e mezzo
+       e poi si dice che non e' arrivato, invece di restare a girare. */
+    for (let i = 0; i < 30; i++) {
+      await new Promise((f) => setTimeout(f, 5000));
+      b.textContent = `calcolo in corso… ${(i + 1) * 5}s`;
+      const s = await leggiStato();
+      if (s?.prezzi?.generato && s.prezzi.generato !== prima) return leggiPrezzi();
+    }
+    $("stato").textContent = "il calcolo non e' arrivato entro due minuti e mezzo: riprova fra poco";
   } catch (e) {
     $("stato").textContent = "il server non risponde: " + e.message;
-  } finally { b.disabled = false; b.textContent = "Aggiorna prezzi"; }
+  } finally { b.disabled = false; b.textContent = etichetta || "Aggiorna prezzi"; }
 }
 
 /* Il segnalibro e' solo un caricatore: scarica `segnalibro.js` da questo sito e
@@ -438,13 +481,13 @@ await mod.default(A,K);
 
 async function stato() {
   if (!API) return;
-  try {
-    const s = await (await fetch(`${API}/stato?k=${encodeURIComponent(chiave())}`)).json();
-    if (s.sincronizzato) {
-      $("p-stash").insertAdjacentHTML("afterbegin",
-        `<p class="stato">Ultima sincronizzazione: <b>${dataIt(s.sincronizzato)}</b> · <b>${s.warrant}</b> warrant.</p>`);
-    }
-  } catch (e) {}
+  // niente chiave: /stato e' aperto di proposito, cosi' un dispositivo appena
+  // aperto sa subito se c'e' un risultato e di quando e'
+  const s = await leggiStato();
+  if (s?.stash?.quando) {
+    $("p-stash").insertAdjacentHTML("afterbegin",
+      `<p class="stato">Ultima sincronizzazione: <b>${dataIt(s.stash.quando)}</b> · <b>${s.stash.warrant}</b> warrant.</p>`);
+  }
 }
 
 $("b-prezzi").addEventListener("click", aggiornaPrezzi);
@@ -677,11 +720,11 @@ async function apriScheda(i, bottone) {
   if (!w) return;
   $(`scheda-${i}`).textContent = "carico le inserzioni simili…";
   try {
-    const r = await fetch(`${API}/dettaglio`, {
-      method: "POST", headers: {"content-type": "application/json"},
-      body: JSON.stringify({warrant: {name: w.nome, build: (w.infamous ? "Infamous " : "") + w.build,
-                                      level: w.livello, skills: w.gemme || []}}),
-    });
+    /* Per id, e in GET: la scheda e' gia' stata calcolata dalla Action e sta nel
+       KV sotto `scheda:<id>`. Il Worker la rigira senza parsarla — 477 KB, la piu'
+       grossa misurata, costano 0,3 ms. Prima qui si ricostruiva il mercenario per
+       farlo ricalcolare al server, che era il pezzo da 206 ms. */
+    const r = await fetch(`${API}/dettaglio?id=${encodeURIComponent(w.id || "")}`);
     const dati = await r.json();
     if (dati.errore) { $(`scheda-${i}`).textContent = dati.errore; return; }
     // 🔴 Si apre **sulla selezione della riga**, non su una di comodo. La fonte
@@ -919,8 +962,13 @@ $("griglia-modale").addEventListener("click", (e) => { if (e.target.id === "grig
 $("griglia-cerca").addEventListener("input", (e) => disegnaGriglia(e.target.value));
 document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("griglia-modale").hidden) apriGriglia(false); });
 
+/* 🔴 **Prima la cache, poi comunque il server.** Sullo Steam Deck la cache fa
+   comparire subito l'ultima lettura; ma su un dispositivo mai usato la cache non
+   c'e', e senza questa lettura la pagina resterebbe vuota finche' qualcuno non
+   preme un pulsante. Leggere costa una GET senza chiave, quindi si fa sempre. */
 const cache = leggiCache();
 if (cache) { disegna(cache); caricaLiquidita(cache); }
+leggiPrezzi().catch(() => {});
 </script>
 </body>
 </html>

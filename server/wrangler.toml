@@ -1,0 +1,25 @@
+# Cloudflare Workers — il portiere della pagina Warrant.
+#
+# Il calcolo NON sta qui: lo fa una GitHub Action (vedi genera-prezzi.mjs) perche'
+# il piano gratuito concede 10 ms di CPU per invocazione e una prezzatura ne vuole
+# 2.774. Questo Worker legge e scrive il KV, e fa partire la Action.
+#
+# Da fare una volta sola, dalla cartella server/:
+#   npx wrangler kv namespace create WARRANT      -> incolla l'id qui sotto
+#   npx wrangler secret put CHIAVE                -> la stessa del segnalibro
+#   npx wrangler secret put GITHUB_TOKEN          -> token con permesso "contents: write" sul repo
+#   npx wrangler deploy
+#
+# ⚠️ I segreti si mettono con `wrangler secret put`, mai in questo file: e' committato.
+
+name = "warrant"
+main = "worker.js"
+compatibility_date = "2026-08-19"
+
+# Il repo che ospita la Action da far partire. Non e' un segreto: e' pubblico.
+[vars]
+GITHUB_REPO = "NicolasGor/poe-tools"
+
+[[kv_namespaces]]
+binding = "WARRANT"
+id = "DA_CREARE"

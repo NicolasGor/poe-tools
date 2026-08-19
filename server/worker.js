@@ -1,0 +1,246 @@
+/**
+ * worker — il portiere. Gira su Cloudflare Workers, piano gratuito.
+ *
+ * **Non calcola niente, e non e' una semplificazione: e' il vincolo.** Il piano
+ * gratuito concede **10 ms di CPU per invocazione** (e valgono anche per i Cron
+ * Trigger, non solo per le richieste HTTP). Misurato il 19 agosto 2026 su 39
+ * warrant: `/prezzo` costa **2.774 ms**, `/dettaglio` **206 ms** in media. Non e'
+ * un divario che si chiude scrivendo meglio.
+ *
+ * Quindi il conto lo fa una **GitHub Action** (`server/genera-prezzi.mjs`), che
+ * deposita il risultato nel KV; qui si **rigirano i byte del KV** senza mai
+ * parsarli. La differenza fra i due mestieri e' tutta in `passa()`.
+ *
+ * ⚠️ **Perche' non piu' Deno Deploy.** Non per antipatia: da li' passavano ~110 MB
+ * di indici di mercato per ogni prezzatura a freddo, e il piano gratuito si e'
+ * spento con `503 USAGE_EXCEEDED`. Su Cloudflare la **banda non e' fatturata** su
+ * nessuno dei due piani — cioe' quel modo di fallire qui non esiste. La
+ * sincronizzazione dello stash, che sembrava il costo, era pochi KB.
+ *
+ * 🔴 **Nessun segreto sui dispositivi.** La pagina si apre sul Mac, sulla Deck o
+ * sul telefono e funziona: **tutte le letture sono aperte** e non chiedono
+ * chiave. La `CHIAVE` protegge solo cio' che **scrive** i dati di Nicolas — la
+ * sincronizzazione dello stash e il campionatore — che fa il segnalibro, non la
+ * pagina. E `/aggiorna` non e' protetto da un segreto ma da un **tempo di
+ * attesa**, che e' anche la cosa giusta nel merito: la fonte rigenera i suoi dati
+ * ogni ~10 minuti, quindi rifare il conto prima non darebbe un numero diverso.
+ */
+
+const ATTESA_MINUTI = 10;   // vedi sopra: e' il ritmo della fonte, non una difesa
+
+const intestazioni = (extra = {}) => ({
+  "access-control-allow-origin": "*",
+  "access-control-allow-headers": "content-type",
+  "access-control-allow-methods": "GET,POST,OPTIONS",
+  "content-type": "application/json; charset=utf-8",
+  ...extra,
+});
+
+const json = (dati, stato = 200) =>
+  new Response(JSON.stringify(dati), { status: stato, headers: intestazioni() });
+
+/**
+ * Il mestiere di questo Worker in una funzione: prendere un valore dal KV e
+ * rigirarlo **senza parsarlo**. `get(k, "stream")` restituisce i byte cosi' come
+ * sono, quindi una scheda da 477 KB costa quanto una da 8 KB — e nessuna delle
+ * due tocca il tetto dei 10 ms.
+ */
+async function passa(env, chiave, seManca) {
+  const flusso = await env.WARRANT.get(chiave, "stream");
+  if (!flusso) return json(seManca, 404);
+  return new Response(flusso, { headers: intestazioni() });
+}
+
+const leggi = async (env, k) => env.WARRANT.get(k, "json");
+const scrivi = (env, k, v) => env.WARRANT.put(k, JSON.stringify(v));
+
+export default {
+  async fetch(req, env) {
+    const url = new URL(req.url);
+    const chiave = env.CHIAVE || "";
+    const autorizzato = () => chiave && url.searchParams.get("k") === chiave;
+
+    if (req.method === "OPTIONS") return new Response(null, { headers: intestazioni() });
+
+    try {
+      /* ------------------------------------------------------------- lettura */
+
+      // 🔴 Niente chiave: e' la rotta che dice a un dispositivo nuovo se c'e' un
+      // risultato e di quando e'. Chiederle un segreto vorrebbe dire che la
+      // pagina non si apre da nessuna parte senza configurarla prima.
+      if (url.pathname === "/stato") {
+        /* ⚠️ **Solo chiavi piccole, e non e' un dettaglio.** La prima versione
+         * leggeva `prezzi` e `stash` in `json` per ricavarne due conteggi: 140 KB
+         * parsati, **14 ms di CPU misurati** contro i 10 concessi — e per giunta
+         * sulla rotta che la pagina interroga ogni pochi secondi mentre aspetta un
+         * aggiornamento. I riassunti li scrive chi scrive i dati: la Action per i
+         * prezzi, questo Worker per lo stash appena lo riceve. */
+        const [p, s, a] = await Promise.all([
+          leggi(env, "stato:prezzi"), leggi(env, "stato:stash"), leggi(env, "aggiornamento"),
+        ]);
+        return json({
+          ok: true,
+          magazzino: env.WARRANT ? "cf-kv" : "assente",
+          calcolo: "github-action",
+          prezzi: p || null,
+          stash: s || null,
+          aggiornamento: a || null,
+          // booleano di proposito: dice se il server ha una chiave, non quale sia
+          chiave: !!chiave,
+        });
+      }
+
+      // i prezzi gia' calcolati. GET e POST fanno la stessa cosa: la pagina
+      // vecchia chiamava in POST, e rompere i segnalibri gia' trascinati per una
+      // questione di stile non vale il fastidio.
+      if (url.pathname === "/prezzo") {
+        return passa(env, "prezzi", { errore: "nessun prezzo calcolato: premi «Aggiorna prezzi»" });
+      }
+
+      // la scheda di UN mercenario, per id
+      if (url.pathname === "/dettaglio") {
+        const id = url.searchParams.get("id") || (req.method === "POST" ? (await req.json())?.warrant?.id : null);
+        if (!id) return json({ errore: "manca id" }, 400);
+        return passa(env, `scheda:${id}`, { errore: "scheda non calcolata per questo mercenario" });
+      }
+
+      if (url.pathname === "/stash" && req.method === "GET") {
+        return passa(env, "stash", { warrant: [], quando: null });
+      }
+
+      /* --------------------------------------------------------- aggiornamento
+       * Il click su «Aggiorna prezzi» non calcola qui: fa partire la Action e
+       * torna subito. La pagina poi chiede `/stato` finche' `generato` non cambia.
+       */
+      if (url.pathname === "/aggiorna" && req.method === "POST") {
+        if (!env.GITHUB_TOKEN || !env.GITHUB_REPO) {
+          return json({ errore: "il Worker non sa a chi chiedere il calcolo (GITHUB_TOKEN/GITHUB_REPO)" }, 500);
+        }
+        const a = await leggi(env, "aggiornamento");
+        const adesso = Date.now();
+        if (a?.chiestoIl && adesso - a.chiestoIl < ATTESA_MINUTI * 60000) {
+          const restano = Math.ceil((ATTESA_MINUTI * 60000 - (adesso - a.chiestoIl)) / 60000);
+          return json({ inAttesa: true, restanoMinuti: restano, chiestoIl: a.chiestoIl,
+                        nota: `La fonte rigenera ogni ~${ATTESA_MINUTI} minuti: rifare il conto prima darebbe lo stesso numero.` }, 429);
+        }
+        /* ⚠️ Con un try/catch suo, non quello generale in fondo: se GitHub non
+         * si raggiunge, il catch-all scrive «fetch failed» in pagina — che e'
+         * vero e inutile. Chi legge deve sapere *chi* non ha risposto. */
+        let r;
+        try {
+          r = await fetch(`https://api.github.com/repos/${env.GITHUB_REPO}/dispatches`, {
+            method: "POST",
+            headers: {
+              authorization: `Bearer ${env.GITHUB_TOKEN}`,
+              accept: "application/vnd.github+json",
+              "content-type": "application/json",
+              // GitHub rifiuta le richieste senza user-agent con un 403 che non
+              // spiega niente: e' costato tempo altrove, si mette e basta.
+              "user-agent": "warrant-worker",
+            },
+            body: JSON.stringify({ event_type: "prezza-warrant" }),
+          });
+        } catch (e) {
+          return json({ errore: `Non riesco a contattare GitHub per far partire il calcolo (${e.message}). I prezzi gia' calcolati restano leggibili.` }, 502);
+        }
+        if (!r.ok) {
+          const dettaglio = (await r.text()).slice(0, 300);
+          const spiega = r.status === 401 || r.status === 403
+            ? "il token del Worker non e' valido o non ha il permesso sul repository"
+            : r.status === 404 ? "repository o evento non trovato: controlla GITHUB_REPO" : "";
+          return json({ errore: `GitHub ha risposto ${r.status}${spiega ? " — " + spiega : ""}`, dettaglio }, 502);
+        }
+        await scrivi(env, "aggiornamento", { chiestoIl: adesso, stato: "in-corso" });
+        return json({ ok: true, avviato: true, chiestoIl: adesso });
+      }
+
+      /* -------------------------------------------------------- il campionatore
+       * ⚠️ Il piano **non riprezza piu' niente**: prima scaricava gli indici di
+       * tutti gli archetipi in tab solo per scegliere quali otto combinazioni
+       * fotografare. Le stesse informazioni — chiave, valore, link — sono gia' nel
+       * risultato che la Action ha depositato.
+       */
+      if (url.pathname === "/campione/piano") {
+        if (!autorizzato()) return json({ errore: "chiave mancante o sbagliata" }, 403);
+        const p = await leggi(env, "prezzi");
+        if (!p?.warrant?.length) return json({ errore: "nessun prezzo calcolato" }, 409);
+        const quanti = Math.min(Number(url.searchParams.get("quanti") || 8), 20);
+        const seguite = (await leggi(env, "campioni:elenco")) || [];
+        const prezzati = [...p.warrant].filter((w) => w.chiave).sort((a, b) => b.prezzo - a.prezzo);
+        // la continuita' prima del valore: si rifotografa cio' che si sta gia'
+        // seguendo, altrimenti ogni giro sarebbe di nuovo il primo
+        const piano = [...prezzati.filter((w) => seguite.includes(w.chiave)),
+                       ...prezzati.filter((w) => !seguite.includes(w.chiave))].slice(0, quanti);
+        return json({ piano: piano.map((w) => ({ chiave: w.chiave, nome: w.nome, build: w.build,
+                                                 valore: w.prezzo, trade: w.trade })) });
+      }
+
+      if (url.pathname === "/liquidita") {
+        const chiavi = (url.searchParams.get("chiavi") || "").split(",").filter(Boolean).slice(0, 40);
+        const fuori = {};
+        for (const k of chiavi) {
+          const v = await leggi(env, "campione:" + k);
+          if (!v) continue;
+          const storia = v.storia || [];
+          const totOre = storia.reduce((n, x) => n + (x.ore || 0), 0);
+          const totSparite = storia.reduce((n, x) => n + (x.sparite || 0), 0);
+          fuori[k] = { nome: v.nome, quando: v.quando, viste: v.ids.length, storia,
+                       spariteOra: totOre ? +(totSparite / totOre * 24).toFixed(1) : null };
+        }
+        const s = await leggi(env, "stash");
+        return json({ campioni: fuori, warrantInStash: s?.warrant?.length ?? 0 });
+      }
+
+      /* --------------------------------------------------------- scrittura
+       * Le uniche rotte con la chiave, e le usa **solo il segnalibro** — che la
+       * porta gia' dentro di se' da quando lo si trascina. La pagina non le
+       * chiama mai, ed e' per questo che puo' aprirsi ovunque senza configurare.
+       */
+      if (url.pathname === "/stash" && req.method === "POST") {
+        if (!autorizzato()) return json({ errore: "chiave mancante o sbagliata" }, 403);
+        const corpo = await req.json();
+        if (!Array.isArray(corpo.warrant)) return json({ errore: "manca warrant[]" }, 400);
+        const quando = new Date().toISOString();
+        await scrivi(env, "stash", { warrant: corpo.warrant, quando, tab: corpo.tab ?? null });
+        // il riassunto accanto al dato: cosi' /stato non deve riparsare 70 KB
+        await scrivi(env, "stato:stash", { warrant: corpo.warrant.length, quando });
+        return json({ ok: true, salvati: corpo.warrant.length });
+      }
+
+      if (url.pathname === "/campione" && req.method === "POST") {
+        if (!autorizzato()) return json({ errore: "chiave mancante o sbagliata" }, 403);
+        const corpo = await req.json();
+        const adesso = new Date().toISOString();
+        const esito = [];
+        for (const c of corpo.campioni || []) {
+          if (!c.chiave || !Array.isArray(c.inserzioni)) continue;
+          const vecchio = await leggi(env, "campione:" + c.chiave);
+          const ids = c.inserzioni.map((x) => x.id);
+          let sparite = null, ore = null;
+          if (vecchio) {
+            sparite = vecchio.ids.filter((x) => !ids.includes(x)).length;
+            ore = +((new Date(adesso) - new Date(vecchio.quando)) / 3600000).toFixed(1);
+          }
+          const storia = [...(vecchio?.storia || []),
+                          ...(sparite === null ? [] : [{ quando: adesso, ore, sparite, viste: vecchio.ids.length }])].slice(-12);
+          await scrivi(env, "campione:" + c.chiave, {
+            chiave: c.chiave, nome: c.nome, build: c.build, quando: adesso,
+            totale: c.totale ?? null, ids, prezzi: c.inserzioni.map((x) => x.prezzo), storia,
+          });
+          esito.push({ chiave: c.chiave, nome: c.nome, viste: ids.length, sparite, ore });
+        }
+        const elenco = (await leggi(env, "campioni:elenco")) || [];
+        for (const c of esito) if (!elenco.includes(c.chiave)) elenco.push(c.chiave);
+        await scrivi(env, "campioni:elenco", elenco.slice(-40));
+        return json({ ok: true, campioni: esito });
+      }
+
+      return json({ errore: "rotta sconosciuta", rotte: [
+        "GET /stato", "GET /prezzo", "GET /dettaglio?id=", "GET /stash", "POST /stash?k=",
+        "POST /aggiorna", "GET /campione/piano?k=", "POST /campione?k=", "GET /liquidita?chiavi=",
+      ] }, 404);
+    } catch (e) {
+      return json({ errore: String((e && e.message) || e) }, 502);
+    }
+  },
+};

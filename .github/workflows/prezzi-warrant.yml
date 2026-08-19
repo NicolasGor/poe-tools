@@ -1,0 +1,46 @@
+# Prezza i warrant di Nicolas e deposita il risultato nel KV di Cloudflare.
+#
+# **Perche' il calcolo sta qui e non nel Worker.** Misurato il 19 agosto 2026 su
+# 39 warrant: /prezzo costa 2.774 ms di CPU e /dettaglio 206 ms in media, contro i
+# 10 ms per invocazione del piano gratuito di Cloudflare Workers — che valgono
+# anche per i Cron Trigger. Non e' un divario che si chiude ottimizzando.
+#
+# ⚠️ **Nessun cron, di proposito.** Parte quando Nicolas preme «Aggiorna prezzi»:
+# il Worker riceve il click e chiama repository_dispatch. Pochi giri al giorno
+# stanno in qualunque piano gratuito, e i prezzi restano a comando come sono
+# sempre stati.
+#
+# 🔴 **Niente di privato passa da git.** La lista dei warrant si legge dal KV,
+# dove la scrive il segnalibro, e il risultato ci ritorna: il repository non la
+# vede mai. Per questo il repo puo' restare pubblico.
+
+name: prezzi warrant
+
+on:
+  repository_dispatch:
+    types: [prezza-warrant]
+  workflow_dispatch:
+
+# Non scrive nel repository: il risultato va nel KV di Cloudflare.
+permissions: {}
+
+concurrency:
+  group: prezzi-warrant
+  cancel-in-progress: false
+
+jobs:
+  prezza:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+
+      - name: Prezza e deposita nel KV
+        run: node --max-old-space-size=4096 server/genera-prezzi.mjs
+        env:
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_KV_NAMESPACE_ID: ${{ secrets.CF_KV_NAMESPACE_ID }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}

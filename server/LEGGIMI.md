@@ -36,33 +36,85 @@ un segreto di gioco.
 
 ## Dov'è, adesso
 
-**<https://poe-tools.nicolasgor.deno.net>** — Deno Deploy, piano gratuito,
-distribuito a ogni push su `main`. Entrypoint `server/warrant-api.js`, database
-**Deno KV** agganciato (istanza `warrant`), variabile `CHIAVE` impostata come
-*secret*.
+**Cloudflare Workers, piano gratuito** — Worker `warrant`, entrypoint
+`server/worker.js`, magazzino **Workers KV** (binding `WARRANT`).
 
-⚠️ **Il KV va agganciato a mano**, e senza non è un errore rumoroso: il server
-ripiega sulla memoria del processo e i warrant spariscono al primo riavvio.
-Si controlla da `/stato`, che risponde `magazzino: "deno-kv"` quando è a posto e
-`"memoria-volatile"` quando non lo è. Stessa cosa per la chiave: `chiave: true`
-dice che la variabile è arrivata al runtime — ⚠️ **una variabile salvata nel
-pannello non basta**, serve un nuovo deploy perché entri nell'app.
+⚠️ **Deno Deploy è stato abbandonato il 19 agosto 2026.** Non per antipatia: da lì
+passavano **~110 MB di indici di mercato per ogni prezzatura a freddo**, e il
+piano gratuito si è spento con `503 USAGE_EXCEEDED`. Su Cloudflare la **banda non
+è fatturata** su nessuno dei due piani, cioè quel modo di fallire lì non esiste.
+💡 La sincronizzazione dello stash, che sembrava il costo, erano **pochi KB**: il
+peso era tutto nel dato di mercato.
 
-## Come è stato messo online (Deno Deploy, gratis)
+## Chi fa cosa, e perché è diviso così
 
-1. <https://deno.com/deploy> → accedi con GitHub.
-2. **New project** → collega `NicolasGor/poe-tools` → entrypoint
-   `server/warrant-api.js`. Da lì in poi si ridistribuisce a ogni push.
-3. **Settings → Environment Variables** → `CHIAVE` = una stringa a piacere.
-   Scegliela tu: non deve passare da nessuna trascrizione.
-4. Copia l'URL del progetto (`https://<nome>.deno.dev`) e mettilo nella pagina —
-   `warrant/index.html`, costante `API` — oppure aprila una volta con
-   `?api=https://<nome>.deno.dev`, che se lo ricorda nel browser.
+| Pezzo | Dove gira | Mestiere |
+|---|---|---|
+| `worker.js` | Cloudflare Workers (gratis) | **non calcola niente**: legge e scrive il KV, e fa partire la Action |
+| `genera-prezzi.mjs` | GitHub Actions, su `repository_dispatch` | prezza i warrant e deposita nel KV |
+| `genera-panorama.mjs` | GitHub Actions, una volta al giorno | la griglia pubblica → `warrant/panorama.json` |
+| `warrant-api.js` | **solo** dentro le Action | la matematica: prezzatura, pesi, combinazioni |
 
-**Perché non Cloudflare Workers gratis:** il piano free dà **10 ms di CPU per
-richiesta**, e il `JSON.parse` di un indice da 5 MB ne consuma molti di più.
-Cloudflare Paid (5 $/mese, 30 s) andrebbe: il codice è lo stesso, cambia solo il
-magazzino (`env.WARRANT` invece di `Deno.openKv`), già previsto nel file.
+🔴 **Il calcolo non può stare nel Worker, ed è una misura, non un'opinione.** Il
+piano gratuito concede **10 ms di CPU per invocazione** — e valgono anche per i
+Cron Trigger, non solo per le richieste HTTP. Misurato il 19 agosto 2026 su 39
+warrant in 28 archetipi:
+
+| | CPU | contro i 10 ms |
+|---|---:|---|
+| `/prezzo` | **2.774 ms** | 277× |
+| `/dettaglio` (media) | **206 ms** | 21× |
+| il Worker che serve dal KV | **0,1-0,3 ms** | ✅ 30-100× sotto |
+
+E non è solo la CPU: la memoria è **128 MB su entrambi i piani**, mentre
+`decodifica()` da sola ne prende **87 MB** per il solo Manyshot (147.000
+inserzioni), più 19 MB di `JSON.parse`. Con un heap da 112 MB il processo muore.
+
+💡 **Il trucco del Worker sta in una funzione**, `passa()`: prende il valore dal
+KV con `get(k, "stream")` e lo rigira **senza parsarlo**. Così la scheda più
+grossa misurata — 472 KB — costa quanto una da 8 KB.
+
+## Nessun segreto sui dispositivi
+
+**La pagina si apre sul Mac, sulla Deck o sul telefono e funziona.** Tutte le
+letture (`/stato`, `/prezzo`, `/dettaglio`, `/stash`, `/liquidita`) sono aperte.
+
+La `CHIAVE` protegge solo ciò che **scrive** i dati di Nicolas — `POST /stash` e
+il campionatore — e la usa **il segnalibro**, che se la porta dentro da quando lo
+si trascina. La pagina non la chiede mai.
+
+⚠️ **`/aggiorna` non è protetto da un segreto ma da un tempo di attesa** di 10
+minuti, che è anche la cosa giusta nel merito: la fonte rigenera i suoi dati ogni
+~10 minuti, quindi rifare il conto prima darebbe lo stesso numero. Un segreto lì
+avrebbe significato configurare ogni dispositivo.
+
+## Come si mette online
+
+**Su Cloudflare**, dalla cartella `server/`:
+
+```
+npx wrangler kv namespace create WARRANT   # incolla l'id in wrangler.toml
+npx wrangler secret put CHIAVE             # la stessa del segnalibro
+npx wrangler secret put GITHUB_TOKEN       # token con permesso di dispatch sul repo
+npx wrangler deploy
+```
+
+Poi **una riga sola** in `warrant/index.html`: la costante `SERVER_PREDEFINITO`,
+con l'URL del Worker. Deve essere giusta lì dentro e non nelle impostazioni —
+altrimenti ogni dispositivo andrebbe configurato, che è esattamente ciò che non
+si vuole.
+
+**Su GitHub**, in *Settings → Secrets → Actions*, tre segreti per la Action:
+`CF_ACCOUNT_ID`, `CF_KV_NAMESPACE_ID`, `CF_API_TOKEN` (permesso *Workers KV
+Storage: Edit*).
+
+⚠️ **I segreti non si scrivono mai in un comando né in `wrangler.toml`**, che è
+committato: `wrangler secret put` li chiede a voce. Un token finito in una
+trascrizione va revocato, non rimosso.
+
+**Si controlla da `/stato`**: dice `magazzino: "cf-kv"` quando il KV è agganciato,
+`chiave: true` quando il segreto è arrivato al runtime, e quando è stato calcolato
+l'ultimo risultato.
 
 ## Quanto costa in termini di limiti
 

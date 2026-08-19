@@ -256,6 +256,9 @@ function prezzaWarrant(build, warrant, divine, mirror, minimo) {
 
   const floorFinale = floorDi(corrente, divine, mirror) ?? 0;
   return {
+    // l'id dello stash viaggia col prezzo: e' la chiave con cui il Worker pesca
+    // la scheda gia' calcolata dal KV (`scheda:<id>`), senza ricostruire nulla
+    id: warrant.id ?? null,
     nome: warrant.name,
     build: build.build,
     infamous: !!warrant.infamous,
