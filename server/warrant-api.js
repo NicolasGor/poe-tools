@@ -90,7 +90,7 @@ async function magazzino(env) {
  * API, che vive fuori dalla memoria; qui davanti restano i piu' recenti. */
 const TIENI_IN_MEMORIA = 3;
 const inMemoria = new Map();   // slug -> { quando, dati }
-const spia = { scaricati: 0, dallaCache: 0, cacheApi: null };
+const spia = { scaricati: 0, dallaCache: 0, cacheApi: null, scritture: 0, erroriScrittura: null, letture: 0 };
 
 function ricorda(slug, dati) {
   inMemoria.set(slug, { quando: Date.now(), dati });
@@ -111,7 +111,8 @@ async function indice(slug) {
   catch (e) { spia.cacheApi = "assente: " + e.message; }
 
   if (magazzinoCache) {
-    const salvata = await magazzinoCache.match(url);
+    spia.letture++;
+    const salvata = await magazzinoCache.match(url).catch((e) => { spia.erroriScrittura = "match: " + e.message; return null; });
     if (salvata) {
       const quando = Number(salvata.headers.get("x-preso-il") || 0);
       if (adesso - quando < CACHE_SECONDI * 1000) {
@@ -128,9 +129,12 @@ async function indice(slug) {
   if (!r.ok) throw new Error(`indice ${slug}: HTTP ${r.status}`);
   const testo = await r.text();
   if (magazzinoCache) {
-    await magazzinoCache.put(url, new Response(testo, {
-      headers: { "content-type": "application/json", "x-preso-il": String(adesso) },
-    }));
+    try {
+      await magazzinoCache.put(url, new Response(testo, {
+        headers: { "content-type": "application/json", "x-preso-il": String(adesso) },
+      }));
+      spia.scritture++;
+    } catch (e) { spia.erroriScrittura = "put: " + e.message; }
   }
   const dati = JSON.parse(testo);
   ricorda(slug, dati);
