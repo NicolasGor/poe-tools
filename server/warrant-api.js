@@ -90,6 +90,7 @@ async function magazzino(env) {
  * API, che vive fuori dalla memoria; qui davanti restano i piu' recenti. */
 const TIENI_IN_MEMORIA = 3;
 const inMemoria = new Map();   // slug -> { quando, dati }
+const spia = { scaricati: 0, dallaCache: 0, cacheApi: null };
 
 function ricorda(slug, dati) {
   inMemoria.set(slug, { quando: Date.now(), dati });
@@ -106,7 +107,8 @@ async function indice(slug) {
     : `${FONTE}/data/allflame/mercenary-build-${slug}.json`;
 
   let magazzinoCache = null;
-  try { magazzinoCache = await caches.open("mercato"); } catch (e) { /* piattaforma senza Cache API */ }
+  try { magazzinoCache = await caches.open("mercato"); spia.cacheApi = true; }
+  catch (e) { spia.cacheApi = "assente: " + e.message; }
 
   if (magazzinoCache) {
     const salvata = await magazzinoCache.match(url);
@@ -114,12 +116,14 @@ async function indice(slug) {
       const quando = Number(salvata.headers.get("x-preso-il") || 0);
       if (adesso - quando < CACHE_SECONDI * 1000) {
         const dati = await salvata.json();
+        spia.dallaCache++;
         ricorda(slug, dati);
         return dati;
       }
     }
   }
 
+  spia.scaricati++;
   const r = await fetch(url);
   if (!r.ok) throw new Error(`indice ${slug}: HTTP ${r.status}`);
   const testo = await r.text();
@@ -413,7 +417,7 @@ export default {
         // quale sia. Senza, un "chiave sbagliata" e' indistinguibile da un
         // "variabile d'ambiente mai arrivata", e si tira a indovinare.
         return json({ ok: true, magazzino: m.tipo, warrant: s?.warrant?.length ?? 0,
-                      sincronizzato: s?.quando ?? null, chiave: !!chiave });
+                      sincronizzato: s?.quando ?? null, chiave: !!chiave, indici: { ...spia } });
       }
 
       // ⚠️ `/mercato/<archetipo>` serviva alla variante "calcola nel browser",
@@ -446,6 +450,24 @@ export default {
         const corpo = await req.json();
         const minimo = Number(corpo.min || 30);
         const m = await magazzino(env);
+
+        /* 🔴 **La cache che conta e' questa.** Prima ogni click su «Aggiorna
+         * prezzi» rifaceva il giro completo: ~23 indici scaricati e riparsati,
+         * decine di megabyte. Qui il **risultato** — 77 KB di JSON — viene tenuto
+         * compresso per `CACHE_SECONDI`, che e' anche il ritmo con cui la fonte
+         * rigenera i suoi dati: premere due volte in dieci minuti non puo' dare
+         * un numero diverso, quindi non ha senso pagarlo due volte.
+         * ⚠️ Compresso perche' un valore KV sta sotto i 64 KiB: gzip lo porta a
+         * ~15 KB, e senza compressione la scrittura fallirebbe in silenzio. */
+        const chiaveCache = `prezzo:${minimo}:${(await m.leggi("stash"))?.quando || "-"}`;
+        if (!corpo.warrant?.length && !corpo.forza) {
+          const salvato = await m.leggi(chiaveCache);
+          if (salvato && Date.now() - salvato.quando < CACHE_SECONDI * 1000) {
+            const bytes = Uint8Array.from(atob(salvato.gz), (c) => c.charCodeAt(0));
+            const testo = await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip"))).text();
+            return json({ ...JSON.parse(testo), dallaCache: true });
+          }
+        }
         const warrants = corpo.warrant?.length ? corpo.warrant : ((await m.leggi("stash")) || {}).warrant || [];
         if (!warrants.length) return json({ errore: "nessun warrant: sincronizza lo stash" }, 400);
 
@@ -470,12 +492,20 @@ export default {
           }
         }
         fuori.sort((a, b) => b.prezzo - a.prezzo);
-        return json({
+        const risposta = {
           lega: builder.league, generato_il: builder.generated_at,
           divine_in_chaos: +divine.toFixed(2), min_confronti: minimo,
           fonte: "https://xddbsns.com/mercenary-price-check.html",
           mancanti, warrant: fuori,
-        });
+        };
+        if (!corpo.warrant?.length) {
+          try {
+            const gz = await new Response(new Blob([JSON.stringify(risposta)]).stream()
+              .pipeThrough(new CompressionStream("gzip"))).arrayBuffer();
+            await m.scrivi(chiaveCache, { quando: Date.now(), gz: btoa(String.fromCharCode(...new Uint8Array(gz))) });
+          } catch (e) { /* se non entra nel KV si continua: e' una cache, non un dato */ }
+        }
+        return json(risposta);
       }
 
       // la scheda con le spunte: il pool di UN mercenario, ridotto all'osso
