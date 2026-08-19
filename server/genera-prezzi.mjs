@@ -71,7 +71,8 @@ if (daFile) {
 }
 const warrant = stash?.warrant || [];
 if (!warrant.length) {
-  console.error("🔴 Nessun warrant: lo stash non e' mai stato sincronizzato dal segnalibro.");
+  console.error("🔴 Lo stash e' vuoto: nessun warrant da prezzare.");
+  console.error("   Apri pathofexile.com da loggato e clicca il segnalibro, poi riprova.");
   process.exit(1);
 }
 console.log(`warrant: ${warrant.length} | archetipi distinti: ${new Set(warrant.map((w) => w.build)).size}`);

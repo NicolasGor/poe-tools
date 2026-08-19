@@ -83,7 +83,7 @@ grossa misurata — 472 KB — costa quanto una da 8 KB.
 **La pagina si apre sul Mac, sulla Deck o sul telefono e funziona.** Tutte le
 letture (`/stato`, `/prezzo`, `/dettaglio`, `/stash`, `/liquidita`) sono aperte.
 
-La `CHIAVE` protegge solo ciò che **scrive** i dati di Nicolas — `POST /stash` e
+La `CHIAVE_SCRITTURA` protegge solo ciò che **scrive** i dati di Nicolas — `POST /stash` e
 il campionatore — e la usa **il segnalibro**, che se la porta dentro da quando lo
 si trascina. La pagina non la chiede mai.
 
@@ -98,7 +98,7 @@ avrebbe significato configurare ogni dispositivo.
 
 ```
 npx wrangler kv namespace create WARRANT   # id gia in wrangler.toml
-npx wrangler secret put CHIAVE             # la stessa del segnalibro
+npx wrangler secret put CHIAVE_SCRITTURA   # la stessa del segnalibro
 npx wrangler secret put GITHUB_TOKEN       # token con permesso di dispatch sul repo
 npx wrangler deploy
 ```
@@ -109,7 +109,7 @@ altrimenti ogni dispositivo andrebbe configurato, che è esattamente ciò che no
 si vuole.
 
 **Su GitHub**, in *Settings → Secrets → Actions*, **un segreto solo**:
-`WARRANT_CHIAVE`, uguale alla `CHIAVE` del Worker.
+`WARRANT_CHIAVE`, uguale alla `CHIAVE_SCRITTURA` del Worker.
 
 💡 **Un token Cloudflare non serve.** La Action non scrive nel KV: deposita il
 risultato **attraverso il Worker** (`POST /deposita`), che scrive lui. Una

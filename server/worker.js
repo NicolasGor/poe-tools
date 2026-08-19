@@ -45,9 +45,9 @@ const json = (dati, stato = 200) =>
  * sono, quindi una scheda da 477 KB costa quanto una da 8 KB — e nessuna delle
  * due tocca il tetto dei 10 ms.
  */
-async function passa(env, chiave, seManca) {
+async function passa(env, chiave, seManca, statoSeManca = 404) {
   const flusso = await env.WARRANT.get(chiave, "stream");
-  if (!flusso) return json(seManca, 404);
+  if (!flusso) return json(seManca, statoSeManca);
   return new Response(flusso, { headers: intestazioni() });
 }
 
@@ -57,7 +57,14 @@ const scrivi = (env, k, v) => env.WARRANT.put(k, JSON.stringify(v));
 export default {
   async fetch(req, env) {
     const url = new URL(req.url);
-    const chiave = env.CHIAVE || "";
+    /* 💡 Si chiamava `CHIAVE` e basta, che nel pannello di Cloudflare non dice a
+     * cosa serva — rilievo di Nicolas. `CHIAVE_SCRITTURA` lo dice: autorizza a
+     * **scrivere** (il segnalibro che manda lo stash, la Action che deposita il
+     * risultato). Le letture non la usano e restano aperte.
+     * ⚠️ Il vecchio nome resta accettato come ripiego, cosi' il rinomino non ha
+     * un momento in cui il servizio e' rotto: si aggiunge il nuovo segreto, si
+     * verifica, e solo dopo si cancella il vecchio. */
+    const chiave = env.CHIAVE_SCRITTURA || env.CHIAVE || "";
     const autorizzato = () => chiave && url.searchParams.get("k") === chiave;
 
     if (req.method === "OPTIONS") return new Response(null, { headers: intestazioni() });
@@ -105,7 +112,12 @@ export default {
       }
 
       if (url.pathname === "/stash" && req.method === "GET") {
-        return passa(env, "stash", { warrant: [], quando: null });
+        /* 🔴 **200, non 404: «vuoto» non è «non trovato».** Uno stash mai
+         * sincronizzato è una risposta legittima — zero warrant — e chi chiede
+         * deve poterla leggere e dirlo con parole sue. Col 404 la Action moriva
+         * con uno stack trace (`/stash: HTTP 404`) invece del messaggio che le
+         * era stato scritto apposta. Misurato al primo giro vero, il 19 agosto. */
+        return passa(env, "stash", { warrant: [], quando: null }, 200);
       }
 
       /* --------------------------------------------------------- aggiornamento

@@ -6,7 +6,7 @@
 #
 # Da fare una volta sola, dalla cartella server/:
 #   npx wrangler kv namespace create WARRANT      -> incolla l'id qui sotto
-#   npx wrangler secret put CHIAVE                -> la stessa del segnalibro
+#   npx wrangler secret put CHIAVE_SCRITTURA      -> la stessa del segnalibro
 #   npx wrangler secret put GITHUB_TOKEN          -> token con permesso "contents: write" sul repo
 #   npx wrangler deploy
 #
