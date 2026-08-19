@@ -658,9 +658,17 @@ export default {
           build._righe = decodifica(build.listings);
           for (const w of gruppo) prezzati.push(prezzaWarrant(build, w, divine, mirror, 30));
         }
-        // si campionano i piu' preziosi: sono quelli su cui una vendita cambia una decisione
+        /* 🔴 **Prima quelle gia' fotografate.** Il piano sceglieva gli otto piu'
+         * preziosi del momento: ma il valore cambia a ogni giro, quindi cambiavano
+         * le combinazioni e ogni fotografia restava la prima — la storia non si
+         * accumulava mai. Ora la continuita' viene prima del valore: si rifotografa
+         * cio' che si sta gia' seguendo, e si riempie con i piu' preziosi rimasti. */
         prezzati.sort((a, b) => b.prezzo - a.prezzo);
-        return json({ piano: prezzati.slice(0, quanti).map((w) => ({
+        const seguite = (await m.leggi("campioni:elenco")) || [];
+        const giaSeguite = prezzati.filter((w) => seguite.includes(w.chiave));
+        const nuove = prezzati.filter((w) => !seguite.includes(w.chiave));
+        const piano = [...giaSeguite, ...nuove].slice(0, quanti);
+        return json({ piano: piano.map((w) => ({
           chiave: w.chiave, nome: w.nome, build: w.build, valore: w.prezzo, trade: w.trade,
         })) });
       }
@@ -688,6 +696,11 @@ export default {
           });
           esito.push({ chiave: c.chiave, nome: c.nome, viste: ids.length, sparite, ore });
         }
+        // l'elenco serve al piano per rifotografare le stesse combinazioni: senza,
+        // ogni giro ricomincerebbe da capo e la storia non crescerebbe mai
+        const elenco = (await m.leggi("campioni:elenco")) || [];
+        for (const c of esito) if (!elenco.includes(c.chiave)) elenco.push(c.chiave);
+        await m.scrivi("campioni:elenco", elenco.slice(-40));
         return json({ ok: true, campioni: esito });
       }
 

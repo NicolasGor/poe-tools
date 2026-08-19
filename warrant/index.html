@@ -27,6 +27,7 @@
   .reggono i{color:var(--label);font-style:normal}
   .conf{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;color:var(--muted)}
   .conf.magro{color:var(--warn)}
+  .oltre.mov{color:var(--good)}
   .oltre{display:block;font-size:var(--t-xs);color:var(--label)}
   .tr-link{color:var(--gold);white-space:nowrap;font-size:var(--t-xs)}
   .vuoto{padding:var(--s5);color:var(--label);text-align:center}
@@ -374,7 +375,8 @@ function disegna(dati) {
     return `<tr>
       <td><span class="nome">${esc(w.nome)}</span><span class="${vend}">${esc(w.build)}${w.infamous ? " · Infamous" : ""} · lvl ${esc(w.livello)}</span></td>
       <td class="n"><span class="prezzo${w.prezzo >= 10 ? "" : " basso"}">${w.prezzo.toFixed(0)} c</span>${quinto}</td>
-      <td class="conf${magro}">${w.confronti}<span class="oltre">inserzioni simili</span></td>
+      <td class="conf${magro}">${w.confronti}<span class="oltre">inserzioni simili</span>${
+        movimento(w.chiave) ? `<span class="oltre mov">${esc(movimento(w.chiave))}</span>` : ""}</td>
       <td class="reggono">${passi}${piu}</td>
       <td><button class="apri" aria-expanded="false" data-i="${i}">gemme &#9662;</button></td>
     </tr>
