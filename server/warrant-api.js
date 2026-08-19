@@ -169,11 +169,19 @@ function prezzaWarrant(build, warrant, divine, mirror, minimo) {
   // arrivavano dopo che la soglia era gia' stata consumata. Il peso si confronta
   // arrotondato a due decimali proprio per ammettere che sotto quella cifra la
   // differenza e' rumore.
+  // 🔴 **Prima le gemme sul colpo principale.** Rilievo di Nicolas: spuntare una
+  // gemma per skill non ha senso, perche' nessuno compra un mercenario per la sua
+  // `Altar of Chaos`. Il peso da solo non lo sapeva: guardava la gemma senza
+  // chiedersi su cosa stesse. Adesso le skill su cui il mercato mette gemme sul
+  // serio vengono prima, e solo dopo le altre.
+  const gemme = gemmePerSkill(build);
+  const principale = (c) => (gemme[c.si] >= SOGLIA_PRINCIPALE ? 1 : 0);
   const arrotonda = (c) => Math.round(pesi.get(c) * 100);
   let corrente = pool;
   const passi = [];
   let scartato = null;
-  for (const c of [...coppie].sort((a, b) => arrotonda(b) - arrotonda(a) || quanti.get(b) - quanti.get(a))) {
+  for (const c of [...coppie].sort((a, b) =>
+        principale(b) - principale(a) || arrotonda(b) - arrotonda(a) || quanti.get(b) - quanti.get(a))) {
     const filtrato = corrente.filter((r) => r.mappa.get(c.si)?.has(c.sj));
     const f = floorDi(filtrato, divine, mirror);
     if (f === null) continue;
@@ -211,6 +219,32 @@ function prezzaWarrant(build, warrant, divine, mirror, minimo) {
     chiave: chiaveCombinazione(linkTrade(build, skillIdx, passi, "Allflame")),
   };
 }
+
+/**
+ * Quante gemme il mercato mette su ogni skill dell'archetipo, in media.
+ *
+ * 🔴 Separa il **colpo principale** dalle skill di servizio, ed e' il pezzo che
+ * mancava al criterio del peso: quello guardava la gemma senza chiedersi su cosa
+ * stesse, e finiva per spendere le spunte su `Bane` o `Altar of Chaos`. Misurato
+ * il 19 agosto: sulle skill che portano il danno il mercato mette **4,6-4,7**
+ * gemme, su quelle di servizio **2**, sulle aure **0** — separazione netta,
+ * quindi la soglia sta comoda in mezzo.
+ */
+function gemmePerSkill(build) {
+  if (build._gemme) return build._gemme;
+  const somma = new Array(build.skills.length).fill(0);
+  const viste = new Array(build.skills.length).fill(0);
+  for (const r of build._righe) {
+    for (const g of r.slot) {
+      if (!g.length) continue;
+      viste[g[0]]++; somma[g[0]] += g.length - 1;
+    }
+  }
+  build._gemme = somma.map((n, i) => (viste[i] ? n / viste[i] : 0));
+  return build._gemme;
+}
+
+const SOGLIA_PRINCIPALE = 3.5;
 
 /** Quanto e' comune ogni skill nell'archetipo. Calcolata una volta e tenuta sul
  *  build: serve al link, dove una skill che ce l'hanno tutti costa un gruppo e
