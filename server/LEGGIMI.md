@@ -92,6 +92,31 @@ minuti, che è anche la cosa giusta nel merito: la fonte rigenera i suoi dati og
 ~10 minuti, quindi rifare il conto prima darebbe lo stesso numero. Un segreto lì
 avrebbe significato configurare ogni dispositivo.
 
+## La sincronizzazione gira da sola
+
+Un agente `launchd` lancia `strumenti/misure/sincronizza-warrant.sh` **ogni 3 ore**
+(`~/Library/LaunchAgents/com.nicolasgor.warrant-sync.plist`), registro in
+`~/Library/Logs/warrant-sync.log`.
+
+⚠️ **Tre ore e non una, ed è aritmetica del KV.** Un giro scrive **~60 chiavi**
+(47 schede, i prezzi, i due riassunti, lo stash, le fotografie del campionatore) e
+il piano gratuito ne concede **1.000 al giorno**:
+
+| Intervallo | Giri/giorno | Scritture | |
+|---|---:|---:|---|
+| 1 ora | 24 | **1.440** | 🔴 oltre il tetto |
+| 2 ore | 12 | 720 | ⚠️ nessun margine per i lanci a mano |
+| **3 ore** | 8 | **480** | ✅ metà budget |
+
+E non serve più spesso: la mediana dell'età di quelle inserzioni è di **165 ore**.
+
+🔴 **L'involucro `.sh` non è un vezzo.** `launchd` non eredita il `PATH` della
+shell, e qui `node` vive sotto nvm in un percorso che contiene il numero di
+versione: scriverlo nel plist avrebbe dato un agente che smette di funzionare **in
+silenzio** al primo aggiornamento di Node. L'involucro lo cerca, e se non lo trova
+lo scrive nel registro. *(Provato con `env -i`, cioè senza nessuna variabile
+d'ambiente: è l'unico modo di accorgersene prima.)*
+
 ## Come si mette online
 
 **Su Cloudflare**, dalla cartella `server/`:

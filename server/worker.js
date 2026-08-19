@@ -61,10 +61,12 @@ export default {
      * cosa serva — rilievo di Nicolas. `CHIAVE_SCRITTURA` lo dice: autorizza a
      * **scrivere** (il segnalibro che manda lo stash, la Action che deposita il
      * risultato). Le letture non la usano e restano aperte.
-     * ⚠️ Il vecchio nome resta accettato come ripiego, cosi' il rinomino non ha
-     * un momento in cui il servizio e' rotto: si aggiunge il nuovo segreto, si
-     * verifica, e solo dopo si cancella il vecchio. */
-    const chiave = env.CHIAVE_SCRITTURA || env.CHIAVE || "";
+     * 💡 Il rinomino e' passato per un ripiego temporaneo sul vecchio nome, cosi'
+     * da non avere un istante in cui il servizio era rotto: nuovo segreto,
+     * verifica, cancellazione del vecchio, e solo allora questa riga. Il ripiego
+     * e' sparito il 19 agosto 2026, appena `CHIAVE_SCRITTURA` ha retto una
+     * scrittura vera. */
+    const chiave = env.CHIAVE_SCRITTURA || "";
     const autorizzato = () => chiave && url.searchParams.get("k") === chiave;
 
     if (req.method === "OPTIONS") return new Response(null, { headers: intestazioni() });
