@@ -102,6 +102,10 @@
   th.ord:hover{color:var(--testo)}
   th.ord.attivo::after{content:" \2193";opacity:.7}
   th.ord.attivo[data-verso="su"]::after{content:" \2191"}
+  /* il conteggio vivo: stesso peso del prezzo, perche' e' l'altra meta' della
+     decisione — a quanto listare, e se c'e' ancora qualcuno che guarda */
+  .vivi{font-weight:600;color:var(--testo)}
+  .vivi.spento{color:var(--muted);text-decoration:line-through}
   td.dal{font-size:var(--t-xs);white-space:nowrap}
   td.dal .oltre{display:block}
   /* il confronto ristretto, sfrattato dalla tabella: qui sopra la scheda */
@@ -396,6 +400,11 @@ let ULTIMI = null;
    un id, e qui si unisce ai prezzi per id. Sta in un file suo perche' cambia con
    ritmi diversi: i prezzi si rifanno a ogni giro, queste date quasi mai. */
 let PRIMI_VISTI = {};
+/* Quante delle inserzioni simili sono delle ultime 24 ore, per id.
+   🔴 **Serve perche' «31 simili» non dice se quel mercato esiste ancora**: la
+   mediana dell'eta' di quelle inserzioni e' di **165 ore**. Misurato sui primi
+   tre warrant: 31 → 5, 46 → 11, 36 → 9 — quattro quinti sono fermi da giorni. */
+let ETA = {};
 let ORDINE = { campo: "valore", verso: -1 };
 
 const dal = (id) => {
@@ -454,8 +463,22 @@ function disegna(dati) {
       <td><span class="nome">${esc(w.nome)}</span><span class="${vend}">${esc(w.build)}${w.infamous ? " · Infamous" : ""} · lvl ${esc(w.livello)}</span></td>
       <td class="n"><span class="prezzo${w.prezzo >= 10 ? "" : " basso"}">${w.prezzo.toFixed(0)} c</span>${quinto}</td>
       <td class="dal">${dal(w.id)}</td>
-      <td class="conf${magro}">${w.confronti}<span class="oltre">inserzioni simili</span>${
-        movimento(w.chiave) ? `<span class="oltre mov">${esc(movimento(w.chiave))}</span>` : ""}</td>
+      <td class="conf${magro}">${(() => {
+        const e = ETA[w.id];
+        /* 🔴 **Davanti va il numero su cui si decide.** Prima qui c'era il totale,
+           che conta anche le inserzioni ferme da giorni e quindi dice quanto e'
+           grande il gruppo, non se e' vivo. Se la misura dell'eta' non c'e'
+           ancora si mostra il totale, ma senza spacciarlo per l'altro. */
+        if (!e || e.recenti == null) return `${w.confronti}<span class="oltre">inserzioni simili</span>`;
+        const morto = e.recenti === 0 ? " spento" : "";
+        /* ⚠️ Il titolo porta **quando** e' stata misurata, e non e' pedanteria: il
+           trade ha un limite severo, quindi si misurano pochi warrant per giro e
+           un numero puo' avere qualche ora. Senza la data sembrerebbe di adesso. */
+        const quando = e.quando ? ` · misurato il ${dataIt(e.quando)}` : "";
+        return `<span class="vivi${morto}" title="Inserzioni simili apparse nelle ultime 24 ore${quando}">${e.recenti}</span>` +
+               `<span class="oltre">nelle ultime 24 h</span>` +
+               `<span class="oltre">su ${e.totale ?? w.confronti} simili</span>`;
+      })()}${movimento(w.chiave) ? `<span class="oltre mov">${esc(movimento(w.chiave))}</span>` : ""}</td>
       <td><button class="apri" aria-expanded="false" data-i="${i}">gemme &#9662;</button></td>
     </tr>
     <tr class="scheda" hidden><td colspan="5">
@@ -489,13 +512,15 @@ async function leggiStato() {
 async function leggiPrezzi() {
   /* Le due letture insieme: senza le date la colonna «Dal» comparirebbe vuota per
      un istante e poi si riempirebbe, che e' peggio di aspettarle. */
-  const [r, rv] = await Promise.all([
+  const [r, rv, re] = await Promise.all([
     fetch(`${API}/prezzo`),
     fetch(`${API}/primi-visti`).catch(() => null),
+    fetch(`${API}/eta-inserzioni`).catch(() => null),
   ]);
   const dati = await r.json();
   if (dati.errore) return { errore: dati.errore };
   if (rv && rv.ok) PRIMI_VISTI = await rv.json().catch(() => ({}));
+  if (re && re.ok) ETA = (await re.json().catch(() => ({}))).eta || {};
   dati.letto_il = new Date().toISOString();
   disegna(dati); caricaLiquidita(dati);   // disegna() salva la cache nell'ordine mostrato
   return dati;

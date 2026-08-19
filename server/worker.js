@@ -136,6 +136,13 @@ export default {
 
       // da quando ogni warrant e' in casa: `{ id: iso }`. La pagina lo unisce ai
       // prezzi per id — tenerlo separato evita di rigenerare tutto quando cambia.
+      /* Quante delle inserzioni simili sono delle ultime 24 ore. Sta in un file
+       * suo perche' si misura con ritmi diversi dai prezzi: e' un giro di ~3,5 s
+       * per warrant sul trade, quindi lo fa solo la sincronizzazione a orario. */
+      if (url.pathname === "/eta-inserzioni") {
+        return passa(env, "eta-inserzioni", { quando: null, eta: {} }, 200);
+      }
+
       if (url.pathname === "/primi-visti") {
         return passa(env, "primi-visti", {}, 200);
       }
@@ -316,7 +323,7 @@ export default {
         if (!nome) return json({ errore: "manca il nome della chiave" }, 400);
         // 🔴 Elenco chiuso: senza, la CHIAVE diventerebbe un permesso di scrivere
         // qualunque cosa nel magazzino, compreso lo `stash` che non e' suo mestiere.
-        const ammesse = /^(prezzi|stato:prezzi|aggiornamento|richiesta-stash|scheda:[0-9a-f]{8,80})$/;
+        const ammesse = /^(prezzi|stato:prezzi|aggiornamento|richiesta-stash|eta-inserzioni|scheda:[0-9a-f]{8,80})$/;
         if (!ammesse.test(nome)) return json({ errore: `chiave non ammessa: ${nome}` }, 400);
         await env.WARRANT.put(nome, req.body);
         return json({ ok: true, scritta: nome });
@@ -351,7 +358,7 @@ export default {
       }
 
       return json({ errore: "rotta sconosciuta", rotte: [
-        "GET /stato", "GET /prezzo", "GET /dettaglio?id=", "GET /stash", "GET /primi-visti", "POST /stash?k=", "POST /deposita?k=&chiave=", "POST /chiedi-stash",
+        "GET /stato", "GET /prezzo", "GET /dettaglio?id=", "GET /stash", "GET /primi-visti", "GET /eta-inserzioni", "POST /stash?k=", "POST /deposita?k=&chiave=", "POST /chiedi-stash",
         "POST /aggiorna", "GET /campione/piano?k=", "POST /campione?k=", "GET /liquidita?chiavi=",
       ] }, 404);
     } catch (e) {
