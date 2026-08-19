@@ -481,7 +481,7 @@ function disegnaScheda(i) {
         <span class="segno">${acceso ? "\u2713" : ""}</span>
         <span>${esc(s.supporto)}</span>
         <span class="peso ${s.peso >= 1.05 ? "paga" : ""}">${s.peso.toFixed(2)}\u00d7</span>
-        <span class="delta ${dopo.n < 5 ? "irreale" : salto ? (salto < 0 ? "giu" : "") : "zero"}">${testoSalto}</span>
+        <span class="delta ${dopo.n < 5 ? "irreale" : Math.abs(salto || 0) < 2 ? "zero" : (salto < 0 ? "giu" : "")}">${testoSalto}</span>
         <span class="resta ${dopo.n < 5 ? "magro" : ""}">${dopo.n}</span>
       </div>`;
     }).join("");
