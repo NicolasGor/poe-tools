@@ -349,7 +349,7 @@ async function aggiornaPrezzi() {
     const dati = await r.json();
     if (dati.errore) { $("stato").textContent = dati.errore; return; }
     dati.letto_il = new Date().toISOString();
-    salvaCache(dati); disegna(dati);
+    salvaCache(dati); disegna(dati); caricaLiquidita(dati);
   } catch (e) {
     $("stato").textContent = "il server non risponde: " + e.message;
   } finally { b.disabled = false; b.textContent = "Aggiorna prezzi"; }
@@ -389,7 +389,33 @@ for(const tab of t.tabs){
  await new Promise(r=>setTimeout(r,600));
 }
 const r=await fetch(A+'/stash?k='+encodeURIComponent(K),{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({warrant:fuori})});
-alert(r.ok?fuori.length+' warrant sincronizzati':'errore: '+await r.text());})()`;
+if(!r.ok){alert('errore: '+await r.text());return}
+// seconda parte: si fotografano le inserzioni dei warrant piu' preziosi, per
+// sapere quante spariscono da un giro all'altro
+let campioni=[],nota='';
+try{
+ const piano=(await (await fetch(A+'/campione/piano?k='+encodeURIComponent(K)+'&quanti=8')).json()).piano||[];
+ for(const c of piano){
+  const q=JSON.parse(decodeURIComponent(c.trade.split('?q=')[1]));
+  const sr=await fetch('/api/trade/search/Allflame',{method:'POST',headers:{'content-type':'application/json'},credentials:'include',body:JSON.stringify(q)});
+  if(!sr.ok){await new Promise(x=>setTimeout(x,4000));continue}
+  const sj=await sr.json();
+  const ids=(sj.result||[]).slice(0,10);
+  if(!ids.length){campioni.push({chiave:c.chiave,nome:c.nome,build:c.build,totale:sj.total,inserzioni:[]});continue}
+  const fr=await fetch('/api/trade/fetch/'+ids.join(',')+'?query='+sj.id,{credentials:'include'});
+  const fj=await fr.json();
+  campioni.push({chiave:c.chiave,nome:c.nome,build:c.build,totale:sj.total,
+   inserzioni:(fj.result||[]).filter(Boolean).map(x=>({id:x.id,prezzo:x.listing&&x.listing.price?x.listing.price.amount+' '+x.listing.price.currency:null,indexed:x.listing&&x.listing.indexed}))});
+  await new Promise(x=>setTimeout(x,3500));
+ }
+ if(campioni.length){
+  const cr=await fetch(A+'/campione?k='+encodeURIComponent(K),{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({campioni})});
+  const cj=await cr.json();
+  const conStoria=(cj.campioni||[]).filter(x=>x.sparite!==null);
+  nota=conStoria.length?' \u00b7 '+conStoria.map(x=>x.sparite+'/'+x.viste+' sparite in '+x.ore+'h').slice(0,3).join(', '):' \u00b7 prima fotografia del mercato';
+ }
+}catch(e){nota=' \u00b7 campionamento saltato: '+e.message}
+alert(fuori.length+' warrant sincronizzati'+nota);})()`;
   $("bookmarklet").href = "javascript:" + encodeURIComponent(codice.replace(/\n/g, ""));
 }
 
@@ -481,6 +507,7 @@ function disegnaScheda(i) {
       <div class="conta"><span>inserzioni simili</span><b>${ora.n.toLocaleString("it")}</b></div>
       <div class="floor ${ora.n < 10 ? "magro" : ""}"><span>quanto vale</span><b>${chaos(ora.floor)}</b></div>
       <div><span>gli altri fino a</span><b>${quintoDi(dati.righe, sel)}</b></div>
+      ${stato.movimento ? `<div><span>movimento</span><b style="font-size:var(--t-base)">${esc(stato.movimento)}</b></div>` : ""}
     </div>
     <div class="gemme">${carte}</div>
     <div class="scheda-pie">
@@ -564,6 +591,30 @@ function linkTrade(dati, sel) {
   };
 }
 
+/* Quante inserzioni sono sparite fra due fotografie: l'unico segnale di
+   movimento che un libro di sole richieste concede. ⚠️ Sparire non vuol dire
+   venduto — puo' essere tolto o riprezzato — ma un libro dove non sparisce
+   niente non sta vendendo, e questo lo dice. */
+let LIQUIDITA = {};
+
+async function caricaLiquidita(dati) {
+  if (!API || !dati || !dati.warrant) return;
+  const chiavi = dati.warrant.map((w) => w.chiave).filter(Boolean);
+  if (!chiavi.length) return;
+  try {
+    const r = await fetch(`${API}/liquidita?chiavi=${encodeURIComponent(chiavi.join(","))}`);
+    LIQUIDITA = (await r.json()).campioni || {};
+    if (Object.keys(LIQUIDITA).length) disegna(dati);
+  } catch (e) {}
+}
+
+function movimento(chiave) {
+  const v = chiave && LIQUIDITA[chiave];
+  if (!v || !v.storia || !v.storia.length) return null;
+  const ultimo = v.storia[v.storia.length - 1];
+  return `${ultimo.sparite} su ${ultimo.viste} sparite in ${ultimo.ore} h`;
+}
+
 async function apriScheda(i, bottone) {
   const riga = bottone.closest("tr").nextElementSibling;
   const aperta = bottone.getAttribute("aria-expanded") === "true";
@@ -597,7 +648,7 @@ async function apriScheda(i, bottone) {
       const migliore = dati.supporti.reduce((a, b) => (b.peso > a.peso ? b : a));
       sel = 1 << migliore.i;
     }
-    SCHEDE.set(i, {dati, sel});
+    SCHEDE.set(i, {dati, sel, movimento: movimento(w.chiave)});
     disegnaScheda(i);
   } catch (e) {
     $(`scheda-${i}`).textContent = "il server non risponde: " + e.message;
@@ -618,7 +669,7 @@ document.addEventListener("click", (e) => {
 });
 
 const cache = leggiCache();
-if (cache) { disegna(cache); }
+if (cache) { disegna(cache); caricaLiquidita(cache); }
 </script>
 </body>
 </html>

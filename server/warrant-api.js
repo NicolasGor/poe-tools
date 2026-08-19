@@ -154,19 +154,26 @@ function prezzaWarrant(build, warrant, divine, mirror, minimo) {
   const quotaBase = pool.length
     ? pool.filter((r) => inChaos(r, divine, mirror) >= soglia).length / pool.length
     : 0;
-  const pesi = new Map();
+  const pesi = new Map(), quanti = new Map();
   for (const c of coppie) {
     const con = pool.filter((r) => r.mappa.get(c.si)?.has(c.sj));
+    quanti.set(c, con.length);
     if (con.length < 50 || !quotaBase) { pesi.set(c, 1); continue; }
     const sopra = con.filter((r) => inChaos(r, divine, mirror) >= soglia).length;
     pesi.set(c, (sopra / con.length) / quotaBase);
   }
 
-  // si stringe in ordine di peso, finche' la soglia dei confronti regge
+  // 🔴 **A parita' di peso vince chi lascia piu' confronti.** Prima l'ordine fra
+  // pesi indistinguibili (1,01 contro 1,01) lo decideva l'ordine di elenco, cioe'
+  // il caso: entrava una gemma e le altre tre restavano fuori solo perche'
+  // arrivavano dopo che la soglia era gia' stata consumata. Il peso si confronta
+  // arrotondato a due decimali proprio per ammettere che sotto quella cifra la
+  // differenza e' rumore.
+  const arrotonda = (c) => Math.round(pesi.get(c) * 100);
   let corrente = pool;
   const passi = [];
   let scartato = null;
-  for (const c of [...coppie].sort((a, b) => pesi.get(b) - pesi.get(a))) {
+  for (const c of [...coppie].sort((a, b) => arrotonda(b) - arrotonda(a) || quanti.get(b) - quanti.get(a))) {
     const filtrato = corrente.filter((r) => r.mappa.get(c.si)?.has(c.sj));
     const f = floorDi(filtrato, divine, mirror);
     if (f === null) continue;
@@ -201,6 +208,7 @@ function prezzaWarrant(build, warrant, divine, mirror, minimo) {
     // numeri diversi sullo stesso mercenario, nella stessa pagina.
     gemme: warrant.skills,
     trade: linkTrade(build, skillIdx, passi, "Allflame"),
+    chiave: chiaveCombinazione(linkTrade(build, skillIdx, passi, "Allflame")),
   };
 }
 
@@ -261,6 +269,20 @@ function linkTrade(build, skillIdx, passi, lega) {
   }));
   const q = { query: { status: { option: "securable" }, stats }, sort: { price: "asc" } };
   return `https://www.pathofexile.com/trade/search/${lega}?q=${encodeURIComponent(JSON.stringify(q))}`;
+}
+
+/**
+ * La chiave di una combinazione: gli id dei filtri del suo link, ordinati.
+ * Serve al campionatore, e deve essere **della combinazione, non del warrant**:
+ * se vendi questo mercenario e ne trovi un altro uguale, la storia continua
+ * invece di ricominciare.
+ */
+function chiaveCombinazione(urlTrade) {
+  const q = JSON.parse(decodeURIComponent(urlTrade.split("?q=")[1]));
+  const ids = q.query.stats.flatMap((g) => g.filters.map((f) => f.id)).sort();
+  let h = 0;
+  for (const c of ids.join("|")) h = (Math.imul(31, h) + c.charCodeAt(0)) | 0;
+  return (h >>> 0).toString(36);
 }
 
 const slugDi = (nome) => nome.replace(/^Infamous /, "").toLowerCase().replace(/'/g, "").replace(/ /g, "-");
@@ -410,7 +432,92 @@ export default {
         });
       }
 
-      return json({ errore: "rotta sconosciuta", rotte: ["/stato", "/mercato/<archetipo>", "/stash", "/prezzo", "/dettaglio"] }, 404);
+      /* ------------------------------------------------------- campionatore
+       * 🔴 **Perche' non lo fa il server da solo.** Da sloggati il trade accetta
+       * **un solo gruppo** `mercenary` per query: le nostre ne hanno quattro o
+       * cinque, quindi qui arriverebbero solo 400. Le ricerche le esegue il
+       * segnalibro, dentro pathofexile.com, dove la sessione e' viva — e con la
+       * stessa mano leggera dello stash: qualche query, distanziate.
+       *
+       * ⚠️ **Cosa misura davvero.** Non le vendite: le **sparizioni**. Una
+       * inserzione che non c'e' piu' e' stata comprata, tolta o riprezzata, e le
+       * tre cose non si distinguono. E' comunque l'unico segnale di movimento che
+       * un libro di inserzioni concede — l'eta' (`indexed`) dice solo da quanto
+       * qualcosa e' fermo.
+       */
+      if (url.pathname === "/campione/piano") {
+        if (!chiave || url.searchParams.get("k") !== chiave) return json({ errore: "chiave mancante o sbagliata" }, 403);
+        const m = await magazzino(env);
+        const s = (await m.leggi("stash")) || { warrant: [] };
+        const quanti = Math.min(Number(url.searchParams.get("quanti") || 8), 20);
+
+        const builder = await indice("builder");
+        const divine = builder.divineRate, mirror = 884;
+        const perSlug = new Map();
+        for (const w of s.warrant) {
+          const sl = slugDi(w.build || "");
+          if (!perSlug.has(sl)) perSlug.set(sl, []);
+          perSlug.get(sl).push(w);
+        }
+        const prezzati = [];
+        for (const [sl, gruppo] of perSlug) {
+          let build;
+          try { build = await indice(sl); } catch { continue; }
+          build._righe = decodifica(build.listings);
+          for (const w of gruppo) prezzati.push(prezzaWarrant(build, w, divine, mirror, 30));
+        }
+        // si campionano i piu' preziosi: sono quelli su cui una vendita cambia una decisione
+        prezzati.sort((a, b) => b.prezzo - a.prezzo);
+        return json({ piano: prezzati.slice(0, quanti).map((w) => ({
+          chiave: w.chiave, nome: w.nome, build: w.build, valore: w.prezzo, trade: w.trade,
+        })) });
+      }
+
+      if (url.pathname === "/campione" && req.method === "POST") {
+        if (!chiave || url.searchParams.get("k") !== chiave) return json({ errore: "chiave mancante o sbagliata" }, 403);
+        const m = await magazzino(env);
+        const corpo = await req.json();
+        const adesso = new Date().toISOString();
+        const esito = [];
+        for (const c of corpo.campioni || []) {
+          if (!c.chiave || !Array.isArray(c.inserzioni)) continue;
+          const vecchio = await m.leggi("campione:" + c.chiave);
+          const ids = c.inserzioni.map((x) => x.id);
+          let sparite = null, ore = null;
+          if (vecchio) {
+            const prima = new Set(vecchio.ids);
+            sparite = vecchio.ids.filter((x) => !ids.includes(x)).length;
+            ore = +((new Date(adesso) - new Date(vecchio.quando)) / 3600000).toFixed(1);
+          }
+          const storia = [...(vecchio?.storia || []), ...(sparite === null ? [] : [{ quando: adesso, ore, sparite, viste: vecchio.ids.length }])].slice(-12);
+          await m.scrivi("campione:" + c.chiave, {
+            chiave: c.chiave, nome: c.nome, build: c.build, quando: adesso,
+            totale: c.totale ?? null, ids, prezzi: c.inserzioni.map((x) => x.prezzo), storia,
+          });
+          esito.push({ chiave: c.chiave, nome: c.nome, viste: ids.length, sparite, ore });
+        }
+        return json({ ok: true, campioni: esito });
+      }
+
+      if (url.pathname === "/liquidita") {
+        const m = await magazzino(env);
+        const s = (await m.leggi("stash")) || { warrant: [] };
+        // niente elenco completo del KV: si chiede per chiave, che la pagina ha gia'
+        const chiavi = (url.searchParams.get("chiavi") || "").split(",").filter(Boolean).slice(0, 40);
+        const fuori = {};
+        for (const k of chiavi) {
+          const v = await m.leggi("campione:" + k);
+          if (!v) continue;
+          const storia = v.storia || [];
+          const totOre = storia.reduce((n, x) => n + (x.ore || 0), 0);
+          const totSparite = storia.reduce((n, x) => n + (x.sparite || 0), 0);
+          fuori[k] = { nome: v.nome, quando: v.quando, viste: v.ids.length, storia,
+                       spariteOra: totOre ? +(totSparite / totOre * 24).toFixed(1) : null };
+        }
+        return json({ campioni: fuori, warrantInStash: s.warrant.length });
+      }
+
+      return json({ errore: "rotta sconosciuta", rotte: ["/stato", "/mercato/<archetipo>", "/stash", "/prezzo", "/dettaglio", "/campione/piano", "/campione", "/liquidita"] }, 404);
     } catch (e) {
       return json({ errore: String(e && e.message || e) }, 502);
     }
