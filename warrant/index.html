@@ -82,6 +82,9 @@
   .tuoi.vuoto{background:var(--panel2);color:var(--muted)}
   .tuoi.vuoto.clic:hover{background:var(--panel-alto);color:var(--testo)}
   .nessuno{margin-top:var(--s2)}
+  /* l'evidenza non deve cambiare il colore del testo che sta sotto: quelli
+     dicono gia' qualcosa (verde = ce l'hai, rosso = lo azzera) */
+  mark.trova{background:rgba(212,163,74,.32);color:inherit;border-radius:3px;padding:0 1px}
   .targa{display:inline-flex;align-items:center;gap:var(--s2)}
   .cerca-barra{margin-top:calc(var(--s2) * -1)}
   #cerca{flex:1;min-width:220px;max-width:420px;padding:6px 10px;border-radius:8px;
@@ -658,6 +661,41 @@ function disegnaTarga() {
   $("azzera-filtro").addEventListener("click", () => mostraSolo(null, ""));
 }
 
+/* ------------------------------------------------------------- evidenziazione
+ * **Si lavora sui nodi di testo, non sull'HTML.** Cercare e sostituire nella
+ * stringa di markup significherebbe colpire anche i nomi dei tag, le classi e
+ * gli `href`: basta cercare «a» o «div» per sfasciare la pagina. Camminare
+ * sull'albero tocca solo cio' che si legge davvero.
+ *
+ * ⚠️ E prima si ripulisce: la tabella **non si ridisegna** a ogni tasto — filtra
+ * nascondendo righe — quindi senza togliere i `<mark>` precedenti si
+ * accumulerebbero uno dentro l'altro a ogni lettera battuta.
+ */
+function pulisciEvidenza(radice) {
+  radice.querySelectorAll("mark.trova").forEach((m) => {
+    m.replaceWith(document.createTextNode(m.textContent));
+  });
+  radice.normalize();   // ricuce i frammenti, o la ricerca dopo non li vedrebbe interi
+}
+
+function evidenzia(radice, termini) {
+  pulisciEvidenza(radice);
+  const buoni = termini.filter((x) => x && x.length >= 2);   // una lettera sola colorerebbe tutto
+  if (!buoni.length) return;
+  const re = new RegExp("(" + buoni.map((x) => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|") + ")", "gi");
+  const cammino = document.createTreeWalker(radice, NodeFilter.SHOW_TEXT, {
+    acceptNode: (n) => (n.nodeValue.trim() && n.parentElement.tagName !== "MARK")
+      ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT,
+  });
+  const daFare = [];
+  while (cammino.nextNode()) if (re.test(cammino.currentNode.nodeValue)) daFare.push(cammino.currentNode);
+  for (const n of daFare) {
+    const pezzo = document.createElement("span");
+    pezzo.innerHTML = esc(n.nodeValue).replace(re, '<mark class="trova">$1</mark>');
+    n.replaceWith(...pezzo.childNodes);
+  }
+}
+
 function filtra() {
   const q = $("cerca").value.trim().toLowerCase();
   // più parole = tutte devono esserci: «return fork» sono due gemme, non una frase
@@ -672,6 +710,7 @@ function filtra() {
     tr.classList.toggle("fuori", !dentro);
     if (tr.nextElementSibling) tr.nextElementSibling.classList.toggle("fuori", !dentro);
   });
+  evidenzia($("righe"), termini);
   $("conta-cerca").textContent = (termini.length || FILTRO_IDS)
     ? (visti ? `${visti} di ${totale}` : "nessun mercenario con queste gemme")
     : "";
@@ -1191,6 +1230,10 @@ function disegnaGriglia(filtro = "") {
       </div>
     </div>`;
   }).join("");
+
+  // la griglia si ridisegna a ogni tasto, quindi qui non serve ripulire: basta
+  // rimettere l'evidenza sul testo appena creato
+  evidenzia($("griglia-corpo"), f ? f.split(/\s+/).filter(Boolean) : []);
 }
 
 function apriGriglia(apri) {
