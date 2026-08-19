@@ -213,25 +213,23 @@
   </div>
 
   <div class="pannello" id="p-stash" hidden>
-    <p><b>Lo stash lo legge un segnalibro, non questo sito.</b> Le tab si possono
-    leggere solo da dentro pathofexile.com, dove la tua sessione è già viva: nessun
-    token e nessuna password passano di qui. GGG non registra più nuove
-    applicazioni OAuth, quindi il tasto «autorizza» degli altri siti oggi non è
-    ripetibile — questo lo sostituisce.</p>
-    <ol>
-      <li><b>Indirizzo del server</b> (quello del progetto, finisce in <code>.deno.dev</code>):<br>
-        <input id="indirizzo" type="text" placeholder="https://....deno.dev" autocomplete="off" spellcheck="false"></li>
-      <li><b>Chiave</b> di sincronizzazione — la stessa che hai messo nelle variabili d'ambiente del server. Resta in questo browser:<br>
-        <input id="chiave" type="password" placeholder="chiave" autocomplete="off"></li>
-      <li>Trascina questo nella barra dei segnalibri — <b>una volta sola</b>: dentro c'è solo un caricatore, il codice vero sta sul sito e si aggiorna da sé.
-        <a class="segnalibro" id="bookmarklet" href="#">Sincronizza warrant</a>
-        <span class="stato" id="pronto"></span></li>
-      <li>Apri <a href="https://www.pathofexile.com/my-account" target="_blank" rel="noopener">pathofexile.com</a> da loggato e cliccalo: legge le tab e manda qui i warrant trovati.</li>
-      <li>Torna qui e premi <b>Aggiorna prezzi</b>.</li>
-    </ol>
-    <p class="stato" style="margin-top:var(--s3)">🔴 <b>Indirizzo e chiave restano dentro al segnalibro dal momento in cui lo trascini</b>: se cambi uno dei due, quello va rifatto. Il resto — cosa legge e cosa misura — arriva dal sito a ogni click.</p>
-    <p class="stato">Oltre a leggere le tab, fotografa il mercato delle <b>otto combinazioni più preziose</b>: al giro dopo dirà quante di quelle inserzioni sono sparite. ⚠️ Sparire non è vendere — può essere tolto o riprezzato — ma un libro dove non sparisce niente non sta vendendo.</p>
-    <p class="stato" style="margin-top:var(--s3)">Sullo Steam Deck il segnalibro non serve: leggi l'ultima sincronizzazione fatta dal Mac.</p>
+    <p><b>Questa pagina non scrive niente: legge e basta.</b> Per questo si apre su
+    qualsiasi dispositivo — Mac, Steam Deck, telefono — senza chiedere nessuna
+    chiave e senza niente da configurare.</p>
+    <p>I warrant li manda qui una <b>sincronizzazione che gira sul Mac</b>
+    (<code>strumenti/misure/sincronizza-warrant.mjs</code>): riusa il profilo del
+    browser dove il login a pathofexile.com è già stato fatto, legge le tab e
+    spedisce solo il risultato. La chiave di scrittura sta nel <b>Portachiavi</b>
+    del Mac, non in una pagina web.</p>
+    <p class="stato">🔴 <b>La sessione serve per forza, e non è aggirabile.</b>
+    Misurato il 19 agosto 2026: <code>get-stash-items</code> senza sessione
+    risponde <b>403</b>; la pagina <code>view-profile/&lt;account&gt;/stashes</code>
+    di GGG mostra <b>solo le tab pubbliche</b>; e l'OAuth è chiuso —
+    <i>«We are currently unable to process new applications»</i>. Quindi il solo
+    nome account non basta: qualcuno deve avere una sessione viva.</p>
+    <p class="stato">⚠️ Ne segue un limite, e va detto: i warrant si aggiornano
+    <b>quando il Mac è acceso</b>. I prezzi invece si leggono sempre e ovunque.</p>
+    <div id="riga-stato-stash"></div>
   </div>
 
   <div class="scroll">
@@ -350,8 +348,6 @@ const VENDIBILI = new Set(["Kineticist","Manyshot","Sniper","Cruel Mistress","St
 const $ = (id) => document.getElementById(id);
 const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-const chiave = () => localStorage.getItem("warrant-chiave") || "";
-
 /* La cache locale non e' un'ottimizzazione: e' cio' che fa aprire la pagina sullo
    Steam Deck e vedere subito l'ultima lettura, senza aspettare una richiesta. */
 function salvaCache(dati) { try { localStorage.setItem("warrant-dati", JSON.stringify(dati)); } catch (e) {} }
@@ -454,30 +450,13 @@ async function aggiornaPrezzi() {
   } finally { b.disabled = false; b.textContent = etichetta || "Aggiorna prezzi"; }
 }
 
-/* Il segnalibro e' solo un caricatore: scarica `segnalibro.js` da questo sito e
-   lo esegue dentro pathofexile.com, dove la sessione e' viva. Cosi' si trascina
-   **una volta sola** — le correzioni al codice arrivano da sole, senza dover
-   buttare e ritrascinare il preferito a ogni modifica. */
-function costruisciSegnalibro() {
-  const k = chiave();
-  const a = $("bookmarklet"), avviso = $("pronto");
-  if (!API || !k) {
-    a.removeAttribute("href");
-    a.style.opacity = ".45";
-    avviso.textContent = !API ? " \u2190 prima l'indirizzo del server" : " \u2190 prima la chiave";
-    return;
-  }
-  a.style.opacity = "1";
-  avviso.textContent = " pronto: trascinalo";
-  const sorgente = new URL("segnalibro.js", location.href).href;
-  const codice = `(async()=>{try{
-const A=${JSON.stringify(API)},K=${JSON.stringify(k)};
-const src=await (await fetch(${JSON.stringify(sorgente)}+'?t='+Date.now())).text();
-const mod=await import('data:text/javascript;base64,'+btoa(unescape(encodeURIComponent(src))));
-await mod.default(A,K);
-}catch(e){alert('Segnalibro: '+e.message)}})()`;
-  a.href = "javascript:" + encodeURIComponent(codice.replace(/\n/g, ""));
-}
+/* 🔴 Qui stava `costruisciSegnalibro()`, e con lei il campo della chiave segreta.
+   Il segnalibro esisteva perche' era **la pagina** a scrivere lo stash, e per
+   generarlo bisognava incollarle dentro la chiave — la cosa che a Nicolas
+   piaceva meno di tutte, e aveva ragione: un sito statico e pubblico non e' il
+   posto di un segreto. Spostata la scrittura su
+   `strumenti/misure/sincronizza-warrant.mjs`, che gira sul Mac e tiene la chiave
+   nel Portachiavi, qui non serve piu' niente: questa pagina **legge e basta**. */
 
 async function stato() {
   if (!API) return;
@@ -485,25 +464,15 @@ async function stato() {
   // aperto sa subito se c'e' un risultato e di quando e'
   const s = await leggiStato();
   if (s?.stash?.quando) {
-    $("p-stash").insertAdjacentHTML("afterbegin",
-      `<p class="stato">Ultima sincronizzazione: <b>${dataIt(s.stash.quando)}</b> · <b>${s.stash.warrant}</b> warrant.</p>`);
+    $("riga-stato-stash").innerHTML =
+      `<p class="stato">Ultima sincronizzazione dal Mac: <b>${dataIt(s.stash.quando)}</b> · <b>${s.stash.warrant}</b> warrant.</p>`;
   }
 }
 
 $("b-prezzi").addEventListener("click", aggiornaPrezzi);
 $("b-stash").addEventListener("click", () => {
   const p = $("p-stash"); p.hidden = !p.hidden;
-  if (!p.hidden) { $("chiave").value = chiave(); $("indirizzo").value = API; costruisciSegnalibro(); stato(); }
-});
-$("chiave").addEventListener("input", (e) => {
-  localStorage.setItem("warrant-chiave", e.target.value.trim());
-  costruisciSegnalibro();
-});
-$("indirizzo").addEventListener("input", (e) => {
-  API = e.target.value.trim().replace(/\/$/, "");
-  localStorage.setItem("warrant-api", API);
-  costruisciSegnalibro();
-  stato();
+  if (!p.hidden) stato();
 });
 
 /* ------------------------------------------------------------------ la scheda
