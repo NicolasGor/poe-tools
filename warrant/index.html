@@ -573,7 +573,12 @@ async function sincronizzaStash() {
     // il 429 non e' un errore: una richiesta e' gia' in coda, quindi si aspetta lei
     if (!r.ok && r.status !== 429) { $("stato").textContent = d.errore || `il server risponde ${r.status}`; return; }
 
-    for (let i = 0; i < 40; i++) {
+    /* ⚠️ **Quattro minuti, non tre.** Il percorso e' lungo: fino a 45 s prima che
+       l'agente sul Mac veda la richiesta, ~25 s per leggere le tab, ~40 s per la
+       Action che prezza. Il tetto era 200 s e col campionatore in mezzo veniva
+       superato davvero, quindi chi guardava vedeva la resa invece del risultato.
+       Meglio abbondare: se il Mac e' spento lo si scopre comunque, solo dopo. */
+    for (let i = 0; i < 48; i++) {
       await new Promise((f) => setTimeout(f, 5000));
       const s = await leggiStato();
       const letto = s?.stash?.quando && s.stash.quando !== prima;
@@ -584,7 +589,7 @@ async function sincronizzaStash() {
         return;
       }
     }
-    $("stato").textContent = "il Mac non ha risposto: probabilmente è spento. Resta l'ultima lettura.";
+    $("stato").textContent = "il Mac non ha risposto in quattro minuti: probabilmente è spento. Resta l'ultima lettura.";
   } catch (e) {
     $("stato").textContent = "il server non risponde: " + e.message;
   } finally {
