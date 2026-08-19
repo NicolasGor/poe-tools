@@ -345,7 +345,18 @@ function dataIt(iso) {
   return `${d.getDate()} ${mesi[d.getMonth()]}, ${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")}`;
 }
 
+/* L'ultimo dato disegnato. Dichiarato qui, sopra a chi lo scrive e a chi lo
+   legge, perche' un `let` usato prima della sua riga esplode a runtime. */
+let ULTIMI = null;
+
 function disegna(dati) {
+  /* 🔴 **L'ultimo dato disegnato, e serve a chi ridisegna dopo.** Al
+     caricamento si disegna prima la cache e poi il dato fresco; se un'altra
+     funzione asincrona tiene stretto il dato che le era stato passato e
+     ridisegna quello, riporta indietro lo schermo. Successo il 19 agosto:
+     `caricaLiquidita(cache)` ripitturava **47 warrant** sopra i 49 appena
+     letti, e in pagina non si vedeva niente di rotto — solo un numero vecchio. */
+  ULTIMI = dati;
   const corpo = $("righe");
   if (!dati || !dati.warrant || !dati.warrant.length) {
     corpo.innerHTML = '<tr><td colspan="5" class="vuoto">Nessun warrant. Sincronizza lo stash, poi aggiorna i prezzi.</td></tr>';
@@ -695,7 +706,8 @@ async function caricaLiquidita(dati) {
   try {
     const r = await fetch(`${API}/liquidita?chiavi=${encodeURIComponent(chiavi.join(","))}`);
     LIQUIDITA = (await r.json()).campioni || {};
-    if (Object.keys(LIQUIDITA).length) disegna(dati);
+    // si ridisegna **l'ultimo** dato, non quello di partenza: vedi ULTIMI
+    if (Object.keys(LIQUIDITA).length) disegna(ULTIMI || dati);
   } catch (e) {}
 }
 
@@ -968,6 +980,9 @@ document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("grig
 const cache = leggiCache();
 if (cache) { disegna(cache); caricaLiquidita(cache); }
 leggiPrezzi().catch(() => {});
+// l'ora dell'ultima lettura dal Mac finisce nel titolo del pulsante: senza questa
+// chiamata resterebbe vuoto per sempre, perche' il pannello che la faceva non c'e' piu'
+stato();
 </script>
 </body>
 </html>
