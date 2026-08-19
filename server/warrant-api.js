@@ -319,6 +319,30 @@ function chiaveCombinazione(urlTrade) {
   return (h >>> 0).toString(36);
 }
 
+/**
+ * Il link per una combinazione di archetipo: le skill che portano le gemme
+ * chieste, piu' le skill firma se resta spazio (tetto di 5 gruppi, misurato).
+ */
+function linkArchetipo(build, coppie, lega) {
+  const perSkill = new Map();
+  for (const [si, sj] of coppie) {
+    if (si < 0 || sj < 0) continue;
+    if (!perSkill.has(si)) perSkill.set(si, []);
+    perSkill.get(si).push(sj);
+  }
+  for (const h of build.signature || []) {
+    const i = build.skills.findIndex((x) => x.hash === h);
+    if (i >= 0 && !perSkill.has(i) && perSkill.size < 5) perSkill.set(i, []);
+  }
+  const stats = [...perSkill].map(([i, sups]) => ({
+    type: "mercenary",
+    filters: [{ id: `mercenary.skill_${build.skills[i].hash}` },
+              ...sups.map((j) => ({ id: `mercenary.support_${build.supports[j].hash}` }))],
+  }));
+  const q = { query: { status: { option: "securable" }, stats }, sort: { price: "asc" } };
+  return `https://www.pathofexile.com/trade/search/${lega}?q=${encodeURIComponent(JSON.stringify(q))}`;
+}
+
 const slugDi = (nome) => nome.replace(/^Infamous /, "").toLowerCase().replace(/'/g, "").replace(/ /g, "-");
 
 /* --------------------------------------------------------------------- rotte */
@@ -645,32 +669,63 @@ export default {
           }
           pesi.sort((x, y) => y.peso - x.peso);
 
-          // **Quanto chiede un buon esemplare**: le inserzioni che hanno le due
-          // gemme piu' pagate dell'archetipo. Non e' la mediana del libro — quella
-          // dice 1 divine ovunque, perche' un quarto del mercato chiede quella
-          // cifra qualunque cosa abbia tirato — ma il prezzo di chi ha *quello che
-          // il mercato paga*. ⚠️ Resta una richiesta: dice a quanto si osa listare,
-          // non cosa si incassa.
-          let buono = null;
-          if (pesi.length >= 2) {
-            const j1 = build.supports.findIndex((x) => x.name === pesi[0].gemma);
-            const j2 = build.supports.findIndex((x) => x.name === pesi[1].gemma);
-            const scelte = [];
-            for (let i = 0; i < righe.length; i++) {
-              let a1 = false, a2 = false;
-              for (const g of righe[i].slot) for (let k = 1; k < g.length; k++) {
-                if (g[k] === j1) a1 = true; else if (g[k] === j2) a2 = true;
-              }
-              if (a1 && a2) scelte.push(prezzi[i]);
+          /* **Le combinazioni che pagano.** Non una sola coppia: tutte quelle
+           * fra le sei gemme piu' pesanti, ordinate per quanto chiedono.
+           *
+           * Il conto sta in un passaggio: a ogni inserzione si associa una
+           * maschera di sei bit (quali di quelle gemme ha) e il prezzo finisce nel
+           * secchio di quella maschera. Da 64 secchi si ricava qualunque coppia
+           * senza rileggere le 147.000 righe una volta per combinazione.
+           *
+           * ⚠️ Ogni gemma porta con se' **la skill su cui sta piu' spesso**: un
+           * supporto sul trade si puo' chiedere solo dentro al gruppo della sua
+           * skill, e attaccarlo a quella sbagliata darebbe una ricerca vuota.
+           */
+          const cima = pesi.slice(0, 6);
+          const bit = cima.map((g) => build.supports.findIndex((x) => x.name === g.gemma));
+          const skillDi = bit.map((j) => {
+            const conta = new Map();
+            for (const r of righe) for (const g of r.slot) {
+              if (!g.length) continue;
+              for (let k = 1; k < g.length; k++) if (g[k] === j) conta.set(g[0], (conta.get(g[0]) || 0) + 1);
             }
-            if (scelte.length >= 30) {
-              scelte.sort((x, y) => x - y);
-              buono = { con: [pesi[0].gemma, pesi[1].gemma], inserzioni: scelte.length,
-                        floor: Math.round(scelte[0]),
-                        mediana: Math.round(scelte[Math.floor(scelte.length / 2)]),
-                        alto: Math.round(scelte[Math.floor(scelte.length * 0.9)]) };
+            let top = -1, quanti = 0;
+            for (const [sk, n] of conta) if (n > quanti) { quanti = n; top = sk; }
+            return top;
+          });
+
+          const secchi = new Map();
+          for (let i = 0; i < righe.length; i++) {
+            let m = 0;
+            for (const g of righe[i].slot) for (let k = 1; k < g.length; k++) {
+              const n = bit.indexOf(g[k]);
+              if (n >= 0) m |= (1 << n);
+            }
+            if (!secchi.has(m)) secchi.set(m, []);
+            secchi.get(m).push(prezzi[i]);
+          }
+
+          const combinazioni = [];
+          for (let a1 = 0; a1 < cima.length; a1++) {
+            for (let a2 = a1 + 1; a2 < cima.length; a2++) {
+              const voluto = (1 << a1) | (1 << a2);
+              const dentro = [];
+              for (const [m, lista] of secchi) if ((m & voluto) === voluto) dentro.push(...lista);
+              if (dentro.length < 30) continue;
+              dentro.sort((x, y) => x - y);
+              combinazioni.push({
+                gemme: [cima[a1].gemma, cima[a2].gemma],
+                skill: [build.skills[skillDi[a1]]?.name, build.skills[skillDi[a2]]?.name],
+                inserzioni: dentro.length,
+                mediana: Math.round(dentro[Math.floor(dentro.length / 2)]),
+                alto: Math.round(dentro[Math.floor(dentro.length * 0.9)]),
+                trade: linkArchetipo(build, [[skillDi[a1], bit[a1]], [skillDi[a2], bit[a2]]], builder.league),
+              });
             }
           }
+          combinazioni.sort((x, y) => y.mediana - x.mediana);
+          const buono = combinazioni[0] || null;
+
           fuori.push({
             archetipo: build.build, slug: b.slug, inserzioni: righe.length,
             sopra1d: +(100 * sopra1 / righe.length).toFixed(1),
@@ -680,7 +735,7 @@ export default {
             // sfonda lo stack e la rotta risponde "Maximum call stack size
             // exceeded" invece del dato.
             massimo: Math.round(prezzi.reduce((m, x) => (x > m ? x : m), 0)),
-            gemmeChePagano: pesi.slice(0, 5), buono,
+            gemmeChePagano: pesi.slice(0, 5), buono, combinazioni: combinazioni.slice(0, 5),
           });
         }
         return json({ da, a, totale: builder.builds.length, archetipi: fuori });
