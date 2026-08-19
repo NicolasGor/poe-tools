@@ -806,6 +806,12 @@ export default {
                 gemme: [cima[a1].gemma, cima[a2].gemma],
                 skill: [build.skills[skillDi[a1]]?.name, build.skills[skillDi[a2]]?.name],
                 inserzioni: dentro.length,
+                // 🔴 Il **piu' economico** serve quanto la mediana, e vanno detti
+                // insieme: su questo mercato la distribuzione e' sfondata — la
+                // stessa combinazione ha il primo a 50 chaos e la meta' del libro
+                // sopra 50 divine. Dare solo la mediana faceva sembrare la pagina
+                // in disaccordo col trade, che ordina per prezzo crescente.
+                floor: Math.round(dentro[0]),
                 mediana: Math.round(dentro[Math.floor(dentro.length / 2)]),
                 alto: Math.round(dentro[Math.floor(dentro.length * 0.9)]),
                 trade: linkArchetipo(build, [[skillDi[a1], bit[a1]], [skillDi[a2], bit[a2]]], builder.league),
