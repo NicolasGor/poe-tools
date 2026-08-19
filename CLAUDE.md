@@ -66,5 +66,11 @@ dato della wiki serve a uno strumento, si copia il singolo valore, non la pagina
   spariscono i numeri, non il metodo.
 - Un strumento = una cartella con il suo `index.html`, più una scheda nel
   catalogo in `index.html` alla radice.
+- 🔴 **E la voce va aggiunta alla barra di *tutte* le pagine**, non solo a quella
+  su cui stai lavorando: la barra è copiata dentro ogni `index.html`, undici
+  volte. Warrant per giorni si è visto **solo dalla homepage** proprio così.
+  `node controlla-barre.mjs` lo verifica, e una GitHub Action lo rifà a ogni push
+  — perché non è un errore che si nota guardando una pagina: bisogna
+  confrontarle fra loro.
 - Il sito dichiara la patch a cui si riferisce. Quando cambia, si aggiorna.
 - Niente numeri di gioco inventati: valgono le stesse regole della wiki.

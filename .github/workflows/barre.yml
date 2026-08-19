@@ -1,0 +1,28 @@
+# Controlla che la barra di navigazione sia identica in tutte le pagine.
+#
+# La barra e' copiata dentro ogni index.html: undici copie della stessa lista.
+# Quando nasce uno strumento e' facile aggiungerne la voce solo dove si sta
+# lavorando — ed e' successo con Warrant, che per giorni si e' visto solo dalla
+# homepage. Non e' un errore che si nota guardando una pagina: bisogna
+# confrontarle fra loro.
+
+name: barre di navigazione
+
+on:
+  push:
+    paths:
+      - "**/index.html"
+      - "controlla-barre.mjs"
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  controlla:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+      - run: node controlla-barre.mjs
