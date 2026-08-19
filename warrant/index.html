@@ -77,6 +77,9 @@
   .tuoi.grande{margin-left:var(--s2);vertical-align:middle}
   .tuoi.clic{cursor:pointer}
   .tuoi.clic:hover{background:rgba(95,211,160,.3)}
+  /* il mezzo aggancio non e' una buona notizia come quello pieno: si vede che e' un'altra cosa */
+  .tuoi.meta{background:rgba(212,163,74,.14);color:#d4a34a;font-weight:500}
+  .tuoi.meta.clic:hover{background:rgba(212,163,74,.28)}
   .targa{display:inline-flex;align-items:center;gap:var(--s2)}
   .cerca-barra{margin-top:calc(var(--s2) * -1)}
   #cerca{flex:1;min-width:220px;max-width:420px;padding:6px 10px;border-radius:8px;
@@ -110,7 +113,7 @@
   .arche-card .misura{font-size:var(--t-xs);color:var(--muted);margin-top:.35rem;line-height:1.35}
   .arche-card .misura b{color:var(--good);font-family:var(--mono)}
   dd.comb{flex-direction:column;gap:.15rem;align-items:stretch}
-  .riga-comb{display:grid;grid-template-columns:minmax(0,1fr) 4.2rem 6.4rem 3.4rem 4.4rem 3.4rem;gap:.4rem;
+  .riga-comb{display:grid;grid-template-columns:minmax(0,1fr) 4rem 7.2rem 3.4rem 4.6rem 3.4rem;gap:.35rem;
              align-items:baseline;text-decoration:none;padding:.1rem .35rem;border-radius:var(--r);
              font-size:var(--t-xs);line-height:1.5;color:var(--muted);border:1px solid transparent}
   .riga-comb > span,.riga-comb > a{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -683,10 +686,14 @@ $("griglia-corpo").addEventListener("click", (e) => {
   const arch = b.dataset.arch;
   const ci = Number(b.dataset.ci);
   const c = ci >= 0 ? (COMBINAZIONI[arch] || [])[ci] : null;
-  const ids = new Set((ULTIMI && ULTIMI.warrant || [])
-    .filter((w) => w.build === arch && (!c || (haCoppia(w, c.skill[0], c.gemme[0]) && haCoppia(w, c.skill[1], c.gemme[1]))))
-    .map((w) => w.id));
-  mostraSolo(ids, c ? `${arch} · ${c.gemme[0]} + ${c.gemme[1]}` : arch);
+  const meta = b.dataset.modo === "meta";
+  const ids = new Set((ULTIMI && ULTIMI.warrant || []).filter((w) => {
+    if (w.build !== arch) return false;
+    if (!c) return true;
+    const q = (haCoppia(w, c.skill[0], c.gemme[0]) ? 1 : 0) + (haCoppia(w, c.skill[1], c.gemme[1]) ? 1 : 0);
+    return meta ? q === 1 : q === 2;
+  }).map((w) => w.id));
+  mostraSolo(ids, c ? `${arch} · ${c.gemme[0]} + ${c.gemme[1]}${meta ? " (a metà)" : ""}` : arch);
   apriGriglia(false);
 });
 document.addEventListener("keydown", (e) => {
@@ -1112,10 +1119,23 @@ function haCoppia(w, skill, gemma) {
   return !!g && (g.sup || []).includes(gemma);
 }
 
+/* 🔴 **Anche il mezzo aggancio va detto, o la scheda resta muta e sembra rotta.**
+ * Misurato sui due Cruel Mistress di Nicolas: uno ha `Greater Multiple
+ * Projectiles` su Soulrend, l'altro `Greater Critical Damage` su Void Sphere —
+ * entrambi giusti — ma **a nessuno dei due manca solo un po'**: manca `Return`,
+ * che di quell'archetipo e' il primo taglio. Con il solo conteggio pieno la
+ * scheda non mostrava niente, e non si capiva se il conto fosse rotto o la
+ * risposta fosse «nessuno». Dirlo a meta' risponde alla domanda vera: *quanto mi
+ * manca*. */
 function mieiSimili(archetipo, c) {
   const miei = (ULTIMI && ULTIMI.warrant || []).filter((w) => w.build === archetipo);
-  if (!c) return miei.length;
-  return miei.filter((w) => haCoppia(w, c.skill[0], c.gemme[0]) && haCoppia(w, c.skill[1], c.gemme[1])).length;
+  if (!c) return { pieni: miei.length, meta: 0 };
+  let pieni = 0, meta = 0;
+  for (const w of miei) {
+    const quante = (haCoppia(w, c.skill[0], c.gemme[0]) ? 1 : 0) + (haCoppia(w, c.skill[1], c.gemme[1]) ? 1 : 0);
+    if (quante === 2) pieni++; else if (quante === 1) meta++;
+  }
+  return { pieni, meta };
 }
 
 function disegnaGriglia(filtro = "") {
@@ -1137,23 +1157,22 @@ function disegnaGriglia(filtro = "") {
             <span class="cp">da ${div(c.floor ?? c.mediana)}</span>
             <span class="ca">metà oltre ${div(c.mediana)}</span>
             <span class="ci">${c.inserzioni.toLocaleString("it")}</span>
-            ${(() => { const n = mieiSimili(a.nome, c);
-                       return n ? `<span class="tuoi clic" role="button" tabindex="0"
-                         data-arch="${esc(a.nome)}" data-ci="${comb.indexOf(c)}"
-                         title="Mostra solo i tuoi con ${esc(c.gemme[0])} su ${esc(c.skill[0] || "?")} e ${esc(c.gemme[1])} su ${esc(c.skill[1] || "?")}">ne hai ${n}</span>`
-                                : `<span class="ct"></span>`; })()}
+            ${(() => {
+              const { pieni, meta } = mieiSimili(a.nome, c);
+              const dove = `${esc(c.gemme[0])} su ${esc(c.skill[0] || "?")} e ${esc(c.gemme[1])} su ${esc(c.skill[1] || "?")}`;
+              if (pieni) return `<span class="tuoi clic" role="button" tabindex="0" data-arch="${esc(a.nome)}" data-ci="${comb.indexOf(c)}" data-modo="pieno"
+                title="Mostra i tuoi con ${dove}">ne hai ${pieni}</span>`;
+              if (meta) return `<span class="tuoi meta clic" role="button" tabindex="0" data-arch="${esc(a.nome)}" data-ci="${comb.indexOf(c)}" data-modo="meta"
+                title="Ne hai ${meta} con una sola delle due: ${dove}">${meta} a metà</span>`;
+              return `<span class="ct"></span>`;
+            })()}
             <a class="cl" href="${esc(c.trade)}" target="_blank" rel="noopener"
                title="Cerca sul trade: ${esc(c.gemme[0])} su ${esc(c.skill[0] || "?")} + ${esc(c.gemme[1])} su ${esc(c.skill[1] || "?")}">cerca &rarr;</a>
           </div>`).join("")}</dd>`
       : "";
     return `<div class="arche-card${fuori}${a.fuori ? " extra" : ""}">
       <div>
-        <h3>${esc(a.nome)} ${m ? `<b>${esc(m.mediana)}</b>` : ""}${(() => {
-          const n = mieiSimili(a.nome, null);
-          return n ? `<span class="tuoi grande clic" role="button" tabindex="0"
-            data-arch="${esc(a.nome)}" data-ci="-1"
-            title="Mostra solo i tuoi ${esc(a.nome)}">ne hai ${n}</span>` : "";
-        })()}</h3>
+        <h3>${esc(a.nome)} ${m ? `<b>${esc(m.mediana)}</b>` : ""}</h3>
         <div class="casa">${a.fuori ? "fuori griglia" : "casa " + esc(a.casa)}</div>
         ${a.compratori ? `<div class="misura">chi compra dice <b>${esc(a.compratori)}</b></div>` : ""}
       </div>
