@@ -69,6 +69,9 @@
   .sup .delta{font-family:var(--mono);color:var(--good);text-align:right}
   .sup .delta.zero{color:var(--label)}
   .sup .delta.giu{color:var(--bad)}
+  /* un salto calcolato su tre inserzioni non e' un prezzo: si smorza, cosi' non
+     si legge come una promessa */
+  .sup .delta.irreale{color:var(--label);opacity:.6}
   .sup .resta{font-family:var(--mono);color:var(--label);text-align:right;min-width:3rem}
   .sup .resta.magro{color:var(--bad)}
   .scheda-pie{margin-top:var(--s3);display:flex;gap:var(--s3);align-items:center;flex-wrap:wrap;
@@ -464,7 +467,7 @@ function disegnaScheda(i) {
                    title="peso ${s.peso}\u00d7 sulla probabilita' di stare sopra 5 divine">
         <span class="segno">${acceso ? "\u2713" : ""}</span>
         <span>${esc(s.supporto)}</span>
-        <span class="delta ${salto ? (salto < 0 ? "giu" : "") : "zero"}">${testoSalto}</span>
+        <span class="delta ${dopo.n < 5 ? "irreale" : salto ? (salto < 0 ? "giu" : "") : "zero"}">${testoSalto}</span>
         <span class="resta ${dopo.n < 5 ? "magro" : ""}">${dopo.n}</span>
       </div>`;
     }).join("");
@@ -482,7 +485,7 @@ function disegnaScheda(i) {
     <div class="gemme">${carte}</div>
     <div class="scheda-pie">
       <a class="trade-btn" href="${esc(link.url)}" target="_blank" rel="noopener">Cerca sul trade <em>&middot; ${link.skill} skill &middot; ${link.gemme} gemme${link.gemme < link.gemmeChieste ? " su " + link.gemmeChieste : ""}</em></a>
-      <span>Ogni riga dice cosa succede a cliccarla: di quanto si sposta il floor e quante inserzioni resterebbero. <b>Sotto le 5 il prezzo e' un venditore, non un mercato.</b></span>
+      <span>Ogni riga dice cosa succede a cliccarla: di quanto si sposta il valore e quante inserzioni resterebbero. <b>Sotto le 5 il numero è spento apposta</b>: è il prezzo di un venditore, non di un mercato.</span>
       ${dati.tagliate ? `<span>\u26a0\ufe0f ${dati.tagliate} supporti non mostrati: la maschera ne regge 31.</span>` : ""}
     </div>`;
 }
