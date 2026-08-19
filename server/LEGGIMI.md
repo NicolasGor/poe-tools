@@ -124,6 +124,19 @@ trascrizione va revocato, non rimosso.
 `chiave: true` quando il segreto è arrivato al runtime, e quando è stato calcolato
 l'ultimo risultato.
 
+🔴 **Un segreto aggiunto dal pannello non è ancora in funzione, e il pannello non
+lo dice.** Misurato il 19 agosto 2026: la `CHIAVE` risultava salvata
+(`wrangler secret list` la elencava, la tabella la mostrava come `secret_text`,
+nessuna modifica pendente) ma `/stato` rispondeva `chiave: false`. Il motivo sta
+in `wrangler deployments list`: aggiungere il segreto aveva creato la **versione**
+`4107f7e6` con messaggio *«Add secret: CHIAVE»*, mentre quella **distribuita**
+restava la precedente. Si risolve con un `npx wrangler deploy`.
+
+💡 **La regola generale**: su Cloudflare *caricare una versione* e *distribuirla*
+sono due cose diverse, e la seconda non è automatica quando il cambiamento arriva
+dal pannello. `/stato` è l'unico posto che dice la verità sul runtime — la
+tabella dei segreti descrive la configurazione, non ciò che sta girando.
+
 ## Quanto costa in termini di limiti
 
 Deno Deploy free: **1M richieste/mese**, **15 h di CPU/mese**, **20 GB** in
