@@ -649,7 +649,10 @@ export default {
             sopra1d: +(100 * sopra1 / righe.length).toFixed(1),
             sopra5d: +(100 * sopra5 / righe.length).toFixed(1),
             sopra20d: +(100 * sopra20 / righe.length).toFixed(1),
-            massimo: Math.round(Math.max(...prezzi)),
+            // ⚠️ Niente `Math.max(...prezzi)`: con 147.000 valori lo spread
+            // sfonda lo stack e la rotta risponde "Maximum call stack size
+            // exceeded" invece del dato.
+            massimo: Math.round(prezzi.reduce((m, x) => (x > m ? x : m), 0)),
             gemmeChePagano: pesi.slice(0, 5),
           });
         }
