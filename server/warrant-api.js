@@ -622,20 +622,25 @@ export default {
           const sopra5 = prezzi.filter((p) => p >= 5 * divine).length;
           const sopra20 = prezzi.filter((p) => p >= 20 * divine).length;
 
-          // le gemme che il mercato paga su questo archetipo: quante volte chi ce
-          // l'ha finisce sopra 5 divine, rispetto alla media
+          // Le gemme che il mercato paga su questo archetipo: quante volte chi
+          // ce l'ha finisce sopra 5 divine, rispetto alla media.
+          // ⚠️ In **un passaggio solo**: la prima versione rifaceva la scansione
+          // per ogni gemma — 147.000 inserzioni per 34 supporti su Manyshot — e
+          // la richiesta non tornava piu'.
           const quota = sopra5 / righe.length;
+          const con = new Array(build.supports.length).fill(0);
+          const caro = new Array(build.supports.length).fill(0);
+          const soglia5 = 5 * divine;
+          for (let i = 0; i < righe.length; i++) {
+            const visti = new Set();
+            for (const g of righe[i].slot) for (let k = 1; k < g.length; k++) visti.add(g[k]);
+            const su = prezzi[i] >= soglia5;
+            for (const j of visti) { con[j]++; if (su) caro[j]++; }
+          }
           const pesi = [];
           if (quota) {
-            for (let j = 0; j < build.supports.length; j++) {
-              let con = 0, caro = 0;
-              for (let i = 0; i < righe.length; i++) {
-                let ha = false;
-                for (const g of righe[i].slot) if (g.length && g.includes(j, 1)) { ha = true; break; }
-                if (!ha) continue;
-                con++; if (prezzi[i] >= 5 * divine) caro++;
-              }
-              if (con >= 200) pesi.push({ gemma: build.supports[j].name, viste: con, peso: +((caro / con) / quota).toFixed(2) });
+            for (let j = 0; j < con.length; j++) {
+              if (con[j] >= 200) pesi.push({ gemma: build.supports[j].name, viste: con[j], peso: +((caro[j] / con[j]) / quota).toFixed(2) });
             }
           }
           pesi.sort((x, y) => y.peso - x.peso);
