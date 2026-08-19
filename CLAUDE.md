@@ -58,12 +58,21 @@ dato della wiki serve a uno strumento, si copia il singolo valore, non la pagina
   `warrant/` ha bisogno di due cose che una pagina statica non può fare: leggere
   l'indice di mercato di xddbsns.com (**risponde senza intestazione CORS**: una
   fetch `no-cors` torna `opaque`) e tenere i warrant sincronizzati **fra Mac e
-  Steam Deck**. `server/warrant-api.js` fa solo questo — proxy con CORS, un
-  magazzino chiave-valore e il calcolo dei prezzi — e gira uguale su Deno Deploy
-  o Cloudflare Workers. ⚠️ **Non tocca credenziali**: lo stash lo legge un
-  segnalibro dentro pathofexile.com, dove la sessione è già viva, e qui arriva
-  solo il JSON risultante. Se il server è spento la pagina resta leggibile:
-  spariscono i numeri, non il metodo.
+  Steam Deck**. Il mestiere è diviso in tre, e la divisione è imposta da una
+  misura:
+  - `server/worker.js` gira su **Cloudflare Workers** (gratis) e **non calcola
+    niente**: rigira i byte del KV con `get(k, "stream")`, senza mai parsarli.
+    🔴 Il piano gratuito dà **10 ms di CPU per invocazione** — validi anche per i
+    Cron Trigger — contro i **2.774 ms** che costa una prezzatura;
+  - `server/genera-prezzi.mjs` e `server/genera-panorama.mjs` girano dentro
+    **GitHub Actions**, dove la CPU non ha tetto, e depositano il risultato;
+  - `server/warrant-api.js` è **solo la matematica**, e gira unicamente dentro
+    quelle Action. Non è più un server.
+  ⚠️ **Non tocca credenziali**: lo stash lo legge
+  `strumenti/misure/sincronizza-warrant.mjs` sul Mac, riusando il profilo del
+  browser dove il login a pathofexile.com è già fatto; qui arriva solo il JSON, e
+  la chiave di scrittura sta nel Portachiavi — **mai in una pagina web**. Se il
+  Worker è spento la pagina resta leggibile: spariscono i numeri, non il metodo.
 - Un strumento = una cartella con il suo `index.html`, più una scheda nel
   catalogo in `index.html` alla radice.
 - 🔴 **E la voce va aggiunta alla barra di *tutte* le pagine**, non solo a quella
