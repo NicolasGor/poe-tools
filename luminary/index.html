@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luminary — dal livello 1 alle mappe</title>
+<meta name="description" content="Guida passo-passo al leveling della Scion Luminary: Sunder fino alle mappe, i tre Lab nell'ordine giusto, il respec sul linkbot e la lista della spesa con link di trade collaudati.">
+<link rel="stylesheet" href="../stile.css">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+  /* solo ciò che è davvero di questa pagina */
+  .verdetto{
+    background:linear-gradient(180deg,rgba(240,185,74,.10),rgba(240,185,74,.02));
+    border:1px solid rgba(240,185,74,.42);border-radius:6px;
+    padding:1rem 1.15rem;margin-bottom:var(--s5);
+  }
+  .verdetto h2{margin:0 0 .5rem;font-size:var(--t-base);color:var(--gold)}
+  .verdetto p{margin:0 0 .5rem;font-size:var(--t-sm);color:var(--muted);line-height:1.62}
+  .verdetto p:last-child{margin:0}
+  .verdetto b{color:var(--text)}
+
+  .fase{margin-bottom:var(--s5)}
+  .fase > h3{display:flex;align-items:baseline;gap:.6rem;font-size:var(--t-md);margin-bottom:.2rem}
+  .fase > h3 .num{
+    font-family:var(--mono);font-size:var(--t-sm);color:var(--gold);
+    border:1px solid var(--line2);border-radius:3px;padding:.05rem .45rem;flex:none;
+  }
+  .fase > .quando{font-size:var(--t-xs);color:var(--label);margin-bottom:var(--s3);
+    text-transform:uppercase;letter-spacing:.08em}
+
+  ol.spunte{list-style:none;margin:0;padding:0}
+  ol.spunte > li{
+    display:grid;grid-template-columns:1.4rem 1fr;gap:.6rem;
+    padding:.6rem 0;border-bottom:1px solid var(--line);align-items:start;
+  }
+  ol.spunte > li:last-child{border-bottom:0}
+  ol.spunte input[type=checkbox]{
+    width:1.05rem;height:1.05rem;margin-top:.15rem;accent-color:var(--gold);cursor:pointer;
+  }
+  ol.spunte .testo{font-size:var(--t-sm);line-height:1.6}
+  ol.spunte .testo b{color:var(--text)}
+  ol.spunte .testo em{color:var(--label);font-style:normal;font-size:var(--t-xs);display:block;margin-top:.25rem}
+  li.fatto .testo{opacity:.45;text-decoration:line-through;text-decoration-color:var(--line2)}
+
+  .stop{border-left:3px solid var(--bad);padding-left:.8rem;margin:var(--s3) 0 0}
+  .stop b{color:var(--bad)}
+
+  .errori li{margin-bottom:.6rem;font-size:var(--t-sm);line-height:1.58}
+  .errori b{color:var(--bad)}
+
+  .fonte{font-size:var(--t-xs);color:var(--label);line-height:1.65}
+  .fonte b{color:var(--muted)}
+
+  .instash{color:var(--good);font-weight:600}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="marchio" href="../index.html">PoE <span>Tools</span></a>
+    <div class="nav-link">
+      <a href="../atlante/">Atlante</a>
+      <a href="../strategie/">Strategie</a>
+      <a href="../farming/">Farming</a>
+      <a href="../scrying/">Scrying</a>
+      <a href="../mappe/">Mod mappa</a>
+      <a href="../build-confronto/">Build</a>
+      <a href="../heist/">Heist</a>
+      <a href="../whisper/">Whisper</a>
+      <a href="../craft/">Craft</a>
+      <a href="../warrant/">Warrant</a>
+      <a href="../luminary/" aria-current="page">Luminary</a>
+    </div>
+    <span class="nav-patch">patch 3.29.2</span>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="testata">
+    <h1>Luminary — dal livello 1 alle mappe</h1>
+    <p class="sub">Il personaggio nuovo: una Scion che livella con <b>Sunder</b> e a inizio mappe diventa il <b>linkbot del suo mercenario</b>. Tu ti muovi e linki, <b>il merc fa tutto il danno</b>. Zero pulsanti d'attacco.</p>
+    <div class="badges">
+      <span class="badge">patch 3.29.2</span>
+      <span class="badge">lega Allflame</span>
+      <span class="badge oro">prezzi del 19 agosto 2026</span>
+      <span class="badge">stash sincronizzato prima della lista</span>
+    </div>
+  </header>
+
+  <div class="verdetto">
+    <h2>Come funziona, in tre righe</h2>
+    <p><b>Noble Blood</b> (primo Lab) rende i mercenari <b>permanenti</b>: fino a 3, con gear tuo.</p>
+    <p><b>Flame Link</b> dà al merc danno fire in base alla <b>tua vita</b>, e <b>Golden Glory</b> fa del <b>light radius</b> un moltiplicatore dei link: per questo si stacka vita e si portano unici con light radius.</p>
+    <p>⚠️ Per questo la build è <b>life, non ES</b>: l'aurabot ES esiste ma costa <b>~607 divine</b>. Questa entra con <b>~2 divine</b> più il merc.</p>
+  </div>
+
+  <h2 class="sec">I numeri</h2>
+  <div class="kpi">
+    <div><b class="val">~2 div</b><span>il pacchetto maps-start da comprare</span></div>
+    <div><b class="val">5 unici</b><span>già in stash, zero spesa</span></div>
+    <div><b style="color:var(--gold)">3 merc</b><span>usabili già in tab, gratis</span></div>
+    <div><b>19-22 div</b><span>il Kineticist comprato (era 50c al video)</span></div>
+  </div>
+
+  <div class="fase">
+    <h3><span class="num">0</span> Prima di creare il personaggio</h3>
+    <p class="quando">10 minuti al trade · tutto sotto i 10c tranne due pezzi</p>
+    <ol class="spunte">
+      <li data-p="s0-stash"><input type="checkbox"><span class="testo"><b class="instash">Già in stash, non comprare:</b> Tabula Rasa 6L · Goldrim · Karui Ward · <b>2× Lori's Lantern</b> · Soulthirst.<em>Verificato sullo stash sincronizzato il 19 agosto.</em></span></li>
+      <li data-p="s0-lvl"><input type="checkbox"><span class="testo">Compra il leveling: <a href="https://www.pathofexile.com/trade/search/Allflame/KlOMB9MMF5" target="_blank" rel="noopener">Wanderlust</a> (1c) · <a href="https://www.pathofexile.com/trade/search/Allflame/D6P2GL07S5" target="_blank" rel="noopener">The Screaming Eagle</a> (1c, l'ascia di Sunder dal lv 6) · <a href="https://www.pathofexile.com/trade/search/Allflame/8rWRVab2sV" target="_blank" rel="noopener">Praxis</a> (1c, il mana).</span></li>
+      <li data-p="s0-maps"><input type="checkbox"><span class="testo">Compra il maps-start: <a href="https://www.pathofexile.com/trade/search/Allflame/8rKeDMjGIV" target="_blank" rel="noopener">Nycta's Lantern</a> (1-3c) · <a href="https://www.pathofexile.com/trade/search/Allflame/MdOGzMeJFJ" target="_blank" rel="noopener">Belt of the Deceiver</a> (1c) · <a href="https://www.pathofexile.com/trade/search/Allflame/MdOLWk2LFJ" target="_blank" rel="noopener">The Hallowed Monarch</a> (9-10c) · <a href="https://www.pathofexile.com/trade/search/Allflame/7np3K582S5" target="_blank" rel="noopener">Rotmother's Mutiny</a> (45-50c).</span></li>
+      <li data-p="s0-merc"><input type="checkbox"><span class="testo">Compra il gear del merc: <a href="https://www.pathofexile.com/trade/search/Allflame/QLRrGXRjtw" target="_blank" rel="noopener">Rathpith Globe</a> (40-49c) · <a href="https://www.pathofexile.com/trade/search/Allflame/d85KaLVRsJ" target="_blank" rel="noopener">2× The Taming</a> (4c l'uno) · <a href="https://www.pathofexile.com/trade/search/Allflame/EBVe2jmZH5" target="_blank" rel="noopener">Piscator's Vigil</a> (2-5c).</span></li>
+      <li data-p="s0-ag"><input type="checkbox"><span class="testo">Compra l'Animate Guardian budget: <b>Leer Cast → Dying Breath → Southbound → Belly of the Beast</b>, in quest'ordine di priorità. Tutti pochi chaos.</span></li>
+    </ol>
+    <p class="stop"><b>Non comprare adesso:</b> Kaom's Heart (15c) e Ceinture of Benevolence (1c) sono <b>midgame</b> — Rational Doctrine è a <b>17 divine</b>, lusso da fine lista.</p>
+  </div>
+
+  <div class="fase">
+    <h3><span class="num">1</span> Atti 1–3: Sunder</h3>
+    <p class="quando">Skill per livello · guida di Havoc su Maxroll</p>
+    <ol class="spunte">
+      <li data-p="s1-2"><input type="checkbox"><span class="testo"><b>Lv 2</b>: Spectral Throw + Prismatic Burst. <b>Lv 4</b>: + Frostblink e Decoy Totem.</span></li>
+      <li data-p="s1-10"><input type="checkbox"><span class="testo"><b>Lv 10</b>: Leap Slam – Faster Attacks – Momentum.</span></li>
+      <li data-p="s1-12"><input type="checkbox"><span class="testo"><b>Lv 12</b>: <b>Sunder – Ruthless</b> (+ Melee Physical Damage appena c'è) · War Banner · Blood and Sand · Precision · Intimidating Cry.<em>Intimidating Cry <b>prima</b> di attaccare: il colpo esce «exerted».</em></span></li>
+      <li data-p="s1-16"><input type="checkbox"><span class="testo"><b>Lv 16</b>: + Herald of Ash e Blood Rage. <b>Lv 18</b>: Sunder – Melee Phys – <b>Close Combat</b>.</span></li>
+      <li data-p="s1-band"><input type="checkbox"><span class="testo"><b>Banditi (A2)</b>: Alira. <em>I PoB endgame stanno su «uccidili tutti» (+1 punto): si cambia dopo con 20 Regret.</em></span></li>
+      <li data-p="s1-lab"><input type="checkbox"><span class="testo"><b>Lab Normal (A3)</b> → <b>Noble Blood</b>. Da qui ogni duello vinto è un merc che puoi tenere.</span></li>
+      <li data-p="s1-duel"><input type="checkbox"><span class="testo">Dall'A3: <b>fai ogni duello che incontri</b> e tieni il merc migliore. La penalità di danno dei permanenti è trascurabile fino al lv 45.</span></li>
+    </ol>
+    <p class="stop"><b>I merc nemici fanno male</b> (Divine Ire su tutti): sotto il lv 45 un duello perso è solo tempo, ma non farli col boss dell'atto a mezza vita.</p>
+  </div>
+
+  <div class="fase">
+    <h3><span class="num">2</span> Atti 4–10: si arriva in fondo</h3>
+    <p class="quando">Sunder scala con l'arma · recipe fisiche dal vendor</p>
+    <ol class="spunte">
+      <li data-p="s2-24"><input type="checkbox"><span class="testo"><b>Lv 24</b>: + Vulnerability · Haste per viaggiare · Pride swap sui boss. <b>Lv 38</b>: supporto e golem gratis dai vendor.</span></li>
+      <li data-p="s2-lab2"><input type="checkbox"><span class="testo"><b>Lab Cruel (A7)</b> → <b>Golden Glory</b>: da qui il light radius conta.</span></li>
+      <li data-p="s2-spectre"><input type="checkbox"><span class="testo">In <b>Ashen Fields (A7)</b> segna dove stanno <b>Carnage e Host Chieftain</b>: sono gli spettri del linkbot, torni a prenderli al respec.</span></li>
+      <li data-p="s2-lab3"><input type="checkbox"><span class="testo"><b>Lab Merciless (A10)</b> → <b>Oath of Fealty</b>: link infiniti, e se il merc muore <b>tu non muori con lui</b>.</span></li>
+      <li data-p="s2-gold"><input type="checkbox"><span class="testo"><b>Non spendere il gold</b>: serve tutto al respec di fine campagna.</span></li>
+    </ol>
+  </div>
+
+  <div class="fase">
+    <h3><span class="num">3</span> Il respec (~lv 68): da Sunder a linkbot</h3>
+    <p class="quando">Gold + punti quest · albero «Maps Start», 93 punti</p>
+    <ol class="spunte">
+      <li data-p="s3-tree"><input type="checkbox"><span class="testo">Respecca sull'<a href="https://pobarchives.com/build/BLjMecLX" target="_blank" rel="noopener">albero Maps Start del PoB di Nerotox</a>: ruote vita, <b>Blood Magic</b> (senza, il mana del Flame Link non regge) e la Link Mastery «+1 bersaglio».</span></li>
+      <li data-p="s3-gems"><input type="checkbox"><span class="testo">Gemme per slot: <b>arma</b> Flame Link + Purity of Elements + Eternal Blessing · <b>stivali</b> Shield Charge – Faster Attacks – Momentum + Frostblink · <b>petto</b> Raise Spectre – Minion Life – Meat Shield + Animate Guardian · <b>guanti</b> Vitality + Precision + <b>Petrified Blood</b> · <b>elmo</b> CwDT – Molten Shell.</span></li>
+      <li data-p="s3-spec"><input type="checkbox"><span class="testo">Prendi i due <b>Chieftain in Ashen Fields</b> (frenzy + power charge al merc). L'AG veste i 4 unici della fase 0.</span></li>
+      <li data-p="s3-play"><input type="checkbox"><span class="testo">Come si gioca: entri in mappa, <b>2 click destro</b> per linkare tutti, e poi solo Shield Charge. Il merc fa il resto.</span></li>
+    </ol>
+  </div>
+
+  <div class="fase">
+    <h3><span class="num">4</span> Il merc: prima i tuoi, poi il Kineticist</h3>
+    <p class="quando">3 warrant usabili già in tab · misurati sulla griglia il 20 agosto</p>
+    <table class="tabella">
+      <thead><tr><th>Warrant in tab</th><th>Archetipo</th><th>Perché va bene</th></tr></thead>
+      <tbody>
+        <tr><td><b>Azroka, the Stormbow</b></td><td>Manyshot</td><td>Ice Shot con <b>Return + Chain + Hypothermia + Cold Pen</b>: clear vero, passa il filtro Return</td></tr>
+        <tr><td><b>Nevron Tarik</b></td><td>Smoulderstrike</td><td>doppio Molten Strike con Added Fire / Fire Pen: <b>boss killer</b>, e il danno fire mangia il Flame Link</td></tr>
+        <tr><td><b>Zob, the Azadin Madman</b></td><td>Infamous Blade Ambusher</td><td>Spectral Helix of Trarthus + Multiple Traps + Slower Proj: il boss-killer della griglia</td></tr>
+      </tbody>
+    </table>
+    <ol class="spunte" style="margin-top:var(--s3)">
+      <li data-p="s4-own"><input type="checkbox"><span class="testo">Parti con <b>Azroka</b> per mappare e tieni <b>Nevron</b> in riserva per i boss. Costo: zero.</span></li>
+      <li data-p="s4-buy"><input type="checkbox"><span class="testo">L'upgrade è il <b>Kineticist</b>: Kinetic Blast of Clustering + (Return o GMP) + (Fork o Chain) + un supporto di danno. Si cerca su <a href="https://xddbsns.com/mercenary-price-check.html" target="_blank" rel="noopener">xddbsns</a>.<em>Era «50c» al video del 14 agosto; nei commenti del 16-19 sta a <b>19-22 divine</b>. Compra quando il prezzo ti va bene, non è urgente.</em></span></li>
+    </ol>
+    <p class="stop"><b>Da non usare col linkbot:</b> Kreva Rael (Sniper in tab) ha <b>Brutality</b>, che vieta il danno elementale — il Flame Link su di lui vale zero.</p>
+  </div>
+
+  <h2 class="sec">Errori che costano</h2>
+  <ul class="errori">
+    <li><b>Kinetic Bolt sul Kineticist = merc da scartare</b>: l'IA alterna le skill e il DPS si dimezza. Vale anche Kinetic Rain. Barrage è accettabile sul budget, non sull'ottimo.</li>
+    <li><b>Niente Pierce senza Return</b> sulle skill a proiettili del merc: da solo impedisce il ritorno. In coppia con Return invece serve.</li>
+    <li><b>Petrified Blood non si toglie</b> finché non hai 2 Vermillion Ring con T1 life + T1 light radius.</li>
+    <li><b>Mod di mappa da evitare</b>: solo i due sul recupero (no regen / less recovery). Il resto si corre.</li>
+    <li><b>Se il merc muore</b>: leech sui guanti (enchant da Ducat) o implicito eldritch di fire leech, poi chaos res cap — e più danno: non muore ciò che ammazza tutto per primo.</li>
+    <li><b>Bound By Destiny si paga per il tiro</b> (%life): quelli da 1c sono tiri vuoti.</li>
+  </ul>
+
+  <div class="card" style="padding:var(--s4);margin-top:var(--s6)">
+    <p class="fonte" style="margin:0 0 .6rem">
+      <b>Le fonti:</b> XTheFarmerX, <a href="https://www.youtube.com/watch?v=LXoJCRmUaJI" target="_blank" rel="noopener">«5 Divine Budget Life Stacking KB Merc Build»</a> (14 agosto 2026, trascrizione e 40 commenti letti per intero) · Nerotox, <a href="https://pobarchives.com/build/BLjMecLX" target="_blank" rel="noopener">Luminary Link/Aurabot Guide</a> (PoB con gli alberi da «Sunder Leveling» a «Min-Max») · <a href="https://maxroll.gg/poe/build-guides/scion-leveling-build-guide" target="_blank" rel="noopener">Havoc, Scion Leveling su Maxroll</a> per gli atti.
+    </p>
+    <p class="fonte" style="margin:0 0 .6rem">
+      <b>I prezzi:</b> API di trade, lega Allflame, <b>19 agosto 2026</b>, ricerche con Instant Buyout (<code>securable</code>) collaudate una per una. Il prezzo mostrato è quello delle prime inserzioni: sale col tiro.
+    </p>
+    <p class="fonte" style="margin:0">
+      <b>La variante Energy Shield</b> (CI, Destructive Link, aure): esiste — <a href="https://pobarchives.com/build/qkxx4QJX" target="_blank" rel="noopener">Curtie su PoB Archives</a> — ma l'autore la prezza <b>607,5 divine</b> tra personaggio e merc. È la migrazione, non la partenza.
+    </p>
+  </div>
+
+  <footer class="pie">
+    Sito statico su GitHub Pages · nessuna dipendenza esterna, funziona offline.
+  </footer>
+
+</div>
+<script>
+// Segnaposto dei passi fatti, in locale. Nessuna rete, nessuna dipendenza.
+(function(){
+  var CHIAVE='luminary-leveling';
+  var stato={};
+  try{ stato=JSON.parse(localStorage.getItem(CHIAVE)||'{}'); }catch(e){ stato={}; }
+  document.querySelectorAll('ol.spunte > li[data-p]').forEach(function(li){
+    var c=li.querySelector('input[type=checkbox]'), id=li.dataset.p;
+    if(!c) return;
+    if(stato[id]){ c.checked=true; li.classList.add('fatto'); }
+    c.addEventListener('change',function(){
+      li.classList.toggle('fatto',c.checked);
+      stato[id]=c.checked;
+      try{ localStorage.setItem(CHIAVE,JSON.stringify(stato)); }catch(e){}
+    });
+  });
+})();
+</script>
+</body>
+</html>
