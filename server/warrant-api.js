@@ -420,8 +420,20 @@ export default {
           if (i < 0) continue;
           let quante = 0;
           for (const r of build._righe) if (r.slot.some((x) => x.length && x[0] === i)) quante++;
+          // Quante gemme il mercato mette su questa skill, in media, fra le
+          // inserzioni che ce l'hanno. E' il segnale che separa il **colpo
+          // principale** dalle skill di servizio: su una skill di movimento
+          // nessuno spende supporti, sul danno sì.
+          let gemme = 0, viste = 0;
+          for (const r of build._righe) {
+            const slot = r.slot.find((x) => x.length && x[0] === i);
+            if (!slot) continue;
+            viste++; gemme += slot.length - 1;
+          }
           skillWarrant.push({ nome: g.s, hash: build.skills[i].hash,
-                              diffusione: +(quante / build._righe.length).toFixed(3) });
+                              diffusione: +(quante / build._righe.length).toFixed(3),
+                              gemmeMedie: viste ? +(gemme / viste).toFixed(2) : 0,
+                              gemmeSue: (g.sup || []).length });
         }
 
         return json({
