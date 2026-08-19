@@ -140,13 +140,14 @@
         <input id="indirizzo" type="text" placeholder="https://....deno.dev" autocomplete="off" spellcheck="false"></li>
       <li><b>Chiave</b> di sincronizzazione — la stessa che hai messo nelle variabili d'ambiente del server. Resta in questo browser:<br>
         <input id="chiave" type="password" placeholder="chiave" autocomplete="off"></li>
-      <li>Trascina questo nella barra dei segnalibri:
+      <li>Trascina questo nella barra dei segnalibri — <b>una volta sola</b>: dentro c'è solo un caricatore, il codice vero sta sul sito e si aggiorna da sé.
         <a class="segnalibro" id="bookmarklet" href="#">Sincronizza warrant</a>
         <span class="stato" id="pronto"></span></li>
       <li>Apri <a href="https://www.pathofexile.com/my-account" target="_blank" rel="noopener">pathofexile.com</a> da loggato e cliccalo: legge le tab e manda qui i warrant trovati.</li>
       <li>Torna qui e premi <b>Aggiorna prezzi</b>.</li>
     </ol>
-    <p class="stato" style="margin-top:var(--s3)">🔴 <b>Indirizzo e chiave finiscono dentro al segnalibro nel momento in cui lo trascini.</b> Se ne cambi uno, il vecchio segnalibro va buttato e ritrascinato — altrimenti continua a usare quelli di prima.</p>
+    <p class="stato" style="margin-top:var(--s3)">🔴 <b>Indirizzo e chiave restano dentro al segnalibro dal momento in cui lo trascini</b>: se cambi uno dei due, quello va rifatto. Il resto — cosa legge e cosa misura — arriva dal sito a ogni click.</p>
+    <p class="stato">Oltre a leggere le tab, fotografa il mercato delle <b>otto combinazioni più preziose</b>: al giro dopo dirà quante di quelle inserzioni sono sparite. ⚠️ Sparire non è vendere — può essere tolto o riprezzato — ma un libro dove non sparisce niente non sta vendendo.</p>
     <p class="stato" style="margin-top:var(--s3)">Sullo Steam Deck il segnalibro non serve: leggi l'ultima sincronizzazione fatta dal Mac.</p>
   </div>
 
@@ -355,68 +356,29 @@ async function aggiornaPrezzi() {
   } finally { b.disabled = false; b.textContent = "Aggiorna prezzi"; }
 }
 
-/* Il segnalibro gira dentro pathofexile.com: legge le tab con la sessione viva e
-   spedisce qui solo i warrant trovati. La chiave la mette chi lo trascina, cosi'
-   non sta scritta in una pagina pubblica. */
+/* Il segnalibro e' solo un caricatore: scarica `segnalibro.js` da questo sito e
+   lo esegue dentro pathofexile.com, dove la sessione e' viva. Cosi' si trascina
+   **una volta sola** — le correzioni al codice arrivano da sole, senza dover
+   buttare e ritrascinare il preferito a ogni modifica. */
 function costruisciSegnalibro() {
   const k = chiave();
   const a = $("bookmarklet"), avviso = $("pronto");
-  // Un segnalibro trascinato senza indirizzo o chiave nasce gia' rotto e lo scopri
-  // solo dopo, su un'altra pagina: meglio non lasciarlo trascinare.
   if (!API || !k) {
     a.removeAttribute("href");
     a.style.opacity = ".45";
-    avviso.textContent = !API ? " ← prima l'indirizzo del server" : " ← prima la chiave";
+    avviso.textContent = !API ? " \u2190 prima l'indirizzo del server" : " \u2190 prima la chiave";
     return;
   }
   a.style.opacity = "1";
   avviso.textContent = " pronto: trascinalo";
-  const codice = `(async()=>{const A=${JSON.stringify(API)},K=${JSON.stringify(k)};
-if(!A||!K){alert('manca API o chiave');return}
-const acc=(document.body.innerText.match(/Logged in as ([^\\s]+)/)||[])[1];
-if(!acc){alert('apri pathofexile.com da loggato');return}
-const q=(p)=>fetch('/character-window/get-stash-items?'+p,{credentials:'include'}).then(r=>r.json());
-const t=await q('league=Allflame&tabs=1&tabIndex=0&accountName='+encodeURIComponent(acc)+'&realm=pc');
-const fuori=[];
-for(const tab of t.tabs){
- const d=await q('league=Allflame&tabIndex='+tab.i+'&accountName='+encodeURIComponent(acc)+'&realm=pc');
- for(const it of (d.items||[])) if(/Mercenary Warrant/.test(it.baseType||'')){
-  const v=(n)=>{const x=(it.properties||[]).find(p=>p.name===n);return x?x.values[0][0]:null};
-  fuori.push({id:it.id,name:(it.properties[0]||{values:[['?']]}).values[0][0],
-   build:v('Build'),level:v('Mercenary Level'),tab:tab.n,
-   skills:(it.mercenarySkills||[]).map(s=>({s:s.name,sup:(s.supports||[]).map(x=>x.name)}))});
- }
- await new Promise(r=>setTimeout(r,600));
-}
-const r=await fetch(A+'/stash?k='+encodeURIComponent(K),{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({warrant:fuori})});
-if(!r.ok){alert('errore: '+await r.text());return}
-// seconda parte: si fotografano le inserzioni dei warrant piu' preziosi, per
-// sapere quante spariscono da un giro all'altro
-let campioni=[],nota='';
-try{
- const piano=(await (await fetch(A+'/campione/piano?k='+encodeURIComponent(K)+'&quanti=8')).json()).piano||[];
- for(const c of piano){
-  const q=JSON.parse(decodeURIComponent(c.trade.split('?q=')[1]));
-  const sr=await fetch('/api/trade/search/Allflame',{method:'POST',headers:{'content-type':'application/json'},credentials:'include',body:JSON.stringify(q)});
-  if(!sr.ok){await new Promise(x=>setTimeout(x,4000));continue}
-  const sj=await sr.json();
-  const ids=(sj.result||[]).slice(0,10);
-  if(!ids.length){campioni.push({chiave:c.chiave,nome:c.nome,build:c.build,totale:sj.total,inserzioni:[]});continue}
-  const fr=await fetch('/api/trade/fetch/'+ids.join(',')+'?query='+sj.id,{credentials:'include'});
-  const fj=await fr.json();
-  campioni.push({chiave:c.chiave,nome:c.nome,build:c.build,totale:sj.total,
-   inserzioni:(fj.result||[]).filter(Boolean).map(x=>({id:x.id,prezzo:x.listing&&x.listing.price?x.listing.price.amount+' '+x.listing.price.currency:null,indexed:x.listing&&x.listing.indexed}))});
-  await new Promise(x=>setTimeout(x,3500));
- }
- if(campioni.length){
-  const cr=await fetch(A+'/campione?k='+encodeURIComponent(K),{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({campioni})});
-  const cj=await cr.json();
-  const conStoria=(cj.campioni||[]).filter(x=>x.sparite!==null);
-  nota=conStoria.length?' \u00b7 '+conStoria.map(x=>x.sparite+'/'+x.viste+' sparite in '+x.ore+'h').slice(0,3).join(', '):' \u00b7 prima fotografia del mercato';
- }
-}catch(e){nota=' \u00b7 campionamento saltato: '+e.message}
-alert(fuori.length+' warrant sincronizzati'+nota);})()`;
-  $("bookmarklet").href = "javascript:" + encodeURIComponent(codice.replace(/\n/g, ""));
+  const sorgente = new URL("segnalibro.js", location.href).href;
+  const codice = `(async()=>{try{
+const A=${JSON.stringify(API)},K=${JSON.stringify(k)};
+const src=await (await fetch(${JSON.stringify(sorgente)}+'?t='+Date.now())).text();
+const mod=await import('data:text/javascript;base64,'+btoa(unescape(encodeURIComponent(src))));
+await mod.default(A,K);
+}catch(e){alert('Segnalibro: '+e.message)}})()`;
+  a.href = "javascript:" + encodeURIComponent(codice.replace(/\n/g, ""));
 }
 
 async function stato() {
