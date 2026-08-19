@@ -61,8 +61,14 @@
   .gemma{border:1px solid var(--line);border-radius:var(--r);background:var(--panel2);padding:var(--s3)}
   .gemma h4{color:var(--gold);font-size:var(--t-sm);margin:0 0 var(--s2);display:flex;justify-content:space-between;gap:var(--s2)}
   .gemma h4 em{color:var(--label);font-style:normal;font-family:var(--mono);font-size:var(--t-xs)}
-  .sup{display:grid;grid-template-columns:1rem minmax(0,1fr) 4.5rem 3rem;gap:var(--s2);align-items:baseline;
+  .sup{display:grid;grid-template-columns:1rem minmax(0,1fr) 3.4rem 4.4rem 2.6rem;gap:var(--s2);align-items:baseline;
        padding:.15rem 0;cursor:pointer;font-size:var(--t-xs);color:var(--label)}
+  .sup-cap{display:grid;grid-template-columns:1rem minmax(0,1fr) 3.4rem 4.4rem 2.6rem;gap:var(--s2);
+           font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:var(--label);
+           opacity:.75;padding-bottom:.15rem;border-bottom:1px solid var(--line);margin-bottom:.25rem;cursor:default}
+  .sup-cap span:nth-child(3),.sup-cap span:nth-child(4),.sup-cap span:nth-child(5){text-align:right}
+  .sup .peso{font-family:var(--mono);text-align:right;color:var(--label)}
+  .sup .peso.paga{color:var(--gold)}
   .sup:hover{color:var(--text)}
   .sup.on{color:var(--text);font-weight:600}
   .sup .segno{color:var(--gold)}
@@ -452,14 +458,17 @@ function disegnaScheda(i) {
         : salto === 0 ? "0"
         : (salto > 0 ? "+" : "\u2212") + chaos(Math.abs(salto));
       return `<div class="sup ${acceso ? "on" : ""}" data-i="${i}" data-bit="${s.i}"
-                   title="peso ${s.peso}\u00d7 sulla probabilita' di stare sopra 5 divine">
+                   title="Peso ${s.peso}\u00d7: fra le inserzioni simili al tuo, chi ha questa gemma finisce sopra 5 divine ${s.peso}\u00d7 piu' spesso della media">
         <span class="segno">${acceso ? "\u2713" : ""}</span>
         <span>${esc(s.supporto)}</span>
+        <span class="peso ${s.peso >= 1.05 ? "paga" : ""}">${s.peso.toFixed(2)}\u00d7</span>
         <span class="delta ${dopo.n < 5 ? "irreale" : salto ? (salto < 0 ? "giu" : "") : "zero"}">${testoSalto}</span>
         <span class="resta ${dopo.n < 5 ? "magro" : ""}">${dopo.n}</span>
       </div>`;
     }).join("");
-    return `<div class="gemma"><h4>${esc(skill)} <em>${spuntati}/${sups.length}</em></h4>${righe}</div>`;
+    return `<div class="gemma"><h4>${esc(skill)} <em>${spuntati}/${sups.length}</em></h4>
+      <div class="sup-cap"><span></span><span>gemma</span><span>peso</span><span>valore</span><span>restano</span></div>
+      ${righe}</div>`;
   }).join("");
 
   const scelti = dati.supporti.filter((s) => sel & (1 << s.i)).length;
@@ -474,7 +483,7 @@ function disegnaScheda(i) {
     <div class="gemme">${carte}</div>
     <div class="scheda-pie">
       <a class="trade-btn" href="${esc(link.url)}" target="_blank" rel="noopener">Cerca sul trade <em>&middot; ${link.skill} skill &middot; ${link.gemme} gemme${link.gemme < link.gemmeChieste ? " su " + link.gemmeChieste : ""}</em></a>
-      <span>Ogni riga dice cosa succede a cliccarla: di quanto si sposta il valore e quante inserzioni resterebbero. <b>Sotto le 5 il numero è spento apposta</b>: è il prezzo di un venditore, non di un mercato.</span>
+      <span><b>Peso</b>: quanto spesso chi ha quella gemma finisce sopra 5 divine, rispetto alla media dei mercenari come il tuo — <b>1,00× vuol dire che il mercato non la paga</b>. <b>Valore</b> e <b>restano</b> dicono cosa succede a cliccarla: di quanto si sposta il prezzo e quante inserzioni resterebbero per confrontarlo. ⚠️ <b>Sotto le 5 il numero è spento apposta</b>: è il prezzo di un venditore, non di un mercato.</span>
       ${dati.tagliate ? `<span>\u26a0\ufe0f ${dati.tagliate} supporti non mostrati: la maschera ne regge 31.</span>` : ""}
     </div>`;
 }
