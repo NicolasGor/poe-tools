@@ -45,6 +45,42 @@
   .griglia td:first-child{color:var(--gold);white-space:nowrap;font-weight:600}
   .no{color:var(--bad)}
 
+  /* il pulsante che segue la pagina, e la modale della griglia */
+  .fisso{position:fixed;right:var(--s4);bottom:var(--s4);z-index:40;font:inherit;font-weight:700;
+         cursor:pointer;border:none;border-radius:999px;padding:var(--s3) var(--s5);
+         background:var(--gold);color:#171208;box-shadow:0 6px 20px rgba(0,0,0,.45)}
+  .fisso:hover{background:var(--gold-scuro)}
+  .fisso span{margin-right:.35rem}
+  .velo{position:fixed;inset:0;z-index:50;background:rgba(6,8,12,.72);backdrop-filter:blur(2px);
+        display:flex;align-items:flex-start;justify-content:center;padding:var(--s5) var(--s4);overflow:auto}
+  .velo[hidden]{display:none}
+  .modale{background:var(--panel);border:1px solid var(--line2);border-radius:var(--r);
+          width:min(64rem,100%);max-height:90vh;display:flex;flex-direction:column;overflow:hidden}
+  .modale-testa{display:flex;gap:var(--s3);align-items:center;padding:var(--s4);
+                border-bottom:1px solid var(--line)}
+  .modale-testa h2{font-size:var(--t-lg);margin:0;flex:0 0 auto}
+  .modale-testa input{flex:1;font:inherit;font-size:var(--t-sm);padding:var(--s2) var(--s3);
+                      border-radius:var(--r);border:1px solid var(--line2);background:var(--bg);color:var(--text)}
+  .chiudi{font-size:1.6rem;line-height:1;background:none;border:none;color:var(--label);cursor:pointer}
+  .chiudi:hover{color:var(--text)}
+  .modale-corpo{padding:var(--s4);overflow:auto;display:grid;gap:var(--s3);
+                grid-template-columns:repeat(auto-fit,minmax(22rem,1fr))}
+  .modale-pie{padding:var(--s3) var(--s4);border-top:1px solid var(--line);
+              font-size:var(--t-xs);color:var(--muted);background:var(--panel2)}
+  .arche-card{border:1px solid var(--line);border-radius:var(--r);background:var(--panel2);padding:var(--s3)}
+  .arche-card.fuori{display:none}
+  .arche-card h3{font-size:var(--t-md);color:var(--gold);margin:0 0 .1rem;display:flex;align-items:baseline;gap:var(--s2)}
+  .arche-card h3 b{margin-left:auto;font-family:var(--mono);font-size:var(--t-sm);color:var(--good)}
+  .arche-card .casa{font-size:var(--t-xs);color:var(--label);text-transform:uppercase;letter-spacing:.05em}
+  .lista{margin-top:var(--s3)}
+  .lista dt{font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:var(--label);margin-bottom:.2rem}
+  .lista dd{margin:0 0 var(--s3);display:flex;flex-wrap:wrap;gap:.3rem}
+  .gem{font-size:var(--t-xs);padding:.15rem .5rem;border-radius:999px;border:1px solid var(--line2);color:var(--muted)}
+  .gem.serve{border-color:rgba(95,211,160,.5);color:var(--good)}
+  .gem.serve.chiave{background:rgba(95,211,160,.12);font-weight:600}
+  .gem.azzera{border-color:rgba(229,120,109,.55);color:var(--bad)}
+  .arche-card .nota{font-size:var(--t-xs);color:var(--label);margin-top:var(--s2)}
+
   /* la scheda delle gemme, aperta sotto la riga */
   .apri{background:none;border:1px solid var(--line2);color:var(--muted);border-radius:var(--r);
         font:inherit;font-size:var(--t-xs);padding:.15rem .5rem;cursor:pointer;white-space:nowrap}
@@ -225,53 +261,22 @@
     può agire.</p>
   </div>
 
-  <h2 class="sec">Cosa raccogliere in mappa</h2>
-  <p class="sub" style="max-width:62ch">Il prezzo qui sopra risponde a «a quanto lo
-  listo». Non risponde a «vale la pena fermarsi»: quello lo decide la griglia di
-  chi <i>compra</i> — il Luminary, che combatte attraverso il mercenario assunto.</p>
+  <button class="fisso" id="b-griglia" title="Cosa raccogliere in mappa">
+    <span>&#9873;</span> Vale la pena?
+  </button>
 
-  <div class="scroll">
-    <table class="griglia">
-      <tr>
-        <td>Returning Projectiles</td>
-        <td>Il primo taglio su <b>Kineticist, Manyshot, Combatant e Cruel
-        Mistress</b>: se non ce l'ha, non serve guardare il resto. Fanno eccezione
-        <b>Sniper</b> (vuole GMP e il gilded +2 proiettili) e <b>Stormhand</b>, che
-        vive di chain.</td>
-      </tr>
-      <tr>
-        <td>Kineticist</td>
-        <td><b>15d+</b> — vuole <b>Greater Kinetic Blast of Clustering</b> e il
-        Kinetic Blast normale <i>insieme</i>. <span class="no">Kinetic Bolt e
-        Kinetic Rain lo azzerano</span>: rompono l'IA. Barrage no, è innocuo.</td>
-      </tr>
-      <tr>
-        <td>Manyshot</td>
-        <td><b>5d+</b> — <b>Ice Shot e Vaal Ice Shot</b>, Return su entrambi.
-        <span class="no">Icicle Rain lo squalifica</span>: interrompe il Vaal Ice
-        Shot.</td>
-      </tr>
-      <tr>
-        <td>Combatant</td>
-        <td><b>Frost Blades</b> o <b>Wild Strike</b> insieme a <b>Static
-        Strike</b>. <span class="no">Pierce lo azzera</span> — impedisce il ritorno
-        del proiettile, cioè spegne il supporto su cui si regge il valore.</td>
-      </tr>
-      <tr>
-        <td>Blade Ambusher</td>
-        <td>Il boss killer: <b>Spectral Helix of Trarthus</b> con Multiple Traps,
-        Trap and Mine Damage e Slower Projectiles — <i>sull'Helix</i>, non su
-        un'altra skill.</td>
-      </tr>
-    </table>
-  </div>
-
-  <div class="avviso" style="margin-top:var(--s4)">
-    <b>Le due domande non danno la stessa risposta, ed è normale.</b> Il floor
-    misura cosa chiede il libro delle inserzioni; la griglia misura cosa serve a
-    una build. Un mercenario con la gemma che squalifica può avere un floor
-    onesto — perché quel floor è fatto da venditori che la gemma sbagliata ce
-    l'hanno anche loro.
+  <div class="velo" id="griglia-modale" hidden>
+    <div class="modale" role="dialog" aria-labelledby="griglia-titolo" aria-modal="true">
+      <div class="modale-testa">
+        <h2 id="griglia-titolo">Vale la pena fermarsi?</h2>
+        <input id="griglia-cerca" type="search" placeholder="filtra: nome, gemma, casa…" autocomplete="off">
+        <button class="chiudi" id="griglia-chiudi" aria-label="Chiudi">&times;</button>
+      </div>
+      <div class="modale-corpo" id="griglia-corpo"></div>
+      <div class="modale-pie">
+        <b>Il primo taglio</b>: <b>Returning Projectiles</b> — se non ce l'ha, su Kineticist, Manyshot, Combatant e Cruel Mistress si uccide e si va avanti. Fanno eccezione <b>Sniper</b> (vuole GMP e il gilded +2 proiettili) e <b>Stormhand</b>, che vive di chain.
+      </div>
+    </div>
   </div>
 
   <footer class="pie">
@@ -700,6 +705,84 @@ document.addEventListener("click", (e) => {
     disegnaScheda(i);
   }
 });
+
+/* ------------------------------------------------------ cosa raccogliere
+ * La griglia di chi **compra** — il Luminary, che combatte attraverso il
+ * mercenario assunto. Sta in una modale perche' serve **in gioco**, davanti a un
+ * mercenario appena battuto: il taglio si fa in pochi secondi, e la pagina dei
+ * prezzi non c'entra niente in quel momento.
+ *
+ * ⚠️ La fonte e' la griglia in wiki (mercenari-di-trarthus.md), che viene dalla
+ * lista della spesa di chi quei mercenari li compra. Un nome sbagliato qui costa
+ * un mercenario buttato: dove il mercato non conosce la gemma, e' segnalato.
+ */
+const GRIGLIA = [
+  {nome: "Kineticist", casa: "Bardiya", valore: "15 d+",
+   serve: [["Greater Kinetic Blast of Clustering", 1], ["Kinetic Blast", 1], ["Return", 1],
+           ["chain o fork", 0], ["Ele Damage with Attacks", 0], ["GMP", 0], ["crit damage", 0], ["haste", 0]],
+   azzera: ["Kinetic Bolt", "Kinetic Rain"],
+   nota: "I due Kinetic Blast si vogliono <b>insieme</b>. <b>Barrage non è un brick</b>. ⚠️ Il mercato non conosce questi due nomi di gemma: da verificare in gioco."},
+  {nome: "Manyshot", casa: "Cyaxan", valore: "5 d+",
+   serve: [["Ice Shot", 1], ["Vaal Ice Shot", 1], ["Return su entrambi", 1],
+           ["GMP", 0], ["Ele Damage with Attacks", 0], ["Hypothermia", 0], ["crit", 0]],
+   azzera: ["Icicle Rain"],
+   nota: "L'Icicle Rain <b>interrompe il Vaal Ice Shot</b>: non è debole, è rotto."},
+  {nome: "Blade Ambusher", casa: "Azadi", valore: "boss killer",
+   serve: [["Spectral Helix of Trarthus", 1], ["Multiple Traps", 1], ["Trap and Mine Damage", 1], ["Slower Projectiles", 1]],
+   azzera: [],
+   nota: "Le tre gemme vanno <b>sull'Helix</b>, non su un'altra skill."},
+  {nome: "Sniper", casa: "Cyaxan", valore: "—",
+   serve: [["Tornado Shot", 1], ["GMP", 1], ["gilded +2 proiettili", 1], ["haste aura", 0], ["totem", 0]],
+   azzera: ["Brutality", "Arrow Nova"],
+   nota: "Il <b>Rain of Arrows va bene lo stesso</b>. Qui il Return non è il filtro."},
+  {nome: "Cruel Mistress", casa: "Cyaxan", valore: "—",
+   serve: [["Soulrend of Reaping", 1], ["Return", 1], ["GMP", 1], ["Summon Void <i>oppure</i> totem di Forbidden Rite", 0], ["envy aura", 0]],
+   azzera: [],
+   nota: ""},
+  {nome: "Stormhand", casa: "Cyaxan", valore: "—",
+   serve: [["Arc", 1], ["Ball Lightning of Static", 1], ["chain sull'Arc", 1], ["gilded chain", 0]],
+   azzera: [],
+   nota: "Vive di <b>chain</b>: il Return qui non conta."},
+  {nome: "Combatant", casa: "Azadi", valore: "tuttofare",
+   serve: [["Frost Blades <i>oppure</i> Wild Strike", 1], ["Static Strike", 1],
+           ["Return sul Wild Strike", 0], ["chain sul Frost Blades", 0], ["Ele Damage", 0], ["Hypothermia", 0]],
+   azzera: ["Spectral Helix", "Elemental Hit", "Pierce"],
+   nota: "Il <b>Pierce impedisce il ritorno del proiettile</b>, cioè spegne proprio ciò che fa il valore."},
+];
+
+function disegnaGriglia(filtro = "") {
+  const f = filtro.trim().toLowerCase();
+  $("griglia-corpo").innerHTML = GRIGLIA.map((a) => {
+    const testo = [a.nome, a.casa, ...a.serve.map((x) => x[0]), ...a.azzera].join(" ").toLowerCase();
+    const fuori = f && !testo.includes(f) ? " fuori" : "";
+    const serve = a.serve.map(([g, chiave]) => `<span class="gem serve${chiave ? " chiave" : ""}">${chiave ? "\u2713 " : ""}${g}</span>`).join("");
+    const azzera = a.azzera.length
+      ? `<dt>lo azzera</dt><dd>${a.azzera.map((g) => `<span class="gem azzera">\u2715 ${esc(g)}</span>`).join("")}</dd>`
+      : "";
+    return `<div class="arche-card${fuori}">
+      <h3>${esc(a.nome)} <b>${esc(a.valore)}</b></h3>
+      <div class="casa">casa ${esc(a.casa)}</div>
+      <dl class="lista">
+        <dt>deve avere</dt><dd>${serve}</dd>
+        ${azzera}
+      </dl>
+      ${a.nota ? `<p class="nota">${a.nota}</p>` : ""}
+    </div>`;
+  }).join("");
+}
+
+function apriGriglia(apri) {
+  const v = $("griglia-modale");
+  v.hidden = !apri;
+  document.body.style.overflow = apri ? "hidden" : "";
+  if (apri) { disegnaGriglia($("griglia-cerca").value); $("griglia-cerca").focus(); }
+}
+
+$("b-griglia").addEventListener("click", () => apriGriglia(true));
+$("griglia-chiudi").addEventListener("click", () => apriGriglia(false));
+$("griglia-modale").addEventListener("click", (e) => { if (e.target.id === "griglia-modale") apriGriglia(false); });
+$("griglia-cerca").addEventListener("input", (e) => disegnaGriglia(e.target.value));
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("griglia-modale").hidden) apriGriglia(false); });
 
 const cache = leggiCache();
 if (cache) { disegna(cache); caricaLiquidita(cache); }
