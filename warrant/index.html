@@ -82,9 +82,15 @@
   .tuoi.vuoto{background:var(--panel2);color:var(--muted)}
   .tuoi.vuoto.clic:hover{background:var(--panel-alto);color:var(--testo)}
   .nessuno{margin-top:var(--s2)}
-  /* l'evidenza non deve cambiare il colore del testo che sta sotto: quelli
-     dicono gia' qualcosa (verde = ce l'hai, rosso = lo azzera) */
-  mark.trova{background:rgba(212,163,74,.32);color:inherit;border-radius:3px;padding:0 1px}
+  /* Evidenza piena, non una velatura: deve saltare all'occhio in mezzo a una
+     modale gia' fitta di colori.
+     ⚠️ Qui il testo prende un colore suo, e va detto perche' e' una rinuncia:
+     sotto, il colore diceva qualcosa (verde «ce l'hai», rosso «lo azzera»). Ma
+     su un fondo pieno quei colori diventano illeggibili, e l'informazione non
+     si perde — resta nel riquadro della gemma, che continua a essere verde o
+     rosso attorno alla parola evidenziata. */
+  mark.trova{background:#e8b04a;color:#12161c;font-weight:700;
+             border-radius:3px;padding:0 3px;box-shadow:0 0 0 1px rgba(232,176,74,.55)}
   .targa{display:inline-flex;align-items:center;gap:var(--s2)}
   .cerca-barra{margin-top:calc(var(--s2) * -1)}
   #cerca{flex:1;min-width:220px;max-width:420px;padding:6px 10px;border-radius:8px;
