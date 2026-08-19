@@ -84,8 +84,9 @@ export default {
          * sulla rotta che la pagina interroga ogni pochi secondi mentre aspetta un
          * aggiornamento. I riassunti li scrive chi scrive i dati: la Action per i
          * prezzi, questo Worker per lo stash appena lo riceve. */
-        const [p, s, a] = await Promise.all([
+        const [p, s, a, rich] = await Promise.all([
           leggi(env, "stato:prezzi"), leggi(env, "stato:stash"), leggi(env, "aggiornamento"),
+          leggi(env, "richiesta-stash"),
         ]);
         return json({
           ok: true,
@@ -94,6 +95,8 @@ export default {
           prezzi: p || null,
           stash: s || null,
           aggiornamento: a || null,
+          // il biglietto lasciato dalla pagina: l'agente sul Mac guarda questo
+          richiestaStash: rich || null,
           // booleano di proposito: dice se il server ha una chiave, non quale sia
           chiave: !!chiave,
         });
@@ -130,9 +133,20 @@ export default {
         if (!env.GITHUB_TOKEN || !env.GITHUB_REPO) {
           return json({ errore: "il Worker non sa a chi chiedere il calcolo (GITHUB_TOKEN/GITHUB_REPO)" }, 500);
         }
-        const a = await leggi(env, "aggiornamento");
+        const [a, sp, ss] = await Promise.all([
+          leggi(env, "aggiornamento"), leggi(env, "stato:prezzi"), leggi(env, "stato:stash"),
+        ]);
         const adesso = Date.now();
-        if (a?.chiestoIl && adesso - a.chiestoIl < ATTESA_MINUTI * 60000) {
+
+        /* 🔴 **L'attesa non vale se lo stash e' cambiato.** Esiste per non rifare
+         * lo stesso conto su dati identici — la fonte rigenera ogni ~10 minuti,
+         * quindi ripetere prima darebbe lo stesso numero. Ma se i prezzi sono
+         * stati calcolati su uno stash **diverso** da quello attuale, il conto da
+         * rifare c'e' eccome, e bloccarlo lasciava la pagina ad aspettare un
+         * allineamento che non poteva arrivare. Successo davvero il 19 agosto,
+         * al primo giro con warrant nuovi: 49 in stash, 47 prezzati. */
+        const stashNuovo = ss?.quando && sp?.stashDel !== ss.quando;
+        if (!stashNuovo && a?.chiestoIl && adesso - a.chiestoIl < ATTESA_MINUTI * 60000) {
           const restano = Math.ceil((ATTESA_MINUTI * 60000 - (adesso - a.chiestoIl)) / 60000);
           return json({ inAttesa: true, restanoMinuti: restano, chiestoIl: a.chiestoIl,
                         nota: `La fonte rigenera ogni ~${ATTESA_MINUTI} minuti: rifare il conto prima darebbe lo stesso numero.` }, 429);
@@ -166,6 +180,28 @@ export default {
         }
         await scrivi(env, "aggiornamento", { chiestoIl: adesso, stato: "in-corso" });
         return json({ ok: true, avviato: true, chiestoIl: adesso });
+      }
+
+      /* ------------------------------------------------ richiesta di rilettura
+       * La pagina non puo' leggere lo stash — serve la sessione di pathofexile,
+       * che vive solo sul Mac — ma puo' **lasciare un biglietto**: qui si scrive
+       * che qualcuno l'ha chiesto, e un piccolo agente sul Mac lo raccoglie.
+       *
+       * 🔴 **Senza chiave, quindi con un tempo di attesa al posto suo.** Una rotta
+       * aperta che scrive nel KV e' un modo per farci esaurire le **1.000
+       * scritture al giorno** del piano gratuito: con 5 minuti di attesa il
+       * massimo teorico e' 288, e in pratica sono una manciata. Chiedere piu'
+       * spesso non avrebbe senso comunque — il Mac ci mette ~1 minuto a
+       * rispondere. */
+      if (url.pathname === "/chiedi-stash" && req.method === "POST") {
+        const r = await leggi(env, "richiesta-stash");
+        const adesso = Date.now();
+        if (r?.quando && adesso - r.quando < 5 * 60000 && !r.servita) {
+          return json({ inAttesa: true, chiestoIl: r.quando,
+                        nota: "Una richiesta e' gia' in coda: il Mac la raccoglie entro pochi minuti." }, 429);
+        }
+        await scrivi(env, "richiesta-stash", { quando: adesso, servita: false });
+        return json({ ok: true, chiestoIl: adesso });
       }
 
       /* -------------------------------------------------------- il campionatore
@@ -218,6 +254,10 @@ export default {
         await scrivi(env, "stash", { warrant: corpo.warrant, quando, tab: corpo.tab ?? null });
         // il riassunto accanto al dato: cosi' /stato non deve riparsare 70 KB
         await scrivi(env, "stato:stash", { warrant: corpo.warrant.length, quando });
+        // il biglietto lasciato dalla pagina e' stato raccolto: si annulla, cosi'
+        // una richiesta nuova non trova la vecchia ancora in coda
+        const rich = await leggi(env, "richiesta-stash");
+        if (rich && !rich.servita) await scrivi(env, "richiesta-stash", { ...rich, servita: true });
         return json({ ok: true, salvati: corpo.warrant.length });
       }
 
@@ -237,7 +277,7 @@ export default {
         if (!nome) return json({ errore: "manca il nome della chiave" }, 400);
         // 🔴 Elenco chiuso: senza, la CHIAVE diventerebbe un permesso di scrivere
         // qualunque cosa nel magazzino, compreso lo `stash` che non e' suo mestiere.
-        const ammesse = /^(prezzi|stato:prezzi|aggiornamento|scheda:[0-9a-f]{8,80})$/;
+        const ammesse = /^(prezzi|stato:prezzi|aggiornamento|richiesta-stash|scheda:[0-9a-f]{8,80})$/;
         if (!ammesse.test(nome)) return json({ errore: `chiave non ammessa: ${nome}` }, 400);
         await env.WARRANT.put(nome, req.body);
         return json({ ok: true, scritta: nome });
@@ -272,7 +312,7 @@ export default {
       }
 
       return json({ errore: "rotta sconosciuta", rotte: [
-        "GET /stato", "GET /prezzo", "GET /dettaglio?id=", "GET /stash", "POST /stash?k=", "POST /deposita?k=&chiave=",
+        "GET /stato", "GET /prezzo", "GET /dettaglio?id=", "GET /stash", "POST /stash?k=", "POST /deposita?k=&chiave=", "POST /chiedi-stash",
         "POST /aggiorna", "GET /campione/piano?k=", "POST /campione?k=", "GET /liquidita?chiavi=",
       ] }, 404);
     } catch (e) {
