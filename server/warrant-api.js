@@ -147,7 +147,7 @@ function contesto(build, warrant) {
 }
 
 function prezzaWarrant(build, warrant, divine, mirror, minimo) {
-  const { coppie, ignoti, pool } = contesto(build, warrant);
+  const { skillIdx, coppie, ignoti, pool } = contesto(build, warrant);
 
   // peso: quanto ogni supporto alza la probabilita' di stare sopra 5 divine
   const soglia = 5 * divine;
@@ -200,31 +200,65 @@ function prezzaWarrant(build, warrant, divine, mirror, minimo) {
     // pool della scheda a 27.000 inserzioni contro le 2.500 della riga — due
     // numeri diversi sullo stesso mercenario, nella stessa pagina.
     gemme: warrant.skills,
-    trade: linkTrade(build, passi, "Allflame"),
+    trade: linkTrade(build, skillIdx, passi, "Allflame"),
   };
 }
 
+/** Quanto e' comune ogni skill nell'archetipo. Calcolata una volta e tenuta sul
+ *  build: serve al link, dove una skill che ce l'hanno tutti costa un gruppo e
+ *  non esclude nessuno. */
+function diffusione(build) {
+  if (build._diff) return build._diff;
+  const conta = new Array(build.skills.length).fill(0);
+  for (const r of build._righe) for (const g of r.slot) if (g.length) conta[g[0]]++;
+  build._diff = conta.map((n) => n / build._righe.length);
+  return build._diff;
+}
+
 /**
- * Il link di ricerca. ⚠️ Un gruppo `mercenary` per ogni skill e' troppo: il trade
- * risponde `400 Query is too complex`, e da sloggati ne accetta **uno solo**. Si
- * mandano le skill che vincolano un supporto piu' le skill firma, e i supporti si
- * fermano ai primi quattro per peso.
+ * Il link di ricerca — stessa regola della pagina, e le misure che la giustificano:
+ *
+ * ⚠️ Il limite del trade **non e' lineare**: 6 gruppi con 3 gemme danno
+ * `400 Query is too complex`, 6 gruppi con 1 gemma passano, 5 con 6 passano.
+ * Tetto prudente: **5 gruppi**.
+ *
+ * 🔴 E i gruppi vanno spesi sulle skill **rare**: su Withertouch, `Bane` e
+ * `Temporal Chains` stanno sul 100% delle inserzioni — due gruppi buttati.
+ * Togliendoli e tenendo le rare, la ricerca torna mercenari con le stesse sei
+ * skill invece di roba a 1 chaos con Blight al posto di Greater Soulrend.
  */
-function linkTrade(build, passi, lega) {
-  const perSkill = new Map();
-  for (const p of passi.slice(0, 4)) {
-    if (!perSkill.has(p.si)) perSkill.set(p.si, []);
-    perSkill.get(p.si).push(p.sj);
+function linkTrade(build, skillIdx, passi, lega) {
+  const MAX_GRUPPI = 5, MAX_GEMME = 6;
+  const diff = diffusione(build);
+  const conSupporto = new Set(passi.map((p) => p.si));
+
+  const dentro = [];
+  for (const i of [...skillIdx].sort((a, b) => diff[a] - diff[b])) {
+    if (dentro.length >= MAX_GRUPPI) break;
+    if (diff[i] >= 0.97 && !conSupporto.has(i)) continue;
+    dentro.push(i);
   }
+  if (dentro.length < 2) {
+    for (const h of build.signature || []) {
+      const i = build.skills.findIndex((x) => x.hash === h);
+      if (i >= 0 && !dentro.includes(i) && dentro.length < MAX_GRUPPI) dentro.push(i);
+    }
+  }
+
+  const perSkill = new Map(dentro.map((i) => [i, []]));
+  let spazio = MAX_GEMME;
+  for (const p of passi) {
+    if (spazio <= 0) break;
+    if (!perSkill.has(p.si)) continue;
+    perSkill.get(p.si).push(p.sj);
+    spazio--;
+  }
+
   const stats = [...perSkill].map(([i, sups]) => ({
     type: "mercenary",
     filters: [{ id: `mercenary.skill_${build.skills[i].hash}` },
               ...sups.map((j) => ({ id: `mercenary.support_${build.supports[j].hash}` }))],
   }));
-  const vincolate = new Set([...perSkill.keys()].map((i) => build.skills[i].hash));
-  for (const h of build.signature || []) {
-    if (!vincolate.has(h)) stats.push({ type: "mercenary", filters: [{ id: `mercenary.skill_${h}` }] });
-  }
   const q = { query: { status: { option: "securable" }, stats }, sort: { price: "asc" } };
   return `https://www.pathofexile.com/trade/search/${lega}?q=${encodeURIComponent(JSON.stringify(q))}`;
 }
