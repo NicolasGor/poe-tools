@@ -644,6 +644,33 @@ export default {
             }
           }
           pesi.sort((x, y) => y.peso - x.peso);
+
+          // **Quanto chiede un buon esemplare**: le inserzioni che hanno le due
+          // gemme piu' pagate dell'archetipo. Non e' la mediana del libro — quella
+          // dice 1 divine ovunque, perche' un quarto del mercato chiede quella
+          // cifra qualunque cosa abbia tirato — ma il prezzo di chi ha *quello che
+          // il mercato paga*. ⚠️ Resta una richiesta: dice a quanto si osa listare,
+          // non cosa si incassa.
+          let buono = null;
+          if (pesi.length >= 2) {
+            const j1 = build.supports.findIndex((x) => x.name === pesi[0].gemma);
+            const j2 = build.supports.findIndex((x) => x.name === pesi[1].gemma);
+            const scelte = [];
+            for (let i = 0; i < righe.length; i++) {
+              let a1 = false, a2 = false;
+              for (const g of righe[i].slot) for (let k = 1; k < g.length; k++) {
+                if (g[k] === j1) a1 = true; else if (g[k] === j2) a2 = true;
+              }
+              if (a1 && a2) scelte.push(prezzi[i]);
+            }
+            if (scelte.length >= 30) {
+              scelte.sort((x, y) => x - y);
+              buono = { con: [pesi[0].gemma, pesi[1].gemma], inserzioni: scelte.length,
+                        floor: Math.round(scelte[0]),
+                        mediana: Math.round(scelte[Math.floor(scelte.length / 2)]),
+                        alto: Math.round(scelte[Math.floor(scelte.length * 0.9)]) };
+            }
+          }
           fuori.push({
             archetipo: build.build, slug: b.slug, inserzioni: righe.length,
             sopra1d: +(100 * sopra1 / righe.length).toFixed(1),
@@ -653,7 +680,7 @@ export default {
             // sfonda lo stack e la rotta risponde "Maximum call stack size
             // exceeded" invece del dato.
             massimo: Math.round(prezzi.reduce((m, x) => (x > m ? x : m), 0)),
-            gemmeChePagano: pesi.slice(0, 5),
+            gemmeChePagano: pesi.slice(0, 5), buono,
           });
         }
         return json({ da, a, totale: builder.builds.length, archetipi: fuori });
