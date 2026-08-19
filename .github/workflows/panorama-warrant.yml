@@ -1,0 +1,55 @@
+# Ricalcola il panorama degli archetipi Warrant e lo committa come file statico.
+#
+# **Perche' una Action e non il server.** Griglia, combinazioni e pesi sono uguali
+# per chiunque apra la pagina: non dipendono da cosa ha in stash chi guarda. Farli
+# ricalcolare a ogni visita voleva dire scaricare da xddbsns ~35 indici da 1-6 MB
+# per rispondere sempre la stessa cosa, ed e' il traffico che il 19 agosto 2026 ha
+# esaurito il piano gratuito di Deno e sospeso il servizio (503 USAGE_EXCEEDED).
+# Qui il conto si fa una volta al giorno, su una macchina di GitHub, e il
+# risultato e' un file da ~180 KB servito da Pages.
+#
+# ⚠️ **Una volta al giorno e non piu' spesso, di proposito.** La fonte si rigenera
+# ogni ~10 minuti, ma quel mercato non si muove: la mediana dell'eta' delle
+# inserzioni e' di 165 ore. Ricalcolare piu' spesso gonfierebbe la storia del repo
+# per cifre che restano identiche.
+
+name: panorama warrant
+
+on:
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:        # per rigenerarlo a mano dopo un cambio di lega
+
+permissions:
+  contents: write
+
+concurrency:                # due ricalcoli insieme si sovrascriverebbero il commit
+  group: panorama-warrant
+
+jobs:
+  ricalcola:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      # 🔴 Se un archetipo non risponde il generatore esce con 1 invece di
+      # committare un file a meta': un panorama parziale e' indistinguibile da uno
+      # intero finche' qualcuno non cerca l'archetipo mancante.
+      - name: Calcola il panorama
+        run: node --max-old-space-size=4096 server/genera-panorama.mjs
+
+      - name: Committa se e' cambiato
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add warrant/panorama.json
+          if git diff --staged --quiet; then
+            echo "il panorama non e' cambiato: niente commit"
+          else
+            git commit -m "Warrant: panorama ricalcolato"
+            git push
+          fi
