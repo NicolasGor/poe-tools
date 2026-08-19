@@ -502,53 +502,53 @@ function quintoDi(righe, sel) {
 /**
  * Il link di ricerca.
  *
- * 🔴 **Il difetto che aveva prima, ed e' quello che ha visto Nicolas**: mandavo
- * solo le skill che portavano un supporto spuntato. Il prezzo pero' e' calcolato
- * su chi ha **tutte** le skill del suo mercenario, quindi la ricerca era piu'
- * larga del conto e in cima comparivano warrant da 1-3 chaos — con Blight e
- * Altar of Chaos al posto di Greater Soulrend e Wither Totem, cioe' un altro
- * mercenario.
+ * 🔴 **Il difetto che ha visto Nicolas**: mandavo solo le skill che portavano un
+ * supporto spuntato, mentre il prezzo si calcola su chi ha **tutte** le skill del
+ * suo mercenario. La ricerca era piu' larga del conto e in cima uscivano warrant
+ * da 1-3 chaos con Blight e Altar of Chaos al posto di Greater Soulrend e Wither
+ * Totem: un altro mercenario, non uno piu' economico.
  *
- * ⚠️ **Non si possono mandare tutte**: il trade rifiuta con `400 Query is too
- * complex`. Misurato il 19 agosto da loggati: 6 gruppi con 10 filtri **no**,
- * 6 gruppi con 7 filtri **si'**, 5 gruppi con 11 **si'** — cioe' un gruppo costa
- * circa tre volte un filtro. Da qui il budget `3 x gruppi + supporti <= 21`.
+ * ⚠️ **Mandarle tutte non si puo'**, e il limite del trade non e' lineare.
+ * Misurato il 19 agosto da loggati: **6 gruppi con 3 gemme viene rifiutato**
+ * (`400 Query is too complex`), 6 gruppi con 1 gemma passa, 5 gruppi con 6 gemme
+ * passa, 4 gruppi con 6 gemme passa. Quindi il tetto prudente e' **5 gruppi**.
  *
- * Il budget si spende sulle skill che **distinguono**: quelle rare
- * nell'archetipo vengono prima, e una skill che ce l'ha il 99% delle inserzioni
- * viene lasciata fuori — costa un gruppo e non toglie nessuno.
+ * 💡 **La cosa che ha sbloccato il problema**: su Withertouch, `Bane` e
+ * `Temporal Chains` stanno sul **100%** delle inserzioni dell'archetipo — due
+ * gruppi spesi per non escludere nessuno. Togliendoli e tenendo le quattro skill
+ * rare la ricerca torna **51 risultati, tutti mercenari identici al suo**. Le
+ * skill che identificano la build non servono: **ci pensano quelle rare**.
  */
-const BUDGET = 21;
+const MAX_GRUPPI = 5;
+const MAX_GEMME = 6;
 
 function linkTrade(dati, sel) {
   const scelti = dati.supporti.filter((s) => sel & (1 << s.i)).sort((a, b) => b.peso - a.peso);
   const conSupporto = new Set(scelti.map((s) => s.skillHash));
 
-  // le skill in ordine di quanto restringono: prima le rare, poi le comuni
+  // prima le skill che restringono: le rare. Quelle che ha il 97% delle
+  // inserzioni dell'archetipo non tolgono nessuno e costano un gruppo.
   const skill = (dati.skill || []).slice().sort((a, b) => a.diffusione - b.diffusione);
   const dentro = [];
   for (const k of skill) {
-    // una skill che porta un supporto spuntato entra comunque: il supporto senza
-    // la sua skill non si puo' esprimere
-    const necessaria = conSupporto.has(k.hash);
-    const utile = k.diffusione < 0.97;
-    if (!necessaria && !utile) continue;
-    if (3 * (dentro.length + 1) > BUDGET) break;
+    if (dentro.length >= MAX_GRUPPI) break;
+    if (k.diffusione >= 0.97 && !conSupporto.has(k.hash)) continue;
     dentro.push(k);
   }
-  const dentroHash = new Set(dentro.map((k) => k.hash));
-  for (const h of dati.signature || []) {
-    if (!dentroHash.has(h) && 3 * (dentro.length + 1) <= BUDGET) {
-      dentro.push({hash: h, nome: "", diffusione: 1});
-      dentroHash.add(h);
+  // se il mercenario non ha nessuna skill rara, restano le firma: senza almeno
+  // due gruppi la ricerca non dice nemmeno di che build si tratta
+  if (dentro.length < 2) {
+    for (const h of dati.signature || []) {
+      if (dentro.length >= MAX_GRUPPI) break;
+      if (!dentro.some((k) => k.hash === h)) dentro.push({hash: h, nome: "", diffusione: 1});
     }
   }
 
-  let spazio = BUDGET - 3 * dentro.length;
   const perSkill = new Map(dentro.map((k) => [k.hash, []]));
+  let spazio = MAX_GEMME;
   for (const s of scelti) {
     if (spazio <= 0) break;
-    if (!perSkill.has(s.skillHash)) continue;
+    if (!perSkill.has(s.skillHash)) continue;   // la sua skill non e' nella ricerca
     perSkill.get(s.skillHash).push(s.supHash);
     spazio--;
   }
@@ -558,10 +558,9 @@ function linkTrade(dati, sel) {
     filters: [{id: `mercenary.skill_${h}`}, ...sups.map((x) => ({id: `mercenary.support_${x}`}))],
   }));
   const q = {query: {status: {option: "securable"}, stats}, sort: {price: "asc"}};
-  const usati = BUDGET - 3 * dentro.length - spazio;
   return {
     url: `https://www.pathofexile.com/trade/search/${dati.lega}?q=${encodeURIComponent(JSON.stringify(q))}`,
-    skill: dentro.length, gemme: usati, gemmeChieste: scelti.length,
+    skill: dentro.length, gemme: MAX_GEMME - spazio, gemmeChieste: scelti.length,
   };
 }
 
