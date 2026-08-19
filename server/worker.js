@@ -207,6 +207,28 @@ export default {
         return json({ ok: true, salvati: corpo.warrant.length });
       }
 
+      /* Il deposito del risultato calcolato dalla Action.
+       *
+       * 💡 **Perche' non lascio scrivere la Action direttamente nel KV.** Sarebbe
+       * bastato, ma avrebbe richiesto un **token API di Cloudflare** in piu' da
+       * creare, custodire e un giorno ruotare. Passando di qui basta la `CHIAVE`
+       * che gia' esiste: una credenziale in meno al mondo.
+       *
+       * ⚠️ Una chiave per richiesta, e il corpo **non si parsa mai**: si passa il
+       * flusso direttamente a `put()`. Depositare una scheda da 472 KB costa
+       * quanto depositarne una da 8, e resta lontanissimo dai 10 ms. */
+      if (url.pathname === "/deposita" && req.method === "POST") {
+        if (!autorizzato()) return json({ errore: "chiave mancante o sbagliata" }, 403);
+        const nome = url.searchParams.get("chiave");
+        if (!nome) return json({ errore: "manca il nome della chiave" }, 400);
+        // 🔴 Elenco chiuso: senza, la CHIAVE diventerebbe un permesso di scrivere
+        // qualunque cosa nel magazzino, compreso lo `stash` che non e' suo mestiere.
+        const ammesse = /^(prezzi|stato:prezzi|aggiornamento|scheda:[0-9a-f]{8,80})$/;
+        if (!ammesse.test(nome)) return json({ errore: `chiave non ammessa: ${nome}` }, 400);
+        await env.WARRANT.put(nome, req.body);
+        return json({ ok: true, scritta: nome });
+      }
+
       if (url.pathname === "/campione" && req.method === "POST") {
         if (!autorizzato()) return json({ errore: "chiave mancante o sbagliata" }, 403);
         const corpo = await req.json();
@@ -236,7 +258,7 @@ export default {
       }
 
       return json({ errore: "rotta sconosciuta", rotte: [
-        "GET /stato", "GET /prezzo", "GET /dettaglio?id=", "GET /stash", "POST /stash?k=",
+        "GET /stato", "GET /prezzo", "GET /dettaglio?id=", "GET /stash", "POST /stash?k=", "POST /deposita?k=&chiave=",
         "POST /aggiorna", "GET /campione/piano?k=", "POST /campione?k=", "GET /liquidita?chiavi=",
       ] }, 404);
     } catch (e) {

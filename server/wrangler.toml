@@ -12,7 +12,7 @@
 #
 # ⚠️ I segreti si mettono con `wrangler secret put`, mai in questo file: e' committato.
 
-name = "warrant"
+name = "api"
 main = "worker.js"
 compatibility_date = "2026-08-19"
 
@@ -22,4 +22,4 @@ GITHUB_REPO = "NicolasGor/poe-tools"
 
 [[kv_namespaces]]
 binding = "WARRANT"
-id = "DA_CREARE"
+id = "2e8f5704766546b4a280974343fa5134"

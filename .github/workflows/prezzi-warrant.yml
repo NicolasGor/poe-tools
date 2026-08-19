@@ -41,6 +41,9 @@ jobs:
       - name: Prezza e deposita nel KV
         run: node --max-old-space-size=4096 server/genera-prezzi.mjs
         env:
-          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
-          CF_KV_NAMESPACE_ID: ${{ secrets.CF_KV_NAMESPACE_ID }}
-          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          # L'indirizzo non e' un segreto. 💡 E il risultato si deposita
+          # **attraverso il Worker**, non scrivendo nel KV: cosi' basta la CHIAVE
+          # che gia' esiste, invece di un token API di Cloudflare in piu' da
+          # creare, custodire e un giorno ruotare.
+          WARRANT_API: https://api.poewarrant.workers.dev
+          WARRANT_CHIAVE: ${{ secrets.WARRANT_CHIAVE }}

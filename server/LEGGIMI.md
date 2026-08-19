@@ -36,8 +36,12 @@ un segreto di gioco.
 
 ## Dov'è, adesso
 
-**Cloudflare Workers, piano gratuito** — Worker `warrant`, entrypoint
-`server/worker.js`, magazzino **Workers KV** (binding `WARRANT`).
+**<https://api.poewarrant.workers.dev>** — Cloudflare Workers, piano gratuito.
+Worker `api`, entrypoint `server/worker.js`, magazzino **Workers KV** (binding
+`WARRANT`, namespace `2e8f5704766546b4a280974343fa5134`).
+
+💡 Il Worker si chiama `api` e non `warrant` perche' il sottodominio e' gia'
+`poewarrant`: `warrant.poewarrant.workers.dev` diceva la stessa parola due volte.
 
 ⚠️ **Deno Deploy è stato abbandonato il 19 agosto 2026.** Non per antipatia: da lì
 passavano **~110 MB di indici di mercato per ogni prezzatura a freddo**, e il
@@ -93,7 +97,7 @@ avrebbe significato configurare ogni dispositivo.
 **Su Cloudflare**, dalla cartella `server/`:
 
 ```
-npx wrangler kv namespace create WARRANT   # incolla l'id in wrangler.toml
+npx wrangler kv namespace create WARRANT   # id gia in wrangler.toml
 npx wrangler secret put CHIAVE             # la stessa del segnalibro
 npx wrangler secret put GITHUB_TOKEN       # token con permesso di dispatch sul repo
 npx wrangler deploy
@@ -104,9 +108,13 @@ con l'URL del Worker. Deve essere giusta lì dentro e non nelle impostazioni —
 altrimenti ogni dispositivo andrebbe configurato, che è esattamente ciò che non
 si vuole.
 
-**Su GitHub**, in *Settings → Secrets → Actions*, tre segreti per la Action:
-`CF_ACCOUNT_ID`, `CF_KV_NAMESPACE_ID`, `CF_API_TOKEN` (permesso *Workers KV
-Storage: Edit*).
+**Su GitHub**, in *Settings → Secrets → Actions*, **un segreto solo**:
+`WARRANT_CHIAVE`, uguale alla `CHIAVE` del Worker.
+
+💡 **Un token Cloudflare non serve.** La Action non scrive nel KV: deposita il
+risultato **attraverso il Worker** (`POST /deposita`), che scrive lui. Una
+credenziale in meno da creare, custodire e un giorno ruotare. E lo stash lo
+**legge senza credenziali**, perche' le letture sono aperte.
 
 ⚠️ **I segreti non si scrivono mai in un comando né in `wrangler.toml`**, che è
 committato: `wrangler secret put` li chiede a voce. Un token finito in una

@@ -33,36 +33,27 @@ const arg = (nome, difetto) => {
 const MIN = Number(arg("--min", 30));
 
 /* ------------------------------------------------------------------ magazzino
- * L'API REST del KV di Cloudflare. Sta qui e non in una libreria perche' sono
- * due chiamate: una dipendenza npm per questo sarebbe piu' codice da fidarsi che
- * codice da scrivere.
+ * Non si parla col KV di Cloudflare direttamente ma **attraverso il Worker**.
+ * 💡 Scrivere nel KV avrebbe richiesto un token API di Cloudflare in piu' da
+ * creare e custodire; passando dal Worker basta la `CHIAVE` che gia' esiste.
+ * E lo stash si **legge senza credenziali**, perche' le letture sono aperte.
  */
-const CF = {
-  account: process.env.CF_ACCOUNT_ID,
-  namespace: process.env.CF_KV_NAMESPACE_ID,
-  token: process.env.CF_API_TOKEN,
-};
-const kvAttivo = !!(CF.account && CF.namespace && CF.token);
-const kvUrl = (chiave) =>
-  `https://api.cloudflare.com/client/v4/accounts/${CF.account}/storage/kv/namespaces/${CF.namespace}/values/${encodeURIComponent(chiave)}`;
+const API = (process.env.WARRANT_API || "https://api.poewarrant.workers.dev").replace(/\/$/, "");
+const CHIAVE = process.env.WARRANT_CHIAVE || "";
 
-async function kvLeggi(chiave) {
-  const r = await fetch(kvUrl(chiave), { headers: { authorization: `Bearer ${CF.token}` } });
-  if (r.status === 404) return null;
-  if (!r.ok) throw new Error(`KV leggi ${chiave}: HTTP ${r.status} ${await r.text()}`);
-  return r.json();
+async function deposita(nome, valore) {
+  const r = await fetch(`${API}/deposita?k=${encodeURIComponent(CHIAVE)}&chiave=${encodeURIComponent(nome)}`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(valore),
+  });
+  if (!r.ok) throw new Error(`deposito di ${nome}: HTTP ${r.status} ${(await r.text()).slice(0, 200)}`);
 }
 
-async function kvScrivi(chiave, valore) {
-  const corpo = new FormData();
-  corpo.append("value", JSON.stringify(valore));
-  corpo.append("metadata", "{}");
-  const r = await fetch(kvUrl(chiave), {
-    method: "PUT",
-    headers: { authorization: `Bearer ${CF.token}` },
-    body: corpo,
-  });
-  if (!r.ok) throw new Error(`KV scrivi ${chiave}: HTTP ${r.status} ${await r.text()}`);
+async function leggiRemoto(rotta) {
+  const r = await fetch(`${API}${rotta}`);
+  if (!r.ok) throw new Error(`${rotta}: HTTP ${r.status}`);
+  return r.json();
 }
 
 /* -------------------------------------------------------------------- lo stash */
@@ -72,11 +63,11 @@ if (daFile) {
   const letto = JSON.parse(readFileSync(daFile, "utf8"));
   stash = Array.isArray(letto) ? { warrant: letto, quando: null } : letto;
 } else {
-  if (!kvAttivo) {
-    console.error("🔴 Senza --stash servono CF_ACCOUNT_ID, CF_KV_NAMESPACE_ID e CF_API_TOKEN.");
+  if (!CHIAVE) {
+    console.error("🔴 Senza --stash serve WARRANT_CHIAVE per depositare il risultato.");
     process.exit(1);
   }
-  stash = await kvLeggi("stash");
+  stash = await leggiRemoto("/stash");   // aperto: nessuna credenziale per leggere
 }
 const warrant = stash?.warrant || [];
 if (!warrant.length) {
@@ -149,14 +140,15 @@ if (pesoMax > 24 * 1024 * 1024) {
 const uscita = arg("--uscita", null);
 if (uscita) { writeFileSync(uscita, JSON.stringify(risultato)); console.log(`   scritto in ${uscita}`); }
 
-if (kvAttivo && !daFile) {
-  // l'indice per ultimo: finche' non c'e', la pagina serve ancora il giro
-  // precedente invece di mostrare meta' aggiornamento
-  for (const [id, scheda] of Object.entries(schede)) await kvScrivi(`scheda:${id}`, scheda);
-  await kvScrivi("prezzi", { generato, stashDel: stash?.quando ?? null, min_confronti: MIN, ...prezzi, falliti });
+if (CHIAVE && !daFile) {
+  // 🔴 **Le schede prima, il riassunto per ultimo.** La pagina si accorge che
+  // l'aggiornamento e' finito guardando `stato:prezzi.generato`: se arrivasse
+  // per primo, mostrerebbe "fatto" mentre meta' delle schede non c'e' ancora.
+  for (const [id, scheda] of Object.entries(schede)) await deposita(`scheda:${id}`, scheda);
+  await deposita("prezzi", { generato, stashDel: stash?.quando ?? null, min_confronti: MIN, ...prezzi, falliti });
   // il riassunto per /stato, che altrimenti dovrebbe riparsare 70 KB a ogni
   // interrogazione — e la pagina la interroga ogni pochi secondi mentre aspetta
-  await kvScrivi("stato:prezzi", {
+  await deposita("stato:prezzi", {
     generato, stashDel: stash?.quando ?? null,
     warrant: prezzi.warrant.length, falliti: falliti.length,
     mancanti: prezzi.mancanti ?? [], lega: prezzi.lega,
@@ -165,7 +157,7 @@ if (kvAttivo && !daFile) {
    * misura i 10 minuti di attesa. Azzerarlo qui vorrebbe dire che appena la Action
    * finisce — 30 secondi — si puo' già richiedere tutto da capo, cioe' proprio la
    * raffica che l'attesa esiste per evitare. Qui si dice solo che e' finita. */
-  const attesa = (await kvLeggi("aggiornamento")) || {};
-  await kvScrivi("aggiornamento", { ...attesa, stato: "fatto", finitoIl: generato });
-  console.log(`   scritte ${Object.keys(schede).length + 3} chiavi nel KV di Cloudflare`);
+  const attesa = await leggiRemoto("/stato").then((s) => s.aggiornamento || {}).catch(() => ({}));
+  await deposita("aggiornamento", { ...attesa, stato: "fatto", finitoIl: generato });
+  console.log(`   depositate ${Object.keys(schede).length + 3} chiavi tramite ${API}`);
 }
