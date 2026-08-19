@@ -83,7 +83,18 @@ async function magazzino(env) {
  * (sopravvive ai riavvii dell'isolate) e una **mappa in memoria** davanti, che
  * evita anche di riparsare il JSON — che su Manyshot sono 5,6 MB.
  */
+/* ⚠️ **Solo gli ultimi tre**, e non e' pigrizia: tenere in memoria i 23 indici
+ * degli archetipi in tab significa centinaia di megabyte di JSON parsato contro i
+ * 768 MiB dell'isolate, che infatti moriva con un 500 della piattaforma — non un
+ * errore nostro, proprio il processo ucciso. La copia integrale sta nella Cache
+ * API, che vive fuori dalla memoria; qui davanti restano i piu' recenti. */
+const TIENI_IN_MEMORIA = 3;
 const inMemoria = new Map();   // slug -> { quando, dati }
+
+function ricorda(slug, dati) {
+  inMemoria.set(slug, { quando: Date.now(), dati });
+  while (inMemoria.size > TIENI_IN_MEMORIA) inMemoria.delete(inMemoria.keys().next().value);
+}
 
 async function indice(slug) {
   const adesso = Date.now();
@@ -103,7 +114,7 @@ async function indice(slug) {
       const quando = Number(salvata.headers.get("x-preso-il") || 0);
       if (adesso - quando < CACHE_SECONDI * 1000) {
         const dati = await salvata.json();
-        inMemoria.set(slug, { quando: adesso, dati });
+        ricorda(slug, dati);
         return dati;
       }
     }
@@ -118,7 +129,7 @@ async function indice(slug) {
     }));
   }
   const dati = JSON.parse(testo);
-  inMemoria.set(slug, { quando: adesso, dati });
+  ricorda(slug, dati);
   return dati;
 }
 
