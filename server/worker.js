@@ -116,6 +116,12 @@ export default {
         return passa(env, `scheda:${id}`, { errore: "scheda non calcolata per questo mercenario" });
       }
 
+      // da quando ogni warrant e' in casa: `{ id: iso }`. La pagina lo unisce ai
+      // prezzi per id — tenerlo separato evita di rigenerare tutto quando cambia.
+      if (url.pathname === "/primi-visti") {
+        return passa(env, "primi-visti", {}, 200);
+      }
+
       if (url.pathname === "/stash" && req.method === "GET") {
         /* 🔴 **200, non 404: «vuoto» non è «non trovato».** Uno stash mai
          * sincronizzato è una risposta legittima — zero warrant — e chi chiede
@@ -254,11 +260,25 @@ export default {
         await scrivi(env, "stash", { warrant: corpo.warrant, quando, tab: corpo.tab ?? null });
         // il riassunto accanto al dato: cosi' /stato non deve riparsare 70 KB
         await scrivi(env, "stato:stash", { warrant: corpo.warrant.length, quando });
+        /* **Da quando ce l'ho.** GGG non lo dice: lo stash risponde *cosa c'e'
+         * adesso*, non da quando. Quindi la data la fa nascere questo punto —
+         * l'unico da cui i warrant entrano — la prima volta che un `id` compare.
+         *
+         * 🔴 **Le voci non si potano mai**, ed e' una scelta: se un mercenario
+         * cambia tab, o esce e rientra, sparirebbe e rinascerebbe «nuovo»,
+         * cancellando proprio il dato che si vuole tenere. La mappa cresce di
+         * qualche decina di byte a warrant — mille voci sono ~80 KB contro i
+         * 25 MiB che il KV accetta per valore. */
+        const visti = (await leggi(env, "primi-visti")) || {};
+        let nuovi = 0;
+        for (const w of corpo.warrant) if (w.id && !visti[w.id]) { visti[w.id] = quando; nuovi++; }
+        if (nuovi) await scrivi(env, "primi-visti", visti);
+
         // il biglietto lasciato dalla pagina e' stato raccolto: si annulla, cosi'
         // una richiesta nuova non trova la vecchia ancora in coda
         const rich = await leggi(env, "richiesta-stash");
         if (rich && !rich.servita) await scrivi(env, "richiesta-stash", { ...rich, servita: true });
-        return json({ ok: true, salvati: corpo.warrant.length });
+        return json({ ok: true, salvati: corpo.warrant.length, nuovi });
       }
 
       /* Il deposito del risultato calcolato dalla Action.
@@ -312,7 +332,7 @@ export default {
       }
 
       return json({ errore: "rotta sconosciuta", rotte: [
-        "GET /stato", "GET /prezzo", "GET /dettaglio?id=", "GET /stash", "POST /stash?k=", "POST /deposita?k=&chiave=", "POST /chiedi-stash",
+        "GET /stato", "GET /prezzo", "GET /dettaglio?id=", "GET /stash", "GET /primi-visti", "POST /stash?k=", "POST /deposita?k=&chiave=", "POST /chiedi-stash",
         "POST /aggiorna", "GET /campione/piano?k=", "POST /campione?k=", "GET /liquidita?chiavi=",
       ] }, 404);
     } catch (e) {

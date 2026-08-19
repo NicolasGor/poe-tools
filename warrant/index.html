@@ -71,6 +71,16 @@
      Action, non lo stato del mercato adesso — e va detto dove si legge. */
   /* il pulsante che aspetta: pulsa piano. Non una rotella — il lavoro vero lo fa
      un altro computer, e un'animazione veloce direbbe una fretta che non c'e'. */
+  /* le intestazioni che ordinano: si vede che si cliccano, e in che verso */
+  th.ord{cursor:pointer;user-select:none}
+  th.ord:hover{color:var(--testo)}
+  th.ord.attivo::after{content:" \2193";opacity:.7}
+  th.ord.attivo[data-verso="su"]::after{content:" \2191"}
+  td.dal{font-size:var(--t-xs);white-space:nowrap}
+  td.dal .oltre{display:block}
+  /* il confronto ristretto, sfrattato dalla tabella: qui sopra la scheda */
+  .ristretto{font-size:var(--t-xs);color:var(--muted);padding:0 0 var(--s2)}
+  button.mini{font-size:var(--t-xs);padding:2px 8px}
   @keyframes respira{0%,100%{opacity:1}50%{opacity:.55}}
   button.attesa{animation:respira 1.6s ease-in-out infinite;cursor:progress}
   .quando{margin-bottom:var(--s2);opacity:.75;font-style:italic}
@@ -222,10 +232,10 @@
       <thead>
         <tr>
           <th>Mercenario</th>
-          <th class="n">Valore</th>
+          <th class="n ord" data-ord="valore" title="Ordina per valore">Valore</th>
+          <th class="ord" data-ord="dal" title="Ordina per data di ingresso">Dal</th>
           <th class="n">Simili</th>
-          <th>Confronto ristretto a</th>
-          <th></th>
+          <th><button id="b-tutti" class="mini" title="Apre o chiude tutte le schede">apri tutte</button></th>
         </tr>
       </thead>
       <tbody id="righe">
@@ -349,6 +359,23 @@ function dataIt(iso) {
    legge, perche' un `let` usato prima della sua riga esplode a runtime. */
 let ULTIMI = null;
 
+/* Da quando ogni warrant e' in casa. GGG non lo dice — lo stash risponde *cosa
+   c'e' adesso* — quindi la data la fa nascere il Worker la prima volta che vede
+   un id, e qui si unisce ai prezzi per id. Sta in un file suo perche' cambia con
+   ritmi diversi: i prezzi si rifanno a ogni giro, queste date quasi mai. */
+let PRIMI_VISTI = {};
+let ORDINE = { campo: "valore", verso: -1 };
+
+const dal = (id) => {
+  const v = PRIMI_VISTI[id];
+  if (!v) return '<span class="oltre">—</span>';
+  const g = Math.floor((Date.now() - new Date(v)) / 86400000);
+  // il numero di giorni dice piu' della data quando si guarda «da quanto ce l'ho»
+  // data **e ora**: finche' entrano tutti lo stesso giorno, il giorno da solo non
+  // distingue niente e la colonna sembrerebbe rotta
+  return `${dataIt(v)}<span class="oltre">${g === 0 ? "oggi" : g === 1 ? "1 giorno fa" : g + " giorni fa"}</span>`;
+};
+
 function disegna(dati) {
   /* 🔴 **L'ultimo dato disegnato, e serve a chi ridisegna dopo.** Al
      caricamento si disegna prima la cache e poi il dato fresco; se un'altra
@@ -362,6 +389,17 @@ function disegna(dati) {
     corpo.innerHTML = '<tr><td colspan="5" class="vuoto">Nessun warrant. Sincronizza lo stash, poi aggiorna i prezzi.</td></tr>';
     return;
   }
+  /* 🔴 **Si ordina l'array vero, non una copia.** L'accordion pesca il
+     mercenario per **indice** (`ULTIMI.warrant[i]`): se la tabella mostrasse un
+     ordine e l'array ne avesse un altro, «gemme» aprirebbe la scheda di un altro
+     mercenario — e nessuno se ne accorgerebbe, perche' la scheda e' plausibile
+     comunque. Ordinando in posto i due restano per forza allineati. */
+  const verso = ORDINE.verso;
+  dati.warrant.sort((a, b) => ORDINE.campo === "dal"
+    ? verso * String(PRIMI_VISTI[a.id] || "").localeCompare(String(PRIMI_VISTI[b.id] || ""))
+    : verso * (a.prezzo - b.prezzo));
+  salvaCache(dati);   // la cache segue l'ordine mostrato, per la stessa ragione
+
   corpo.innerHTML = dati.warrant.map((w, i) => {
     const passi = w.passi.slice(0, 4).map((p) => `${esc(p.supporto)} <i>su ${esc(p.skill)}</i>`).join(" · ")
       || "<i>nessun supporto regge la soglia</i>";
@@ -377,12 +415,15 @@ function disegna(dati) {
     return `<tr>
       <td><span class="nome">${esc(w.nome)}</span><span class="${vend}">${esc(w.build)}${w.infamous ? " · Infamous" : ""} · lvl ${esc(w.livello)}</span></td>
       <td class="n"><span class="prezzo${w.prezzo >= 10 ? "" : " basso"}">${w.prezzo.toFixed(0)} c</span>${quinto}</td>
+      <td class="dal">${dal(w.id)}</td>
       <td class="conf${magro}">${w.confronti}<span class="oltre">inserzioni simili</span>${
         movimento(w.chiave) ? `<span class="oltre mov">${esc(movimento(w.chiave))}</span>` : ""}</td>
-      <td class="reggono">${passi}${piu}</td>
       <td><button class="apri" aria-expanded="false" data-i="${i}">gemme &#9662;</button></td>
     </tr>
-    <tr class="scheda" hidden><td colspan="5"><div class="scheda-in" id="scheda-${i}">Apri per caricare le inserzioni simili…</div></td></tr>`;
+    <tr class="scheda" hidden><td colspan="5">
+      <div class="ristretto"><b>Confronto ristretto a</b> ${passi}${piu}</div>
+      <div class="scheda-in" id="scheda-${i}">Apri per caricare le inserzioni simili…</div>
+    </td></tr>`;
   }).join("");
 
   const tot = dati.warrant.reduce((s, w) => s + w.prezzo, 0);
@@ -400,11 +441,17 @@ async function leggiStato() {
 }
 
 async function leggiPrezzi() {
-  const r = await fetch(`${API}/prezzo`);
+  /* Le due letture insieme: senza le date la colonna «Dal» comparirebbe vuota per
+     un istante e poi si riempirebbe, che e' peggio di aspettarle. */
+  const [r, rv] = await Promise.all([
+    fetch(`${API}/prezzo`),
+    fetch(`${API}/primi-visti`).catch(() => null),
+  ]);
   const dati = await r.json();
   if (dati.errore) return { errore: dati.errore };
+  if (rv && rv.ok) PRIMI_VISTI = await rv.json().catch(() => ({}));
   dati.letto_il = new Date().toISOString();
-  salvaCache(dati); disegna(dati); caricaLiquidita(dati);
+  disegna(dati); caricaLiquidita(dati);   // disegna() salva la cache nell'ordine mostrato
   return dati;
 }
 
@@ -512,6 +559,38 @@ async function stato() {
     $("b-stash").title = `Ultima lettura dal Mac: ${dataIt(s.stash.quando)} · ${s.stash.warrant} warrant`;
   }
 }
+
+/* Ordinare significa ridisegnare, e ridisegnare rifa' le righe: le schede gia'
+   aperte vanno chiuse, altrimenti resterebbero appese a indici che non esistono
+   piu'. Il loro contenuto e' nel KV, quindi riaprirle non costa quasi niente. */
+document.querySelectorAll("th.ord").forEach((th) => th.addEventListener("click", () => {
+  const campo = th.dataset.ord;
+  ORDINE = { campo, verso: ORDINE.campo === campo ? -ORDINE.verso : -1 };
+  SCHEDE.clear();
+  document.querySelectorAll("th.ord").forEach((x) => {
+    x.classList.toggle("attivo", x.dataset.ord === campo);
+    x.dataset.verso = x.dataset.ord === campo ? (ORDINE.verso < 0 ? "giu" : "su") : "";
+  });
+  if (ULTIMI) disegna(ULTIMI);
+}));
+
+/* Apri tutte: le schede stanno gia' nel KV e il Worker le rigira senza parsarle,
+   quindi si possono chiedere insieme. ⚠️ Sono comunque ~5 MB per 49 mercenari:
+   il pulsante lo dice mentre lavora, invece di sembrare fermo. */
+$("b-tutti").addEventListener("click", async (e) => {
+  const b = e.currentTarget;
+  const bottoni = [...document.querySelectorAll("button.apri")];
+  const daAprire = bottoni.filter((x) => x.getAttribute("aria-expanded") !== "true");
+  const apri = daAprire.length > 0;
+  b.disabled = true;
+  b.textContent = apri ? "apro…" : "chiudo…";
+  try {
+    await Promise.all((apri ? daAprire : bottoni).map((x) => apriScheda(Number(x.dataset.i), x)));
+  } finally {
+    b.disabled = false;
+    b.textContent = apri ? "chiudi tutte" : "apri tutte";
+  }
+});
 
 $("b-prezzi").addEventListener("click", aggiornaPrezzi);
 $("b-stash").addEventListener("click", sincronizzaStash);
@@ -726,8 +805,9 @@ async function apriScheda(i, bottone) {
   riga.hidden = aperta;
   if (aperta || SCHEDE.has(i)) { if (!aperta) disegnaScheda(i); return; }
 
-  const cache = leggiCache();
-  const w = cache && cache.warrant[i];
+  // 🔴 `ULTIMI`, non `leggiCache()`: e' l'array **nell'ordine disegnato**, e
+  // l'indice del pulsante viene da li'. Con la cache si aprirebbe un'altra riga.
+  const w = ULTIMI && ULTIMI.warrant[i];
   if (!w) return;
   $(`scheda-${i}`).textContent = "carico le inserzioni simili…";
   try {
@@ -980,6 +1060,9 @@ document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("grig
 const cache = leggiCache();
 if (cache) { disegna(cache); caricaLiquidita(cache); }
 leggiPrezzi().catch(() => {});
+// l'intestazione attiva va segnata anche prima del primo click, altrimenti la
+// tabella e' gia' ordinata per valore e non lo dice
+document.querySelector('th.ord[data-ord="valore"]')?.classList.add("attivo");
 // l'ora dell'ultima lettura dal Mac finisce nel titolo del pulsante: senza questa
 // chiamata resterebbe vuoto per sempre, perche' il pannello che la faceva non c'e' piu'
 stato();
