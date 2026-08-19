@@ -76,6 +76,9 @@
                  gap:var(--s2);flex-wrap:wrap}
   .arche-card h3 b{font-family:var(--mono);font-size:var(--t-xs);color:var(--good)}
   .arche-card .casa{font-size:var(--t-xs);color:var(--label);text-transform:uppercase;letter-spacing:.05em}
+  .arche-card .misura{font-size:var(--t-xs);color:var(--muted);margin-top:.35rem;line-height:1.35}
+  .arche-card .misura b{color:var(--good);font-family:var(--mono)}
+  .arche-card.extra h3{color:var(--muted)}
   .lista{margin:0}
   .lista dt{font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:var(--label);
             float:left;width:5.5rem;clear:left;line-height:1.6}
@@ -284,6 +287,7 @@
       </div>
       <div class="modale-corpo" id="griglia-corpo"></div>
       <div class="modale-pie">
+        <b>«Chiede»</b> è misurato sulle inserzioni che hanno le due gemme più pagate di quell'archetipo — <b>sono richieste, non vendite</b>. <b>«Chi compra dice»</b> viene invece dalla lista della spesa dei Luminary, e copre solo alcuni.<br>
         <b>Il primo taglio</b>: <b>Returning Projectiles</b> — se non ce l'ha, su Kineticist, Manyshot, Combatant e Cruel Mistress si uccide e si va avanti. Fanno eccezione <b>Sniper</b> (vuole GMP e il gilded +2 proiettili) e <b>Stormhand</b>, che vive di chain.
       </div>
     </div>
@@ -727,52 +731,84 @@ document.addEventListener("click", (e) => {
  * un mercenario buttato: dove il mercato non conosce la gemma, e' segnalato.
  */
 const GRIGLIA = [
-  {nome: "Kineticist", casa: "Bardiya", valore: "15 d+",
+  {nome: "Kineticist", casa: "Bardiya", compratori: "15 d+",
+   mercato: {gemme: ["Return", "Greater Fork"], ins: 1208, mediana: "50 d", alto: "450 d"},
    serve: [["Greater Kinetic Blast of Clustering", 1], ["Kinetic Blast", 1], ["Return", 1],
            ["chain o fork", 0], ["Ele Damage with Attacks", 0], ["GMP", 0], ["crit damage", 0], ["haste", 0]],
    azzera: ["Kinetic Bolt", "Kinetic Rain"],
-   nota: "I due Kinetic Blast si vogliono <b>insieme</b>. <b>Barrage non è un brick</b>. ⚠️ Il mercato non conosce questi due nomi di gemma: da verificare in gioco."},
-  {nome: "Manyshot", casa: "Cyaxan", valore: "5 d+",
-   serve: [["Ice Shot", 1], ["Vaal Ice Shot", 1], ["Return su entrambi", 1],
-           ["GMP", 0], ["Ele Damage with Attacks", 0], ["Hypothermia", 0], ["crit", 0]],
-   azzera: ["Icicle Rain"],
-   nota: "L'Icicle Rain <b>interrompe il Vaal Ice Shot</b>: non è debole, è rotto."},
-  {nome: "Blade Ambusher", casa: "Azadi", valore: "boss killer",
-   serve: [["Spectral Helix of Trarthus", 1], ["Multiple Traps", 1], ["Trap and Mine Damage", 1], ["Slower Projectiles", 1]],
-   azzera: [],
-   nota: "Le tre gemme vanno <b>sull'Helix</b>, non su un'altra skill."},
-  {nome: "Sniper", casa: "Cyaxan", valore: "—",
-   serve: [["Tornado Shot", 1], ["GMP", 1], ["gilded +2 proiettili", 1], ["haste aura", 0], ["totem", 0]],
-   azzera: ["Brutality", "Arrow Nova"],
-   nota: "Il <b>Rain of Arrows va bene lo stesso</b>. Qui il Return non è il filtro."},
-  {nome: "Cruel Mistress", casa: "Cyaxan", valore: "—",
+   nota: "I due Kinetic Blast si vogliono <b>insieme</b>. <b>Barrage non è un brick</b>. ⚠️ Il mercato non conosce questi due nomi di gemma: da verificare in gioco. <b>Il Return qui pesa 1,82×</b>, il segnale più forte di tutto il gioco."},
+  {nome: "Cruel Mistress", casa: "Cyaxan", compratori: null,
+   mercato: {gemme: ["Return", "Greater Multiple Projectiles"], ins: 1912, mediana: "14 d", alto: "150 d"},
    serve: [["Soulrend of Reaping", 1], ["Return", 1], ["GMP", 1], ["Summon Void <i>oppure</i> totem di Forbidden Rite", 0], ["envy aura", 0]],
    azzera: [],
-   nota: ""},
-  {nome: "Stormhand", casa: "Cyaxan", valore: "—",
-   serve: [["Arc", 1], ["Ball Lightning of Static", 1], ["chain sull'Arc", 1], ["gilded chain", 0]],
-   azzera: [],
-   nota: "Vive di <b>chain</b>: il Return qui non conta."},
-  {nome: "Combatant", casa: "Azadi", valore: "tuttofare",
+   nota: "La griglia non le dava un prezzo: il mercato sì, ed è <b>il secondo più caro</b>."},
+  {nome: "Combatant", casa: "Azadi", compratori: "tuttofare",
+   mercato: {gemme: ["Return", "Lightning Penetration"], ins: 3497, mediana: "10 d", alto: "100 d"},
    serve: [["Frost Blades <i>oppure</i> Wild Strike", 1], ["Static Strike", 1],
            ["Return sul Wild Strike", 0], ["chain sul Frost Blades", 0], ["Ele Damage", 0], ["Hypothermia", 0]],
    azzera: ["Spectral Helix", "Elemental Hit", "Pierce"],
    nota: "Il <b>Pierce impedisce il ritorno del proiettile</b>, cioè spegne proprio ciò che fa il valore."},
+  {nome: "Manyshot", casa: "Cyaxan", compratori: "5 d+",
+   mercato: {gemme: ["Return", "Greater Added Cold"], ins: 7138, mediana: "3 d", alto: "50 d"},
+   serve: [["Ice Shot", 1], ["Vaal Ice Shot", 1], ["Return su entrambi", 1],
+           ["GMP", 0], ["Ele Damage with Attacks", 0], ["Hypothermia", 0], ["crit", 0]],
+   azzera: ["Icicle Rain"],
+   nota: "L'Icicle Rain <b>interrompe il Vaal Ice Shot</b>: non è debole, è rotto."},
+  {nome: "Sniper", casa: "Cyaxan", compratori: null,
+   mercato: {gemme: ["Gilded Secondary Shots", "Mirage Archer"], ins: 1228, mediana: "3 d", alto: "60 d"},
+   serve: [["Tornado Shot", 1], ["GMP", 1], ["Gilded Secondary Shots", 1], ["haste aura", 0], ["totem", 0]],
+   azzera: ["Brutality", "Arrow Nova"],
+   nota: "🔴 La griglia la chiamava <i>«gilded +2 proiettili»</i>: il nome vero è <b>Gilded Secondary Shots</b>, e pesa 1,38×. Il <b>Rain of Arrows va bene lo stesso</b>; qui il Return non è il filtro."},
+  {nome: "Stormhand", casa: "Cyaxan", compratori: null,
+   mercato: {gemme: ["Gilded Chain Distance", "Return"], ins: 107, mediana: "3 d", alto: "50 d"},
+   serve: [["Arc", 1], ["Ball Lightning of Static", 1], ["Gilded Chain Distance", 1], ["chain sull'Arc", 0]],
+   azzera: [],
+   nota: "Il chain che conta si chiama <b>Gilded Chain Distance</b> e pesa <b>1,63×</b>: il secondo segnale più forte dopo il Return del Kineticist."},
+  {nome: "Blade Ambusher", casa: "Azadi", compratori: "boss killer",
+   mercato: {gemme: ["Greater Slower Projectiles", "Greater Trap and Mine Damage"], ins: 3938, mediana: "1 d", alto: "30 d"},
+   serve: [["Spectral Helix of Trarthus", 1], ["Multiple Traps", 1], ["Trap and Mine Damage", 1], ["Slower Projectiles", 1]],
+   azzera: [],
+   nota: "Le tre gemme vanno <b>sull'Helix</b>. ⚠️ È il <b>più economico dei sette</b> nonostante la fama: la gemma più pagata arriva solo a 1,06×."},
+
+  {nome: "Flamehand", casa: "—", fuori: true, compratori: null,
+   mercato: {gemme: ["Greater Slower Projectiles", "Return"], ins: 59, mediana: "5 d", alto: "120 d"},
+   serve: [["Greater Slower Projectiles", 1], ["Return", 1]], azzera: [],
+   nota: "Fuori griglia, ma il mercato lo paga: <b>Greater Slower Projectiles 1,31×</b>, Return 1,26×."},
+  {nome: "Smoulderstrike", casa: "—", fuori: true, compratori: null,
+   mercato: {gemme: ["Gilded Molten Eruption", "Return"], ins: 120, mediana: "3 d", alto: "40 d"},
+   serve: [["Gilded Molten Eruption", 1], ["Return", 1]], azzera: [],
+   nota: "Fuori griglia: <b>Gilded Molten Eruption 1,33×</b>."},
+  {nome: "Eruptor", casa: "—", fuori: true, compratori: null,
+   mercato: {gemme: ["Gilded Additional Fissures", "Greater Multistrike"], ins: 51, mediana: "3 d", alto: "65 d"},
+   serve: [["Gilded Additional Fissures", 1], ["Greater Multistrike", 0]], azzera: [],
+   nota: "Fuori griglia: <b>Gilded Additional Fissures 1,36×</b>."},
+  {nome: "Bastion", casa: "—", fuori: true, compratori: null,
+   mercato: {gemme: ["Greater Cooldown Recovery", "Greater Faster Casting"], ins: 66, mediana: "2 d", alto: "30 d"},
+   serve: [["Greater Cooldown Recovery", 1], ["Greater Faster Casting", 0]], azzera: [],
+   nota: "Fuori griglia: <b>Greater Cooldown Recovery 1,22×</b>."},
+  {nome: "Shattersword", casa: "—", fuori: true, compratori: null,
+   mercato: null,
+   serve: [["Gilded Scattershot", 1]], azzera: [],
+   nota: "Fuori griglia: <b>Gilded Scattershot 1,37×</b>. ⚠️ Meno di 30 inserzioni lo portano insieme alla seconda gemma: il prezzo non è misurabile."},
 ];
 
 function disegnaGriglia(filtro = "") {
   const f = filtro.trim().toLowerCase();
   $("griglia-corpo").innerHTML = GRIGLIA.map((a) => {
-    const testo = [a.nome, a.casa, ...a.serve.map((x) => x[0]), ...a.azzera].join(" ").toLowerCase();
+    const testo = [a.nome, a.casa, ...(a.mercato ? a.mercato.gemme : []),
+                   ...a.serve.map((x) => x[0]), ...a.azzera].join(" ").toLowerCase();
     const fuori = f && !testo.includes(f) ? " fuori" : "";
     const serve = a.serve.map(([g, chiave]) => `<span class="gem serve${chiave ? " chiave" : ""}">${chiave ? "\u2713 " : ""}${g}</span>`).join("");
     const azzera = a.azzera.length
       ? `<dt>lo azzera</dt><dd>${a.azzera.map((g) => `<span class="gem azzera">\u2715 ${esc(g)}</span>`).join("")}</dd>`
       : "";
-    return `<div class="arche-card${fuori}">
+    const m = a.mercato;
+    return `<div class="arche-card${fuori}${a.fuori ? " extra" : ""}">
       <div>
-        <h3>${esc(a.nome)} <b>${esc(a.valore)}</b></h3>
-        <div class="casa">casa ${esc(a.casa)}</div>
+        <h3>${esc(a.nome)} ${m ? `<b>${esc(m.mediana)}</b>` : ""}</h3>
+        <div class="casa">${a.fuori ? "fuori griglia" : "casa " + esc(a.casa)}</div>
+        ${m ? `<div class="misura">chiede <b>${esc(m.mediana)}</b> · i migliori <b>${esc(m.alto)}</b><br>su ${m.ins.toLocaleString("it")} inserzioni con ${esc(m.gemme[0])} + ${esc(m.gemme[1])}</div>` : ""}
+        ${a.compratori ? `<div class="misura">chi compra dice <b>${esc(a.compratori)}</b></div>` : ""}
       </div>
       <div>
         <dl class="lista">
