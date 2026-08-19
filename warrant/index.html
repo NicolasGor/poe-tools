@@ -63,18 +63,28 @@
                       border-radius:var(--r);border:1px solid var(--line2);background:var(--bg);color:var(--text)}
   .chiudi{font-size:1.6rem;line-height:1;background:none;border:none;color:var(--label);cursor:pointer}
   .chiudi:hover{color:var(--text)}
-  .modale-corpo{padding:var(--s4);overflow:auto;display:grid;gap:var(--s3);
-                grid-template-columns:repeat(auto-fit,minmax(22rem,1fr))}
+  .modale-corpo{padding:0;overflow:auto}
   .modale-pie{padding:var(--s3) var(--s4);border-top:1px solid var(--line);
               font-size:var(--t-xs);color:var(--muted);background:var(--panel2)}
-  .arche-card{border:1px solid var(--line);border-radius:var(--r);background:var(--panel2);padding:var(--s3)}
+  /* una riga per archetipo: col mercenario davanti si scorre una lista, non si
+     naviga una griglia di riquadri */
+  .arche-card{display:grid;grid-template-columns:13rem 1fr;gap:var(--s3);align-items:start;
+              padding:var(--s3) var(--s4);border-bottom:1px solid var(--line)}
+  .arche-card:nth-child(odd){background:var(--panel2)}
   .arche-card.fuori{display:none}
-  .arche-card h3{font-size:var(--t-md);color:var(--gold);margin:0 0 .1rem;display:flex;align-items:baseline;gap:var(--s2)}
-  .arche-card h3 b{margin-left:auto;font-family:var(--mono);font-size:var(--t-sm);color:var(--good)}
+  .arche-card h3{font-size:var(--t-md);color:var(--gold);margin:0;display:flex;align-items:baseline;
+                 gap:var(--s2);flex-wrap:wrap}
+  .arche-card h3 b{font-family:var(--mono);font-size:var(--t-xs);color:var(--good)}
   .arche-card .casa{font-size:var(--t-xs);color:var(--label);text-transform:uppercase;letter-spacing:.05em}
-  .lista{margin-top:var(--s3)}
-  .lista dt{font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:var(--label);margin-bottom:.2rem}
-  .lista dd{margin:0 0 var(--s3);display:flex;flex-wrap:wrap;gap:.3rem}
+  .lista{margin:0}
+  .lista dt{font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:var(--label);
+            float:left;width:5.5rem;clear:left;line-height:1.6}
+  .lista dd{margin:0 0 .3rem 5.5rem;display:flex;flex-wrap:wrap;gap:.3rem}
+  @media (max-width:46rem){
+    .arche-card{grid-template-columns:1fr;gap:var(--s2)}
+    .lista dt{float:none;width:auto}
+    .lista dd{margin-left:0}
+  }
   .gem{font-size:var(--t-xs);padding:.15rem .5rem;border-radius:999px;border:1px solid var(--line2);color:var(--muted)}
   .gem.serve{border-color:rgba(95,211,160,.5);color:var(--good)}
   .gem.serve.chiave{background:rgba(95,211,160,.12);font-weight:600}
@@ -760,13 +770,17 @@ function disegnaGriglia(filtro = "") {
       ? `<dt>lo azzera</dt><dd>${a.azzera.map((g) => `<span class="gem azzera">\u2715 ${esc(g)}</span>`).join("")}</dd>`
       : "";
     return `<div class="arche-card${fuori}">
-      <h3>${esc(a.nome)} <b>${esc(a.valore)}</b></h3>
-      <div class="casa">casa ${esc(a.casa)}</div>
-      <dl class="lista">
-        <dt>deve avere</dt><dd>${serve}</dd>
-        ${azzera}
-      </dl>
-      ${a.nota ? `<p class="nota">${a.nota}</p>` : ""}
+      <div>
+        <h3>${esc(a.nome)} <b>${esc(a.valore)}</b></h3>
+        <div class="casa">casa ${esc(a.casa)}</div>
+      </div>
+      <div>
+        <dl class="lista">
+          <dt>deve avere</dt><dd>${serve}</dd>
+          ${azzera}
+        </dl>
+        ${a.nota ? `<p class="nota">${a.nota}</p>` : ""}
+      </div>
     </div>`;
   }).join("");
 }
