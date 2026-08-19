@@ -70,17 +70,56 @@ async function magazzino(env) {
 }
 
 /* -------------------------------------------------------------- indice mercato
- * Un file per archetipo, 1-6 MB. Si tiene nella cache della piattaforma per
- * `CACHE_SECONDI`: senza, ogni click di ogni pagina si scaricherebbe di nuovo
- * qualche megabyte dal loro server, che e' un modo veloce di essere sgraditi.
+ * Un file per archetipo, 1-6 MB.
+ *
+ * 🔴 **La prima versione non aveva nessuna cache, e non se ne accorgeva.**
+ * Passavo a `fetch` l'opzione `cf: { cacheTtl }`, che e' **di Cloudflare**: su
+ * Deno Deploy viene semplicemente ignorata. Risultato: ogni `/prezzo` riscaricava
+ * i ~23 indici degli archetipi in tab, cioe' **decine di megabyte a click** — 1,5
+ * GiB in entrata in un giorno, e una mail di Deno sul tetto del piano gratuito.
+ * Ed era anche scortese verso il sito che ce li regala.
+ *
+ * Adesso la cache e' vera e a due livelli: la **Cache API** della piattaforma
+ * (sopravvive ai riavvii dell'isolate) e una **mappa in memoria** davanti, che
+ * evita anche di riparsare il JSON — che su Manyshot sono 5,6 MB.
  */
+const inMemoria = new Map();   // slug -> { quando, dati }
+
 async function indice(slug) {
+  const adesso = Date.now();
+  const caldo = inMemoria.get(slug);
+  if (caldo && adesso - caldo.quando < CACHE_SECONDI * 1000) return caldo.dati;
+
   const url = slug === "builder"
     ? `${FONTE}/data/allflame/mercenary-builder.json`
     : `${FONTE}/data/allflame/mercenary-build-${slug}.json`;
-  const r = await fetch(url, { cf: { cacheTtl: CACHE_SECONDI, cacheEverything: true } });
+
+  let magazzinoCache = null;
+  try { magazzinoCache = await caches.open("mercato"); } catch (e) { /* piattaforma senza Cache API */ }
+
+  if (magazzinoCache) {
+    const salvata = await magazzinoCache.match(url);
+    if (salvata) {
+      const quando = Number(salvata.headers.get("x-preso-il") || 0);
+      if (adesso - quando < CACHE_SECONDI * 1000) {
+        const dati = await salvata.json();
+        inMemoria.set(slug, { quando: adesso, dati });
+        return dati;
+      }
+    }
+  }
+
+  const r = await fetch(url);
   if (!r.ok) throw new Error(`indice ${slug}: HTTP ${r.status}`);
-  return r.json();
+  const testo = await r.text();
+  if (magazzinoCache) {
+    await magazzinoCache.put(url, new Response(testo, {
+      headers: { "content-type": "application/json", "x-preso-il": String(adesso) },
+    }));
+  }
+  const dati = JSON.parse(testo);
+  inMemoria.set(slug, { quando: adesso, dati });
+  return dati;
 }
 
 /* ----------------------------------------------------------------- prezzatura
@@ -366,10 +405,15 @@ export default {
                       sincronizzato: s?.quando ?? null, chiave: !!chiave });
       }
 
-      // l'indice grezzo, per chi vuole calcolare nel browser
+      // ⚠️ `/mercato/<archetipo>` serviva alla variante "calcola nel browser",
+      // che non usiamo: rispondeva con l'indice intero, **megabyte a chiamata**.
+      // Resta solo la testa, per chi vuole sapere quanto pesa senza scaricarlo.
       if (url.pathname.startsWith("/mercato/")) {
         const slug = url.pathname.slice("/mercato/".length);
-        return json(await indice(slug), 200, { "cache-control": `public, max-age=${CACHE_SECONDI}` });
+        const b = await indice(slug);
+        return json({ archetipo: b.build, inserzioni: b.listings.length,
+                      skill: b.skills.length, supporti: b.supports.length,
+                      nota: "l'indice intero non si serve piu': era traffico in uscita a megabyte" });
       }
 
       // i warrant sincronizzati dal bookmarklet
