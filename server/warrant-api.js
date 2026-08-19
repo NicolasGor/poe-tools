@@ -353,10 +353,26 @@ export default {
           return [+inChaos(r, divine, mirror).toFixed(2), m];
         });
 
+        // Quanto ogni skill del mercenario e' comune su TUTTO l'archetipo. Serve
+        // al link di ricerca: il trade ha un budget di complessita' stretto, e
+        // chiedere una skill che ce l'hanno tutti spreca un gruppo senza
+        // restringere niente. Le skill rare invece sono quelle che dicono «e' un
+        // mercenario come il mio».
+        const skillWarrant = [];
+        for (const g of w.skills) {
+          const i = build.skills.findIndex((x) => x.name === g.s);
+          if (i < 0) continue;
+          let quante = 0;
+          for (const r of build._righe) if (r.slot.some((x) => x.length && x[0] === i)) quante++;
+          skillWarrant.push({ nome: g.s, hash: build.skills[i].hash,
+                              diffusione: +(quante / build._righe.length).toFixed(3) });
+        }
+
         return json({
           nome: w.name, build: build.build, divine: +divine.toFixed(2),
           lega: builder.league, signature: build.signature || [],
-          tradeTypes: build.tradeTypes || [], supporti, righe, tagliate,
+          tradeTypes: build.tradeTypes || [], skill: skillWarrant,
+          supporti, righe, tagliate,
         });
       }
 

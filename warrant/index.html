@@ -68,6 +68,7 @@
   .sup .segno{color:var(--gold)}
   .sup .delta{font-family:var(--mono);color:var(--good);text-align:right}
   .sup .delta.zero{color:var(--label)}
+  .sup .delta.giu{color:var(--bad)}
   .sup .resta{font-family:var(--mono);color:var(--label);text-align:right;min-width:3rem}
   .sup .resta.magro{color:var(--bad)}
   .scheda-pie{margin-top:var(--s3);display:flex;gap:var(--s3);align-items:center;flex-wrap:wrap;
@@ -463,7 +464,7 @@ function disegnaScheda(i) {
                    title="peso ${s.peso}\u00d7 sulla probabilita' di stare sopra 5 divine">
         <span class="segno">${acceso ? "\u2713" : ""}</span>
         <span>${esc(s.supporto)}</span>
-        <span class="delta ${salto ? "" : "zero"}">${testoSalto}</span>
+        <span class="delta ${salto ? (salto < 0 ? "giu" : "") : "zero"}">${testoSalto}</span>
         <span class="resta ${dopo.n < 5 ? "magro" : ""}">${dopo.n}</span>
       </div>`;
     }).join("");
@@ -471,6 +472,7 @@ function disegnaScheda(i) {
   }).join("");
 
   const scelti = dati.supporti.filter((s) => sel & (1 << s.i)).length;
+  const link = linkTrade(dati, sel);
   box.innerHTML = `
     <div class="scheda-cima">
       <div class="conta"><span>inserzioni simili</span><b>${ora.n.toLocaleString("it")}</b></div>
@@ -479,7 +481,7 @@ function disegnaScheda(i) {
     </div>
     <div class="gemme">${carte}</div>
     <div class="scheda-pie">
-      <a class="trade-btn" href="${esc(linkTrade(dati, sel))}" target="_blank" rel="noopener">Cerca sul trade <em>&middot; ${Math.min(scelti, 4)} gemme${scelti > 4 ? " su " + scelti : ""}</em></a>
+      <a class="trade-btn" href="${esc(link.url)}" target="_blank" rel="noopener">Cerca sul trade <em>&middot; ${link.skill} skill &middot; ${link.gemme} gemme${link.gemme < link.gemmeChieste ? " su " + link.gemmeChieste : ""}</em></a>
       <span>Ogni riga dice cosa succede a cliccarla: di quanto si sposta il floor e quante inserzioni resterebbero. <b>Sotto le 5 il prezzo e' un venditore, non un mercato.</b></span>
       ${dati.tagliate ? `<span>\u26a0\ufe0f ${dati.tagliate} supporti non mostrati: la maschera ne regge 31.</span>` : ""}
     </div>`;
@@ -494,25 +496,70 @@ function quintoDi(righe, sel) {
   return prezzi.length < 5 ? "\u2014" : chaos(prezzi[4]);
 }
 
-/* Il link di ricerca, con le stesse regole del server: un gruppo `mercenary` per
-   ogni skill vincolata piu' le skill firma, e non piu' di quattro supporti —
-   oltre, il trade risponde `400 Query is too complex`. */
+/**
+ * Il link di ricerca.
+ *
+ * 🔴 **Il difetto che aveva prima, ed e' quello che ha visto Nicolas**: mandavo
+ * solo le skill che portavano un supporto spuntato. Il prezzo pero' e' calcolato
+ * su chi ha **tutte** le skill del suo mercenario, quindi la ricerca era piu'
+ * larga del conto e in cima comparivano warrant da 1-3 chaos — con Blight e
+ * Altar of Chaos al posto di Greater Soulrend e Wither Totem, cioe' un altro
+ * mercenario.
+ *
+ * ⚠️ **Non si possono mandare tutte**: il trade rifiuta con `400 Query is too
+ * complex`. Misurato il 19 agosto da loggati: 6 gruppi con 10 filtri **no**,
+ * 6 gruppi con 7 filtri **si'**, 5 gruppi con 11 **si'** — cioe' un gruppo costa
+ * circa tre volte un filtro. Da qui il budget `3 x gruppi + supporti <= 21`.
+ *
+ * Il budget si spende sulle skill che **distinguono**: quelle rare
+ * nell'archetipo vengono prima, e una skill che ce l'ha il 99% delle inserzioni
+ * viene lasciata fuori — costa un gruppo e non toglie nessuno.
+ */
+const BUDGET = 21;
+
 function linkTrade(dati, sel) {
-  const scelti = dati.supporti.filter((s) => sel & (1 << s.i)).sort((a, b) => b.peso - a.peso).slice(0, 4);
-  const perSkill = new Map();
-  for (const s of scelti) {
-    if (!perSkill.has(s.skillHash)) perSkill.set(s.skillHash, []);
-    perSkill.get(s.skillHash).push(s.supHash);
+  const scelti = dati.supporti.filter((s) => sel & (1 << s.i)).sort((a, b) => b.peso - a.peso);
+  const conSupporto = new Set(scelti.map((s) => s.skillHash));
+
+  // le skill in ordine di quanto restringono: prima le rare, poi le comuni
+  const skill = (dati.skill || []).slice().sort((a, b) => a.diffusione - b.diffusione);
+  const dentro = [];
+  for (const k of skill) {
+    // una skill che porta un supporto spuntato entra comunque: il supporto senza
+    // la sua skill non si puo' esprimere
+    const necessaria = conSupporto.has(k.hash);
+    const utile = k.diffusione < 0.97;
+    if (!necessaria && !utile) continue;
+    if (3 * (dentro.length + 1) > BUDGET) break;
+    dentro.push(k);
   }
+  const dentroHash = new Set(dentro.map((k) => k.hash));
+  for (const h of dati.signature || []) {
+    if (!dentroHash.has(h) && 3 * (dentro.length + 1) <= BUDGET) {
+      dentro.push({hash: h, nome: "", diffusione: 1});
+      dentroHash.add(h);
+    }
+  }
+
+  let spazio = BUDGET - 3 * dentro.length;
+  const perSkill = new Map(dentro.map((k) => [k.hash, []]));
+  for (const s of scelti) {
+    if (spazio <= 0) break;
+    if (!perSkill.has(s.skillHash)) continue;
+    perSkill.get(s.skillHash).push(s.supHash);
+    spazio--;
+  }
+
   const stats = [...perSkill].map(([h, sups]) => ({
     type: "mercenary",
     filters: [{id: `mercenary.skill_${h}`}, ...sups.map((x) => ({id: `mercenary.support_${x}`}))],
   }));
-  for (const h of dati.signature || []) {
-    if (!perSkill.has(h)) stats.push({type: "mercenary", filters: [{id: `mercenary.skill_${h}`}]});
-  }
   const q = {query: {status: {option: "securable"}, stats}, sort: {price: "asc"}};
-  return `https://www.pathofexile.com/trade/search/${dati.lega}?q=${encodeURIComponent(JSON.stringify(q))}`;
+  const usati = BUDGET - 3 * dentro.length - spazio;
+  return {
+    url: `https://www.pathofexile.com/trade/search/${dati.lega}?q=${encodeURIComponent(JSON.stringify(q))}`,
+    skill: dentro.length, gemme: usati, gemmeChieste: scelti.length,
+  };
 }
 
 async function apriScheda(i, bottone) {
