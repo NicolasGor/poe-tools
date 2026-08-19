@@ -8,11 +8,26 @@
 | `POST /stash?k=…` | riceve i warrant dal segnalibro (chiave richiesta) |
 | `GET /stash`, `GET /stato` | li rilegge, e dice quando è stata l'ultima sincronizzazione |
 | `GET /mercato/<archetipo>` | l'indice grezzo, con le intestazioni CORS, per chi preferisce calcolare nel browser |
+| `POST /dettaglio` | il pool di **un** mercenario ridotto a `[prezzo, maschera]` (~40 KB): la scheda con le spunte lo filtra in memoria, senza tornare qui a ogni click |
+| `GET /campione/piano?k=…` | le otto combinazioni più preziose da fotografare, con la query di ricerca già pronta |
+| `POST /campione?k=…` | riceve le fotografie del segnalibro e calcola **quante inserzioni sono sparite** dal giro prima |
+| `GET /liquidita?chiavi=…` | la storia delle sparizioni per combinazione |
 
 **Perché non basta la pagina.** Misurato, non dedotto: xddbsns.com risponde
 **senza intestazione CORS** (una fetch `no-cors` torna `opaque`), quindi il
 browser scarica e non lascia leggere. E un `localStorage` è per-dispositivo: non
 fa vedere allo Steam Deck ciò che il Mac ha sincronizzato.
+
+🔴 **Perché il campionatore non gira sul server.** Da sloggati il trade accetta
+**un solo gruppo `mercenary`** per query, e le nostre ne hanno quattro o cinque:
+da qui tornerebbero solo `400`. Le ricerche le esegue il **segnalibro**, dentro
+pathofexile.com, dove la sessione è viva — otto combinazioni per giro, distanziate
+di 3,5 secondi.
+
+⚠️ **E cosa misura: le sparizioni, non le vendite.** Un'inserzione che non c'è più
+può essere stata comprata, tolta o riprezzata, e le tre non si distinguono. Ma un
+libro dove non sparisce niente non sta vendendo, e questo lo dice — mentre l'età
+(`indexed`) dice solo da quanto qualcosa è fermo.
 
 ⚠️ **Nessuna credenziale passa di qui.** Lo stash lo legge il segnalibro *dentro*
 pathofexile.com, dove la sessione è già viva; qui arriva solo il JSON dei warrant.
