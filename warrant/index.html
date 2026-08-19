@@ -72,6 +72,12 @@
   /* il pulsante che aspetta: pulsa piano. Non una rotella — il lavoro vero lo fa
      un altro computer, e un'animazione veloce direbbe una fretta che non c'e'. */
   /* le intestazioni che ordinano: si vede che si cliccano, e in che verso */
+  .cerca-barra{margin-top:calc(var(--s2) * -1)}
+  #cerca{flex:1;min-width:220px;max-width:420px;padding:6px 10px;border-radius:8px;
+         border:1px solid var(--line);background:var(--panel2);color:var(--testo);
+         font:inherit;font-size:var(--t-sm)}
+  #cerca:focus{outline:none;border-color:var(--oro,#d5a34a)}
+  tr.fuori{display:none}
   th.ord{cursor:pointer;user-select:none}
   th.ord:hover{color:var(--testo)}
   th.ord.attivo::after{content:" \2193";opacity:.7}
@@ -224,6 +230,12 @@
     <button id="b-prezzi" class="primario">Aggiorna prezzi</button>
     <button id="b-stash">Sincronizza stash</button>
     <span class="stato" id="stato">—</span>
+  </div>
+
+  <div class="barra cerca-barra">
+    <input id="cerca" type="search" autocomplete="off" spellcheck="false"
+           placeholder="filtra: Return, Absolution, Kineticist, un nome…">
+    <span class="stato" id="conta-cerca"></span>
   </div>
 
 
@@ -412,7 +424,13 @@ function disegna(dati) {
       ? `<span class="oltre">gli altri fino a ${w.quinto.toFixed(0)} c</span>` : "";
     const magro = w.confronti < 10 ? " magro" : "";
     const vend = VENDIBILI.has(w.build) ? "arche vend" : "arche";
-    return `<tr>
+    /* Il testo su cui si filtra sta **nella riga**, non ricalcolato a ogni tasto:
+       nome, archetipo, e **tutte** le skill coi loro supporti — non solo i
+       supporti che reggono la soglia, altrimenti cercare una gemma che il
+       mercenario ha davvero non lo troverebbe. */
+    const cercabile = [w.nome, w.build, ...(w.gemme || []).flatMap((g) => [g.s, ...(g.sup || [])])]
+      .join(" ").toLowerCase();
+    return `<tr data-cerca="${esc(cercabile)}">
       <td><span class="nome">${esc(w.nome)}</span><span class="${vend}">${esc(w.build)}${w.infamous ? " · Infamous" : ""} · lvl ${esc(w.livello)}</span></td>
       <td class="n"><span class="prezzo${w.prezzo >= 10 ? "" : " basso"}">${w.prezzo.toFixed(0)} c</span>${quinto}</td>
       <td class="dal">${dal(w.id)}</td>
@@ -425,6 +443,10 @@ function disegna(dati) {
       <div class="scheda-in" id="scheda-${i}">Apri per caricare le inserzioni simili…</div>
     </td></tr>`;
   }).join("");
+
+  // dopo un ridisegno le righe sono nuove: il filtro va rimesso, o sembrerebbe
+  // essersi svuotato da solo
+  if (typeof filtra === "function") filtra();
 
   const tot = dati.warrant.reduce((s, w) => s + w.prezzo, 0);
   $("stato").innerHTML = `<b>${dati.warrant.length}</b> warrant · <b>${tot.toFixed(0)} c</b> in tutto · dato del <b>${dataIt(dati.generato_il)}</b>` +
@@ -590,6 +612,35 @@ $("b-tutti").addEventListener("click", async (e) => {
     b.disabled = false;
     b.textContent = apri ? "chiudi tutte" : "apri tutte";
   }
+});
+
+/* **Filtrare nasconde righe, non ridisegna la tabella.** Ridisegnare
+   rinumererebbe gli indici, e l'accordion pesca il mercenario per indice: una
+   scheda si aprirebbe su un altro mercenario. Nascondere lascia tutto al suo
+   posto, e costa meno.
+   ⚠️ Si nasconde **anche la riga della scheda**, che e' quella dopo: senza,
+   filtrando con una scheda aperta resterebbe a mezz'aria un pannello di gemme
+   senza piu' il mercenario sopra. */
+function filtra() {
+  const q = $("cerca").value.trim().toLowerCase();
+  // più parole = tutte devono esserci: «return fork» sono due gemme, non una frase
+  const termini = q.split(/\s+/).filter(Boolean);
+  let visti = 0, totale = 0;
+  document.querySelectorAll("#righe tr:not(.scheda)").forEach((tr) => {
+    totale++;
+    const testo = tr.dataset.cerca || "";
+    const dentro = termini.every((x) => testo.includes(x));
+    if (dentro) visti++;
+    tr.classList.toggle("fuori", !dentro);
+    if (tr.nextElementSibling) tr.nextElementSibling.classList.toggle("fuori", !dentro);
+  });
+  $("conta-cerca").textContent = termini.length
+    ? (visti ? `${visti} di ${totale}` : "nessun mercenario con queste gemme")
+    : "";
+}
+$("cerca").addEventListener("input", filtra);
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && document.activeElement === $("cerca")) { $("cerca").value = ""; filtra(); }
 });
 
 $("b-prezzi").addEventListener("click", aggiornaPrezzi);
