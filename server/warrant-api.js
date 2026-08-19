@@ -362,7 +362,27 @@ function linkTrade(build, skillIdx, passi, lega) {
     filters: [{ id: `mercenary.skill_${build.skills[i].hash}` },
               ...sups.map((j) => ({ id: `mercenary.support_${build.supports[j].hash}` }))],
   }));
-  const q = { query: { status: { option: "securable" }, stats }, sort: { price: "asc" } };
+  const q = {
+    query: {
+      status: { option: "securable" },
+      // 💡 **Il link nasce gia' filtrato sulle ultime 24 ore.** Idea di Nicolas, e
+      // risolve a costo zero cio' che avevo provato a misurare bruciando il rate
+      // limit del suo account: il filtro lo applica il trade quando si apre il
+      // link, non noi in anticipo su 58 warrant.
+      //
+      // ⚠️ Serve perche' «31 inserzioni simili» conta anche chi e' fermo da
+      // giorni: la mediana dell'eta' di quelle inserzioni e' **165 ore**, e su
+      // 694 misurate solo 101 erano del giorno prima — il **15%**.
+      //
+      // 🔴 Ed e' anche il segnale: se aprendo il link i risultati sono pochi o
+      // nessuno, quel mercenario non ha un mercato **adesso**. Sul trade il menu
+      // «Listed» resta a portata di click, quindi allargare a tre giorni o a
+      // «Any Time» costa un gesto — la scelta preimpostata non chiude niente.
+      filters: { trade_filters: { filters: { indexed: { option: "1day" } } } },
+      stats,
+    },
+    sort: { price: "asc" },
+  };
   return `https://www.pathofexile.com/trade/search/${lega}?q=${encodeURIComponent(JSON.stringify(q))}`;
 }
 
@@ -400,7 +420,27 @@ function linkArchetipo(build, coppie, lega) {
     filters: [{ id: `mercenary.skill_${build.skills[i].hash}` },
               ...sups.map((j) => ({ id: `mercenary.support_${build.supports[j].hash}` }))],
   }));
-  const q = { query: { status: { option: "securable" }, stats }, sort: { price: "asc" } };
+  const q = {
+    query: {
+      status: { option: "securable" },
+      // 💡 **Il link nasce gia' filtrato sulle ultime 24 ore.** Idea di Nicolas, e
+      // risolve a costo zero cio' che avevo provato a misurare bruciando il rate
+      // limit del suo account: il filtro lo applica il trade quando si apre il
+      // link, non noi in anticipo su 58 warrant.
+      //
+      // ⚠️ Serve perche' «31 inserzioni simili» conta anche chi e' fermo da
+      // giorni: la mediana dell'eta' di quelle inserzioni e' **165 ore**, e su
+      // 694 misurate solo 101 erano del giorno prima — il **15%**.
+      //
+      // 🔴 Ed e' anche il segnale: se aprendo il link i risultati sono pochi o
+      // nessuno, quel mercenario non ha un mercato **adesso**. Sul trade il menu
+      // «Listed» resta a portata di click, quindi allargare a tre giorni o a
+      // «Any Time» costa un gesto — la scelta preimpostata non chiude niente.
+      filters: { trade_filters: { filters: { indexed: { option: "1day" } } } },
+      stats,
+    },
+    sort: { price: "asc" },
+  };
   return `https://www.pathofexile.com/trade/search/${lega}?q=${encodeURIComponent(JSON.stringify(q))}`;
 }
 
