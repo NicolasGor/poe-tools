@@ -59,14 +59,16 @@
   .scheda-cima .floor.magro b{color:var(--warn)}
   .gemme{display:grid;grid-template-columns:repeat(auto-fit,minmax(21rem,1fr));gap:var(--s3)}
   .gemma{border:1px solid var(--line);border-radius:var(--r);background:var(--panel2);padding:var(--s3)}
-  .gemma h4{color:var(--gold);font-size:var(--t-sm);margin:0 0 var(--s2);display:flex;justify-content:space-between;gap:var(--s2)}
+  .gemma h4{color:var(--gold);font-size:var(--t-sm);margin:0 0 var(--s2);display:flex;align-items:center;gap:var(--s2)}
   .gemma h4 em{color:var(--label);font-style:normal;font-family:var(--mono);font-size:var(--t-xs);margin-left:auto}
-  .skill-sw{font:inherit;font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;
-            border-radius:999px;padding:.05rem .5rem;border:1px solid var(--line2);
-            background:transparent;color:var(--label)}
-  .skill-sw.on{border-color:var(--good);color:var(--good)}
-  .skill-sw:hover{border-color:var(--gold);color:var(--gold)}
-  .gemma.spenta{opacity:.5}
+  .gemma h4.sw{cursor:pointer;user-select:none}
+  .gemma h4.sw:hover .casella{border-color:var(--gold)}
+  .casella{flex:0 0 auto;width:.95rem;height:.95rem;border-radius:.2rem;border:1.5px solid var(--line2);
+           display:inline-flex;align-items:center;justify-content:center;font-size:.7rem;line-height:1;
+           color:var(--bg);background:transparent}
+  .casella.on{background:var(--gold);border-color:var(--gold)}
+  .gemma.spenta{opacity:.45}
+  .gemma.spenta h4{text-decoration:line-through;text-decoration-thickness:1px}
   .gemma.spenta .sup{pointer-events:none}
   .sup{display:grid;grid-template-columns:1rem minmax(0,1fr) 3.4rem 4.4rem 2.6rem;gap:var(--s2);align-items:baseline;
        padding:.15rem 0;cursor:pointer;font-size:var(--t-xs);color:var(--label)}
@@ -75,7 +77,7 @@
            opacity:.75;padding-bottom:.15rem;border-bottom:1px solid var(--line);margin-bottom:.25rem;cursor:default}
   .sup-cap span:nth-child(3),.sup-cap span:nth-child(4),.sup-cap span:nth-child(5){text-align:right}
   .sup .peso{font-family:var(--mono);text-align:right;color:var(--label)}
-  .sup .peso.paga{color:var(--gold)}
+  .sup .peso.paga{color:var(--text);font-weight:600}
   .sup:hover{color:var(--text)}
   .sup.on{color:var(--text);font-weight:600}
   .sup .segno{color:var(--gold)}
@@ -486,11 +488,17 @@ function disegnaScheda(i) {
     const senza = info && info.bit >= 0 && dati.rilassabili !== false
       ? conta(dati.righe, sel & ~sups.reduce((m, x) => m | (1 << x.i), 0), selSkill & ~(1 << info.bit))
       : null;
-    const tasto = info && info.bit >= 0 && dati.rilassabili !== false
-      ? `<button class="skill-sw ${richiesta ? "on" : ""}" data-i="${i}" data-skillbit="${info.bit}"
-                 title="${richiesta ? `Togli questa skill dalla ricerca: resterebbero ${senza ? senza.n : "?"} inserzioni` : "Richiedi questa skill"}">${richiesta ? "richiesta" : "esclusa"}</button>`
+    const puoi = info && info.bit >= 0 && dati.rilassabili !== false;
+    const casella = puoi
+      ? `<span class="casella ${richiesta ? "on" : ""}">${richiesta ? "\u2713" : ""}</span>`
       : "";
-    return `<div class="gemma ${richiesta ? "" : "spenta"}"><h4>${esc(skill)} ${tasto}<em>${spuntati}/${sups.length}</em></h4>
+    const titolo = puoi
+      ? (richiesta
+          ? `Clicca per non chiedere questa skill: il confronto passerebbe a ${senza ? senza.n : "?"} inserzioni`
+          : "Clicca per richiedere di nuovo questa skill")
+      : "";
+    return `<div class="gemma ${richiesta ? "" : "spenta"}">
+      <h4 class="${puoi ? "sw" : ""}" ${puoi ? `data-i="${i}" data-skillbit="${info.bit}"` : ""} title="${esc(titolo)}">${casella}${esc(skill)}<em>${spuntati}/${sups.length}</em></h4>
       <div class="sup-cap"><span></span><span>gemma</span><span>peso</span><span>valore</span><span>restano</span></div>
       ${righe}</div>`;
   }).join("");
@@ -660,7 +668,7 @@ async function apriScheda(i, bottone) {
 document.addEventListener("click", (e) => {
   const apri = e.target.closest(".apri");
   if (apri) { apriScheda(Number(apri.dataset.i), apri); return; }
-  const sw = e.target.closest(".skill-sw");
+  const sw = e.target.closest("h4.sw");
   if (sw) {
     const i = Number(sw.dataset.i), bit = Number(sw.dataset.skillbit);
     const stato = SCHEDE.get(i);
