@@ -51,8 +51,11 @@ dato della wiki serve a uno strumento, si copia il singolo valore, non la pagina
   una copia locale di ogni item del gioco: lì si usa l'archivio remoto
   (`assets.pobb.in/1/<Nome>.webp`), con ripiego sul nome scritto se l'icona manca.
   La regola resta valida per tutto il resto: nessun CDN, nessun host esterno.
-- 🔴 **I link al trade nascono filtrati sulle ultime 24 ore** (`indexed: "1day"`,
-  oltre a `status: "securable"`). «31 inserzioni simili» conta anche chi è fermo
+- 🔴 **Il filtro sulle ultime 24 ore (`indexed: "1day"`) vale SOLO per i warrant
+  sulla pagina Warrant** — detto da Nicolas il 20 agosto: *«nei link del trade
+  normali non impostare la cosa del up to 1 day»*. I link normali nascono con il
+  solo `status: "securable"`. La ragione del filtro è specifica dei warrant:
+  «31 inserzioni simili» lì conta anche chi è fermo
   da giorni: la mediana dell'età di quelle inserzioni è **165 ore**, e su 694
   misurate solo **101** erano del giorno prima. Aprire il link e trovare poco è
   quindi il segnale che quel mercato **adesso** non c'è. Sul trade il menu
