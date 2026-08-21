@@ -220,7 +220,7 @@
 
 <div class="wrap">
   <header class="testata">
-    <h1>Sei strategie di farming</h1>
+    <h1>Cinque strategie di farming</h1>
     <p class="sub"><b>Tutte fanno currency, ma da canali diversi:</b> Breach vende <b>mappe</b>, Harvest <b>lifeforce</b>, Destructive Play <b>zaini dei mercenari, Syndicate e blueprint</b>. La quarta esce dall'atlante: <b>5 Lost Ruins Chart</b> a Voyage, i <b>Vaal Vessel</b> dentro e <b>Kingsmarch</b> che corre le mappe che ne cadono — ma 🔴 i suoi <b>20-40 divine l'ora sono dichiarati, non misurati</b>. La quinta vende <b>Delirium Orb e zaini infamous</b> — e il suo motore è il <b>ritmo</b>, non il bottino. Si scelgono per cosa produci, non per quanto rendono.</p>
     <div class="badges">
       <span class="badge">patch 3.29.2</span>
@@ -912,85 +912,6 @@
     </div>
     </details>
   </article>
-
-  <article class="strat" id="pesca-warrant">
-    <header>
-      <h2>6 · Pesca warrant — Luminary <span class="badge">personaggio nuovo</span> <span class="badge">0 scarab obbligatori</span> <span class="badge">🔴 resa mai misurata</span></h2>
-
-      <p class="sommario">TrincoLum cammina, il merc uccide, e <b>l'albero atlas garantisce un mercenario a mappa</b> (92% + 8% di base) con <b>Azadi ×2</b> — la Casa del Combatant. Pagano gli <b>zaini degli Infamous</b> (dentro cadono divine e ancient orb) e i warrant che passano la griglia. ⚠️ <b>I listini dei warrant (1-15 div) sono richieste, non vendite</b>: mediana d'età 165 ore — si accumulano, non si mettono a bilancio.</p>
-      <p class="quando">Quando: adesso, su bianche e gialle alch-and-go, mentre TrincoLum completa l'atlas — è la strategia che si corre <b>mentre</b> si diventa forti, non dopo</p>
-    </header>
-
-    <div class="misure">
-      <div class="misura"><div class="et">Difficoltà</div><div class="val">Bassa<small>gialle alch-and-go · il momento caldo è il <b>duello</b>: area pulita, minion davanti, flask su</small></div>
-        <div class="tacche rischio"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div></div>
-      <div class="misura"><div class="et">Investimento</div><div class="val">~1c a mappa<small>solo l'alchemy · opzionale <b>Trarthan Infamy 21c</b> per l'Infamous garantito (16 in tab)</small></div>
-        <div class="tacche"><i class="on"></i><i></i><i></i><i></i><i></i></div></div>
-      <div class="misura"><div class="et">Resa</div><div class="val">🔴 mai misurata<small>canali: <b>zaini Infamous</b> (divine/ancient, misurati in Destructive Play) · bonus atlas · warrant accumulati</small></div>
-        <div class="tacche resa"><i class="on"></i><i></i><i></i><i></i><i></i></div></div>
-      <div class="misura"><div class="et">Ritmo</div><div class="val">il tuo<small>il div/ora del Luminary scala col passo di camminata, non col tier — si sale quando il merc scioglie i pack</small></div>
-        <div class="tacche resa"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
-    </div>
-
-    <details class="dettaglio">
-      <summary>Dettaglio — come si corre, l'albero da pesca, la regex e la griglia dei warrant</summary>
-    <div class="corpo">
-      <div>
-        <h3>Come si corre</h3>
-        <ul>
-          <li><b>A inizio mappa: Soul Link sul merc</b> (col caster; Destructive quando il carry sarà un attaccante). È l'unico pulsante.</li>
-          <li><b>Alch-and-go</b> con la regex qui sotto: si vietano solo recupero, aure e armour.</li>
-          <li><b>Il duello a ogni mappa</b>: check da 5 secondi — skill principale buona? gemma-brick? Poi area pulita e sfida, col protocollo (morire nel rematch di un warrant lo brucia).</li>
-          <li><b>Warrant che si tengono</b>: quelli che passano la griglia — Return sui proiettili, niente Kinetic Bolt / Icicle Rain / Galvanic / Spectral Helix sul Combatant.</li>
-          <li><b>Zaini degli Infamous: aprili sempre</b> — è il canale che in Destructive Play paga divine e ancient orb.</li>
-          <li>Build, checklist e link di acquisto: <a href="../luminary/">pagina Luminary</a>.</li>
-        </ul>
-
-        <div class="blocco-albero" id="in-gioco-6">
-          <h3>🎮 La regex delle mappe</h3>
-          <div class="riga"><code id="box30">"!te of|ur$|ced f|kes$|ills$|t reg"</code><button type="button" data-copia="box30">copia</button></div>
-          <p class="nota">35 caratteri, un incollo sul Deck. Esclude: no-regen · less recovery · reduced flask charges · less armour · i due anti-crit · <b>less effect delle aure</b> (verificata su poe.re, profilo «Luminary»).</p>
-        </div>
-
-        <div class="blocco-albero">
-          <h3>Albero atlas — la pesca</h3>
-          <div class="punti">
-          <div class="voce"><span>Mercenari <span class="lim">92% sull'albero + 8% di base = <b>merc garantito senza scarab</b></span></span><span class="p">100%</span></div>
-          <div class="voce"><span>Azadi Supremacy <span class="lim">la Casa del Combatant e del Blade Ambusher</span></span><span class="p">×2</span></div>
-          <div class="voce"><span>Education Cuts <span class="lim">−75% caster Intelligence: pool concentrato sugli attack merc</span></span><span class="p">sì</span></div>
-          <div class="voce"><span>Contract Killers <span class="lim">merc <b>alleati</b> +100% more contro mercenari: vince i duelli</span></span><span class="p">sì</span></div>
-          <div class="voce"><span>Infamous Chance ×4 <span class="lim">+40%: zaini e supporti migliori (e rivali più tosti)</span></span><span class="p">+40%</span></div>
-          <div class="voce"><span>Scarab Drop <span class="lim">riempitivo</span></span><span class="p">~60%</span></div>
-          </div>
-          <p class="spente"><span class="et">meccaniche spente</span><span class="ch">Delirium</span></p>
-          <p class="nota">✅ Base: l'albero del Deli Merc Rush senza il pilastro Delirium (32 punti rispesi, connettività verificata, <b>138/138 su poeplanner</b>). 🔴 Rivisto il 21/8: tolti Faith in Arms e Trarthan Vapours, che potenziavano i <b>rivali</b> dei duelli. ⚠️ L'atlante è unico per la lega: applicarlo respecca il farming di TrincoEL (ritorno: Orb of Unmaking, 0,16c).</p>
-          <div class="bottoni"><button class="albero" type="button" data-albero="https://poeplanner.com/atlas-tree/BQAcAACKAB8AzgCkBYgHGQqqCnEL4g5jD7cP4RDaFJAXyxdbHsQfayHFIdwhYiRqJdAo6SiEKtEqBCvXK5MtSzLkMww0iDS-NHc2nzpfPoxBqUPPRwBIIkghTP5MC08XUIJRSVKvU-1Tm1g8Wc5a2VxnYHtgtWPaY99jymYrcaBxpXP2dTp2wnYsd-p4CHodfYqClINZhvqHbYgpjdSPfZEsknKTwZOtlX-XzpxenYedsZ2xnxChhqHeooWjNqSspJOmgqd8q5qv-7GzsoS0hrTMt3m4TLoqu-u7xsRwxtDGs8e9xwnJL8mpzqLQnti12LjZI99e34vh6-GP5eHnF-iM7OXswe5h8ZPyt_bk9_P3APkw-rL62vrO-xQAH4sIAAAAAAAAAwMAAAAAAAAAAAA">Mostra l'albero qui ↓</button><a class="albero secondario" href="https://poeplanner.com/atlas-tree/BQAcAACKAB8AzgCkBYgHGQqqCnEL4g5jD7cP4RDaFJAXyxdbHsQfayHFIdwhYiRqJdAo6SiEKtEqBCvXK5MtSzLkMww0iDS-NHc2nzpfPoxBqUPPRwBIIkghTP5MC08XUIJRSVKvU-1Tm1g8Wc5a2VxnYHtgtWPaY99jymYrcaBxpXP2dTp2wnYsd-p4CHodfYqClINZhvqHbYgpjdSPfZEsknKTwZOtlX-XzpxenYedsZ2xnxChhqHeooWjNqSspJOmgqd8q5qv-7GzsoS0hrTMt3m4TLoqu-u7xsRwxtDGs8e9xwnJL8mpzqLQnti12LjZI99e34vh6-GP5eHnF-iM7OXswe5h8ZPyt_bk9_P3APkw-rL62vrO-xQAH4sIAAAAAAAAAwMAAAAAAAAAAAA" target="_blank" rel="noopener">Apri ↗</a></div>
-        </div>
-      </div>
-
-      <div>
-        <div class="pannello">
-          <h3>La griglia dei warrant — cosa si tiene</h3>
-          <div class="voce"><span>Kineticist <span class="lim">KBoC + Greater KB insieme · 🔴 Kinetic Bolt = scarto</span></span><span class="p">15-50 d ask</span></div>
-          <div class="voce"><span>Cruel Mistress <span class="lim">Soulrend of Reaping + Return + GMP</span></span><span class="p">14 d</span></div>
-          <div class="voce"><span>Combatant <span class="lim">WS + Static Strike · 🔴 no Spectral Helix / Elemental Hit / Pierce</span></span><span class="p">10 d</span></div>
-          <div class="voce"><span>Manyshot / Sniper / Stormhand <span class="lim">Return / Gilded Secondary / BLoS+chain</span></span><span class="p">3 d</span></div>
-          <div class="voce"><span>Blade Ambusher <span class="lim">Helix of Trarthus + Multiple Traps + Slower Proj</span></span><span class="p">1 d</span></div>
-          <p class="nota">⚠️ <b>Prezzi = richieste</b> (mediana 165 h). Il warrant tenuto vale come <b>opzione</b>: da usare, da vendere se il mercato si sveglia, o da riscattare per sé. Prezzatura: <a href="../warrant/">strumento Warrant</a>.</p>
-        </div>
-
-        <div class="pannello">
-          <h3>Perché adesso</h3>
-          <div class="voce"><span>Completamento atlas <span class="lim">i punti spingono tutte le strategie future</span></span><span class="p">in corso</span></div>
-          <div class="voce"><span>Zaini Infamous <span class="lim">il canale misurato di Destructive Play</span></span><span class="p">divine/ancient</span></div>
-          <div class="voce"><span>Il Combatant per la build <span class="lim">pescato = 0 invece di 30-50 div</span></span><span class="p">gratis</span></div>
-          <div class="voce"><span>Ponte a Deli Merc Rush <span class="lim">~11 mappe di scarab già in tab per quando reggi le 8-mod</span></span><span class="p">scheda 5</span></div>
-        </div>
-      </div>
-    </div>
-    </details>
-  </article>
-
 
   <footer>
   </footer>
