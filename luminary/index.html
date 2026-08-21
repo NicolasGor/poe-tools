@@ -195,6 +195,29 @@
     <p class="stop"><b>Gemme che azzerano un merc</b> (griglia + Goratha): Combatant → Spectral Helix, Elemental Hit, Pierce · Kineticist → Kinetic Bolt · Manyshot → Icicle Rain · Thunderquiver → Galvanic Arrow. Gli <b>slammer</b> invece vanno bene fino all'endgame (non crittano, quindi male col Destructive min-max — ma un Volcanic Fissure 6L ha portato un utente da T8 a T16).</p>
   </div>
 
+  <h2 class="sec">Cosa farmare, per stadio</h2>
+  <table class="tabella">
+    <thead><tr><th>Stadio</th><th>Strategia</th><th>Cosa paga</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>Ora</b> (bianche/gialle)</td>
+        <td><b>Completamento atlas + raccolta warrant</b>: alch-and-go con la regex qui sopra, l'atlas da pesca fa spawnare un merc a mappa — duello, e il warrant si tiene se passa la <a href="https://nicolasgor.github.io/poe-tools/warrant/" >griglia</a> (Return sui proiettili, niente gemme-brick)</td>
+        <td>i bonus atlas, gli <b>zaini degli Infamous</b> (divine e ancient orb dentro), e i warrant buoni in stash — ⚠️ i listini dei warrant (1-15 div) sono <b>richieste, non vendite</b>: si accumulano, non ci si conta</td>
+      </tr>
+      <tr>
+        <td><b>T16 col merc solido</b></td>
+        <td><b>Deli Merc Rush</b> (<a href="../strategie/">scheda 5</a>): 8-mod + Paranoia + Infamy + Neuroses — è la strategia <em>nativa</em> del Luminary, caccia merc e Delirium insieme</td>
+        <td>~1 div/mappa dichiarata a 40 mappe/ora; <b>~11 mappe di scarab già in stash</b> (35 Paranoia, 16 Infamy, 14 Neuroses)</td>
+      </tr>
+      <tr>
+        <td>In parallelo</td>
+        <td><b>TrincoEL resta il motore</b> (6,3 div/ora misurate): TrincoLum si autofinanzia coi warrant e i rucksack, non deve battere il fratello</td>
+        <td>la liquidità per gli upgrade grossi (cluster, Combatant)</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="nota muto" style="margin-bottom:var(--s6)">La regola di transizione: si sale di tier quando il merc <b>scioglie i pack senza che tu rallenti</b> — il div/ora del Luminary scala col ritmo, non col livello delle mappe.</p>
+
   <h2 class="sec">La regex delle mappe</h2>
   <p class="nota" style="margin-bottom:var(--s2)">Verificata due volte — censimento della wiki <b>e poe.re</b> (controverifica di Nicolas): esclude no-regen, less recovery, reduced flask charges, less armour, i due anti-crit e — via <span style="font-family:var(--mono)">ills$</span> — il <b>«reduced effect of Non-Curse Auras from Skills»</b>, il mod peggiore per un aurabot. <b>34 caratteri, un incollo sul Deck.</b> <em>Costo noto di ills$: butta anche tre mod benefici minori (Rampage, CDR movement) — accettato.</em></p>
   <p style="font-family:var(--mono);font-size:var(--t-sm);background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:4px;padding:.6rem .8rem;margin-bottom:var(--s3)">"!te of|ur$|ced f|kes$|ills$|t reg"</p>
