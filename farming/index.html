@@ -10,7 +10,12 @@
 <style>
   .gruppo{margin-top:var(--s6)}
   .gruppo > h2{font-size:var(--t-lg);margin-bottom:var(--s2)}
-  .gruppo > p{color:var(--muted);max-width:62ch;margin-bottom:var(--s3)}
+  /* 62ch e' la misura di lettura giusta per la prosa d'apertura di ogni sezione.
+     ⚠️ `:not(.nota)` non e' un dettaglio: una nota e' figlia diretta di .gruppo
+     come il paragrafo, e senza l'esclusione si tagliava a meta' sotto una
+     tabella a tutta larghezza — sembrava un difetto di allineamento. */
+  .gruppo > p:not(.nota){color:var(--muted);max-width:62ch;margin-bottom:var(--s3)}
+  .gruppo > p.nota{margin-bottom:var(--s3)}
   .scroll{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--panel2)}
   table{width:100%;border-collapse:collapse}
   .val{color:var(--gold);font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
@@ -215,8 +220,7 @@
         </tr>
       </tbody>
     </table></div>
-    <p class="nota">⚠️ <b>Quanto vale la selezione, su 78 mappe:</b> tutte a sfuso <b>3.510 c</b>, divise per scaglione <b>~3.750</b>. Cinque incolli valgono <b>circa 1 divine</b> — il grosso resta lo sfuso, e il guadagno vero non è il prezzo più alto ma la <b>visibilità</b>: sotto i 60 c le venti offerte più economiche sono tutte indicizzate negli ultimi minuti, mentre negli scaglioni 1–4 sei <b>uno fra 88 o 300</b>. ⚠️ Le quantità sono stimate su 139 inserzioni: il conteggio vero lo dà la regex quando la incolli.</p>
-  </section>
+    </section>
 
   <section class="gruppo" id="fuori-misura">
     <h2>Cosa non si misura da qui</h2>
