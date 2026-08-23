@@ -207,6 +207,37 @@
                           font-size:var(--t-sm)}
   .scheda-pie a.trade-btn:hover{background:var(--gold-scuro)}
   .scheda-pie a.trade-btn em{font-style:normal;font-weight:500;opacity:.75}
+
+  /* ------------------------------------------------ la regex dei warrant da buttare
+     Il cursore e la regex stanno **sopra** la tabella dei rifiuti, non dentro una
+     modale: e' la stessa lista di sotto guardata da un'altra parte, e le righe
+     colpite si accendono li'. */
+  .butta{margin-top:var(--s6)}
+  .butta-testa{display:flex;gap:var(--s3);align-items:baseline;flex-wrap:wrap}
+  .butta-testa h2{margin:0}
+  .butta-cursore{display:flex;gap:var(--s3);align-items:center;flex-wrap:wrap;margin-top:var(--s3)}
+  .butta-cursore label{font-size:var(--t-sm);color:var(--label)}
+  .butta-cursore input[type=range]{flex:1;min-width:220px;max-width:420px;accent-color:var(--bad)}
+  .butta-cursore output{font-family:var(--mono);font-variant-numeric:tabular-nums;
+                        font-weight:700;color:var(--bad);min-width:5.5rem}
+  .butta-cursore .limite{margin-left:auto;display:flex;gap:var(--s2);align-items:center;
+                         font-size:var(--t-xs);color:var(--label)}
+  .butta-cursore .limite input{width:4.2rem;font:inherit;font-family:var(--mono);padding:4px 6px;
+                               border-radius:6px;border:1px solid var(--line2);background:var(--bg);color:var(--text)}
+  .rx-riga{display:flex;gap:var(--s3);align-items:center;flex-wrap:wrap;margin-top:var(--s2);
+           background:var(--panel2);border:1px solid var(--line);border-radius:var(--r);padding:var(--s3)}
+  .rx-riga code{flex:1;min-width:240px;font-family:var(--mono);font-size:var(--t-sm);
+                color:var(--gold);word-break:break-all}
+  .rx-riga .len{font-family:var(--mono);font-size:var(--t-xs);color:var(--label);white-space:nowrap}
+  .rx-riga .len.ko{color:var(--bad)}
+  .butta-persi{margin-top:var(--s3)}
+  .butta-persi .avviso-mini{font-size:var(--t-sm);color:var(--warn)}
+  .butta-persi ul{margin:var(--s2) 0 0 1.1rem;color:var(--muted);font-size:var(--t-xs)}
+  .butta-nota{font-size:var(--t-xs);color:var(--label);margin-top:var(--s3);max-width:64rem}
+  .butta-nota b{color:var(--muted)}
+  /* la riga colpita dalla regex: si vede sulla tabella, che e' dove si controlla */
+  tr.da-buttare td:first-child{box-shadow:inset 3px 0 0 var(--bad)}
+  tr.da-buttare .nome{color:var(--bad)}
 </style>
 </head>
 <body>
@@ -280,6 +311,56 @@
       </tbody>
     </table>
   </div>
+
+
+  <!-- ------------------------------------------------ la regex dei warrant da buttare -->
+  <section class="butta" id="butta">
+    <div class="butta-testa">
+      <h2 class="sec">Da buttare — la regex per la stash</h2>
+      <span class="stato" id="butta-conta">—</span>
+    </div>
+
+    <div class="butta-cursore">
+      <label for="soglia">butto tutto fino a</label>
+      <input type="range" id="soglia" min="0" max="1" step="1" value="0">
+      <output id="soglia-eti" for="soglia">0 c</output>
+      <span class="limite">
+        <label for="limite">max</label>
+        <input type="number" id="limite" min="20" max="250" step="1" value="63">
+        <span>caratteri per regex</span>
+      </span>
+    </div>
+
+    <div id="butta-rx"></div>
+    <div id="butta-persi" class="butta-persi"></div>
+
+    <p class="butta-nota">
+      <b>Come si usa.</b> Copi una riga alla volta nel campo di ricerca della stash: si
+      accendono i warrant di quella riga, e sono quelli da buttare. Se le righe sono più
+      d'una si fanno più passate — <b>non si incollano insieme</b>, il campo non le regge.
+      <b>«mostrali»</b> filtra la tabella qui sopra sugli stessi warrant, così si controlla
+      cosa si sta per buttare prima di andare in gioco.<br>
+      <b>Perché i frammenti sono così corti.</b> Per ogni warrant sotto soglia la pagina
+      cerca la <b>sottostringa più breve del nome o dell'archetipo che non compare in
+      nessun warrant che tieni</b> — gemme comprese. Poi tiene i pochi frammenti che
+      coprono tutti gli altri: <i>kei</i> vale per tutti i Keitan, <i>amb</i> per gli
+      Ambusher. <b>Niente spazi dentro un frammento</b>, e non è prudenza: nella ricerca
+      della stash lo spazio <b>separa due termini che devono valere entrambi</b> — è il
+      motivo per cui le regex della pagina <a href="../strategie/">Strategie</a> mettono le
+      virgolette attorno ai termini che ne contengono uno. Toglierli non costa niente:
+      misurato su questa lista, le righe generate sono le stesse.<br>
+      ⚠️ <b>Il controllo guarda solo gli altri warrant</b>: usala nella tab dei warrant. In
+      una tab mista un frammento di tre lettere può accendere altro.<br>
+      🔴 <b>Da verificare in gioco, una volta sola:</b> che la ricerca della stash legga il
+      <b>nome del mercenario</b> e l'<b>archetipo</b> scritti sul warrant. Se non li legge,
+      la regex non accende niente — si incolla una riga e si conta.
+<br>
+      <b>Da dove viene il 63.</b> È la <b>tastiera dello Steam Deck</b>, che oltre quel
+      punto <b>taglia senza avvisare</b> — misurato il 22 agosto, ed è lo stesso tetto delle
+      regex della pagina Strategie. Da tastiera vera il campo ne regge di più: si alza il
+      numero qui sopra e le righe diventano meno.
+    </p>
+  </section>
 
   <h2 class="sec">Come si legge questo numero</h2>
 
@@ -473,6 +554,9 @@ function disegna(dati) {
   const tot = dati.warrant.reduce((s, w) => s + w.prezzo, 0);
   $("stato").innerHTML = `<b>${dati.warrant.length}</b> warrant · <b>${tot.toFixed(0)} c</b> in tutto · dato del <b>${dataIt(dati.generato_il)}</b>` +
     (dati.divine_in_chaos ? ` · divine a <b>${dati.divine_in_chaos.toFixed(0)} c</b>` : "");
+
+  // il cursore vive sugli stessi numeri della tabella: ogni ridisegno lo rifa'
+  preparaSoglia();
 }
 
 /* **Leggere e ricalcolare sono due cose diverse, adesso.** Leggere e' una GET
@@ -1263,6 +1347,219 @@ $("griglia-chiudi").addEventListener("click", () => apriGriglia(false));
 $("griglia-modale").addEventListener("click", (e) => { if (e.target.id === "griglia-modale") apriGriglia(false); });
 $("griglia-cerca").addEventListener("input", (e) => disegnaGriglia(e.target.value));
 document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("griglia-modale").hidden) apriGriglia(false); });
+
+
+/* ==================================================== la regex dei warrant da buttare
+ *
+ * **Il problema non e' scrivere una regex: e' non accendere quelli che tengo.**
+ * Un falso positivo costa un warrant da 100 c distrutto per sbaglio; un falso
+ * negativo costa che una schifezza resta in tab. I due errori non pesano uguale,
+ * quindi la regola e' secca: **un frammento e' ammesso solo se non compare in
+ * nessun warrant sopra soglia** — nome, archetipo, skill e supporti compresi.
+ * Cio' che non si riesce a separare non finisce nella regex: finisce nell'elenco
+ * di sotto, dichiarato.
+ *
+ * ⚠️ **Il controllo si ferma ai warrant.** Un frammento di tre lettere in una tab
+ * mista puo' accendere altro: la regex e' fatta per la tab dei warrant.
+ *
+ * 🔴 **E resta un'assunzione da verificare in gioco**: che il campo di ricerca
+ * della stash legga il nome del mercenario e l'archetipo scritti sul warrant.
+ * Sono righe del tooltip, non il nome base dell'oggetto — se la ricerca guarda
+ * solo il nome base, ogni riga qui sotto accende **tutti** i warrant o nessuno.
+ * Si prova una volta sola, incollando una riga e contando.
+ */
+
+/* Il testo che il gioco potrebbe leggere di un warrant. **Si prende largo**: se
+   la ricerca guarda anche le gemme, un frammento che ne colpisce una su un
+   warrant che tengo sarebbe un falso positivo. Escludendole comunque, la regex
+   e' giusta sotto tutte e due le ipotesi. */
+function testoWarrant(w) {
+  return [w.nome, w.build, ...(w.gemme || []).flatMap((g) => [g.s, ...(g.sup || [])])]
+    .join(" ").toLowerCase();
+}
+
+/* I frammenti candidati di una stringa: sottostringhe **allineate a inizio
+   parola**, da 3 a 14 caratteri, senza spazi ne' punteggiatura.
+   💡 Allineate a parola perche' un pezzo a meta' di sillaba e' illeggibile e non
+   si controlla a occhio.
+   🔴 **Senza spazi perche' nella ricerca della stash lo spazio non e' un
+   carattere qualunque: separa due termini che devono valere entrambi.** Un
+   frammento con uno spazio dentro diventerebbe una condizione in AND e non
+   accenderebbe piu' niente — a meno di virgolette, che e' come la pagina
+   Strategie scrive i suoi termini con spazio. E togliendoli **non si perde
+   niente**: misurato su questa lista, il numero di righe generate e' lo stesso. */
+function frammentiDi(s) {
+  const t = String(s || "").toLowerCase();
+  const inizi = [0];
+  for (let i = 1; i < t.length; i++) if (" ,-'".includes(t[i - 1])) inizi.push(i);
+  const fuori = new Set();
+  for (const i of inizi) for (let L = 3; L <= 14 && i + L <= t.length; L++) {
+    const f = t.slice(i, i + L);
+    if (/[^a-z0-9']/.test(f)) continue;
+    fuori.add(f);
+  }
+  return fuori;
+}
+
+/* Il testo che ogni warrant si porta dietro comunque: nessun frammento puo'
+   venire da qui, o accenderebbe tutta la tab. Serve solo quando non tengo
+   niente — negli altri casi lo stesso controllo lo fa gia' il primo warrant
+   sopra soglia. */
+const COMUNE_STASH = "mercenary warrant build mercenary level requires right click fragment";
+
+function calcolaButta(soglia, limite) {
+  const tutti = (ULTIMI && ULTIMI.warrant) || [];
+  const val = (w) => w.quinto ?? w.prezzo;
+  const butta = tutti.filter((w) => val(w) <= soglia + 1e-9);
+  const tieni = tutti.filter((w) => val(w) > soglia + 1e-9);
+  const vietati = tieni.map(testoWarrant).concat([COMUNE_STASH]);
+
+  /* separabili / ciechi: un warrant e' cieco quando **ogni** suo frammento
+     compare in qualcosa che tengo. Succede davvero — due warrant con lo stesso
+     nome e lo stesso archetipo esistono in questa tab, e nessun testo li
+     distingue. */
+  const cand = new Map();
+  const separabili = [];
+  for (const w of butta) {
+    const suoi = [...frammentiDi(w.nome), ...frammentiDi(w.build)]
+      .filter((f) => f.length <= limite && !vietati.some((v) => v.includes(f)));
+    if (!suoi.length) continue;   // nessun testo suo lo distingue: lo raccoglie il conto finale
+    const idx = separabili.push(w) - 1;
+    for (const f of suoi) {
+      if (!cand.has(f)) cand.set(f, new Set());
+      cand.get(f).add(idx);
+    }
+  }
+
+  /* Copertura minima, come sulla pagina dei mod di mappa: non serve un frammento
+     per warrant, serve il minor numero di frammenti che li coprano tutti. `kei`
+     vale per tutti i Keitan, `amb` per tutti gli Ambusher. A parita' di warrant
+     coperti vince il frammento piu' corto: i caratteri sono la risorsa scarsa. */
+  const scoperti = new Set(separabili.map((_, i) => i));
+  const frammenti = [];
+  while (scoperti.size) {
+    let best = null, bestN = 0;
+    for (const [f, set] of cand) {
+      let n = 0; for (const i of set) if (scoperti.has(i)) n++;
+      if (n > bestN || (n === bestN && n > 0 && best && f.length < best.length)) { best = f; bestN = n; }
+    }
+    if (!best) break;   // non puo' capitare: chi non aveva frammenti e' gia' fra i ciechi
+    frammenti.push(best);
+    for (const i of cand.get(best)) scoperti.delete(i);
+  }
+
+  /* L'impacchettamento: **piu' lungo per primo, nel primo posto dove entra.**
+     Su bin packing e' l'euristica che spreca meno, e qui uno spreco si paga con
+     una passata in piu' davanti alla stash. */
+  frammenti.sort((a, b) => b.length - a.length || a.localeCompare(b));
+  const righe = [];
+  for (const f of frammenti) {
+    const r = righe.find((r) => r.join("|").length + 1 + f.length <= limite);
+    if (r) r.push(f); else righe.push([f]);
+  }
+
+  /* 🔴 **Chi viene acceso si conta sullo stesso testo largo del divieto.** Un
+     frammento nato dal nome di un warrant puo' comparire dentro una gemma di un
+     altro: in gioco quello si accende comunque, e dirlo dopo non serve. Contarlo
+     qui non e' un rischio — su cio' che tengo quel frammento non compare per
+     costruzione, e' la condizione con cui e' stato ammesso. */
+  const conRighe = righe.map((r) => {
+    const rx = r.join("|");
+    const presi = butta.filter((w) => r.some((f) => testoWarrant(w).includes(f)));
+    return { rx, presi };
+  });
+
+  /* I ciechi si dichiarano **dopo**, e sono quelli che nessuna riga accende: non
+     coincidono con quelli senza frammenti propri, perche' uno di loro puo'
+     finire preso da un frammento nato per un altro. Guardare il risultato invece
+     dell'intenzione e' l'unico modo di non dichiarare il falso. */
+  const ciechi = butta.filter((w) => !conRighe.some((r) => r.presi.includes(w)));
+
+  return { butta, tieni, ciechi, righe: conRighe };
+}
+
+/* ------------------------------------------------------------------ il cursore
+ * Le tacche sono i **valori che esistono davvero**, non una scala regolare: fra
+ * 100 c e 206 c non c'e' niente, e una tacca la' in mezzo sposterebbe il cursore
+ * senza cambiare la lista — cioe' mentirebbe. Cosi' ogni scatto cambia qualcosa.
+ */
+let SOGLIE = [0];
+
+function preparaSoglia() {
+  const tutti = (ULTIMI && ULTIMI.warrant) || [];
+  const val = (w) => w.quinto ?? w.prezzo;
+  SOGLIE = [0, ...new Set(tutti.map(val))].sort((a, b) => a - b);
+  const c = $("soglia");
+  c.max = String(Math.max(1, SOGLIE.length - 1));
+  const salvata = Number(localStorage.getItem("warrant-soglia") || "0");
+  let i = 0; while (i + 1 < SOGLIE.length && SOGLIE[i + 1] <= salvata) i++;
+  c.value = String(i);
+  disegnaButta();
+}
+
+function disegnaButta() {
+  const el = $("butta-rx"), pe = $("butta-persi");
+  const tutti = (ULTIMI && ULTIMI.warrant) || [];
+  if (!tutti.length) { el.innerHTML = ""; pe.innerHTML = ""; $("butta-conta").textContent = "—"; return; }
+
+  const soglia = SOGLIE[Number($("soglia").value)] ?? 0;
+  const limite = Math.max(20, Math.min(250, Number($("limite").value) || 63));
+  localStorage.setItem("warrant-soglia", String(soglia));
+  localStorage.setItem("warrant-limite", String(limite));
+  $("soglia-eti").textContent = `≤ ${soglia.toFixed(0)} c`;
+
+  const r = calcolaButta(soglia, limite);
+  const persi = r.butta.reduce((s, w) => s + (w.quinto ?? w.prezzo), 0);
+  $("butta-conta").innerHTML = r.butta.length
+    ? `<b>${r.butta.length}</b> su ${tutti.length} · <b>${persi.toFixed(0)} c</b> buttati · ne restano <b>${r.tieni.length}</b>`
+    : "nessun warrant sotto soglia";
+
+  el.innerHTML = r.righe.map((riga, i) => `
+    <div class="rx-riga">
+      <code>${esc(riga.rx)}</code>
+      <span class="len${riga.rx.length > limite ? " ko" : ""}">${riga.rx.length}/${limite}</span>
+      <span class="stato">${riga.presi.length} warrant</span>
+      <button class="mini copia-rx" data-rx="${esc(riga.rx)}">Copia</button>
+      <button class="mini mostra-rx" data-i="${i}">mostrali</button>
+    </div>`).join("")
+    || (r.butta.length ? "" : '<p class="butta-nota">Alza il cursore: sotto soglia non c’è niente.</p>');
+
+  /* 🔴 I non separabili si dichiarano, non si nascondono e nemmeno si infilano
+     nella regex "tanto e' poca roba": e' l'unico punto dove lo strumento puo'
+     far buttare un warrant che vale. */
+  pe.innerHTML = r.ciechi.length ? `
+    <p class="avviso-mini">⚠️ <b>${r.ciechi.length} warrant nessuna regex li isola</b>:
+    ogni pezzo del loro nome e del loro archetipo compare anche su uno che tieni
+    — spesso è un omonimo con lo stesso archetipo. Vanno tolti a mano.</p>
+    <ul>${r.ciechi.map((w) => `<li>${esc(w.nome)} · ${esc(w.build)} · ${(w.quinto ?? w.prezzo).toFixed(0)} c</li>`).join("")}</ul>` : "";
+
+  // le righe colpite si accendono nella tabella: il controllo si fa li', non
+  // leggendo la regex carattere per carattere
+  const dentro = new Set(r.butta.map((w) => w.id));
+  document.querySelectorAll("#righe tr:not(.scheda)").forEach((tr) => {
+    tr.classList.toggle("da-buttare", dentro.has(tr.dataset.id));
+  });
+
+  RIGHE_BUTTA = r.righe;
+}
+
+let RIGHE_BUTTA = [];
+
+$("soglia").addEventListener("input", disegnaButta);
+$("limite").addEventListener("input", disegnaButta);
+$("limite").value = localStorage.getItem("warrant-limite") || "63";
+$("butta-rx").addEventListener("click", async (e) => {
+  const c = e.target.closest(".copia-rx");
+  if (c) {
+    try { await navigator.clipboard.writeText(c.dataset.rx); c.textContent = "copiata ✓";
+          setTimeout(() => { c.textContent = "Copia"; }, 1500); } catch (err) {}
+    return;
+  }
+  const m = e.target.closest(".mostra-rx");
+  if (!m) return;
+  const riga = RIGHE_BUTTA[Number(m.dataset.i)];
+  if (riga) mostraSolo(new Set(riga.presi.map((w) => w.id)), `regex ${Number(m.dataset.i) + 1}`);
+});
 
 /* 🔴 **Prima la cache, poi comunque il server.** Sullo Steam Deck la cache fa
    comparire subito l'ultima lettura; ma su un dispositivo mai usato la cache non
