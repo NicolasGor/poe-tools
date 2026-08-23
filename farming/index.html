@@ -110,8 +110,7 @@
         <tr><td>Writhing<span class="lim">sgherro</span></td><td>Eater of Worlds</td><td>The Infinite Hunger</td><td class="n">993</td><td class="n val basso">8 c</td></tr>
       </tbody>
     </table></div>
-    <p class="nota">La <b>Polaric non si vende</b> a 8 chaos: apre The Black Star, ed è il gradino verso l'Incandescent.</p>
-    <p class="nota">⚠️ <b>Il divario fra sgherro e finale si è allargato</b>: l'11 agosto era 140-150 contro 7-9 c, oggi <b>160-168 contro 8</b>. Le due finali si sono mosse insieme, come sempre.</p>
+    <p class="nota">La <b>Polaric non si vende</b> a 8 chaos: apre The Black Star, ed è il gradino verso l'Incandescent. ⚠️ Il divario fra sgherro e finale si è allargato — l'11 agosto era 140-150 contro 7-9 c — ma le due finali si muovono sempre insieme.</p>
   </section>
 
   <section class="gruppo" id="scrying">
@@ -131,9 +130,8 @@
         <tr><td>Crater</td><td>The Lion <span class="lim">2 c · una ogni 3</span></td><td class="n">88 <span class="lim">⚠️ poche</span></td><td class="n val basso">10 c</td></tr>
       </tbody>
     </table></div>
-    <p class="nota">Il criterio che li separa è doppio: carta <b>≥ 3.000 c</b> <b>e</b> <b>≤ 2.500 mappe</b> di attesa. La classifica su tutte e 140 le mappe sta in <a href="../scrying/">Scrying</a>.</p>
-    <p class="nota">🔴 <b>Il numero di inserzioni va letto prima del prezzo.</b> Cinque di questi nove stanno sotto le 100, e i due più cari sono i più sottili: <b>Palace 24</b> e <b>Ghetto 14</b>. Con quella liquidità una singola inserzione ottimista fa la mediana da sola — sono cifre da rimisurare, non da incassare.</p>
-    <p class="nota">⚠️ <b>Il criterio oggi ne manca due su sette sopra i 200 c</b>, e per ragioni diverse: <b>Shrine</b> perché la sua carta è scesa da 3.516 a 1.888 c, <b>Palace</b> perché non è una lotteria — vive di una carta da 182 c che esce <b>una volta ogni 26 mappe</b>. Entrambi però stanno su pochi scambi, quindi non bastano a riscrivere la regola.</p>
+    <p class="nota">🔴 <b>Il numero di inserzioni va letto prima del prezzo</b>: cinque di questi nove stanno sotto le 100, e i due più cari sono i più sottili — <b>Palace 24</b> e <b>Ghetto 14</b>. Con quella liquidità una singola inserzione ottimista fa la mediana da sola.</p>
+    <p class="nota">Quali orb valgono qualcosa e perché — il criterio, e i due che oggi gli sfuggono — sta in <a href="../scrying/">Scrying</a>, con tutte e 140 le mappe.</p>
   </section>
 
   <section class="gruppo" id="heist">
@@ -169,45 +167,60 @@
 
   <section class="gruppo" id="nightmare">
     <h2>Prezzare le Nightmare Map</h2>
-    <p>Il prezzo non è uno. Lo decidono <b>tre proprietà</b> — <b>More Scarabs</b>, <b>Item Quantity</b>, <b>Monster Pack Size</b> — e fra il fondo e la cima ci sono <b>3×</b>. I sei modificatori forzati non c'entrano: <b>non li filtra nessuno</b>, e infatti non spostano il prezzo.</p>
+    <p>Il prezzo non è uno. Lo decidono <b>tre proprietà</b> — <b>More Scarabs</b>, <b>Item Quantity</b>, <b>Monster Pack Size</b> — e fra il fondo e la cima ci sono <b>3×</b>. I sei modificatori forzati non c'entrano: <b>non li filtra nessuno</b>.</p>
 
     <div class="avviso">
-      <b>Prima di tutto: identificale.</b> Su una mappa non identificata le proprietà non si vedono — né dal compratore, né dalla barra di ricerca dello stash. Sono <b>3.984 inserzioni</b> su cui le regex qui sotto non hanno niente da leggere, e uno Scroll of Wisdom costa zero.
+      <b>Identificale prima, o niente di tutto questo funziona.</b> Su una mappa non identificata le proprietà non si vedono: né dal compratore, né dalla barra di ricerca dello stash. Sono <b>3.984 inserzioni</b> in vendita così, e uno Scroll of Wisdom costa zero.
     </div>
 
+    <p>Poi si incollano le regex nella barra dello stash <b>dall'alto in basso</b>: ogni scaglione porta via le sue mappe, così il successivo non deve escluderle. Quello che non si accende mai è lo sfuso.</p>
+
     <div class="scroll"><table class="tabella">
-      <thead><tr><th>Scaglione</th><th>La mappa deve avere</th><th class="n">Concorrenti</th><th class="n">Fondo del libro</th><th class="n">Listino</th></tr></thead>
+      <thead><tr><th>La mappa deve avere</th><th class="n">Concorrenti</th><th class="n">Listino</th><th class="n">Regex da incollare</th></tr></thead>
       <tbody>
-        <tr><td class="scaglione">1</td><td><b>Item Quantity ≥ 130%</b><span class="lim">il tetto: sopra 135 c'è una mappa in tutta la lega</span></td><td class="n">88</td><td class="n">70 c, poi muro a <b>150</b></td><td class="n val">140 c</td></tr>
-        <tr><td class="scaglione">2</td><td><b>More Scarabs ≥ 130%</b></td><td class="n">262</td><td class="n">79 c, poi muro a <b>100</b></td><td class="n val">95 c</td></tr>
-        <tr><td class="scaglione">3</td><td><b>More Scarabs 100–129%</b></td><td class="n">300</td><td class="n">60 · 70 · 75</td><td class="n val">79 c</td></tr>
-        <tr><td class="scaglione">4</td><td><b>Monster Pack Size ≥ 70%</b></td><td class="n">1.329</td><td class="n">65, muro a <b>70</b></td><td class="n val">65 c</td></tr>
-        <tr><td class="scaglione">5</td><td>IIQ 120–129% <i>oppure</i> Scarabs ≥ 60% <i>oppure</i> Currency ≥ 110% <i>oppure</i> Maps ≥ 105%</td><td class="n">1.073–5.165</td><td class="n">muro a <b>60</b></td><td class="n val">55 c</td></tr>
-        <tr><td class="scaglione">6</td><td>tutto il resto — <b>lo sfuso</b></td><td class="n">oltre 10.000</td><td class="n">46 · 50 · 55</td><td class="n val basso">45 c</td></tr>
+        <tr>
+          <td><span class="scaglione">1</span> <b>Item Quantity ≥ 130%</b><span class="lim">il tetto: sopra 135 c'è una mappa in tutta la lega</span></td>
+          <td class="n">88</td>
+          <td class="n val">140 c<span class="lim">muro a 150</span></td>
+          <td><div class="rx-cella"><code id="nmr1">"m q.*1[3-9].%"</code><button type="button" data-copia="nmr1">copia</button></div></td>
+        </tr>
+        <tr>
+          <td><span class="scaglione">2</span> <b>More Scarabs ≥ 130%</b></td>
+          <td class="n">262</td>
+          <td class="n val">95 c<span class="lim">muro a 100</span></td>
+          <td><div class="rx-cella"><code id="nmr2">"bs.*(1[3-9].|2..)%"</code><button type="button" data-copia="nmr2">copia</button></div></td>
+        </tr>
+        <tr>
+          <td><span class="scaglione">3</span> <b>More Scarabs 100–129%</b></td>
+          <td class="n">300</td>
+          <td class="n val">79 c<span class="lim">fondo 60–75</span></td>
+          <td><div class="rx-cella"><code id="nmr3">"bs.*1[0-2].%"</code><button type="button" data-copia="nmr3">copia</button></div></td>
+        </tr>
+        <tr>
+          <td><span class="scaglione">4</span> <b>Monster Pack Size ≥ 70%</b></td>
+          <td class="n">1.329</td>
+          <td class="n val">65 c<span class="lim">muro a 70</span></td>
+          <td><div class="rx-cella"><code id="nmr4">"iz.*([7-9].|\d..)%"</code><button type="button" data-copia="nmr4">copia</button></div></td>
+        </tr>
+        <tr>
+          <td><span class="scaglione">5</span> <b>una proprietà alta qualsiasi</b><span class="lim">IIQ 120–129% · Scarabs ≥ 60% · Currency ≥ 110% · Maps ≥ 105%</span></td>
+          <td class="n">1.073–5.165</td>
+          <td class="n val">55 c<span class="lim">muro a 60</span></td>
+          <td><div class="rx-cella"><code id="nmr5">"m q.*12.%|bs.*[6-9].%|ncy.*1[1-9].%|ps.*\d\d\d%"</code><button type="button" data-copia="nmr5">copia</button></div></td>
+        </tr>
+        <tr>
+          <td><span class="scaglione">6</span> tutto il resto — <b>lo sfuso</b><span class="lim">tutte allo stesso prezzo, così un compratore ne prende dieci in un colpo</span></td>
+          <td class="n">oltre 10.000</td>
+          <td class="n val basso">45 c<span class="lim">fondo 46–55</span></td>
+          <td class="n"><span class="lim">nessuna: è quello che resta spento</span></td>
+        </tr>
       </tbody>
     </table></div>
-    <p class="nota">Misurato il <b>23 agosto 2026</b> con <code>status: securable</code> e <code>sort: price asc</code>: il fondo del libro è l'offerta che il compratore vede per prima, cioè <b>la cifra da battere</b>. ⚠️ «oltre 10.000» non è un conteggio — è il tetto che l'API impone al totale.</p>
-    <p class="nota">💡 <b>Le tre proprietà <code>More</code> si sommano.</b> More Scarabs esce a 35, 36, 53 o 60 per tiro: il 130% dello scaglione 2 è <b>tre tiri</b>. La soglia che conta è il totale stampato sulla mappa, non il singolo tiro.</p>
+    <p class="nota">Misurato il <b>23 agosto 2026</b>, <code>status: securable</code>, <code>sort: price asc</code>. Il <b>listino</b> è tarato sotto il muro di offerte che il compratore vede per primo. Le cinque regex stanno tutte sotto i <b>63 caratteri</b> della tastiera dello Steam Deck. ⚠️ «oltre 10.000» non è un conteggio: è il tetto che l'API impone al totale.</p>
+    <p class="nota">💡 <b>Le tre proprietà <code>More</code> si sommano</b>: More Scarabs esce a 35, 36, 53 o 60 per tiro, quindi il 130% dello scaglione 2 sono <b>tre tiri</b>. Conta il totale stampato sulla mappa, non il singolo tiro.</p>
 
-    <h3>Le regex, una per scaglione</h3>
-    <p>Si incollano nella barra dello stash <b>dall'alto in basso</b>. Ogni scaglione porta via le sue mappe, così il successivo non deve escluderle — è il motivo per cui restano corte. Limite <b>63 caratteri</b>, la tastiera dello Steam Deck.</p>
-
-    <div class="frammento"><span class="et"><b>1 · Item Quantity ≥ 130%</b> → 140 c · 15 caratteri</span><div class="riga"><code id="nmr1">"m q.*1[3-9].%"</code><button type="button" data-copia="nmr1">copia</button></div></div>
-    <div class="frammento"><span class="et"><b>2 · More Scarabs ≥ 130%</b> → 95 c · 20 caratteri</span><div class="riga"><code id="nmr2">"bs.*(1[3-9].|2..)%"</code><button type="button" data-copia="nmr2">copia</button></div></div>
-    <div class="frammento"><span class="et"><b>3 · More Scarabs 100–129%</b> → 79 c · 14 caratteri</span><div class="riga"><code id="nmr3">"bs.*1[0-2].%"</code><button type="button" data-copia="nmr3">copia</button></div></div>
-    <div class="frammento"><span class="et"><b>4 · Monster Pack Size ≥ 70%</b> → 65 c · 20 caratteri</span><div class="riga"><code id="nmr4">"iz.*([7-9].|\d..)%"</code><button type="button" data-copia="nmr4">copia</button></div></div>
-    <div class="frammento"><span class="et"><b>5 · una proprietà alta qualsiasi</b> → 55 c · 49 caratteri</span><div class="riga"><code id="nmr5">"m q.*12.%|bs.*[6-9].%|ncy.*1[1-9].%|ps.*\d\d\d%"</code><button type="button" data-copia="nmr5">copia</button></div></div>
-
-    <ol class="passi">
-      <li><b>Identifica tutto.</b> Senza proprietà a schermo le regex non vedono niente.</li>
-      <li><b>Incolla la 1</b> → quelle accese si prezzano <b>140 c</b> e si tolgono dal mucchio.</li>
-      <li><b>2, 3, 4, 5</b> nello stesso modo: 95 · 79 · 65 · 55 c.</li>
-      <li>Quello che <b>non si è mai acceso</b> è lo sfuso: <b>45 c</b>, tutto allo stesso prezzo, così un compratore ne prende dieci in un colpo.</li>
-    </ol>
-
-    <p class="nota">⚠️ <b>Quanto vale davvero la selezione.</b> Su <b>78 mappe</b>: tutte a sfuso fanno <b>3.510 c = 16,9 d</b>; divise per scaglione <b>~3.750 c = 18,1 d</b>. Cinque incolli valgono <b>circa 1 divine</b> — vale la pena, ma il grosso resta lo sfuso. ⚠️ La stima delle quantità viene da un <b>campione di 139 inserzioni</b> ed è di mercato, non di drop: il conteggio vero lo dà la regex quando la incolli.</p>
-    <p class="nota">⚠️ <b>Il badge di Wealthy Exile è ottimista di ~4 divine.</b> Prezza la Nightmare Map <b>57 c</b>, cioè 22 d per 78 mappe: è la media dei <i>listini</i>, non il prezzo a cui si liquida. Chi vende oggi incassa i 45 c del fondo.</p>
-    <p class="nota">⚠️ <b>Sotto i 60 c l'undercut compra minuti, non ore.</b> Le venti offerte più economiche sono <b>tutte indicizzate negli ultimi minuti</b>: il fondo del libro si rinnova di continuo. Il vantaggio vero degli scaglioni 1–4 non è il prezzo più alto, è essere <b>uno fra 88 o 300</b> invece che uno fra diecimila.</p>
+    <p class="nota">⚠️ <b>Quanto vale la selezione, su 78 mappe:</b> tutte a sfuso <b>3.510 c = 16,9 d</b>, divise per scaglione <b>~3.750 c = 18,1 d</b>. Cinque incolli valgono <b>circa 1 divine</b> — il grosso resta lo sfuso. Le quantità sono stimate su un campione di 139 inserzioni: il conteggio vero lo dà la regex quando la incolli.</p>
+    <p class="nota">🔴 <b>Sotto i 60 c l'undercut compra minuti, non ore</b>, perché le venti offerte più economiche sono tutte indicizzate negli ultimi minuti. Il vantaggio degli scaglioni 1–4 non è il prezzo più alto: è essere <b>uno fra 88 o 300</b> invece che uno fra diecimila. ⚠️ E il badge di Wealthy Exile è ottimista di ~4 divine — prezza 57 c, che è la media dei <i>listini</i>, non il prezzo a cui si liquida.</p>
   </section>
 
   <section class="gruppo" id="fuori-misura">

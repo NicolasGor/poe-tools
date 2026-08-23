@@ -105,7 +105,6 @@ code{font-family:var(--mono);font-size:.92em}
 .wrap{max-width:var(--colonna);margin:0 auto;padding:0 var(--s4)}
 /* Nessuna pagina cambia questa larghezza: prima ognuna aveva la sua (62, 76,
    96rem) e passando da una all'altra il contenuto saltava. */
-.sezione{margin:var(--s7) 0 0}
 
 /* ---------- Header condiviso ---------- */
 .nav{
@@ -300,7 +299,6 @@ input:focus, select:focus, button:focus-visible, a:focus-visible,
 ::placeholder{color:var(--label)}
 
 .barra{display:flex;gap:var(--s2);flex-wrap:wrap;align-items:center;margin-bottom:var(--s3)}
-.barra .spinta{margin-left:auto;color:var(--muted);font-size:var(--t-sm)}
 
 /* ---------- Tabelle ---------- */
 .tabella{font-size:var(--t-sm)}
@@ -343,7 +341,6 @@ input:focus, select:focus, button:focus-visible, a:focus-visible,
 /* ---------- Utilità ---------- */
 .muto{color:var(--muted)}
 .num{font-family:var(--mono);font-variant-numeric:tabular-nums}
-.nowrap{white-space:nowrap}
 @media(max-width:720px){
   .scorri-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
 }
@@ -380,6 +377,20 @@ b,strong{font-weight:700}
 .frammento button{font-family:inherit;font-size:var(--t-xs);color:var(--gold);background:transparent;
            border:1px solid var(--line);border-radius:4px;padding:.35rem .55rem;cursor:pointer;white-space:nowrap}
 .frammento button:hover{filter:brightness(1.2)}
+
+/* .rx-cella — una regex dentro una cella di tabella, col suo pulsante copia.
+   Nasce dalla scheda Nightmare, dove le regex stavano in un blocco separato
+   sotto la tabella degli scaglioni: due liste identiche da leggere in parallelo,
+   e ogni etichetta ripetuta due volte. Ogni scaglione **e'** la sua regex, e la
+   sua riga e' il posto dove sta. */
+.rx-cella{display:flex;gap:.4rem;align-items:center;justify-content:flex-end}
+.rx-cella code{font-family:var(--mono);font-size:var(--t-xs);color:var(--text);
+        background:rgba(255,255,255,.04);border:1px solid var(--line);
+        border-radius:4px;padding:.25rem .4rem;white-space:nowrap}
+.rx-cella button{font-family:inherit;font-size:var(--t-xs);color:var(--gold);
+        background:transparent;border:1px solid var(--line);border-radius:4px;
+        padding:.25rem .45rem;cursor:pointer;white-space:nowrap}
+.rx-cella button:hover{filter:brightness(1.2)}
 
 /* .passi — passaggi numerati. Componente: serve a chiunque spieghi una procedura. */
 ol.passi{margin:0 0 var(--s4);padding-left:1.4rem;font-size:var(--t-sm);line-height:1.62;color:var(--muted)}
