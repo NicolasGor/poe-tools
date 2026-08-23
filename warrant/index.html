@@ -235,6 +235,10 @@
   .butta-persi ul{margin:var(--s2) 0 0 1.1rem;color:var(--muted);font-size:var(--t-xs)}
   .butta-nota{font-size:var(--t-xs);color:var(--label);margin-top:var(--s3);max-width:64rem}
   .butta-nota b{color:var(--muted)}
+  .butta-piu{margin-top:var(--s3)}
+  .butta-piu summary{cursor:pointer;font-size:var(--t-xs);color:var(--label);width:max-content}
+  .butta-piu summary:hover{color:var(--gold)}
+  .butta-piu .butta-nota{margin-top:var(--s2)}
   /* la riga colpita dalla regex: si vede sulla tabella, che e' dove si controlla */
   tr.da-buttare td:first-child{box-shadow:inset 3px 0 0 var(--bad)}
   tr.da-buttare .nome{color:var(--bad)}
@@ -287,32 +291,6 @@
     <span class="stato" id="stato">—</span>
   </div>
 
-  <div class="barra cerca-barra">
-    <input id="cerca" type="search" autocomplete="off" spellcheck="false"
-           placeholder="filtra: Return, Absolution, Kineticist, un nome…">
-    <span class="stato" id="conta-cerca"></span>
-    <span id="targa-filtro" class="targa" hidden></span>
-  </div>
-
-
-  <div class="scroll">
-    <table class="tabella">
-      <thead>
-        <tr>
-          <th>Mercenario</th>
-          <th class="n ord" data-ord="valore" title="Ordina per valore">Valore</th>
-          <th class="ord" data-ord="dal" title="Ordina per data di ingresso">Dal</th>
-          <th class="n">Simili</th>
-          <th><button id="b-tutti" class="mini" title="Apre o chiude tutte le schede">apri tutte</button></th>
-        </tr>
-      </thead>
-      <tbody id="righe">
-        <tr><td colspan="5" class="vuoto">Premi <b>Aggiorna prezzi</b>.</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-
   <!-- ------------------------------------------------ la regex dei warrant da buttare -->
   <section class="butta" id="butta">
     <div class="butta-testa">
@@ -334,6 +312,8 @@
     <div id="butta-rx"></div>
     <div id="butta-persi" class="butta-persi"></div>
 
+    <details class="butta-piu">
+      <summary>Come si usa, e cosa non garantisce</summary>
     <p class="butta-nota">
       <b>Come si usa.</b> Copi una riga alla volta nel campo di ricerca della stash: si
       accendono i warrant di quella riga, e sono quelli da buttare. Se le righe sono più
@@ -360,7 +340,33 @@
       regex della pagina Strategie. Da tastiera vera il campo ne regge di più: si alza il
       numero qui sopra e le righe diventano meno.
     </p>
+    </details>
   </section>
+
+  <div class="barra cerca-barra">
+    <input id="cerca" type="search" autocomplete="off" spellcheck="false"
+           placeholder="filtra: Return, Absolution, Kineticist, un nome…">
+    <span class="stato" id="conta-cerca"></span>
+    <span id="targa-filtro" class="targa" hidden></span>
+  </div>
+
+
+  <div class="scroll">
+    <table class="tabella">
+      <thead>
+        <tr>
+          <th>Mercenario</th>
+          <th class="n ord" data-ord="valore" title="Ordina per valore">Valore</th>
+          <th class="ord" data-ord="dal" title="Ordina per data di ingresso">Dal</th>
+          <th class="n">Simili</th>
+          <th><button id="b-tutti" class="mini" title="Apre o chiude tutte le schede">apri tutte</button></th>
+        </tr>
+      </thead>
+      <tbody id="righe">
+        <tr><td colspan="5" class="vuoto">Premi <b>Aggiorna prezzi</b>.</td></tr>
+      </tbody>
+    </table>
+  </div>
 
   <h2 class="sec">Come si legge questo numero</h2>
 
