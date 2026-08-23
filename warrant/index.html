@@ -106,6 +106,16 @@
   td.dal .oltre{display:block}
   /* il confronto ristretto, sfrattato dalla tabella: qui sopra la scheda */
   .ristretto{font-size:var(--t-xs);color:var(--muted);padding:0 0 var(--s2)}
+  /* la copertura: verde quando la regola e' rispettata, ambra quando il pool e'
+     finito prima. Non e' decorazione — e' la differenza fra «vale poco» e «non
+     sono riuscito a guardarlo». */
+  .cop{background:rgba(232,176,74,.14);color:var(--gold);border-radius:999px;
+       padding:1px 7px;font-size:var(--t-xs);font-weight:600;white-space:nowrap}
+  .cop.piena{background:rgba(95,211,160,.14);color:#5fd3a0}
+  .cop.vuota{background:rgba(224,122,111,.14);color:var(--bad)}
+  .ristretto sup{color:var(--warn);font-weight:700;cursor:help}
+  .base-riga{font-size:var(--t-xs);color:var(--label);padding:0 0 var(--s2)}
+  .base-riga b{color:var(--muted);font-family:var(--mono)}
   button.mini{font-size:var(--t-xs);padding:2px 8px}
   @keyframes respira{0%,100%{opacity:1}50%{opacity:.55}}
   button.attesa{animation:respira 1.6s ease-in-out infinite;cursor:progress}
@@ -381,21 +391,39 @@
   <div class="card">
     <p><b>Il numero nella colonna <i>Valore</i> è il quinto prezzo fra i mercenari simili al tuo</b>: robusto contro le inserzioni sbagliate, che su pool da migliaia fanno sempre il minimo. Sotto, in piccolo, il <b>sottocosto</b> — il prezzo a cui saresti il più economico in assoluto: è la vendita-lampo, non il valore.</p>
 
-    <p><b>Il pool di partenza è inutile, e va stretto.</b> Le inserzioni che
-    condividono le <i>skill</i> del tuo mercenario sono migliaia e contengono ogni
-    scarto: il loro floor è sempre <b>1c</b>. Si chiede allora un supporto alla
-    volta fra quelli che il tuo ha davvero — il confronto si stringe su mercenari
-    somiglianti.</p>
+    <p><b>Si parte dalla combinazione di skill, ed è già mezzo prezzo.</b> Il pool
+    sono le inserzioni che hanno <i>esattamente</i> le skill del tuo mercenario —
+    misurato: su 62 warrant, <b>zero</b> inserzioni del pool ne hanno una in più.
+    Certe combinazioni valgono poco di partenza, e la riga espansa te lo dice:
+    «la sola combinazione di skill vale N c». Ma quel pool contiene ogni scarto,
+    quindi il suo floor è sempre <b>1c</b>: va stretto.</p>
 
-    <p><b>Ma quali supporti chiedere, e qui la prima versione sbagliava.</b>
-    Sceglievo quello che alzava di più il floor: sbagliato, perché <b>il minimo di
-    un campione piccolo è più alto per costruzione</b>. Quel criterio premiava le
-    gemme rare e inutili — Lesser Spell Cascade sul Frost Bomb, Minion Damage sul
-    Blink Arrow — e restituiva la dimensione del campione travestita da prezzo:
-    tutti e 39 i warrant finivano fra 20 e 50 chaos, che è il sintomo. Adesso
-    l'ordine lo decide il <b>peso</b> del supporto — quanto sposta la probabilità
-    che un'inserzione stia sopra 5 divine, misurato sull'intero pool di partenza e
-    quindi indipendente da quanto si è già stretto.</p>
+    <p><b>Si stringe sulle skill che portano più gemme, e su quelle si chiedono
+    solo le gemme che pagano.</b> Le skill da <b>4 o più gemme</b> vanno coperte
+    tutte — due se sono due, tre se sono tre — e dentro ognuna si chiedono le gemme
+    con <b>peso sopra 1,00×</b>, cioè quelle che il mercato paga davvero: se una
+    skill ne ha cinque ma tre pagano, si chiedono quelle tre. Si gira <b>una gemma
+    per skill alla volta</b>, e non è un dettaglio: chiedere tutte le gemme di una
+    sola skill lascia <b>1 inserzione</b> (mediana) e ne azzera 29 su 62 — quel
+    mercato non esiste.</p>
+
+    <p><b>Prima l'ordine lo dava la media dell'archetipo, ed era la cosa
+    sbagliata.</b> Era una proprietà dell'<i>archetipo</i>, non di questo
+    mercenario: misurato sui 73 in tab, il primo passo cadeva sulla skill con più
+    gemme solo in <b>39 casi su 73</b>, e <b>26 warrant</b> non toccavano nemmeno
+    tutte le loro skill da 4+ gemme. Si prezzava un pezzo partendo da una skill che
+    non è la sua. ⚠️ E ancora prima si sceglieva il supporto che alzava di più il
+    floor: sbagliato per un'altra ragione, <b>il minimo di un campione piccolo è
+    più alto per costruzione</b> — quel criterio restituiva la dimensione del
+    campione travestita da prezzo, con tutti e 39 i warrant fra 20 e 50 chaos.</p>
+
+    <p><b>Quello che non entra è scritto in riga: «skill coperte 1/2».</b> Il pool
+    a volte finisce prima — 30 confronti sono il pavimento — e allora il numero è
+    misurato su meno di quanto la regola chiede. 🔴 Un prezzo coperto su una skill
+    e uno coperto su tre si somigliano da morire: senza quella targhetta sembrano
+    la stessa misura. Un <b>?</b> accanto a una gemma vuol dire che il suo peso non
+    era misurabile — meno di 50 inserzioni ce l'hanno — e si è usata lo stesso,
+    perché le gemme rare sono spesso il motivo per cui un mercenario vale.</p>
 
     <p><b>Poi c'è dove ci si ferma.</b> Sotto una manciata di inserzioni il floor
     non è un mercato, è un venditore ottimista. Qui il taglio è a <b>30</b>
@@ -500,6 +528,40 @@ const dal = (id) => {
   return `${dataIt(v)}<span class="oltre">${g === 0 ? "oggi" : g === 1 ? "1 giorno fa" : g + " giorni fa"}</span>`;
 };
 
+/* **Quanto vale la sola combinazione di skill**, prima di chiedere una gemma.
+ * E' il punto da cui parte la regola: certe combinazioni perdono molto valore di
+ * default, e finora era un numero che il calcolo attraversava senza mostrarlo.
+ * Serve a leggere il resto — se la combinazione nuda gia' non vale niente, le
+ * gemme sopra non la salvano — e serve a capire **quanto lavoro ha fatto il
+ * confronto**: da 1 c a 199 c e' il confronto, non il mercenario.
+ */
+function base(w) {
+  const b = w.base;
+  if (!b || !b.confronti) return "";
+  const v = b.quinto ?? b.floor;
+  return `<div class="base-riga">La sola combinazione di skill vale <b>${v == null ? "—" : v.toFixed(0) + " c"}</b>` +
+    ` su <b>${b.confronti.toLocaleString("it")}</b> inserzioni con le stesse skill</div>`;
+}
+
+/* **La copertura, e perche' sta in riga e non in una nota.**
+ * Il valore si misura chiedendo le gemme che pagano sulle skill che ne portano
+ * di piu': le skill da 4+ gemme vanno coperte tutte. Ma il pool a volte finisce
+ * prima — 30 confronti sono il pavimento — e allora il numero e' misurato su meno
+ * di quanto la regola chiede. 🔴 **Un prezzo coperto su una skill e uno coperto su
+ * tre si somigliano da morire**: senza questa riga sembrano la stessa misura.
+ */
+function copertura(w) {
+  const c = w.copertura;
+  if (!c || !c.chieste || !c.chieste.length) return "";
+  const n = (c.coperte || []).length, m = c.chieste.length;
+  const stim = (c.stimate || []).length
+    ? ` · <i>${c.stimate.length === 1 ? "una" : c.stimate.length} su gemme troppo rare per misurarle</i>` : "";
+  const mute = (c.mute || []).length
+    ? ` · <i>${esc(c.mute.join(", "))}: nessuna gemma che il mercato paga</i>` : "";
+  const classe = n >= m ? "cop piena" : n ? "cop" : "cop vuota";
+  return ` <span class="${classe}">skill coperte ${n}/${m}</span>${stim}${mute}`;
+}
+
 function disegna(dati) {
   /* 🔴 **L'ultimo dato disegnato, e serve a chi ridisegna dopo.** Al
      caricamento si disegna prima la cache e poi il dato fresco; se un'altra
@@ -525,7 +587,8 @@ function disegna(dati) {
   salvaCache(dati);   // la cache segue l'ordine mostrato, per la stessa ragione
 
   corpo.innerHTML = dati.warrant.map((w, i) => {
-    const passi = w.passi.slice(0, 4).map((p) => `${esc(p.supporto)} <i>su ${esc(p.skill)}</i>`).join(" · ")
+    const passi = w.passi.slice(0, 4).map((p) =>
+        `${esc(p.supporto)}${p.stimato ? "<sup title=\"peso non misurabile: meno di 50 inserzioni hanno questa gemma\">?</sup>" : ""} <i>su ${esc(p.skill)}</i>`).join(" · ")
       || "<i>nessun supporto regge la soglia</i>";
     const piu = w.passi.length > 4 ? ` <i>+${w.passi.length - 4}</i>` : "";
     // Il numero grande e' **il quinto prezzo del pool**: il floor e' una sola
@@ -552,7 +615,8 @@ function disegna(dati) {
       <td><button class="apri" aria-expanded="false" data-i="${i}">gemme &#9662;</button></td>
     </tr>
     <tr class="scheda" hidden><td colspan="5">
-      <div class="ristretto"><b>Confronto ristretto a</b> ${passi}${piu}</div>
+      <div class="ristretto"><b>Confronto ristretto a</b> ${passi}${piu}${copertura(w)}</div>
+      ${base(w)}
       <div class="scheda-in" id="scheda-${i}">Apri per caricare le inserzioni simili…</div>
     </td></tr>`;
   }).join("");

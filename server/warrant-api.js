@@ -212,34 +212,110 @@ function prezzaWarrant(build, warrant, divine, mirror, minimo) {
   const quotaBase = pool.length
     ? pool.filter((r) => inChaos(r, divine, mirror) >= soglia).length / pool.length
     : 0;
-  const pesi = new Map(), quanti = new Map();
+  const pesi = new Map(), quanti = new Map(), misurabile = new Map();
   for (const c of coppie) {
     const con = pool.filter((r) => r.mappa.get(c.si)?.has(c.sj));
     quanti.set(c, con.length);
-    if (con.length < 50 || !quotaBase) { pesi.set(c, 1); continue; }
+    /* ⚠️ **`peso = 1` non vuol dire «non paga»: vuol dire «non lo so».** Sotto 50
+       inserzioni la frazione non e' una misura, e finche' il peso serviva solo a
+       ordinare la differenza non si vedeva. Da quando serve anche a **scartare**
+       si vede eccome: quelle gemme sono le **rare**, cioe' spesso il motivo per
+       cui un mercenario vale. Il flag tiene separate le due cose. */
+    if (con.length < 50 || !quotaBase) { pesi.set(c, 1); misurabile.set(c, false); continue; }
     const sopra = con.filter((r) => inChaos(r, divine, mirror) >= soglia).length;
     pesi.set(c, (sopra / con.length) / quotaBase);
+    misurabile.set(c, true);
   }
 
-  // 🔴 **A parita' di peso vince chi lascia piu' confronti.** Prima l'ordine fra
-  // pesi indistinguibili (1,01 contro 1,01) lo decideva l'ordine di elenco, cioe'
-  // il caso: entrava una gemma e le altre tre restavano fuori solo perche'
-  // arrivavano dopo che la soglia era gia' stata consumata. Il peso si confronta
-  // arrotondato a due decimali proprio per ammettere che sotto quella cifra la
-  // differenza e' rumore.
-  // 🔴 **Prima le gemme sul colpo principale.** Rilievo di Nicolas: spuntare una
-  // gemma per skill non ha senso, perche' nessuno compra un mercenario per la sua
-  // `Altar of Chaos`. Il peso da solo non lo sapeva: guardava la gemma senza
-  // chiedersi su cosa stesse. Adesso le skill su cui il mercato mette gemme sul
-  // serio vengono prima, e solo dopo le altre.
-  const gemme = gemmePerSkill(build);
-  const principale = (c) => (gemme[c.si] >= SOGLIA_PRINCIPALE ? 1 : 0);
-  const arrotonda = (c) => Math.round(pesi.get(c) * 100);
+  /* ------------------------------------------------- l'ordine dei passi
+   * 🔴 **Rifatto il 23 agosto, ed e' la regola di Nicolas.** Prima l'ordine
+   * guardava la media di mercato dell'archetipo (`gemmePerSkill`): una proprieta'
+   * dell'archetipo, non di *questo* mercenario. Misurato sui 73 in tab: il primo
+   * passo cadeva sulla skill con piu' gemme solo in **39 casi su 73**, e **26
+   * warrant** non toccavano nemmeno tutte le loro skill da 4+ gemme. Cioe' si
+   * prezzava un pezzo partendo da una skill che non e' la sua.
+   *
+   * La regola nuova, nell'ordine in cui e' stata detta:
+   *   ① si parte dall'**elenco delle skill** — e questo era gia' vero: il pool
+   *     sono le inserzioni che hanno *esattamente* quelle skill (misurato: su 62
+   *     warrant, zero inserzioni nel pool ne hanno una in piu'). Certe
+   *     combinazioni valgono poco di partenza, ed e' il pool a dirlo;
+   *   ② poi le **gemme delle skill che ne hanno di piu'**, con un obbligo: le
+   *     skill da **4+ gemme** vanno coperte **tutte** — due se sono due, tre se
+   *     sono tre. Se nessuna arriva a 4, l'obbligo resta di **due** skill: su una
+   *     sola non ci si ferma;
+   *   ③ e dentro ogni skill **solo le gemme che contano**: se ne ha cinque ma tre
+   *     pagano, si chiedono quelle tre. Il metro e' il **peso** — quante volte chi
+   *     ha quella gemma sta sopra 5 divine, rispetto alla media del pool — e la
+   *     soglia non e' inventata, e' **quanto il peso gia' significa**: il glossario
+   *     della pagina dice `1,00x` = il mercato non la paga. Quindi **sopra 1**.
+   *     ⚠️ Misurato che il taglio decide parecchio: a 1,05 la copertura delle
+   *     skill obbligatorie scende al **63%** e 37 skill diventano mute, a 1,10 al
+   *     **40%**; sopra 1 sta all'**85%** con 3 mute, e il confronto col metodo
+   *     vecchio resta in pari (14 warrant giu', 13 su, 35 uguali) invece di
+   *     pendere tutto da una parte — che sarebbe il sintomo di un taglio scelto
+   *     male, non di una regola migliore.
+   *
+   * ⚠️ **E si gira fra le skill, una gemma per volta.** Misurato: chiedere *tutte*
+   * le gemme di una sola skill lascia **1 inserzione** (mediana) e ne azzera 29 su
+   * 62 — quel mercato non esiste. Girando, l'obbligo delle due skill si copre su
+   * 66 warrant su 73 restando sopra i 30 confronti. Cio' che non si riesce a
+   * coprire **si dichiara** (`copertura`), non si tace: e' l'unica cosa che
+   * distingue «vale poco» da «non sono riuscito a guardarlo».
+   */
+  const PAGA = 1;
+  const gemmeSue = new Map();
+  for (const c of coppie) gemmeSue.set(c.si, (gemmeSue.get(c.si) || 0) + 1);
+  const perGemme = [...gemmeSue.keys()].sort((a, b) => gemmeSue.get(b) - gemmeSue.get(a) || a - b);
+  const grosse = perGemme.filter((i) => gemmeSue.get(i) >= 4);
+  const obbligatorie = grosse.length >= 2 ? grosse : perGemme.slice(0, 2);
+
+  /* Le gemme che pagano, skill per skill, dalla piu' pesante.
+   *
+   * 🔴 **E un ripiego dichiarato, perche' senza si buttava via il caso migliore.**
+   * Misurato sull'indice del 18 agosto: col taglio a 1,05 delle 151 skill
+   * obbligatorie 56 non avevano **nessuna** gemma sopra soglia — e **19 di quelle**
+   * erano mute solo
+   * perche' le loro gemme stanno su **meno di 50 inserzioni**, cioe' non sono
+   * misurabili. Sono le gemme rare. Su *Sammal Stonehand* tutte e cinque quelle
+   * del Vaal Glacial Hammer sono cosi': col solo criterio del peso la sua skill
+   * principale sarebbe stata saltata in blocco.
+   * Quindi: prima cio' che **paga misurato**; se non c'e' niente, cio' che **non
+   * si e' potuto misurare**, dalla meno rara (per non svuotare il pool in un
+   * colpo), e il passo esce marcato `stimato`. Se una skill ha solo gemme
+   * misurate *sotto* 1,05, quella e' muta davvero: il mercato le ha viste e non
+   * le paga. */
+  const importanti = new Map(), soloStima = new Set();
+  for (const i of perGemme) {
+    const sue = coppie.filter((c) => c.si === i);
+    const pagano = sue.filter((c) => misurabile.get(c) && pesi.get(c) > PAGA)
+      .sort((a, b) => pesi.get(b) - pesi.get(a) || quanti.get(b) - quanti.get(a));
+    const ignote = sue.filter((c) => !misurabile.get(c))
+      .sort((a, b) => quanti.get(b) - quanti.get(a));
+    if (pagano.length) { importanti.set(i, pagano); continue; }
+    importanti.set(i, ignote);
+    if (ignote.length) soloStima.add(i);
+  }
+
+  const ordine = [];
+  for (let k = 0; ; k++) {
+    let messo = false;
+    for (const i of obbligatorie) {
+      const l = importanti.get(i) || [];
+      if (l[k]) { ordine.push(l[k]); messo = true; }
+    }
+    if (!messo) break;
+  }
+  // finite le obbligatorie, il resto di cio' che paga, per peso: non allunga
+  // l'obbligo, ma se il pool regge ancora stringe gratis
+  ordine.push(...perGemme.filter((i) => !obbligatorie.includes(i))
+    .flatMap((i) => importanti.get(i) || [])
+    .sort((a, b) => pesi.get(b) - pesi.get(a)));
+
   let corrente = pool;
   const passi = [];
   let scartato = null;
-  for (const c of [...coppie].sort((a, b) =>
-        principale(b) - principale(a) || arrotonda(b) - arrotonda(a) || quanti.get(b) - quanti.get(a))) {
+  for (const c of ordine) {
     const filtrato = corrente.filter((r) => r.mappa.get(c.si)?.has(c.sj));
     const f = floorDi(filtrato, divine, mirror);
     if (f === null) continue;
@@ -250,9 +326,27 @@ function prezzaWarrant(build, warrant, divine, mirror, minimo) {
     corrente = filtrato;
     passi.push({
       skill: c.skill, supporto: c.supporto, peso: +pesi.get(c).toFixed(2),
+      stimato: !misurabile.get(c),
       confronti: corrente.length, floor: +f.toFixed(2), si: c.si, sj: c.sj,
     });
   }
+
+  /* La copertura: quali skill obbligatorie il pool ha davvero lasciato chiedere.
+     🔴 Va **detta**, non dedotta dal numero: un warrant prezzato su una skill
+     sola e uno prezzato su tre danno tutti e due un numero, e senza questa riga
+     sembrano la stessa misura. `mute` sono le skill obbligatorie su cui **nessuna
+     gemma paga**: li' non e' il pool ad aver ceduto, e' il mercato che non
+     compra niente di quello che c'e' sopra. */
+  const toccate = new Set(passi.map((p) => p.si));
+  const copertura = {
+    chieste: obbligatorie.map((i) => build.skills[i]?.name).filter(Boolean),
+    coperte: obbligatorie.filter((i) => toccate.has(i)).map((i) => build.skills[i]?.name).filter(Boolean),
+    mute: obbligatorie.filter((i) => !(importanti.get(i) || []).length)
+      .map((i) => build.skills[i]?.name).filter(Boolean),
+    // coperte, ma con una gemma di cui non si e' potuto misurare il peso
+    stimate: obbligatorie.filter((i) => toccate.has(i) && soloStima.has(i))
+      .map((i) => build.skills[i]?.name).filter(Boolean),
+  };
 
   const floorFinale = floorDi(corrente, divine, mirror) ?? 0;
   return {
@@ -264,6 +358,17 @@ function prezzaWarrant(build, warrant, divine, mirror, minimo) {
     infamous: !!warrant.infamous,
     livello: warrant.level,
     pool: pool.length,
+    /* Quanto vale la **sola combinazione di skill**, prima di chiedere una
+       gemma. E' il primo punto della regola — «certe combinazioni perdono molto
+       valore di default» — e finora era un numero che il calcolo attraversava
+       senza mai mostrarlo. Serve a leggere il resto: se la combinazione da sola
+       gia' non vale niente, le gemme sopra non la salvano. */
+    base: {
+      confronti: pool.length,
+      floor: +(floorDi(pool, divine, mirror) ?? 0).toFixed(2),
+      quinto: quintoDi(pool, divine, mirror),
+    },
+    copertura,
     prezzo: +floorFinale.toFixed(2),
     confronti: corrente.length,
     quinto: quintoDi(corrente, divine, mirror),
