@@ -67,6 +67,7 @@
   --ombra:    0 1px 2px rgba(0,0,0,.4);
   --ombra-alta:0 8px 28px rgba(0,0,0,.45);
   --nav-h:3.5rem;
+  --sezioni-h:2.85rem;
 
   /* larghezza della colonna: barra e contenuto la condividono, così restano
      allineati e nessuna pagina puo' andare per conto suo */
@@ -144,6 +145,48 @@ code{font-family:var(--mono);font-size:.92em}
   .nav-in{gap:var(--s3)}
   .nav-patch{display:none}
 }
+
+/* .sezioni — menu delle sezioni della pagina, incollato sotto la barra
+   principale. Sta qui e non dentro una pagina perche' e' un componente:
+   qualunque pagina lunga ne ha bisogno, e /farming/ e' solo la prima.
+
+   Sta **fuori** da `.wrap`, come `.nav` e per la stessa ragione: dentro, il
+   fondo e il bordo si fermerebbero alla colonna di testo invece di attraversare
+   lo schermo, e scorrendo si vedrebbe il contenuto passare ai lati.
+
+   ⚠️ Il `top` non e' un numero scritto a mano ma `--nav-h` piu' il bordo da 1px
+   della barra sopra. Scritto a mano, il giorno che la barra cambia altezza
+   resta una fessura da cui passa il testo — e non e' un difetto che si nota
+   guardando la pagina ferma. */
+.sezioni{
+  position:sticky;top:calc(var(--nav-h) + 1px);z-index:49;
+  background:rgba(14,17,22,.92);
+  backdrop-filter:saturate(1.6) blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.sezioni-in{
+  max-width:var(--colonna);margin:0 auto;padding:0 var(--s4);
+  height:var(--sezioni-h);display:flex;align-items:center;gap:var(--s1);
+  overflow-x:auto;scrollbar-width:none;
+}
+.sezioni-in::-webkit-scrollbar{display:none}
+.sezioni-in a{
+  padding:.3rem .55rem;border-radius:var(--r-sm);
+  font-size:var(--t-xs);color:var(--label);white-space:nowrap;
+  transition:color .12s, background .12s;
+}
+.sezioni-in a:hover{color:var(--text);background:var(--panel);text-decoration:none}
+.sezioni-in a[aria-current="true"]{color:var(--gold);background:rgba(240,185,74,.1)}
+
+/* 🔴 Senza questo il titolo di sezione finisce **sotto** le due barre e si
+   atterra a meta' del paragrafo precedente: e' il difetto classico di
+   un'ancora con una testata fissa. Vale per gli elementi che il menu prende di
+   mira, non per ogni `id` della pagina. */
+.wrap section[id],.wrap [id].sec{scroll-margin-top:calc(var(--nav-h) + var(--sezioni-h) + 2px)}
+
+/* Lo scorrimento morbido solo dove il menu c'e' davvero. Il blocco
+   prefers-reduced-motion in fondo lo riporta a `auto` per chi lo chiede. */
+html:has(.sezioni){scroll-behavior:smooth}
 
 /* ---------- Intestazione di pagina ---------- */
 .testata{padding:var(--s6) 0 var(--s5);border-bottom:1px solid var(--line);margin-bottom:var(--s5)}

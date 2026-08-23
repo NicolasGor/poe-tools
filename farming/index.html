@@ -47,6 +47,18 @@
   </div>
 </nav>
 
+<nav class="sezioni" aria-label="Sezioni di questa pagina">
+  <div class="sezioni-in">
+    <a href="#copertura">Copertura</a>
+    <a href="#invitation">Invitation</a>
+    <a href="#scrying">Scrying Orb</a>
+    <a href="#heist">Heist</a>
+    <a href="#mappe-speciali">Mappe speciali</a>
+    <a href="#nightmare">Prezzare le Nightmare</a>
+    <a href="#fuori-misura">Fuori misura</a>
+  </div>
+</nav>
+
 <div class="wrap">
 
   <header class="testata">
@@ -60,7 +72,7 @@
     </div>
   </header>
 
-  <h2 class="sec">Cosa copre poe.ninja</h2>
+  <h2 class="sec" id="copertura">Cosa copre poe.ninja</h2>
   <div class="copertura">
     <div><b>408</b><span>divination card</span></div>
     <div><b>115</b><span>scarab</span></div>
@@ -79,7 +91,7 @@
     ⚠️ Ogni ricerca usa <code>status: securable</code> — Instant Buyout. Con <code>any</code> le prime offerte sono inserzioni offline e il prezzo che ne esce è finto.
   </div>
 
-  <section class="gruppo">
+  <section class="gruppo" id="invitation">
     <h2>Invitation</h2>
     <p>Quattro, a coppie. <b>Polaric e Incandescent sono entrambe del Searing Exarch</b>, sgherro e boss finale; Writhing e Screaming sono dell'Eater. Il divario è fra sgherro e finale, non fra le due influenze.</p>
     <div class="scroll"><table class="tabella">
@@ -94,7 +106,7 @@
     <p class="nota">La <b>Polaric non si vende</b> a 8 chaos: apre The Black Star, ed è il gradino verso l'Incandescent.</p>
   </section>
 
-  <section class="gruppo">
+  <section class="gruppo" id="scrying">
     <h2>Scrying Orb</h2>
     <p>Cento varianti, una per mappa. Ognuna sposta il pool di divination card della sua mappa su una mappa a scelta dell'Atlas, e vale quanto quelle carte.</p>
     <div class="scroll"><table class="tabella">
@@ -112,7 +124,7 @@
     <p class="nota">Il criterio che li separa è doppio: carta <b>≥ 3.000 c</b> <b>e</b> <b>≤ 2.500 mappe</b> di attesa. Crater lo dimostra — carta da 3.029 c e orb da 20, perché esce una volta ogni 5.800. La classifica su tutte e 140 le mappe sta in <a href="../scrying/">Scrying</a>.</p>
   </section>
 
-  <section class="gruppo">
+  <section class="gruppo" id="heist">
     <h2>Heist — contratti e blueprint</h2>
     <p>Fuori da queste tre voci, un item Heist vale <b>1 chaos</b> qualunque sia il tipo. Il criterio è l'<b>enchant</b> sui blueprint e il <b>nome</b> sui contratti, non il tipo di heist.</p>
     <div class="scroll"><table class="tabella">
@@ -129,7 +141,7 @@
     <p class="nota">⚠️ <b>Livello e wing rivelate non spostano il prezzo.</b> Un blueprint da 1 chaos resta da 1 chaos anche tutto scoperto: non spendere Rogue's Markers a rivelarlo.</p>
   </section>
 
-  <section class="gruppo">
+  <section class="gruppo" id="mappe-speciali">
     <h2>Mappe speciali</h2>
     <div class="scroll"><table class="tabella">
       <thead><tr><th>Voce</th><th>Dove cade</th><th class="n">Inserzioni</th><th class="n">Prezzo</th></tr></thead>
@@ -184,7 +196,7 @@
     <p class="nota">⚠️ <b>Sotto i 60 c l'undercut compra minuti, non ore.</b> Le venti offerte più economiche sono <b>tutte indicizzate negli ultimi minuti</b>: il fondo del libro si rinnova di continuo. Il vantaggio vero degli scaglioni 1–4 non è il prezzo più alto, è essere <b>uno fra 88 o 300</b> invece che uno fra diecimila.</p>
   </section>
 
-  <section class="gruppo">
+  <section class="gruppo" id="fuori-misura">
     <h2>Cosa non si misura da qui</h2>
     <ul>
       <li><b>Astrolabi</b> — <code>Chaotic</code> e <code>Templar</code> tornano <b>zero inserzioni</b> in Instant Buyout. Non sono senza valore: non hanno un mercato a prezzo fisso, quindi il numero non c'è.</li>
@@ -201,6 +213,44 @@
 </div>
 
 <script>
+// Il menu delle sezioni segna dove sei. Sceglie **l'ultima sezione che ha
+// superato le due barre**, non la prima visibile: con un'occhiata sola sullo
+// schermo ce ne stanno due o tre, e "la prima visibile" resta indietro di una.
+{
+  const voci = [...document.querySelectorAll(".sezioni-in a")];
+  const mete = voci.map(a => document.querySelector(a.getAttribute("href"))).filter(Boolean);
+  let ultima = null;
+  const barre = () => {
+    const s = getComputedStyle(document.documentElement);
+    return parseFloat(s.getPropertyValue("--nav-h")) * 16 + parseFloat(s.getPropertyValue("--sezioni-h")) * 16 + 8;
+  };
+  const segna = () => {
+    const soglia = barre();
+    let dentro = mete.findLast(m => m.getBoundingClientRect().top <= soglia) || mete[0];
+    // In fondo alla pagina l'ultima sezione puo' non arrivare mai alla soglia:
+    // se non si puo' scorrere oltre, e' quella.
+    if (innerHeight + scrollY >= document.body.scrollHeight - 2) dentro = mete[mete.length - 1];
+    if (dentro === ultima) return;
+    ultima = dentro;
+    voci.forEach((a, i) => {
+      if (mete[i] === dentro) a.setAttribute("aria-current", "true");
+      else a.removeAttribute("aria-current");
+    });
+    // Su schermo stretto la barra scorre in orizzontale e la voce accesa puo'
+    // finire fuori: si riporta dentro **a mano**, non con scrollIntoView, che
+    // muoverebbe anche la pagina in verticale mentre la si sta scorrendo.
+    const barra = document.querySelector(".sezioni-in");
+    const v = voci[mete.indexOf(dentro)];
+    if (!v || barra.scrollWidth <= barra.clientWidth) return;
+    const sx = v.offsetLeft, dx = sx + v.offsetWidth;
+    if (sx < barra.scrollLeft) barra.scrollLeft = sx - 12;
+    else if (dx > barra.scrollLeft + barra.clientWidth) barra.scrollLeft = dx - barra.clientWidth + 12;
+  };
+  addEventListener("scroll", segna, {passive: true});
+  addEventListener("resize", segna);
+  segna();
+}
+
 document.querySelectorAll("button[data-copia]").forEach(b => {
   b.addEventListener("click", async () => {
     const box = document.getElementById(b.dataset.copia);
