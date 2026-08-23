@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PoE Tools — strumenti misurati per Path of Exile</title>
-<meta name="description" content="Nove strumenti per Path of Exile 1 costruiti su numeri misurati: atlante e divination card, valore degli Scrying Orb, quello che poe.ninja non prezza, mod di mappa, confronto build, valore dei warrant dei mercenari.">
+<meta name="description" content="Otto strumenti per Path of Exile 1 costruiti su numeri misurati: atlante e divination card, valore degli Scrying Orb, quello che poe.ninja non prezza, regex per i mod di mappa, valore dei warrant dei mercenari.">
 <link rel="stylesheet" href="stile.css">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <style>
@@ -46,13 +46,17 @@
       <a href="strategie/">Strategie</a>
       <a href="farming/">Farming</a>
       <a href="scrying/">Scrying</a>
-      <a href="mappe/">Mod mappa</a>
-      <a href="build-confronto/">Build</a>
-      <a href="whisper/">Whisper</a>
+      <a href="mappe/">Regex mappe</a>
+      <button type="button" class="nav-gruppo" aria-controls="giu-build" aria-expanded="true">Build</button>
       <a href="warrant/">Warrant</a>
-      <a href="luminary/">Luminary</a>
     </div>
     <span class="nav-patch">patch 3.29.2</span>
+  </div>
+  <div class="nav-giu" id="giu-build">
+    <div class="nav-giu-in">
+      <a href="whisper/">Whisper</a>
+      <a href="luminary/">Luminary</a>
+    </div>
   </div>
 </nav>
 
@@ -60,7 +64,7 @@
 
   <header class="hero">
     <h1>PoE <span>Tools</span></h1>
-    <p class="sub">Nove strumenti per Path of Exile 1, costruiti su <b>numeri misurati</b> — prezzi letti dall'API di trade e da poe.ninja, non tier list copiate. Ogni pagina dichiara anche cosa il numero <b>non</b> dice.</p>
+    <p class="sub">Otto strumenti per Path of Exile 1, costruiti su <b>numeri misurati</b> — prezzi letti dall'API di trade e da poe.ninja, non tier list copiate. Ogni pagina dichiara anche cosa il numero <b>non</b> dice.</p>
     <div class="badges">
       <span class="badge oro">patch <b>3.29.2</b></span>
       <span class="badge">lega <b>Curse of the Allflame</b></span>
@@ -100,18 +104,12 @@
     </a>
 
     <a class="card strumento" href="mappe/">
-      <span class="etichetta">Mod di mappa</span>
+      <span class="etichetta">Regex mappe</span>
       <h3>Quali rerollare</h3>
       <p>Spunti i modificatori che non vuoi e ottieni la regex minima da incollare nella ricerca della stash, sotto il limite dei 50 caratteri.</p>
       <span class="dato"><b>355</b> mod · <b>18</b> in 34 caratteri</span>
     </a>
 
-    <a class="card strumento" href="build-confronto/">
-      <span class="etichetta">Build</span>
-      <h3>Confronto a due colonne</h3>
-      <p>Incolla un codice PoB o un link pobb.in: gear con la griglia in stile pobb.in, gemme e albero passivo disegnato, con gli slot che differiscono evidenziati.</p>
-      <span class="dato">gear · gemme · albero</span>
-    </a>
     <a class="card strumento" href="whisper/">
       <span class="etichetta">Whisper</span>
       <h3>Whisper — cosa manca</h3>
@@ -149,5 +147,6 @@
   </footer>
 
 </div>
+<script src="menu.js" defer></script>
 </body>
 </html>

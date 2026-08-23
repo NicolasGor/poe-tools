@@ -141,6 +141,57 @@ code{font-family:var(--mono);font-size:.92em}
   font-size:var(--t-xs);color:var(--label);white-space:nowrap;
   padding:.2rem .55rem;border:1px solid var(--line);border-radius:var(--r-full);
 }
+
+/* .nav-gruppo — una voce di barra che non e' una pagina ma un contenitore.
+   E' un <button> e non un <a> perche' non porta da nessuna parte: dargli un
+   href finto lo renderebbe un link morto per chi naviga da tastiera.
+
+   🔴 Il pannello sta **fuori da `.nav-link`**, che ha `overflow-x:auto` per
+   scorrere su schermo stretto: dentro, un pannello posizionato verrebbe
+   tagliato dal contenitore che scorre — e non e' un difetto che si vede sul
+   desktop, dove la barra non scorre mai. Fuori, il contenitore posizionante e'
+   `.nav` (che `position:sticky` rende tale) e non c'e' niente che ritagli. */
+.nav-gruppo{
+  font-family:inherit;background:transparent;border:0;cursor:pointer;
+  display:flex;align-items:center;gap:.28rem;
+  padding:.35rem .6rem;border-radius:var(--r-sm);
+  font-size:var(--t-sm);color:var(--muted);white-space:nowrap;
+  transition:color .12s, background .12s;
+}
+.nav-gruppo:hover{color:var(--text);background:var(--panel)}
+/* `.attivo` = la pagina aperta sta **dentro** questo gruppo. Senza, chi e' su
+   Whisper o Luminary non ha in barra nessun segno di dove si trova: il gruppo
+   chiuso nasconde proprio la voce che glielo direbbe. */
+.nav-gruppo[aria-expanded="true"],.nav-gruppo.attivo{color:var(--gold);background:rgba(240,185,74,.1)}
+/* La freccia e' disegnata, non un carattere: un glifo dipende dal font e
+   sullo Steam Deck non e' lo stesso di qui. */
+.nav-gruppo::after{
+  content:"";width:.42em;height:.42em;margin-top:-.18em;
+  border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;
+  transform:rotate(45deg);transition:transform .14s;
+}
+.nav-gruppo[aria-expanded="true"]::after{transform:rotate(-135deg);margin-top:.14em}
+
+/* Un riquadro ancorato al pulsante, non una fascia a tutta larghezza.
+   ⚠️ `left` lo scrive `menu.js` all'apertura e non il CSS: il pulsante si
+   sposta col contenuto della barra, che su schermo stretto **scorre in
+   orizzontale**, quindi la sua ascissa non e' una costante. */
+.nav-giu{
+  position:absolute;top:calc(100% + 4px);left:0;
+  min-width:9.5rem;padding:.3rem;
+  background:rgba(20,24,31,.98);
+  backdrop-filter:saturate(1.6) blur(12px);
+  border:1px solid var(--line);border-radius:var(--r);
+  box-shadow:0 10px 26px rgba(0,0,0,.5);
+}
+.nav-giu[hidden]{display:none}
+.nav-giu-in{display:flex;flex-direction:column;gap:1px}
+.nav-giu-in a{
+  padding:.4rem .65rem;border-radius:var(--r-sm);
+  font-size:var(--t-sm);color:var(--muted);white-space:nowrap;
+}
+.nav-giu-in a:hover{color:var(--text);background:var(--panel);text-decoration:none}
+.nav-giu-in a[aria-current="page"]{color:var(--gold);background:rgba(240,185,74,.1)}
 @media(max-width:720px){
   .nav-in{gap:var(--s3)}
   .nav-patch{display:none}

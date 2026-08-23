@@ -126,13 +126,17 @@
       <a href="../strategie/">Strategie</a>
       <a href="../farming/">Farming</a>
       <a href="../scrying/">Scrying</a>
-      <a href="../mappe/">Mod mappa</a>
-      <a href="../build-confronto/">Build</a>
-      <a href="../whisper/">Whisper</a>
+      <a href="../mappe/">Regex mappe</a>
+      <button type="button" class="nav-gruppo" aria-controls="giu-build" aria-expanded="true">Build</button>
       <a href="../warrant/">Warrant</a>
-      <a href="../luminary/">Luminary</a>
     </div>
     <span class="nav-patch">patch 3.29.2</span>
+  </div>
+  <div class="nav-giu" id="giu-build">
+    <div class="nav-giu-in">
+      <a href="../whisper/">Whisper</a>
+      <a href="../luminary/">Luminary</a>
+    </div>
   </div>
 </nav>
 
@@ -430,5 +434,6 @@ q("#colora").onchange = e => { campo = e.target.value; ridisegna(); };
 q("#cerca").oninput = e => { cerca = e.target.value.toLowerCase().trim(); ridisegna(); };
 document.querySelectorAll("#cl th[data-k]").forEach(th => th.onclick = () => { campo = th.dataset.k; ridisegna(); });
 </script>
+<script src="../menu.js" defer></script>
 </body>
 </html>

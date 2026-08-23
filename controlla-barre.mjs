@@ -1,5 +1,6 @@
 /**
- * controlla-barre — verifica che la barra di navigazione sia identica ovunque.
+ * controlla-barre — verifica che la barra di navigazione sia identica ovunque,
+ * **sottomenu compresi**.
  *
  * **Perche' serve.** La barra e' copiata dentro **ogni** `index.html`: undici
  * copie della stessa lista. Quando nasce uno strumento e' facile aggiungerne la
@@ -17,10 +18,21 @@ const pagine = ["index.html", ...readdirSync(".")
   .map((d) => `${d}/index.html`)]
   .filter((p) => { try { readFileSync(p); return true; } catch { return false; } });
 
+// 🔴 Non basta leggere gli `<a>`: da quando "Build" e' un **gruppo**, la sua
+// etichetta sta in un `<button>` e le due voci figlie in un pannello **fuori**
+// da `.nav-link`. Un controllo che guardasse solo i link direbbe "identiche"
+// anche su una pagina a cui manca meta' sottomenu — cioe' proprio dove il
+// difetto e' piu' facile da introdurre, perche' il pannello e' in un altro
+// punto del file.
 const voci = (p) => {
   const t = readFileSync(p, "utf8");
-  const m = t.match(/<div class="nav-link">([\s\S]*?)<\/div>/);
-  return m ? [...m[1].matchAll(/>([^<>]+)<\/a>/g)].map((x) => x[1].trim()) : null;
+  const barra = t.match(/<div class="nav-link">([\s\S]*?)\n    <\/div>/);
+  if (!barra) return null;
+  const prime = [...barra[1].matchAll(/>([^<>]+)<\/(?:a|button)>/g)]
+    .map((x) => x[1].trim());
+  const giu = [...t.matchAll(/<div class="nav-giu"[^>]*>([\s\S]*?)<\/div>\s*<\/div>/g)]
+    .flatMap((g) => [...g[1].matchAll(/>([^<>]+)<\/a>/g)].map((x) => `  ↳ ${x[1].trim()}`));
+  return [...prime, ...giu];
 };
 
 const mappa = new Map(pagine.map((p) => [p, voci(p)]));

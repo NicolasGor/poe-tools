@@ -88,10 +88,23 @@ dato della wiki serve a uno strumento, si copia il singolo valore, non la pagina
 - Un strumento = una cartella con il suo `index.html`, più una scheda nel
   catalogo in `index.html` alla radice.
 - 🔴 **E la voce va aggiunta alla barra di *tutte* le pagine**, non solo a quella
-  su cui stai lavorando: la barra è copiata dentro ogni `index.html`, undici
+  su cui stai lavorando: la barra è copiata dentro ogni `index.html`, **nove**
   volte. Warrant per giorni si è visto **solo dalla homepage** proprio così.
   `node controlla-barre.mjs` lo verifica, e una GitHub Action lo rifà a ogni push
   — perché non è un errore che si nota guardando una pagina: bisogna
   confrontarle fra loro.
+- **Una voce di barra può essere un gruppo invece di una pagina.** `Build` lo è:
+  un `<button class="nav-gruppo">` con dentro Whisper e Luminary. Tre cose da
+  sapere se se ne aggiunge un altro:
+  - il pannello `.nav-giu` sta **fuori da `.nav-link`**, che ha `overflow-x:auto`
+    e dentro lo ritaglierebbe su schermo stretto;
+  - il suo `left` lo scrive `menu.js` all'apertura, perché il pulsante si sposta
+    quando la barra scorre — nel CSS sarebbe una costante sbagliata;
+  - nel markup il pannello nasce **aperto** (`aria-expanded="true"`, niente
+    `hidden`) e lo chiude lo script: senza JS resterebbe altrimenti muto, e le
+    sue voci irraggiungibili.
+  ⚠️ `controlla-barre.mjs` legge anche i gruppi e le voci dei sottomenu: un
+  controllo sui soli `<a>` direbbe «identiche» a una pagina cui manca metà
+  sottomenu, che è dove il difetto è più facile da introdurre.
 - Il sito dichiara la patch a cui si riferisce. Quando cambia, si aggiorna.
 - Niente numeri di gioco inventati: valgono le stesse regole della wiki.

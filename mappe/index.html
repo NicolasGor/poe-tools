@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mod di mappa da evitare — generatore di regex</title>
+<title>Regex mappe — i mod da evitare, in una stringa</title>
 <link rel="stylesheet" href="../stile.css">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <style>
@@ -55,19 +55,23 @@
       <a href="../strategie/">Strategie</a>
       <a href="../farming/">Farming</a>
       <a href="../scrying/">Scrying</a>
-      <a href="../mappe/" aria-current="page">Mod mappa</a>
-      <a href="../build-confronto/">Build</a>
-      <a href="../whisper/">Whisper</a>
+      <a href="../mappe/" aria-current="page">Regex mappe</a>
+      <button type="button" class="nav-gruppo" aria-controls="giu-build" aria-expanded="true">Build</button>
       <a href="../warrant/">Warrant</a>
-      <a href="../luminary/">Luminary</a>
     </div>
     <span class="nav-patch">patch 3.29.2</span>
+  </div>
+  <div class="nav-giu" id="giu-build">
+    <div class="nav-giu-in">
+      <a href="../whisper/">Whisper</a>
+      <a href="../luminary/">Luminary</a>
+    </div>
   </div>
 </nav>
 
 <div class="wrap">
   <header class="testata">
-    <h1>Mod di mappa da evitare</h1>
+    <h1>Regex mappe</h1>
     <p class="sub">Spunta i modificatori che non vuoi correre: esce una <b>regex</b> da incollare nella ricerca della stash. Le mappe che la fanno accendere sono quelle da rerollare.</p>
   </header>
 
@@ -243,5 +247,6 @@ document.getElementById("copia").onclick = async () => {
         setTimeout(()=>document.getElementById("copia").textContent="Copia", 1500); } catch(e){}
 };
 </script>
+<script src="../menu.js" defer></script>
 </body>
 </html>
