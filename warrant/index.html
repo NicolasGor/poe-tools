@@ -212,7 +212,7 @@
      Il cursore e la regex stanno **sopra** la tabella dei rifiuti, non dentro una
      modale: e' la stessa lista di sotto guardata da un'altra parte, e le righe
      colpite si accendono li'. */
-  .butta{margin-top:var(--s6)}
+  .butta{margin-top:var(--s5)}
   .butta-testa{display:flex;gap:var(--s3);align-items:baseline;flex-wrap:wrap}
   .butta-testa h2{margin:0}
   .butta-cursore{display:flex;gap:var(--s3);align-items:center;flex-wrap:wrap;margin-top:var(--s3)}
@@ -235,8 +235,16 @@
   .butta-persi ul{margin:var(--s2) 0 0 1.1rem;color:var(--muted);font-size:var(--t-xs)}
   .butta-nota{font-size:var(--t-xs);color:var(--label);margin-top:var(--s3);max-width:64rem}
   .butta-nota b{color:var(--muted)}
-  .butta-piu{margin-top:var(--s3)}
-  .butta-piu summary{cursor:pointer;font-size:var(--t-xs);color:var(--label);width:max-content}
+  /* ⚠️ Il campo di ricerca ha un `margin-top` **negativo** per stare attaccato
+     alla barra dei pulsanti: spostando la sezione qui in mezzo, quel -8px
+     saliva sopra il «Come si usa» e glielo tagliava a meta'. Lo si annulla
+     dove la sezione precede il campo, invece di togliere il negativo — sulle
+     altre pagine quella riga serve com'e'. */
+  .butta{margin-bottom:var(--s5)}
+  .butta + .cerca-barra{margin-top:var(--s4)}
+  .butta-piu{margin-top:var(--s4)}
+  .butta-piu summary{cursor:pointer;font-size:var(--t-xs);color:var(--label);width:max-content;
+                     padding:2px 0}
   .butta-piu summary:hover{color:var(--gold)}
   .butta-piu .butta-nota{margin-top:var(--s2)}
   /* la riga colpita dalla regex: si vede sulla tabella, che e' dove si controlla */
