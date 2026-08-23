@@ -93,16 +93,21 @@ dato della wiki serve a uno strumento, si copia il singolo valore, non la pagina
   `node controlla-barre.mjs` lo verifica, e una GitHub Action lo rifà a ogni push
   — perché non è un errore che si nota guardando una pagina: bisogna
   confrontarle fra loro.
-- **Una voce di barra può essere un gruppo invece di una pagina.** `Build` lo è:
-  un `<button class="nav-gruppo">` con dentro Whisper e Luminary. Tre cose da
-  sapere se se ne aggiunge un altro:
+- **Una voce di barra può essere un gruppo invece di una pagina.** Ce ne sono
+  due: **Farm** (Strategie · Prezzi · Scrying · Warrant) e **Build** (Whisper ·
+  Luminary), ognuno un `<button class="nav-gruppo">`. Quattro cose da sapere se
+  se ne aggiunge un terzo:
   - il pannello `.nav-giu` sta **fuori da `.nav-link`**, che ha `overflow-x:auto`
     e dentro lo ritaglierebbe su schermo stretto;
   - il suo `left` lo scrive `menu.js` all'apertura, perché il pulsante si sposta
     quando la barra scorre — nel CSS sarebbe una costante sbagliata;
   - nel markup il pannello nasce **aperto** (`aria-expanded="true"`, niente
     `hidden`) e lo chiude lo script: senza JS resterebbe altrimenti muto, e le
-    sue voci irraggiungibili.
+    sue voci irraggiungibili;
+  - 🔴 aprire un gruppo **chiude gli altri**, e va fatto a mano in `menu.js`: il
+    click sul pulsante ferma la propagazione, quindi il gestore che chiude «sul
+    click fuori» non scatta e i pannelli resterebbero aperti sovrapposti. Con un
+    gruppo solo il difetto non esisteva.
   ⚠️ `controlla-barre.mjs` legge anche i gruppi e le voci dei sottomenu: un
   controllo sui soli `<a>` direbbe «identiche» a una pagina cui manca metà
   sottomenu, che è dove il difetto è più facile da introdurre.

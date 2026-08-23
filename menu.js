@@ -6,21 +6,24 @@
  * ma il *comportamento* no: nove copie della stessa funzione sarebbero nove
  * posti dove correggere lo stesso difetto. L'HTML si duplica, la logica no.
  *
- * 🔴 **Il gruppo funziona anche senza questo file.** Se lo script non arriva, il
- * pannello resta `hidden` e le sue voci sarebbero irraggiungibili: per questo
- * l'attributo lo toglie **subito** lo script stesso e lo stato di partenza e'
- * scritto in `aria-expanded`. Chi ha JS disattivato vede il pannello **aperto**,
- * che e' il fallimento giusto — brutto ma navigabile, invece di elegante e muto.
+ * 🔴 **I gruppi funzionano anche senza questo file.** Nel markup il pannello
+ * nasce **aperto** (`aria-expanded="true"`, niente `hidden`) e lo chiude lo
+ * script: se lo script non arriva si vedono tutti i pannelli spiegati — brutto
+ * ma navigabile, invece che elegante e muto con le voci irraggiungibili.
  */
-document.querySelectorAll(".nav-gruppo").forEach((bottone) => {
-  const pannello = document.getElementById(bottone.getAttribute("aria-controls"));
-  if (!pannello) return;
+const gruppi = [...document.querySelectorAll(".nav-gruppo")]
+  .map((bottone) => {
+    const pannello = document.getElementById(bottone.getAttribute("aria-controls"));
+    return pannello ? { bottone, pannello } : null;
+  })
+  .filter(Boolean);
 
-  const barra = bottone.closest(".nav");
-  const scorrevole = bottone.closest(".nav-link");
+for (const g of gruppi) {
+  const barra = g.bottone.closest(".nav");
+  const scorrevole = g.bottone.closest(".nav-link");
 
   /**
-   * Ancora il riquadro sotto il pulsante.
+   * Ancora il riquadro sotto il suo pulsante.
    *
    * ⚠️ Il `left` non puo' stare nel CSS. Il pannello e' figlio di `.nav` — deve
    * esserlo, perche' `.nav-link` ha `overflow-x:auto` e dentro lo ritaglierebbe
@@ -30,39 +33,48 @@ document.querySelectorAll(".nav-gruppo").forEach((bottone) => {
    * Il riquadro viene poi tirato dentro il bordo destro: ancorato e basta,
    * sull'ultima voce di una barra stretta uscirebbe dallo schermo.
    */
-  const ancora = () => {
-    const b = bottone.getBoundingClientRect();
+  g.ancora = () => {
+    const b = g.bottone.getBoundingClientRect();
     const n = barra.getBoundingClientRect();
-    const largo = pannello.offsetWidth;
-    const massimo = n.width - largo - 8;
-    pannello.style.left = Math.max(8, Math.min(b.left - n.left, massimo)) + "px";
+    const massimo = n.width - g.pannello.offsetWidth - 8;
+    g.pannello.style.left = Math.max(8, Math.min(b.left - n.left, massimo)) + "px";
   };
 
-  // Da qui in poi il pannello lo governa lo script: prima era visibile apposta,
-  // cosi' senza JS le sue voci restano raggiungibili.
-  const mostra = (aperto) => {
-    bottone.setAttribute("aria-expanded", String(aperto));
-    pannello.hidden = !aperto;
-    if (aperto) ancora();
+  g.mostra = (aperto) => {
+    g.bottone.setAttribute("aria-expanded", String(aperto));
+    g.pannello.hidden = !aperto;
+    if (aperto) g.ancora();
   };
-  mostra(false);
 
-  bottone.addEventListener("click", (e) => {
+  // Da qui in poi il pannello lo governa lo script.
+  g.mostra(false);
+
+  g.bottone.addEventListener("click", (e) => {
     e.stopPropagation();
-    mostra(bottone.getAttribute("aria-expanded") !== "true");
+    const apri = g.bottone.getAttribute("aria-expanded") !== "true";
+    // 🔴 Chiudere **gli altri** e' il pezzo che con un gruppo solo non serviva:
+    // il click sul pulsante ferma la propagazione, quindi il gestore che chiude
+    // sul click fuori non scatterebbe mai e i due pannelli resterebbero aperti
+    // insieme, sovrapposti.
+    for (const altro of gruppi) if (altro !== g) altro.mostra(false);
+    g.mostra(apri);
   });
 
-  addEventListener("resize", () => { if (!pannello.hidden) ancora(); });
-  scorrevole?.addEventListener("scroll", () => { if (!pannello.hidden) ancora(); }, {passive: true});
+  addEventListener("resize", () => { if (!g.pannello.hidden) g.ancora(); });
+  scorrevole?.addEventListener("scroll", () => { if (!g.pannello.hidden) g.ancora(); },
+                               { passive: true });
+}
 
-  // Fuori dal pannello si chiude; dentro no, altrimenti il click su una voce
-  // verrebbe annullato prima di navigare.
-  document.addEventListener("click", (e) => {
-    if (!pannello.contains(e.target)) mostra(false);
-  });
-  document.addEventListener("keydown", (e) => {
-    if (e.key !== "Escape" || pannello.hidden) return;
-    mostra(false);
-    bottone.focus();
-  });
+// Fuori dai pannelli si chiude tutto; dentro no, altrimenti il click su una
+// voce verrebbe annullato prima di navigare.
+document.addEventListener("click", (e) => {
+  for (const g of gruppi) if (!g.pannello.contains(e.target)) g.mostra(false);
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Escape") return;
+  for (const g of gruppi) {
+    if (g.pannello.hidden) continue;
+    g.mostra(false);
+    g.bottone.focus();
+  }
 });
