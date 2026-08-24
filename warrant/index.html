@@ -1261,82 +1261,64 @@ function caricaPanorama() {
 }
 
 const GRIGLIA = [
-  {nome: "Kineticist", casa: "Bardiya", compratori: "15 d+",
-   mercato: {gemme: ["Return", "Greater Fork"], ins: 1208, mediana: "50 d", alto: "450 d"},
-   serve: [["Greater Kinetic Blast of Clustering", 1], ["Kinetic Blast", 1], ["Return", 1],
-           ["chain o fork", 0], ["Ele Damage with Attacks", 0], ["GMP", 0], ["crit damage", 0], ["haste", 0]],
-   azzera: ["Kinetic Bolt", "Kinetic Rain"],
-   nota: "I due Kinetic Blast si vogliono <b>insieme</b>. <b>Barrage non è un brick</b>. ⚠️ Il mercato non conosce questi due nomi di gemma: da verificare in gioco. <b>Il Return qui pesa 1,82×</b>, il segnale più forte di tutto il gioco."},
-  {nome: "Cruel Mistress", casa: "Cyaxan", compratori: null,
-   mercato: {gemme: ["Return", "Greater Multiple Projectiles"], ins: 1912, mediana: "14 d", alto: "150 d"},
-   serve: [["Soulrend of Reaping", 1], ["Return", 1], ["GMP", 1], ["Summon Void <i>oppure</i> totem di Forbidden Rite", 0], ["envy aura", 0]],
-   azzera: [],
-   nota: "La griglia non le dava un prezzo: il mercato sì, ed è <b>il secondo più caro</b>."},
-  {nome: "Combatant · Wild Strike", casa: "Azadi", compratori: "tuttofare",
+  /* 🔴 Dal 23 agosto 2026 questa griglia contiene **solo** i quattro archetipi
+     coperti dalla serie «How to search for a good X Mercenary» di Nerotox, con
+     le trascrizioni lette (in sources/). Le voci precedenti venivano dalla
+     lista della spesa di chi li compra — un dato di mercato, non di gioco — e
+     Nicolas le ha fatte togliere: meglio quattro archetipi con una fonte che
+     dodici con un'inferenza.
+     `chiave` e' l'archetipo vero: serve a panorama.json e ai warrant in tab,
+     che non sanno niente dei nomi sdoppiati. */
+  {nome: "Combatant · Wild Strike", chiave: "Combatant", casa: "Azadi", compratori: "tuttofare",
    mercato: {gemme: ["Return", "Lightning Penetration"], ins: 3497, mediana: "10 d", alto: "100 d"},
    serve: [["Wild Strike", 1], ["Static Strike", 1], ["Herald of Ice", 1], ["Inspiring Cry", 1],
-           ["Ele Damage with Attacks", 0], ["Hypothermia", 0], ["Faster Attacks", 0]],
-   azzera: ["Spectral Helix", "Elemental Hit", "Multistrike", "Frost Blades insieme"],
+           ["Ele Damage with Attacks", 0], ["Hypothermia", 0], ["Faster Attacks", 0], ["Return", 0]],
+   azzera: ["Multistrike", "Frost Blades insieme", "Spectral Helix", "Elemental Hit"],
    scaglioni: [
      ["Minimum", "<b>2 supporti</b> fra Ele Damage e Hypothermia, anche Tier 2", "https://www.pathofexile.com/trade/search/Allflame/3q6awYZPc5"],
      ["Midgame", "pi&ugrave; <b>Greater Faster Attacks</b> e <b>uno</b> dei due Tier 3", "https://www.pathofexile.com/trade/search/Allflame/mkgR2DbeS6"],
      ["Endgame", "<b>entrambi</b> i Tier 3 — Greater Hypothermia <b>e</b> Greater Ele Damage", "https://www.pathofexile.com/trade/search/Allflame/jWRDpypkCX"],
      ["GG Merc", "il <b>Return</b>, Greater Faster Attacks, <b>uno</b> dei due Tier 3", "https://www.pathofexile.com/trade/search/Allflame/bGDrZYZaCL"]],
-   nota: "Nerotox, agosto 2026 (<a href=\"https://www.youtube.com/watch?v=45aM9242Umo\" target=\"_blank\" rel=\"noopener\">video</a>), trascrizione letta. \ud83d\udca1 Nei gruppi del trade <b>la skill conta come una voce</b>: «almeno 3» su Wild Strike + due supporti vuol dire <b>tutti e due</b> — e le inserzioni passano da <b>100+ a 23</b>. \u26a0\ufe0f Sul Wild Strike <b>Chain e Pierce non servono</b>: il chain «doesn\u2019t really do much» e il pierce non si applica."},
-  {nome: "Combatant · Frost Blades", casa: "Azadi", compratori: "tuttofare",
+   nota: "\ud83d\udcb0 <b>Il pi&ugrave; conveniente dei quattro</b>: un GG sta sui <b>5 div</b>, <i>\u00abnot very contested and a little bit underplayed\u00bb</i>. \u26a0\ufe0f Ma il clear <i>\u00abfeels quite a bit worse than Frost Blades\u00bb</i> ed &egrave; <i>\u00abextremely clunky with multistrike\u00bb</i> — che infatti <b>raddoppia la stessa variante</b> invece di cambiarla. Da prendere se il single target &egrave; la tua esigenza. <a href=\"https://www.youtube.com/watch?v=45aM9242Umo\" target=\"_blank\" rel=\"noopener\">video</a>"},
+
+  {nome: "Combatant · Frost Blades", chiave: "Combatant", casa: "Azadi", compratori: "tuttofare",
    mercato: {gemme: ["Return", "Lightning Penetration"], ins: 3497, mediana: "10 d", alto: "100 d"},
    serve: [["Frost Blades", 1], ["Static Strike", 1], ["Herald of Ice", 1], ["Inspiring Cry", 1],
            ["Chain", 1], ["Ele Damage with Attacks", 0], ["Hypothermia", 0], ["Faster Attacks", 0]],
-   azzera: ["Spectral Helix", "Elemental Hit", "Pierce", "Wild Strike insieme"],
+   azzera: ["Pierce", "Wild Strike insieme", "Spectral Helix", "Elemental Hit"],
    scaglioni: [
      ["Minimum", "Chain <b>e nessun Pierce</b> &middot; <b>1 supporto</b> fra Ele Damage e Hypothermia", "https://www.pathofexile.com/trade/search/Allflame/Kld4gv0Pi5"],
      ["Midgame", "gli stessi, ma <b>2 supporti</b> di danno invece di 1", "https://www.pathofexile.com/trade/search/Allflame/Kld4gM7yi5"],
      ["Endgame <span class=\"lim\">senza return</span>", "pi&ugrave; <b>un Faster Attacks</b>", "https://www.pathofexile.com/trade/search/Allflame/q9l6yK0psg"],
      ["Endgame <span class=\"lim\">col return</span>", "pi&ugrave; il <b>Return</b>, senza Faster Attacks", "https://www.pathofexile.com/trade/search/Allflame/OglBJZoQIE"],
      ["GG Merc", "<b>Faster Attacks e Return insieme</b>", "https://www.pathofexile.com/trade/search/Allflame/PPaX7lLqUL"]],
-   nota: "\ud83d\udd34 <b>Il Chain &egrave; obbligatorio e il Pierce &egrave; un brick</b>, e sono la stessa regola: <i>«chain happens after piercing»</i> — col pierce il chain non parte. \u26a0\ufe0f <b>E il Return, per mappare, Nerotox dice di NON comprarlo</b>: <i>«I would highly recommend to not buy a mercenary with return»</i> — poco consistente e fa salire molto il prezzo."},
-  {nome: "Manyshot", casa: "Cyaxan", compratori: "5 d+",
-   mercato: {gemme: ["Return", "Greater Added Cold"], ins: 7138, mediana: "3 d", alto: "50 d"},
-   serve: [["Ice Shot", 1], ["Vaal Ice Shot", 1], ["Return su entrambi", 1],
-           ["GMP", 0], ["Ele Damage with Attacks", 0], ["Hypothermia", 0], ["crit", 0]],
-   azzera: ["Icicle Rain"],
-   nota: "L'Icicle Rain <b>interrompe il Vaal Ice Shot</b>: non è debole, è rotto."},
-  {nome: "Sniper", casa: "Cyaxan", compratori: null,
-   mercato: {gemme: ["Gilded Secondary Shots", "Mirage Archer"], ins: 1228, mediana: "3 d", alto: "60 d"},
-   serve: [["Tornado Shot", 1], ["GMP", 1], ["Gilded Secondary Shots", 1], ["haste aura", 0], ["totem", 0]],
-   azzera: ["Brutality", "Arrow Nova"],
-   nota: "🔴 La griglia la chiamava <i>«gilded +2 proiettili»</i>: il nome vero è <b>Gilded Secondary Shots</b>, e pesa 1,38×. Il <b>Rain of Arrows va bene lo stesso</b>; qui il Return non è il filtro."},
-  {nome: "Stormhand", casa: "Cyaxan", compratori: null,
-   mercato: {gemme: ["Gilded Chain Distance", "Return"], ins: 107, mediana: "3 d", alto: "50 d"},
-   serve: [["Arc", 1], ["Ball Lightning of Static", 1], ["Gilded Chain Distance", 1], ["chain sull'Arc", 0]],
-   azzera: [],
-   nota: "Il chain che conta si chiama <b>Gilded Chain Distance</b> e pesa <b>1,63×</b>: il secondo segnale più forte dopo il Return del Kineticist."},
-  {nome: "Blade Ambusher", casa: "Azadi", compratori: "boss killer",
-   mercato: {gemme: ["Greater Slower Projectiles", "Greater Trap and Mine Damage"], ins: 3938, mediana: "1 d", alto: "30 d"},
-   serve: [["Spectral Helix of Trarthus", 1], ["Multiple Traps", 1], ["Trap and Mine Damage", 1], ["Slower Projectiles", 1]],
-   azzera: [],
-   nota: "Le tre gemme vanno <b>sull'Helix</b>. ⚠️ È il <b>più economico dei sette</b> nonostante la fama: la gemma più pagata arriva solo a 1,06×."},
+   nota: "\ud83d\udd34 <b>Chain obbligatorio, Pierce brick</b>, ed &egrave; la stessa regola: <i>\u00abchain happens after piercing\u00bb</i> — col pierce il chain non parte. <b>Il clear migliore dei quattro.</b> \u26a0\ufe0f Per mappare il <b>Return non va comprato</b>: <i>\u00abI would highly recommend to not buy a mercenary with return\u00bb</i>, poco consistente e caro. <a href=\"https://www.youtube.com/watch?v=45aM9242Umo\" target=\"_blank\" rel=\"noopener\">video</a>"},
 
-  {nome: "Flamehand", casa: "—", fuori: true, compratori: null,
-   mercato: {gemme: ["Greater Slower Projectiles", "Return"], ins: 59, mediana: "5 d", alto: "120 d"},
-   serve: [["Greater Slower Projectiles", 1], ["Return", 1]], azzera: [],
-   nota: "Fuori griglia, ma il mercato lo paga: <b>Greater Slower Projectiles 1,31×</b>, Return 1,26×."},
-  {nome: "Smoulderstrike", casa: "—", fuori: true, compratori: null,
-   mercato: {gemme: ["Gilded Molten Eruption", "Return"], ins: 120, mediana: "3 d", alto: "40 d"},
-   serve: [["Gilded Molten Eruption", 1], ["Return", 1]], azzera: [],
-   nota: "Fuori griglia: <b>Gilded Molten Eruption 1,33×</b>."},
-  {nome: "Eruptor", casa: "—", fuori: true, compratori: null,
-   mercato: {gemme: ["Gilded Additional Fissures", "Greater Multistrike"], ins: 51, mediana: "3 d", alto: "65 d"},
-   serve: [["Gilded Additional Fissures", 1], ["Greater Multistrike", 0]], azzera: [],
-   nota: "Fuori griglia: <b>Gilded Additional Fissures 1,36×</b>."},
-  {nome: "Bastion", casa: "—", fuori: true, compratori: null,
-   mercato: {gemme: ["Greater Cooldown Recovery", "Greater Faster Casting"], ins: 66, mediana: "2 d", alto: "30 d"},
-   serve: [["Greater Cooldown Recovery", 1], ["Greater Faster Casting", 0]], azzera: [],
-   nota: "Fuori griglia: <b>Greater Cooldown Recovery 1,22×</b>."},
-  {nome: "Shattersword", casa: "—", fuori: true, compratori: null,
-   mercato: null,
-   serve: [["Gilded Scattershot", 1]], azzera: [],
-   nota: "Fuori griglia: <b>Gilded Scattershot 1,37×</b>. ⚠️ Meno di 30 inserzioni lo portano insieme alla seconda gemma: il prezzo non è misurabile."},
+  {nome: "Manyshot", chiave: "Manyshot", casa: "Cyaxan", compratori: "clear",
+   mercato: {gemme: ["Return", "Greater Multiple Projectiles"], ins: 1912, mediana: "14 d", alto: "150 d"},
+   serve: [["Ice Shot", 1], ["Vaal Ice Shot", 1], ["Return <i>sul Vaal</i>", 1],
+           ["Grace <i>o</i> Hatred", 0], ["chain / fork / GMP <i>sull&rsquo;Ice Shot</i>", 0],
+           ["Greater Hypothermia", 0], ["Greater Ele Damage", 0]],
+   azzera: ["Icicle Rain"],
+   scaglioni: [
+     ["Earlygame", "un clear link qualsiasi &middot; <b>~20 c</b>, e basta per le T16", "https://www.pathofexile.com/trade/search/Allflame/4mP3V2jQT9"],
+     ["Midgame", "il <b>Return sul Vaal Ice Shot</b> &middot; <b>2-3 div</b>", "https://www.pathofexile.com/trade/search/Allflame/Z6Em09GmHQ"],
+     ["Endgame", "Return <b>e due</b> link di danno sul Vaal &middot; <b>60-70 div</b>", "https://www.pathofexile.com/trade/search/Allflame/JBnK2YKRFl"],
+     ["GG Merc", "Return su <b>entrambe</b> le Ice Shot &middot; <b>100 div</b>", "https://www.pathofexile.com/trade/search/Allflame/d86ymvXRsJ"]],
+   nota: "\ud83d\udd34 <b>L&rsquo;unica cosa che lo brica &egrave; Icicle Rain.</b> Il Return va sul <b>Vaal</b> Ice Shot: &egrave; l&rsquo;unico salto che cambia fascia di prezzo. \u26a0\ufe0f <b>Il Pierce &egrave; da evitare</b>: <i>\u00abchain and fork lose a lot of priority and get pushed back\u00bb</i> — <i>\u00abpersonally I don&rsquo;t have one with pierce\u00bb</i>. Le skill di movimento non contano. <a href=\"https://www.youtube.com/watch?v=ljaXlGLdyxM\" target=\"_blank\" rel=\"noopener\">video</a>"},
+
+  {nome: "Kineticist", chiave: "Kineticist", casa: "Bardiya", compratori: "15 d+",
+   mercato: {gemme: ["Return", "Greater Fork"], ins: 1208, mediana: "50 d", alto: "450 d"},
+   serve: [["Kinetic Blast of Clustering", 1], ["Greater Kinetic Blast <i>2&ordf; skill</i>", 1],
+           ["Return", 1], ["chain <i>o</i> fork <i>o</i> pierce", 1],
+           ["Haste", 0], ["GMP", 0], ["Greater Ele Damage", 0], ["crit multi", 0]],
+   azzera: ["Kinetic Bolt", "Kinetic Rain", "Power Siphon", "Kinetic Blast of Impact", "crit chance"],
+   scaglioni: [
+     ["Minimo viabile", "Return <b>e</b> un clear link &middot; <b>~10 div</b>", "https://www.pathofexile.com/trade/search/Allflame/7nRvBzl2S5"],
+     ["Midgame", "pi&ugrave; l&rsquo;aura <b>Haste</b>, ancora su due link &middot; <b>15 div+</b>", "https://www.pathofexile.com/trade/search/Allflame/BgzkZKGQF8"],
+     ["Endgame", "pi&ugrave; <b>un link di danno</b> &middot; <b>40-50 div</b>, poi 80-200", "https://www.pathofexile.com/trade/search/Allflame/LgkGrPO5Fn"],
+     ["GG Merc", "Return <b>+ GMP +</b> clear link &middot; <b>oltre uno specchio</b>", "https://www.pathofexile.com/trade/search/Allflame/zbrQyEqah4"]],
+   nota: "\ud83d\udd34 <b>Non &egrave; farmabile dall&rsquo;albero atlas</b>, e per questo costa un&rsquo;altra cosa: <i>\u00abyou can buy a Wild Strike merc for a tenth of the price\u00bb</i>. La seconda skill deve essere <b>Greater Kinetic Blast</b> (cooldown 8s, quindi non ruba turni) — Barrage passa solo a budget. \u26a0\ufe0f <b>Il crit chance &egrave; bait</b>: il Kineticist &egrave; gi&agrave; crit-cappato. \ud83d\udca1 E il suo consiglio: <i>\u00abgo for a combatant first\u00bb</i> — <i>\u00abcombatant definitely can do everything that kineticist can do\u00bb</i>, la differenza &egrave; solo il single target in cima. <a href=\"https://www.youtube.com/watch?v=HKTVN4sENvg\" target=\"_blank\" rel=\"noopener\">video</a>"},
 ];
 
 /* I prezzi degli archetipi si leggono in divine: sono decine o centinaia di
@@ -1405,7 +1387,7 @@ function disegnaGriglia(filtro = "") {
           </div>`).join("")}</dd>`
       : "";
     const m = a.mercato;
-    const comb = (COMBINAZIONI[a.nome] || []).slice(0, 4);
+    const comb = (COMBINAZIONI[a.chiave || a.nome] || []).slice(0, 4);
     const righeComb = comb.length
       ? `<dt>pagano</dt><dd class="comb">${comb.map((c) => `
           <div class="riga-comb">
@@ -1414,8 +1396,8 @@ function disegnaGriglia(filtro = "") {
             <span class="ca">metà oltre ${div(c.mediana)}</span>
             <span class="ci">${c.inserzioni.toLocaleString("it")}</span>
             ${(() => {
-              const n = mieiSimili(a.nome, c);
-              return n ? `<span class="tuoi clic" role="button" tabindex="0" data-arch="${esc(a.nome)}" data-ci="${comb.indexOf(c)}"
+              const n = mieiSimili(a.chiave || a.nome, c);
+              return n ? `<span class="tuoi clic" role="button" tabindex="0" data-arch="${esc(a.chiave || a.nome)}" data-ci="${comb.indexOf(c)}"
                 title="Mostra i tuoi con ${esc(c.gemme[0])} su ${esc(c.skill[0] || "?")} e ${esc(c.gemme[1])} su ${esc(c.skill[1] || "?")}">ne hai ${n}</span>`
                        : `<span class="ct"></span>`;
             })()}
@@ -1427,11 +1409,11 @@ function disegnaGriglia(filtro = "") {
        fondo, invece di ripeterlo riga per riga. Ed e' cliccabile, perche'
        «mostrami i miei Cruel Mistress» resta una domanda sensata anche quando la
        risposta e' che non valgono. */
-    const quanti = mieiSimili(a.nome, null);
+    const quanti = mieiSimili(a.chiave || a.nome, null);
     const nessuno = quanti && !comb.some((c) => mieiSimili(a.nome, c))
       ? `<p class="nota nessuno"><span class="tuoi vuoto clic" role="button" tabindex="0"
-           data-arch="${esc(a.nome)}" data-ci="-1"
-           title="Mostra i tuoi ${esc(a.nome)}">ne hai ${quanti}</span>, nessuno con queste combinazioni.</p>`
+           data-arch="${esc(a.chiave || a.nome)}" data-ci="-1"
+           title="Mostra i tuoi ${esc(a.chiave || a.nome)}">ne hai ${quanti}</span>, nessuno con queste combinazioni.</p>`
       : "";
     return `<div class="arche-card${fuori}${a.fuori ? " extra" : ""}">
       <div>
