@@ -1419,8 +1419,8 @@ function disegnaGriglia(filtro = "") {
           return `<div class="riga-scg">
             <span class="sn">${s.n}</span>
             <span class="sc">${s.g}</span>
-            <span class="sp">${n ? `<span class="tuoi">ne hai ${n}</span>` : ""}</span>
             <span class="sv">${esc(s.v)}</span>
+            <span class="sp">${n ? `<span class="tuoi">ne hai ${n}</span>` : ""}</span>
             <span class="st"><a href="${esc(s.url)}" target="_blank" rel="noopener">cerca &rarr;</a></span>
           </div>`;
         }).join("")}</dd>`
