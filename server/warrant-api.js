@@ -440,7 +440,7 @@ export function prezzaWarrant(build, warrant, divine, mirror, minimo, opzioni) {
       floor: +(floorDi(stretto, divine, mirror) ?? 0).toFixed(2),
       mediana: medianaDi(stretto, divine, mirror),
       gemme: gemmeStrette.map((g) => `${g.supporto} su ${g.skill}`),
-      trade: linkTrade(build, skillIdx, gemmeStrette, "Allflame"),
+      trade: linkTrade(build, skillIdx, gemmeStrette, "Allflame", { recenti: false }),
     } : null,
     passi: passi.map(({ si, sj, ...resto }) => resto),
     oltre: scartato && { skill: scartato.skill, supporto: scartato.supporto, confronti: scartato.confronti, floor: scartato.floor },
@@ -505,7 +505,7 @@ function diffusione(build) {
  * Togliendoli e tenendo le rare, la ricerca torna mercenari con le stesse sei
  * skill invece di roba a 1 chaos con Blight al posto di Greater Soulrend.
  */
-function linkTrade(build, skillIdx, passi, lega) {
+function linkTrade(build, skillIdx, passi, lega, { recenti = true } = {}) {
   const MAX_GRUPPI = 5, MAX_GEMME = 6;
   const diff = diffusione(build);
   const conSupporto = new Set(passi.map((p) => p.si));
@@ -553,7 +553,14 @@ function linkTrade(build, skillIdx, passi, lega) {
       // nessuno, quel mercenario non ha un mercato **adesso**. Sul trade il menu
       // «Listed» resta a portata di click, quindi allargare a tre giorni o a
       // «Any Time» costa un gesto — la scelta preimpostata non chiude niente.
-      filters: { trade_filters: { filters: { indexed: { option: "1day" } } } },
+      /* 🔴 **Ma non sul confronto stretto** (`recenti: false`), misurato il 24
+         agosto: su Dorian il filtro taglia **da 1.540 a 164 inserzioni, l'89%**.
+         Il numero «i 4 piu' simili» viene dall'indice, che **non ha filtro di
+         data**: chiedendo al trade solo le ultime 24 ore il link cerca una
+         popolazione diversa da quella che ha prodotto il numero, e su quattro
+         pezzi torna **vuoto quasi sempre**. Li' «pochi risultati» non e' piu' un
+         segnale, e' un link rotto. */
+      ...(recenti ? { filters: { trade_filters: { filters: { indexed: { option: "1day" } } } } } : {}),
       stats,
     },
     sort: { price: "asc" },

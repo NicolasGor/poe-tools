@@ -218,8 +218,10 @@
   .apri{background:none;border:1px solid var(--line2);color:var(--muted);border-radius:var(--r);
         font:inherit;font-size:var(--t-xs);padding:.15rem .5rem;cursor:pointer;white-space:nowrap}
   .apri[aria-expanded="true"]{border-color:var(--gold);color:var(--gold)}
-  tr.scheda > td{padding:0;border-bottom:1px solid var(--line);background:var(--bg-alt)}
-  .scheda-in{padding:var(--s4)}
+  /* ⚠️ Il padding sta sulla cella, non sul solo `.scheda-in`: sopra c'erano
+     `.ristretto` e `.base-riga`, che restavano incollate al bordo. */
+  tr.scheda > td{padding:var(--s3) var(--s4) 0;border-bottom:1px solid var(--line);background:var(--bg-alt)}
+  .scheda-in{padding:0 0 var(--s4)}
   .scheda-cima{display:flex;gap:var(--s5);align-items:baseline;flex-wrap:wrap;margin-bottom:var(--s3)}
   .scheda-cima b{font-family:var(--mono);font-size:var(--t-lg);font-variant-numeric:tabular-nums}
   .scheda-cima span{font-size:var(--t-xs);color:var(--label);text-transform:uppercase;letter-spacing:.06em;display:block}
