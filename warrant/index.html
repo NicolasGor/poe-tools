@@ -133,6 +133,17 @@
   .arche-card .casa{font-size:var(--t-xs);color:var(--label);text-transform:uppercase;letter-spacing:.05em}
   .arche-card .misura{font-size:var(--t-xs);color:var(--muted);margin-top:.35rem;line-height:1.35}
   .arche-card .misura b{color:var(--good);font-family:var(--mono)}
+  /* .scaglioni — i gradini di qualita' di un archetipo, dal minimo al GG.
+     Nascono dalla serie di Nerotox: ogni gradino e' una ricerca di trade sua,
+     collaudata. Stanno dentro la scheda perche' la domanda «questo warrant lo
+     tengo?» e' la stessa domanda a cinque livelli di ambizione. */
+  .scaglioni{display:grid;gap:2px;margin-top:.35rem}
+  .riga-scg{display:grid;grid-template-columns:6.5rem 1fr auto;gap:var(--s2);align-items:baseline;
+            font-size:var(--t-xs);padding:.2rem .35rem;border-radius:var(--r-sm)}
+  .riga-scg:nth-child(odd){background:rgba(255,255,255,.03)}
+  .riga-scg .sn{color:var(--gold);font-weight:600}
+  .riga-scg .sc{color:var(--muted);line-height:1.4}
+  .riga-scg a{white-space:nowrap;font-family:var(--mono)}
   dd.comb{flex-direction:column;gap:.15rem;align-items:stretch}
   .riga-comb{display:grid;grid-template-columns:minmax(0,1fr) 4rem 7.2rem 3.4rem 4.6rem 3.4rem;gap:.35rem;
              align-items:baseline;text-decoration:none;padding:.1rem .35rem;border-radius:var(--r);
@@ -1261,12 +1272,31 @@ const GRIGLIA = [
    serve: [["Soulrend of Reaping", 1], ["Return", 1], ["GMP", 1], ["Summon Void <i>oppure</i> totem di Forbidden Rite", 0], ["envy aura", 0]],
    azzera: [],
    nota: "La griglia non le dava un prezzo: il mercato sì, ed è <b>il secondo più caro</b>."},
-  {nome: "Combatant", casa: "Azadi", compratori: "tuttofare",
+  {nome: "Combatant · Wild Strike", casa: "Azadi", compratori: "tuttofare",
    mercato: {gemme: ["Return", "Lightning Penetration"], ins: 3497, mediana: "10 d", alto: "100 d"},
-   serve: [["Frost Blades <i>oppure</i> Wild Strike", 1], ["Static Strike", 1],
-           ["Return sul Wild Strike", 0], ["chain sul Frost Blades", 0], ["Ele Damage", 0], ["Hypothermia", 0]],
-   azzera: ["Spectral Helix", "Elemental Hit", "Pierce"],
-   nota: "Il <b>Pierce impedisce il ritorno del proiettile</b>, cioè spegne proprio ciò che fa il valore."},
+   serve: [["Wild Strike", 1], ["Static Strike", 1], ["Herald of Ice", 1], ["Inspiring Cry", 1],
+           ["Multistrike <i>o</i> Greater", 0], ["Ele Damage with Attacks", 0], ["Hypothermia", 0],
+           ["Faster Attacks", 0], ["Return", 0]],
+   azzera: ["Spectral Helix", "Elemental Hit"],
+   scaglioni: [
+     ["Minimum", "3 fra Ele Damage / Hypothermia (anche Tier 2) &middot; un Multistrike", "https://www.pathofexile.com/trade/search/Allflame/3q6awYZPc5"],
+     ["Midgame", "come sopra, pi&ugrave; <b>Greater Faster Attacks</b> e <b>2 supporti Tier 3</b>", "https://www.pathofexile.com/trade/search/Allflame/mkgR2DbeS6"],
+     ["Endgame", "<b>3 supporti Tier 3</b> fra Greater Hypothermia e Greater Ele Damage", "https://www.pathofexile.com/trade/search/Allflame/jWRDpypkCX"],
+     ["GG Merc", "tutto quanto sopra <b>pi&ugrave; il Return</b>", "https://www.pathofexile.com/trade/search/Allflame/bGDrZYZaCL"]],
+   nota: "Scaglioni e ricerche da <b>Nerotox</b> (agosto 2026), collaudati. \u26a0\ufe0f <b>Il Multistrike qui &egrave; richiesto</b>, non è un brick."},
+  {nome: "Combatant · Frost Blades", casa: "Azadi", compratori: "tuttofare",
+   mercato: {gemme: ["Return", "Lightning Penetration"], ins: 3497, mediana: "10 d", alto: "100 d"},
+   serve: [["Frost Blades", 1], ["Static Strike", 1], ["Herald of Ice", 1], ["Inspiring Cry", 1],
+           ["Chain", 0], ["Pierce <i>o</i> Greater", 0], ["Ele Damage with Attacks", 0],
+           ["Hypothermia", 0], ["Faster Attacks", 0], ["Return", 0]],
+   azzera: ["Spectral Helix", "Elemental Hit"],
+   scaglioni: [
+     ["Minimum", "Chain e Pierce sul Frost Blades &middot; <b>2</b> fra Ele Damage / Hypothermia", "https://www.pathofexile.com/trade/search/Allflame/Kld4gv0Pi5"],
+     ["Midgame", "gli stessi, ma <b>3</b> supporti di danno invece di 2", "https://www.pathofexile.com/trade/search/Allflame/Kld4gM7yi5"],
+     ["Endgame <span class=\"lim\">senza return</span>", "pi&ugrave; <b>2 Faster Attacks</b>", "https://www.pathofexile.com/trade/search/Allflame/q9l6yK0psg"],
+     ["Endgame <span class=\"lim\">col return</span>", "pi&ugrave; il <b>Return</b>, senza Faster Attacks", "https://www.pathofexile.com/trade/search/Allflame/OglBJZoQIE"],
+     ["GG Merc", "<b>Faster Attacks e Return insieme</b>", "https://www.pathofexile.com/trade/search/Allflame/PPaX7lLqUL"]],
+   nota: "\ud83d\udd34 <b>Il Pierce qui non &egrave; un brick: Nerotox lo richiede.</b> Fino a oggi questa griglia lo elencava fra ciò che azzera il valore — vero sul <b>Manyshot Ice Shot</b>, dove spegne il ritorno del proiettile, ma sul Frost Blades le sue ricerche lo pretendono <b>insieme al Chain</b>."},
   {nome: "Manyshot", casa: "Cyaxan", compratori: "5 d+",
    mercato: {gemme: ["Return", "Greater Added Cold"], ins: 7138, mediana: "3 d", alto: "50 d"},
    serve: [["Ice Shot", 1], ["Vaal Ice Shot", 1], ["Return su entrambi", 1],
@@ -1356,11 +1386,25 @@ function disegnaGriglia(filtro = "") {
   const f = filtro.trim().toLowerCase();
   $("griglia-corpo").innerHTML = GRIGLIA.map((a) => {
     const testo = [a.nome, a.casa, ...(a.mercato ? a.mercato.gemme : []),
-                   ...a.serve.map((x) => x[0]), ...a.azzera].join(" ").toLowerCase();
+                   ...a.serve.map((x) => x[0]), ...a.azzera,
+                   ...(a.scaglioni || []).flatMap(([n, c]) => [n, c])]
+                  .join(" ").replace(/<[^>]+>/g, " ").toLowerCase();
     const fuori = f && !testo.includes(f) ? " fuori" : "";
     const serve = a.serve.map(([g, chiave]) => `<span class="gem serve${chiave ? " chiave" : ""}">${chiave ? "\u2713 " : ""}${g}</span>`).join("");
     const azzera = a.azzera.length
       ? `<dt>lo azzera</dt><dd>${a.azzera.map((g) => `<span class="gem azzera">\u2715 ${esc(g)}</span>`).join("")}</dd>`
+      : "";
+    /* Gli scaglioni: dal minimo giocabile al GG, ognuno con la sua ricerca.
+       Il testo e' HTML gia' scritto nella GRIGLIA (contiene <b> e <span>), quindi
+       NON passa da esc(): passa da li' solo l'URL, che e' l'unico campo che
+       potrebbe venire da fuori. */
+    const scaglioni = a.scaglioni
+      ? `<dt>scaglioni</dt><dd class="scaglioni">${a.scaglioni.map(([nome, cosa, url]) => `
+          <div class="riga-scg">
+            <span class="sn">${nome}</span>
+            <span class="sc">${cosa}</span>
+            <a href="${esc(url)}" target="_blank" rel="noopener">cerca &rarr;</a>
+          </div>`).join("")}</dd>`
       : "";
     const m = a.mercato;
     const comb = (COMBINAZIONI[a.nome] || []).slice(0, 4);
@@ -1401,6 +1445,7 @@ function disegnaGriglia(filtro = "") {
         <dl class="lista">
           <dt>deve avere</dt><dd>${serve}</dd>
           ${azzera}
+          ${scaglioni}
           ${righeComb}
         </dl>
         ${a.nota ? `<p class="nota">${a.nota}</p>` : ""}
