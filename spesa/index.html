@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La spesa — Luminary life stacking</title>
+<meta name="description" content="Lista della spesa collaudata per il Luminary life stacking con merc Kineticist: sei uniche, i rari coi filtri di trade, il gear del mercenario. Prezzi letti dall'API il 24 agosto 2026, e cosa c'è già in tab.">
+<link rel="stylesheet" href="../stile.css">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+  /* solo ciò che è davvero di questa pagina */
+  .verdetto{
+    background:linear-gradient(180deg,rgba(240,185,74,.10),rgba(240,185,74,.02));
+    border:1px solid rgba(240,185,74,.42);border-radius:6px;
+    padding:1rem 1.15rem;margin-bottom:var(--s5);
+  }
+  .verdetto h2{margin:0 0 .5rem;font-size:var(--t-base);color:var(--gold)}
+  .verdetto p{margin:0 0 .5rem;font-size:var(--t-sm);color:var(--muted);line-height:1.62}
+  .verdetto p:last-child{margin:0}
+  .verdetto b{color:var(--text)}
+
+  .blocco{margin-bottom:var(--s5)}
+  .blocco > h3{display:flex;align-items:baseline;gap:.6rem;font-size:var(--t-md);margin-bottom:.2rem}
+  .blocco > h3 .num{
+    font-family:var(--mono);font-size:var(--t-sm);color:var(--gold);
+    border:1px solid var(--line2);border-radius:3px;padding:.05rem .45rem;flex:none;
+  }
+  .blocco > .quando{font-size:var(--t-xs);color:var(--label);margin-bottom:var(--s3);
+    text-transform:uppercase;letter-spacing:.08em}
+
+  ol.spunte{list-style:none;margin:0;padding:0}
+  ol.spunte > li{
+    display:grid;grid-template-columns:1.4rem 1fr auto;gap:.6rem;
+    padding:.62rem 0;border-bottom:1px solid var(--line);align-items:start;
+  }
+  ol.spunte > li:last-child{border-bottom:0}
+  ol.spunte input[type=checkbox]{
+    width:1.05rem;height:1.05rem;margin-top:.15rem;accent-color:var(--gold);cursor:pointer;
+  }
+  ol.spunte .testo{font-size:var(--t-sm);line-height:1.6}
+  ol.spunte .testo b{color:var(--text)}
+  ol.spunte .testo em{color:var(--label);font-style:normal;font-size:var(--t-xs);display:block;margin-top:.25rem}
+  ol.spunte .testo a{color:var(--gold)}
+  li.fatto .testo{opacity:.45;text-decoration:line-through;text-decoration-color:var(--line2)}
+  .costo{font-family:var(--mono);font-size:var(--t-sm);color:var(--gold);white-space:nowrap;
+    margin-top:.1rem;text-align:right}
+  .costo.gratis{color:var(--good)}
+  .costo.dopo{color:var(--label)}
+
+  .instash{color:var(--good);font-weight:600}
+  .stop{border-left:3px solid var(--bad);padding-left:.8rem;margin:var(--s3) 0 0}
+  .stop b{color:var(--bad)}
+  .fonte{font-size:var(--t-xs);color:var(--label);line-height:1.65}
+  .fonte b{color:var(--muted)}
+  .totale{display:flex;flex-wrap:wrap;gap:var(--s3);margin:var(--s4) 0 0}
+  .totale .kpi{flex:1 1 10rem}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="marchio" href="../index.html">PoE <span>Tools</span></a>
+    <div class="nav-link">
+      <a href="../atlante/">Atlante</a>
+      <button type="button" class="nav-gruppo" aria-controls="giu-farm" aria-expanded="true">Farm</button>
+      <a href="../mappe/">Regex mappe</a>
+      <button type="button" class="nav-gruppo attivo" aria-controls="giu-build" aria-expanded="true">Build</button>
+    </div>
+    <span class="nav-patch">patch 3.29.2</span>
+  </div>
+  <div class="nav-giu" id="giu-farm">
+    <div class="nav-giu-in">
+      <a href="../strategie/">Strategie</a>
+      <a href="../farming/">Prezzi</a>
+      <a href="../scrying/">Scrying</a>
+      <a href="../warrant/">Warrant</a>
+    </div>
+  </div>
+  <div class="nav-giu" id="giu-build">
+    <div class="nav-giu-in">
+      <a href="../whisper/">Whisper</a>
+      <a href="../luminary/">Luminary</a>
+      <a href="../spesa/" aria-current="page">Spesa</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="testata">
+    <h1>La spesa — Luminary life stacking</h1>
+    <p class="sub">Tutto quello che serve per passare da <b>CI + Destructive Link</b> a <b>vita + Flame Link</b> col merc <b>Kineticist</b>. Ogni riga ha il link di trade già filtrato e collaudato, e il prezzo è il <b>fondo del libro</b> letto oggi.</p>
+    <div class="badges">
+      <span class="badge">patch 3.29.2</span>
+      <span class="badge">lega Allflame</span>
+      <span class="badge oro">prezzi del 24 agosto 2026</span>
+      <span class="badge">tutti i link <code>securable</code></span>
+    </div>
+  </header>
+
+  <div class="verdetto">
+    <h2>In tre righe</h2>
+    <p>Il danno non viene dal gear: viene da <b>quanta vita hai tu</b>. Flame Link regala al merc <b>il 5% della tua vita massima</b> come fuoco piatto, e il <b>light radius</b> lo moltiplica (nel PoB della guida <b>×3,25</b>, cioè oltre 3.000 flat). Il <b>Rathpith Globe</b> addosso al merc legge <i>la tua</i> vita e, via <code>150% Arcane Might</code> del Kinetic Blast of Clustering, diventa increased <b>attack</b> damage.</p>
+    <p>Quindi si compra <b>vita, light radius e block</b>. Niente danno sul giocatore: il giocatore non fa danno.</p>
+    <p><b>Il nucleo costa ~3,6 divine</b> — su <b>167 Divine + 2.632 Chaos</b> in tab (sync delle 20:39 del 24 agosto) è il <b>2%</b> della liquidità. Gli upgrade veri stanno in fondo, e sono un'altra scala di prezzo.</p>
+  </div>
+
+  <section class="blocco">
+    <h3><span class="num">0</span> Già in tab — non ricomprarlo</h3>
+    <p class="quando">Wealthy Exile, sincronizzato prima di scrivere questa pagina</p>
+    <ol class="spunte">
+      <li data-p="s0a"><input type="checkbox"><span class="testo"><b class="instash">Rathpith Globe</b> — tab 5. È il pezzo che moltiplica: <code>3% increased Spell Damage per 100 <b>Player</b> Maximum Life</code>, e sul KBoC vale <b>4,5% increased Attack Damage</b> per 100 di vita.<em>Va addosso al mercenario, non a te.</em></span><span class="costo gratis">in tab</span></li>
+      <li data-p="s0b"><input type="checkbox"><span class="testo"><b class="instash">The Taming</b> ×1 — tab 5. Ne servono <b>due</b>: uno c'è, uno si compra sotto.</span><span class="costo gratis">in tab</span></li>
+      <li data-p="s0c"><input type="checkbox"><span class="testo"><b class="instash">Gemme</b> — <b>Raise Spectre</b> 20/20 corrotta ×2, <b>Animate Guardian</b> 20/20 corrotta, <b>Vitality</b> 20/0.</span><span class="costo gratis">in tab</span></li>
+    </ol>
+    <div class="stop"><b>⚠️ Wealthy Exile non vede tutto.</b> Legge solo le tab sincronizzate: non l'equip dei personaggi, e <b>mai</b> quello del mercenario. Se una riga qui sotto ti risulta già tua, fidati del gioco.</div>
+  </section>
+
+  <section class="blocco">
+    <h3><span class="num">1</span> Il nucleo — sei uniche</h3>
+    <p class="quando">Sono le stesse in tutti e tre i PoB: guida budget, guida completa, e Ben lv 100</p>
+    <ol class="spunte">
+      <li data-p="s1a"><input type="checkbox"><span class="testo">
+        <b><a href="https://www.pathofexile.com/trade/search/Allflame/9zLdWzeRCK" target="_blank" rel="noopener">Nycta's Lantern</a></b> — arma. <code>50% increased Light Radius</code> + <code>Battlemage</code>.
+        <em>Il light radius qui non è illuminazione: <b>Golden Glory</b> lo fa applicare all'<i>effetto dei link</i>. 3.623 inserzioni, tiro irrilevante.</em></span><span class="costo">2 c</span></li>
+      <li data-p="s1b"><input type="checkbox"><span class="testo">
+        <b><a href="https://www.pathofexile.com/trade/search/Allflame/zb3YGpyKc4" target="_blank" rel="noopener">Kaom's Heart</a></b> — petto. <code>+1000 to maximum Life</code>, zero socket.
+        <em>1.000 di vita = <b>50 flat fire</b> al merc prima del light radius. Ben ne ha uno corrotto a +1190.</em></span><span class="costo">10 c</span></li>
+      <li data-p="s1c"><input type="checkbox"><span class="testo">
+        <b><a href="https://www.pathofexile.com/trade/search/Allflame/bG0dYPELHL" target="_blank" rel="noopener">Rotmother's Mutiny</a> con light radius ≥65%</b> — amuleto.
+        <em>🔴 <b>Qui il tiro conta</b>: il light radius va da <b>25 a 75%</b> ed è un moltiplicatore diretto del danno. Il <a href="https://www.pathofexile.com/trade/search/Allflame/jWQd2PBXcX" target="_blank" rel="noopener">link senza filtro</a> parte da 50 c, ma vende i tiri bassi. Guarda anche <i>quale</i> resistenza converte in caos: la guida ha Cold, Ben ha Fire.</em></span><span class="costo">1 div</span></li>
+      <li data-p="s1d"><input type="checkbox"><span class="testo">
+        <b><a href="https://www.pathofexile.com/trade/search/Allflame/pJ0dklkZS0" target="_blank" rel="noopener">The Hallowed Monarch</a></b> — elmo. <code>50% increased Light Radius</code>, <code>+25% to all Elemental Resistances</code>, <code>Your Linked Minions take 74% less Damage</code>.
+        <em>Il 74% vale per spettri e Animate Guardian, non per il merc: sono loro il muro di carne.</em></span><span class="costo">20 c</span></li>
+      <li data-p="s1e"><input type="checkbox"><span class="testo">
+        <b><a href="https://www.pathofexile.com/trade/search/Allflame/wv9Z7pR9sb" target="_blank" rel="noopener">Ceinture of Benevolence</a></b> — cintura. <code>Non-Unique Utility Flasks you Use apply to Linked Targets</code>.
+        <em>💡 È questa la riga che nel video suona come «il merc riceve tutte le tue flask»: <b>Diamond Flask</b> compresa, cioè crit chance regalata al Kineticist. 1 chaos.</em></span><span class="costo">1 c</span></li>
+      <li data-p="s1f"><input type="checkbox"><span class="testo">
+        <b><a href="https://www.pathofexile.com/trade/search/Allflame/8r8PWMO8IV" target="_blank" rel="noopener">Rumi's Concoction</a></b> — flask.
+        <em>Porta il block da 66% a <b>78%</b>. ⚠️ Qui funziona (a differenza di TrincoLum): questa build ha nodi di cariche e non flask <i>Flagellant's</i>.</em></span><span class="costo">1-5 c</span></li>
+    </ol>
+  </section>
+
+  <section class="blocco">
+    <h3><span class="num">2</span> I rari del giocatore — coi filtri già scritti</h3>
+    <p class="quando">Tutti i link sono collaudati: POST all'API, HTTP 200, totale sensato</p>
+    <ol class="spunte">
+      <li data-p="s2a"><input type="checkbox"><span class="testo">
+        <b><a href="https://www.pathofexile.com/trade/search/Allflame/zb3YGYZqI4" target="_blank" rel="noopener">Scudo</a></b> — <code>Recover ≥3% of Life when you Block</code> + <code>+100 vita</code> + <b>un prefisso libero o già craftato</b> (per metterci il block al banco).
+        <em>2.856 inserzioni, fondo <b>150 c</b>. Nel video costava 60 c: il mercato si è mosso. L'upgrade dichiarato è la base <i>Heat-attuned</i>, che ha block base più alto.</em></span><span class="costo">150 c</span></li>
+      <li data-p="s2b"><input type="checkbox"><span class="testo">
+        <b><a href="https://www.pathofexile.com/trade/search/Allflame/LgP3X3MZUn" target="_blank" rel="noopener">Guanti</a></b> — <code>≥110 vita</code> + <code>≥15% increased Life Regeneration rate</code>.
+        <em>Il regen è una difesa vera qui: 1.200/s che diventano ~3.000 col Rational Doctrine.</em></span><span class="costo">1-5 c</span></li>
+      <li data-p="s2c"><input type="checkbox"><span class="testo">
+        <b><a href="https://www.pathofexile.com/trade/search/Allflame/WvGDMDoZTm" target="_blank" rel="noopener">Stivali</a></b> — <code>≥110 vita</code> + <code>≥15% regen</code> + <code>≥25% movement speed</code>.</span><span class="costo">2-5 c</span></li>
+      <li data-p="s2d"><input type="checkbox"><span class="testo">
+        <b><a href="https://www.pathofexile.com/trade/search/Allflame/q90dDKdlhg" target="_blank" rel="noopener">2 × anello Vermillion</a></b> — <code>≥90 vita</code> + <code>≥10% light radius</code>.
+        <em>Il Vermillion porta <b>%vita all'implicito</b>: è la base giusta, non una scelta estetica. Il light radius sugli anelli è danno.</em></span><span class="costo">70+100 c</span></li>
+      <li data-p="s2e"><input type="checkbox"><span class="testo">
+        <b><a href="https://www.pathofexile.com/trade/search/Allflame/veYoJG2DcE" target="_blank" rel="noopener">Gioielli</a></b> — <code>≥6% increased maximum Life</code> + <code>+2% Chance to Block Spell Damage while holding a Shield</code>.
+        <em>2.499 inserzioni, fondo <b>60 c</b> — esattamente il prezzo che dice il video. ⚠️ Il mod giusto è quello <i>while holding a Shield</i>: col «Chance to Block Spell Damage» liscio la ricerca torna <b>zero</b>, e sembrerebbe che non esistano.</em></span><span class="costo">60-75 c</span></li>
+    </ol>
+  </section>
+
+  <section class="blocco">
+    <h3><span class="num">3</span> Il mercenario</h3>
+    <p class="quando">Kineticist con Kinetic Blast of Clustering — il gear del merc non è in nessun PoB, PoB non lo modella</p>
+    <ol class="spunte">
+      <li data-p="s3a"><input type="checkbox"><span class="testo">
+        <b><a href="https://www.pathofexile.com/trade/search/Allflame/9zL87YoyTK" target="_blank" rel="noopener">Piscator's Vigil</a></b> — wand del merc.
+        <em>Si sceglie <b>perché</b> il flat è già risolto dal Flame Link: <i>«even if we have a 500 DPS wand… we already have 3K flat fire»</i>. Quello che serve è <b>crit chance e attack speed</b>, che sono moltiplicativi. 2 chaos.</em></span><span class="costo">2 c</span></li>
+      <li data-p="s3b"><input type="checkbox"><span class="testo">
+        <b><a href="https://www.pathofexile.com/trade/search/Allflame/MdPpXVaqiJ" target="_blank" rel="noopener">The Taming</a></b> — il <b>secondo</b> anello (il primo è in tab).</span><span class="costo">4 c</span></li>
+      <li data-p="s3c"><input type="checkbox"><span class="testo">
+        <b>Rari del merc</b> — armour/EV con vita e resistenze; <b>accuratezza T3+</b> sull'elmo (per essere hit-cappato), <b>attack speed</b> sui guanti (essenza di Zeal), <b>movement speed</b> sugli stivali.
+        <em>Nel video sono autocraftati con gli strand: base a 2 c + essenza a 2,5 c, ~5-6 tentativi. ⚠️ <b>Il merc veste solo i suoi tipi</b> di arma e armatura, per classe e allineamento.</em></span><span class="costo">~30 c</span></li>
+      <li data-p="s3d"><input type="checkbox"><span class="testo">
+        <b>Impliciti eldritch sul merc</b> — stivali: action speed + sun threshold · guanti: rage on hit + exposure · elmo: area of effect + damage penetration.
+        <em>💡 Il trucco del video: <i>«we as a player count as pinnacle bosses»</i>, quindi gli Eldritch <i>«when a Pinnacle Boss is in your presence»</i> sono sempre attivi sul merc.</em></span><span class="costo dopo">dopo</span></li>
+    </ol>
+    <div class="stop"><b>🔴 Il warrant non è nella lista.</b> Karielle è già tua, e assumerla è irreversibile: il rematch è un tentativo secco e se muori il warrant è perso. Il livello del merc è <b>fisso</b> e ignora il tier della mappa &mdash; quindi si apre in una <b>T1 bianca senza mod</b>, dove non c'è nient'altro che possa ucciderti.</div>
+  </section>
+
+  <section class="blocco">
+    <h3><span class="num">4</span> Animate Guardian e spettri</h3>
+    <p class="quando">Sono i muri di carne — con The Hallowed Monarch prendono il 74% di danno in meno</p>
+    <ol class="spunte">
+      <li data-p="s4a"><input type="checkbox"><span class="testo">
+        <b><a href="https://www.pathofexile.com/trade/search/Allflame/X3PgX8eJUP" target="_blank" rel="noopener">Leer Cast</a></b> — <code>50% increased Damage</code> agli alleati vicini.</span><span class="costo">5 c</span></li>
+      <li data-p="s4b"><input type="checkbox"><span class="testo">
+        <b><a href="https://www.pathofexile.com/trade/search/Allflame/op0d5MZYcl" target="_blank" rel="noopener">Dying Breath</a></b> — <code>increased effect of Non-Curse Auras</code>.</span><span class="costo">7 c</span></li>
+      <li data-p="s4c"><input type="checkbox"><span class="testo">
+        <b><a href="https://www.pathofexile.com/trade/search/Allflame/veYoJMO9TE" target="_blank" rel="noopener">Southbound</a></b> — <code>15% increased Life</code> per l'AG.</span><span class="costo">1 c</span></li>
+      <li data-p="s4d"><input type="checkbox"><span class="testo">
+        <b>Spettri: Carnage Chieftain + Host Chieftain</b> — frenzy e power charge.
+        <em>Si catturano in <b>Ashen Fields, Atto 7</b>: entrambi nella stessa zona. Costo zero.</em></span><span class="costo gratis">gratis</span></li>
+    </ol>
+  </section>
+
+  <section class="blocco">
+    <h3><span class="num">5</span> Dopo, quando gira</h3>
+    <p class="quando">Un'altra scala di prezzo — nessuno di questi serve per partire</p>
+    <ol class="spunte">
+      <li data-p="s5a"><input type="checkbox"><span class="testo">
+        <b><a href="https://www.pathofexile.com/trade/search/Allflame/D6PoXqVvH5" target="_blank" rel="noopener">Enmity's Embrace</a></b> — penetrazione fuoco dalla res overcappata, <b>90% e oltre</b>.
+        <em>⚠️ Taglia la fire res del gear: si prende insieme a <b>The Untouched Soul</b>, non da solo.</em></span><span class="costo">139 c</span></li>
+      <li data-p="s5b"><input type="checkbox"><span class="testo">
+        <b><a href="https://www.pathofexile.com/trade/search/Allflame/veYoJpgZfE" target="_blank" rel="noopener">Rational Doctrine</a></b> — porta il life regen da ~1.200 a ~3.000/s.</span><span class="costo dopo">15 div</span></li>
+      <li data-p="s5c"><input type="checkbox"><span class="testo">
+        <b>Glorious Vanity</b> (Doryani) — nel video vale <b>~20% increased Life</b> per un gioiello solo, a circa 1 divine.
+        <em>Si cerca col calcolatore dei timeless jewel, pesando <i>max life</i>: il seed giusto converte i nodi in radius in vita.</em></span><span class="costo dopo">~1 div</span></li>
+      <li data-p="s5d"><input type="checkbox"><span class="testo">
+        <b><a href="https://www.pathofexile.com/trade/search/Allflame/KlPvXqwEs5" target="_blank" rel="noopener">Bound By Destiny</a></b> — <code>(10-15)% increased maximum Life <b>if 2 Elder Items are Equipped</b></code>.
+        <em>🔴 Non è un gioiello da 1 chaos: il fondo è pieno di tiri che non attivano niente. Serve la condizione — <b>due item Elder addosso</b> — e nel PoB della guida quei due sono gli anelli.</em></span><span class="costo dopo">dipende</span></li>
+      <li data-p="s5e"><input type="checkbox"><span class="testo">
+        <b>Foulborn The Red Dream</b> — le passive di fire/all-res in radius danno anche vita.
+        <em>⚠️ È la variante <b>Foulborn</b>, non <a href="https://www.pathofexile.com/trade/search/Allflame/MdPpXqjGFJ" target="_blank" rel="noopener">The Red Dream</a> normale (33 c): sono due oggetti diversi.</em></span><span class="costo dopo">dopo</span></li>
+      <li data-p="s5f"><input type="checkbox"><span class="testo">
+        <b>Mageblood</b> — è la cintura di Ben, e sostituisce la Ceinture.
+        <em>⚠️ Ma la Ceinture è ciò che passa le flask <b>al mercenario</b>: qui non è lo scambio ovvio che è altrove. Da misurare prima, non da comprare.</em></span><span class="costo dopo">~170 div</span></li>
+    </ol>
+  </section>
+
+  <section class="blocco">
+    <h3><span class="num">6</span> Tre trappole di questa lista</h3>
+    <ol class="spunte">
+      <li data-p="s6a"><input type="checkbox"><span class="testo">
+        <b>Il prezzo è il fondo del libro, non il valore.</b> Le cifre qui sono la prima inserzione <code>securable</code> ordinata per prezzo crescente. Su un'unica dove il <i>tiro</i> conta — il Rotmother's — il fondo è il tiro peggiore, ed è per questo che quella riga ha un filtro e non un nome.</span></li>
+      <li data-p="s6b"><input type="checkbox"><span class="testo">
+        <b>Una ricerca che torna zero è quasi sempre il filtro.</b> Successo due volte scrivendo questa pagina: l'anello Vermillion (<code>type</code>, non <code>term</code>) e il gioiello con lo spell block (<i>while holding a Shield</i>). In entrambi i casi il mercato c'era: 2.287 e 2.499 inserzioni.</span></li>
+      <li data-p="s6c"><input type="checkbox"><span class="testo">
+        <b>Niente di questa lista si compra prima di aver assunto Karielle.</b> Se il duello va male il warrant sparisce e la build cambia bersaglio: la spesa segue il merc, non il contrario.</span></li>
+    </ol>
+  </section>
+
+  <div class="totale">
+    <div class="kpi"><span class="etichetta">Nucleo giocatore</span><b>~3,3 div</b></div>
+    <div class="kpi"><span class="etichetta">Merc + AG</span><b>~49 c</b></div>
+    <div class="kpi"><span class="etichetta">Totale per partire</span><b>~3,6 div</b></div>
+    <div class="kpi"><span class="etichetta">Liquidi in tab</span><b>167 div + 2.632 c</b></div>
+  </div>
+
+  <p class="fonte" style="margin-top:var(--s5)">
+    <b>Fonti.</b> PoB <i>Guida Luminary Life Stacking</i> (set «Budget Life Stack» e «Life Stack») e <i>Ben_ — Ben_LUMINOUS</i> lv 100, letti in locale.
+    Video: <a href="https://www.youtube.com/watch?v=LXoJCRmUaJI" target="_blank" rel="noopener">XTheFarmerX, 14 agosto</a> (trascrizione completa) e <a href="https://www.youtube.com/watch?v=w-NL6LSZdco" target="_blank" rel="noopener">Ben, 10 agosto</a> — ⚠️ quest'ultimo è una <b>sessione di crafting</b>, non una guida: il suo valore è il PoB, non il parlato.
+    Testo delle gemme e dei nodi da <b>poewiki</b>. Prezzi: API di trade di GGG, ricerche <code>securable</code> costruite e collaudate una per una il <b>24 agosto 2026</b>.
+    Stash: Wealthy Exile, <b>risincronizzato</b> prima di scrivere.
+  </p>
+
+</div>
+
+<script>
+// Segnaposto della spesa, in locale. Nessuna rete, nessuna dipendenza.
+(function(){
+  var CHIAVE='spesa-life-stack';
+  var stato={};
+  try{ stato=JSON.parse(localStorage.getItem(CHIAVE)||'{}'); }catch(e){ stato={}; }
+  document.querySelectorAll('ol.spunte > li[data-p]').forEach(function(li){
+    var c=li.querySelector('input[type=checkbox]'), id=li.dataset.p;
+    if(!c) return;
+    if(stato[id]){ c.checked=true; li.classList.add('fatto'); }
+    c.addEventListener('change',function(){
+      li.classList.toggle('fatto',c.checked);
+      stato[id]=c.checked;
+      try{ localStorage.setItem(CHIAVE,JSON.stringify(stato)); }catch(e){}
+    });
+  });
+})();
+</script>
+<script src="../menu.js" defer></script>
+</body>
+</html>

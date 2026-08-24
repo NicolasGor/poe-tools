@@ -88,14 +88,14 @@ dato della wiki serve a uno strumento, si copia il singolo valore, non la pagina
 - Un strumento = una cartella con il suo `index.html`, più una scheda nel
   catalogo in `index.html` alla radice.
 - 🔴 **E la voce va aggiunta alla barra di *tutte* le pagine**, non solo a quella
-  su cui stai lavorando: la barra è copiata dentro ogni `index.html`, **nove**
+  su cui stai lavorando: la barra è copiata dentro ogni `index.html`, **dieci**
   volte. Warrant per giorni si è visto **solo dalla homepage** proprio così.
   `node controlla-barre.mjs` lo verifica, e una GitHub Action lo rifà a ogni push
   — perché non è un errore che si nota guardando una pagina: bisogna
   confrontarle fra loro.
 - **Una voce di barra può essere un gruppo invece di una pagina.** Ce ne sono
   due: **Farm** (Strategie · Prezzi · Scrying · Warrant) e **Build** (Whisper ·
-  Luminary), ognuno un `<button class="nav-gruppo">`. Quattro cose da sapere se
+  Luminary · Spesa), ognuno un `<button class="nav-gruppo">`. Quattro cose da sapere se
   se ne aggiunge un terzo:
   - il pannello `.nav-giu` sta **fuori da `.nav-link`**, che ha `overflow-x:auto`
     e dentro lo ritaglierebbe su schermo stretto;
