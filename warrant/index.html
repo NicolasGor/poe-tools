@@ -595,6 +595,15 @@ let ORDINE = { campo: "valore", verso: -1 };
  * e' quello che serve per liquidare. E il floor resta il sottocosto. */
 const valoreDi = (w) => w.mediana ?? w.quinto ?? w.prezzo;
 
+/* 🔴 **E «da buttare» non usa questo numero, ne usa un altro — di proposito.**
+ * Li' la domanda non e' «quanto vale» ma «quanto ci ricavo se lo vendo subito»,
+ * e la risposta e' il **quinto prezzo**: quello che serve per essere fra i piu'
+ * economici e uscire in fretta. ⚠️ Passandola alla mediana il 24 agosto la
+ * sezione si era svuotata — «nessun warrant sotto soglia» — e non era un difetto
+ * del cursore: col metro sbagliato **non c'e' piu' niente da buttare**, perche'
+ * ogni scarto sembra valere un divine. Due domande, due statistiche. */
+const incassoDi = (w) => w.quinto ?? w.prezzo;
+
 const dal = (id) => {
   const v = PRIMI_VISTI[id];
   if (!v) return '<span class="oltre">—</span>';
@@ -1751,7 +1760,7 @@ const COMUNE_STASH = "mercenary warrant build mercenary level requires right cli
 
 function calcolaButta(soglia, limite) {
   const tutti = (ULTIMI && ULTIMI.warrant) || [];
-  const val = valoreDi;
+  const val = incassoDi;
   const butta = tutti.filter((w) => val(w) <= soglia + 1e-9);
   const tieni = tutti.filter((w) => val(w) > soglia + 1e-9);
   const vietati = tieni.map(testoWarrant).concat([COMUNE_STASH]);
@@ -1829,7 +1838,7 @@ let SOGLIE = [0];
 
 function preparaSoglia() {
   const tutti = (ULTIMI && ULTIMI.warrant) || [];
-  const val = valoreDi;
+  const val = incassoDi;
   SOGLIE = [0, ...new Set(tutti.map(val))].sort((a, b) => a - b);
   const c = $("soglia");
   c.max = String(Math.max(1, SOGLIE.length - 1));
@@ -1848,12 +1857,12 @@ function disegnaButta() {
   const limite = Math.max(20, Math.min(250, Number($("limite").value) || 63));
   localStorage.setItem("warrant-soglia", String(soglia));
   localStorage.setItem("warrant-limite", String(limite));
-  $("soglia-eti").textContent = `≤ ${soglia.toFixed(0)} c`;
+  $("soglia-eti").textContent = `≤ ${prezzo(soglia)}`;
 
   const r = calcolaButta(soglia, limite);
-  const persi = r.butta.reduce((s, w) => s + valoreDi(w), 0);
+  const persi = r.butta.reduce((s, w) => s + incassoDi(w), 0);
   $("butta-conta").innerHTML = r.butta.length
-    ? `<b>${r.butta.length}</b> su ${tutti.length} · <b>${persi.toFixed(0)} c</b> buttati · ne restano <b>${r.tieni.length}</b>`
+    ? `<b>${r.butta.length}</b> su ${tutti.length} · <b>${prezzo(persi)}</b> buttati · ne restano <b>${r.tieni.length}</b>`
     : "nessun warrant sotto soglia";
 
   el.innerHTML = r.righe.map((riga, i) => `
