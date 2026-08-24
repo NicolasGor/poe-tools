@@ -137,12 +137,22 @@
      Nascono dalla serie di Nerotox: ogni gradino e' una ricerca di trade sua,
      collaudata. Stanno dentro la scheda perche' la domanda «questo warrant lo
      tengo?» e' la stessa domanda a cinque livelli di ambizione. */
-  .scaglioni{display:grid;gap:2px;margin-top:.35rem}
-  .riga-scg{display:grid;grid-template-columns:6.5rem 1fr auto;gap:var(--s2);align-items:baseline;
-            font-size:var(--t-xs);padding:.2rem .35rem;border-radius:var(--r-sm)}
+  /* ⚠️ `.lista dd` e' `display:flex` e ha specificita' maggiore di `.scaglioni`:
+     senza questa riga ogni scaglione diventa un item flex largo quanto il suo
+     contenuto, e le colonne non si allineano da una riga all'altra. Stessa
+     soluzione della vecchia `dd.comb`. */
+  dd.scaglioni{flex-direction:column;gap:2px;align-items:stretch;margin-top:.35rem}
+  /* Cinque colonne, le stesse della vecchia riga «pagano»: nome, gemme,
+     possesso, valore, trade. Il possesso e' l'unica che puo' essere vuota, e
+     resta uno spazio invece di far ballare le colonne. */
+  .riga-scg{display:grid;grid-template-columns:repeat(5, minmax(0, 1fr));gap:var(--s2);
+            align-items:baseline;font-size:var(--t-xs);padding:.25rem .35rem;border-radius:var(--r-sm)}
+  .riga-scg > *{min-width:0}
   .riga-scg:nth-child(odd){background:rgba(255,255,255,.03)}
   .riga-scg .sn{color:var(--gold);font-weight:600}
   .riga-scg .sc{color:var(--muted);line-height:1.4}
+  .riga-scg .sv{font-family:var(--mono);color:var(--good);text-align:right;white-space:nowrap}
+  .riga-scg .st{text-align:right}
   .riga-scg a{white-space:nowrap;font-family:var(--mono)}
   dd.comb{flex-direction:column;gap:.15rem;align-items:stretch}
   .riga-comb{display:grid;grid-template-columns:minmax(0,1fr) 4rem 7.2rem 3.4rem 4.6rem 3.4rem;gap:.35rem;
@@ -1275,11 +1285,11 @@ const GRIGLIA = [
            ["Ele Damage with Attacks", 0], ["Hypothermia", 0], ["Faster Attacks", 0], ["Return", 0]],
    azzera: ["Multistrike", "Frost Blades insieme", "Spectral Helix", "Elemental Hit"],
    scaglioni: [
-     ["Minimum", "<b>2 supporti</b> fra Ele Damage e Hypothermia, anche Tier 2", "https://www.pathofexile.com/trade/search/Allflame/3q6awYZPc5"],
-     ["Midgame", "pi&ugrave; <b>Greater Faster Attacks</b> e <b>uno</b> dei due Tier 3", "https://www.pathofexile.com/trade/search/Allflame/mkgR2DbeS6"],
-     ["Endgame", "<b>entrambi</b> i Tier 3 — Greater Hypothermia <b>e</b> Greater Ele Damage &middot; <span class=\"lim\">qui il Faster Attacks Tier 2 &egrave; acceso: spegnilo</span>", "https://www.pathofexile.com/trade/search/Allflame/jWRDpypkCX"],
-     ["GG Merc", "il <b>Return</b>, Greater Faster Attacks, <b>uno</b> dei due Tier 3", "https://www.pathofexile.com/trade/search/Allflame/bGDrZYZaCL"]],
-   nota: "\ud83d\udcb0 <b>Il pi&ugrave; conveniente dei quattro</b>: un GG sta sui <b>5 div</b>, <i>\u00abnot very contested and a little bit underplayed\u00bb</i>. \u26a0\ufe0f Ma il clear <i>\u00abfeels quite a bit worse than Frost Blades\u00bb</i> ed &egrave; <i>\u00abextremely clunky with multistrike\u00bb</i> — che infatti <b>raddoppia la stessa variante</b> invece di cambiarla. Da prendere se il single target &egrave; la tua esigenza. \u26a0\ufe0f <b>Nelle sue ricerche il <i>Faster Attacks Tier 2</i> &egrave; spento su Midgame e GG e acceso sull&rsquo;Endgame</b>: lo scaglione di mezzo finisce cos&igrave; pi&ugrave; severo di quello sopra — sembra una svista, e conviene spegnerlo anche l&igrave;. <a href=\"https://www.youtube.com/watch?v=45aM9242Umo\" target=\"_blank\" rel=\"noopener\">video</a>"},
+     {"n": "Minimum", "g": "<b>2</b> fra Ele Damage e Hypothermia", "v": "5 div", "url": "https://www.pathofexile.com/trade/search/Allflame/3q6awYZPc5", "sk": "Wild Strike", "gruppi": [{"min": 2, "fra": ["Elemental Damage with Attacks", "Greater Elemental Damage with Attacks", "Hypothermia", "Greater Hypothermia"]}], "senza": [["Wild Strike", "Multistrike"], ["Wild Strike", "Greater Multistrike"]], "senzaSkill": ["Frost Blades"]},
+     {"n": "Midgame", "g": "pi&ugrave; <b>Greater Faster Attacks</b> e <b>uno</b> dei Tier 3", "v": "10 div", "url": "https://www.pathofexile.com/trade/search/Allflame/mkgR2DbeS6", "sk": "Wild Strike", "gruppi": [{"min": 2, "fra": ["Elemental Damage with Attacks", "Greater Elemental Damage with Attacks", "Hypothermia", "Greater Hypothermia"]}, {"min": 1, "fra": ["Greater Faster Attacks"]}, {"min": 1, "fra": ["Greater Hypothermia", "Greater Elemental Damage with Attacks"]}], "senza": [["Wild Strike", "Multistrike"], ["Wild Strike", "Greater Multistrike"]], "senzaSkill": ["Frost Blades"]},
+     {"n": "Endgame", "g": "<b>entrambi</b> i Tier 3", "v": "45 div", "url": "https://www.pathofexile.com/trade/search/Allflame/jWRDpypkCX", "sk": "Wild Strike", "gruppi": [{"min": 2, "fra": ["Elemental Damage with Attacks", "Greater Elemental Damage with Attacks", "Hypothermia", "Greater Hypothermia"]}, {"min": 1, "fra": ["Faster Attacks", "Greater Faster Attacks"]}, {"min": 2, "fra": ["Greater Hypothermia", "Greater Elemental Damage with Attacks"]}], "senza": [["Wild Strike", "Multistrike"], ["Wild Strike", "Greater Multistrike"]], "senzaSkill": ["Frost Blades"]},
+     {"n": "GG Merc", "g": "pi&ugrave; il <b>Return</b>", "v": "100 div", "url": "https://www.pathofexile.com/trade/search/Allflame/bGDrZYZaCL", "sk": "Wild Strike", "tutti": [["Wild Strike", "Return"]], "gruppi": [{"min": 2, "fra": ["Elemental Damage with Attacks", "Greater Elemental Damage with Attacks", "Hypothermia", "Greater Hypothermia"]}, {"min": 1, "fra": ["Greater Faster Attacks"]}, {"min": 1, "fra": ["Greater Hypothermia", "Greater Elemental Damage with Attacks"]}], "senza": [["Wild Strike", "Multistrike"], ["Wild Strike", "Greater Multistrike"]], "senzaSkill": ["Frost Blades"]}],
+      nota: "\ud83d\udcb0 <b>Il pi&ugrave; conveniente dei quattro</b>, <i>\u00abnot very contested and a little bit underplayed\u00bb</i>. \u26a0\ufe0f Nel video il GG &egrave; dato a <b>5 div</b>, ma la sua stessa ricerca oggi torna <b>3 risultati a 100-350</b>: quel numero era un&rsquo;inserzione indicata a schermo, non la fascia. \u26a0\ufe0f Ma il clear <i>\u00abfeels quite a bit worse than Frost Blades\u00bb</i> ed &egrave; <i>\u00abextremely clunky with multistrike\u00bb</i> — che infatti <b>raddoppia la stessa variante</b> invece di cambiarla. Da prendere se il single target &egrave; la tua esigenza. \u26a0\ufe0f <b>Nelle sue ricerche il <i>Faster Attacks Tier 2</i> &egrave; spento su Midgame e GG e acceso sull&rsquo;Endgame</b>: lo scaglione di mezzo finisce cos&igrave; pi&ugrave; severo di quello sopra — sembra una svista, e conviene spegnerlo anche l&igrave;. <a href=\"https://www.youtube.com/watch?v=45aM9242Umo\" target=\"_blank\" rel=\"noopener\">video</a>"},
 
   {nome: "Combatant · Frost Blades", chiave: "Combatant", casa: "Azadi", compratori: "tuttofare",
    mercato: {gemme: ["Return", "Lightning Penetration"], ins: 3497, mediana: "10 d", alto: "100 d"},
@@ -1287,12 +1297,12 @@ const GRIGLIA = [
            ["Chain", 1], ["Ele Damage with Attacks", 0], ["Hypothermia", 0], ["Faster Attacks", 0]],
    azzera: ["Pierce", "Wild Strike insieme", "Spectral Helix", "Elemental Hit"],
    scaglioni: [
-     ["Minimum", "Chain <b>e nessun Pierce</b> &middot; <b>1 supporto</b> fra Ele Damage e Hypothermia", "https://www.pathofexile.com/trade/search/Allflame/Kld4gv0Pi5"],
-     ["Midgame", "gli stessi, ma <b>2 supporti</b> di danno invece di 1", "https://www.pathofexile.com/trade/search/Allflame/Kld4gM7yi5"],
-     ["Endgame <span class=\"lim\">senza return</span>", "pi&ugrave; <b>un Faster Attacks</b>", "https://www.pathofexile.com/trade/search/Allflame/q9l6yK0psg"],
-     ["Endgame <span class=\"lim\">col return</span>", "pi&ugrave; il <b>Return</b>, senza Faster Attacks", "https://www.pathofexile.com/trade/search/Allflame/OglBJZoQIE"],
-     ["GG Merc", "<b>Faster Attacks e Return insieme</b>", "https://www.pathofexile.com/trade/search/Allflame/PPaX7lLqUL"]],
-   nota: "\ud83d\udd34 <b>Chain obbligatorio, Pierce brick</b>, ed &egrave; la stessa regola: <i>\u00abchain happens after piercing\u00bb</i> — col pierce il chain non parte. <b>Il clear migliore dei quattro.</b> \u26a0\ufe0f Per mappare il <b>Return non va comprato</b>: <i>\u00abI would highly recommend to not buy a mercenary with return\u00bb</i>, poco consistente e caro. <a href=\"https://www.youtube.com/watch?v=45aM9242Umo\" target=\"_blank\" rel=\"noopener\">video</a>"},
+     {"n": "Minimum", "g": "Chain, niente Pierce &middot; <b>1</b> supporto di danno", "v": "1 div", "url": "https://www.pathofexile.com/trade/search/Allflame/Kld4gv0Pi5", "sk": "Frost Blades", "gruppi": [{"min": 1, "fra": ["Elemental Damage with Attacks", "Greater Elemental Damage with Attacks", "Hypothermia", "Greater Hypothermia"]}], "tutti": [["Frost Blades", "Chain"]], "senza": [["Frost Blades", "Pierce"], ["Frost Blades", "Greater Pierce"]], "senzaSkill": ["Wild Strike"]},
+     {"n": "Midgame", "g": "<b>2</b> supporti di danno", "v": "5 div", "url": "https://www.pathofexile.com/trade/search/Allflame/Kld4gM7yi5", "sk": "Frost Blades", "gruppi": [{"min": 2, "fra": ["Elemental Damage with Attacks", "Greater Elemental Damage with Attacks", "Hypothermia", "Greater Hypothermia"]}], "tutti": [["Frost Blades", "Chain"]], "senza": [["Frost Blades", "Pierce"], ["Frost Blades", "Greater Pierce"]], "senzaSkill": ["Wild Strike"]},
+     {"n": "Endgame", "g": "pi&ugrave; <b>un Faster Attacks</b>", "v": "20 div", "url": "https://www.pathofexile.com/trade/search/Allflame/q9l6yK0psg", "sk": "Frost Blades", "gruppi": [{"min": 2, "fra": ["Elemental Damage with Attacks", "Greater Elemental Damage with Attacks", "Hypothermia", "Greater Hypothermia"]}, {"min": 1, "fra": ["Faster Attacks", "Greater Faster Attacks"]}], "tutti": [["Frost Blades", "Chain"]], "senza": [["Frost Blades", "Pierce"], ["Frost Blades", "Greater Pierce"]], "senzaSkill": ["Wild Strike"]},
+     {"n": "Endgame <span class=\"lim\">col return</span>", "g": "<b>Return</b> invece del Faster Attacks", "v": "40 div", "url": "https://www.pathofexile.com/trade/search/Allflame/OglBJZoQIE", "sk": "Frost Blades", "tutti": [["Frost Blades", "Chain"], ["Frost Blades", "Return"]], "gruppi": [{"min": 2, "fra": ["Elemental Damage with Attacks", "Greater Elemental Damage with Attacks", "Hypothermia", "Greater Hypothermia"]}], "senza": [["Frost Blades", "Pierce"], ["Frost Blades", "Greater Pierce"]], "senzaSkill": ["Wild Strike"]},
+     {"n": "GG Merc", "g": "Faster Attacks <b>e</b> Return", "v": "100 div+", "url": "https://www.pathofexile.com/trade/search/Allflame/PPaX7lLqUL", "sk": "Frost Blades", "tutti": [["Frost Blades", "Chain"], ["Frost Blades", "Return"]], "gruppi": [{"min": 2, "fra": ["Elemental Damage with Attacks", "Greater Elemental Damage with Attacks", "Hypothermia", "Greater Hypothermia"]}, {"min": 1, "fra": ["Faster Attacks", "Greater Faster Attacks"]}], "senza": [["Frost Blades", "Pierce"], ["Frost Blades", "Greater Pierce"]], "senzaSkill": ["Wild Strike"]}],
+      nota: "\ud83d\udd34 <b>Chain obbligatorio, Pierce brick</b>, ed &egrave; la stessa regola: <i>\u00abchain happens after piercing\u00bb</i> — col pierce il chain non parte. <b>Il clear migliore dei quattro.</b> \u26a0\ufe0f Per mappare il <b>Return non va comprato</b>: <i>\u00abI would highly recommend to not buy a mercenary with return\u00bb</i>, poco consistente e caro. <a href=\"https://www.youtube.com/watch?v=45aM9242Umo\" target=\"_blank\" rel=\"noopener\">video</a>"},
 
   {nome: "Manyshot", chiave: "Manyshot", casa: "Cyaxan", compratori: "clear",
    mercato: {gemme: ["Return", "Greater Multiple Projectiles"], ins: 1912, mediana: "14 d", alto: "150 d"},
@@ -1301,11 +1311,11 @@ const GRIGLIA = [
            ["Greater Hypothermia", 0], ["Greater Ele Damage", 0]],
    azzera: ["Icicle Rain"],
    scaglioni: [
-     ["Earlygame", "un clear link qualsiasi &middot; <b>~20 c</b>, e basta per le T16", "https://www.pathofexile.com/trade/search/Allflame/4mP3V2jQT9"],
-     ["Midgame", "il <b>Return sul Vaal Ice Shot</b> &middot; <b>2-3 div</b>", "https://www.pathofexile.com/trade/search/Allflame/Z6Em09GmHQ"],
-     ["Endgame", "Return <b>e due</b> link di danno sul Vaal &middot; <b>60-70 div</b>", "https://www.pathofexile.com/trade/search/Allflame/JBnK2YKRFl"],
-     ["GG Merc", "Return su <b>entrambe</b> le Ice Shot &middot; <b>100 div</b>", "https://www.pathofexile.com/trade/search/Allflame/d86ymvXRsJ"]],
-   nota: "\ud83d\udd34 <b>L&rsquo;unica cosa che lo brica &egrave; Icicle Rain.</b> Il Return va sul <b>Vaal</b> Ice Shot: &egrave; l&rsquo;unico salto che cambia fascia di prezzo. \u26a0\ufe0f <b>Il Pierce &egrave; da evitare</b>: <i>\u00abchain and fork lose a lot of priority and get pushed back\u00bb</i> — <i>\u00abpersonally I don&rsquo;t have one with pierce\u00bb</i>. Le skill di movimento non contano. <a href=\"https://www.youtube.com/watch?v=ljaXlGLdyxM\" target=\"_blank\" rel=\"noopener\">video</a>"},
+     {"n": "Earlygame", "g": "un clear link qualsiasi &middot; basta per le T16", "v": "~20 c", "url": "https://www.pathofexile.com/trade/search/Allflame/4mP3V2jQT9", "sk": "Ice Shot", "gruppi": [{"min": 1, "fra": ["Chain", "Fork", "Greater Fork", "Pierce", "Greater Pierce", "Greater Multiple Projectiles"]}], "senzaSkill": ["Icicle Rain"]},
+     {"n": "Midgame", "g": "il <b>Return sul Vaal</b> Ice Shot", "v": "2-3 div", "url": "https://www.pathofexile.com/trade/search/Allflame/Z6Em09GmHQ", "tutti": [["Vaal Ice Shot", "Return"]], "senzaSkill": ["Icicle Rain"]},
+     {"n": "Endgame", "g": "Return <b>e due</b> link di danno sul Vaal", "v": "60-70 div", "url": "https://www.pathofexile.com/trade/search/Allflame/JBnK2YKRFl", "sk": "Vaal Ice Shot", "tutti": [["Vaal Ice Shot", "Return"]], "gruppi": [{"min": 2, "fra": ["Elemental Damage with Attacks", "Greater Elemental Damage with Attacks", "Hypothermia", "Greater Hypothermia"]}], "senzaSkill": ["Icicle Rain"]},
+     {"n": "GG Merc", "g": "Return su <b>entrambe</b> le Ice Shot", "v": "100 div", "url": "https://www.pathofexile.com/trade/search/Allflame/d86ymvXRsJ", "tutti": [["Vaal Ice Shot", "Return"], ["Ice Shot", "Return"]], "senzaSkill": ["Icicle Rain"]}],
+      nota: "\ud83d\udd34 <b>L&rsquo;unica cosa che lo brica &egrave; Icicle Rain.</b> Il Return va sul <b>Vaal</b> Ice Shot: &egrave; l&rsquo;unico salto che cambia fascia di prezzo. \u26a0\ufe0f <b>Il Pierce &egrave; da evitare</b>: <i>\u00abchain and fork lose a lot of priority and get pushed back\u00bb</i> — <i>\u00abpersonally I don&rsquo;t have one with pierce\u00bb</i>. Le skill di movimento non contano. <a href=\"https://www.youtube.com/watch?v=ljaXlGLdyxM\" target=\"_blank\" rel=\"noopener\">video</a>"},
 
   {nome: "Kineticist", chiave: "Kineticist", casa: "Bardiya", compratori: "15 d+",
    mercato: {gemme: ["Return", "Greater Fork"], ins: 1208, mediana: "50 d", alto: "450 d"},
@@ -1314,11 +1324,11 @@ const GRIGLIA = [
            ["Haste", 0], ["GMP", 0], ["Greater Ele Damage", 0], ["crit multi", 0]],
    azzera: ["Kinetic Bolt", "Kinetic Rain", "Power Siphon", "Kinetic Blast of Impact", "crit chance"],
    scaglioni: [
-     ["Minimo viabile", "Return <b>e</b> un clear link &middot; <b>~10 div</b>", "https://www.pathofexile.com/trade/search/Allflame/7nRvBzl2S5"],
-     ["Midgame", "pi&ugrave; l&rsquo;aura <b>Haste</b>, ancora su due link &middot; <b>15 div+</b>", "https://www.pathofexile.com/trade/search/Allflame/BgzkZKGQF8"],
-     ["Endgame", "pi&ugrave; <b>un link di danno</b> &middot; <b>40-50 div</b>, poi 80-200", "https://www.pathofexile.com/trade/search/Allflame/LgkGrPO5Fn"],
-     ["GG Merc", "Return <b>+ GMP +</b> clear link &middot; <b>oltre uno specchio</b>", "https://www.pathofexile.com/trade/search/Allflame/zbrQyEqah4"]],
-   nota: "\ud83d\udd34 <b>Non &egrave; farmabile dall&rsquo;albero atlas</b>, e per questo costa un&rsquo;altra cosa: <i>\u00abyou can buy a Wild Strike merc for a tenth of the price\u00bb</i>. La seconda skill deve essere <b>Greater Kinetic Blast</b> (cooldown 8s, quindi non ruba turni) — Barrage passa solo a budget. \u26a0\ufe0f <b>Il crit chance &egrave; bait</b>: il Kineticist &egrave; gi&agrave; crit-cappato. \ud83d\udca1 E il suo consiglio: <i>\u00abgo for a combatant first\u00bb</i> — <i>\u00abcombatant definitely can do everything that kineticist can do\u00bb</i>, la differenza &egrave; solo il single target in cima. <a href=\"https://www.youtube.com/watch?v=HKTVN4sENvg\" target=\"_blank\" rel=\"noopener\">video</a>"},
+     {"n": "Minimo viabile", "g": "<b>Return</b> e un clear link", "v": "~10 div", "url": "https://www.pathofexile.com/trade/search/Allflame/7nRvBzl2S5", "sk": "Kinetic Blast of Clustering", "tutti": [["Kinetic Blast of Clustering", "Return"]], "gruppi": [{"min": 1, "fra": ["Chain", "Fork", "Greater Fork", "Pierce", "Greater Pierce", "Greater Multiple Projectiles"]}], "senzaSkill": ["Kinetic Bolt", "Kinetic Rain", "Power Siphon", "Kinetic Blast of Impact"]},
+     {"n": "Midgame", "g": "pi&ugrave; l&rsquo;aura <b>Haste</b>", "v": "15 div+", "url": "https://www.pathofexile.com/trade/search/Allflame/BgzkZKGQF8", "sk": "Kinetic Blast of Clustering", "tutti": [["Kinetic Blast of Clustering", "Return"]], "gruppi": [{"min": 1, "fra": ["Chain", "Fork", "Greater Fork", "Pierce", "Greater Pierce", "Greater Multiple Projectiles"]}], "conSkill": ["Haste"], "senzaSkill": ["Kinetic Bolt", "Kinetic Rain", "Power Siphon", "Kinetic Blast of Impact"]},
+     {"n": "Endgame", "g": "pi&ugrave; <b>un link di danno</b>", "v": "40-50 div", "url": "https://www.pathofexile.com/trade/search/Allflame/LgkGrPO5Fn", "sk": "Kinetic Blast of Clustering", "tutti": [["Kinetic Blast of Clustering", "Return"]], "conSkill": ["Haste"], "gruppi": [{"min": 1, "fra": ["Chain", "Fork", "Greater Fork", "Pierce", "Greater Pierce", "Greater Multiple Projectiles"]}, {"min": 1, "fra": ["Greater Elemental Damage with Attacks", "Elemental Damage with Attacks", "Critical Damage", "Greater Critical Damage"]}], "senzaSkill": ["Kinetic Bolt", "Kinetic Rain", "Power Siphon", "Kinetic Blast of Impact"]},
+     {"n": "GG Merc", "g": "Return <b>+ GMP +</b> clear link", "v": "1 specchio+", "url": "https://www.pathofexile.com/trade/search/Allflame/zbrQyEqah4", "sk": "Kinetic Blast of Clustering", "tutti": [["Kinetic Blast of Clustering", "Return"], ["Kinetic Blast of Clustering", "Greater Multiple Projectiles"]], "gruppi": [{"min": 1, "fra": ["Chain", "Fork", "Greater Fork", "Pierce", "Greater Pierce", "Greater Multiple Projectiles"]}], "senzaSkill": ["Kinetic Bolt", "Kinetic Rain", "Power Siphon", "Kinetic Blast of Impact"]}],
+      nota: "\ud83d\udd34 <b>Non &egrave; farmabile dall&rsquo;albero atlas</b>, e per questo costa un&rsquo;altra cosa: <i>\u00abyou can buy a Wild Strike merc for a tenth of the price\u00bb</i>. La seconda skill deve essere <b>Greater Kinetic Blast</b> (cooldown 8s, quindi non ruba turni) — Barrage passa solo a budget. \u26a0\ufe0f <b>Il crit chance &egrave; bait</b>: il Kineticist &egrave; gi&agrave; crit-cappato. \ud83d\udca1 E il suo consiglio: <i>\u00abgo for a combatant first\u00bb</i> — <i>\u00abcombatant definitely can do everything that kineticist can do\u00bb</i>, la differenza &egrave; solo il single target in cima. <a href=\"https://www.youtube.com/watch?v=HKTVN4sENvg\" target=\"_blank\" rel=\"noopener\">video</a>"},
 ];
 
 /* I prezzi degli archetipi si leggono in divine: sono decine o centinaia di
@@ -1362,12 +1372,37 @@ function mieiSimili(archetipo, c) {
   return miei.filter((w) => haCoppia(w, c.skill[0], c.gemme[0]) && haCoppia(w, c.skill[1], c.gemme[1])).length;
 }
 
+/* Quanti dei tuoi warrant soddisfano uno scaglione.
+ *
+ * Stessa disciplina di `mieiSimili`: **nessun mezzo aggancio**. Le gemme di un
+ * warrant sono fissate alla generazione, quindi «gli manca un supporto» non e'
+ * un quasi, e' un no — e contarlo darebbe una speranza su cui non si puo' agire.
+ *
+ * Le quattro condizioni possibili, tutte da soddisfare insieme:
+ *   tutti      coppie (skill, supporto) obbligatorie
+ *   gruppi     «almeno N fra questi supporti», sulla skill principale
+ *   senza      coppie che lo squalificano
+ *   senzaSkill skill che da sole sono un brick (il merc le alterna)
+ *   conSkill   skill che devono esserci (aure)
+ */
+function scagliMiei(chiave, s) {
+  const miei = (ULTIMI && ULTIMI.warrant || []).filter((w) => w.build === chiave);
+  return miei.filter((w) => {
+    const skill = (w.gemme || []).map((g) => g.s);
+    if ((s.senzaSkill || []).some((k) => skill.includes(k))) return false;
+    if ((s.conSkill || []).some((k) => !skill.includes(k))) return false;
+    if ((s.tutti || []).some(([sk, g]) => !haCoppia(w, sk, g))) return false;
+    if ((s.senza || []).some(([sk, g]) => haCoppia(w, sk, g))) return false;
+    return (s.gruppi || []).every((gr) => (gr.fra || []).filter((g) => haCoppia(w, s.sk, g)).length >= gr.min);
+  }).length;
+}
+
 function disegnaGriglia(filtro = "") {
   const f = filtro.trim().toLowerCase();
   $("griglia-corpo").innerHTML = GRIGLIA.map((a) => {
     const testo = [a.nome, a.casa, ...(a.mercato ? a.mercato.gemme : []),
                    ...a.serve.map((x) => x[0]), ...a.azzera,
-                   ...(a.scaglioni || []).flatMap(([n, c]) => [n, c])]
+                   ...(a.scaglioni || []).flatMap((s) => [s.n, s.g, s.v])]
                   .join(" ").replace(/<[^>]+>/g, " ").toLowerCase();
     const fuori = f && !testo.includes(f) ? " fuori" : "";
     const serve = a.serve.map(([g, chiave]) => `<span class="gem serve${chiave ? " chiave" : ""}">${chiave ? "\u2713 " : ""}${g}</span>`).join("");
@@ -1379,41 +1414,24 @@ function disegnaGriglia(filtro = "") {
        NON passa da esc(): passa da li' solo l'URL, che e' l'unico campo che
        potrebbe venire da fuori. */
     const scaglioni = a.scaglioni
-      ? `<dt>scaglioni</dt><dd class="scaglioni">${a.scaglioni.map(([nome, cosa, url]) => `
-          <div class="riga-scg">
-            <span class="sn">${nome}</span>
-            <span class="sc">${cosa}</span>
-            <a href="${esc(url)}" target="_blank" rel="noopener">cerca &rarr;</a>
-          </div>`).join("")}</dd>`
+      ? `<dt>scaglioni</dt><dd class="scaglioni">${a.scaglioni.map((s) => {
+          const n = scagliMiei(a.chiave || a.nome, s);
+          return `<div class="riga-scg">
+            <span class="sn">${s.n}</span>
+            <span class="sc">${s.g}</span>
+            <span class="sp">${n ? `<span class="tuoi">ne hai ${n}</span>` : ""}</span>
+            <span class="sv">${esc(s.v)}</span>
+            <span class="st"><a href="${esc(s.url)}" target="_blank" rel="noopener">cerca &rarr;</a></span>
+          </div>`;
+        }).join("")}</dd>`
       : "";
     const m = a.mercato;
-    const comb = (COMBINAZIONI[a.chiave || a.nome] || []).slice(0, 4);
-    const righeComb = comb.length
-      ? `<dt>pagano</dt><dd class="comb">${comb.map((c) => `
-          <div class="riga-comb">
-            <span class="cg">${esc(c.gemme[0])} + ${esc(c.gemme[1])}</span>
-            <span class="cp">da ${div(c.floor ?? c.mediana)}</span>
-            <span class="ca">metà oltre ${div(c.mediana)}</span>
-            <span class="ci">${c.inserzioni.toLocaleString("it")}</span>
-            ${(() => {
-              const n = mieiSimili(a.chiave || a.nome, c);
-              return n ? `<span class="tuoi clic" role="button" tabindex="0" data-arch="${esc(a.chiave || a.nome)}" data-ci="${comb.indexOf(c)}"
-                title="Mostra i tuoi con ${esc(c.gemme[0])} su ${esc(c.skill[0] || "?")} e ${esc(c.gemme[1])} su ${esc(c.skill[1] || "?")}">ne hai ${n}</span>`
-                       : `<span class="ct"></span>`;
-            })()}
-            <a class="cl" href="${esc(c.trade)}" target="_blank" rel="noopener"
-               title="Cerca sul trade: ${esc(c.gemme[0])} su ${esc(c.skill[0] || "?")} + ${esc(c.gemme[1])} su ${esc(c.skill[1] || "?")}">cerca &rarr;</a>
-          </div>`).join("")}</dd>`
-      : "";
-    /* Quando se ne possiede qualcuno ma nessuno aggancia: si dice una volta, in
-       fondo, invece di ripeterlo riga per riga. Ed e' cliccabile, perche'
-       «mostrami i miei Cruel Mistress» resta una domanda sensata anche quando la
-       risposta e' che non valgono. */
     const quanti = mieiSimili(a.chiave || a.nome, null);
-    const nessuno = quanti && !comb.some((c) => mieiSimili(a.nome, c))
+    const nessunoScaglione = (a.scaglioni || []).every((s) => !scagliMiei(a.chiave || a.nome, s));
+    const nessuno = quanti && nessunoScaglione
       ? `<p class="nota nessuno"><span class="tuoi vuoto clic" role="button" tabindex="0"
            data-arch="${esc(a.chiave || a.nome)}" data-ci="-1"
-           title="Mostra i tuoi ${esc(a.chiave || a.nome)}">ne hai ${quanti}</span>, nessuno con queste combinazioni.</p>`
+           title="Mostra i tuoi ${esc(a.chiave || a.nome)}">ne hai ${quanti}</span>, nessuno arriva al primo scaglione.</p>`
       : "";
     return `<div class="arche-card${fuori}${a.fuori ? " extra" : ""}">
       <div>
@@ -1426,7 +1444,6 @@ function disegnaGriglia(filtro = "") {
           <dt>deve avere</dt><dd>${serve}</dd>
           ${azzera}
           ${scaglioni}
-          ${righeComb}
         </dl>
         ${a.nota ? `<p class="nota">${a.nota}</p>` : ""}
         ${nessuno}
