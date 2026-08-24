@@ -151,7 +151,7 @@ async function indice(slug) {
 const ALFABETO = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
 const CODICE = new Map([...ALFABETO].map((c, i) => [c, i]));
 
-function decodifica(listings) {
+export function decodifica(listings) {
   return listings.map(([cur, val, packed, lvl]) => ({
     cur, val, livello: 83 + (lvl || 0),
     slot: packed.split("|").filter(Boolean).map((g) => [...g].map((c) => CODICE.get(c))),
@@ -169,13 +169,49 @@ function quintoDi(pool, divine, mirror) {
   return +pool.map((r) => inChaos(r, divine, mirror)).sort((a, b) => a - b)[4].toFixed(2);
 }
 
+/* La mediana del gruppo di confronto: quanto chiede **chi sta in mezzo**.
+   Il floor e' una inserzione sola e su un pool largo e' sempre chi ha sbagliato
+   prezzo; il quinto e' un compromesso che dipende dalla taglia del pool. Su un
+   confronto stretto — poche inserzioni, tutte davvero simili — la mediana e'
+   l'unica delle tre che risponde a «quanto chiede il mercato». */
+const medianaDi = (pool, divine, mirror) => pool.length
+  ? +pool.map((r) => inChaos(r, divine, mirror)).sort((a, b) => a - b)[Math.floor(pool.length / 2)].toFixed(2)
+  : null;
+
+/* Le skill **portanti**: quelle che reggono il valore del mercenario.
+ *
+ * 🔴 **Regola cambiata il 24 agosto, e cambia i prezzi piu' di ogni altra cosa.**
+ * Prima il gruppo di confronto erano le inserzioni con **tutte** le skill del
+ * nostro warrant, utility comprese. Sembra prudente e non lo e': su *Karielle,
+ * the Bardiyan Rose* (Kineticist) il pool cosi' definito era di 1.712 inserzioni,
+ * e chiedere il **Return** — peso 1,56x, la gemma che su questo archetipo decide
+ * tutto — ne lasciava **zero**. Non perche' non esistano: sul trade, chiedendo
+ * solo la skill di danno, le inserzioni con Return + GMP sono **279**. Erano zero
+ * perche' nessuno al mondo ha la sua stessa Elemental Weakness *e* il suo stesso
+ * Inspiring Cry. Il calcolo ripiegava allora su un supporto qualsiasi (Faster
+ * Casting sull'Elemental Weakness, peso 1,03) e prezzava il pezzo **3.798 c**,
+ * quando il trade sui simili veri chiede **da 1.000 divine**.
+ *
+ * Portanti = le skill con **4+ gemme**; se non ce ne sono due, le prime due per
+ * numero di gemme. E' la stessa definizione che questa funzione usava gia' piu'
+ * sotto per decidere le skill **obbligatorie** da coprire: ora e' una sola
+ * regola, applicata anche al pool.
+ */
+export function skillPortanti(coppie) {
+  const quante = new Map();
+  for (const c of coppie) quante.set(c.si, (quante.get(c.si) || 0) + 1);
+  const ordinate = [...quante.keys()].sort((a, b) => quante.get(b) - quante.get(a) || a - b);
+  const grosse = ordinate.filter((i) => quante.get(i) >= 4);
+  return { ordinate, portanti: grosse.length >= 2 ? grosse : ordinate.slice(0, 2) };
+}
+
 /**
  * Il mercenario tradotto negli indici del mercato, piu' il suo gruppo di
  * confronto. Sta a parte perche' lo usano in due: la prezzatura automatica e la
  * scheda con le spunte, che devono partire dagli stessi numeri o direbbero due
  * cose diverse sullo stesso pezzo.
  */
-function contesto(build, warrant) {
+export function contesto(build, warrant, { tutteLeSkill = false } = {}) {
   const perSkill = new Map(build.skills.map((s, i) => [s.name, i]));
   const perSup = new Map(build.supports.map((s, i) => [s.name, i]));
 
@@ -191,8 +227,12 @@ function contesto(build, warrant) {
     }
   }
 
-  // pool: le inserzioni che portano tutte le skill del nostro mercenario
-  const voluti = new Set(skillIdx);
+  // pool: le inserzioni che portano le skill **portanti** del nostro mercenario
+  // (vedi skillPortanti: le utility non definiscono chi e' un compratore)
+  const { portanti } = skillPortanti(coppie);
+  // `tutteLeSkill` e' il pool com'era prima del 24 agosto: lo usa solo
+  // server/prova-prezzatura.mjs, per misurare il cambiamento invece di crederci.
+  const voluti = new Set(tutteLeSkill || !portanti.length ? skillIdx : portanti);
   const pool = [];
   for (const r of build._righe) {
     const mappa = new Map();
@@ -201,11 +241,12 @@ function contesto(build, warrant) {
     for (const v of voluti) if (!mappa.has(v)) { ok = false; break; }
     if (ok) pool.push({ ...r, mappa });
   }
-  return { skillIdx, coppie, ignoti, pool };
+  return { skillIdx, coppie, ignoti, pool, portanti };
 }
 
-function prezzaWarrant(build, warrant, divine, mirror, minimo) {
-  const { skillIdx, coppie, ignoti, pool } = contesto(build, warrant);
+export function prezzaWarrant(build, warrant, divine, mirror, minimo, opzioni) {
+  const { skillIdx, coppie, ignoti, pool } = contesto(build, warrant, opzioni);
+
 
   // peso: quanto ogni supporto alza la probabilita' di stare sopra 5 divine
   const soglia = 5 * divine;
@@ -264,11 +305,7 @@ function prezzaWarrant(build, warrant, divine, mirror, minimo) {
    * distingue «vale poco» da «non sono riuscito a guardarlo».
    */
   const PAGA = 1;
-  const gemmeSue = new Map();
-  for (const c of coppie) gemmeSue.set(c.si, (gemmeSue.get(c.si) || 0) + 1);
-  const perGemme = [...gemmeSue.keys()].sort((a, b) => gemmeSue.get(b) - gemmeSue.get(a) || a - b);
-  const grosse = perGemme.filter((i) => gemmeSue.get(i) >= 4);
-  const obbligatorie = grosse.length >= 2 ? grosse : perGemme.slice(0, 2);
+  const { ordinate: perGemme, portanti: obbligatorie } = skillPortanti(coppie);
 
   /* Le gemme che pagano, skill per skill, dalla piu' pesante.
    *
@@ -292,9 +329,13 @@ function prezzaWarrant(build, warrant, divine, mirror, minimo) {
       .sort((a, b) => pesi.get(b) - pesi.get(a) || quanti.get(b) - quanti.get(a));
     const ignote = sue.filter((c) => !misurabile.get(c))
       .sort((a, b) => quanti.get(b) - quanti.get(a));
-    if (pagano.length) { importanti.set(i, pagano); continue; }
-    importanti.set(i, ignote);
-    if (ignote.length) soloStima.add(i);
+    /* 🔴 **Le rare vanno in coda, non nel cestino.** Prima entravano solo se la
+       skill non aveva *nessuna* gemma pagante: bastava una gemma comune misurata
+       sopra 1 perche' una rara — che e' spesso il motivo per cui il mercenario
+       vale — sparisse dal calcolo. Ora si chiedono dopo, e il pool decide se
+       reggono: se sono troppo strette il passo viene saltato come ogni altro. */
+    importanti.set(i, [...pagano, ...ignote]);
+    if (!pagano.length && ignote.length) soloStima.add(i);
   }
 
   const ordine = [];
@@ -312,10 +353,24 @@ function prezzaWarrant(build, warrant, divine, mirror, minimo) {
     .flatMap((i) => importanti.get(i) || [])
     .sort((a, b) => pesi.get(b) - pesi.get(a)));
 
-  let corrente = pool;
-  const passi = [];
+  /* 🔴 **Due catene, non una.** `corrente` si ferma sopra `minimo` confronti ed e'
+     la misura prudente; `stretto` continua fino a **tre** inserzioni ed e' il
+     gruppo che somiglia davvero al nostro pezzo. Prima esisteva solo la prima e
+     tutto cio' che veniva dopo finiva in `scartato`, cioe' **una riga sola di
+     nota** — mentre e' li' che sta il prezzo di un mercenario buono: su Karielle
+     il pool sopra 30 chiede 3.798 c, i cinque davvero simili ne chiedono 1.000
+     **divine**. Tre e non cinque perche' sotto le cinque la pagina gia' spegne il
+     numero da sola: qui serve mostrare *che esistono*, e quanti sono. */
+  const MIN_STRETTO = 3;
+  let corrente = pool, stretto = pool;
+  const passi = [], gemmeStrette = [];
   let scartato = null;
   for (const c of ordine) {
+    const piu = stretto.filter((r) => r.mappa.get(c.si)?.has(c.sj));
+    if (piu.length >= MIN_STRETTO) {
+      stretto = piu;
+      gemmeStrette.push({ skill: c.skill, supporto: c.supporto, confronti: piu.length });
+    }
     const filtrato = corrente.filter((r) => r.mappa.get(c.si)?.has(c.sj));
     const f = floorDi(filtrato, divine, mirror);
     if (f === null) continue;
@@ -372,6 +427,17 @@ function prezzaWarrant(build, warrant, divine, mirror, minimo) {
     prezzo: +floorFinale.toFixed(2),
     confronti: corrente.length,
     quinto: quintoDi(corrente, divine, mirror),
+    mediana: medianaDi(corrente, divine, mirror),
+    /* Il confronto stretto: poche inserzioni, ma davvero simili. Porta la
+       **mediana** e non il floor, perche' su tre o cinque pezzi il minimo e' un
+       venditore, non un mercato — e porta `confronti`, cosi' chi legge sa su
+       quanti sta guardando. */
+    stretto: stretto.length < corrente.length ? {
+      confronti: stretto.length,
+      floor: +(floorDi(stretto, divine, mirror) ?? 0).toFixed(2),
+      mediana: medianaDi(stretto, divine, mirror),
+      gemme: gemmeStrette.map((g) => `${g.supporto} su ${g.skill}`),
+    } : null,
     passi: passi.map(({ si, sj, ...resto }) => resto),
     oltre: scartato && { skill: scartato.skill, supporto: scartato.supporto, confronti: scartato.confronti, floor: scartato.floor },
     ignoti: [...new Set(ignoti)],

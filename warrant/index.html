@@ -29,6 +29,10 @@
   .conf.magro{color:var(--warn)}
   .oltre.mov{color:var(--good)}
   .oltre{display:block;font-size:var(--t-xs);color:var(--label)}
+  /* Il confronto stretto: stessa scala del sottocosto ma acceso, perche' e'
+     un prezzo piu' alto e non piu' basso di quello grande. */
+  .stretto-riga{display:block;font-size:var(--t-xs);color:var(--muted);margin-top:.1rem}
+  .stretto-riga b{color:var(--gold);font-family:var(--mono)}
   .tr-link{color:var(--gold);white-space:nowrap;font-size:var(--t-xs)}
   .vuoto{padding:var(--s5);color:var(--label);text-align:center}
   .pannello{border:1px solid var(--line);border-radius:var(--r);background:var(--panel2);
@@ -583,8 +587,12 @@ function base(w) {
   const b = w.base;
   if (!b || !b.confronti) return "";
   const v = b.quinto ?? b.floor;
-  return `<div class="base-riga">La sola combinazione di skill vale <b>${v == null ? "—" : v.toFixed(0) + " c"}</b>` +
-    ` su <b>${b.confronti.toLocaleString("it")}</b> inserzioni con le stesse skill</div>`;
+  /* ⚠️ Dal 24 agosto il gruppo di confronto sono le inserzioni che hanno le
+     skill **portanti** — quelle con 4+ gemme — non tutte le skill del warrant.
+     La frase lo dice, altrimenti prometterebbe una somiglianza che non c'e': le
+     utility (Haste, Flame Wall, un grido) non le guarda piu' nessuno. */
+  return `<div class="base-riga">Le sole skill che portano il valore valgono <b>${v == null ? "—" : v.toFixed(0) + " c"}</b>` +
+    ` su <b>${b.confronti.toLocaleString("it")}</b> inserzioni che le hanno</div>`;
 }
 
 /* **La copertura, e perche' sta in riga e non in una nota.**
@@ -641,8 +649,16 @@ function disegna(dati) {
     // 10c, qualcosa non va»). Il sottocosto resta come dettaglio: e' il prezzo
     // della vendita-lampo, non il valore.
     const valore = w.quinto ?? w.prezzo;
-    const sotto = w.quinto && w.quinto > w.prezzo
-      ? `<span class="oltre">sottocosto: da ${w.prezzo.toFixed(0)} c</span>` : "";
+    /* 🔴 **Il confronto stretto, che prima si buttava via.** La misura grande si
+       ferma sopra 30 inserzioni per essere robusta; ma continuando a chiedere le
+       gemme si arriva a un pugno di mercenari **davvero** come il nostro, e li'
+       il prezzo e' un altro. Su Karielle: 3.798 c sopra 30 confronti, **1.000
+       divine** sui cinque simili veri. Si mostra con **quanti sono** e come
+       mediana, non come floor — su tre pezzi il minimo e' un venditore. */
+    const st = w.stretto && w.stretto.mediana != null && w.stretto.mediana > valore
+      ? `<span class="stretto-riga" title="${esc((w.stretto.gemme || []).join(" · "))}">i ${w.stretto.confronti} pi&ugrave; simili: <b>${chaos(w.stretto.mediana)}</b></span>` : "";
+    const sotto = (w.quinto && w.quinto > w.prezzo
+      ? `<span class="oltre">sottocosto: da ${w.prezzo.toFixed(0)} c</span>` : "") + st;
     const magro = w.confronti < 10 ? " magro" : "";
     const vend = VENDIBILI.has(w.build) ? "arche vend" : "arche";
     /* Il testo su cui si filtra sta **nella riga**, non ricalcolato a ogni tasto:
