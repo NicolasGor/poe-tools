@@ -615,6 +615,8 @@ function copertura(w) {
 }
 
 function disegna(dati) {
+  // il tasso prima di ogni formattazione: `prezzo()` lo legge da qui
+  if (dati && dati.divine_in_chaos) TASSO_DIVINE = dati.divine_in_chaos;
   /* 🔴 **L'ultimo dato disegnato, e serve a chi ridisegna dopo.** Al
      caricamento si disegna prima la cache e poi il dato fresco; se un'altra
      funzione asincrona tiene stretto il dato che le era stato passato e
@@ -656,7 +658,7 @@ function disegna(dati) {
        divine** sui cinque simili veri. Si mostra con **quanti sono** e come
        mediana, non come floor — su tre pezzi il minimo e' un venditore. */
     const st = w.stretto && w.stretto.mediana != null && w.stretto.mediana > valore
-      ? `<span class="stretto-riga" title="${esc((w.stretto.gemme || []).join(" · "))}">i ${w.stretto.confronti} pi&ugrave; simili: <b>${chaos(w.stretto.mediana)}</b></span>` : "";
+      ? `<span class="stretto-riga" title="${esc((w.stretto.gemme || []).join(" · "))}">i ${w.stretto.confronti} pi&ugrave; simili: <b>${prezzo(w.stretto.mediana)}</b></span>` : "";
     const sotto = (w.quinto && w.quinto > w.prezzo
       ? `<span class="oltre">sottocosto: da ${w.prezzo.toFixed(0)} c</span>` : "") + st;
     const magro = w.confronti < 10 ? " magro" : "";
@@ -691,7 +693,7 @@ function disegna(dati) {
 
   const tot = dati.warrant.reduce((s, w) => s + w.prezzo, 0);
   $("stato").innerHTML = `<b>${dati.warrant.length}</b> warrant · <b>${tot.toFixed(0)} c</b> in tutto · dato del <b>${dataIt(dati.generato_il)}</b>` +
-    (dati.divine_in_chaos ? ` · divine a <b>${dati.divine_in_chaos.toFixed(0)} c</b>` : "");
+    (dati.divine_in_chaos ? ` \u00b7 divine a <b>${dati.divine_in_chaos.toFixed(0)} c</b>` : "");
 
   // il cursore vive sugli stessi numeri della tabella: ogni ridisegno lo rifa'
   preparaSoglia();
@@ -1071,6 +1073,13 @@ function disegnaScheda(i) {
 /* Sopra i 10 chaos i centesimi sono rumore: nessuno lista a 199,11. */
 const chaos = (n) => n === null || n === undefined ? "\u2014"
   : (n >= 10 ? Math.round(n) : +n.toFixed(2)) + " c";
+
+/* ⚠️ Sopra il divine i chaos smettono di dire qualcosa: «152.984 c» non si legge
+   e non si confronta, «769 d» si'. Il tasso arriva col dato (`divine_in_chaos`)
+   e non e' una costante, perche' cambia di lega in lega. */
+let TASSO_DIVINE = 199;
+const prezzo = (n) => n === null || n === undefined ? "\u2014"
+  : n >= TASSO_DIVINE ? `${Math.round(n / TASSO_DIVINE)} d` : chaos(n);
 
 function quintoDi(righe, sel, selSkill) {
   const prezzi = righe.filter(([, m, ms]) => (ms & selSkill) === selSkill && (m & sel) === sel)
