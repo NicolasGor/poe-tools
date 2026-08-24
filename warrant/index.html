@@ -32,6 +32,10 @@
   /* Il confronto stretto: stessa scala del sottocosto ma acceso, perche' e'
      un prezzo piu' alto e non piu' basso di quello grande. */
   .simili-cel{white-space:nowrap}
+  .azioni{white-space:nowrap;display:flex;gap:.3rem;justify-content:flex-end}
+  .controllo{display:block;font-size:var(--t-xs);color:var(--good);margin-top:.15rem}
+  .controllo b{font-family:var(--mono)}
+  .controllo.male{color:var(--bad)}
   .stretto-riga{display:block;font-size:var(--t-xs);color:var(--muted);text-decoration:none}
   .stretto-riga b{color:var(--gold);font-family:var(--mono)}
   a.stretto-riga:hover{color:var(--text)}
@@ -597,6 +601,36 @@ let ORDINE = { campo: "valore", verso: -1 };
  * e' quello che serve per liquidare. E il floor resta il sottocosto. */
 const valoreDi = (w) => w.mediana ?? w.quinto ?? w.prezzo;
 
+/* 🔴 **I controlli sul trade: l'unica riga della pagina con una data dentro.**
+ * L'indice di mercato non porta l'eta' delle inserzioni, quindi qualunque
+ * statistica costruita su pochi pezzi puo' essere decisa da una richiesta ferma
+ * da settimane — misurato su Dorian il 24 agosto: 200 divine erano **una sola**
+ * inserzione vecchia di tre settimane. Qui invece si conta solo cio' che e'
+ * comparso negli **ultimi 7 giorni**: `medianaRecenti` e' la mediana di quelle,
+ * `recenti` quante sono. Zero recenti e' a sua volta una risposta. */
+let CONTROLLI = {};
+const GIORNI_VIVO = 7;
+
+async function leggiControlli() {
+  if (!API) return;
+  try {
+    const d = await (await fetch(`${API}/controlli`)).json();
+    const fuori = {};
+    for (const [id, c] of Object.entries(d.controlli || {})) {
+      if (c.errore) { fuori[id] = { errore: c.errore }; continue; }
+      const limite = Date.now() - GIORNI_VIVO * 86400000;
+      const vive = (c.inserzioni || []).filter((x) => x.indexed && new Date(x.indexed).getTime() >= limite);
+      const inChaos = (x) => x.valuta === "divine" ? x.quanto * (TASSO_DIVINE || 199)
+        : x.valuta === "mirror" ? x.quanto * (TASSO_DIVINE || 199) * 220
+        : x.valuta === "chaos" ? x.quanto : null;
+      const p = vive.map(inChaos).filter((n) => n != null).sort((a, b) => a - b);
+      fuori[id] = { totale: c.totale ?? 0, lette: (c.inserzioni || []).length, recenti: p.length,
+                    medianaRecenti: p.length ? p[Math.floor(p.length / 2)] : null, quando: c.quando };
+    }
+    CONTROLLI = fuori;
+  } catch (e) { /* il controllo e' un di piu': se non arriva, la pagina resta quella */ }
+}
+
 /* 🔴 **E «da buttare» non usa questo numero, ne usa un altro — di proposito.**
  * Li' la domanda non e' «quanto vale» ma «quanto ci ricavo se lo vendo subito»,
  * e la risposta e' il **quinto prezzo**: quello che serve per essere fra i piu'
@@ -710,12 +744,21 @@ function disegna(dati) {
     /* ⚠️ Senza abbastanza inserzioni il prezzo non si scrive: resta il link e
        il conteggio. Su pochi pezzi una sola inserzione vecchia fa la mediana —
        su Dorian erano 200 d, ed era una ferma da tre settimane. */
+    /* Il controllo vero, se c'e': viene dal trade e **porta le date**, che
+       l'indice non ha. E' l'unica riga della pagina che non sia una richiesta
+       vecchia di chissa' quanto. */
+    const ct = CONTROLLI[w.id];
+    const contr = ct ? `<span class="controllo${ct.errore ? " male" : ""}">${
+      ct.errore ? esc(ct.errore)
+      : ct.recenti ? `<b>${prezzo(ct.medianaRecenti)}</b> su ${ct.recenti} viv${ct.recenti === 1 ? "a" : "e"}`
+      : `${ct.totale} sul trade, <b>nessuna</b> fresca`}</span>` : "";
     const st = w.stretto
       ? `<a class="stretto-riga${w.stretto.mediana == null ? " muto" : ""}" ${w.stretto.trade ? `href="${esc(w.stretto.trade)}" target="_blank" rel="noopener"` : ""}
            title="${esc((w.stretto.gemme || []).join(" · "))}">${
              w.stretto.mediana != null ? `<b>${prezzo(w.stretto.mediana)}</b>` : `<b class="pochi">troppo pochi</b>`
            }<span class="oltre">${w.stretto.confronti} pi&ugrave; simili &rarr;</span></a>`
       : `<span class="oltre">&mdash;</span>`;
+    const simili = st + contr;
     /* Sotto il valore, i due prezzi che servono a vendere e non a valutare: il
        quinto e' «per uscire in fretta», il floor e' «il piu' economico di tutti». */
     const sotto = (w.quinto && w.quinto < valore
@@ -733,10 +776,12 @@ function disegna(dati) {
     return `<tr data-cerca="${esc(cercabile)}" data-id="${esc(w.id || "")}">
       <td><span class="nome">${esc(w.nome)}</span><span class="${vend}">${esc(w.build)}${w.infamous ? " · Infamous" : ""} · lvl ${esc(w.livello)}</span></td>
       <td class="n"><span class="prezzo${valore >= 10 ? "" : " basso"}">${prezzo(valore)}</span>${sotto}</td>
-      <td class="n simili-cel">${st}</td>
+      <td class="n simili-cel">${simili}</td>
       <td class="dal">${dal(w.id)}</td>
       <td class="conf${magro}">${w.confronti}<span class="oltre">inserzioni simili</span>${movimento(w.chiave) ? `<span class="oltre mov">${esc(movimento(w.chiave))}</span>` : ""}</td>
-      <td><button class="apri" aria-expanded="false" data-i="${i}">gemme &#9662;</button></td>
+      <td class="azioni"><button class="apri" aria-expanded="false" data-i="${i}">gemme &#9662;</button>
+        <button class="mini controlla" data-id="${esc(w.id || "")}" data-nome="${esc(w.nome)}"
+                title="Fa cercare al Mac questo mercenario sul trade vero, con le date delle inserzioni">trade</button></td>
     </tr>
     <tr class="scheda" hidden><td colspan="6">
       <div class="ristretto"><b>Confronto ristretto a</b> ${passi}${piu}${copertura(w)}</div>
@@ -772,6 +817,7 @@ async function leggiStato() {
 }
 
 async function leggiPrezzi() {
+  leggiControlli();   // in parallelo: se tarda, la tabella si disegna lo stesso
   /* Le due letture insieme: senza le date la colonna «Dal» comparirebbe vuota per
      un istante e poi si riempirebbe, che e' peggio di aspettarle. */
   const [r, rv] = await Promise.all([
@@ -913,6 +959,34 @@ document.querySelectorAll("th.ord").forEach((th) => th.addEventListener("click",
 /* Apri tutte: le schede stanno gia' nel KV e il Worker le rigira senza parsarle,
    quindi si possono chiedere insieme. ⚠️ Sono comunque ~5 MB per 49 mercenari:
    il pulsante lo dice mentre lavora, invece di sembrare fermo. */
+/* Un controllo per volta, e la pagina lo dice: e' la ricerca dell'account di
+   Nicolas, e mentre gira lui non puo' cercare sul trade. */
+$("righe").addEventListener("click", async (e) => {
+  const b = e.target.closest("button.controlla");
+  if (!b || !API) return;
+  const etichetta = b.textContent;
+  b.disabled = true; b.textContent = "chiedo…";
+  try {
+    const r = await fetch(`${API}/chiedi-trade`, {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ id: b.dataset.id, nome: b.dataset.nome }),
+    });
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok && r.status !== 429) { b.textContent = d.errore || `errore ${r.status}`; return; }
+    // 45 s per l'agente + il tempo del browser: si aspetta, mostrando che si aspetta
+    for (let i = 0; i < 36; i++) {
+      await new Promise((f) => setTimeout(f, 5000));
+      b.textContent = `attendo il Mac… ${(i + 1) * 5}s`;
+      const prima = CONTROLLI[b.dataset.id]?.quando;
+      await leggiControlli();
+      const ora = CONTROLLI[b.dataset.id]?.quando;
+      if (ora && ora !== prima) { if (ULTIMI) disegna(ULTIMI); return; }
+    }
+    b.textContent = "il Mac non risponde";
+  } catch (err) { b.textContent = "errore di rete"; }
+  finally { setTimeout(() => { b.disabled = false; b.textContent = etichetta; }, 4000); }
+});
+
 $("b-tutti").addEventListener("click", async (e) => {
   const b = e.currentTarget;
   const bottoni = [...document.querySelectorAll("button.apri")];

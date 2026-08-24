@@ -102,9 +102,10 @@ export default {
          * pochi byte, e sono ciò su cui la pagina decide se aspettare ancora. I
          * valori grossi — `prezzi`, `scheda:*` — restano con la cache lunga, che
          * su di loro e' un guadagno e non un danno. */
-        const [p, s, a, rich] = await Promise.all([
+        const [p, s, a, rich, richT] = await Promise.all([
           leggi(env, "stato:prezzi", FRESCO), leggi(env, "stato:stash", FRESCO),
           leggi(env, "aggiornamento", FRESCO), leggi(env, "richiesta-stash", FRESCO),
+          leggi(env, "richiesta-trade", FRESCO),
         ]);
         return json({
           ok: true,
@@ -115,6 +116,8 @@ export default {
           aggiornamento: a || null,
           // il biglietto lasciato dalla pagina: l'agente sul Mac guarda questo
           richiestaStash: rich || null,
+          // e il biglietto per il controllo di UN warrant sul trade
+          richiestaTrade: richT || null,
           // booleano di proposito: dice se il server ha una chiave, non quale sia
           chiave: !!chiave,
         });
@@ -227,6 +230,53 @@ export default {
         }
         await scrivi(env, "richiesta-stash", { quando: adesso, servita: false });
         return json({ ok: true, chiestoIl: adesso });
+      }
+
+      /* ------------------------------------- controllo sul trade di UN warrant
+       * 🔴 **Perche' passa dal Mac e non da qui.** Il Worker potrebbe chiamare
+       * `/api/trade/search` da solo, ma **senza sessione**: e da sloggati GGG
+       * rifiuta le query dei mercenari — *«Query is too complex. Logging in will
+       * increase this limit»* — cioe' proprio quelle che servono. La sessione ce
+       * l'ha il browser di Nicolas, quindi la ricerca la fa
+       * `sincronizza-warrant.mjs`, esattamente come gia' fa per lo stash.
+       *
+       * 💡 E il motivo per cui serve: l'indice di mercato **non porta le date**.
+       * Il trade si', e senza quelle una mediana su pochi pezzi la decide una
+       * inserzione ferma da tre settimane — misurato su Dorian il 24 agosto.
+       */
+      if (url.pathname === "/chiedi-trade" && req.method === "POST") {
+        const corpo = await req.json().catch(() => ({}));
+        if (!corpo.id) return json({ errore: "serve l'id del warrant" }, 400);
+        const r = await leggi(env, "richiesta-trade", FRESCO);
+        const adesso = Date.now();
+        // una alla volta: e' la ricerca del suo account, e mentre gira lui non cerca
+        if (r?.quando && adesso - r.quando < 5 * 60000 && !r.servita) {
+          return json({ inAttesa: true, id: r.id, nome: r.nome, chiestoIl: r.quando,
+                        nota: "Un controllo e' gia' in coda: il Mac lo raccoglie entro un minuto." }, 429);
+        }
+        await scrivi(env, "richiesta-trade", { quando: adesso, id: corpo.id, nome: corpo.nome || null, servita: false });
+        return json({ ok: true, chiestoIl: adesso });
+      }
+
+      if (url.pathname === "/controlli") {
+        return json({ controlli: (await leggi(env, "controlli", FRESCO)) || {} });
+      }
+
+      if (url.pathname === "/controllo" && req.method === "POST") {
+        if (!autorizzato()) return json({ errore: "chiave mancante o sbagliata" }, 403);
+        const c = await req.json();
+        if (!c?.id) return json({ errore: "serve l'id" }, 400);
+        const tutti = (await leggi(env, "controlli")) || {};
+        tutti[c.id] = { ...c, quando: new Date().toISOString() };
+        // ne restano 40: il KV gratuito ha un tetto di scritture, e piu' vecchi
+        // di cosi' un controllo non dice piu' niente comunque
+        const recenti = Object.keys(tutti)
+          .sort((a, b) => String(tutti[b].quando).localeCompare(String(tutti[a].quando)))
+          .slice(0, 40);
+        await scrivi(env, "controlli", Object.fromEntries(recenti.map((k) => [k, tutti[k]])));
+        const r = await leggi(env, "richiesta-trade");
+        if (r && !r.servita) await scrivi(env, "richiesta-trade", { ...r, servita: true });
+        return json({ ok: true });
       }
 
       /* -------------------------------------------------------- il campionatore
@@ -353,6 +403,7 @@ export default {
       return json({ errore: "rotta sconosciuta", rotte: [
         "GET /stato", "GET /prezzo", "GET /dettaglio?id=", "GET /stash", "GET /primi-visti", "POST /stash?k=", "POST /deposita?k=&chiave=", "POST /chiedi-stash",
         "POST /aggiorna", "GET /campione/piano?k=", "POST /campione?k=", "GET /liquidita?chiavi=",
+        "POST /chiedi-trade", "GET /controlli", "POST /controllo?k=",
       ] }, 404);
     } catch (e) {
       return json({ errore: String((e && e.message) || e) }, 502);
