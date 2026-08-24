@@ -151,9 +151,10 @@
             align-items:baseline;font-size:var(--t-xs);padding:.3rem .35rem;border-radius:var(--r-sm)}
   .riga-scg > *{min-width:0}
   .riga-scg .sc{display:flex;flex-wrap:wrap;gap:.25rem;align-items:center}
-  .riga-scg .grp{display:inline-flex;flex-wrap:wrap;gap:.25rem;align-items:center;
-                 padding:.1rem .25rem;border-radius:999px;background:rgba(255,255,255,.04)}
-  .riga-scg .qt{color:var(--muted);font-size:.9em;padding-left:.2rem}
+  /* Niente fondo sul gruppo: andando a capo l'arrotondamento si allargava
+     sulle due righe e sembrava un alone. A legare le pillole basta il "N fra". */
+  .riga-scg .grp{display:inline-flex;flex-wrap:wrap;gap:.25rem;align-items:center}
+  .riga-scg .qt{color:var(--muted);font-size:.9em;white-space:nowrap}
   .riga-scg .gem{padding:.1rem .45rem;line-height:1.5}
   .riga-scg .gem i{font-style:normal;opacity:.7}
   .riga-scg .nt{color:var(--muted);opacity:.85;font-style:italic}
