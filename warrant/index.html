@@ -182,6 +182,12 @@
     .riga-comb .ca,.riga-comb .ci{display:none}
   }
   .arche-card.extra h3{color:var(--muted)}
+  /* Le schede che vengono da una fonte diversa portano il nome della fonte e
+     una barra a sinistra: si distinguono scorrendo, senza leggere la nota. */
+  .arche-card.nuovo{box-shadow:inset 3px 0 0 var(--warn)}
+  .arche-card .marca{font-size:var(--t-xs);font-weight:600;letter-spacing:.04em;
+                     text-transform:uppercase;color:var(--warn);border:1px solid rgba(224,163,63,.45);
+                     background:rgba(224,163,63,.09);padding:.1rem .45rem;border-radius:999px}
   .lista{margin:0}
   .lista dt{font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:var(--label);
             float:left;width:5.5rem;clear:left;line-height:1.6}
@@ -1347,7 +1353,7 @@ const GRIGLIA = [
      \u26a0\ufe0f Il video NON ha link in descrizione: queste ricerche sono costruite
      e collaudate da strumenti/misure/trade-mercenari-balormage.py. */
 
-  {nome: "Sniper", chiave: "Sniper", casa: "Cyaxan", compratori: "clear",
+  {nome: "Sniper", chiave: "Sniper", nuovo: "BalorMage", casa: "Cyaxan", compratori: "clear",
    mercato: {gemme: ["Gilded Secondary Shots", "Mirage Archer"], mediana: "6 d"},
    serve: [["Tornado Shot", 1], ["Gilded Secondary Shots", 1], ["GMP", 1],
            ["Mirage Archer", 0], ["Chain", 0], ["Greater Fork", 0], ["Faster Attacks", 0],
@@ -1359,7 +1365,7 @@ const GRIGLIA = [
      {"n": "GG Merc", "v": "250 d", "url": "https://www.pathofexile.com/trade/search/Allflame/6z2rzoV6iG", "sk": "Tornado Shot", "tutti": [["Tornado Shot", "Gilded Secondary Shots"], ["Tornado Shot", "Mirage Archer"], ["Tornado Shot", "Greater Fork"]], "gruppi": [{"min": 1, "fra": ["Greater Multiple Projectiles", "Multiple Projectiles"]}], "senzaSkill": ["Rain of Arrows of Saturation"]}],
       nota: "\ud83d\udd34 <b>Il Gilded Secondary Shots &egrave; tutto</b>: <i>\u00absupported Tornado Shots fire two secondary projectiles\u00bb</i>, il vecchio enchant da elmo. Con quello e una multiple projectiles <i>\u00abhe&rsquo;s actually very, very strong\u00bb</i>, single target ~10% sotto il Manyshot per meno di met&agrave; prezzo. \u26a0\ufe0f <b>Il Brutality lo azzera</b> (converte in fisico). \u26a0\ufe0f Sullo scaglione GG la ricerca non pu&ograve; portarsi dietro tutti i brick — <b>Lesser Brutality e Rain of Arrows restano fuori</b>, si guardano a occhio. Misurato il 24 agosto: <b>35 · 10 · 1</b> inserzioni. <a href=\"https://www.youtube.com/watch?v=hQBmh3sA0tE\" target=\"_blank\" rel=\"noopener\">video</a>"},
 
-  {nome: "Thunderquiver", chiave: "Thunderquiver", casa: "Cyaxan", compratori: "clear",
+  {nome: "Thunderquiver", chiave: "Thunderquiver", nuovo: "BalorMage", casa: "Cyaxan", compratori: "clear",
    mercato: {gemme: ["Gilded Extra Targets", "Return"], mediana: "pochi c"},
    serve: [["Lightning Arrow", 1], ["Gilded Extra Targets", 1], ["Return", 0], ["GMP", 0],
            ["Greater Lightning Arrow", 0], ["Vaal Lightning Arrow", 0],
@@ -1371,7 +1377,7 @@ const GRIGLIA = [
      {"n": "GG Merc", "v": "2 d", "url": "https://www.pathofexile.com/trade/search/Allflame/wv9Zv43dIb", "sk": "Lightning Arrow", "tutti": [["Lightning Arrow", "Gilded Extra Targets"], ["Lightning Arrow", "Return"]], "gruppi": [{"min": 1, "fra": ["Greater Multiple Projectiles", "Multiple Projectiles"]}], "senzaSkill": ["Storm Rain"]}],
       nota: "\ud83d\udd34 <b>Lo Storm Rain lo azzera</b>: <i>\u00abif it has storm rain, you cannot use him\u00bb</i>. \u26a0\ufe0f E qui il mercato porta fuori strada: l&rsquo;indice paga di pi&ugrave; il <b>Gilded Additional Pulses</b>, che &egrave; il gilded <i>dello Storm Rain</i> — cio&egrave; esattamente il pezzo da non comprare. \u2705 <b>Greater e Vaal Lightning Arrow non brikkano</b> (cooldown 4,5s e 8,5s). \u2753 Del <b>Galvanic Arrow</b> non si sa: chiede lui stesso a chi lo prova di dirglielo. Misurato: <b>164 · 36 · 4</b> inserzioni. <a href=\"https://www.youtube.com/watch?v=hQBmh3sA0tE\" target=\"_blank\" rel=\"noopener\">video</a>"},
 
-  {nome: "Toxicologist", chiave: "Toxicologist", casa: "Cyaxan", compratori: "single target",
+  {nome: "Toxicologist", chiave: "Toxicologist", nuovo: "BalorMage", casa: "Cyaxan", compratori: "single target",
    mercato: {gemme: ["Gilded Additional Pods", "Mirage Archer"], mediana: "pochi c"},
    serve: [["Scourge Arrow of Menace", 1], ["Gilded Additional Pods", 1], ["GMP", 0],
            ["Mirage Archer", 0], ["Faster Attacks", 0], ["Arrow Nova", 0]],
@@ -1382,7 +1388,7 @@ const GRIGLIA = [
      {"n": "GG Merc", "v": "~1 d", "url": "https://www.pathofexile.com/trade/search/Allflame/KlPvllBRc5", "sk": "Scourge Arrow of Menace", "tutti": [["Scourge Arrow of Menace", "Gilded Additional Pods"], ["Scourge Arrow of Menace", "Mirage Archer"]], "gruppi": [{"min": 1, "fra": ["Greater Multiple Projectiles", "Multiple Projectiles"]}]}],
       nota: "\ud83d\udd34 <b>Il Gilded Additional Pods vale il doppio del danno</b>: <i>\u00abeach arrow from supported scourge arrow leaves +1 spore pod \u2014 essentially 100% more damage\u00bb</i>. \ud83d\udca1 <b>&Egrave; l&rsquo;archetipo pi&ugrave; tollerante</b>: i supporti sbagliati (dot multi) non brikkano, <i>\u00abyou can just pretend the link isn&rsquo;t there\u00bb</i> — e l&rsquo;<b>Arrow Nova qui va bene</b>, mentre sullo Sniper &egrave; un brick. \u2753 Il <b>Toxic Rain</b> &egrave; un <b>sospetto suo, non una misura</b>: nel link il gruppo che lo esclude &egrave; lasciato <b>spento</b>, si accende dal trade. \u26a0\ufe0f Non l&rsquo;ha provato: <i>\u00abthe one or two that were for sale had been up for days and were 30 div\u00bb</i>. Misurato: <b>1.164 · 197 · 23</b> inserzioni. <a href=\"https://www.youtube.com/watch?v=hQBmh3sA0tE\" target=\"_blank\" rel=\"noopener\">video</a>"},
 
-  {nome: "Flamehand", chiave: "Flamehand", casa: "Cyaxan", compratori: "spell",
+  {nome: "Flamehand", chiave: "Flamehand", nuovo: "BalorMage", casa: "Cyaxan", compratori: "spell",
    mercato: {gemme: ["Return", "Greater Multiple Projectiles"], mediana: "pochi c"},
    serve: [["Fireball", 1], ["GMP", 1], ["Return", 0], ["Greater Fork", 0],
            ["Vaal Flameblast", 0], ["Anger <i>o</i> Purity of Fire", 0]],
@@ -1393,7 +1399,7 @@ const GRIGLIA = [
      {"n": "GG Merc", "v": "1 d", "url": "https://www.pathofexile.com/trade/search/Allflame/2K3vK4nGTk", "sk": "Fireball", "tutti": [["Fireball", "Return"], ["Fireball", "Greater Fork"]], "gruppi": [{"min": 1, "fra": ["Greater Multiple Projectiles", "Multiple Projectiles"]}], "senzaSkill": ["Flameblast", "Rolling Magma"]}],
       nota: "\ud83d\udd34 <b>Serve il Fireball liscio, non il Fireball of Impact</b>: <i>\u00abwhen you put GMP or LMP with fireball of impact, it doesn&rsquo;t actually get multiple projectiles\u00bb</i> — <b>ha comprato quello sbagliato e ha dovuto ricomprare</b>. \u26a0\ufe0f E l&rsquo;indice di mercato ripete l&rsquo;errore: la combinazione che paga di pi&ugrave; include proprio il <i>Fireball of Impact</i>. \u2705 <b>Vaal Flameblast &egrave; attivamente buono</b> (cooldown 10s, danno altissimo), mentre <b>Flameblast e Rolling Magma lisci azzerano</b>. Misurato: <b>335 · 71 · 7</b> inserzioni. <a href=\"https://www.youtube.com/watch?v=hQBmh3sA0tE\" target=\"_blank\" rel=\"noopener\">video</a>"},
 
-  {nome: "Cruel Mistress", chiave: "Cruel Mistress", casa: "Bardiya", compratori: "mai provato",
+  {nome: "Cruel Mistress", chiave: "Cruel Mistress", nuovo: "BalorMage", casa: "Bardiya", compratori: "mai provato",
    mercato: {gemme: ["Return", "Greater Multiple Projectiles", "Chain"], mediana: "pochi c"},
    serve: [["Soulrend of Reaping", 1], ["Return", 1], ["GMP", 1], ["Chain", 1],
            ["Envy <i>o</i> Zealotry", 0], ["Void Sphere", 0], ["Summon Seeking Void", 0]],
@@ -1553,9 +1559,10 @@ function disegnaGriglia(filtro = "") {
            data-arch="${esc(a.chiave || a.nome)}" data-ci="-1"
            title="Mostra i tuoi ${esc(a.chiave || a.nome)}">ne hai ${quanti}</span>, nessuno arriva al primo scaglione.</p>`
       : "";
-    return `<div class="arche-card${fuori}${a.fuori ? " extra" : ""}">
+    return `<div class="arche-card${fuori}${a.fuori ? " extra" : ""}${a.nuovo ? " nuovo" : ""}">
       <div>
-        <h3>${esc(a.nome)} ${m ? `<b>${esc(m.mediana)}</b>` : ""}</h3>
+        <h3>${esc(a.nome)} ${m ? `<b>${esc(m.mediana)}</b>` : ""}${
+          a.nuovo ? `<span class="marca">${esc(a.nuovo)}</span>` : ""}</h3>
         <div class="casa">${a.fuori ? "fuori griglia" : "casa " + esc(a.casa)}</div>
         ${a.compratori ? `<div class="misura">chi compra dice <b>${esc(a.compratori)}</b></div>` : ""}
       </div>
