@@ -362,6 +362,8 @@ export function prezzaWarrant(build, warrant, divine, mirror, minimo, opzioni) {
      **divine**. Tre e non cinque perche' sotto le cinque la pagina gia' spegne il
      numero da sola: qui serve mostrare *che esistono*, e quanti sono. */
   const MIN_STRETTO = 3;
+  // quante inserzioni servono perche' la mediana sia un prezzo e non un venditore
+  const MIN_PREZZABILE = 10;
   let corrente = pool, stretto = pool;
   const passi = [], gemmeStrette = [];
   let scartato = null;
@@ -435,10 +437,21 @@ export function prezzaWarrant(build, warrant, divine, mirror, minimo, opzioni) {
        **mediana** e non il floor, perche' su tre o cinque pezzi il minimo e' un
        venditore, non un mercato — e porta `confronti`, cosi' chi legge sa su
        quanti sta guardando. */
+    /* 🔴 **Il prezzo esce solo sopra `MIN_PREZZABILE`, e la ragione l'ha trovata
+       Nicolas aprendo il link.** Su Dorian il confronto stretto diceva **200
+       divine** su 4 inserzioni: sul trade ne sono comparse **due**, una a 150
+       chaos ferma da 2 giorni e una a **200 divine ferma da tre settimane**. Una
+       inserzione che nessuno compra da 21 giorni non e' un prezzo, e con quattro
+       pezzi basta lei a fare la mediana.
+       ⚠️ **E l'indice non porta le date**, quindi le stantie non si possono
+       togliere: l'unica difesa e' avere abbastanza inserzioni perche' una sola
+       non decida. 💡 Sotto la soglia resta il **link** — andare a vedere e' utile
+       comunque — ma il numero no: era gia' misurato che restringere il pool vale
+       **1,0x**, cioe' quella mediana non aggiungeva informazione, solo rischio. */
     stretto: stretto.length < corrente.length ? {
       confronti: stretto.length,
       floor: +(floorDi(stretto, divine, mirror) ?? 0).toFixed(2),
-      mediana: medianaDi(stretto, divine, mirror),
+      mediana: stretto.length >= MIN_PREZZABILE ? medianaDi(stretto, divine, mirror) : null,
       gemme: gemmeStrette.map((g) => `${g.supporto} su ${g.skill}`),
       trade: linkTrade(build, skillIdx, gemmeStrette, "Allflame", { recenti: false }),
     } : null,

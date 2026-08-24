@@ -35,6 +35,7 @@
   .stretto-riga{display:block;font-size:var(--t-xs);color:var(--muted);text-decoration:none}
   .stretto-riga b{color:var(--gold);font-family:var(--mono)}
   a.stretto-riga:hover{color:var(--text)}
+  .stretto-riga .pochi{color:var(--label);font-family:var(--sans);font-weight:400;font-size:.95em}
   a.stretto-riga:hover b{text-decoration:underline}
   /* Il pulsante dei simili e' secondario: stessa forma, meno peso — la ricerca
      principale resta quella della configurazione ticchettata. */
@@ -450,6 +451,7 @@
     <p><b>Il numero nella colonna <i>Valore</i> è la mediana fra i mercenari simili al tuo</b>: quanto chiede chi sta in mezzo. Sotto, in piccolo, i due prezzi che servono a <i>vendere</i> e non a valutare — la <b>vendita rapida</b> (il quinto prezzo più basso, per uscire in fretta) e il <b>sottocosto</b> (il più economico in assoluto).</p>
     <p>⚠️ <b>Fino al 24 agosto qui c'era il quinto prezzo, e teneva i numeri bassi di 8 volte.</b> Era stato scelto per non farsi ingannare dalle inserzioni sbagliate, ma su un pool di 30-100 il quinto è ancora il fondo del libro: risponde a «a quanto devo listare per essere fra i più economici», non a «quanto chiede chi ha un mercenario come il mio». Misurato sui 38 warrant con un confronto stretto: passare alla mediana <b>sullo stesso pool</b> vale <b>8,0×</b>, mentre restringere il pool fino ai più simili vale <b>1,0×</b> — il divario fra le due colonne non veniva dalle gemme chieste, veniva dalla statistica.</p>
     <p><b>La colonna <i>Più simili</i> è un'altra misura, non un dettaglio della prima.</b> <i>Valore</i> si ferma sopra 30 inserzioni per essere robusto; <i>Più simili</i> continua a chiedere le gemme fino a restare con un pugno di mercenari davvero come il tuo, e ne mostra la <b>mediana</b> con quanti sono. Su pochi pezzi il minimo è un venditore, la mediana no. Si clicca: porta alla ricerca di <b>quei</b> simili, che non è quella del pulsante nella scheda.</p>
+    <p>🔴 <b>Sotto le 10 inserzioni il prezzo non si scrive</b>, e la ragione è un caso vero: su un mercenario la colonna diceva <b>200 divine</b> su 4 inserzioni, e aprendo il link ce n'erano due — una a 150 chaos ferma da 2 giorni e una a <b>200 divine ferma da tre settimane</b>. Un'inserzione che nessuno compra da 21 giorni non è un prezzo, e con quattro pezzi basta lei a fare la mediana. ⚠️ L'indice di mercato <b>non porta le date</b>, quindi le inserzioni stantie non si possono togliere: l'unica difesa è averne abbastanza perché una sola non decida. Il link resta comunque — andare a guardare serve — ma il numero no.</p>
 
     <p><b>Si parte dalla combinazione di skill, ed è già mezzo prezzo.</b> Il pool
     sono le inserzioni che hanno <i>esattamente</i> le skill del tuo mercenario —
@@ -705,9 +707,14 @@ function disegna(dati) {
        ed e' la ragione giusta: una riga non si ordina. Il valore mostrato e' la
        **mediana** dei piu' simili; l'ordinamento pero' non guarda il testo ma
        `stretto.mediana`, che e' **in chaos**, cosi' 7 d sta sopra 10 c da solo. */
-    const st = w.stretto && w.stretto.mediana != null
-      ? `<a class="stretto-riga" ${w.stretto.trade ? `href="${esc(w.stretto.trade)}" target="_blank" rel="noopener"` : ""}
-           title="${esc((w.stretto.gemme || []).join(" · "))}"><b>${prezzo(w.stretto.mediana)}</b><span class="oltre">i ${w.stretto.confronti} pi&ugrave; simili</span></a>`
+    /* ⚠️ Senza abbastanza inserzioni il prezzo non si scrive: resta il link e
+       il conteggio. Su pochi pezzi una sola inserzione vecchia fa la mediana —
+       su Dorian erano 200 d, ed era una ferma da tre settimane. */
+    const st = w.stretto
+      ? `<a class="stretto-riga${w.stretto.mediana == null ? " muto" : ""}" ${w.stretto.trade ? `href="${esc(w.stretto.trade)}" target="_blank" rel="noopener"` : ""}
+           title="${esc((w.stretto.gemme || []).join(" · "))}">${
+             w.stretto.mediana != null ? `<b>${prezzo(w.stretto.mediana)}</b>` : `<b class="pochi">troppo pochi</b>`
+           }<span class="oltre">${w.stretto.confronti} pi&ugrave; simili &rarr;</span></a>`
       : `<span class="oltre">&mdash;</span>`;
     /* Sotto il valore, i due prezzi che servono a vendere e non a valutare: il
        quinto e' «per uscire in fretta», il floor e' «il piu' economico di tutti». */
@@ -748,7 +755,7 @@ function disegna(dati) {
 
   // il totale segue la colonna: prima sommava il floor e diceva un altro numero
   const tot = dati.warrant.reduce((s, w) => s + valoreDi(w), 0);
-  $("stato").innerHTML = `<b>${dati.warrant.length}</b> warrant · <b>${tot.toFixed(0)} c</b> in tutto · dato del <b>${dataIt(dati.generato_il)}</b>` +
+  $("stato").innerHTML = `<b>${dati.warrant.length}</b> warrant · <b>${prezzo(tot)}</b> in tutto · dato del <b>${dataIt(dati.generato_il)}</b>` +
     (dati.divine_in_chaos ? ` \u00b7 divine a <b>${dati.divine_in_chaos.toFixed(0)} c</b>` : "");
 
   // il cursore vive sugli stessi numeri della tabella: ogni ridisegno lo rifa'
@@ -1055,6 +1062,7 @@ const conta = (righe, sel, selSkill) => {
 };
 
 function disegnaScheda(i) {
+  const suo = (ULTIMI && ULTIMI.warrant && ULTIMI.warrant[i]) || {};
   const stato = SCHEDE.get(i);
   const box = $(`scheda-${i}`);
   if (!stato) return;
@@ -1067,7 +1075,6 @@ function disegnaScheda(i) {
      prudente. La riga «i N piu' simili» viene invece da una catena piu' stretta,
      che continua sotto le 30 inserzioni: senza un link suo, quel numero e' un
      prezzo che non si puo' andare a vedere. Le gemme stanno nel `title`. */
-  const suo = (ULTIMI && ULTIMI.warrant && ULTIMI.warrant[i]) || {};
   const st = suo.stretto;
   const bottoneStretto = st && st.trade
     ? `<a class="trade-btn simili" href="${esc(st.trade)}" target="_blank" rel="noopener"
@@ -1075,7 +1082,14 @@ function disegnaScheda(i) {
          <em>&middot; ${(st.gemme || []).length} gemme &middot; mediana ${prezzo(st.mediana)}</em></a>`
     : "";
 
+  /* 🔴 **La mappa parte dalle skill del warrant, non dai supporti.** Prima
+     nasceva da `dati.supporti`, quindi una skill **senza supporti non esisteva**:
+     su Dorian se ne vedevano 3 su 6 — mancavano Herald of Ice, Purity of Ice e
+     Hatred. ⚠️ E non sono contorno: le skill **definiscono il gruppo di
+     confronto**, e li' dentro stanno **aure e skill di movimento**, cioe' quello
+     che si guarda per capire se un mercenario e' brickato. */
   const perSkill = new Map();
+  for (const g of suo.gemme || []) perSkill.set(g.s, []);
   for (const s of dati.supporti) {
     if (!perSkill.has(s.skill)) perSkill.set(s.skill, []);
     perSkill.get(s.skill).push(s);
