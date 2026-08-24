@@ -31,8 +31,14 @@
   .oltre{display:block;font-size:var(--t-xs);color:var(--label)}
   /* Il confronto stretto: stessa scala del sottocosto ma acceso, perche' e'
      un prezzo piu' alto e non piu' basso di quello grande. */
-  .stretto-riga{display:block;font-size:var(--t-xs);color:var(--muted);margin-top:.1rem}
+  .stretto-riga{display:block;font-size:var(--t-xs);color:var(--muted);margin-top:.1rem;text-decoration:none}
   .stretto-riga b{color:var(--gold);font-family:var(--mono)}
+  a.stretto-riga:hover{color:var(--text)}
+  a.stretto-riga:hover b{text-decoration:underline}
+  /* Il pulsante dei simili e' secondario: stessa forma, meno peso — la ricerca
+     principale resta quella della configurazione ticchettata. */
+  .trade-btn.simili{background:transparent;border:1px solid var(--line2);color:var(--muted)}
+  .trade-btn.simili:hover{border-color:var(--gold);color:var(--gold)}
   .tr-link{color:var(--gold);white-space:nowrap;font-size:var(--t-xs)}
   .vuoto{padding:var(--s5);color:var(--label);text-align:center}
   .pannello{border:1px solid var(--line);border-radius:var(--r);background:var(--panel2);
@@ -658,7 +664,8 @@ function disegna(dati) {
        divine** sui cinque simili veri. Si mostra con **quanti sono** e come
        mediana, non come floor — su tre pezzi il minimo e' un venditore. */
     const st = w.stretto && w.stretto.mediana != null && w.stretto.mediana > valore
-      ? `<span class="stretto-riga" title="${esc((w.stretto.gemme || []).join(" · "))}">i ${w.stretto.confronti} pi&ugrave; simili: <b>${prezzo(w.stretto.mediana)}</b></span>` : "";
+      ? `<a class="stretto-riga" ${w.stretto.trade ? `href="${esc(w.stretto.trade)}" target="_blank" rel="noopener"` : ""}
+           title="${esc((w.stretto.gemme || []).join(" · "))}">i ${w.stretto.confronti} pi&ugrave; simili: <b>${prezzo(w.stretto.mediana)}</b></a>` : "";
     const sotto = (w.quinto && w.quinto > w.prezzo
       ? `<span class="oltre">sottocosto: da ${w.prezzo.toFixed(0)} c</span>` : "") + st;
     const magro = w.confronti < 10 ? " magro" : "";
@@ -1006,6 +1013,19 @@ function disegnaScheda(i) {
   const selSkill = stato.selSkill;
   const ora = conta(dati.righe, sel, selSkill);
 
+  /* 🔴 **Il secondo pulsante, e perche' non basta il primo.** Quello sotto cerca
+     la configurazione **ticchettata adesso**, che parte dai passi della misura
+     prudente. La riga «i N piu' simili» viene invece da una catena piu' stretta,
+     che continua sotto le 30 inserzioni: senza un link suo, quel numero e' un
+     prezzo che non si puo' andare a vedere. Le gemme stanno nel `title`. */
+  const suo = (ULTIMI && ULTIMI.warrant && ULTIMI.warrant[i]) || {};
+  const st = suo.stretto;
+  const bottoneStretto = st && st.trade
+    ? `<a class="trade-btn simili" href="${esc(st.trade)}" target="_blank" rel="noopener"
+         title="${esc((st.gemme || []).join(" \u00b7 "))}">I ${st.confronti} pi&ugrave; simili
+         <em>&middot; ${(st.gemme || []).length} gemme &middot; mediana ${prezzo(st.mediana)}</em></a>`
+    : "";
+
   const perSkill = new Map();
   for (const s of dati.supporti) {
     if (!perSkill.has(s.skill)) perSkill.set(s.skill, []);
@@ -1064,6 +1084,7 @@ function disegnaScheda(i) {
     </div>
     <div class="gemme">${carte}</div>
     <div class="scheda-pie">
+      ${bottoneStretto}
       <a class="trade-btn" href="${esc(link.url)}" target="_blank" rel="noopener">Cerca sul trade <em>&middot; ${link.skill} skill${link.skill < link.chieste ? " su " + link.chieste : ""} &middot; ${link.gemme} gemme${link.gemme < link.gemmeChieste ? " su " + link.gemmeChieste : ""}</em></a>
       <span><b>Peso</b>: quanto spesso chi ha quella gemma finisce sopra 5 divine, rispetto alla media dei mercenari come il tuo — <b>1,00× vuol dire che il mercato non la paga</b>. <b>Valore</b> e <b>restano</b> dicono cosa succede a cliccarla: di quanto si sposta il prezzo e quante inserzioni resterebbero per confrontarlo. ⚠️ <b>Sotto le 5 il numero è spento apposta</b>: è il prezzo di un venditore, non di un mercato.</span>
       ${dati.tagliate ? `<span>\u26a0\ufe0f ${dati.tagliate} supporti non mostrati: la maschera ne regge 31.</span>` : ""}

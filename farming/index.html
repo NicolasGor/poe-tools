@@ -67,6 +67,7 @@
     <a href="#heist">Heist</a>
     <a href="#mappe-speciali">Mappe speciali</a>
     <a href="#nightmare">Prezzare le Nightmare</a>
+    <a href="#chart">Prezzare le Chart</a>
     <a href="#fuori-misura">Fuori misura</a>
   </div>
 </nav>
@@ -78,9 +79,9 @@
     <p class="sub">poe.ninja copre <b>930 item</b> in tredici categorie. Fuori restano cose che valgono <b>centinaia di chaos</b>, e per quelle l'unica fonte è il trade. Qui ci sono, misurate.</p>
     <div class="badges">
       <span class="badge oro">patch <b>3.29.2</b></span>
-      <span class="badge">misurato il <b>23 agosto 2026</b></span>
+      <span class="badge">misurato fra il <b>23</b> e il <b>24 agosto 2026</b></span>
       <span class="badge">trade, <b>Instant Buyout</b></span>
-      <span class="badge">divine a <b>207,5 c</b></span>
+      <span class="badge">divine a <b>211,2 c</b><span class="lim"></span></span>
     </div>
   </header>
 
@@ -244,6 +245,83 @@
     <p class="nota">🔴 <b>Un orb solo non paga: da 54 a 60 c sono 6 chaos contro un orb da 15.</b> Conta solo il <b>100%</b> — ma neanche lì è il 2,8× che sembra: i cinque orb costano <b>75 c</b>, quindi 54 → 150 rende <b>+21 c netti</b>, e al fondo del libro (32 → 100) va in <b>pareggio</b>. 💡 In tab ci sono <b>18 orb</b> (15 Armoursmith's, 2 Cartographer's, 1 Jeweller's), cioè <b>tre mappe</b>. Le due strade a confronto: <b>vendere</b> 15 orb (225 c) più 3 mappe lisce (162) fa <b>387 c</b>; <b>orbare</b> le tre e venderle a 150 fa <b>450</b>. Il delirium vale <b>+63 c in tutto</b>, non a mappa. ⚠️ I due assi sono misurati <b>separatamente</b>: quanto rendano insieme non l'ho misurato.</p>
   </section>
 
+
+  <section class="gruppo" id="chart">
+    <h2>Prezzare le Chart</h2>
+    <p>Una Chart non si prezza da quello che c'è scritto sopra: si prezza dal <b>nome dell'area</b>. Fra la più cara e lo sfuso ci sono <b>130×</b>, e le tre che pagano si contano su una mano.</p>
+
+    <div class="avviso">
+      <b>Il nome dell'area non è nel nome dell'item.</b> Una Anchorfield da 130 c in stash si chiama <code>Unwavering Sandy Seabed Chart of Impedance</code>: l'area è una <b>riga di proprietà</b> in cima, come «Area Level». È il motivo per cui la regex qui sotto cerca <code>anchor</code> e non un nome di base — e per cui a occhio, scorrendo la tab, le Chart care sono <b>indistinguibili</b> dalle altre.
+    </div>
+
+    <h3>Le tre che si vendono, e quelle che si corrono</h3>
+    <p>Le regex stanno <b>sotto i 64 caratteri</b> della tastiera dello Steam Deck e si incollano nella barra di ricerca dello stash. Sono verificate contro i <b>543 item letti</b>: accendono quelle aree e <b>nient'altro</b> — nessun prefisso, nessun suffisso, nessun mod contiene quelle lettere.</p>
+
+    <div class="scroll"><table class="tabella">
+      <thead><tr><th>Cosa accende</th><th class="n">Concorrenti</th><th class="n">Listino</th><th class="n">Regex da incollare</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="scaglione">1</span> <b>le tre che si vendono</b><span class="lim">Anchorfield 130 c · Clam-infested Shelf 129 c · Kishara's Rest 95 c</span></td>
+          <td class="n">6.617<span class="lim">le tre sommate</span></td>
+          <td class="n val">95–130 c</td>
+          <td><div class="rx-cella"><code id="chr1">anchor|kishara|clam</code><button type="button" data-copia="chr1">copia</button></div></td>
+        </tr>
+        <tr>
+          <td><span class="scaglione">2</span> <b>l'ingresso del Voyage</b><span class="lim">Hazardous Depths 16,5 c · Lost Ruins 3 c — <b>si comprano, non si vendono</b></span></td>
+          <td class="n">2.942</td>
+          <td class="n val basso">3–17 c</td>
+          <td><div class="rx-cella"><code id="chr2">Hazardous|Ruin</code><button type="button" data-copia="chr2">copia</button></div></td>
+        </tr>
+        <tr>
+          <td><span class="scaglione">3</span> tutto il resto — <b>lo sfuso</b><span class="lim">dodici aree fra 1 e 7 c, più le tre basi non rivelate a 1 c</span></td>
+          <td class="n">oltre 10.000<span class="lim">tetto dell'API</span></td>
+          <td class="n val basso">1–7 c</td>
+          <td class="n"><span class="lim">nessuna: è quello che resta spento</span></td>
+        </tr>
+      </tbody>
+    </table></div>
+
+    <div class="avviso">
+      <b>🔴 La quantità non c'entra col prezzo, e i numeri lo dicono chiaro.</b> <b>Hazardous Depths</b> ha la quantità media più alta di tutte — <b>+100%</b> — e vale <b>16,5 c</b>. <b>Anchorfield</b> ha la più bassa fra le rivelate — <b>+44%</b> — e vale <b>130 c</b>. E il caso che chiude il discorso: <b>Kishara's Rest</b> e <b>Lost Ruins</b> hanno lo <b>stesso Area Level (83)</b> e quantità quasi identiche (+76% e +81%), ma una costa <b>95 c</b> e l'altra <b>3</b>.
+      <br><br>
+      ⚠️ <b>Il perché non è misurato</b>: nessuno ha contato cosa cada davvero dentro un'Anchorfield. Il mercato lo sa e lo paga, questa pagina no.
+    </div>
+
+    <h3>Il censimento: 16 aree, 543 inserzioni lette</h3>
+    <p><code>status: securable</code>, <code>sort: price asc</code>, <b>30 offerte lette per area</b>. Il numero è quindi <b>quello che paghi comprando</b>; per vendere si lista vicino al minimo, non alla mediana.</p>
+
+    <div class="scroll"><table class="tabella">
+      <thead><tr><th>Area</th><th class="n">Inserzioni</th><th class="n">Minimo</th><th class="n">Mediana</th><th class="n">Quantità media</th></tr></thead>
+      <tbody>
+        <tr><td><b>Anchorfield</b></td><td class="n"><a href="https://www.pathofexile.com/trade/search/Allflame/wv3JGR7rhb" target="_blank" rel="noopener">3.773</a></td><td class="n">100 c</td><td class="n val">130 c</td><td class="n">+44%</td></tr>
+        <tr><td><b>Clam-infested Shelf</b></td><td class="n"><a href="https://www.pathofexile.com/trade/search/Allflame/PPa08d8vFL" target="_blank" rel="noopener">846</a></td><td class="n">85 c</td><td class="n val">129 c</td><td class="n">+96%</td></tr>
+        <tr><td><b>Kishara's Rest</b></td><td class="n"><a href="https://www.pathofexile.com/trade/search/Allflame/4mPV5DbQh9" target="_blank" rel="noopener">1.998</a></td><td class="n">94 c</td><td class="n val">95 c</td><td class="n">+76%</td></tr>
+        <tr><td>Hazardous Depths</td><td class="n"><a href="https://www.pathofexile.com/trade/search/Allflame/5ndJDkRoTa" target="_blank" rel="noopener">899</a></td><td class="n">4 c</td><td class="n val">16,5 c</td><td class="n">+100%</td></tr>
+        <tr><td>Infested Bathyspheres</td><td class="n"><a href="https://www.pathofexile.com/trade/search/Allflame/bGDavRkDiL" target="_blank" rel="noopener">1.979</a></td><td class="n">7 c</td><td class="n val basso">7 c</td><td class="n">+69%</td></tr>
+        <tr><td>Brine King's Domain</td><td class="n"><a href="https://www.pathofexile.com/trade/search/Allflame/jWRr45JdCX" target="_blank" rel="noopener">1.973</a></td><td class="n">5 c</td><td class="n val basso">6 c</td><td class="n">+78%</td></tr>
+        <tr><td>Pelagic Abyss</td><td class="n"><a href="https://www.pathofexile.com/trade/search/Allflame/bGDaLvKdIL" target="_blank" rel="noopener">1.870</a></td><td class="n">2 c</td><td class="n val basso">4 c</td><td class="n">+80%</td></tr>
+        <tr><td>Eldritch Depths</td><td class="n"><a href="https://www.pathofexile.com/trade/search/Allflame/rPaDVZJMCQ" target="_blank" rel="noopener">545</a></td><td class="n">3 c</td><td class="n val basso">4 c</td><td class="n">+74%</td></tr>
+        <tr><td>Sea Pillars</td><td class="n"><a href="https://www.pathofexile.com/trade/search/Allflame/eRDeKpb6iL" target="_blank" rel="noopener">2.534</a></td><td class="n">1 c</td><td class="n val basso">4 c</td><td class="n">+84%</td></tr>
+        <tr><td><b>Lost Ruins</b> <span class="lim">l'ingresso del Voyage</span></td><td class="n"><a href="https://www.pathofexile.com/trade/search/Allflame/kyD2LBKWS5" target="_blank" rel="noopener">2.043</a></td><td class="n">3 c</td><td class="n val basso">3 c</td><td class="n">+81%</td></tr>
+        <tr><td>Sunken Totems</td><td class="n"><a href="https://www.pathofexile.com/trade/search/Allflame/V5p0QV72Sp" target="_blank" rel="noopener">3.460</a></td><td class="n">2 c</td><td class="n val basso">3 c</td><td class="n">+69%</td></tr>
+        <tr><td>Diving Shoals</td><td class="n"><a href="https://www.pathofexile.com/trade/search/Allflame/Lgk0QLKXTn" target="_blank" rel="noopener">2.650</a></td><td class="n">3 c</td><td class="n val basso">3 c</td><td class="n">+66%</td></tr>
+        <tr><td>Abyssal Plain · Seafloor Ridges · Undersea Groves<span class="lim">Area Level 6–59: sono le aree basse</span></td><td class="n">10.000+<span class="lim">tetto dell'API, tutte e tre</span></td><td class="n">1 c</td><td class="n val basso">1 c</td><td class="n">+25%</td></tr>
+        <tr><td>le tre basi <b>non rivelate</b><span class="lim">Coral Forest · Coral Reef · Sandy Seabed Chart</span></td><td class="n">10.000+<span class="lim">tetto dell'API, tutte e tre</span></td><td class="n">1 c</td><td class="n val basso">1 c</td><td class="n">+23%</td></tr>
+        <tr><td>🔴 <s>Unremarkable Seabed</s><span class="lim">non è un mercato: <b>tre</b> inserzioni in tutta la lega — una a 2 c e una a 999</span></td><td class="n">3</td><td class="n val basso">—</td><td class="n">—</td><td class="n">—</td></tr>
+      </tbody>
+    </table></div>
+    <p class="nota">💡 <b>Rivelare l'area raddoppia la quantità</b>: una Chart vergine porta <b>+23%</b>, una rivelata sta fra <b>+66% e +100%</b> — tranne le tre aree basse, che restano a +25%. È l'unica cosa che il censimento dice su cosa <i>renda</i> una Chart; tutto il resto misura cosa il mercato <i>paga</i>.</p>
+
+    <h3>La seconda regex — quella che non ho potuto verificare</h3>
+    <p>Serve per le Chart <b>già rivelate</b>, dove il Voyage Modifier porta righe di ricompensa. Sono <b>89 caratteri</b>: la tastiera dello Steam Deck ne accetta 64 e taglia senza avvisare, quindi si incolla in <b>due volte</b>, e le due righe cercano le stesse tredici parole.</p>
+    <div class="frammento">
+      <div class="riga"><code id="chr3">"at least|cannot drop|poss|fract|bottle|divine|arca|oper|star"</code><button type="button" data-copia="chr3">copia</button></div>
+      <div class="riga"><code id="chr4">"pantheon|belt|lantern|wisp"</code><button type="button" data-copia="chr4">copia</button></div>
+      <span class="et">62 + 28 caratteri</span>
+    </div>
+    <p class="nota">🔴 <b>Resta <code>da-verificare</code>, e il trade non può togliermelo</b>: <b>ogni</b> inserzione letta è una Chart vergine — porta l'implicito <i>«Voyage Modifier will be revealed once Charted»</i> — quindi il mercato quelle righe non le mostra mai. Non le elenca nemmeno l'API di trade (<code>/data/stats</code> ha solo l'implicito) né PoEDB. Le tredici parole vengono dall'esperienza, e l'unico posto dove si controllano è <b>una tab piena di Chart rivelate</b>.</p>
+  </section>
+
   <section class="gruppo" id="fuori-misura">
     <h2>Cosa non si misura da qui</h2>
     <ul>
@@ -254,9 +332,9 @@
   </section>
 
   <footer class="pie">
-    Prezzi letti il <b>23 agosto 2026</b> sull'API di trade con <code>status: securable</code>, divine a <b>207,5 chaos</b> da poe.ninja.
-    Ogni cifra è la <b>mediana delle prime dieci offerte</b>, non l'offerta più bassa. Le misure si rifanno con
-    <code>trade-prezzi-scheda-prezzi.py</code>, <code>nightmare-scaglioni.py</code> e <code>trade-prezzi-scrying.py</code>.
+    Prezzi letti il <b>23 agosto 2026</b> sull'API di trade con <code>status: securable</code> — <b>le Chart il 24</b>, con il divine a <b>211,2 chaos</b> letto da poe.ninja al momento della misura.
+    Ogni cifra è la <b>mediana</b> delle prime offerte, non l'offerta più bassa: dieci per riga, <b>trenta</b> per le Chart. Le misure si rifanno con
+    <code>trade-prezzi-scheda-prezzi.py</code>, <code>nightmare-scaglioni.py</code>, <code>trade-prezzi-scrying.py</code> e <code>trade-prezzi-chart.py</code> + <code>chart-scaglioni.py</code>.
     I mercati si muovono: in dodici giorni l'Heist ha perso i due terzi.
   </footer>
 

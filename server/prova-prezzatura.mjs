@@ -61,7 +61,7 @@ for (const x of righe.sort((a, b) => val(b.nuovo) - val(a.nuovo))) {
   console.log(
     `${x.nome.slice(0, 29).padEnd(29)} | ${String(x.vecchio.pool).padStart(8)} > ${String(x.nuovo.pool).padEnd(8)} | ` +
     `${chaos(a).padStart(9)} > ${chaos(b).padEnd(9)} | ${(b / (a || 1)).toFixed(1).padStart(4)} | ` +
-    (s ? `${chaos(s.mediana)} (${s.confronti})` : "\u2014"));
+    (s ? `${chaos(s.mediana)} (${s.confronti})${s.trade ? "" : "  \u26a0 senza link"}` : "\u2014"));
 }
 fattori.sort((p, q) => p - q);
 console.log("-".repeat(104));

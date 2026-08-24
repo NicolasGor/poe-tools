@@ -369,7 +369,9 @@ export function prezzaWarrant(build, warrant, divine, mirror, minimo, opzioni) {
     const piu = stretto.filter((r) => r.mappa.get(c.si)?.has(c.sj));
     if (piu.length >= MIN_STRETTO) {
       stretto = piu;
-      gemmeStrette.push({ skill: c.skill, supporto: c.supporto, confronti: piu.length });
+      // si/sj servono a linkTrade: e' l'unico modo di dare a chi legge la
+      // ricerca di **quei** simili, non della configurazione ticchettata
+      gemmeStrette.push({ skill: c.skill, supporto: c.supporto, confronti: piu.length, si: c.si, sj: c.sj });
     }
     const filtrato = corrente.filter((r) => r.mappa.get(c.si)?.has(c.sj));
     const f = floorDi(filtrato, divine, mirror);
@@ -437,6 +439,7 @@ export function prezzaWarrant(build, warrant, divine, mirror, minimo, opzioni) {
       floor: +(floorDi(stretto, divine, mirror) ?? 0).toFixed(2),
       mediana: medianaDi(stretto, divine, mirror),
       gemme: gemmeStrette.map((g) => `${g.supporto} su ${g.skill}`),
+      trade: linkTrade(build, skillIdx, gemmeStrette, "Allflame"),
     } : null,
     passi: passi.map(({ si, sj, ...resto }) => resto),
     oltre: scartato && { skill: scartato.skill, supporto: scartato.supporto, confronti: scartato.confronti, floor: scartato.floor },
