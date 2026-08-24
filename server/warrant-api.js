@@ -424,6 +424,7 @@ export function prezzaWarrant(build, warrant, divine, mirror, minimo, opzioni) {
       confronti: pool.length,
       floor: +(floorDi(pool, divine, mirror) ?? 0).toFixed(2),
       quinto: quintoDi(pool, divine, mirror),
+      mediana: medianaDi(pool, divine, mirror),
     },
     copertura,
     prezzo: +floorFinale.toFixed(2),

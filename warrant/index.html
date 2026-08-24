@@ -445,7 +445,8 @@
   <h2 class="sec">Come si legge questo numero</h2>
 
   <div class="card">
-    <p><b>Il numero nella colonna <i>Valore</i> è il quinto prezzo fra i mercenari simili al tuo</b>: robusto contro le inserzioni sbagliate, che su pool da migliaia fanno sempre il minimo. Sotto, in piccolo, il <b>sottocosto</b> — il prezzo a cui saresti il più economico in assoluto: è la vendita-lampo, non il valore.</p>
+    <p><b>Il numero nella colonna <i>Valore</i> è la mediana fra i mercenari simili al tuo</b>: quanto chiede chi sta in mezzo. Sotto, in piccolo, i due prezzi che servono a <i>vendere</i> e non a valutare — la <b>vendita rapida</b> (il quinto prezzo più basso, per uscire in fretta) e il <b>sottocosto</b> (il più economico in assoluto).</p>
+    <p>⚠️ <b>Fino al 24 agosto qui c'era il quinto prezzo, e teneva i numeri bassi di 8 volte.</b> Era stato scelto per non farsi ingannare dalle inserzioni sbagliate, ma su un pool di 30-100 il quinto è ancora il fondo del libro: risponde a «a quanto devo listare per essere fra i più economici», non a «quanto chiede chi ha un mercenario come il mio». Misurato sui 38 warrant con un confronto stretto: passare alla mediana <b>sullo stesso pool</b> vale <b>8,0×</b>, mentre restringere il pool fino ai più simili vale <b>1,0×</b> — il divario fra le due colonne non veniva dalle gemme chieste, veniva dalla statistica.</p>
     <p><b>La colonna <i>Più simili</i> è un'altra misura, non un dettaglio della prima.</b> <i>Valore</i> si ferma sopra 30 inserzioni per essere robusto; <i>Più simili</i> continua a chiedere le gemme fino a restare con un pugno di mercenari davvero come il tuo, e ne mostra la <b>mediana</b> con quanti sono. Su pochi pezzi il minimo è un venditore, la mediana no. Si clicca: porta alla ricerca di <b>quei</b> simili, che non è quella del pulsante nella scheda.</p>
 
     <p><b>Si parte dalla combinazione di skill, ed è già mezzo prezzo.</b> Il pool
@@ -575,6 +576,23 @@ let ULTIMI = null;
 let PRIMI_VISTI = {};
 let ORDINE = { campo: "valore", verso: -1 };
 
+/* 🔴 **Quanto vale un warrant: la MEDIANA del gruppo di confronto.**
+ *
+ * Fino al 24 agosto era il **quinto prezzo piu' basso**, scelto per non farsi
+ * ingannare dalle inserzioni sbagliate — vero, ma su un pool di 30-100 il quinto
+ * e' ancora **il fondo del libro**: risponde a «a quanto devo listare per essere
+ * fra i piu' economici», non a «quanto chiede chi ha un mercenario come il mio»,
+ * che e' la frase in cima alla pagina.
+ *
+ * 📏 Misurato sui 38 warrant con un confronto stretto: passare dal quinto alla
+ * mediana **sullo stesso identico pool** vale **8,0x**, mentre restringere il
+ * pool fino ai piu' simili vale **1,0x**. Cioe' il divario fra le due colonne
+ * non veniva dalle gemme chieste: veniva dalla statistica.
+ *
+ * ⚠️ Il quinto resta, in piccolo, come **prezzo di vendita rapida** — quello si',
+ * e' quello che serve per liquidare. E il floor resta il sottocosto. */
+const valoreDi = (w) => w.mediana ?? w.quinto ?? w.prezzo;
+
 const dal = (id) => {
   const v = PRIMI_VISTI[id];
   if (!v) return '<span class="oltre">—</span>';
@@ -595,12 +613,12 @@ const dal = (id) => {
 function base(w) {
   const b = w.base;
   if (!b || !b.confronti) return "";
-  const v = b.quinto ?? b.floor;
+  const v = b.mediana ?? b.quinto ?? b.floor;
   /* ⚠️ Dal 24 agosto il gruppo di confronto sono le inserzioni che hanno le
      skill **portanti** — quelle con 4+ gemme — non tutte le skill del warrant.
      La frase lo dice, altrimenti prometterebbe una somiglianza che non c'e': le
      utility (Haste, Flame Wall, un grido) non le guarda piu' nessuno. */
-  return `<div class="base-riga">Le sole skill che portano il valore valgono <b>${v == null ? "—" : v.toFixed(0) + " c"}</b>` +
+  return `<div class="base-riga">Le sole skill che portano il valore valgono <b>${prezzo(v)}</b>` +
     ` su <b>${b.confronti.toLocaleString("it")}</b> inserzioni che le hanno</div>`;
 }
 
@@ -651,8 +669,8 @@ function disegna(dati) {
   dati.warrant.sort((a, b) => ORDINE.campo === "dal"
     ? verso * String(PRIMI_VISTI[a.id] || "").localeCompare(String(PRIMI_VISTI[b.id] || ""))
     : ORDINE.campo === "simili"
-      ? verso * ((simile(a) - simile(b)) || ((a.quinto ?? a.prezzo) - (b.quinto ?? b.prezzo)))
-      : verso * (((a.quinto ?? a.prezzo) - (b.quinto ?? b.prezzo)) || (a.prezzo - b.prezzo)));
+      ? verso * ((simile(a) - simile(b)) || (valoreDi(a) - valoreDi(b)))
+      : verso * ((valoreDi(a) - valoreDi(b)) || (a.prezzo - b.prezzo)));
   salvaCache(dati);   // la cache segue l'ordine mostrato, per la stessa ragione
 
   corpo.innerHTML = dati.warrant.map((w, i) => {
@@ -665,7 +683,7 @@ function disegna(dati) {
     // lista a caso — regola del 22 agosto, rilievo di Nicolas: «solo 15 sopra i
     // 10c, qualcosa non va»). Il sottocosto resta come dettaglio: e' il prezzo
     // della vendita-lampo, non il valore.
-    const valore = w.quinto ?? w.prezzo;
+    const valore = valoreDi(w);
     /* 🔴 **Il confronto stretto, che prima si buttava via.** La misura grande si
        ferma sopra 30 inserzioni per essere robusta; ma continuando a chiedere le
        gemme si arriva a un pugno di mercenari **davvero** come il nostro, e li'
@@ -680,8 +698,12 @@ function disegna(dati) {
       ? `<a class="stretto-riga" ${w.stretto.trade ? `href="${esc(w.stretto.trade)}" target="_blank" rel="noopener"` : ""}
            title="${esc((w.stretto.gemme || []).join(" · "))}"><b>${prezzo(w.stretto.mediana)}</b><span class="oltre">i ${w.stretto.confronti} pi&ugrave; simili</span></a>`
       : `<span class="oltre">&mdash;</span>`;
-    const sotto = w.quinto && w.quinto > w.prezzo
-      ? `<span class="oltre">sottocosto: da ${w.prezzo.toFixed(0)} c</span>` : "";
+    /* Sotto il valore, i due prezzi che servono a vendere e non a valutare: il
+       quinto e' «per uscire in fretta», il floor e' «il piu' economico di tutti». */
+    const sotto = (w.quinto && w.quinto < valore
+        ? `<span class="oltre">vendita rapida: ${prezzo(w.quinto)}</span>` : "")
+      + (w.prezzo && w.prezzo < (w.quinto ?? valore)
+        ? `<span class="oltre">sottocosto: da ${prezzo(w.prezzo)}</span>` : "");
     const magro = w.confronti < 10 ? " magro" : "";
     const vend = VENDIBILI.has(w.build) ? "arche vend" : "arche";
     /* Il testo su cui si filtra sta **nella riga**, non ricalcolato a ogni tasto:
@@ -692,7 +714,7 @@ function disegna(dati) {
       .join(" ").toLowerCase();
     return `<tr data-cerca="${esc(cercabile)}" data-id="${esc(w.id || "")}">
       <td><span class="nome">${esc(w.nome)}</span><span class="${vend}">${esc(w.build)}${w.infamous ? " · Infamous" : ""} · lvl ${esc(w.livello)}</span></td>
-      <td class="n"><span class="prezzo${valore >= 10 ? "" : " basso"}">${valore.toFixed(0)} c</span>${sotto}</td>
+      <td class="n"><span class="prezzo${valore >= 10 ? "" : " basso"}">${prezzo(valore)}</span>${sotto}</td>
       <td class="n simili-cel">${st}</td>
       <td class="dal">${dal(w.id)}</td>
       <td class="conf${magro}">${w.confronti}<span class="oltre">inserzioni simili</span>${movimento(w.chiave) ? `<span class="oltre mov">${esc(movimento(w.chiave))}</span>` : ""}</td>
@@ -713,7 +735,8 @@ function disegna(dati) {
   const velo = $("griglia-modale");
   if (velo && !velo.hidden) disegnaGriglia($("griglia-cerca").value);
 
-  const tot = dati.warrant.reduce((s, w) => s + w.prezzo, 0);
+  // il totale segue la colonna: prima sommava il floor e diceva un altro numero
+  const tot = dati.warrant.reduce((s, w) => s + valoreDi(w), 0);
   $("stato").innerHTML = `<b>${dati.warrant.length}</b> warrant · <b>${tot.toFixed(0)} c</b> in tutto · dato del <b>${dataIt(dati.generato_il)}</b>` +
     (dati.divine_in_chaos ? ` \u00b7 divine a <b>${dati.divine_in_chaos.toFixed(0)} c</b>` : "");
 
@@ -1726,7 +1749,7 @@ const COMUNE_STASH = "mercenary warrant build mercenary level requires right cli
 
 function calcolaButta(soglia, limite) {
   const tutti = (ULTIMI && ULTIMI.warrant) || [];
-  const val = (w) => w.quinto ?? w.prezzo;
+  const val = valoreDi;
   const butta = tutti.filter((w) => val(w) <= soglia + 1e-9);
   const tieni = tutti.filter((w) => val(w) > soglia + 1e-9);
   const vietati = tieni.map(testoWarrant).concat([COMUNE_STASH]);
@@ -1804,7 +1827,7 @@ let SOGLIE = [0];
 
 function preparaSoglia() {
   const tutti = (ULTIMI && ULTIMI.warrant) || [];
-  const val = (w) => w.quinto ?? w.prezzo;
+  const val = valoreDi;
   SOGLIE = [0, ...new Set(tutti.map(val))].sort((a, b) => a - b);
   const c = $("soglia");
   c.max = String(Math.max(1, SOGLIE.length - 1));
@@ -1826,7 +1849,7 @@ function disegnaButta() {
   $("soglia-eti").textContent = `≤ ${soglia.toFixed(0)} c`;
 
   const r = calcolaButta(soglia, limite);
-  const persi = r.butta.reduce((s, w) => s + (w.quinto ?? w.prezzo), 0);
+  const persi = r.butta.reduce((s, w) => s + valoreDi(w), 0);
   $("butta-conta").innerHTML = r.butta.length
     ? `<b>${r.butta.length}</b> su ${tutti.length} · <b>${persi.toFixed(0)} c</b> buttati · ne restano <b>${r.tieni.length}</b>`
     : "nessun warrant sotto soglia";
@@ -1848,7 +1871,7 @@ function disegnaButta() {
     <p class="avviso-mini">⚠️ <b>${r.ciechi.length} warrant nessuna regex li isola</b>:
     ogni pezzo del loro nome e del loro archetipo compare anche su uno che tieni
     — spesso è un omonimo con lo stesso archetipo. Vanno tolti a mano.</p>
-    <ul>${r.ciechi.map((w) => `<li>${esc(w.nome)} · ${esc(w.build)} · ${(w.quinto ?? w.prezzo).toFixed(0)} c</li>`).join("")}</ul>` : "";
+    <ul>${r.ciechi.map((w) => `<li>${esc(w.nome)} · ${esc(w.build)} · ${prezzo(valoreDi(w))}</li>`).join("")}</ul>` : "";
 
   // le righe colpite si accendono nella tabella: il controllo si fa li', non
   // leggendo la regex carattere per carattere
