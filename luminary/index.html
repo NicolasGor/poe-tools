@@ -97,6 +97,12 @@
     </div>
   </header>
 
+
+  <div class="avviso" style="margin-bottom:var(--s5)">
+    🔴 <b>Il bersaglio &egrave; cambiato il 24 agosto: da <span style="white-space:nowrap">CI + Destructive Link</span> a <span style="white-space:nowrap">life stacking + Flame Link</span></b> col merc Kineticist.
+    Sono gi&agrave; riscritte per la build nuova <b>la regex delle mappe</b>, <b>i link per comprarle</b> e gli <b>errori che costano</b>; la lista della spesa sta sulla <a href="../spesa/">scheda Spesa</a>.
+    ⚠️ <b>Le sezioni sopra &mdash; numeri, alberi, ascendancy e cosa farmare &mdash; descrivono ancora il bersaglio Peuget2</b> e non sono state toccate: valgono come storia, non come piano.
+  </div>
   <div class="verdetto">
     <h2>Come funziona, in tre righe</h2>
     <p><b>Noble Blood</b> rende il merc permanente; i nodi <b>Legendary</b> gli fanno vestire unici, e ogni unico addosso = <b>8% more damage</b> (ne porterà 5).</p>
@@ -226,15 +232,35 @@
   </table>
   <p class="nota muto" style="margin-bottom:var(--s6)">La regola di transizione: si sale di tier quando il merc <b>scioglie i pack senza che tu rallenti</b> — il div/ora del Luminary scala col ritmo, non col livello delle mappe.</p>
 
-  <h2 class="sec">La regex delle mappe</h2>
-  <p class="nota" style="margin-bottom:var(--s2)">Verificata due volte — censimento della wiki <b>e poe.re</b> (controverifica di Nicolas): esclude no-regen, less recovery, reduced flask charges, less armour, i due anti-crit e — via <span style="font-family:var(--mono)">ills$</span> — il <b>«reduced effect of Non-Curse Auras from Skills»</b>, il mod peggiore per un aurabot. <b>34 caratteri, un incollo sul Deck.</b> <em>Costo noto di ills$: butta anche tre mod benefici minori (Rampage, CDR movement) — accettato.</em></p>
-  <p style="font-family:var(--mono);font-size:var(--t-sm);background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:4px;padding:.6rem .8rem;margin-bottom:var(--s3)">"!te of|ur$|ced f|kes$|ills$|t reg" "m q.*\+(8|9|1\d)\d" "y: r"</p>
-  <p class="nota muto" style="margin-bottom:var(--s6)">Per comprare 8-mod con quant ≥ 100% si aggiunge, come secondo incollo: <span style="font-family:var(--mono)">"m q.*[1-9]..%"</span></p>
+  <h2 class="sec">La regex delle mappe &mdash; rifatta il 25 agosto</h2>
+  <p class="nota" style="margin-bottom:var(--s2)">
+    🔴 <b>La build &egrave; cambiata e la regex vecchia era tarata sull&rsquo;aurabot ES</b>: escludeva l&rsquo;effetto delle aure (Determination) e il <i>less Armour</i> (Aegis), che qui non esistono pi&ugrave;. Dei quattro pilastri di allora <b>resta solo il block</b>, e per un motivo diverso: non ricarica l&rsquo;energy shield, <b>recupera vita</b>.
+    I pilastri nuovi sono <b>rigenerazione</b>, <b>recover life on block</b>, <b>flask</b> (tengono su Rumi&rsquo;s <i>e</i> passano al merc dalla Ceinture), <b>resistenze massime</b> e &mdash; nuovo di zecca &mdash; <b>il block dei mostri</b>, perch&eacute; il Kinetic Blast &egrave; un <b>attacco</b>.
+    <b>63 caratteri su 64</b>, copre <b>17</b> mod su 18 e <b>10 letali su 10</b>.
+  </p>
+  <p style="font-family:var(--mono);font-size:var(--t-sm);background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:4px;padding:.6rem .8rem;margin-bottom:var(--s3)">"!redu|to a|shie|no l|elem|unaf|chai|be l|block$|gain f|block a"</p>
+  <p class="nota muto" style="margin-bottom:var(--s3)">Secondo incollo per il pack size &ge; 30%: <span style="font-family:var(--mono)">"iz.*([3-9].|\d..)%"</span></p>
+  <p class="nota" style="margin-bottom:var(--s3)">
+    💡 <b>Perch&eacute; <span style="font-family:var(--mono)">block$</span> e non <span style="font-family:var(--mono)">cannot bl</span>:</b> <code>Monsters cannot Block your Attacks</code> &egrave; un mod <b>buono</b> per questa build, e un frammento libero se lo mangiava. Ancorato alla fine, <span style="font-family:var(--mono)">block$</span> prende <i>Players cannot Block</i> e <i>reduced Chance to Block</i> e lascia stare quello dei mostri.
+    <em>Prezzo dichiarato: <span style="font-family:var(--mono)">redu</span> toglie anche i tre <i>&laquo;Players take #% reduced Damage from&hellip;&raquo;</i>, che sono benefici. Fuori resta un solo mod, <i>Players cannot Block Spell Damage</i>.</em>
+  </p>
+
+  <h2 class="sec">Comprare mappe che questa build pu&ograve; correre</h2>
+  <p class="nota" style="margin-bottom:var(--s2)">
+    Stessa lista, ma sul trade non c&rsquo;&egrave; il tetto dei 64 caratteri: il gruppo <code>not</code> ne porta <b>diciassette</b>, cio&egrave; anche i due che la regex lascia fuori.
+    📏 <b>Quanto costa la build, misurato</b>: sulle T16 con <b>quantit&agrave; &ge; 150%</b> ne restano <b>12 su 18</b> &mdash; le esclusioni tolgono <b>un terzo</b> delle mappe pi&ugrave; tirate. Campione piccolo, dichiarato.
+    <em>⚠️ Nel link <b>non</b> c&rsquo;&egrave; il filtro <code>rarity: nonunique</code> che le altre schede usano: sulle mappe porta il totale da <b>12 a 1</b>. Provato, e tolto.</em>
+  </p>
+  <p style="margin-bottom:var(--s6)">
+    <a href="https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%20%7B%22status%22%3A%20%7B%22option%22%3A%20%22securable%22%7D%2C%20%22filters%22%3A%20%7B%22type_filters%22%3A%20%7B%22filters%22%3A%20%7B%22category%22%3A%20%7B%22option%22%3A%20%22map%22%7D%7D%7D%2C%20%22map_filters%22%3A%20%7B%22filters%22%3A%20%7B%22map_tier%22%3A%20%7B%22min%22%3A%2016%2C%20%22max%22%3A%2016%7D%2C%20%22map_iiq%22%3A%20%7B%22min%22%3A%20150%7D%2C%20%22map_packsize%22%3A%20%7B%22min%22%3A%2030%7D%7D%7D%7D%2C%20%22stats%22%3A%20%5B%7B%22type%22%3A%20%22not%22%2C%20%22filters%22%3A%20%5B%7B%22id%22%3A%20%22explicit.stat_1910157106%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_1890969167%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_4181072906%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_419810844%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_2736953535%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_4261179672%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_3729221884%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_3376488707%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_881836292%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_36406748%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_2549889921%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_1472832594%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_3938822425%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_558910024%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_2326202293%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_337935900%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_1140978125%22%7D%5D%2C%20%22disabled%22%3A%20false%7D%5D%7D%2C%20%22sort%22%3A%20%7B%22price%22%3A%20%22asc%22%7D%7D" target="_blank" rel="noopener"><b>T16 corribili, quant &ge; 150%</b></a> &middot; <a href="https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%20%7B%22status%22%3A%20%7B%22option%22%3A%20%22securable%22%7D%2C%20%22filters%22%3A%20%7B%22type_filters%22%3A%20%7B%22filters%22%3A%20%7B%22category%22%3A%20%7B%22option%22%3A%20%22map%22%7D%7D%7D%2C%20%22map_filters%22%3A%20%7B%22filters%22%3A%20%7B%22map_tier%22%3A%20%7B%22min%22%3A%2016%2C%20%22max%22%3A%2016%7D%2C%20%22map_iiq%22%3A%20%7B%22min%22%3A%20100%7D%2C%20%22map_packsize%22%3A%20%7B%22min%22%3A%2030%7D%7D%7D%7D%2C%20%22stats%22%3A%20%5B%7B%22type%22%3A%20%22not%22%2C%20%22filters%22%3A%20%5B%7B%22id%22%3A%20%22explicit.stat_1910157106%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_1890969167%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_4181072906%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_419810844%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_2736953535%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_4261179672%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_3729221884%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_3376488707%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_881836292%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_36406748%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_2549889921%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_1472832594%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_3938822425%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_558910024%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_2326202293%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_337935900%22%7D%2C%20%7B%22id%22%3A%20%22explicit.stat_1140978125%22%7D%5D%2C%20%22disabled%22%3A%20false%7D%5D%7D%2C%20%22sort%22%3A%20%7B%22price%22%3A%20%22asc%22%7D%7D" target="_blank" rel="noopener">la stessa a quant &ge; 100%</a>
+    <span class="nota muto" style="display:block;margin-top:.5rem">⚠️ Sulle T16 <b>bianche</b> il link non serve: il fondo del libro &egrave; a 1 chaos e senza mod, e quelle le alchemizzi tu con la regex qui sopra. Il trade serve per le <b>gi&agrave; tirate</b>.</span>
+  </p>
 
   <h2 class="sec">Errori che costano</h2>
   <ul class="errori">
-    <li><b>CI prima del gear ES</b> = un personaggio con 1 vita e niente scudo. Prima si veste, poi si specca.</li>
-    <li><b>Mappe no-regen / less recovery non si corrono</b>: Zealot's Oath vive di rigenerazione. È la sola famiglia di mod vietata («besides regen mods, able to run everything»).</li>
+    <li><b>Il light radius non &egrave; illuminazione</b>: con Golden Glory moltiplica l&rsquo;effetto dei link, ed &egrave; il motivo per cui Nycta&rsquo;s Lantern, il Rotmother&rsquo;s e gli anelli si comprano <i>per quella riga</i>. ✅ Il <b>Blind</b> non lo tocca (poewiki, pagina di Golden Glory): le mappe che accecano si corrono.</li>
+    <li><b>Mappe no-regen / less recovery non si corrono</b> &mdash; la ragione per&ograve; non &egrave; pi&ugrave; Zealot&rsquo;s Oath: sono i <b>~1.200 di vita al secondo</b> e il <i>recover on block</i>, che qui sono la difesa. L&rsquo;autore della guida le nomina per prime, e aggiunge <i>&laquo;besides that, we&rsquo;re pretty much able to run all other map mods&raquo;</i>.</li>
+    <li>🔴 <b>E adesso conta anche il block dei <i>mostri</i></b>, che sulla build vecchia non c&rsquo;entrava niente: il Kinetic Blast &egrave; un <b>attacco</b>, e <i>&laquo;monsters having like 50% block chance would significantly reduce the damage that your merc does&raquo;</i>.</li>
     <li><b>The Light of Meaning si compra per la variante</b> (global crit), non per il nome: il floor a 1c è di altre varianti.</li>
     <li><b>Le Heup of All del PoB è il Foulborn</b>: il normale da 1c funziona, quello vero si paga — le uniche Foulborn non si craftano, si trovano.</li>
     <li><b>Il warrant Combatant è in inflazione da guida</b> (150c → 30-50 div in una settimana): stessa curva già vista su Kineticist e Paranoia. Compra col prezzo davanti, o pesca.</li>
