@@ -316,6 +316,11 @@
   .butta-piu summary{cursor:pointer;font-size:var(--t-xs);color:var(--label);width:max-content;
                      padding:2px 0}
   .butta-piu summary:hover{color:var(--gold)}
+  /* La legenda e' a elenco e non a paragrafi: qui si cerca una riga, non si legge
+     un testo. Ogni voce dice una cosa che cambia un gesto; il perche' sta nel log. */
+  ul.legge{margin:var(--s3) 0 0 1.1rem;color:var(--muted);font-size:var(--t-sm)}
+  ul.legge li{margin-bottom:var(--s2)}
+  ul.legge b{color:var(--text)}
   .butta-piu .butta-nota{margin-top:var(--s2)}
   /* la riga colpita dalla regex: si vede sulla tabella, che e' dove si controlla */
   tr.da-buttare td:first-child{box-shadow:inset 3px 0 0 var(--bad)}
@@ -475,60 +480,41 @@
   <h2 class="sec">Come si legge questo numero</h2>
 
   <div class="card">
-    <p><b>Il numero nella colonna <i>Valore</i> è la mediana fra i mercenari simili al tuo</b>: quanto chiede chi sta in mezzo. Sotto, in piccolo, i due prezzi che servono a <i>vendere</i> e non a valutare — la <b>vendita rapida</b> (il quinto prezzo più basso, per uscire in fretta) e il <b>sottocosto</b> (il più economico in assoluto).</p>
-    <p>⚠️ <b>Fino al 24 agosto qui c'era il quinto prezzo, e teneva i numeri bassi di 8 volte.</b> Era stato scelto per non farsi ingannare dalle inserzioni sbagliate, ma su un pool di 30-100 il quinto è ancora il fondo del libro: risponde a «a quanto devo listare per essere fra i più economici», non a «quanto chiede chi ha un mercenario come il mio». Misurato sui 38 warrant con un confronto stretto: passare alla mediana <b>sullo stesso pool</b> vale <b>8,0×</b>, mentre restringere il pool fino ai più simili vale <b>1,0×</b> — il divario fra le due colonne non veniva dalle gemme chieste, veniva dalla statistica.</p>
-    <p><b>La colonna <i>Più simili</i> è un'altra misura, non un dettaglio della prima.</b> <i>Valore</i> si ferma sopra 30 inserzioni per essere robusto; <i>Più simili</i> continua a chiedere le gemme fino a restare con un pugno di mercenari davvero come il tuo, e ne mostra la <b>mediana</b> con quanti sono. Su pochi pezzi il minimo è un venditore, la mediana no. Si clicca: porta alla ricerca di <b>quei</b> simili, che non è quella del pulsante nella scheda.</p>
-    <p>🔴 <b>Sotto le 10 inserzioni il prezzo non si scrive</b>, e la ragione è un caso vero: su un mercenario la colonna diceva <b>200 divine</b> su 4 inserzioni, e aprendo il link ce n'erano due — una a 150 chaos ferma da 2 giorni e una a <b>200 divine ferma da tre settimane</b>. Un'inserzione che nessuno compra da 21 giorni non è un prezzo, e con quattro pezzi basta lei a fare la mediana. ⚠️ L'indice di mercato <b>non porta le date</b>, quindi le inserzioni stantie non si possono togliere: l'unica difesa è averne abbastanza perché una sola non decida. Il link resta comunque — andare a guardare serve — ma il numero no.</p>
+    <ul class="legge">
+      <li><b>Valore</b> — la <b>mediana</b> dei simili: quanto chiede chi ha un mercenario
+        come il tuo. Sotto, in piccolo, i due prezzi che servono a <i>vendere</i> e non a
+        valutare: <b>vendita rapida</b> (il 5° prezzo più basso) e <b>sottocosto</b> (il più
+        economico di tutti).</li>
+      <li><b>Più simili</b> — <b>un'altra misura</b>, non il dettaglio della prima. <i>Valore</i>
+        si ferma sopra 30 inserzioni per essere robusto; questa continua a chiedere le gemme
+        finché non restano pochi mercenari davvero come il tuo. Si clicca: porta a
+        <b>quei</b> simili.</li>
+      <li>🔴 <b>«1 d» non è un prezzo, è l'ancora.</b> Il <b>30,6%</b> del mercato chiede
+        esattamente 1 divine a prescindere da cosa ha tirato. Su chi legge 1 d, il numero che
+        separa è la <b>vendita rapida</b>.</li>
+      <li>🔴 <b>Sotto 10 inserzioni il prezzo non si scrive</b>, resta solo il link. Su un
+        mercenario la colonna diceva <b>200 d</b> su 4 inserzioni: erano due, e quella da 200
+        era ferma <b>da tre settimane</b>.</li>
+      <li>⚠️ <b>«skill coperte 1/2» in riga</b> — il pool è finito prima: quel numero è
+        misurato su meno di quanto la regola chiede.</li>
+      <li>⚠️ <b>Un «?» accanto a una gemma</b> — peso non misurabile (meno di 50
+        inserzioni ce l'hanno), usata lo stesso: le gemme rare sono spesso il motivo per cui
+        un mercenario vale.</li>
+      <li>⚠️ <b>Sono prezzi richiesti, non venduti.</b> Sotto una ventina di inserzioni la
+        frase giusta è «listalo a N e aspetta», non «vale N».</li>
+    </ul>
 
-    <p><b>Si parte dalla combinazione di skill, ed è già mezzo prezzo.</b> Il pool
-    sono le inserzioni che hanno <i>esattamente</i> le skill del tuo mercenario —
-    misurato: su 62 warrant, <b>zero</b> inserzioni del pool ne hanno una in più.
-    Certe combinazioni valgono poco di partenza, e la riga espansa te lo dice:
-    «la sola combinazione di skill vale N c». Ma quel pool contiene ogni scarto,
-    quindi il suo floor è sempre <b>1c</b>: va stretto.</p>
-
-    <p><b>Si stringe sulle skill che portano più gemme, e su quelle si chiedono
-    solo le gemme che pagano.</b> Le skill da <b>4 o più gemme</b> vanno coperte
-    tutte — due se sono due, tre se sono tre — e dentro ognuna si chiedono le gemme
-    con <b>peso sopra 1,00×</b>, cioè quelle che il mercato paga davvero: se una
-    skill ne ha cinque ma tre pagano, si chiedono quelle tre. Si gira <b>una gemma
-    per skill alla volta</b>, e non è un dettaglio: chiedere tutte le gemme di una
-    sola skill lascia <b>1 inserzione</b> (mediana) e ne azzera 29 su 62 — quel
-    mercato non esiste.</p>
-
-    <p><b>Prima l'ordine lo dava la media dell'archetipo, ed era la cosa
-    sbagliata.</b> Era una proprietà dell'<i>archetipo</i>, non di questo
-    mercenario: misurato sui 73 in tab, il primo passo cadeva sulla skill con più
-    gemme solo in <b>39 casi su 73</b>, e <b>26 warrant</b> non toccavano nemmeno
-    tutte le loro skill da 4+ gemme. Si prezzava un pezzo partendo da una skill che
-    non è la sua. ⚠️ E ancora prima si sceglieva il supporto che alzava di più il
-    floor: sbagliato per un'altra ragione, <b>il minimo di un campione piccolo è
-    più alto per costruzione</b> — quel criterio restituiva la dimensione del
-    campione travestita da prezzo, con tutti e 39 i warrant fra 20 e 50 chaos.</p>
-
-    <p><b>Quello che non entra è scritto in riga: «skill coperte 1/2».</b> Il pool
-    a volte finisce prima — 30 confronti sono il pavimento — e allora il numero è
-    misurato su meno di quanto la regola chiede. 🔴 Un prezzo coperto su una skill
-    e uno coperto su tre si somigliano da morire: senza quella targhetta sembrano
-    la stessa misura. Un <b>?</b> accanto a una gemma vuol dire che il suo peso non
-    era misurabile — meno di 50 inserzioni ce l'hanno — e si è usata lo stesso,
-    perché le gemme rare sono spesso il motivo per cui un mercenario vale.</p>
-
-    <p><b>Poi c'è dove ci si ferma.</b> Sotto una manciata di inserzioni il floor
-    non è un mercato, è un venditore ottimista. Qui il taglio è a <b>30</b>
-    inserzioni, e il primo passo scartato per quella soglia resta scritto in
-    tabella — così si vede cosa è stato buttato via invece di doverlo indovinare.</p>
-
-    <p><b>Il quinto prezzo dice se sotto c'è mercato.</b> Il floor è una sola
-    inserzione. Se il quinto costa molto di più — e su parecchi è già <b>1
-    divine</b> — l'offerta a buon mercato è profonda due o tre righe, e sotto quella
-    soglia sei solo tu.</p>
-
-    <p><b>Niente mediana.</b> Sembra la statistica giusta e non lo è: circa un
-    quarto del mercato chiede <b>esattamente 1 divine</b> qualunque cosa abbia
-    tirato, quindi resta incollata a 1,0d per tutto il restringimento e non separa
-    un pezzo buono da uno scarto. Il floor almeno dice una cosa su cui un venditore
-    può agire.</p>
+    <details class="butta-piu">
+      <summary>Come si prezza, in breve</summary>
+      <ul class="legge">
+        <li>Il pool di partenza sono le inserzioni con <b>esattamente le tue skill</b>: contiene
+          ogni scarto, quindi il suo floor è sempre 1 c. Va stretto.</li>
+        <li>Si stringe sulle <b>skill da 4+ gemme</b> — quelle che portano il danno — chiedendo
+          solo le gemme con <b>peso sopra 1,00×</b>, una per skill alla volta.</li>
+        <li>Ci si ferma a <b>30 confronti</b>: sotto, il prezzo è un venditore e non un mercato.
+          Il primo passo scartato per quella soglia resta scritto in riga.</li>
+      </ul>
+    </details>
   </div>
 
   <button class="fisso" id="b-griglia" title="Cosa raccogliere in mappa">
