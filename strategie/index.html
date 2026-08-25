@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Strategie di farming — cinque strade</title>
+<title>Strategie di farming — quattro strade</title>
 <link rel="stylesheet" href="../stile.css">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <style>
@@ -41,7 +41,7 @@
   .spente .ch{font-size:var(--t-xs);color:var(--muted);background:var(--panel-alto);
               border:1px solid var(--line);border-radius:var(--r-full);padding:.1rem .55rem}
 
-  /* accordion: chiuse, le cinque schede diventano cinque righe di misuratori
+  /* accordion: chiuse, le quattro schede diventano quattro righe di misuratori
      incolonnati, che e' il modo per confrontarle. Fatto con <details>, non con
      JS: senza script la pagina resta apribile. */
   /* la riga e' gold pieno come i pulsanti `.albero`, non solo il testo: da chiusa
@@ -231,8 +231,8 @@
 
 <div class="wrap">
   <header class="testata">
-    <h1>Cinque strategie di farming</h1>
-    <p class="sub"><b>Tutte fanno currency, ma da canali diversi:</b> Breach vende <b>mappe</b>, Harvest <b>lifeforce</b>, Destructive Play <b>zaini dei mercenari, Syndicate e blueprint</b>. La quarta esce dall'atlante: <b>5 Lost Ruins Chart</b> a Voyage, i <b>Vaal Vessel</b> dentro e <b>Kingsmarch</b> che corre le mappe che ne cadono — ma 🔴 i suoi <b>20-40 divine l'ora sono dichiarati, non misurati</b>. La quinta vende <b>Delirium Orb e zaini infamous</b> — e il suo motore è il <b>ritmo</b>, non il bottino. Si scelgono per cosa produci, non per quanto rendono.</p>
+    <h1>Quattro strategie di farming</h1>
+    <p class="sub"><b>Tutte fanno currency, ma da canali diversi:</b> Harvest vende <b>lifeforce</b>, Destructive Play <b>zaini dei mercenari, Syndicate e blueprint</b>. La terza esce dall'atlante: <b>5 Lost Ruins Chart</b> a Voyage, i <b>Vaal Vessel</b> dentro e <b>Kingsmarch</b> che corre le mappe che ne cadono — ma 🔴 i suoi <b>20-40 divine l'ora sono dichiarati, non misurati</b>. La quarta vende <b>Delirium Orb e zaini infamous</b> — e il suo motore è il <b>ritmo</b>, non il bottino. Si scelgono per cosa produci, non per quanto rendono.</p>
     <div class="badges">
       <span class="badge">patch 3.29.2</span>
       <span class="badge">lega Allflame</span>
@@ -249,148 +249,19 @@
   </header>
 
   <div class="condiviso">
-    <h3>🎮 Chart — quali tenere · vale per tutte e cinque</h3>
+    <h3>🎮 Chart — quali tenere · vale per tutte e quattro</h3>
     <div class="frammento">
       <span class="et"><b>Le tre che si vendono</b> — Anchorfield <b>130c</b> · Clam-infested Shelf <b>129c</b> · Kishara's Rest <b>95c</b> · <b>misurate il 24 agosto</b> su 543 inserzioni</span>
       <div class="riga"><code id="box20">anchor|kishara|clam</code><button type="button" data-copia="box20">copia</button></div>
       <span class="et"><b>Le tre da buttare</b> — Abyssal Plain, Seafloor Ridges, Undersea Groves: <b>1c</b> e <b>+25%</b> di quantità, spazzatura due volte</span>
       <div class="riga"><code id="box21">plain|ridge|grove</code><button type="button" data-copia="box21">copia</button></div>
     </div>
-    <p class="nota">🔴 <b>Il prezzo è il nome dell'area, non la quantità</b>: Hazardous Depths ha <b>+100%</b> di quantità e vale 16,5c, Anchorfield ha <b>+44%</b> e ne vale 130. L'ingresso del Voyage (<code>Hazardous|Ruin</code>) sta nella <a href="#voyage">scheda 4</a>; il censimento delle 16 aree e la regex per le Chart già rivelate in <a href="../farming/#chart">Prezzi → Prezzare le Chart</a>.</p>
+    <p class="nota">🔴 <b>Il prezzo è il nome dell'area, non la quantità</b>: Hazardous Depths ha <b>+100%</b> di quantità e vale 16,5c, Anchorfield ha <b>+44%</b> e ne vale 130. L'ingresso del Voyage (<code>Hazardous|Ruin</code>) sta nella <a href="#voyage">scheda 3</a>; il censimento delle 16 aree e la regex per le Chart già rivelate in <a href="../farming/#chart">Prezzi → Prezzare le Chart</a>.</p>
   </div>
 
   <article class="strat">
     <header>
-      <h2>1 · Breach + mappe 8-mod <span class="badge">mappe</span> <span class="badge">3,8 div/mappa dichiarate</span> <span class="badge">+ astrolabio Grasping</span></h2>
-      <p class="sommario">Compri <b>una</b> mappa T16.5 a 8 mod e ne escono <b>venticinque</b>. Le Breach non pagano in valuta: pagano in <b>Hiveblood</b>, che al Genesis Tree diventa <b>basi fratturate</b> da vendere.</p>
-      <p class="quando">Quando: subito — i cinque scarab sono già in stash, manca solo la mappa</p>
-    </header>
-
-    <div class="misure">
-      <div class="misura"><div class="et">Difficoltà</div><div class="val">Alta<small>T16.5 a 8 mod · 5 Breach aperte</small></div>
-        <div class="tacche rischio"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
-      <div class="misura"><div class="et">Investimento</div><div class="val">145c a mappa<small>111c la mappa · 20c i 5 scarab · <b>13,9c l'astrolabio Grasping</b></small></div>
-        <div class="tacche"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
-      <div class="misura"><div class="et">Resa</div><div class="val">3,8 div/mappa<small>🔴 <b>dichiarata dall'autore</b> · zero mappe misurate in casa</small></div>
-        <div class="tacche resa"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
-      <div class="misura"><div class="et">Ritmo</div><div class="val">non misurato<small>nessuno ha cronometrato queste mappe: <b>il d/ora non è calcolabile</b></small></div>
-        <div class="tacche resa"><i></i><i></i><i></i><i></i><i></i></div></div>
-    </div>
-
-    <details class="dettaglio">
-      <summary>Dettaglio — i due motori, le regex per vendere, l'albero, i cinque scarab</summary>
-    <div class="corpo">
-      <div>
-        <h3>I due motori, e il bottino per terra non è nessuno dei due</h3>
-        <table class="mini"><thead><tr><th>Motore</th><th>Da cosa nasce</th><th>Cosa produce</th></tr></thead><tbody>
-        <tr class="ex"><td><b>mappe che fanno mappe</b></td><td>i tre Cartography Scarab sulla 8-mod</td><td>~500 T16 · 27 T16.5 · 30 Nightmare</td></tr>
-        <tr class="ex"><td><b>Breach → Genesis Tree</b></td><td>4-5 Unstable Breach → ~4.500 Hiveblood</td><td>basi fratturate da 1 a 12 divine</td></tr>
-        <tr><td>bottino per terra</td><td>densità</td><td>22 div su 92 — il <b>24%</b></td></tr>
-        </tbody></table>
-        <p class="nota">🔴 <b>Varianza alta, ed è la più alta delle quattro schede misurate</b>: il <b>27%</b> del bottino sta in <b>5 basi da craft</b>. Un ciclo che non le tira vale molto meno della cifra in cima.</p>
-
-        <h3>Come si corre</h3>
-        <ul>
-          <li><b>Si pulisce.</b> I mostri arrivano addosso.</li>
-          <li><b>Riempi la barra prima del timer</b>: la Breach si stabilizza e paga.</li>
-          <li><b>Boss di mappa</b>: con <code>Thorough Exploration</code> e &lt;50 mostri rimasti prende i wisp.</li>
-          <li><b>Genesis Tree</b>: <code>CTRL+LMB</code> sui Wombgift.</li>
-        </ul>
-
-        <h3>Genesis Tree</h3>
-
-        <div class="blocco-albero" id="in-gioco-1">
-          <h3>🎮 Comprare le mappe</h3>
-          <div class="build-box"><div class="capo-build">TrincoEL — Elementalist</div>
-          <div class="bottoni">
-            <a class="albero" href="https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22filters%22%3A%7B%22type_filters%22%3A%7B%22filters%22%3A%7B%22category%22%3A%7B%22option%22%3A%22map%22%7D%2C%22rarity%22%3A%7B%22option%22%3A%22nonunique%22%7D%7D%7D%2C%22map_filters%22%3A%7B%22filters%22%3A%7B%22map_tier%22%3A%7B%22min%22%3A16%7D%2C%22map_iiq%22%3A%7B%22min%22%3A100%7D%2C%22map_packsize%22%3A%7B%22min%22%3A50%7D%7D%7D%2C%22misc_filters%22%3A%7B%22filters%22%3A%7B%22foil_variation%22%3A%7B%22option%22%3A%22none%22%7D%7D%7D%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22not%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22explicit.stat_1910157106%22%7D%2C%7B%22id%22%3A%22explicit.stat_1890969167%22%7D%2C%7B%22id%22%3A%22explicit.stat_4181072906%22%7D%2C%7B%22id%22%3A%22explicit.stat_36406748%22%7D%2C%7B%22id%22%3A%22explicit.stat_2549889921%22%7D%2C%7B%22id%22%3A%22explicit.stat_3729221884%22%7D%2C%7B%22id%22%3A%22explicit.stat_3551025193%22%7D%2C%7B%22id%22%3A%22explicit.stat_3776150692%22%7D%2C%7B%22id%22%3A%22explicit.stat_984774803%22%7D%2C%7B%22id%22%3A%22explicit.stat_2450628570%22%7D%2C%7B%22id%22%3A%22explicit.stat_1026390635%22%7D%2C%7B%22id%22%3A%22explicit.stat_3753748365%22%7D%2C%7B%22id%22%3A%22explicit.stat_3376488707%22%7D%2C%7B%22id%22%3A%22explicit.stat_2073168229%22%7D%2C%7B%22id%22%3A%22explicit.stat_558910024%22%7D%2C%7B%22id%22%3A%22explicit.stat_1140978125%22%7D%2C%7B%22id%22%3A%22explicit.stat_3938822425%22%7D%2C%7B%22id%22%3A%22explicit.stat_2326202293%22%7D%2C%7B%22id%22%3A%22enchant.stat_1715784068%22%7D%5D%2C%22disabled%22%3Afalse%7D%2C%7B%22type%22%3A%22and%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22implicit.stat_2696470877%22%7D%2C%7B%22id%22%3A%22pseudo.pseudo_map_more_map_drops%22%2C%22value%22%3A%7B%22min%22%3A100%7D%7D%5D%2C%22disabled%22%3Afalse%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D" target="_blank" rel="noopener">Comprare le mappe — MM ≥ 100% · pack ≥ 50% ↗</a>
-          </div>
-        
-          
-          </div>
-          <div class="build-box"><div class="capo-build">TrincoLum — Luminary</div>
-            <div class="frammento"><span class="et"><b>Le esclusioni</b> · 49 caratteri</span><div class="riga"><code id="box31">"!te of|ur$|ced f|kes$|ills$|t reg" "m q.*\+1\d\d"</code><button type="button" data-copia="box31">copia</button></div></div>
-            <div class="bottoni" style="margin-top:var(--s2)"><a class="albero secondario" href="https://www.pathofexile.com/trade/search/Allflame?q=%7B%22query%22%3A%7B%22status%22%3A%7B%22option%22%3A%22securable%22%7D%2C%22filters%22%3A%7B%22type_filters%22%3A%7B%22filters%22%3A%7B%22category%22%3A%7B%22option%22%3A%22map%22%7D%2C%22rarity%22%3A%7B%22option%22%3A%22nonunique%22%7D%7D%7D%2C%22map_filters%22%3A%7B%22filters%22%3A%7B%22map_tier%22%3A%7B%22min%22%3A16%7D%2C%22map_iiq%22%3A%7B%22min%22%3A100%7D%2C%22map_packsize%22%3A%7B%22min%22%3A50%7D%7D%7D%2C%22misc_filters%22%3A%7B%22filters%22%3A%7B%22foil_variation%22%3A%7B%22option%22%3A%22none%22%7D%7D%7D%7D%2C%22stats%22%3A%5B%7B%22type%22%3A%22not%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22explicit.stat_1910157106%22%7D%2C%7B%22id%22%3A%22explicit.stat_4181072906%22%7D%2C%7B%22id%22%3A%22explicit.stat_2549889921%22%7D%2C%7B%22id%22%3A%22explicit.stat_272758639%22%7D%2C%7B%22id%22%3A%22explicit.stat_2450628570%22%7D%2C%7B%22id%22%3A%22explicit.stat_337935900%22%7D%2C%7B%22id%22%3A%22explicit.stat_3337579297%22%7D%5D%2C%22disabled%22%3Afalse%7D%2C%7B%22type%22%3A%22and%22%2C%22filters%22%3A%5B%7B%22id%22%3A%22implicit.stat_2696470877%22%7D%2C%7B%22id%22%3A%22pseudo.pseudo_map_more_map_drops%22%2C%22value%22%3A%7B%22min%22%3A100%7D%7D%5D%2C%22disabled%22%3Afalse%7D%5D%7D%2C%22sort%22%3A%7B%22price%22%3A%22asc%22%7D%7D" target="_blank" rel="noopener">Comprare le mappe per TrincoLum ↗</a></div>
-          </div>
-        </div>
-
-        <div class="blocco-albero" id="in-gioco-regex">
-          <h3>🎮 Regex per vendere — dalla più cara alla più economica</h3>
-          <div class="frammento">
-            <span class="et"><b>1 · Il jackpot</b> — More Maps ≥ 150% · 330-394c · 41 caratteri</span>
-            <div class="riga"><code id="box7">"more maps: .1[5-9].%|more maps: .[2-9]..%"</code><button type="button" data-copia="box7">copia</button></div>
-            <span class="et"><b>2 · Le T16.5</b> — col Delirium sembrano T16: separarle <b>sempre</b> · 95c · 31 caratteri</span>
-            <div class="riga"><code id="box8">"originator" "more maps: ....%"</code><button type="button" data-copia="box8">copia</button></div>
-            <span class="et"><b>3 · More Maps ≥ 100%</b> — tre cifre prima del <code>%</code> · 95c · 18 caratteri</span>
-            <div class="riga"><code id="box9">"more maps: ....%"</code><button type="button" data-copia="box9">copia</button></div>
-            <span class="et"><b>4 · Ha una ricompensa qualsiasi</b> — ~55c · 20 caratteri</span>
-            <div class="riga"><code id="box10">"more [scd]|more ma"</code><button type="button" data-copia="box10">copia</button></div>
-            <span class="et"><b>5 · Nightmare</b> — 40c · 11 caratteri</span>
-            <div class="riga"><code id="box11">"nightmare"</code><button type="button" data-copia="box11">copia</button></div>
-          </div>
-          <p class="nota">🔴 Quello che non si illumina con nessuna delle cinque vale <b>3,8c</b>: è il mucchio da vendere in blocco.</p>
-        </div>
-
-        <div class="blocco-albero">
-          <h3>Albero atlas</h3>
-          <div class="punti">
-          <div class="voce"><span>Map drop chance <span class="lim">+ Shaping Skies/Mountains</span></span><span class="p">tutto</span></div>
-          <div class="voce"><span>🔴 <code>Map Item Memory Influence</code> ×2 <span class="lim">le T16.5</span></span><span class="p">obbligatori</span></div>
-          <div class="voce"><span>Breach <span class="lim">Enemy at the Gates</span></span><span class="p">keystone</span></div>
-          <div class="voce"><span>Eater of Worlds <span class="lim">altari blu</span></span><span class="p">sì</span></div>
-          <div class="voce"><span>Synthesised Stability <span class="lim">stessa mappa in loop</span></span><span class="p">keystone</span></div>
-          </div>
-          <div class="bottoni"><button class="albero" type="button" data-albero="https://poeplanner.com/atlas-tree/BQAcAACJAE_mh9RfPniAUbfruySXsvqxFXl3hrSLTttGXaAIeoQq_sXAKh7Pp-I8WSFgNczzWzD6nJwo5wn5YVOUg26jTcOMQbVmXp19Zdxy1759Wo3qqVhP9woLh8z8N9lbRjodfeT3t12L4X2RJrIndX9eDkre_qoKnzubd6CCsJTaRE3X1yue2A7PKl7Uj4ed0MZRd4KnKY30OlmGcOOcx-0YxJGCUTfjRNXEps9H8ICzx-eu0w7hEH21XNjrX8SFThui0OAMX0rLF6UdX7o1MCQykc7XksQfru8O-WIWGZSRicrqGIv9tQtxOnbl7D59_W1xCwPtD2wUFzPGSBLVaYmjqUOgcWYfPwjUbLliQGiUVW84ZP0UAB-LCAAAAAAAAAMDAAAAAAAAAAAA">Mostra l'albero qui ↓</button><a class="albero secondario" href="https://poeplanner.com/a/65BJ" target="_blank" rel="noopener">Apri ↗</a></div>
-        </div>
-      </div>
-
-      <div>
-        <div class="pannello">
-          <h3>Scarab — cinque slot</h3>
-          <div class="carico"><div class="tit"><span>Il carico · 5 slot</span><span class="tot">19,53 chaos</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/cartography-scarab-of-corruption.png" alt="" loading="lazy"><span class="nm">Cartography Scarab of Corruption<span class="ef">Le mappe trovate sono corrotte <b>con 8 mod</b></span></span><span class="pz">11,51c</span></div>
-          <div class="sc"><span class="q">2×</span><img src="img/breach-scarab-of-instability.png" alt="" loading="lazy"><span class="nm">Breach Scarab of Instability<span class="ef">2 Unstable Breach in più ciascuno · <span class="lim">max 2</span></span></span><span class="pz">5,26c</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/cartography-scarab-of-escalation.png" alt="" loading="lazy"><span class="nm">Cartography Scarab of Escalation<span class="ef">+10% mappe <b>per ogni mod</b> → +80% su una 8-mod</span></span><span class="pz">1,57c</span></div>
-          <div class="sc"><span class="q">1×</span><img src="img/delirium-scarab-of-delusions.png" alt="" loading="lazy"><span class="nm">Delirium Scarab of Delusions<span class="ef">Le mappe trovate hanno layer di Delirium</span></span><span class="pz">1,19c</span></div>
-          </div>
-          <div class="voce"><span><b>Grasping Astrolabe</b> <span class="lim">sull'atlante, non nel device · ~7 mappe → 13,9c a mappa</span></span><span class="p"><b>97,3c</b></span></div>
-        </div>
-
-        <div class="pannello">
-          <h3 class="rosso">Il filtro decide il prezzo</h3>
-          <div class="voce"><span><b>MM ≥ 100% · pack ≥ 50%</b> <span class="lim">262 offerte · quello che si compra</span></span><span class="p"><b>110c</b></span></div>
-          <div class="voce"><span>MM ≥ 100% · pack ≥ 40% <span class="lim">887</span></span><span class="p">72c</span></div>
-          <div class="voce"><span>More Maps ≥ 70% <span class="lim">4.385</span></span><span class="p">30c</span></div>
-          <div class="voce"><span>la query del video <span class="lim">186</span></span><span class="p nulla">179c</span></div>
-          <div class="voce"><span>il video <b>a voce</b> <span class="lim">pack 50 · MM 110 · 34 offerte</span></span><span class="p nulla">300c</span></div>
-        </div>
-
-        <div class="pannello">
-          <h3>Cosa esce — prezzi <b>con Delirium</b></h3>
-          <div class="voce"><span>T16 <b>senza</b> riga <code>More</code> <span class="lim">il mucchio</span></span><span class="p nulla">3,8c</span></div>
-          <div class="voce"><span>T16 <code>More Maps</code> ≥ 70%</span><span class="p">55c</span></div>
-          <div class="voce"><span>T16 <code>More Maps</code> ≥ 100%</span><span class="p"><b>95c</b></span></div>
-          <div class="voce"><span><b>T16.5</b> <code>More Maps</code> ≥ 100% <span class="lim">27 pezzi a ciclo</span></span><span class="p"><b>96c</b></span></div>
-          <div class="voce"><span>Nightmare Map <span class="lim">30 pezzi</span></span><span class="p">40c</span></div>
-          <div class="voce"><span>Synaptic Ring <span class="lim">raccoglili tutti</span></span><span class="p">68c</span></div>
-          <div class="voce"><span>Fugitive Ring</span><span class="p">15c</span></div>
-          <div class="voce"><span>Cryonic Ring</span><span class="p nulla">3,9c</span></div>
-        </div>
-
-        <div class="pannello">
-          <h3>Mappa</h3>
-          <div class="voce"><span><b>Jungle Valley</b> <span class="lim">densità 6 — la più alta fra le aperte</span></span><span class="p"><b>L10 · D6</b></span></div>
-          <div class="voce"><span>⚠️ boss <span class="lim">non rushable, con fasi — e l'astrolabio lo rende obbligatorio</span></span><span class="p nulla">lento</span></div>
-        </div>
-
-      </div>
-    </div>
-    </details>
-  </article>
-
-  <article class="strat">
-    <header>
-      <h2>2 · Harvest + Exarch <span class="badge">currency</span> <span class="badge">0,70 div/mappa · 6,3 div/ora</span></h2>
+      <h2>1 · Harvest + Exarch <span class="badge">currency</span> <span class="badge">0,70 div/mappa · 6,3 div/ora</span></h2>
 
       <p class="sommario">Profitto <b>misurato</b>: Wealthy Exile fotografa il patrimonio prima e dopo. Su Graveyard, uccidendo invece di rushare.</p>
       <p class="quando">Quando: appena l'albero regge il cluster Harvest completo</p>
@@ -451,7 +322,7 @@
 
           </div>
           <p class="spente"><span class="et">8 meccaniche spente</span><span class="ch">Expedition</span><span class="ch">Ritual</span><span class="ch">Delirium</span><span class="ch">Blight</span><span class="ch">Abyss</span><span class="ch">Breach</span><span class="ch">Ultimatum</span><span class="ch">Kalguuran</span></p>
-          <p class="nota"><b>Concorrenza: il 7% degli alberi censiti su poe.ninja</b> — è l'unica delle cinque schede per cui questo numero esista. ⚠️ Per le altre quattro servirebbe rileggere la pagina degli atlas tree, e nessuno l'ha fatto.</p>
+          <p class="nota"><b>Concorrenza: il 7% degli alberi censiti su poe.ninja</b> — è l'unica delle quattro schede per cui questo numero esista. ⚠️ Per le altre tre servirebbe rileggere la pagina degli atlas tree, e nessuno l'ha fatto.</p>
           <div class="bottoni"><button class="albero" type="button" data-albero="https://poeplanner.com/atlas-tree/BQAcAACGAIfU8_fb1l8-Ri9LMuu7TPUkl7L6bJm06YsuhrSxnyySCHqEKv7F8VRtiLj_wCqn4up4PFkhYCIpMPpL35Mt8jiMQbVmq00QgF6dzlrJ_Y3qfOOovCq72VvMt4ahvdrj8_MMYLLk9x8Ai-F9kQp73GkOSqoKnzvoa2iJT12e2AQ_RsDUj4ed0LzQxpfigqcpjcFYjjmHVVmGa-BX_IJRgHY3489HAJG3z-EQm8Zda8FC2iOkBU4botBNkcsXIUw1MMddNqTEH-boE31-QPZ1GZTaK8GvOnbl7NVicQtj0Y_l2Ju3D9VpI8LCdqlDWtZ-DLVjEaygcbSexBhtVpqvTPKRr-kkzvsrt7nU0CgUAB-LCAAAAAAAAAMDAAAAAAAAAAAA">Mostra l'albero qui ↓</button><a class="albero secondario" href="https://poeplanner.com/atlas-tree/BQAcAACGAIfU8_fb1l8-Ri9LMuu7TPUkl7L6bJm06YsuhrSxnyySCHqEKv7F8VRtiLj_wCqn4up4PFkhYCIpMPpL35Mt8jiMQbVmq00QgF6dzlrJ_Y3qfOOovCq72VvMt4ahvdrj8_MMYLLk9x8Ai-F9kQp73GkOSqoKnzvoa2iJT12e2AQ_RsDUj4ed0LzQxpfigqcpjcFYjjmHVVmGa-BX_IJRgHY3489HAJG3z-EQm8Zda8FC2iOkBU4botBNkcsXIUw1MMddNqTEH-boE31-QPZ1GZTaK8GvOnbl7NVicQtj0Y_l2Ju3D9VpI8LCdqlDWtZ-DLVjEaygcbSexBhtVpqvTPKRr-kkzvsrt7nU0CgUAB-LCAAAAAAAAAMDAAAAAAAAAAAA" target="_blank" rel="noopener">Apri ↗</a></div>
         </div>
       </div>
@@ -498,7 +369,7 @@
 
   <article class="strat">
     <header>
-      <h2>3 · Destructive Play <span class="badge">currency</span> <span class="badge">1,52-1,77 div/mappa il 19/8</span> <span class="badge">senza astrolabio</span></h2>
+      <h2>2 · Destructive Play <span class="badge">currency</span> <span class="badge">1,52-1,77 div/mappa il 19/8</span> <span class="badge">senza astrolabio</span></h2>
 
       <p class="sommario">Quattro meccaniche su <b>City Square</b>. Non è un albero da lifeforce: si vive di <b>zaini dei mercenari</b>, del <b>Syndicate</b> e dei <b>blueprint delle Smuggler's Cache</b>. Il numero trasportabile è <b>per mappa</b>, non per ora — e il campione del <b>19 agosto</b> (20 mappe, <b>+35,33 d</b>) è il più alto mai misurato qui.</p>
       <p class="quando">Quando: quando vuoi un reddito che non chiede manutenzione fuori dalla mappa — niente spedizioni, niente astrolabi da rinnovare</p>
@@ -654,7 +525,7 @@
 
   <article class="strat" id="voyage">
     <header>
-      <h2>4 · Voyage — Lost Ruins + Kingsmarch <span class="badge">meccanica di lega</span> <span class="badge">🔴 20-40 div/ora dichiarate, mai misurate</span></h2>
+      <h2>3 · Voyage — Lost Ruins + Kingsmarch <span class="badge">meccanica di lega</span> <span class="badge">🔴 20-40 div/ora dichiarate, mai misurate</span></h2>
 
       <p class="sommario">Si comprano <b>5 Lost Ruins Chart</b> (3c l'una) per un Voyage da 9 caselle: dentro ci sono i <b>Vaal Vessel</b> — uniche corrotte, gioielli, gemme 21/20, <b>mappe T16 a 8 mod</b> e scarab. L'<b>oro</b> paga tre mappatori di <b>Kingsmarch</b>, che corrono proprio quelle mappe: <b>nessuna delle due voci si compra</b>. ⚠️ <b>Non si tira niente</b> — <i>«nope, not necessary, it's like alch and go»</i>.</p>
       <p class="quando">Quando: come test da 5 Voyage — l'ingresso costa 0,6 divine e il solo Sulphur lo ripaga</p>
@@ -788,7 +659,7 @@
 
   <article class="strat" id="deli-merc-rush">
     <header>
-      <h2>5 · Deli Merc Rush <span class="badge">currency</span> <span class="badge">~1,0 div/mappa dichiarata</span> <span class="badge">🔴 a 40 mappe l'ora</span></h2>
+      <h2>4 · Deli Merc Rush <span class="badge">currency</span> <span class="badge">~1,0 div/mappa dichiarata</span> <span class="badge">🔴 a 40 mappe l'ora</span></h2>
 
       <p class="sommario">Delirium coi reward moltiplicati, <b>merc infamous garantito</b> e Smuggler's Cache, su <b>8-mod corrotte</b>. I 40 div/ora del titolo sono misurati (Wealthy Exile, <b>176 div in 4h20'</b>) ma sono un <b>ritmo</b>: ~1,0 div a mappa, meno di Destructive Play. ✅ <b>In tab ci sono già ~11 mappe di scarab.</b></p>
       <p class="quando">Quando: come test dalle 11 mappe già pagate — non comprare scarab adesso, sono al picco post-video</p>
