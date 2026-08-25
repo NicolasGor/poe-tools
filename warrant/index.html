@@ -414,10 +414,13 @@
       in modo quasi scorrelato dalla colonna (<b>Spearman 0,20</b>) e a un taglio da 20 ne
       cambiava lato <b>17</b>: <i>Vysera</i>, mediana <b>3 d</b> su 198 confronti, finiva
       fra i buttati perché il suo pool è grande, non perché non valga.<br>
-      ⚠️ <b>La prima tacca muove 52 warrant su 87 in un colpo</b>, e non è grossolanità del
-      cursore: stanno tutti a <b>1 divine esatto</b>, il prezzo che chiede il 30% del
-      mercato. Dentro quel gradino non c'è niente da ordinare — il mercato non li
-      distingue, e lo strumento non finge di saperlo fare.<br>
+      🔴 <b>Il cursore si ferma sotto il divine</b>, e sopra non ci arriva: un warrant che
+      vale 1 divine o più <b>non si butta, si vende</b>. ⚠️ Oggi questo svuota la sezione,
+      ed è la risposta giusta e non un guasto: la mediana più bassa degli 87 è
+      <b>212 c</b>, cioè 1,00 d esatto. E quel numero va letto per quello che è —
+      <b>1 divine è il prezzo che chiede il 30% del mercato</b> a prescindere da cosa ha
+      tirato, quindi «vale 1 d» per 54 di loro significa <b>«nessuno li ha prezzati»</b>,
+      non che siano piazzabili a quella cifra.<br>
       <b>Perché i frammenti sono così corti.</b> Per ogni warrant sotto soglia la pagina
       cerca la <b>sottostringa più breve del nome o dell'archetipo che non compare in
       nessun warrant che tieni</b> — gemme comprese. Poi tiene i pochi frammenti che
@@ -1954,14 +1957,17 @@ let SOGLIE = [0];
 function preparaSoglia() {
   const tutti = (ULTIMI && ULTIMI.warrant) || [];
   const val = valoreDi;
-  /* 🔴 **Il valore piu' alto si toglie dalla scala.** Le tacche sono gli incassi
-     che esistono davvero, ma tenere anche il **massimo** rende l'ultima
-     posizione `soglia >= ogni incasso`: butta tutto e ne restano zero, **per
-     costruzione**. Una tacca che non puo' dire altro non e' una scelta, e
-     capitarci sopra sembra un difetto del calcolo — segnalato il 25 agosto:
-     «87 su 87 · ne restano 0». Tolta, la posizione piu' alta significa «tengo
-     solo il migliore», che e' una risposta. */
-  const scala = [...new Set(tutti.map(val))].sort((a, b) => a - b);
+  /* 🔴 **Il cursore non arriva al divine, e non e' una prudenza: e' la regola
+     di Nicolas** (25 agosto). «Non voglio buttare i warrant che valgono 1 divine
+     o piu'. Se effettivamente quello e' il prezzo, piuttosto li vendo.» Quindi
+     la scala va da 0 al valore del divine in chaos, **escluso**: sopra quella
+     riga un warrant non si distrugge, si mette in vendita.
+     ⚠️ **E oggi questo svuota la sezione, che e' la risposta giusta**: la
+     mediana piu' bassa degli 87 e' 212 c, cioe' 1,00 d esatto. Nessuno vale meno
+     di un divine, quindi non c'e' niente da buttare — e il conteggio lo dice con
+     parole sue invece di lasciare un «nessun warrant sotto soglia» ambiguo. */
+  const cap = TASSO_DIVINE;
+  const scala = [...new Set(tutti.map(val))].sort((a, b) => a - b).filter((v) => v < cap);
   /* ⚠️ **Due tacche che si leggono uguali sono una tacca sola.** `prezzo()`
      arrotonda al divine intero, quindi 212, 240 e 250 c si scrivono tutte
      «1 d»: tre scatti con la stessa etichetta che pero' cambiano la lista si
@@ -1969,7 +1975,13 @@ function preparaSoglia() {
      il valore **piu' alto**, cosi' etichetta ed effetto coincidono. */
   const perEtichetta = new Map();
   for (const v of scala) perEtichetta.set(prezzo(v), v);
-  SOGLIE = [0, ...[...perEtichetta.values()].slice(0, -1)];
+  const tacche = [...perEtichetta.values()];
+  /* ⚠️ **L'ultima tacca si toglie solo se butterebbe tutto.** Col tetto al
+     divine di solito qualcuno sopravvive gia' da se'; ma se un giorno tutti gli
+     87 fossero sotto il divine, la posizione piu' alta tornerebbe a dire «87 su
+     87, ne restano 0» — vera per costruzione, quindi non una scelta. */
+  if (tacche.length && tutti.every((w) => val(w) <= tacche[tacche.length - 1] + 1e-9)) tacche.pop();
+  SOGLIE = [0, ...tacche];
   const c = $("soglia");
   c.max = String(Math.max(1, SOGLIE.length - 1));
   c.disabled = SOGLIE.length < 2;
@@ -2005,9 +2017,16 @@ function disegnaButta() {
 
   const r = calcolaButta(soglia, limite);
   const persi = r.butta.reduce((s, w) => s + valoreDi(w), 0);
+  /* 🔴 **Due modi diversi di non avere niente da buttare**, e confonderli fa
+     sembrare rotto lo strumento: «ho alzato poco il cursore» non e' «nessuno di
+     questi warrant vale meno di un divine». Il secondo caso e' una risposta
+     compiuta, e va detta come tale. */
+  const sottoIlDivine = tutti.filter((w) => valoreDi(w) < TASSO_DIVINE).length;
   $("butta-conta").innerHTML = r.butta.length
     ? `<b>${r.butta.length}</b> su ${tutti.length} · <b>${prezzo(persi)}</b> buttati · ne restano <b>${r.tieni.length}</b>`
-    : "nessun warrant sotto soglia";
+    : sottoIlDivine
+      ? "nessun warrant sotto soglia"
+      : `<b>nessuno</b> degli ${tutti.length} vale meno di 1 divine &mdash; niente da buttare, si vendono`;
 
   el.innerHTML = r.righe.map((riga, i) => `
     <div class="rx-riga">
