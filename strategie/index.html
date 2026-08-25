@@ -253,10 +253,10 @@
     <div class="frammento">
       <span class="et"><b>Le tre che si vendono</b> — Anchorfield <b>130c</b> · Clam-infested Shelf <b>129c</b> · Kishara's Rest <b>95c</b> · <b>misurate il 24 agosto</b> su 543 inserzioni</span>
       <div class="riga"><code id="box20">anchor|kishara|clam</code><button type="button" data-copia="box20">copia</button></div>
-      <span class="et"><b>L'ingresso del Voyage</b>, che si compra e non si vende — Hazardous Depths <b>16,5c</b> · Lost Ruins <b>3c</b></span>
-      <div class="riga"><code id="box21">Hazardous|Ruin</code><button type="button" data-copia="box21">copia</button></div>
+      <span class="et"><b>Le tre da buttare</b> — Abyssal Plain, Seafloor Ridges, Undersea Groves: <b>1c</b> e <b>+25%</b> di quantità, spazzatura due volte</span>
+      <div class="riga"><code id="box21">plain|ridge|grove</code><button type="button" data-copia="box21">copia</button></div>
     </div>
-    <p class="nota">Gli scaglioni, il censimento delle 16 aree e la <b>seconda regex</b> — quella per le Chart già rivelate, 89 caratteri in due righe — stanno in <a href="../farming/#chart">Prezzi → Prezzare le Chart</a>. 🔴 <b>Il prezzo è il nome dell'area, non la quantità</b>: Hazardous Depths ha <b>+100%</b> di quantità e vale 16,5c, Anchorfield ha <b>+44%</b> e ne vale 130.</p>
+    <p class="nota">🔴 <b>Il prezzo è il nome dell'area, non la quantità</b>: Hazardous Depths ha <b>+100%</b> di quantità e vale 16,5c, Anchorfield ha <b>+44%</b> e ne vale 130. L'ingresso del Voyage (<code>Hazardous|Ruin</code>) sta nella <a href="#voyage">scheda 4</a>; il censimento delle 16 aree e la regex per le Chart già rivelate in <a href="../farming/#chart">Prezzi → Prezzare le Chart</a>.</p>
   </div>
 
   <article class="strat">
@@ -652,7 +652,7 @@
   </article>
 
 
-  <article class="strat">
+  <article class="strat" id="voyage">
     <header>
       <h2>4 · Voyage — Lost Ruins + Kingsmarch <span class="badge">meccanica di lega</span> <span class="badge">🔴 20-40 div/ora dichiarate, mai misurate</span></h2>
 
@@ -708,13 +708,17 @@
         <p class="nota">È lo stesso difetto già trovato sul video Harvest di Empyrian, dove le 2h41m dichiarate erano <b>4 ore</b> per chi guardava lo stream.</p>
 
         <div class="blocco-albero">
-          <h3>🎮 La regex per vendere le Chart — 19 caratteri</h3>
+          <h3>🎮 Smistare la tab delle Chart — tre regex, in quest'ordine</h3>
           <div class="frammento">
-            <span class="et">Le tre che pagano sono <b>Anchorfield</b> (130c), <b>Clam-infested Shelf</b> (129c) e <b>Kishara's Rest</b> (95c) — l'ingresso di questa scheda si compra con <code>Hazardous|Ruin</code>, che è merce da 3-17c</span>
+            <span class="et"><b>1 · Tieni e vendi</b> — Anchorfield <b>130c</b> · Clam-infested Shelf <b>129c</b> · Kishara's Rest <b>95c</b>. Si passa <b>per prima</b>: se ne accende una, sono 130c che stavi per bruciare in un Voyage da 15</span>
             <div class="riga"><code id="box23">anchor|kishara|clam</code><button type="button" data-copia="box23">copia</button></div>
+            <span class="et"><b>2 · L'ingresso</b> — le 5 caselle di questa scheda: Lost Ruins <b>3c</b>, Hazardous Depths <b>16,5c</b>. Si compra, non si vende</span>
+            <div class="riga"><code id="box37">Hazardous|Ruin</code><button type="button" data-copia="box37">copia</button></div>
+            <span class="et"><b>3 · Butta</b> — Abyssal Plain, Seafloor Ridges, Undersea Groves: <b>1c</b> e <b>+25%</b> di quantità, l'unica famiglia che non vale nemmeno come casella</span>
+            <div class="riga"><code id="box38">plain|ridge|grove</code><button type="button" data-copia="box38">copia</button></div>
             <span class="et"><b>Se corre TrincoLum (Luminary)</b> — le esclusioni della sua build · 35 caratteri</span><div class="riga"><code id="box34">"!te of|ur$|ced f|kes$|ills$|t reg"</code><button type="button" data-copia="box34">copia</button></div>
           </div>
-          <p class="nota">Il censimento completo è in <a href="../farming/#chart">Prezzi → Prezzare le Chart</a>. <b>Nessun albero atlas</b>: la meccanica non passa dall'atlante.</p>
+          <p class="nota">🔴 <b>Le altre nove aree (2-7c) non si buttano</b>: valgono poco da vendere ma portano <b>+66-84%</b> di quantità, cioè come casella rendono il doppio delle tre da 1c. Se serve spazio, quelle vanno <i>nel</i> Voyage. ⚠️ <b>Lo stash online non può smistarle</b>: il nome dell'item non contiene l'area — una Chart da 1c e una da 130 si chiamano entrambe «Coral Forest Chart». Solo la barra di ricerca in gioco le distingue. Censimento in <a href="../farming/#chart">Prezzi → Prezzare le Chart</a>. <b>Nessun albero atlas</b>: la meccanica non passa dall'atlante.</p>
         </div>
       </div>
 
