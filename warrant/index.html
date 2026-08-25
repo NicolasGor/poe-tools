@@ -406,21 +406,23 @@
       d'una si fanno più passate — <b>non si incollano insieme</b>, il campo non le regge.
       <b>«mostrali»</b> filtra la tabella qui sopra sugli stessi warrant, così si controlla
       cosa si sta per buttare prima di andare in gioco.<br>
-      <b>Quale prezzo taglia.</b> Lo stesso della colonna <i>Valore</i> e del totale in
-      cima: la <b>mediana</b> dei simili. 🔴 <b>Non il quinto prezzo</b>, che qui è stato
-      provato e misurato sbagliato: il quinto è la 5ª inserzione più economica <b>in
-      assoluto</b>, quindi su un pool da 255 è il 2° percentile e su uno da 30 il 17° — un
-      percentile che si muove di <b>8×</b> con la taglia del confronto. Ordinava i warrant
-      in modo quasi scorrelato dalla colonna (<b>Spearman 0,20</b>) e a un taglio da 20 ne
-      cambiava lato <b>17</b>: <i>Vysera</i>, mediana <b>3 d</b> su 198 confronti, finiva
-      fra i buttati perché il suo pool è grande, non perché non valga.<br>
-      🔴 <b>Il cursore si ferma sotto il divine</b>, e sopra non ci arriva: un warrant che
-      vale 1 divine o più <b>non si butta, si vende</b>. ⚠️ Oggi questo svuota la sezione,
-      ed è la risposta giusta e non un guasto: la mediana più bassa degli 87 è
-      <b>212 c</b>, cioè 1,00 d esatto. E quel numero va letto per quello che è —
-      <b>1 divine è il prezzo che chiede il 30% del mercato</b> a prescindere da cosa ha
-      tirato, quindi «vale 1 d» per 54 di loro significa <b>«nessuno li ha prezzati»</b>,
-      non che siano piazzabili a quella cifra.<br>
+      <b>Chi è candidato, e quale prezzo taglia.</b> Due passaggi, non uno.<br>
+      🔴 <b>①  Sopra l'ancora non si tocca niente.</b> Un warrant la cui <i>Valore</i> sta
+      <b>oltre 1 divine</b> non è un candidato a qualunque cursore: si vende, non si butta.
+      <b>②  Dentro l'ancora taglia la <i>vendita rapida</i></b>, non la mediana — perché lì
+      la mediana <b>non distingue niente</b>: 52 degli 87 leggono tutti «1 d», e non è un
+      prezzo ma <b>il numero che il 30,6% del mercato scrive a prescindere da cosa ha
+      tirato</b>. Dentro quel gradino la vendita rapida va invece da <b>2 c a 212 c</b>, ed
+      è l'unica misura che li separa.<br>
+      ⚠️ <b>Una parte di quella separazione è artefatto, e va saputa.</b> La vendita rapida
+      è la 5ª inserzione più economica <b>in assoluto</b>: su un pool da 30 è il 17°
+      percentile, su uno da 255 il 2°. Misurato sui 52 dell'ancora, il suo ordine sta a
+      <b>Spearman −0,49</b> con la taglia del pool — <b>circa un quarto della classifica è
+      la dimensione del confronto</b>, non il mercenario. Resta la misura più informativa
+      che ci sia lì dentro; la cura vera è un <b>percentile fisso</b> calcolato dal server,
+      che oggi non c'è.<br>
+      <b>E il cursore non arriva mai al divine</b>: la scala va da 0 al valore del divine in
+      chaos, escluso.<br>
       <b>Perché i frammenti sono così corti.</b> Per ogni warrant sotto soglia la pagina
       cerca la <b>sottostringa più breve del nome o dell'archetipo che non compare in
       nessun warrant che tieni</b> — gemme comprese. Poi tiene i pochi frammenti che
@@ -621,6 +623,30 @@ let ORDINE = { campo: "valore", verso: -1 };
  * ⚠️ Il quinto resta, in piccolo, come **prezzo di vendita rapida** — quello si',
  * e' quello che serve per liquidare. E il floor resta il sottocosto. */
 const valoreDi = (w) => w.mediana ?? w.quinto ?? w.prezzo;
+
+/* 🔴 **Il prezzo che taglia il «da buttare», e perche' NON e' `valoreDi`.**
+ * Rilievo di Nicolas, 25 agosto: «vedo che la vendita rapida e' molto diversa
+ * fra i vari warrant da 1 divine». E' esatto, ed e' il punto: **dentro il
+ * gradino dell'ancora la mediana ha risoluzione zero** — 52 degli 87 leggono
+ * tutti «1 d» — mentre la vendita rapida li' dentro va da **2 c a 212 c**.
+ * ⚠️ **Una parte di quella varianza e' artefatto**, e va saputa: il quinto e' la
+ * 5a inserzione piu' economica **in assoluto**, quindi su un pool da 30 e' il
+ * 17o percentile e su uno da 255 il 2o. Misurato sui 52: l'ordine del quinto
+ * sta a **Spearman −0,49** con la taglia del pool, cioe' ~un quarto della
+ * classifica e' la dimensione del confronto e non il mercenario. Resta la
+ * misura piu' informativa che abbiamo **dentro il gradino**; la cura vera e' un
+ * percentile fisso calcolato dal server, che qui non c'e'. */
+const incassoDi = (w) => w.quinto ?? w.prezzo;
+
+/* 🔴 **Chi non si tocca: la mediana lo mette SOPRA l'ancora.** Regola di
+ * Nicolas — «non voglio buttare i warrant che valgono 1 divine o piu': se
+ * effettivamente quello e' il prezzo, piuttosto li vendo» — letta come la sua
+ * seconda osservazione impone. **1 divine esatto non e' un prezzo, e' l'ancora**:
+ * il 30,6% del mercato chiede quella cifra a prescindere da cosa ha tirato,
+ * quindi «vale 1 d» significa «nessuno l'ha prezzato». Sopra l'ancora invece
+ * qualcuno ha deciso, e quel warrant **si vende, non si butta** — a qualunque
+ * vendita rapida. Sotto e dentro l'ancora si guarda la vendita rapida. */
+const intoccabile = (w) => valoreDi(w) > TASSO_DIVINE + 0.5;
 
 /* 🔴 **I controlli sul trade: l'unica riga della pagina con una data dentro.**
  * L'indice di mercato non porta l'eta' delle inserzioni, quindi qualunque
@@ -1878,9 +1904,12 @@ const COMUNE_STASH = "mercenary warrant build mercenary level requires right cli
 
 function calcolaButta(soglia, limite) {
   const tutti = (ULTIMI && ULTIMI.warrant) || [];
-  const val = valoreDi;
-  const butta = tutti.filter((w) => val(w) <= soglia + 1e-9);
-  const tieni = tutti.filter((w) => val(w) > soglia + 1e-9);
+  /* I candidati sono solo quelli che l'ancora non distingue; gli altri escono
+     subito e finiscono fra i `tieni`, cosi' i loro nomi restano **vietati** ai
+     frammenti — che e' l'unica cosa che impedisce alla regex di accenderli. */
+  const candidati = tutti.filter((w) => !intoccabile(w));
+  const butta = candidati.filter((w) => incassoDi(w) <= soglia + 1e-9);
+  const tieni = tutti.filter((w) => !butta.includes(w));
   const vietati = tieni.map(testoWarrant).concat([COMUNE_STASH]);
 
   /* separabili / ciechi: un warrant e' cieco quando **ogni** suo frammento
@@ -1944,7 +1973,7 @@ function calcolaButta(soglia, limite) {
      dell'intenzione e' l'unico modo di non dichiarare il falso. */
   const ciechi = butta.filter((w) => !conRighe.some((r) => r.presi.includes(w)));
 
-  return { butta, tieni, ciechi, righe: conRighe };
+  return { butta, tieni, ciechi, righe: conRighe, candidati };
 }
 
 /* ------------------------------------------------------------------ il cursore
@@ -1956,7 +1985,8 @@ let SOGLIE = [0];
 
 function preparaSoglia() {
   const tutti = (ULTIMI && ULTIMI.warrant) || [];
-  const val = valoreDi;
+  const val = incassoDi;
+  const candidati = tutti.filter((w) => !intoccabile(w));
   /* 🔴 **Il cursore non arriva al divine, e non e' una prudenza: e' la regola
      di Nicolas** (25 agosto). «Non voglio buttare i warrant che valgono 1 divine
      o piu'. Se effettivamente quello e' il prezzo, piuttosto li vendo.» Quindi
@@ -1967,7 +1997,7 @@ function preparaSoglia() {
      di un divine, quindi non c'e' niente da buttare — e il conteggio lo dice con
      parole sue invece di lasciare un «nessun warrant sotto soglia» ambiguo. */
   const cap = TASSO_DIVINE;
-  const scala = [...new Set(tutti.map(val))].sort((a, b) => a - b).filter((v) => v < cap);
+  const scala = [...new Set(candidati.map(val))].sort((a, b) => a - b).filter((v) => v < cap);
   /* ⚠️ **Due tacche che si leggono uguali sono una tacca sola.** `prezzo()`
      arrotonda al divine intero, quindi 212, 240 e 250 c si scrivono tutte
      «1 d»: tre scatti con la stessa etichetta che pero' cambiano la lista si
@@ -1980,7 +2010,7 @@ function preparaSoglia() {
      divine di solito qualcuno sopravvive gia' da se'; ma se un giorno tutti gli
      87 fossero sotto il divine, la posizione piu' alta tornerebbe a dire «87 su
      87, ne restano 0» — vera per costruzione, quindi non una scelta. */
-  if (tacche.length && tutti.every((w) => val(w) <= tacche[tacche.length - 1] + 1e-9)) tacche.pop();
+  if (tacche.length && tutti.every((w) => !intoccabile(w) && val(w) <= tacche[tacche.length - 1] + 1e-9)) tacche.pop();
   SOGLIE = [0, ...tacche];
   const c = $("soglia");
   c.max = String(Math.max(1, SOGLIE.length - 1));
@@ -2016,17 +2046,19 @@ function disegnaButta() {
   $("soglia-eti").textContent = `≤ ${prezzo(soglia)}`;
 
   const r = calcolaButta(soglia, limite);
-  const persi = r.butta.reduce((s, w) => s + valoreDi(w), 0);
+  const persi = r.butta.reduce((s, w) => s + incassoDi(w), 0);
   /* 🔴 **Due modi diversi di non avere niente da buttare**, e confonderli fa
      sembrare rotto lo strumento: «ho alzato poco il cursore» non e' «nessuno di
      questi warrant vale meno di un divine». Il secondo caso e' una risposta
      compiuta, e va detta come tale. */
-  const sottoIlDivine = tutti.filter((w) => valoreDi(w) < TASSO_DIVINE).length;
+  const sopra = tutti.length - r.candidati.length;
+  const coda = sopra ? ` · <b>${sopra}</b> sopra l'ancora, mai toccati` : "";
   $("butta-conta").innerHTML = r.butta.length
-    ? `<b>${r.butta.length}</b> su ${tutti.length} · <b>${prezzo(persi)}</b> buttati · ne restano <b>${r.tieni.length}</b>`
-    : sottoIlDivine
-      ? "nessun warrant sotto soglia"
-      : `<b>nessuno</b> degli ${tutti.length} vale meno di 1 divine &mdash; niente da buttare, si vendono`;
+    ? `<b>${r.butta.length}</b> di ${r.candidati.length} candidati · <b>${prezzo(persi)}</b>`
+      + ` di vendita rapida buttati${coda}`
+    : r.candidati.length
+      ? `nessun candidato sotto soglia${coda}`
+      : `<b>nessuno</b> degli ${tutti.length} sta sull'ancora &mdash; niente da buttare, si vendono`;
 
   el.innerHTML = r.righe.map((riga, i) => `
     <div class="rx-riga">
