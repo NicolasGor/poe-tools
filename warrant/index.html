@@ -385,7 +385,7 @@
     </div>
 
     <div class="butta-cursore">
-      <label for="soglia">butto tutto fino a</label>
+      <label for="soglia" title="Il taglio guarda il quinto prezzo — quanto ricavo vendendo subito — non la mediana della colonna Valore">butto tutto fino a</label>
       <input type="range" id="soglia" min="0" max="1" step="1" value="0">
       <output id="soglia-eti" for="soglia">0 c</output>
       <span class="limite">
@@ -406,6 +406,12 @@
       d'una si fanno più passate — <b>non si incollano insieme</b>, il campo non le regge.
       <b>«mostrali»</b> filtra la tabella qui sopra sugli stessi warrant, così si controlla
       cosa si sta per buttare prima di andare in gioco.<br>
+      <b>Quale prezzo taglia.</b> Il cursore guarda l'<b>incasso rapido</b> — il quinto
+      prezzo, la riga piccola <i>vendita rapida</i> — perché qui la domanda non è «quanto
+      vale» ma <b>«quanto ci ricavo se lo vendo subito»</b>. La colonna <i>Valore</i> e il
+      totale in cima sono invece la <b>mediana</b>: sugli stessi warrant i due numeri
+      stanno a circa <b>8×</b> l'uno dall'altro, quindi «157 d in tutto» e «20 d buttati»
+      sulla stessa lista non si contraddicono — contano due cose diverse.<br>
       <b>Perché i frammenti sono così corti.</b> Per ogni warrant sotto soglia la pagina
       cerca la <b>sottostringa più breve del nome o dell'archetipo che non compare in
       nessun warrant che tieni</b> — gemme comprese. Poi tiene i pochi frammenti che
@@ -1944,11 +1950,30 @@ let SOGLIE = [0];
 function preparaSoglia() {
   const tutti = (ULTIMI && ULTIMI.warrant) || [];
   const val = incassoDi;
-  SOGLIE = [0, ...new Set(tutti.map(val))].sort((a, b) => a - b);
+  /* 🔴 **Il valore piu' alto si toglie dalla scala.** Le tacche sono gli incassi
+     che esistono davvero, ma tenere anche il **massimo** rende l'ultima
+     posizione `soglia >= ogni incasso`: butta tutto e ne restano zero, **per
+     costruzione**. Una tacca che non puo' dire altro non e' una scelta, e
+     capitarci sopra sembra un difetto del calcolo — segnalato il 25 agosto:
+     «87 su 87 · ne restano 0». Tolta, la posizione piu' alta significa «tengo
+     solo il migliore», che e' una risposta. */
+  const scala = [...new Set(tutti.map(val))].sort((a, b) => a - b);
+  SOGLIE = [0, ...scala.slice(0, -1)];
   const c = $("soglia");
   c.max = String(Math.max(1, SOGLIE.length - 1));
+  c.disabled = SOGLIE.length < 2;
+  /* 🔴 **Una soglia salvata fuori scala si butta, non si arrotonda al massimo.**
+     Era il secondo pezzo dell'incastro: `preparaSoglia` avanzava finche'
+     `SOGLIE[i+1] <= salvata` e `disegnaButta` risalvava subito la soglia
+     corrente. Una soglia scelta quando la scala arrivava a 6 d (24 agosto)
+     mandava il cursore a fine corsa su una scala che oggi si ferma molto piu'
+     in basso, e **ogni ricarica la riscriveva li'**. Ora fuori scala si torna a
+     zero: si perde l'impostazione, ma il modo di sbagliare diventa «non butta
+     niente» invece di «butta tutto», ed e' l'unico verso accettabile qui. */
   const salvata = Number(localStorage.getItem("warrant-soglia") || "0");
-  let i = 0; while (i + 1 < SOGLIE.length && SOGLIE[i + 1] <= salvata) i++;
+  let i = 0;
+  if (salvata <= (SOGLIE[SOGLIE.length - 1] ?? 0))
+    while (i + 1 < SOGLIE.length && SOGLIE[i + 1] <= salvata) i++;
   c.value = String(i);
   disegnaButta();
 }
@@ -1962,12 +1987,18 @@ function disegnaButta() {
   const limite = Math.max(20, Math.min(250, Number($("limite").value) || 63));
   localStorage.setItem("warrant-soglia", String(soglia));
   localStorage.setItem("warrant-limite", String(limite));
-  $("soglia-eti").textContent = `≤ ${prezzo(soglia)}`;
+  /* ⚠️ **«incasso», non «valore».** Il cursore taglia su `incassoDi` — il quinto
+     prezzo — mentre la colonna e il totale in cima passano da `valoreDi`, che e'
+     la mediana. Sono due domande diverse, e sugli stessi warrant i due numeri
+     stanno a **~8x** l'uno dall'altro (misurato il 24 agosto): senza scriverlo,
+     «157 d in tutto» e «20 d buttati» sulla stessa lista sembrano un errore. */
+  $("soglia-eti").textContent = `incasso ≤ ${prezzo(soglia)}`;
 
   const r = calcolaButta(soglia, limite);
   const persi = r.butta.reduce((s, w) => s + incassoDi(w), 0);
   $("butta-conta").innerHTML = r.butta.length
-    ? `<b>${r.butta.length}</b> su ${tutti.length} · <b>${prezzo(persi)}</b> buttati · ne restano <b>${r.tieni.length}</b>`
+    ? `<b>${r.butta.length}</b> su ${tutti.length} · <b>${prezzo(persi)}</b> d'incasso rapido buttati`
+      + ` · ne restano <b>${r.tieni.length}</b>`
     : "nessun warrant sotto soglia";
 
   el.innerHTML = r.righe.map((riga, i) => `
