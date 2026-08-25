@@ -236,13 +236,20 @@
   <p class="nota" style="margin-bottom:var(--s2)">
     🔴 <b>La build &egrave; cambiata e la regex vecchia era tarata sull&rsquo;aurabot ES</b>: escludeva l&rsquo;effetto delle aure (Determination) e il <i>less Armour</i> (Aegis), che qui non esistono pi&ugrave;. Dei quattro pilastri di allora <b>resta solo il block</b>, e per un motivo diverso: non ricarica l&rsquo;energy shield, <b>recupera vita</b>.
     I pilastri nuovi sono <b>rigenerazione</b>, <b>recover life on block</b>, <b>flask</b> (tengono su Rumi&rsquo;s <i>e</i> passano al merc dalla Ceinture), <b>resistenze massime</b> e &mdash; nuovo di zecca &mdash; <b>il block dei mostri</b>, perch&eacute; il Kinetic Blast &egrave; un <b>attacco</b>.
-    <b>62 caratteri</b> col <code>!</code> &mdash; sotto il limite vero di <b>63</b> misurato il 22 agosto &mdash; copre <b>17</b> mod su 18 e <b>10 letali su 10</b>.
+    <b>59 caratteri</b> col <code>!</code> &mdash; limite del riquadro del Deck <b>63</b> &mdash; copre <b>16</b> mod su 20 e <b>11 letali su 11</b>.
   </p>
-  <p style="font-family:var(--mono);font-size:var(--t-sm);background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:4px;padding:.6rem .8rem;margin-bottom:var(--s3)">"!redu|to a|shie|no l|elem|unaf|chai|be l|block$|gain f|block a"</p>
+  <p style="font-family:var(--mono);font-size:var(--t-sm);background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:4px;padding:.6rem .8rem;margin-bottom:var(--s3)">"!redu|shie|to a|no l|elem|unaf|gain f|block$|less e|block a"</p>
   <p class="nota muto" style="margin-bottom:var(--s3)">Secondo incollo per il pack size &ge; 30%: <span style="font-family:var(--mono)">"iz.*([3-9].|\d..)%"</span></p>
   <p class="nota" style="margin-bottom:var(--s3)">
     💡 <b>Perch&eacute; <span style="font-family:var(--mono)">block$</span> e non <span style="font-family:var(--mono)">cannot bl</span>:</b> <code>Monsters cannot Block your Attacks</code> &egrave; un mod <b>buono</b> per questa build, e un frammento libero se lo mangiava. Ancorato alla fine, <span style="font-family:var(--mono)">block$</span> prende <i>Players cannot Block</i> e <i>reduced Chance to Block</i> e lascia stare quello dei mostri.
-    <em>Prezzo dichiarato: <span style="font-family:var(--mono)">redu</span> toglie anche i tre <i>&laquo;Players take #% reduced Damage from&hellip;&raquo;</i>, che sono benefici. Fuori resta un solo mod, <i>Players cannot Block Spell Damage</i>.</em>
+    <em>Prezzo dichiarato: <span style="font-family:var(--mono)">redu</span> toglie anche i tre <i>&laquo;Players take #% reduced Damage from&hellip;&raquo;</i>, che sono benefici. Restano fuori quattro mod costosi: <i>cannot Block Spell Damage</i>, <i>Temporal Chains</i>, <i>cannot be Leeched from</i> e <i>less Defences</i>.</em>
+  </p>
+
+  <p class="nota" style="margin-bottom:var(--s3)">
+    🔴 <b>E <span style="font-family:var(--mono)">less e</span> viene da una controverifica su <a href="https://poe.re/maps" target="_blank" rel="noopener">poe.re</a></b>, non dal nostro censimento.
+    In gioco un tiro negativo si legge <code>Players have 40% <b>less</b> effect of Flasks applied to them</code>, mentre l&rsquo;API di trade e la nostra lista lo chiamano <i>more</i> con valore negativo: <b>lo stesso mod, due scritture</b>.
+    La regex leggeva la nostra e quel tiro non lo prendeva &mdash; su una build che tiene su Rumi&rsquo;s e passa le flask al merc, era un buco vero.
+    <em>Stessa cosa per <code>less Defences</code>, aggiunto al censimento e lasciato fra i costosi.</em>
   </p>
 
   <h2 class="sec">Comprare mappe che questa build pu&ograve; correre</h2>
