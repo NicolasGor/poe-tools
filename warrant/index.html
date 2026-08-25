@@ -385,7 +385,7 @@
     </div>
 
     <div class="butta-cursore">
-      <label for="soglia" title="Il taglio guarda il quinto prezzo — quanto ricavo vendendo subito — non la mediana della colonna Valore">butto tutto fino a</label>
+      <label for="soglia" title="Taglia sulla stessa mediana della colonna Valore">butto tutto fino a</label>
       <input type="range" id="soglia" min="0" max="1" step="1" value="0">
       <output id="soglia-eti" for="soglia">0 c</output>
       <span class="limite">
@@ -406,12 +406,18 @@
       d'una si fanno più passate — <b>non si incollano insieme</b>, il campo non le regge.
       <b>«mostrali»</b> filtra la tabella qui sopra sugli stessi warrant, così si controlla
       cosa si sta per buttare prima di andare in gioco.<br>
-      <b>Quale prezzo taglia.</b> Il cursore guarda l'<b>incasso rapido</b> — il quinto
-      prezzo, la riga piccola <i>vendita rapida</i> — perché qui la domanda non è «quanto
-      vale» ma <b>«quanto ci ricavo se lo vendo subito»</b>. La colonna <i>Valore</i> e il
-      totale in cima sono invece la <b>mediana</b>: sugli stessi warrant i due numeri
-      stanno a circa <b>8×</b> l'uno dall'altro, quindi «157 d in tutto» e «20 d buttati»
-      sulla stessa lista non si contraddicono — contano due cose diverse.<br>
+      <b>Quale prezzo taglia.</b> Lo stesso della colonna <i>Valore</i> e del totale in
+      cima: la <b>mediana</b> dei simili. 🔴 <b>Non il quinto prezzo</b>, che qui è stato
+      provato e misurato sbagliato: il quinto è la 5ª inserzione più economica <b>in
+      assoluto</b>, quindi su un pool da 255 è il 2° percentile e su uno da 30 il 17° — un
+      percentile che si muove di <b>8×</b> con la taglia del confronto. Ordinava i warrant
+      in modo quasi scorrelato dalla colonna (<b>Spearman 0,20</b>) e a un taglio da 20 ne
+      cambiava lato <b>17</b>: <i>Vysera</i>, mediana <b>3 d</b> su 198 confronti, finiva
+      fra i buttati perché il suo pool è grande, non perché non valga.<br>
+      ⚠️ <b>La prima tacca muove 52 warrant su 87 in un colpo</b>, e non è grossolanità del
+      cursore: stanno tutti a <b>1 divine esatto</b>, il prezzo che chiede il 30% del
+      mercato. Dentro quel gradino non c'è niente da ordinare — il mercato non li
+      distingue, e lo strumento non finge di saperlo fare.<br>
       <b>Perché i frammenti sono così corti.</b> Per ogni warrant sotto soglia la pagina
       cerca la <b>sottostringa più breve del nome o dell'archetipo che non compare in
       nessun warrant che tieni</b> — gemme comprese. Poi tiene i pochi frammenti che
@@ -657,8 +663,6 @@ async function leggiControlli() {
  * sezione si era svuotata — «nessun warrant sotto soglia» — e non era un difetto
  * del cursore: col metro sbagliato **non c'e' piu' niente da buttare**, perche'
  * ogni scarto sembra valere un divine. Due domande, due statistiche. */
-const incassoDi = (w) => w.quinto ?? w.prezzo;
-
 const dal = (id) => {
   const v = PRIMI_VISTI[id];
   if (!v) return '<span class="oltre">—</span>';
@@ -1871,7 +1875,7 @@ const COMUNE_STASH = "mercenary warrant build mercenary level requires right cli
 
 function calcolaButta(soglia, limite) {
   const tutti = (ULTIMI && ULTIMI.warrant) || [];
-  const val = incassoDi;
+  const val = valoreDi;
   const butta = tutti.filter((w) => val(w) <= soglia + 1e-9);
   const tieni = tutti.filter((w) => val(w) > soglia + 1e-9);
   const vietati = tieni.map(testoWarrant).concat([COMUNE_STASH]);
@@ -1949,7 +1953,7 @@ let SOGLIE = [0];
 
 function preparaSoglia() {
   const tutti = (ULTIMI && ULTIMI.warrant) || [];
-  const val = incassoDi;
+  const val = valoreDi;
   /* 🔴 **Il valore piu' alto si toglie dalla scala.** Le tacche sono gli incassi
      che esistono davvero, ma tenere anche il **massimo** rende l'ultima
      posizione `soglia >= ogni incasso`: butta tutto e ne restano zero, **per
@@ -1987,18 +1991,15 @@ function disegnaButta() {
   const limite = Math.max(20, Math.min(250, Number($("limite").value) || 63));
   localStorage.setItem("warrant-soglia", String(soglia));
   localStorage.setItem("warrant-limite", String(limite));
-  /* ⚠️ **«incasso», non «valore».** Il cursore taglia su `incassoDi` — il quinto
-     prezzo — mentre la colonna e il totale in cima passano da `valoreDi`, che e'
-     la mediana. Sono due domande diverse, e sugli stessi warrant i due numeri
-     stanno a **~8x** l'uno dall'altro (misurato il 24 agosto): senza scriverlo,
-     «157 d in tutto» e «20 d buttati» sulla stessa lista sembrano un errore. */
-  $("soglia-eti").textContent = `incasso ≤ ${prezzo(soglia)}`;
+  /* ✅ **Un solo numero decide quanto vale un warrant**: `valoreDi`, la mediana,
+     la stessa della colonna e del totale in cima. Cosi' «157 d in tutto» e «X
+     buttati» sono lo stesso metro e la sottrazione torna. */
+  $("soglia-eti").textContent = `≤ ${prezzo(soglia)}`;
 
   const r = calcolaButta(soglia, limite);
-  const persi = r.butta.reduce((s, w) => s + incassoDi(w), 0);
+  const persi = r.butta.reduce((s, w) => s + valoreDi(w), 0);
   $("butta-conta").innerHTML = r.butta.length
-    ? `<b>${r.butta.length}</b> su ${tutti.length} · <b>${prezzo(persi)}</b> di incasso rapido buttati`
-      + ` · ne restano <b>${r.tieni.length}</b>`
+    ? `<b>${r.butta.length}</b> su ${tutti.length} · <b>${prezzo(persi)}</b> buttati · ne restano <b>${r.tieni.length}</b>`
     : "nessun warrant sotto soglia";
 
   el.innerHTML = r.righe.map((riga, i) => `
