@@ -218,7 +218,7 @@
           <td><span class="scaglione">6</span> tutto il resto — <b>lo sfuso</b><span class="lim">a lotto, non a pezzo: vedi sotto</span></td>
           <td class="n">oltre 10.000<span class="lim">tetto dell'API</span></td>
           <td class="n val">60 c</td>
-          <td class="n"><span class="lim">nessuna: è quello che resta spento</span></td>
+          <td><div class="rx-cella"><code id="chr5">plain|ridge|grove</code><button type="button" data-copia="chr5">copia</button></div></td>
         </tr>
       </tbody>
     </table></div>
@@ -274,9 +274,9 @@
           <td><div class="rx-cella"><code id="chr2">Hazardous|Ruin</code><button type="button" data-copia="chr2">copia</button></div></td>
         </tr>
         <tr>
-          <td><span class="scaglione">3</span> tutto il resto — <b>lo sfuso</b><span class="lim">dodici aree fra 1 e 7 c, più le tre basi non rivelate a 1 c</span></td>
+          <td><span class="scaglione">3</span> tutto il resto — <b>lo sfuso</b><span class="lim">dodici aree fra 1 e 7 c — e tre di quelle valgono <b>1 c</b></span></td>
           <td class="n">oltre 10.000<span class="lim">tetto dell'API</span></td>
-          <td class="n val basso">1–7 c</td>
+          <td class="n val basso">1–7 c<span class="lim">la regex accende le tre da <b>1 c</b></span></td>
           <td class="n"><span class="lim">nessuna: è quello che resta spento</span></td>
         </tr>
       </tbody>
@@ -306,12 +306,11 @@
         <tr><td><b>Lost Ruins</b> <span class="lim">l'ingresso del Voyage</span></td><td class="n"><a href="https://www.pathofexile.com/trade/search/Allflame/kyD2LBKWS5" target="_blank" rel="noopener">2.043</a></td><td class="n">3 c</td><td class="n val basso">3 c</td><td class="n">+81%</td></tr>
         <tr><td>Sunken Totems</td><td class="n"><a href="https://www.pathofexile.com/trade/search/Allflame/V5p0QV72Sp" target="_blank" rel="noopener">3.460</a></td><td class="n">2 c</td><td class="n val basso">3 c</td><td class="n">+69%</td></tr>
         <tr><td>Diving Shoals</td><td class="n"><a href="https://www.pathofexile.com/trade/search/Allflame/Lgk0QLKXTn" target="_blank" rel="noopener">2.650</a></td><td class="n">3 c</td><td class="n val basso">3 c</td><td class="n">+66%</td></tr>
-        <tr><td>Abyssal Plain · Seafloor Ridges · Undersea Groves<span class="lim">Area Level 6–59: sono le aree basse</span></td><td class="n">10.000+<span class="lim">tetto dell'API, tutte e tre</span></td><td class="n">1 c</td><td class="n val basso">1 c</td><td class="n">+25%</td></tr>
-        <tr><td>le tre basi <b>non rivelate</b><span class="lim">Coral Forest · Coral Reef · Sandy Seabed Chart</span></td><td class="n">10.000+<span class="lim">tetto dell'API, tutte e tre</span></td><td class="n">1 c</td><td class="n val basso">1 c</td><td class="n">+23%</td></tr>
+        <tr><td>Abyssal Plain · Seafloor Ridges · Undersea Groves<span class="lim">Area Level 6–59: le aree basse, una per base — <b>si buttano</b></span></td><td class="n">10.000+<span class="lim">tetto dell'API, tutte e tre</span></td><td class="n">1 c</td><td class="n val basso">1 c</td><td class="n">+25%</td></tr>
         <tr><td>🔴 <s>Unremarkable Seabed</s><span class="lim">non è un mercato: <b>tre</b> inserzioni in tutta la lega — una a 2 c e una a 999</span></td><td class="n">3</td><td class="n val basso">—</td><td class="n">—</td><td class="n">—</td></tr>
       </tbody>
     </table></div>
-    <p class="nota">💡 <b>Rivelare l'area raddoppia la quantità</b>: una Chart vergine porta <b>+23%</b>, una rivelata sta fra <b>+66% e +100%</b> — tranne le tre aree basse, che restano a +25%. È l'unica cosa che il censimento dice su cosa <i>renda</i> una Chart; tutto il resto misura cosa il mercato <i>paga</i>.</p>
+    <p class="nota">💡 <b>La quantità segue l'area, e le tre da 1 c sono spazzatura due volte</b>: stanno a <b>+25%</b> mentre tutte le altre vanno da <b>+66% a +100%</b>. ⚠️ <b>Ogni Chart mostra già la sua area</b>, anche prima di essere portata a Valerie: quello che il charting rivela è <b>il Voyage Modifier</b>, non il nome del posto. Su 543 item letti, <b>zero</b> senza area.</p>
 
     <h3>La seconda regex — quella che non ho potuto verificare</h3>
     <p>Serve per le Chart <b>già rivelate</b>, dove il Voyage Modifier porta righe di ricompensa. Sono <b>89 caratteri</b>: la tastiera dello Steam Deck ne accetta 64 e taglia senza avvisare, quindi si incolla in <b>due volte</b>, e le due righe cercano le stesse tredici parole.</p>
