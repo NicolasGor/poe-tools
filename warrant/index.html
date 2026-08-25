@@ -1997,7 +1997,7 @@ function disegnaButta() {
   const r = calcolaButta(soglia, limite);
   const persi = r.butta.reduce((s, w) => s + incassoDi(w), 0);
   $("butta-conta").innerHTML = r.butta.length
-    ? `<b>${r.butta.length}</b> su ${tutti.length} · <b>${prezzo(persi)}</b> d'incasso rapido buttati`
+    ? `<b>${r.butta.length}</b> su ${tutti.length} · <b>${prezzo(persi)}</b> di incasso rapido buttati`
       + ` · ne restano <b>${r.tieni.length}</b>`
     : "nessun warrant sotto soglia";
 
