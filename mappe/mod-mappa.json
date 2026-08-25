@@ -40,8 +40,7 @@
   "Players have #% more Cooldown Recovery Rate",
   "Players have #% more Energy Shield Recovery Rate per 25% Alert Level",
   "Players have #% more Life Recovery Rate per 25% Alert Level",
-  "Players have #% more Mana Recovery Rate per 25% Alert Level",
-  "Players have no Life or Mana Regeneration"
+  "Players have #% more Mana Recovery Rate per 25% Alert Level"
  ],
  "Difese dei mostri": [
   "+#% Monster Physical Damage Reduction",
