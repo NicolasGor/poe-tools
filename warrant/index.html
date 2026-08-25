@@ -1962,7 +1962,14 @@ function preparaSoglia() {
      «87 su 87 · ne restano 0». Tolta, la posizione piu' alta significa «tengo
      solo il migliore», che e' una risposta. */
   const scala = [...new Set(tutti.map(val))].sort((a, b) => a - b);
-  SOGLIE = [0, ...scala.slice(0, -1)];
+  /* ⚠️ **Due tacche che si leggono uguali sono una tacca sola.** `prezzo()`
+     arrotonda al divine intero, quindi 212, 240 e 250 c si scrivono tutte
+     «1 d»: tre scatti con la stessa etichetta che pero' cambiano la lista si
+     leggono come un cursore rotto. Di ogni gruppo che si scrive uguale si tiene
+     il valore **piu' alto**, cosi' etichetta ed effetto coincidono. */
+  const perEtichetta = new Map();
+  for (const v of scala) perEtichetta.set(prezzo(v), v);
+  SOGLIE = [0, ...[...perEtichetta.values()].slice(0, -1)];
   const c = $("soglia");
   c.max = String(Math.max(1, SOGLIE.length - 1));
   c.disabled = SOGLIE.length < 2;
