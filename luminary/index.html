@@ -241,8 +241,22 @@
     I pilastri che restano: <b>rigenerazione</b>, <b>recover life on block</b>, <b>resistenze massime</b> e <b>il block dei mostri</b> (il Kinetic Blast &egrave; un attacco).
     <b>59 caratteri</b> col <code>!</code> &mdash; limite del riquadro del Deck <b>63</b> &mdash; copre <b>17</b> mod su 18 e <b>7 letali su 7</b>.
   </p>
-  <p style="font-family:var(--mono);font-size:var(--t-sm);background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:4px;padding:.6rem .8rem;margin-bottom:var(--s3)">"!ur$|ock$|eld$|ces$|elem|be l|by c|chai|kes$|less e|block a"</p>
+  <p style="font-family:var(--mono);font-size:var(--t-sm);background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:4px;padding:.6rem .8rem;margin-bottom:var(--s3)">"!ck d|m re|ock$|a or|ss r|elem| les|be l|empo|k sp|m cr|rses"</p>
   <p class="nota muto" style="margin-bottom:var(--s3)">Secondo incollo per il pack size &ge; 30%: <span style="font-family:var(--mono)">"iz.*([3-9].|\d..)%"</span></p>
+  <h3 style="margin-top:var(--s5)">E una seconda, permissiva &mdash; per l&rsquo;alch and go</h3>
+  <p class="nota" style="margin-bottom:var(--s2)">
+    Chiesta da Nicolas. <b>Tollera due mod</b> invece di escluderli: <code>Players have #% to all maximum Resistances</code> e <code>Monsters have +#% Chance to Block Attack Damage</code>. Non &egrave; la stessa regex con due voci in meno &mdash; sono <b>vietate</b> ai frammenti, altrimenti <span style="font-family:var(--mono)">m re</span> e <span style="font-family:var(--mono)">ck d</span> le riprendevano lo stesso e la mappa restava spenta.
+  </p>
+  <p style="font-family:var(--mono);font-size:var(--t-sm);background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:4px;padding:.6rem .8rem;margin-bottom:var(--s3)">"!ock$|ss r|a or|elem| les|be l|empo|k sp|m cr|rses|t block a"</p>
+  <p class="nota" style="margin-bottom:var(--s3)">
+    📏 <b>Quanto costa tollerarli, misurato</b> &mdash; perch&eacute; la scelta sia informata, non comoda:
+  </p>
+  <table class="mini" style="margin-bottom:var(--s3)"><thead><tr><th>Mod tollerato</th><th>Costo</th><th>Come si vede</th></tr></thead><tbody>
+  <tr><td><code>-5% to all maximum Resistances</code></td><td><b>&minus;11,2%</b> EHP</td><td>160.057 &rarr; 142.201 &middot; res 80 &rarr; 75</td></tr>
+  <tr><td><code>-12% to all maximum Resistances</code></td><td>🔴 <b>&minus;23,0%</b> EHP</td><td>160.057 &rarr; 123.317 &middot; res 80 &rarr; 68</td></tr>
+  <tr><td><code>Monsters +50% Chance to Block Attack</code></td><td><b>~metà del danno</b></td><td>il merc fa Kinetic Blast, che &egrave; un <b>attacco</b>: il colpo bloccato &egrave; annullato</td></tr>
+  </tbody></table>
+  <p class="nota muto" style="margin-bottom:var(--s3)">⚠️ L&rsquo;overcap non salva: le <i>-max res</i> abbassano il <b>tetto</b>, e la resistenza scende con lui. 💡 Il blocco dei mostri invece <b>non uccide</b>: rallenta &mdash; ed &egrave; la ragione per cui sta in questa lista e non fra i letali.</p>
   <p class="nota" style="margin-bottom:var(--s3)">
     💡 <b>Perch&eacute; <span style="font-family:var(--mono)">ock$</span> e non <span style="font-family:var(--mono)">cannot bl</span>:</b> <code>Monsters cannot Block your Attacks</code> &egrave; un mod <b>buono</b> per questa build, e un frammento libero se lo mangiava. Ancorato alla fine, <span style="font-family:var(--mono)">ock$</span> prende <i>Players cannot Block</i> e <i>reduced Chance to Block</i> e lascia stare quello dei mostri.
     <em>Prezzo dichiarato: <span style="font-family:var(--mono)">ces$</span> spegne anche <i>more Defences</i>, che &egrave; benefico &mdash; inevitabile, perch&eacute; <i>less</i> e <i>more Defences</i> finiscono con la stessa parola. Resta fuori un solo mod, il costoso <i>cannot Block Spell Damage</i>.</em>
