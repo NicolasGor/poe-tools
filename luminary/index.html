@@ -232,7 +232,8 @@
   </table>
   <p class="nota muto" style="margin-bottom:var(--s6)">La regola di transizione: si sale di tier quando il merc <b>scioglie i pack senza che tu rallenti</b> — il div/ora del Luminary scala col ritmo, non col livello delle mappe.</p>
 
-  <h2 class="sec">La regex delle mappe &mdash; rifatta il 27 agosto (Mageblood)</h2>
+  <h2 class="sec">La regex delle mappe &mdash; prodotta su poe.re</h2>
+  <p class="nota" style="margin-bottom:var(--s2)">🔴 <b>La fonte &egrave; <a href="https://poe.re/maps" target="_blank" rel="noopener">poe.re/maps</a>, profilo &laquo;Luminary&raquo;</b>, che tiene Nicolas &mdash; non un nostro ottimizzatore. Il nostro script resta come <b>controprova</b>: misura cosa manca alla stringa pubblicata, non la sostituisce.</p>
   <p class="nota" style="margin-bottom:var(--s2)">
     🔴 <b>&Egrave; entrata la Mageblood, e la questione flask si chiude.</b> Il testo dell&rsquo;item: <i>&laquo;Magic Utility Flasks cannot be Used&raquo;</i> + <i>&laquo;Leftmost (2-4) Magic Utility Flasks constantly apply their Flask Effects to you&raquo;</i>.
     TrincoLum porta <b>cinque flask magic utility e nessuna unica</b>: con la Mageblood addosso <b>niente consuma pi&ugrave; cariche</b>. Escono dai letali <code>cannot gain Flask Charges</code> e <code>reduced Flask Charges</code>.
@@ -241,13 +242,13 @@
     I pilastri che restano: <b>rigenerazione</b>, <b>recover life on block</b>, <b>resistenze massime</b> e <b>il block dei mostri</b> (il Kinetic Blast &egrave; un attacco).
     <b>59 caratteri</b> col <code>!</code> &mdash; limite del riquadro del Deck <b>63</b> &mdash; copre <b>17</b> mod su 18 e <b>7 letali su 7</b>.
   </p>
-  <p style="font-family:var(--mono);font-size:var(--t-sm);background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:4px;padding:.6rem .8rem;margin-bottom:var(--s3)">"!ck d|m re|ock$|a or|ss r|elem| les|be l|empo|k sp|m cr|rses"</p>
+  <p style="font-family:var(--mono);font-size:var(--t-sm);background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:4px;padding:.6rem .8rem;margin-bottom:var(--s3)">"!te of|m resistances$|k damage$|ur$|em$|t reg" "y: r"</p>
   <p class="nota muto" style="margin-bottom:var(--s3)">Secondo incollo per il pack size &ge; 30%: <span style="font-family:var(--mono)">"iz.*([3-9].|\d..)%"</span></p>
   <h3 style="margin-top:var(--s5)">E una seconda, permissiva &mdash; per l&rsquo;alch and go</h3>
   <p class="nota" style="margin-bottom:var(--s2)">
-    Chiesta da Nicolas. <b>Tollera due mod</b> invece di escluderli: <code>Players have #% to all maximum Resistances</code> e <code>Monsters have +#% Chance to Block Attack Damage</code>. Non &egrave; la stessa regex con due voci in meno &mdash; sono <b>vietate</b> ai frammenti, altrimenti <span style="font-family:var(--mono)">m re</span> e <span style="font-family:var(--mono)">ck d</span> le riprendevano lo stesso e la mappa restava spenta.
+    Esce dalla prima <b>togliendo tre voci</b> dal profilo poe.re: le due <code>to all maximum Resistances</code> (il tiro da 8-mod e quello normale) e <code>Monsters have +50% Chance to Block Attack Damage</code>. ⚠️ <b>Cos&igrave; per&ograve; resta scoperto anche <code>Players cannot Block Attack Damage</code></b>, che poe.re non ha in elenco e veniva preso <b>per caso</b> da <span style="font-family:var(--mono)">k damage$</span>, messo l&igrave; per il mod dei mostri: &egrave; <b>pi&ugrave; permissiva di quanto chiesto</b>.
   </p>
-  <p style="font-family:var(--mono);font-size:var(--t-sm);background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:4px;padding:.6rem .8rem;margin-bottom:var(--s3)">"!ock$|ss r|a or|elem| les|be l|empo|k sp|m cr|rses|t block a"</p>
+  <p style="font-family:var(--mono);font-size:var(--t-sm);background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:4px;padding:.6rem .8rem;margin-bottom:var(--s3)">"!te of|ur$|em$|t reg" "y: r"</p>
   <p class="nota" style="margin-bottom:var(--s3)">
     📏 <b>Quanto costa tollerarli, misurato</b> &mdash; perch&eacute; la scelta sia informata, non comoda:
   </p>
@@ -258,8 +259,12 @@
   </tbody></table>
   <p class="nota muto" style="margin-bottom:var(--s3)">⚠️ L&rsquo;overcap non salva: le <i>-max res</i> abbassano il <b>tetto</b>, e la resistenza scende con lui. 💡 Il blocco dei mostri invece <b>non uccide</b>: rallenta &mdash; ed &egrave; la ragione per cui sta in questa lista e non fra i letali.</p>
   <p class="nota" style="margin-bottom:var(--s3)">
-    💡 <b>Perch&eacute; <span style="font-family:var(--mono)">ock$</span> e non <span style="font-family:var(--mono)">cannot bl</span>:</b> <code>Monsters cannot Block your Attacks</code> &egrave; un mod <b>buono</b> per questa build, e un frammento libero se lo mangiava. Ancorato alla fine, <span style="font-family:var(--mono)">ock$</span> prende <i>Players cannot Block</i> e <i>reduced Chance to Block</i> e lascia stare quello dei mostri.
-    <em>Prezzo dichiarato: <span style="font-family:var(--mono)">ces$</span> spegne anche <i>more Defences</i>, che &egrave; benefico &mdash; inevitabile, perch&eacute; <i>less</i> e <i>more Defences</i> finiscono con la stessa parola. Resta fuori un solo mod, il costoso <i>cannot Block Spell Damage</i>.</em>
+    📏 <b>Cosa non copre, misurato</b> contro i 358 mod del censimento, i 347 nomi base e 50 nomi di mappe rare veri &mdash; <b>zero collisioni coi nomi</b>.
+    🔴 <b>Manca <code>Players cannot Block</code>, e non &egrave; una svista: poe.re non ce l&rsquo;ha in elenco.</b> Sono <b>3.491 mappe in lega</b> su cui il rubinetto del recupero &egrave; chiuso e la stringa non se ne accorge. Da l&igrave; non &egrave; correggibile: la voce non esiste.
+    <em>⚠️ Prezzo di <span style="font-family:var(--mono)">em$</span>, gi&agrave; noto: aggancia anche <code>Players deal #% more Damage per Equipped Item</code>, che &egrave; su <b>4.961 mappe</b> ed &egrave; un mod <b>buono</b>. E <span style="font-family:var(--mono)">"y: r"</span> &egrave; <i>Rarity: Rare</i>: su una mappa gi&agrave; alchemizzata &egrave; sempre vero.</em>
+  </p>
+  <p class="nota" style="margin-bottom:var(--s3)">
+    ✅ <b>Un dubbio sciolto misurando</b>: <code>reduced Chance to Block</code> e <code>less Armour</code> su poe.re sono <b>una voce sola</b>, e sembrava un raggruppamento sbagliato. Sul trade: <b>0</b> mappe con uno senza l&rsquo;altro, <b>10.000</b> con entrambi. <b>Sono lo stesso affisso su due righe</b>, quindi <span style="font-family:var(--mono)">ur$</span> li prende tutti e due &mdash; e il nostro censimento, che li contava separati, aveva torto.
   </p>
   <p class="nota" style="margin-bottom:var(--s3)">
     🔴 <b>27 agosto: la controverifica su poe.re ha rimesso dentro il <i>less Armour</i></b>, che il 25 era uscito insieme all&rsquo;Aegis. La build a vita l&rsquo;Armour la usa lo stesso: con <code>30% less Armour</code> addosso l&rsquo;EHP passa da <b>160.057 a 150.048</b>, cio&egrave; <b>&minus;6,3%</b> &mdash; pi&ugrave; del <i>less effect of Flasks</i> che gi&agrave; escludevamo (&minus;3,5%).
