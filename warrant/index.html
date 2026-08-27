@@ -32,7 +32,16 @@
   /* Il confronto stretto: stessa scala del sottocosto ma acceso, perche' e'
      un prezzo piu' alto e non piu' basso di quello grande. */
   .simili-cel{white-space:nowrap}
-  .azioni{white-space:nowrap;display:flex;gap:.3rem;justify-content:flex-end;align-items:center}
+  /* 🔴 **`display:flex` su un `<td>` lo toglie dal layout della tabella.** La
+     cella smette di essere una cella: non si allunga piu' con la riga —
+     misurato il 27 agosto, **47 px contro gli 89 delle altre cinque** — quindi
+     bordo e sfondo si fermano a meta' e i bottoni non sono piu' centrati sulla
+     riga ma appoggiati in alto. Il flex serviva solo ad allineare due bottoni a
+     destra: lo fanno `text-align` e il `vertical-align:middle` che la riga ha
+     gia'. Segnalato da Nicolas guardando l'ultima colonna. */
+  .azioni{white-space:nowrap;text-align:right}
+  .azioni > button{vertical-align:middle}
+  .azioni > button + button{margin-left:.3rem}
   .controlla{display:inline-flex;align-items:center;gap:.3rem;padding:.25rem .4rem;line-height:1}
   .controlla .eti:empty{display:none}
   .controlla .eti{font-size:var(--t-xs);font-family:var(--mono)}
