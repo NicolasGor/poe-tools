@@ -47,3 +47,7 @@ jobs:
           # creare, custodire e un giorno ruotare.
           WARRANT_API: https://api.poewarrant.workers.dev
           WARRANT_CHIAVE: ${{ secrets.WARRANT_CHIAVE }}
+          # Il nome account per leggere le proprie inserzioni sul trade. Sta
+          # in una variable e non qui perche' questo file e' pubblico. Se non
+          # c'e', la riga "in vendita" semplicemente non compare.
+          WARRANT_ACCOUNT: ${{ vars.WARRANT_ACCOUNT }}

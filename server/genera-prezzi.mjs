@@ -41,6 +41,69 @@ const MIN = Number(arg("--min", 30));
 const API = (process.env.WARRANT_API || "https://api.poewarrant.workers.dev").replace(/\/$/, "");
 const CHIAVE = process.env.WARRANT_CHIAVE || "";
 
+/* --------------------------------------------------- i warrant gia' in vendita
+ * 🔴 **Il problema che risolve.** Un item affidato allo scambio **non sta piu' in
+ * una tab**, quindi esce dalla lettura dello stash e sparisce dalla pagina: dalla
+ * tabella, dal totale e dal «da buttare», senza che niente lo dica. Il 27 agosto
+ * il totale e' passato a 208 d **con i quattro pezzi piu' cari fuori** — sembrava
+ * cresciuto, aveva cambiato significato. E da quella sparizione avevo dedotto
+ * quattro vendite mai avvenute.
+ *
+ * ✅ **Perche' puo' farlo la Action e non la pagina.** La ricerca per account
+ * risponde **senza autenticazione** — a differenza della lettura dello stash
+ * (403 da sloggati) e delle query sui mercenari (rifiutate per complessita'). Ma
+ * dal browser e' impossibile: `www.pathofexile.com/api/trade` **non manda gli
+ * header CORS**, e una fetch dalla pagina pubblicata muore in `Failed to fetch`
+ * (provato il 27 agosto). Qui invece non c'e' browser, quindi non c'e' CORS.
+ *
+ * ⚠️ **Serve uno User-Agent vero**: GGG rifiuta quello di default. E i dettagli
+ * si chiedono a **lotti da 10**.
+ *
+ * ⚠️ **Se non arriva, non e' un errore fatale**: i prezzi valgono comunque, e la
+ * pagina mostra la riga solo quando c'e' qualcosa. */
+const ACCOUNT = process.env.WARRANT_ACCOUNT || "";
+const UA = "poe-tools/1.0 (+https://nicolasgor.github.io/poe-tools/) warrant-in-vendita";
+
+async function inVendita(lega) {
+  if (!ACCOUNT) return null;
+  try {
+    const r = await fetch(`https://www.pathofexile.com/api/trade/search/${encodeURIComponent(lega)}`, {
+      method: "POST",
+      headers: { "content-type": "application/json", "user-agent": UA },
+      body: JSON.stringify({
+        query: { status: { option: "securable" }, stats: [{ type: "and", filters: [] }],
+                 filters: { trade_filters: { filters: { account: { input: ACCOUNT } } } } },
+        sort: { price: "asc" },
+      }),
+    });
+    if (!r.ok) return { errore: `ricerca HTTP ${r.status}` };
+    const s = await r.json();
+    const ids = s.result || [];
+    const fuori = [];
+    for (let i = 0; i < ids.length; i += 10) {
+      const lotto = ids.slice(i, i + 10).join(",");
+      const d = await fetch(`https://www.pathofexile.com/api/trade/fetch/${lotto}?query=${s.id}`,
+                            { headers: { "user-agent": UA } });
+      if (!d.ok) break;
+      for (const x of ((await d.json()).result || []).filter(Boolean)) {
+        const base = x.item?.baseType || x.item?.typeLine || "";
+        if (!/Mercenary Warrant/i.test(base)) continue;   // le mappe e i gioielli non c'entrano
+        fuori.push({
+          nome: (x.item?.properties || [])[0]?.values?.[0]?.[0] || x.item?.name || "?",
+          build: (x.item?.properties || []).find((p) => p.name === "Build")?.values?.[0]?.[0] || null,
+          quanto: x.listing?.price?.amount ?? null,
+          valuta: x.listing?.price?.currency ?? null,
+          indexed: x.listing?.indexed ?? null,
+        });
+      }
+      await new Promise((r) => setTimeout(r, 2000));   // mano leggera, come fra le tab
+    }
+    return { totale: s.total ?? 0, warrant: fuori, quando: new Date().toISOString() };
+  } catch (e) {
+    return { errore: String(e).slice(0, 200) };
+  }
+}
+
 async function deposita(nome, valore) {
   const r = await fetch(`${API}/deposita?k=${encodeURIComponent(CHIAVE)}&chiave=${encodeURIComponent(nome)}`, {
     method: "POST",
@@ -146,7 +209,11 @@ if (CHIAVE && !daFile) {
   // l'aggiornamento e' finito guardando `stato:prezzi.generato`: se arrivasse
   // per primo, mostrerebbe "fatto" mentre meta' delle schede non c'e' ancora.
   for (const [id, scheda] of Object.entries(schede)) await deposita(`scheda:${id}`, scheda);
-  await deposita("prezzi", { generato, stashDel: stash?.quando ?? null, min_confronti: MIN, ...prezzi, falliti });
+  const vendita = await inVendita(prezzi.lega);
+  if (vendita?.warrant) console.log(`in vendita: ${vendita.warrant.length} warrant su ${vendita.totale} inserzioni`);
+  else if (vendita?.errore) console.log(`⚠️ in vendita: ${vendita.errore}`);
+  await deposita("prezzi", { generato, stashDel: stash?.quando ?? null, min_confronti: MIN,
+                             ...prezzi, falliti, inVendita: vendita });
   // il riassunto per /stato, che altrimenti dovrebbe riparsare 70 KB a ogni
   // interrogazione — e la pagina la interroga ogni pochi secondi mentre aspetta
   await deposita("stato:prezzi", {

@@ -325,6 +325,17 @@
   .butta-piu summary{cursor:pointer;font-size:var(--t-xs);color:var(--label);width:max-content;
                      padding:2px 0}
   .butta-piu summary:hover{color:var(--gold)}
+  /* La riga dei warrant in vendita: sta sotto la barra perche' completa il totale,
+     non perche' sia un'altra sezione. */
+  .in-vendita{margin-top:var(--s3);padding:var(--s3);border:1px solid var(--line);
+              border-radius:var(--r);background:var(--panel2);font-size:var(--t-sm)}
+  .in-vendita[hidden]{display:none}
+  .in-vendita h3{margin:0 0 var(--s2);font-size:var(--t-sm);color:var(--muted);
+                 font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+  .in-vendita ul{margin:0;padding-left:1.1rem;color:var(--muted)}
+  .in-vendita li{margin-bottom:2px}
+  .in-vendita b{color:var(--text)}
+  .in-vendita .vecchia{color:var(--bad)}
   /* Passare il divine non e' vietato, e' segnalato: il numero si accende e il
      conteggio dice quanti pezzi prezzati stanno per finire nella regex. */
   #soglia-eti.oltre-divine{color:var(--bad)}
@@ -394,6 +405,11 @@
     <button id="b-stash">Sincronizza stash</button>
     <span class="stato" id="stato">—</span>
   </div>
+
+  <!-- 🔴 I warrant che NON stanno piu' nello stash perche' sono in vendita: senza
+       questa riga il totale qui sopra significa «quello che non sto vendendo», e
+       nessuno lo dice. -->
+  <div id="in-vendita" class="in-vendita" hidden></div>
 
   <!-- ------------------------------------------------ la regex dei warrant da buttare -->
   <section class="butta" id="butta">
@@ -712,6 +728,43 @@ async function leggiControlli() {
  * sezione si era svuotata — «nessun warrant sotto soglia» — e non era un difetto
  * del cursore: col metro sbagliato **non c'e' piu' niente da buttare**, perche'
  * ogni scarto sembra valere un divine. Due domande, due statistiche. */
+/* 🔴 **I warrant che sto vendendo non sono nello stash**, quindi non sono nella
+ * tabella ne' nel totale: un item affidato allo scambio esce dalle tab. Senza
+ * questa riga il numero in cima significa «quello che non sto vendendo» — il 27
+ * agosto diceva 208 d **con i quattro pezzi piu' cari fuori**, e da quella
+ * sparizione avevo dedotto quattro vendite mai avvenute.
+ * ⚠️ La lista la porta la Action insieme ai prezzi: dal browser non si puo',
+ * `www.pathofexile.com/api/trade` non manda gli header CORS. */
+function disegnaInVendita(v) {
+  const el = $("in-vendita");
+  if (!el) return;
+  const lista = (v && v.warrant) || [];
+  if (!lista.length) {
+    // un errore si dice, il silenzio no: se la lettura e' fallita, non e' «zero».
+    if (v && v.errore) { el.hidden = false; el.innerHTML =
+      `<h3>In vendita</h3><p class="oltre">⚠️ non letta: ${esc(v.errore)}</p>`; return; }
+    el.hidden = true; el.innerHTML = ""; return;
+  }
+  const inChaos = (x) => x.valuta === "divine" ? x.quanto * TASSO_DIVINE
+    : x.valuta === "mirror" ? x.quanto * TASSO_DIVINE * 220
+    : x.valuta === "chaos" ? x.quanto : null;
+  const tot = lista.reduce((a, x) => a + (inChaos(x) || 0), 0);
+  const eta = (iso) => {
+    if (!iso) return "";
+    const g = Math.floor((Date.now() - new Date(iso)) / 86400000);
+    return g === 0 ? "da oggi" : g === 1 ? "da 1 giorno" : `da ${g} giorni`;
+  };
+  el.hidden = false;
+  el.innerHTML = `<h3>In vendita &mdash; ${lista.length} warrant, ${prezzo(tot)} chiesti</h3>
+    <ul>${lista.slice().sort((a, b) => (inChaos(b) || 0) - (inChaos(a) || 0)).map((x) => {
+      const g = x.indexed ? Math.floor((Date.now() - new Date(x.indexed)) / 86400000) : null;
+      return `<li><b>${prezzo(inChaos(x))}</b> &middot; ${esc(x.nome)}${
+        x.build ? ` <i>${esc(x.build)}</i>` : ""}<span class="oltre${g >= 7 ? " vecchia" : ""}"> ${eta(x.indexed)}${
+        g >= 7 ? " &mdash; nessuno la compra" : ""}</span></li>`;
+    }).join("")}</ul>
+    <p class="oltre">Non sono nella tabella qui sotto: quello che &egrave; in vendita esce dallo stash.</p>`;
+}
+
 const dal = (id) => {
   const v = PRIMI_VISTI[id];
   if (!v) return '<span class="oltre">—</span>';
@@ -870,6 +923,8 @@ function disegna(dati) {
   // leggono ULTIMI, che e' appena cambiato
   const velo = $("griglia-modale");
   if (velo && !velo.hidden) disegnaGriglia($("griglia-cerca").value);
+
+  disegnaInVendita(dati.inVendita);
 
   // il totale segue la colonna: prima sommava il floor e diceva un altro numero
   const tot = dati.warrant.reduce((s, w) => s + valoreDi(w), 0);
