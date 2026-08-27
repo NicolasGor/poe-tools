@@ -9,6 +9,16 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <style>
   /* solo ciò che è davvero di questa pagina */
+  /* .rxtop — le due regex in cima: sono la cosa che si apre la pagina per
+     prendere, quindi stanno prima di tutto il resto e hanno il tasto copia. */
+  .rxtop{border:1px solid var(--line2);border-radius:6px;padding:.9rem 1.05rem;margin-bottom:var(--s5)}
+  .rxtop h2{margin:0 0 .15rem;font-size:var(--t-base)}
+  .rxtop > p.fonte{margin:0 0 .7rem;font-size:var(--t-xs);color:var(--label)}
+  .rxtop .frammento{margin-top:.55rem}
+  .rxtop .frammento:first-of-type{margin-top:0}
+  .rxtop .et{margin-top:0}
+  .rxtop .avvertenza{margin:.75rem 0 0;font-size:var(--t-xs);color:var(--muted);line-height:1.6}
+
   .verdetto{
     background:linear-gradient(180deg,rgba(240,185,74,.10),rgba(240,185,74,.02));
     border:1px solid rgba(240,185,74,.42);border-radius:6px;
@@ -96,6 +106,26 @@
       <span class="badge">bersaglio: variante Low Budget</span>
     </div>
   </header>
+
+  <div class="rxtop">
+    <h2>Le due regex delle mappe</h2>
+    <p class="fonte">Prodotte su <a href="https://poe.re/maps" target="_blank" rel="noopener">poe.re/maps</a>, profilo &laquo;Luminary&raquo; &mdash; il dettaglio &egrave; <a href="#regex">pi&ugrave; sotto</a>.</p>
+
+    <div class="frammento">
+      <span class="et"><b>1 &middot; Safe</b> &mdash; esclude anche <i>Monsters have +50% Chance to Block Attack Damage</i> &middot; 54 caratteri</span>
+      <div class="riga"><code id="lumrx1">"!te of|m resistances$|k damage$|ur$|em$|t reg" "y: r"</code><button type="button" data-copia="lumrx1">copia</button></div>
+    </div>
+    <div class="frammento">
+      <span class="et"><b>2 &middot; Alch and go</b> &mdash; tollera quella e le <i>-max res</i> &middot; 29 caratteri</span>
+      <div class="riga"><code id="lumrx2">"!te of|ur$|em$|t reg" "y: r"</code><button type="button" data-copia="lumrx2">copia</button></div>
+    </div>
+    <div class="frammento">
+      <span class="et"><b>3 &middot; Pack size &ge; 30%</b> &mdash; incollo a parte: se una mappa passa la 1 e non questa, vale un exalt</span>
+      <div class="riga"><code id="lumrx3">"iz.*([3-9].|\d..)%"</code><button type="button" data-copia="lumrx3">copia</button></div>
+    </div>
+
+    <p class="avvertenza">🔴 <b>Nessuna delle due copre <code>Players cannot Block</code></b> &mdash; <b>3.491 mappe in lega</b> &mdash; perch&eacute; poe.re non ce l&rsquo;ha in elenco. La <b>2</b> lascia scoperto anche <code>cannot Block Attack Damage</code>.</p>
+  </div>
 
 
   <div class="avviso" style="margin-bottom:var(--s5)">
@@ -232,7 +262,7 @@
   </table>
   <p class="nota muto" style="margin-bottom:var(--s6)">La regola di transizione: si sale di tier quando il merc <b>scioglie i pack senza che tu rallenti</b> — il div/ora del Luminary scala col ritmo, non col livello delle mappe.</p>
 
-  <h2 class="sec">La regex delle mappe &mdash; prodotta su poe.re</h2>
+  <h2 class="sec" id="regex">La regex delle mappe &mdash; prodotta su poe.re</h2>
   <p class="nota" style="margin-bottom:var(--s2)">🔴 <b>La fonte &egrave; <a href="https://poe.re/maps" target="_blank" rel="noopener">poe.re/maps</a>, profilo &laquo;Luminary&raquo;</b>, che tiene Nicolas &mdash; non un nostro ottimizzatore. Il nostro script resta come <b>controprova</b>: misura cosa manca alla stringa pubblicata, non la sostituisce.</p>
   <p class="nota" style="margin-bottom:var(--s2)">
     🔴 <b>&Egrave; entrata la Mageblood, e la questione flask si chiude.</b> Il testo dell&rsquo;item: <i>&laquo;Magic Utility Flasks cannot be Used&raquo;</i> + <i>&laquo;Leftmost (2-4) Magic Utility Flasks constantly apply their Flask Effects to you&raquo;</i>.
@@ -242,13 +272,11 @@
     I pilastri che restano: <b>rigenerazione</b>, <b>recover life on block</b>, <b>resistenze massime</b> e <b>il block dei mostri</b> (il Kinetic Blast &egrave; un attacco).
     <b>59 caratteri</b> col <code>!</code> &mdash; limite del riquadro del Deck <b>63</b> &mdash; copre <b>17</b> mod su 18 e <b>7 letali su 7</b>.
   </p>
-  <p style="font-family:var(--mono);font-size:var(--t-sm);background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:4px;padding:.6rem .8rem;margin-bottom:var(--s3)">"!te of|m resistances$|k damage$|ur$|em$|t reg" "y: r"</p>
-  <p class="nota muto" style="margin-bottom:var(--s3)">Secondo incollo per il pack size &ge; 30%: <span style="font-family:var(--mono)">"iz.*([3-9].|\d..)%"</span></p>
+  <p class="nota muto" style="margin-bottom:var(--s3)">⬆️ <b>Le tre stringhe da incollare stanno in cima alla pagina</b>, col tasto copia. Qui sotto c&rsquo;&egrave; solo il perch&eacute;.</p>
   <h3 style="margin-top:var(--s5)">E una seconda, permissiva &mdash; per l&rsquo;alch and go</h3>
   <p class="nota" style="margin-bottom:var(--s2)">
     Esce dalla prima <b>togliendo tre voci</b> dal profilo poe.re: le due <code>to all maximum Resistances</code> (il tiro da 8-mod e quello normale) e <code>Monsters have +50% Chance to Block Attack Damage</code>. ⚠️ <b>Cos&igrave; per&ograve; resta scoperto anche <code>Players cannot Block Attack Damage</code></b>, che poe.re non ha in elenco e veniva preso <b>per caso</b> da <span style="font-family:var(--mono)">k damage$</span>, messo l&igrave; per il mod dei mostri: &egrave; <b>pi&ugrave; permissiva di quanto chiesto</b>.
   </p>
-  <p style="font-family:var(--mono);font-size:var(--t-sm);background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:4px;padding:.6rem .8rem;margin-bottom:var(--s3)">"!te of|ur$|em$|t reg" "y: r"</p>
   <p class="nota" style="margin-bottom:var(--s3)">
     📏 <b>Quanto costa tollerarli, misurato</b> &mdash; perch&eacute; la scelta sia informata, non comoda:
   </p>
@@ -338,6 +366,21 @@
     });
   });
 })();
+</script>
+<script>
+// Tasto copia delle regex — stesso comportamento della pagina Strategie.
+document.querySelectorAll("button[data-copia]").forEach(function(b){
+  b.addEventListener("click", async function(){
+    var el = document.getElementById(b.dataset.copia);
+    try { await navigator.clipboard.writeText(el.textContent); } catch (e) {
+      // niente clipboard (http, permessi negati): si seleziona, così resta copiabile a mano
+      var r = document.createRange(); r.selectNodeContents(el);
+      var s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    }
+    var prima = b.textContent; b.textContent = "copiato";
+    setTimeout(function(){ b.textContent = prima; }, 1200);
+  });
+});
 </script>
 <script src="../menu.js" defer></script>
 </body>
