@@ -41,21 +41,7 @@
   .spente .ch{font-size:var(--t-xs);color:var(--muted);background:var(--panel-alto);
               border:1px solid var(--line);border-radius:var(--r-full);padding:.1rem .55rem}
 
-  /* accordion: chiuse, le quattro schede diventano quattro righe di misuratori
-     incolonnati, che e' il modo per confrontarle. Fatto con <details>, non con
-     JS: senza script la pagina resta apribile. */
-  /* la riga e' gold pieno come i pulsanti `.albero`, non solo il testo: da chiusa
-     e' l'unica cosa cliccabile della scheda e deve leggersi come un pulsante. */
-  .dettaglio > summary{list-style:none;cursor:pointer;padding:var(--s3) var(--s6);
-                       font-size:var(--t-xs);text-transform:uppercase;letter-spacing:.09em;
-                       background:var(--gold);color:#161310;font-weight:600;
-                       display:flex;align-items:center;gap:var(--s2)}
-  .dettaglio > summary::-webkit-details-marker{display:none}
-  .dettaglio > summary::before{content:"▸";font-size:.9em;transition:transform .12s}
-  .dettaglio[open] > summary::before{transform:rotate(90deg)}
-  .dettaglio > summary:hover{filter:brightness(1.1)}
-
-  .comandi{display:flex;gap:var(--s2);margin-top:var(--s4)}
+  /* accordion e comandi: il componente sta in stile.css, lo usa anche /uber/ */
 
   /* le Chart cadono in ogni strategia, quindi la loro regex sta fuori dalle schede
      e non dentro a una: e' l'unico blocco condiviso della pagina. `.frammento` e
@@ -65,10 +51,6 @@
              padding:var(--s4) var(--s5);margin:var(--s6) 0}
   .condiviso h3{font-size:var(--t-xs);text-transform:uppercase;letter-spacing:.09em;
                 color:var(--gold);margin:0}
-  .comandi button{background:transparent;border:1px solid var(--line);color:var(--gold);
-                  border-radius:var(--r-full);padding:.2rem .7rem;font-size:var(--t-xs);
-                  cursor:pointer;font-family:inherit}
-  .comandi button:hover{border-color:var(--gold);color:var(--gold)}
 
   .corpo{display:grid;gap:var(--s6);grid-template-columns:1.55fr 1fr;padding:var(--s5) var(--s6) var(--s6)}
   @media(max-width:880px){.corpo{grid-template-columns:1fr}

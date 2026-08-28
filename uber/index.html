@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Uber — Apex Assailants, i cinque in fila | PoE Tools</title>
-<meta name="description" content="La challenge Apex Assailants chiede 5 boss pinnacolo su 10 a livello area 85. La fila da fare in ordine — Sirus fatto, poi Venarius, Neglect, Fear, Dread — con la guida di ognuno: abilità, battute vocali, cosa cambia sull'uber e cosa portarsi.">
+<meta name="description" content="La challenge Apex Assailants chiede 5 boss pinnacolo su 10 a livello area 85. La fila da fare in ordine — Sirus fatto, poi Venarius, Neglect, Fear, Dread — con la guida di ognuno ad accordion: abilità, battute vocali, cosa cambia sull'uber e cosa portarsi.">
 <link rel="stylesheet" href="../stile.css">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <style>
-  /* solo ciò che è davvero di questa pagina */
+  /* solo ciò che è davvero di questa pagina — l'accordion `.dettaglio` e i
+     `.comandi` stanno in stile.css, condivisi con /strategie/ */
   .verdetto{
     background:linear-gradient(180deg,rgba(240,185,74,.10),rgba(240,185,74,.02));
     border:1px solid rgba(240,185,74,.45);border-radius:6px;
@@ -19,9 +20,13 @@
   .verdetto p:last-child{margin:0}
   .verdetto b{color:var(--text)}
 
-  /* la fila: un boss per riquadro */
+  /* la fila: un boss per riquadro, con la guida dentro un accordion.
+     Da chiusi i cinque riquadri sono cinque righe confrontabili — numero, cosa
+     apre la porta, quanto costa un tentativo — ed e' il motivo per cui il
+     riassunto di una riga sta FUORI dal <details>: serve a scegliere quale
+     aprire. */
   .boss{
-    border:1px solid var(--line);border-radius:var(--r);
+    border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
     background:var(--panel2);padding:var(--s4);margin-bottom:var(--s4);
   }
   .boss.done{opacity:.62}
@@ -33,17 +38,25 @@
   }
   .boss > h3 .num.ok{color:var(--good);border-color:rgba(95,211,160,.45)}
   .boss > .apri{
-    font-size:var(--t-xs);color:var(--label);margin-bottom:var(--s3);
+    font-size:var(--t-xs);color:var(--label);margin-bottom:var(--s2);
     text-transform:uppercase;letter-spacing:.07em;
   }
   .boss > .apri b{color:var(--text);font-family:var(--mono)}
+  .boss > .unariga{font-size:var(--t-sm);line-height:1.6;color:var(--muted);margin:0}
+  .boss > .unariga b{color:var(--text)}
+
+  /* l'accordion prende tutta la larghezza del riquadro e ne chiude il fondo */
+  .boss > details.dettaglio{margin:var(--s4) calc(var(--s4) * -1) calc(var(--s4) * -1)}
+  .boss > details.dettaglio:only-of-type{margin-top:var(--s3)}
+  .boss > details.dettaglio > summary{padding:var(--s3) var(--s4)}
+  .boss .guida{padding:var(--s4) var(--s4) var(--s2)}
+
   .boss h4{font-size:var(--t-sm);color:var(--label);text-transform:uppercase;letter-spacing:.07em;
     margin:var(--s4) 0 var(--s2);font-weight:600}
-  .boss h4:first-of-type{margin-top:var(--s3)}
+  .boss .guida > h4:first-child{margin-top:0}
   .boss ul{margin:0;padding-left:1.1rem}
   .boss li{font-size:var(--t-sm);line-height:1.6;color:var(--muted);margin-bottom:.35rem}
   .boss li b{color:var(--text)}
-  .boss table{margin-top:0}
 
   ol.passi{list-style:none;margin:0;padding:0}
   ol.passi > li{
@@ -107,7 +120,7 @@
 
   <header class="testata">
     <h1>Uber — Apex Assailants</h1>
-    <p class="sub"><b>Sirus è fatto.</b> Restano quattro, e questa è la fila nell'ordine in cui costa poco sbagliare: <b>Venarius, Neglect, Fear, Dread</b>. Per ognuno cosa apre la porta, cosa fa il boss e cosa fai tu.</p>
+    <p class="sub"><b>Sirus è fatto.</b> Restano quattro, e questa è la fila nell'ordine in cui costa poco sbagliare: <b>Venarius, Neglect, Fear, Dread</b>. Ogni guida sta chiusa nel suo riquadro — <b>apri solo quello che stai per fare</b>.</p>
     <div class="badges">
       <span class="badge">patch 3.29.2</span>
       <span class="badge">lega Allflame</span>
@@ -172,240 +185,272 @@
 
   <h2 class="sec">La fila</h2>
 
+  <div class="comandi">
+    <button type="button" data-tutti="apri">Apri tutte le guide</button>
+    <button type="button" data-tutti="chiudi">Chiudi tutte</button>
+  </div>
+
+  <div class="boss next" style="margin-top:var(--s4)">
+    <h3><span class="num">1</span> Venarius — The Cortex</h3>
+    <p class="apri">4 × Synthesising Fragment · 1 in tab, ne mancano <b>3 = 21 c</b> · <b>28 c</b> a tentativo</p>
+    <p class="unariga"><b>Non è un boss: sono cinque fasi in fila.</b> Si perde per logoramento, non per un colpo solo — ed è l'uber che le guide 3.29 mettono fra i più facili da fare da soli.</p>
+
+    <details class="dettaglio">
+      <summary>Guida — le cinque fasi, cosa cambia sull'uber, come giocarla</summary>
+      <div class="guida">
+
+        <h4>Le cinque fasi</h4>
+        <table class="tabella" style="width:100%">
+          <thead><tr><th>Fase</th><th>Chi c'è</th><th>Cosa c'è nell'arena</th></tr></thead>
+          <tbody>
+            <tr><td><b>1</b></td><td>Fractal Gargantuan</td><td><b>Void zone</b> che restano fino a fine fase</td></tr>
+            <tr><td><b>2</b></td><td>Synthete Masterpiece</td><td><b>Energy Pylon</b>: si caricano quando vengono colpiti e scoppiano al colpo dopo</td></tr>
+            <tr><td><b>3</b></td><td>nessuno — <b>intermissione</b></td><td>Un <b>Decaying Map Device</b> al centro apre 4 portali che vomitano mostri per ~30 s</td></tr>
+            <tr><td><b>4</b></td><td>Fractal Titan <i>(la 1 potenziata)</i></td><td>Energy Pylon in posizioni casuali</td></tr>
+            <tr><td><b>5</b></td><td>Synthete Nightmare <i>(la 2 potenziata)</i></td><td>Aggiunge teletrasporti e proiettili</td></tr>
+          </tbody>
+        </table>
+
+        <h4>Cosa cambia sull'uber</h4>
+        <ul>
+          <li><b>Ogni fase unica ne fa comparire un Synthete unico in più</b>: Altered in fase 1, Augmented in 2, Twisted in 4, Rewritten in 5.</li>
+          <li>Gli <b>Energy Pylon compaiono in tutte e quattro</b> le fasi uniche, non solo nella 2.</li>
+        </ul>
+
+        <h4>Come giocarla, da canalizzatore</h4>
+        <ul>
+          <li><b>L'intermissione della fase 3 è la tua fase.</b> Mostri normali, nessun boss: è il momento in cui il clear vale e in cui si recupera ES prima della 4.</li>
+          <li><b>I pylon non si ignorano</b>: si caricano quando li colpisci. Canalizzare addosso a un pacco che ne contiene uno è il modo di farselo scoppiare in faccia.</li>
+          <li>⚠️ <b>Qui la guida non dà i tell delle singole abilità</b>, e non li invento: la prima run è di riconoscimento. Con 28 c a tentativo, puoi permettertela.</li>
+        </ul>
+
+      </div>
+    </details>
+  </div>
+
+  <div class="boss">
+    <h3><span class="num">2</span> Incarnation of Neglect — The Moment of Loneliness</h3>
+    <p class="apri">4 × Lonely Fragment · 2 in tab, ne mancano <b>2 = 51 c</b> · <b>101 c</b> a tentativo</p>
+    <p class="unariga"><b>Freddo dappertutto, e l'arena spara da sola.</b> La meccanica che la rende vivibile sono i guardiani agli angoli; il colpo che uccide è il <b>Frost Bomb</b>.</p>
+
+    <details class="dettaglio">
+      <summary>Guida — i guardiani, le quattro abilità, cosa portarsi</summary>
+      <div class="guida">
+
+        <h4>L'arena decide la fight</h4>
+        <ul>
+          <li>Sui bordi galleggiano dei <b>dischi</b> che sparano <b>raggi</b> attraverso l'arena, uno dopo l'altro o in sequenza. I raggi freddi danno <b>Chill e Brittle</b>, quelli fulmine <b>Shock e Sap</b>.</li>
+          <li>🔴 <b>In ogni angolo c'è un guardiano fermo che blocca i raggi</b>: si attiva <b>camminando nel cerchietto viola</b> attorno a lui. È la meccanica che rende la stanza vivibile, e non è ovvia.</li>
+          <li>✅ <b>Chill, Brittle, Shock e Sap non ti toccano</b>: Purity of Elements li rende tutti immuni. Resta il danno del raggio, non il debuff.</li>
+        </ul>
+
+        <h4>Le abilità</h4>
+        <table class="tabella" style="width:100%">
+          <thead><tr><th>Dice / fa</th><th>Cosa arriva</th><th>Cosa fai</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><span class="voce">Negligence</span><br><span class="voce">Intolerance</span></td>
+              <td><b>Chilling Slam</b> — alza il bastone e lo sbatte a terra, grande AoE da freddo</td>
+              <td>Esci dalla zona dell'impatto</td>
+            </tr>
+            <tr>
+              <td><span class="voce">You cannot hide from fate</span></td>
+              <td><b>Hailstorm</b> — schegge di ghiaccio dal cielo su un'area</td>
+              <td>Esci dall'area segnata</td>
+            </tr>
+            <tr>
+              <td><span class="voce">I am not the end</span></td>
+              <td><b>Frost Bomb</b> — canalizza una chiazza di terreno gelato che cresce, poi <b>esplode per un danno enorme</b></td>
+              <td>Vattene <b>prima</b> che finisca il canale: è l'abilità che uccide</td>
+            </tr>
+            <tr>
+              <td>animazione del bastone</td>
+              <td><b>Chilling Cutters</b> — 3 raggi da freddo verso terra che avanzano lasciando terreno gelato. <b>Salgono a 5 mentre perde vita</b></td>
+              <td>Stai fuori dalle traiettorie: sotto metà vita l'arena si riempie</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Cosa portarsi</h4>
+        <ul>
+          <li><b>Le pozze verdi-nere sono l'altra metà del pericolo</b>: danno un <b>DoT da caos che si somma</b> e resta addosso 3-5 secondi dopo esserne usciti. Il tuo max hit da caos è <b>25.632</b>, il più basso insieme al fisico.</li>
+          <li>Il boss <b>non si rallenta e non si spinge indietro</b>, e ha <b>50% di resistenza a fuoco, freddo, fulmine e caos</b>.</li>
+          <li>Il tuo max hit da <b>freddo è 66.336</b>, il più basso dei tre elementali: qui è freddo quasi tutto.</li>
+        </ul>
+
+      </div>
+    </details>
+  </div>
+
+  <div class="boss">
+    <h3><span class="num">3</span> Incarnation of Fear — The Moment of Trauma</h3>
+    <p class="apri">4 × Traumatic Fragment · 1 in tab, ne mancano <b>3 = 92 c</b> · <b>123 c</b> a tentativo</p>
+    <p class="unariga"><b>L'avversario è l'arena, che si stringe da sola.</b> Ogni secondo in più costa terreno, e lo spazio si recupera in un modo solo: facendogli tirare la lancia contro i suoi orb.</p>
+
+    <details class="dettaglio">
+      <summary>Guida — gli orb, le cinque abilità, cosa portarsi</summary>
+      <div class="guida">
+
+        <h4>Come si recupera spazio</h4>
+        <ul>
+          <li>I <b>Solar Orb</b> creano zone che bruciano e <b>lo spazio sicuro si riduce di continuo</b>. Più la fight dura, meno arena hai.</li>
+          <li>🔴 <b>Gli orb si tolgono facendoglieli colpire</b>: quando sta mirando lo <b>Spear Throw</b>, mettiti <b>dietro un orb</b> — la lancia lo fa detonare invece di prenderti.</li>
+          <li>Quindi <b>non è una fight in cui trascinare per le lunghe</b>.</li>
+        </ul>
+
+        <h4>Le abilità</h4>
+        <table class="tabella" style="width:100%">
+          <thead><tr><th>Dice / fa</th><th>Cosa arriva</th><th>Cosa fai</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>l'orb brilla, poi il boss <b>pulsa arancione</b></td>
+              <td><b>Spear Throw</b> — ha finito di mirare, la lancia parte</td>
+              <td>Scarta di lato. Oppure <b>mettiti dietro un orb</b> e usalo per pulire l'arena</td>
+            </tr>
+            <tr>
+              <td><span class="voce">Scar!</span></td>
+              <td><b>Volcanic Fissure</b> — una fiammata serpeggiante <b>ti insegue</b> e poi scoppia</td>
+              <td>Non fermarti: si scappa, non si schiva sul posto</td>
+            </tr>
+            <tr>
+              <td>sbatte prima i pugni a terra</td>
+              <td><b>Spear Slam</b> — lascia terreno che brucia e dà Scorch</td>
+              <td>Esci dal terreno. ✅ Lo Scorch non ti tocca (Purity of Elements)</td>
+            </tr>
+            <tr>
+              <td><span class="voce">Explosive Rapture</span></td>
+              <td><b>Scorching Beam</b> — raggio che ti insegue mentre carica</td>
+              <td><b>Girargli attorno restando vicino</b>, oppure <b>attraversarlo col blink</b> e uscire dietro</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Cosa portarsi</h4>
+        <ul>
+          <li>Fa danno <b>fisico e da fuoco</b>. Il fuoco è il tuo max hit più alto (<b>82.919</b>): il pericolo è il <b>fisico, 25.294</b>.</li>
+          <li>La guida chiede <b>mitigazione al fuoco e rigenerazione</b>: hai 432/s di ES netti, ed è il tuo pezzo forte contro il terreno che brucia.</li>
+          <li><b>Frostblink è la gemma della fight</b>, sia per lo Scorching Beam sia per non finire chiuso in un angolo dagli orb.</li>
+        </ul>
+
+      </div>
+    </details>
+  </div>
+
+  <div class="boss">
+    <h3><span class="num">4</span> Incarnation of Dread — The Moment of Reverence</h3>
+    <p class="apri">4 × Reverent Fragment · 0 in tab · <b>556 c comprati</b>, oppure dalle <b>Nightmare Sanctuary</b></p>
+    <p class="unariga"><b>Il quinto non si compra</b> — le Nightmare Map su Sanctuary droppano i tre frammenti Incarnation, e ne hai 38 in tab. In fight la regola che ribalta l'istinto: quando infila la testa nel terreno, <b>si corre verso di lui</b>.</p>
+
+    <details class="dettaglio">
+      <summary>Guida — le sette abilità, le rose delle intermissioni, cosa portarsi</summary>
+      <div class="guida">
+
+        <h4>Come procurarsi i frammenti</h4>
+        <ul>
+          <li>Le <b>Nightmare Map su Sanctuary</b> (Nightmare of Lycia) droppano <b>Lonely, Traumatic e Reverent</b>: gli stessi tre frammenti che servono ai boss 2, 3 e 4 di questa fila. Ne hai <b>38</b> in tab.</li>
+          <li>⚠️ <b>Non è gratis e va detto</b>: valgono 65 c l'una vendute. Un run rende ~2 frammenti di quel gruppo, quindi conviene — ma è currency che stai spendendo.</li>
+        </ul>
+
+        <h4>Le abilità</h4>
+        <table class="tabella" style="width:100%">
+          <thead><tr><th>Dice / fa</th><th>Cosa arriva</th><th>Cosa fai</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>compaiono 4 sfere</td>
+              <td><b>Void Sphere</b> — ti inseguono e <b>accelerano</b></td>
+              <td>🔴 <b>Falle unire</b> girando per l'arena, poi <b>mollale in un angolo</b> e torna al centro</td>
+            </tr>
+            <tr>
+              <td>sbatte le mani a terra</td>
+              <td><b>Sunder</b> — onda d'urto in linea retta</td>
+              <td><b>Perpendicolare</b> alla linea</td>
+            </tr>
+            <tr>
+              <td>sbatte le braccia a terra</td>
+              <td><b>Chilling Blast</b> — onda gelata che avanza</td>
+              <td>Passo di lato. ✅ Il Chill non ti tocca</td>
+            </tr>
+            <tr>
+              <td>alza la testa</td>
+              <td><b>Static Burst</b> — arco largo di raggi fulmine più proiettili. <b>Una delle abilità più letali</b></td>
+              <td><b>Non stargli incollato</b> quando alza la testa</td>
+            </tr>
+            <tr>
+              <td><span class="voce">Means to an End</span></td>
+              <td><b>Aerial Slam</b> — salta addosso <b>se ti allontani</b>, danno enorme sulla zona segnata</td>
+              <td><b>Resta vicino.</b> È la battuta che punisce chi scappa</td>
+            </tr>
+            <tr>
+              <td>carica</td>
+              <td><b>Eye Beam</b> — raggio fulmine con <b>danno nel tempo enorme</b>, più proiettili insieme</td>
+              <td>Esci dalla traiettoria e non rientrarci</td>
+            </tr>
+            <tr>
+              <td>infila la testa nel terreno</td>
+              <td><b>Dread Furnace</b> — Flameblast al contrario che copre <b>tutta l'arena</b></td>
+              <td>🔴 <b>L'unico posto sicuro è addosso a lui.</b> Qui si corre verso il boss, non via</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Le tre intermissioni — le rose</h4>
+        <ul>
+          <li>Compaiono una <b>rosa rossa</b> e una <b>blu</b>: si raccolgono e poi <b>si torna a toccare il boss</b> per applicargli il debuff. Prese entrambe, lui barcolla e la fight riparte.</li>
+          <li><b>Intermissione 1</b>: 3 sfere fulmine (proiettili + Shock) e 2 sfere fredde rotanti. <b>Sotto il boss si sta al sicuro.</b></li>
+          <li><b>Intermissione 2</b>: 3 sfere fredde e 3 sfere di fuoco con Scorching Ray. Sempre vicino a lui, evitando il raggio.</li>
+          <li><b>Intermissione 3</b>: sfere di fuoco più <b>2 sfere di caos rotanti</b> con proiettili grossi. ⚠️ È l'unica in cui il caos entra in gioco, e il caos è il tuo max hit più basso.</li>
+        </ul>
+
+        <h4>Cosa portarsi — e qui sei già a posto</h4>
+        <ul>
+          <li>La guida chiede <b>spell suppression o molto spell block</b>: hai <b>75% di block magie</b>, al tetto.</li>
+          <li>Chiede <b>Tempest Shield per l'immunità allo shock</b>: ce l'hai da <b>Purity of Elements</b>, senza spendere un socket.</li>
+          <li>Chiede <b>Flame Dash per raccogliere le rose</b>: hai Frostblink.</li>
+          <li>Droppa garantiti <b>Whispers of Infinity, The Dark Monarch, Seven Teachings, Wine of the Prophet</b>.</li>
+        </ul>
+
+      </div>
+    </details>
+  </div>
+
   <div class="boss done">
     <h3><span class="num ok">✓</span> Sirus, Awakener of Worlds <span class="badge">fatto</span></h3>
     <p class="apri">4 × Awakening Fragment · <b>9 c</b> a tentativo</p>
-    <ul>
-      <li>Battute vocali, quattro fasi, labirinto di meteore e cloni. <b>La guida completa resta</b> più in basso, in fondo alla pagina.</li>
-    </ul>
-  </div>
+    <p class="unariga">Fatto il 28 agosto. La guida resta qui: se un giorno serve rifarlo, non va ricostruita.</p>
 
-  <div class="boss next">
-    <h3><span class="num">2</span> Venarius — The Cortex</h3>
-    <p class="apri">4 × Synthesising Fragment · 1 in tab, ne mancano <b>3 = 21 c</b> · <b>28 c</b> a tentativo</p>
+    <details class="dettaglio">
+      <summary>Guida — l'arena, le quattro fasi, le battute</summary>
+      <div class="guida">
 
-    <h4>Cos'è</h4>
-    <ul>
-      <li><b>Non è un boss: sono cinque fasi in fila</b>, due creature che si alternano più un'intermissione. Si perde per logoramento, non per un colpo solo.</li>
-      <li>È l'uber che le guide 3.29 mettono <b>fra i più facili da fare da soli</b>, insieme agli Incarnation.</li>
-    </ul>
+        <h4>L'arena</h4>
+        <ul>
+          <li>Oriath piena di <b>Deatomization Storm</b>. Attorno a Sirus un <b>cerchio rosso</b> le tiene lontane: <b>uscirne fa partire un'intermission senza far avanzare la fase</b>.</li>
+          <li>Sull'uber una tempesta <b>ti insegue per tutta la fight</b>.</li>
+        </ul>
 
-    <h4>Le cinque fasi</h4>
-    <table class="tabella" style="width:100%">
-      <thead><tr><th>Fase</th><th>Chi c'è</th><th>Cosa c'è nell'arena</th></tr></thead>
-      <tbody>
-        <tr><td><b>1</b></td><td>Fractal Gargantuan</td><td><b>Void zone</b> che restano fino a fine fase</td></tr>
-        <tr><td><b>2</b></td><td>Synthete Masterpiece</td><td><b>Energy Pylon</b>: si caricano quando vengono colpiti e scoppiano al colpo dopo</td></tr>
-        <tr><td><b>3</b></td><td>nessuno — <b>intermissione</b></td><td>Un <b>Decaying Map Device</b> al centro apre 4 portali che vomitano mostri per ~30 s</td></tr>
-        <tr><td><b>4</b></td><td>Fractal Titan <i>(la 1 potenziata)</i></td><td>Energy Pylon in posizioni casuali</td></tr>
-        <tr><td><b>5</b></td><td>Synthete Nightmare <i>(la 2 potenziata)</i></td><td>Aggiunge teletrasporti e proiettili</td></tr>
-      </tbody>
-    </table>
+        <h4>Le fasi</h4>
+        <ul>
+          <li><b>1 — 100→75%</b>: quasi tutto si aggancia alla posizione da cui lanci, muoversi è la difesa. Sull'uber il <b>Die Beam è già a piena potenza qui</b>.</li>
+          <li><b>Intermission (75, 50, 25%)</b>: porta la tempesta al bordo, poi <b>mettiti sotto Sirus</b>.</li>
+          <li><b>2 — 75→50%</b>: <b>Corridor Blast</b> (si spezza col blink dietro Sirus) e <b>labirinto di meteore, 1 anello</b>. Non si schiva: si esce, dall'uscita segnata dai bagliori. Sull'uber i ritardi sono più corti.</li>
+          <li><b>3 — 50→25%</b>: identica, labirinto a <b>3 anelli</b>.</li>
+          <li><b>4 — riparte dal 75%</b>: Die Beam a 4 raggi traccianti; core rotante a <b>6 raggi</b> sull'uber, la cui area spegne il leech e abbassa le resistenze; <b>Multi Clone Beam</b> con 12 cloni che sull'uber ti seguono. Sirus è l'unico con la barra della vita. La <b>Desolation non si pulisce più</b>.</li>
+        </ul>
 
-    <h4>Cosa cambia sull'uber</h4>
-    <ul>
-      <li><b>Ogni fase unica ne fa comparire un Synthete unico in più</b>: Altered in fase 1, Augmented in 2, Twisted in 4, Rewritten in 5.</li>
-      <li>Gli <b>Energy Pylon compaiono in tutte e quattro</b> le fasi uniche, non solo nella 2.</li>
-    </ul>
+        <h4>Le battute</h4>
+        <table class="tabella" style="width:100%">
+          <thead><tr><th>Dice</th><th>Arriva</th><th>Cosa fai</th></tr></thead>
+          <tbody>
+            <tr><td><span class="voce">DIE!</span></td><td>3 raggi sulla tua posizione (4 in fase 4)</td><td>Passo di lato; in fase 4 blink dietro Sirus</td></tr>
+            <tr><td><span class="voce">Rain of stars!</span></td><td>pioggia di meteore</td><td>Esci dai bagliori a terra</td></tr>
+            <tr><td><span class="voce">Be utterly annihilated!</span><br><span class="voce">Creation itself!</span></td><td>due raggi che collassano al centro</td><td>Perpendicolare, o lontano</td></tr>
+            <tr><td><span class="voce">Fury of the cosmos!</span><br><span class="voce">You are nothing!</span><br><span class="voce">Why resist!</span></td><td>geyser di fuoco</td><td>Esci dalla loro portata</td></tr>
+            <tr><td><span class="voce">Feel the thrill of THE VOID!</span><br><span class="voce">You will long for NON-EXISTENCE.</span><br><span class="voce">Meaning is AN ILLUSION.</span></td><td>12 cloni, poi raggi multipli</td><td>Guarda dove è scattato: da lì parte il raggio</td></tr>
+          </tbody>
+        </table>
 
-    <h4>Come giocarla, da canalizzatore</h4>
-    <ul>
-      <li><b>L'intermissione della fase 3 è la tua fase.</b> Mostri normali, nessun boss: è il momento in cui Annihilation e il clear valgono, e in cui si recupera ES prima della 4.</li>
-      <li><b>I pylon non si ignorano</b>: si caricano quando li colpisci. Canalizzare addosso a un pacco che ne contiene uno è il modo di farselo scoppiare in faccia.</li>
-      <li>⚠️ <b>Qui la guida non dà i tell delle singole abilità</b>, e non li invento: la prima run è di riconoscimento. Con 28 c a tentativo, puoi permettertela.</li>
-    </ul>
-  </div>
-
-  <div class="boss">
-    <h3><span class="num">3</span> Incarnation of Neglect — The Moment of Loneliness</h3>
-    <p class="apri">4 × Lonely Fragment · 2 in tab, ne mancano <b>2 = 51 c</b> · <b>101 c</b> a tentativo</p>
-
-    <h4>L'arena decide la fight</h4>
-    <ul>
-      <li>Sui bordi galleggiano dei <b>dischi</b> che sparano <b>raggi</b> attraverso l'arena, uno dopo l'altro o in sequenza. I raggi freddi danno <b>Chill e Brittle</b>, quelli fulmine <b>Shock e Sap</b>.</li>
-      <li>🔴 <b>In ogni angolo c'è un guardiano fermo che blocca i raggi</b>: si attiva <b>camminando nel cerchietto viola</b> attorno a lui. È la meccanica che rende la stanza vivibile, e non è ovvia.</li>
-      <li>✅ <b>Chill, Brittle, Shock e Sap non ti toccano</b>: Purity of Elements li rende tutti immuni. Resta il danno del raggio, non il debuff.</li>
-    </ul>
-
-    <h4>Le abilità</h4>
-    <table class="tabella" style="width:100%">
-      <thead><tr><th>Dice / fa</th><th>Cosa arriva</th><th>Cosa fai</th></tr></thead>
-      <tbody>
-        <tr>
-          <td><span class="voce">Negligence</span><br><span class="voce">Intolerance</span></td>
-          <td><b>Chilling Slam</b> — alza il bastone e lo sbatte a terra, grande AoE da freddo</td>
-          <td>Esci dalla zona dell'impatto</td>
-        </tr>
-        <tr>
-          <td><span class="voce">You cannot hide from fate</span></td>
-          <td><b>Hailstorm</b> — schegge di ghiaccio dal cielo su un'area</td>
-          <td>Esci dall'area segnata</td>
-        </tr>
-        <tr>
-          <td><span class="voce">I am not the end</span></td>
-          <td><b>Frost Bomb</b> — canalizza una chiazza di terreno gelato che cresce, poi <b>esplode per un danno enorme</b></td>
-          <td>Vattene <b>prima</b> che finisca il canale: è l'abilità che uccide</td>
-        </tr>
-        <tr>
-          <td>animazione del bastone</td>
-          <td><b>Chilling Cutters</b> — 3 raggi da freddo verso terra che avanzano lasciando terreno gelato. <b>Salgono a 5 mentre perde vita</b></td>
-          <td>Stai fuori dalle traiettorie: sotto metà vita l'arena si riempie</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h4>Cosa portarsi</h4>
-    <ul>
-      <li><b>Le pozze verdi-nere sono l'altra metà del pericolo</b>: danno un <b>DoT da caos che si somma</b> e resta addosso 3-5 secondi dopo esserne usciti. Il tuo max hit da caos è <b>25.632</b>, il più basso insieme al fisico.</li>
-      <li>Il boss <b>non si rallenta e non si spinge indietro</b>, e ha <b>50% di resistenza a fuoco, freddo, fulmine e caos</b>.</li>
-      <li>Il tuo max hit da <b>freddo è 66.336</b>, il più basso dei tre elementali: qui è freddo quasi tutto.</li>
-    </ul>
-  </div>
-
-  <div class="boss">
-    <h3><span class="num">4</span> Incarnation of Fear — The Moment of Trauma</h3>
-    <p class="apri">4 × Traumatic Fragment · 1 in tab, ne mancano <b>3 = 92 c</b> · <b>123 c</b> a tentativo</p>
-
-    <h4>Il vero avversario è l'arena che si stringe</h4>
-    <ul>
-      <li>I <b>Solar Orb</b> creano zone che bruciano e <b>lo spazio sicuro si riduce di continuo</b>. Più la fight dura, meno arena hai.</li>
-      <li>🔴 <b>Gli orb si tolgono facendoglieli colpire</b>: quando sta mirando lo <b>Spear Throw</b>, mettiti <b>dietro un orb</b> — la lancia lo fa detonare invece di prenderti. È l'unico modo di recuperare spazio.</li>
-      <li>Quindi <b>non è una fight in cui trascinare per le lunghe</b>: ogni secondo in più costa terreno.</li>
-    </ul>
-
-    <h4>Le abilità</h4>
-    <table class="tabella" style="width:100%">
-      <thead><tr><th>Dice / fa</th><th>Cosa arriva</th><th>Cosa fai</th></tr></thead>
-      <tbody>
-        <tr>
-          <td>l'orb brilla, poi il boss <b>pulsa arancione</b></td>
-          <td><b>Spear Throw</b> — ha finito di mirare, la lancia parte</td>
-          <td>Scarta di lato. Oppure <b>mettiti dietro un orb</b> e usalo per pulire l'arena</td>
-        </tr>
-        <tr>
-          <td><span class="voce">Scar!</span></td>
-          <td><b>Volcanic Fissure</b> — una fiammata serpeggiante <b>ti insegue</b> e poi scoppia</td>
-          <td>Non fermarti: si scappa, non si schiva sul posto</td>
-        </tr>
-        <tr>
-          <td>sbatte prima i pugni a terra</td>
-          <td><b>Spear Slam</b> — lascia terreno che brucia e dà Scorch</td>
-          <td>Esci dal terreno. ✅ Lo Scorch non ti tocca (Purity of Elements)</td>
-        </tr>
-        <tr>
-          <td><span class="voce">Explosive Rapture</span></td>
-          <td><b>Scorching Beam</b> — raggio che ti insegue mentre carica</td>
-          <td><b>Girargli attorno restando vicino</b>, oppure <b>attraversarlo col blink</b> e uscire dietro</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h4>Cosa portarsi</h4>
-    <ul>
-      <li>Fa danno <b>fisico e da fuoco</b>. Il fuoco è il tuo max hit più alto (<b>82.919</b>): il pericolo è il <b>fisico, 25.294</b>.</li>
-      <li>La guida chiede <b>mitigazione al fuoco e rigenerazione</b>: hai 432/s di ES netti, ed è il tuo pezzo forte contro il terreno che brucia.</li>
-      <li><b>Frostblink è la gemma della fight</b>, sia per lo Scorching Beam sia per non finire chiuso in un angolo dagli orb.</li>
-    </ul>
-  </div>
-
-  <div class="boss">
-    <h3><span class="num">5</span> Incarnation of Dread — The Moment of Reverence</h3>
-    <p class="apri">4 × Reverent Fragment · 0 in tab · <b>556 c comprati</b>, oppure <b>gratis dalle Nightmare Sanctuary</b></p>
-
-    <h4>Il quinto non si compra</h4>
-    <ul>
-      <li>Le <b>Nightmare Map su Sanctuary</b> (Nightmare of Lycia) droppano <b>Lonely, Traumatic e Reverent</b>: gli stessi tre frammenti che servono ai boss 3, 4 e 5. Ne hai <b>38</b> in tab.</li>
-      <li>⚠️ <b>Non è gratis e va detto</b>: valgono 65 c l'una vendute. Un run rende ~2 frammenti di quel gruppo, quindi conviene — ma è currency che stai spendendo.</li>
-    </ul>
-
-    <h4>Le abilità</h4>
-    <table class="tabella" style="width:100%">
-      <thead><tr><th>Dice / fa</th><th>Cosa arriva</th><th>Cosa fai</th></tr></thead>
-      <tbody>
-        <tr>
-          <td>compaiono 4 sfere</td>
-          <td><b>Void Sphere</b> — ti inseguono e <b>accelerano</b></td>
-          <td>🔴 <b>Falle unire</b> girando per l'arena, poi <b>mollale in un angolo</b> e torna al centro</td>
-        </tr>
-        <tr>
-          <td>sbatte le mani a terra</td>
-          <td><b>Sunder</b> — onda d'urto in linea retta</td>
-          <td><b>Perpendicolare</b> alla linea</td>
-        </tr>
-        <tr>
-          <td>sbatte le braccia a terra</td>
-          <td><b>Chilling Blast</b> — onda gelata che avanza</td>
-          <td>Passo di lato. ✅ Il Chill non ti tocca</td>
-        </tr>
-        <tr>
-          <td>alza la testa</td>
-          <td><b>Static Burst</b> — arco largo di raggi fulmine più proiettili. <b>Una delle abilità più letali</b></td>
-          <td><b>Non stargli incollato</b> quando alza la testa</td>
-        </tr>
-        <tr>
-          <td><span class="voce">Means to an End</span></td>
-          <td><b>Aerial Slam</b> — salta addosso <b>se ti allontani</b>, danno enorme sulla zona segnata</td>
-          <td><b>Resta vicino.</b> È la battuta che punisce chi scappa</td>
-        </tr>
-        <tr>
-          <td>carica</td>
-          <td><b>Eye Beam</b> — raggio fulmine con <b>danno nel tempo enorme</b>, più proiettili insieme</td>
-          <td>Esci dalla traiettoria e non rientrarci</td>
-        </tr>
-        <tr>
-          <td>infila la testa nel terreno</td>
-          <td><b>Dread Furnace</b> — Flameblast al contrario che copre <b>tutta l'arena</b></td>
-          <td>🔴 <b>L'unico posto sicuro è addosso a lui.</b> Qui si corre verso il boss, non via</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h4>Le tre intermissioni — le rose</h4>
-    <ul>
-      <li>Compaiono una <b>rosa rossa</b> e una <b>blu</b>: si raccolgono e poi <b>si torna a toccare il boss</b> per applicargli il debuff. Prese entrambe, lui barcolla e la fight riparte.</li>
-      <li><b>Intermissione 1</b>: 3 sfere fulmine (proiettili + Shock) e 2 sfere fredde rotanti. <b>Sotto il boss si sta al sicuro.</b></li>
-      <li><b>Intermissione 2</b>: 3 sfere fredde e 3 sfere di fuoco con Scorching Ray. Sempre vicino a lui, evitando il raggio.</li>
-      <li><b>Intermissione 3</b>: sfere di fuoco più <b>2 sfere di caos rotanti</b> con proiettili grossi. ⚠️ È l'unica in cui il caos entra in gioco, e il caos è il tuo max hit più basso.</li>
-    </ul>
-
-    <h4>Cosa portarsi — e qui sei già a posto</h4>
-    <ul>
-      <li>La guida chiede <b>spell suppression o molto spell block</b>: hai <b>75% di block magie</b>, al tetto.</li>
-      <li>Chiede <b>Tempest Shield per l'immunità allo shock</b>: ce l'hai da <b>Purity of Elements</b>, senza spendere un socket.</li>
-      <li>Chiede <b>Flame Dash per raccogliere le rose</b>: hai Frostblink.</li>
-      <li>Droppa garantiti <b>Whispers of Infinity, The Dark Monarch, Seven Teachings, Wine of the Prophet</b>.</li>
-    </ul>
-  </div>
-
-  <h2 class="sec">Sirus — la guida, per memoria</h2>
-
-  <div class="boss done">
-    <h4>L'arena</h4>
-    <ul>
-      <li>Oriath piena di <b>Deatomization Storm</b>. Attorno a Sirus un <b>cerchio rosso</b> le tiene lontane: <b>uscirne fa partire un'intermission senza far avanzare la fase</b>.</li>
-      <li>Sull'uber una tempesta <b>ti insegue per tutta la fight</b>.</li>
-    </ul>
-
-    <h4>Le fasi</h4>
-    <ul>
-      <li><b>1 — 100→75%</b>: quasi tutto si aggancia alla posizione da cui lanci, muoversi è la difesa. Sull'uber il <b>Die Beam è già a piena potenza qui</b>.</li>
-      <li><b>Intermission (75, 50, 25%)</b>: porta la tempesta al bordo, poi <b>mettiti sotto Sirus</b>.</li>
-      <li><b>2 — 75→50%</b>: <b>Corridor Blast</b> (si spezza col blink dietro Sirus) e <b>labirinto di meteore, 1 anello</b>. Non si schiva: si esce, dall'uscita segnata dai bagliori. Sull'uber i ritardi sono più corti.</li>
-      <li><b>3 — 50→25%</b>: identica, labirinto a <b>3 anelli</b>.</li>
-      <li><b>4 — riparte dal 75%</b>: Die Beam a 4 raggi traccianti; core rotante a <b>6 raggi</b> sull'uber, la cui area spegne il leech e abbassa le resistenze; <b>Multi Clone Beam</b> con 12 cloni che sull'uber ti seguono. Sirus è l'unico con la barra della vita. La <b>Desolation non si pulisce più</b>.</li>
-    </ul>
-
-    <h4>Le battute</h4>
-    <table class="tabella" style="width:100%">
-      <thead><tr><th>Dice</th><th>Arriva</th><th>Cosa fai</th></tr></thead>
-      <tbody>
-        <tr><td><span class="voce">DIE!</span></td><td>3 raggi sulla tua posizione (4 in fase 4)</td><td>Passo di lato; in fase 4 blink dietro Sirus</td></tr>
-        <tr><td><span class="voce">Rain of stars!</span></td><td>pioggia di meteore</td><td>Esci dai bagliori a terra</td></tr>
-        <tr><td><span class="voce">Be utterly annihilated!</span><br><span class="voce">Creation itself!</span></td><td>due raggi che collassano al centro</td><td>Perpendicolare, o lontano</td></tr>
-        <tr><td><span class="voce">Fury of the cosmos!</span><br><span class="voce">You are nothing!</span><br><span class="voce">Why resist!</span></td><td>geyser di fuoco</td><td>Esci dalla loro portata</td></tr>
-        <tr><td><span class="voce">Feel the thrill of THE VOID!</span><br><span class="voce">You will long for NON-EXISTENCE.</span><br><span class="voce">Meaning is AN ILLUSION.</span></td><td>12 cloni, poi raggi multipli</td><td>Guarda dove è scattato: da lì parte il raggio</td></tr>
-      </tbody>
-    </table>
+      </div>
+    </details>
   </div>
 
   <h2 class="sec">Sulla build — il danno non è il problema</h2>
@@ -438,22 +483,22 @@
       <tr>
         <td><b>Venarius</b> <i>(Cortex)</i></td><td>Synthesising</td>
         <td class="n">6,9 c</td><td class="n">1</td><td class="n">3</td>
-        <td class="n"><b>21 c</b></td><td class="n">28 c</td><td class="scelto">2º — il prossimo</td>
+        <td class="n"><b>21 c</b></td><td class="n">28 c</td><td class="scelto">il prossimo</td>
       </tr>
       <tr>
         <td><b>Incarnation of Neglect</b></td><td>Lonely</td>
         <td class="n">25,3 c</td><td class="n">2</td><td class="n">2</td>
-        <td class="n"><b>51 c</b></td><td class="n">101 c</td><td class="scelto">3º</td>
+        <td class="n"><b>51 c</b></td><td class="n">101 c</td><td class="scelto">in fila</td>
       </tr>
       <tr>
         <td><b>Incarnation of Fear</b></td><td>Traumatic</td>
         <td class="n">30,8 c</td><td class="n">1</td><td class="n">3</td>
-        <td class="n"><b>92 c</b></td><td class="n">123 c</td><td class="scelto">4º</td>
+        <td class="n"><b>92 c</b></td><td class="n">123 c</td><td class="scelto">in fila</td>
       </tr>
       <tr>
         <td><b>Incarnation of Dread</b></td><td>Reverent</td>
         <td class="n">139,1 c</td><td class="n">0</td><td class="n">4</td>
-        <td class="n">556 c</td><td class="n">556 c</td><td class="scelto">5º — dalle Nightmare Sanctuary</td>
+        <td class="n">556 c</td><td class="n">556 c</td><td class="scelto">dalle Nightmare Sanctuary</td>
       </tr>
       <tr>
         <td>Searing Exarch</td><td>Blazing</td>
@@ -514,8 +559,9 @@
 
 </div>
 <script>
-// Segnaposto dei preparativi fatti, in locale. Nessuna rete, nessuna dipendenza.
-// La chiave e' l'id del passo (data-p), non la sua posizione.
+// Due comportamenti, entrambi locali: le spunte dei preparativi e i pulsanti
+// che aprono o chiudono tutte le guide. Gli accordion funzionano senza JS —
+// sono <details> — quindi qui c'e' solo la comodita', non la meccanica.
 (function(){
   var CHIAVE='uber-apex-assailants';
   var stato={};
@@ -529,6 +575,13 @@
       stato[id]=c.checked;
       try{ localStorage.setItem(CHIAVE,JSON.stringify(stato)); }catch(e){}
     });
+  });
+
+  document.querySelectorAll('button[data-tutti]').forEach(function(b){
+    b.onclick=function(){
+      var apri=b.dataset.tutti==='apri';
+      document.querySelectorAll('details.dettaglio').forEach(function(d){ d.open=apri; });
+    };
   });
 })();
 </script>

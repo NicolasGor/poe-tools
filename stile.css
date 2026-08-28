@@ -397,3 +397,25 @@ ol.passi{margin:0 0 var(--s4);padding-left:1.4rem;font-size:var(--t-sm);line-hei
 ol.passi li{margin-bottom:.35rem}
 ol.passi li b{color:var(--text)}
 ol.passi::marker,ol.passi li::marker{color:var(--gold);font-weight:700}
+
+/* .dettaglio — accordion. Nato in /strategie/, ora serve anche a /uber/, quindi
+   il suo posto e' qui. Fatto con <details> e non con JS: senza script la pagina
+   resta apribile. La riga e' gold pieno come un pulsante perche' da chiusa e'
+   l'unica cosa cliccabile del riquadro che la contiene. Il padding orizzontale
+   e' quello delle schede di /strategie/: chi la mette dentro un contenitore gia'
+   spaziato lo riscrive. */
+.dettaglio > summary{list-style:none;cursor:pointer;padding:var(--s3) var(--s6);
+                     font-size:var(--t-xs);text-transform:uppercase;letter-spacing:.09em;
+                     background:var(--gold);color:#161310;font-weight:600;
+                     display:flex;align-items:center;gap:var(--s2)}
+.dettaglio > summary::-webkit-details-marker{display:none}
+.dettaglio > summary::before{content:"\25b8";font-size:.9em;transition:transform .12s}
+.dettaglio[open] > summary::before{transform:rotate(90deg)}
+.dettaglio > summary:hover{filter:brightness(1.1)}
+
+/* .comandi — la coppia apri/chiudi tutti che governa gli accordion di una pagina. */
+.comandi{display:flex;gap:var(--s2);margin-top:var(--s4)}
+.comandi button{background:transparent;border:1px solid var(--line);color:var(--gold);
+                border-radius:var(--r-full);padding:.2rem .7rem;font-size:var(--t-xs);
+                cursor:pointer;font-family:inherit}
+.comandi button:hover{border-color:var(--gold);color:var(--gold)}
