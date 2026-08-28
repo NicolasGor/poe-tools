@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Uber — Apex Assailants, i 5 boss e come farli | PoE Tools</title>
-<meta name="description" content="La challenge Apex Assailants chiede 5 boss pinnacolo su 10 a livello area 85. Quali cinque scegliere in base al costo di un tentativo, cosa c'è già in tab, e la procedura esatta per Uber Sirus: preparativi, fasi, battute vocali.">
+<title>Uber — Apex Assailants, i cinque in fila | PoE Tools</title>
+<meta name="description" content="La challenge Apex Assailants chiede 5 boss pinnacolo su 10 a livello area 85. La fila da fare in ordine — Sirus fatto, poi Venarius, Neglect, Fear, Dread — con la guida di ognuno: abilità, battute vocali, cosa cambia sull'uber e cosa portarsi.">
 <link rel="stylesheet" href="../stile.css">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <style>
@@ -19,18 +19,31 @@
   .verdetto p:last-child{margin:0}
   .verdetto b{color:var(--text)}
 
-  .fase{margin-bottom:var(--s4)}
-  .fase > h3{display:flex;align-items:baseline;gap:.6rem;font-size:var(--t-md);margin-bottom:.2rem}
-  .fase > h3 .num{
+  /* la fila: un boss per riquadro */
+  .boss{
+    border:1px solid var(--line);border-radius:var(--r);
+    background:var(--panel2);padding:var(--s4);margin-bottom:var(--s4);
+  }
+  .boss.done{opacity:.62}
+  .boss.next{border-color:var(--gold-scuro);background:linear-gradient(180deg,rgba(240,185,74,.05),transparent)}
+  .boss > h3{display:flex;align-items:baseline;gap:.6rem;font-size:var(--t-md);margin-bottom:.15rem;flex-wrap:wrap}
+  .boss > h3 .num{
     font-family:var(--mono);font-size:var(--t-sm);color:var(--gold);
     border:1px solid var(--line2);border-radius:3px;padding:.05rem .45rem;flex:none;
   }
-  .fase > h3 .num.grave{color:var(--bad);border-color:rgba(229,120,109,.45)}
-  .fase > .quando{font-size:var(--t-xs);color:var(--label);margin-bottom:var(--s3);
-    text-transform:uppercase;letter-spacing:.08em}
-  .fase ul{margin:0;padding-left:1.1rem}
-  .fase li{font-size:var(--t-sm);line-height:1.6;color:var(--muted);margin-bottom:.3rem}
-  .fase li b{color:var(--text)}
+  .boss > h3 .num.ok{color:var(--good);border-color:rgba(95,211,160,.45)}
+  .boss > .apri{
+    font-size:var(--t-xs);color:var(--label);margin-bottom:var(--s3);
+    text-transform:uppercase;letter-spacing:.07em;
+  }
+  .boss > .apri b{color:var(--text);font-family:var(--mono)}
+  .boss h4{font-size:var(--t-sm);color:var(--label);text-transform:uppercase;letter-spacing:.07em;
+    margin:var(--s4) 0 var(--s2);font-weight:600}
+  .boss h4:first-of-type{margin-top:var(--s3)}
+  .boss ul{margin:0;padding-left:1.1rem}
+  .boss li{font-size:var(--t-sm);line-height:1.6;color:var(--muted);margin-bottom:.35rem}
+  .boss li b{color:var(--text)}
+  .boss table{margin-top:0}
 
   ol.passi{list-style:none;margin:0;padding:0}
   ol.passi > li{
@@ -94,7 +107,7 @@
 
   <header class="testata">
     <h1>Uber — Apex Assailants</h1>
-    <p class="sub">La challenge chiede <b>5 boss pinnacolo su 10 in versione uber</b>, cioè con l'area a livello 85. Questa pagina è <b>quali cinque</b> e <b>cosa premere</b>. Si parte da Sirus, che costa <b>9 chaos a tentativo</b>.</p>
+    <p class="sub"><b>Sirus è fatto.</b> Restano quattro, e questa è la fila nell'ordine in cui costa poco sbagliare: <b>Venarius, Neglect, Fear, Dread</b>. Per ognuno cosa apre la porta, cosa fa il boss e cosa fai tu.</p>
     <div class="badges">
       <span class="badge">patch 3.29.2</span>
       <span class="badge">lega Allflame</span>
@@ -104,39 +117,328 @@
   </header>
 
   <div class="verdetto">
-    <h2>Quattro frammenti uguali nel map device. Nient'altro.</h2>
-    <p>Niente Crest, niente set misti: <b>4 frammenti identici</b> aprono l'uber. Servono 4 slot del device — <b>ne hai 5</b> dalla Nightmare Map.</p>
-    <p><b>Un tentativo fallito brucia i frammenti.</b> Quindi il numero che sceglie l'ordine non è quanto vale il boss: è <b>quanto costa provarci</b>.</p>
-    <p>Su Sirus sono <b>9 chaos</b>. Puoi morire cinque volte e non accorgertene.</p>
+    <h2>1 su 5. I prossimi tre costano 164 chaos in tutto.</h2>
+    <p><b>Quattro frammenti identici</b> aprono ogni uber — niente Crest, niente set misti. Servono 4 slot del device: ne hai 5.</p>
+    <p><b>Un tentativo fallito brucia i frammenti</b>, quindi la fila è ordinata su quanto costa ricominciare, non su quanto vale il boss.</p>
+    <p>🔴 <b>Gli Echo in tab non contano per la challenge.</b> I 13 Echo of Loneliness e l'Echo of Reverence aprono le versioni <b>normali</b>: la challenge vuole l'area a <b>livello 85</b>, che si apre solo coi frammenti.</p>
   </div>
 
   <div class="kpi">
-    <div><b>5/10</b><span>boss da battere</span></div>
-    <div><b>173 c</b><span>i primi quattro</span></div>
-    <div><b>9 c</b><span>un tentativo su Sirus</span></div>
-    <div><b>38</b><span>Nightmare Map in tab</span></div>
+    <div><b>1/5</b><span>fatti</span></div>
+    <div><b>164 c</b><span>i prossimi tre</span></div>
+    <div><b>38</b><span>Nightmare Map per il quinto</span></div>
+    <div><b>692 c</b><span>liquidi in tab</span></div>
   </div>
 
-  <h2 class="sec">I dieci, in ordine di quanto costa provarci</h2>
+  <h2 class="sec">Prima di ogni uber</h2>
+
+  <ol class="passi">
+    <li data-p="cb">
+      <input type="checkbox" aria-label="fatto">
+      <span class="testo">
+        <b>Immunità al Corrupted Blood.</b> Non la copre Purity of Elements: il Corrupted Blood è fisico, non un ailment elementale.
+        <a class="compra" href="https://www.pathofexile.com/trade/search/Allflame/PPGYr4bgFL" target="_blank" rel="noopener">gioiello 7 c ↗</a>
+        <em>Gioiello corrotto non unico con l'implicito <i>Corrupted Blood cannot be inflicted on you</i>. I dodici socket sono pieni: entra al posto del più debole, e quale si decide in PoB.</em>
+      </span>
+    </li>
+    <li data-p="ailment">
+      <input type="checkbox" aria-label="fatto">
+      <span class="testo">
+        ✅ <b>Purity of Elements è già la risposta a metà delle guide.</b> Tutte e tre le schede degli Incarnation raccomandano <i>ailment immunity</i> contro chill, brittle, shock, sap, scorch e ignite: la tua aura li rende <b>tutti immuni</b>, e ce l'hai già negli stivali.
+        <em>Controlla solo che sia accesa: è la prima cosa che salta quando si riservano mana per altro.</em>
+      </span>
+    </li>
+    <li data-p="fc">
+      <input type="checkbox" aria-label="fatto">
+      <span class="testo">
+        <b>Focused Channelling</b> nel sesto link del petto, al posto di Annihilation.
+        <em>Annihilation è la gemma da mappa. I 146 M di DPS sono misurati con Focused Channelling.</em>
+      </span>
+    </li>
+    <li data-p="audio">
+      <input type="checkbox" aria-label="fatto">
+      <span class="testo">
+        <b>Audio acceso.</b> Neglect, Fear e Dread annunciano le abilità con una battuta, come Sirus. Sullo Steam Deck: cuffie o volume su prima di entrare.
+      </span>
+    </li>
+    <li data-p="pantheon">
+      <input type="checkbox" aria-label="fatto">
+      <span class="testo">
+        <b>Pantheon: decidilo, non lasciarlo com'è.</b> Hai Arakaali perché <i>«Solaris è un pantheon da boss, io muoio in mappa»</i>, e qui sei nel caso opposto — nemico singolo.
+        <em>Ma tutte le fight uber hanno DoT persistente, che è il mestiere di Arakaali. Da misurare in PoB, non da scegliere a naso.</em>
+      </span>
+    </li>
+  </ol>
+
+  <h2 class="sec">La fila</h2>
+
+  <div class="boss done">
+    <h3><span class="num ok">✓</span> Sirus, Awakener of Worlds <span class="badge">fatto</span></h3>
+    <p class="apri">4 × Awakening Fragment · <b>9 c</b> a tentativo</p>
+    <ul>
+      <li>Battute vocali, quattro fasi, labirinto di meteore e cloni. <b>La guida completa resta</b> più in basso, in fondo alla pagina.</li>
+    </ul>
+  </div>
+
+  <div class="boss next">
+    <h3><span class="num">2</span> Venarius — The Cortex</h3>
+    <p class="apri">4 × Synthesising Fragment · 1 in tab, ne mancano <b>3 = 21 c</b> · <b>28 c</b> a tentativo</p>
+
+    <h4>Cos'è</h4>
+    <ul>
+      <li><b>Non è un boss: sono cinque fasi in fila</b>, due creature che si alternano più un'intermissione. Si perde per logoramento, non per un colpo solo.</li>
+      <li>È l'uber che le guide 3.29 mettono <b>fra i più facili da fare da soli</b>, insieme agli Incarnation.</li>
+    </ul>
+
+    <h4>Le cinque fasi</h4>
+    <table class="tabella" style="width:100%">
+      <thead><tr><th>Fase</th><th>Chi c'è</th><th>Cosa c'è nell'arena</th></tr></thead>
+      <tbody>
+        <tr><td><b>1</b></td><td>Fractal Gargantuan</td><td><b>Void zone</b> che restano fino a fine fase</td></tr>
+        <tr><td><b>2</b></td><td>Synthete Masterpiece</td><td><b>Energy Pylon</b>: si caricano quando vengono colpiti e scoppiano al colpo dopo</td></tr>
+        <tr><td><b>3</b></td><td>nessuno — <b>intermissione</b></td><td>Un <b>Decaying Map Device</b> al centro apre 4 portali che vomitano mostri per ~30 s</td></tr>
+        <tr><td><b>4</b></td><td>Fractal Titan <i>(la 1 potenziata)</i></td><td>Energy Pylon in posizioni casuali</td></tr>
+        <tr><td><b>5</b></td><td>Synthete Nightmare <i>(la 2 potenziata)</i></td><td>Aggiunge teletrasporti e proiettili</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Cosa cambia sull'uber</h4>
+    <ul>
+      <li><b>Ogni fase unica ne fa comparire un Synthete unico in più</b>: Altered in fase 1, Augmented in 2, Twisted in 4, Rewritten in 5.</li>
+      <li>Gli <b>Energy Pylon compaiono in tutte e quattro</b> le fasi uniche, non solo nella 2.</li>
+    </ul>
+
+    <h4>Come giocarla, da canalizzatore</h4>
+    <ul>
+      <li><b>L'intermissione della fase 3 è la tua fase.</b> Mostri normali, nessun boss: è il momento in cui Annihilation e il clear valgono, e in cui si recupera ES prima della 4.</li>
+      <li><b>I pylon non si ignorano</b>: si caricano quando li colpisci. Canalizzare addosso a un pacco che ne contiene uno è il modo di farselo scoppiare in faccia.</li>
+      <li>⚠️ <b>Qui la guida non dà i tell delle singole abilità</b>, e non li invento: la prima run è di riconoscimento. Con 28 c a tentativo, puoi permettertela.</li>
+    </ul>
+  </div>
+
+  <div class="boss">
+    <h3><span class="num">3</span> Incarnation of Neglect — The Moment of Loneliness</h3>
+    <p class="apri">4 × Lonely Fragment · 2 in tab, ne mancano <b>2 = 51 c</b> · <b>101 c</b> a tentativo</p>
+
+    <h4>L'arena decide la fight</h4>
+    <ul>
+      <li>Sui bordi galleggiano dei <b>dischi</b> che sparano <b>raggi</b> attraverso l'arena, uno dopo l'altro o in sequenza. I raggi freddi danno <b>Chill e Brittle</b>, quelli fulmine <b>Shock e Sap</b>.</li>
+      <li>🔴 <b>In ogni angolo c'è un guardiano fermo che blocca i raggi</b>: si attiva <b>camminando nel cerchietto viola</b> attorno a lui. È la meccanica che rende la stanza vivibile, e non è ovvia.</li>
+      <li>✅ <b>Chill, Brittle, Shock e Sap non ti toccano</b>: Purity of Elements li rende tutti immuni. Resta il danno del raggio, non il debuff.</li>
+    </ul>
+
+    <h4>Le abilità</h4>
+    <table class="tabella" style="width:100%">
+      <thead><tr><th>Dice / fa</th><th>Cosa arriva</th><th>Cosa fai</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="voce">Negligence</span><br><span class="voce">Intolerance</span></td>
+          <td><b>Chilling Slam</b> — alza il bastone e lo sbatte a terra, grande AoE da freddo</td>
+          <td>Esci dalla zona dell'impatto</td>
+        </tr>
+        <tr>
+          <td><span class="voce">You cannot hide from fate</span></td>
+          <td><b>Hailstorm</b> — schegge di ghiaccio dal cielo su un'area</td>
+          <td>Esci dall'area segnata</td>
+        </tr>
+        <tr>
+          <td><span class="voce">I am not the end</span></td>
+          <td><b>Frost Bomb</b> — canalizza una chiazza di terreno gelato che cresce, poi <b>esplode per un danno enorme</b></td>
+          <td>Vattene <b>prima</b> che finisca il canale: è l'abilità che uccide</td>
+        </tr>
+        <tr>
+          <td>animazione del bastone</td>
+          <td><b>Chilling Cutters</b> — 3 raggi da freddo verso terra che avanzano lasciando terreno gelato. <b>Salgono a 5 mentre perde vita</b></td>
+          <td>Stai fuori dalle traiettorie: sotto metà vita l'arena si riempie</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>Cosa portarsi</h4>
+    <ul>
+      <li><b>Le pozze verdi-nere sono l'altra metà del pericolo</b>: danno un <b>DoT da caos che si somma</b> e resta addosso 3-5 secondi dopo esserne usciti. Il tuo max hit da caos è <b>25.632</b>, il più basso insieme al fisico.</li>
+      <li>Il boss <b>non si rallenta e non si spinge indietro</b>, e ha <b>50% di resistenza a fuoco, freddo, fulmine e caos</b>.</li>
+      <li>Il tuo max hit da <b>freddo è 66.336</b>, il più basso dei tre elementali: qui è freddo quasi tutto.</li>
+    </ul>
+  </div>
+
+  <div class="boss">
+    <h3><span class="num">4</span> Incarnation of Fear — The Moment of Trauma</h3>
+    <p class="apri">4 × Traumatic Fragment · 1 in tab, ne mancano <b>3 = 92 c</b> · <b>123 c</b> a tentativo</p>
+
+    <h4>Il vero avversario è l'arena che si stringe</h4>
+    <ul>
+      <li>I <b>Solar Orb</b> creano zone che bruciano e <b>lo spazio sicuro si riduce di continuo</b>. Più la fight dura, meno arena hai.</li>
+      <li>🔴 <b>Gli orb si tolgono facendoglieli colpire</b>: quando sta mirando lo <b>Spear Throw</b>, mettiti <b>dietro un orb</b> — la lancia lo fa detonare invece di prenderti. È l'unico modo di recuperare spazio.</li>
+      <li>Quindi <b>non è una fight in cui trascinare per le lunghe</b>: ogni secondo in più costa terreno.</li>
+    </ul>
+
+    <h4>Le abilità</h4>
+    <table class="tabella" style="width:100%">
+      <thead><tr><th>Dice / fa</th><th>Cosa arriva</th><th>Cosa fai</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>l'orb brilla, poi il boss <b>pulsa arancione</b></td>
+          <td><b>Spear Throw</b> — ha finito di mirare, la lancia parte</td>
+          <td>Scarta di lato. Oppure <b>mettiti dietro un orb</b> e usalo per pulire l'arena</td>
+        </tr>
+        <tr>
+          <td><span class="voce">Scar!</span></td>
+          <td><b>Volcanic Fissure</b> — una fiammata serpeggiante <b>ti insegue</b> e poi scoppia</td>
+          <td>Non fermarti: si scappa, non si schiva sul posto</td>
+        </tr>
+        <tr>
+          <td>sbatte prima i pugni a terra</td>
+          <td><b>Spear Slam</b> — lascia terreno che brucia e dà Scorch</td>
+          <td>Esci dal terreno. ✅ Lo Scorch non ti tocca (Purity of Elements)</td>
+        </tr>
+        <tr>
+          <td><span class="voce">Explosive Rapture</span></td>
+          <td><b>Scorching Beam</b> — raggio che ti insegue mentre carica</td>
+          <td><b>Girargli attorno restando vicino</b>, oppure <b>attraversarlo col blink</b> e uscire dietro</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>Cosa portarsi</h4>
+    <ul>
+      <li>Fa danno <b>fisico e da fuoco</b>. Il fuoco è il tuo max hit più alto (<b>82.919</b>): il pericolo è il <b>fisico, 25.294</b>.</li>
+      <li>La guida chiede <b>mitigazione al fuoco e rigenerazione</b>: hai 432/s di ES netti, ed è il tuo pezzo forte contro il terreno che brucia.</li>
+      <li><b>Frostblink è la gemma della fight</b>, sia per lo Scorching Beam sia per non finire chiuso in un angolo dagli orb.</li>
+    </ul>
+  </div>
+
+  <div class="boss">
+    <h3><span class="num">5</span> Incarnation of Dread — The Moment of Reverence</h3>
+    <p class="apri">4 × Reverent Fragment · 0 in tab · <b>556 c comprati</b>, oppure <b>gratis dalle Nightmare Sanctuary</b></p>
+
+    <h4>Il quinto non si compra</h4>
+    <ul>
+      <li>Le <b>Nightmare Map su Sanctuary</b> (Nightmare of Lycia) droppano <b>Lonely, Traumatic e Reverent</b>: gli stessi tre frammenti che servono ai boss 3, 4 e 5. Ne hai <b>38</b> in tab.</li>
+      <li>⚠️ <b>Non è gratis e va detto</b>: valgono 65 c l'una vendute. Un run rende ~2 frammenti di quel gruppo, quindi conviene — ma è currency che stai spendendo.</li>
+    </ul>
+
+    <h4>Le abilità</h4>
+    <table class="tabella" style="width:100%">
+      <thead><tr><th>Dice / fa</th><th>Cosa arriva</th><th>Cosa fai</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>compaiono 4 sfere</td>
+          <td><b>Void Sphere</b> — ti inseguono e <b>accelerano</b></td>
+          <td>🔴 <b>Falle unire</b> girando per l'arena, poi <b>mollale in un angolo</b> e torna al centro</td>
+        </tr>
+        <tr>
+          <td>sbatte le mani a terra</td>
+          <td><b>Sunder</b> — onda d'urto in linea retta</td>
+          <td><b>Perpendicolare</b> alla linea</td>
+        </tr>
+        <tr>
+          <td>sbatte le braccia a terra</td>
+          <td><b>Chilling Blast</b> — onda gelata che avanza</td>
+          <td>Passo di lato. ✅ Il Chill non ti tocca</td>
+        </tr>
+        <tr>
+          <td>alza la testa</td>
+          <td><b>Static Burst</b> — arco largo di raggi fulmine più proiettili. <b>Una delle abilità più letali</b></td>
+          <td><b>Non stargli incollato</b> quando alza la testa</td>
+        </tr>
+        <tr>
+          <td><span class="voce">Means to an End</span></td>
+          <td><b>Aerial Slam</b> — salta addosso <b>se ti allontani</b>, danno enorme sulla zona segnata</td>
+          <td><b>Resta vicino.</b> È la battuta che punisce chi scappa</td>
+        </tr>
+        <tr>
+          <td>carica</td>
+          <td><b>Eye Beam</b> — raggio fulmine con <b>danno nel tempo enorme</b>, più proiettili insieme</td>
+          <td>Esci dalla traiettoria e non rientrarci</td>
+        </tr>
+        <tr>
+          <td>infila la testa nel terreno</td>
+          <td><b>Dread Furnace</b> — Flameblast al contrario che copre <b>tutta l'arena</b></td>
+          <td>🔴 <b>L'unico posto sicuro è addosso a lui.</b> Qui si corre verso il boss, non via</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>Le tre intermissioni — le rose</h4>
+    <ul>
+      <li>Compaiono una <b>rosa rossa</b> e una <b>blu</b>: si raccolgono e poi <b>si torna a toccare il boss</b> per applicargli il debuff. Prese entrambe, lui barcolla e la fight riparte.</li>
+      <li><b>Intermissione 1</b>: 3 sfere fulmine (proiettili + Shock) e 2 sfere fredde rotanti. <b>Sotto il boss si sta al sicuro.</b></li>
+      <li><b>Intermissione 2</b>: 3 sfere fredde e 3 sfere di fuoco con Scorching Ray. Sempre vicino a lui, evitando il raggio.</li>
+      <li><b>Intermissione 3</b>: sfere di fuoco più <b>2 sfere di caos rotanti</b> con proiettili grossi. ⚠️ È l'unica in cui il caos entra in gioco, e il caos è il tuo max hit più basso.</li>
+    </ul>
+
+    <h4>Cosa portarsi — e qui sei già a posto</h4>
+    <ul>
+      <li>La guida chiede <b>spell suppression o molto spell block</b>: hai <b>75% di block magie</b>, al tetto.</li>
+      <li>Chiede <b>Tempest Shield per l'immunità allo shock</b>: ce l'hai da <b>Purity of Elements</b>, senza spendere un socket.</li>
+      <li>Chiede <b>Flame Dash per raccogliere le rose</b>: hai Frostblink.</li>
+      <li>Droppa garantiti <b>Whispers of Infinity, The Dark Monarch, Seven Teachings, Wine of the Prophet</b>.</li>
+    </ul>
+  </div>
+
+  <h2 class="sec">Sirus — la guida, per memoria</h2>
+
+  <div class="boss done">
+    <h4>L'arena</h4>
+    <ul>
+      <li>Oriath piena di <b>Deatomization Storm</b>. Attorno a Sirus un <b>cerchio rosso</b> le tiene lontane: <b>uscirne fa partire un'intermission senza far avanzare la fase</b>.</li>
+      <li>Sull'uber una tempesta <b>ti insegue per tutta la fight</b>.</li>
+    </ul>
+
+    <h4>Le fasi</h4>
+    <ul>
+      <li><b>1 — 100→75%</b>: quasi tutto si aggancia alla posizione da cui lanci, muoversi è la difesa. Sull'uber il <b>Die Beam è già a piena potenza qui</b>.</li>
+      <li><b>Intermission (75, 50, 25%)</b>: porta la tempesta al bordo, poi <b>mettiti sotto Sirus</b>.</li>
+      <li><b>2 — 75→50%</b>: <b>Corridor Blast</b> (si spezza col blink dietro Sirus) e <b>labirinto di meteore, 1 anello</b>. Non si schiva: si esce, dall'uscita segnata dai bagliori. Sull'uber i ritardi sono più corti.</li>
+      <li><b>3 — 50→25%</b>: identica, labirinto a <b>3 anelli</b>.</li>
+      <li><b>4 — riparte dal 75%</b>: Die Beam a 4 raggi traccianti; core rotante a <b>6 raggi</b> sull'uber, la cui area spegne il leech e abbassa le resistenze; <b>Multi Clone Beam</b> con 12 cloni che sull'uber ti seguono. Sirus è l'unico con la barra della vita. La <b>Desolation non si pulisce più</b>.</li>
+    </ul>
+
+    <h4>Le battute</h4>
+    <table class="tabella" style="width:100%">
+      <thead><tr><th>Dice</th><th>Arriva</th><th>Cosa fai</th></tr></thead>
+      <tbody>
+        <tr><td><span class="voce">DIE!</span></td><td>3 raggi sulla tua posizione (4 in fase 4)</td><td>Passo di lato; in fase 4 blink dietro Sirus</td></tr>
+        <tr><td><span class="voce">Rain of stars!</span></td><td>pioggia di meteore</td><td>Esci dai bagliori a terra</td></tr>
+        <tr><td><span class="voce">Be utterly annihilated!</span><br><span class="voce">Creation itself!</span></td><td>due raggi che collassano al centro</td><td>Perpendicolare, o lontano</td></tr>
+        <tr><td><span class="voce">Fury of the cosmos!</span><br><span class="voce">You are nothing!</span><br><span class="voce">Why resist!</span></td><td>geyser di fuoco</td><td>Esci dalla loro portata</td></tr>
+        <tr><td><span class="voce">Feel the thrill of THE VOID!</span><br><span class="voce">You will long for NON-EXISTENCE.</span><br><span class="voce">Meaning is AN ILLUSION.</span></td><td>12 cloni, poi raggi multipli</td><td>Guarda dove è scattato: da lì parte il raggio</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="sec">Sulla build — il danno non è il problema</h2>
+
+  <div class="card" style="padding:var(--s4)">
+    <ul style="margin:0;padding-left:1.1rem">
+      <li style="font-size:var(--t-sm);line-height:1.6;color:var(--muted);margin-bottom:.4rem">🔴 <b>Sull'uber Sirus l'area riduce del 70% il danno che subisce</b>: i 146,4 M diventano ~44 M effettivi, e bastano. Sugli altri quattro il taglio non è dichiarato dalle guide.</li>
+      <li style="font-size:var(--t-sm);line-height:1.6;color:var(--muted);margin-bottom:.4rem"><b>I due numeri bassi sono fisico 25.294 e caos 25.632.</b> Gli elementali stanno a 66-83k, e il più basso dei tre è il <b>freddo (66.336)</b> — cioè proprio la scuola del Neglect.</li>
+      <li style="font-size:var(--t-sm);line-height:1.6;color:var(--muted);margin-bottom:.4rem"><b>Sei un canalizzatore fermo.</b> Si spara <b>fra</b> le meccaniche: il canale si molla appena parte una battuta.</li>
+      <li style="font-size:var(--t-sm);line-height:1.6;color:var(--muted)"><b>L'apertura</b>: blink addosso ×3 (20, 40, 45 anime) → <b>Pact of Lycia</b> → canali <b>girato dall'altra parte per 2 secondi</b> → ti giri e spari.</li>
+    </ul>
+  </div>
+
+  <h2 class="sec">I dieci, e il prezzo di un tentativo</h2>
 
   <table class="tabella" style="width:100%">
     <thead>
       <tr>
         <th>Boss uber</th><th>Frammento</th>
         <th class="n">prezzo</th><th class="n">in tab</th><th class="n">mancano</th>
-        <th class="n">spesa</th><th class="n">tentativo</th><th>verdetto</th>
+        <th class="n">spesa</th><th class="n">tentativo</th><th>stato</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td><b>Sirus</b></td><td>Awakening</td>
-        <td class="n">2,3 c</td><td class="n">0</td><td class="n">4</td>
-        <td class="n"><b>9 c</b></td><td class="n"><b>9 c</b></td><td class="scelto">1º — si parte da qui</td>
+        <td class="n">2,3 c</td><td class="n">—</td><td class="n">—</td>
+        <td class="n">—</td><td class="n">9 c</td><td class="scelto">✓ fatto</td>
       </tr>
       <tr>
         <td><b>Venarius</b> <i>(Cortex)</i></td><td>Synthesising</td>
         <td class="n">6,9 c</td><td class="n">1</td><td class="n">3</td>
-        <td class="n"><b>21 c</b></td><td class="n">28 c</td><td class="scelto">2º</td>
+        <td class="n"><b>21 c</b></td><td class="n">28 c</td><td class="scelto">2º — il prossimo</td>
       </tr>
       <tr>
         <td><b>Incarnation of Neglect</b></td><td>Lonely</td>
@@ -151,12 +453,12 @@
       <tr>
         <td><b>Incarnation of Dread</b></td><td>Reverent</td>
         <td class="n">139,1 c</td><td class="n">0</td><td class="n">4</td>
-        <td class="n">556 c</td><td class="n">556 c</td><td class="scelto">5º — <b>non comprarlo</b>, esce dalle Nightmare Sanctuary</td>
+        <td class="n">556 c</td><td class="n">556 c</td><td class="scelto">5º — dalle Nightmare Sanctuary</td>
       </tr>
       <tr>
         <td>Searing Exarch</td><td>Blazing</td>
         <td class="n">52,8 c</td><td class="n">1</td><td class="n">3</td>
-        <td class="n">158 c</td><td class="n">211 c</td><td>ripiego se il Dread non arriva</td>
+        <td class="n">158 c</td><td class="n">211 c</td><td>ripiego</td>
       </tr>
       <tr>
         <td class="scarta">Elder</td><td class="scarta">Decaying</td>
@@ -171,7 +473,7 @@
       <tr>
         <td class="scarta">Maven</td><td class="scarta">Reality</td>
         <td class="n scarta">143,7 c</td><td class="n scarta">0</td><td class="n scarta">4</td>
-        <td class="n scarta">575 c</td><td class="n scarta">575 c</td><td class="scarta">no — gioco della memoria, tante interazioni</td>
+        <td class="n scarta">575 c</td><td class="n scarta">575 c</td><td class="scarta">no — gioco della memoria</td>
       </tr>
       <tr>
         <td class="scarta">Shaper</td><td class="scarta">Cosmic</td>
@@ -181,174 +483,8 @@
     </tbody>
   </table>
 
-  <p class="nota" style="margin-top:var(--s3);color:var(--muted)"><b>Spesa</b> = quello che manca ai 4. <b>Tentativo</b> = 4 frammenti pieni, cioè quanto ricomincia a costare se muori sei volte.</p>
-
   <div class="avviso">
-    <b>Awakening a 2,3 c non è un prezzo rotto.</b> Uber Sirus droppa male e i suoi frammenti non li vuole nessuno — il volume su poe.ninja è 3.658 in 24 ore, un mercato vero. Per la challenge è la voce più conveniente della lista.
-  </div>
-
-  <h2 class="sec">Sirus — prima di entrare</h2>
-
-  <ol class="passi">
-    <li data-p="frag">
-      <input type="checkbox" aria-label="fatto">
-      <span class="testo">
-        <b>4 Awakening Fragment</b> — si comprano <b>da Faustus, in gioco</b>, al Currency Exchange.
-        <a class="compra" href="https://www.pathofexile.com/trade/exchange/Allflame/6lDGDj9UG" target="_blank" rel="noopener">scambio web ↗</a>
-        <em>Il link web è un ripiego: mostra 10 inserzioni in tutto, perché questa roba si scambia da Faustus. Il prezzo vero è quello di poe.ninja, 2,3 c.</em>
-      </span>
-    </li>
-    <li data-p="cb">
-      <input type="checkbox" aria-label="fatto">
-      <span class="testo">
-        <b>Immunità al Corrupted Blood.</b> Il Die Beam infligge Corrupted Blood, ignite, freeze e shock insieme: con 54 di vita e 8.138 di ES, il degen fisico è la parte che ti uccide.
-        <a class="compra" href="https://www.pathofexile.com/trade/search/Allflame/PPGYr4bgFL" target="_blank" rel="noopener">gioiello 7 c ↗</a>
-        <em>Gioiello corrotto non unico con l'implicito <i>Corrupted Blood cannot be inflicted on you</i>: fondo del libro 7 c, oltre 10.000 inserzioni. Va al posto del gioiello più debole dei dodici — quale, si decide in PoB.</em>
-      </span>
-    </li>
-    <li data-p="fc">
-      <input type="checkbox" aria-label="fatto">
-      <span class="testo">
-        <b>Focused Channelling</b> nel sesto link del petto, al posto di Annihilation.
-        <em>In gioco ci sta Annihilation, che è la gemma da mappa. I 146 M di DPS sono misurati con Focused Channelling.</em>
-      </span>
-    </li>
-    <li data-p="audio">
-      <input type="checkbox" aria-label="fatto">
-      <span class="testo">
-        <b>Audio acceso.</b> Non è un consiglio di contorno: ogni abilità di Sirus ha la sua battuta, e la battuta arriva <b>prima</b> del colpo.
-        <em>Sullo Steam Deck vuol dire cuffie o volume alzato prima di entrare.</em>
-      </span>
-    </li>
-    <li data-p="pantheon">
-      <input type="checkbox" aria-label="fatto">
-      <span class="testo">
-        <b>Pantheon: decidilo, non lasciarlo com'è.</b> Hai Arakaali perché <i>«Solaris è un pantheon da boss, io muoio in mappa»</i>. Qui sei nel caso opposto — nemico singolo, le condizioni di Solaris si accendono.
-        <em>Ma le fight uber hanno DoT persistente, che è il mestiere di Arakaali. Da misurare in PoB, non da scegliere a naso.</em>
-      </span>
-    </li>
-    <li data-p="portali">
-      <input type="checkbox" aria-label="fatto">
-      <span class="testo">
-        <b>Sei morti e il tentativo è finito.</b> Su Sirus sono 9 chaos: entra per imparare, non per vincere al primo colpo.
-      </span>
-    </li>
-  </ol>
-
-  <h2 class="sec">L'arena</h2>
-
-  <div class="card" style="padding:var(--s4)">
-    <ul style="margin:0;padding-left:1.1rem">
-      <li style="font-size:var(--t-sm);line-height:1.6;color:var(--muted);margin-bottom:.3rem">Oriath, piena di <b>Deatomization Storm</b>: toccarle fa danno enorme.</li>
-      <li style="font-size:var(--t-sm);line-height:1.6;color:var(--muted);margin-bottom:.3rem">Attorno a Sirus c'è un <b>cerchio rosso</b> che tiene lontane le tempeste. <b>Uscirne fa partire un'intermission senza far avanzare la fase</b>: è il modo più stupido di perdere tempo.</li>
-      <li style="font-size:var(--t-sm);line-height:1.6;color:var(--muted)">Sull'uber una tempesta <b>ti insegue per tutta la fight</b>, non solo nelle intermission.</li>
-    </ul>
-  </div>
-
-  <h2 class="sec">Le quattro fasi</h2>
-
-  <div class="fase">
-    <h3><span class="num">1</span> Girare attorno e sparare</h3>
-    <p class="quando">dal 100% al 75%</p>
-    <ul>
-      <li>Quasi tutto si aggancia <b>alla posizione da cui lanci</b>: muoversi è già la difesa.</li>
-      <li>Le uniche minacce sono il <b>Die Beam</b> e l'apparizione che vola.</li>
-      <li>🔴 <b>Sull'uber il Die Beam è già a piena potenza qui</b>, non dalla fase 4.</li>
-    </ul>
-  </div>
-
-  <div class="fase">
-    <h3><span class="num">•</span> Intermission</h3>
-    <p class="quando">al 75%, 50% e 25%</p>
-    <ul>
-      <li>Sirus va al centro e ci pianta sotto una <b>tempesta che ti insegue</b>: prima ti spinge indietro, poi parte.</li>
-      <li><b>Portala al bordo dell'arena</b>, mentre l'apparizione tira meteore e geyser.</li>
-      <li>Quando la tempesta è lontana da lui e non hai altro addosso, <b>mettiti sotto Sirus</b>: è quello che fa partire la fase dopo.</li>
-    </ul>
-  </div>
-
-  <div class="fase">
-    <h3><span class="num">2</span> Si aggiungono corridoio e labirinto</h3>
-    <p class="quando">dal 75% al 50%</p>
-    <ul>
-      <li><b>Corridor Blast</b>: muri invalicabili ti chiudono in un corridoio e ti spara addosso proiettili lenti. <b>Si spezza con un blink dietro Sirus</b> — togli la linea di vista.</li>
-      <li><b>Labirinto di meteore, 1 anello.</b> Non si schiva: <b>si esce</b>. L'uscita è casuale ed è segnata da bagliori animati. Se sei ancora dentro quando cade la meteora centrale, muori.</li>
-      <li>⚠️ Sull'uber i ritardi del labirinto sono <b>più corti</b>: si parte a cercare l'uscita subito, non dopo aver finito il canale.</li>
-    </ul>
-  </div>
-
-  <div class="fase">
-    <h3><span class="num">3</span> Uguale, con tre anelli</h3>
-    <p class="quando">dal 50% al 25%</p>
-    <ul>
-      <li>Meccanicamente identica alla 2. Cambia il labirinto: <b>3 anelli</b>, e il danno sale.</li>
-    </ul>
-  </div>
-
-  <div class="fase">
-    <h3><span class="num grave">4</span> Riparte dal 75% ed è un'altra fight</h3>
-    <p class="quando">sotto il 25% — è qui che si perde il tentativo</p>
-    <ul>
-      <li><b>Die Beam a 4 raggi</b>, e ognuno traccia la tua posizione mentre esce. Si scappa con i movimenti, oppure <b>blink dietro Sirus</b>.</li>
-      <li><b>Core rotante</b>: Sirus si divide in 4 illusioni che accendono un nucleo. I suoi raggi danno <b>Corruption of the Awakener</b>, che si somma, rallenta e alza il danno subito. Sull'uber sono <b>6 raggi</b> invece di 4, e l'area che resta a terra <b>spegne il leech e abbassa le resistenze</b>.</li>
-      <li><b>Multi Clone Beam</b>: scatta in un punto a caso e ci mette 12 cloni attorno, nascondendosi dentro. <b>Guarda in che direzione è scattato</b>: da lì partono i raggi. Sull'uber i cloni <b>ti seguono</b>.</li>
-      <li>Sirus è l'unico dei cloni con la <b>barra della vita visibile</b>. Le illusioni non si possono colpire.</li>
-      <li>🔴 Sull'uber la <b>Desolation non si pulisce più</b> col labirinto: si accumula e resta.</li>
-    </ul>
-  </div>
-
-  <h2 class="sec">Le battute — cosa dice, cosa fare</h2>
-
-  <table class="tabella" style="width:100%">
-    <thead><tr><th>Dice</th><th>Arriva</th><th>Cosa fai</th></tr></thead>
-    <tbody>
-      <tr>
-        <td><span class="voce">DIE!</span></td>
-        <td>3 raggi sulla tua posizione (4 in fase 4), con ritardo</td>
-        <td><b>Passo di lato.</b> In fase 4 blink dietro Sirus</td>
-      </tr>
-      <tr>
-        <td><span class="voce">Rain of stars!</span></td>
-        <td>pioggia di meteore piccole</td>
-        <td>I bagliori a terra sono i punti d'impatto: <b>esci dai cerchi</b></td>
-      </tr>
-      <tr>
-        <td><span class="voce">Be utterly annihilated!</span><br><span class="voce">Creation itself!</span></td>
-        <td>due raggi che collassano al centro e scoppiano</td>
-        <td><b>Perpendicolare</b> ai raggi, o lontano</td>
-      </tr>
-      <tr>
-        <td><span class="voce">Fury of the cosmos!</span><br><span class="voce">You are nothing!</span><br><span class="voce">Why resist!</span></td>
-        <td>geyser che brillano e poi bruciano</td>
-        <td>Esci dalla loro portata: è danno nel tempo, non un colpo</td>
-      </tr>
-      <tr>
-        <td><span class="voce">Feel the thrill of THE VOID!</span><br><span class="voce">You will long for NON-EXISTENCE.</span><br><span class="voce">Meaning is AN ILLUSION.</span></td>
-        <td>12 cloni, poi raggi multipli</td>
-        <td><b>Segui con gli occhi dove è scattato</b>: da lì parte il raggio</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h2 class="sec">Sulla build — il danno non è il problema</h2>
-
-  <div class="card" style="padding:var(--s4)">
-    <ul style="margin:0;padding-left:1.1rem">
-      <li style="font-size:var(--t-sm);line-height:1.6;color:var(--muted);margin-bottom:.4rem">🔴 <b>L'area uber riduce del 70% il danno che Sirus subisce.</b> I tuoi 146 M diventano ~44 M effettivi, e sono ancora abbondanti: qui si muore, non si resta corti.</li>
-      <li style="font-size:var(--t-sm);line-height:1.6;color:var(--muted);margin-bottom:.4rem"><b>Il numero che decide è la max hit fisica: 25.294.</b> Non l'EHP, non le resistenze elementali (66-83k).</li>
-      <li style="font-size:var(--t-sm);line-height:1.6;color:var(--muted);margin-bottom:.4rem"><b>Sei un canalizzatore fermo su un boss che ti obbliga a muoverti.</b> Si spara <b>fra</b> le meccaniche, mai durante. Il canale si molla appena parte una battuta.</li>
-      <li style="font-size:var(--t-sm);line-height:1.6;color:var(--muted)"><b>L'apertura</b>: blink addosso ×3 (20, 40, 45 anime) → <b>Pact of Lycia</b> → canali <b>girato dall'altra parte per 2 secondi</b> → ti giri e spari.</li>
-    </ul>
-  </div>
-
-  <h2 class="sec">Dopo Sirus</h2>
-
-  <div class="card" style="padding:var(--s4)">
-    <ul style="margin:0;padding-left:1.1rem">
-      <li style="font-size:var(--t-sm);line-height:1.6;color:var(--muted);margin-bottom:.4rem"><b>Venarius, poi Neglect, poi Fear</b> — 164 chaos in tutto, nell'ordine in cui costa poco sbagliare.</li>
-      <li style="font-size:var(--t-sm);line-height:1.6;color:var(--muted);margin-bottom:.4rem"><b>Il quinto non si compra.</b> Le <b>Nightmare Map su Sanctuary</b> (Nightmare of Lycia) droppano <b>Lonely, Traumatic e Reverent</b>: 4 Reverent aprono l'Incarnation of Dread, e nel frattempo rimpinguano gli altri due. Ne hai <b>38</b> in tab.</li>
-      <li style="font-size:var(--t-sm);line-height:1.6;color:var(--muted)">⚠️ <b>Non è gratis e va detto</b>: quelle mappe valgono 65 c l'una vendute. Correrle conviene lo stesso — un run rende ~2 frammenti da quel gruppo — ma è currency che stai spendendo.</li>
-    </ul>
+    <b>I frammenti si comprano da Faustus, non dalla ricerca per oggetti.</b> Sull'Awakening l'endpoint di scambio web mostrava <b>10 inserzioni in tutto</b> contro un volume poe.ninja di 3.658: quelle inserzioni non sono il mercato.
   </div>
 
   <h2 class="sec">Da dove escono i frammenti</h2>
@@ -356,7 +492,7 @@
   <table class="tabella" style="width:100%">
     <thead><tr><th>Nightmare Map</th><th>Boss</th><th>Frammenti</th></tr></thead>
     <tbody>
-      <tr><td><b>Sanctuary</b></td><td>Nightmare of Lycia</td><td><b>Lonely · Traumatic · Reverent</b></td></tr>
+      <tr><td><b>Sanctuary</b></td><td>Nightmare of Lycia</td><td><b>Lonely · Traumatic · Reverent</b> — i tuoi tre</td></tr>
       <tr><td>Ziggurat</td><td>Nightmare of Catarina</td><td>Blazing · Devouring</td></tr>
       <tr><td>Fortress</td><td>Nightmare of the Unbreakable</td><td>Decaying · Synthesising</td></tr>
       <tr><td>Abomination</td><td>Nightmare of the Depraved Trinity</td><td>Reality · Awakening</td></tr>
@@ -367,8 +503,8 @@
   <h2 class="sec">Cosa dicono i numeri e cosa no</h2>
 
   <div class="card" style="padding:var(--s4)">
-    <p class="fonte" style="margin:0 0 .5rem"><b>Misurato.</b> Prezzi e volumi dall'API JSON di poe.ninja, lega Allflame, 28 agosto 2026 — il volume più basso della lista è 3.658 in 24 ore, quindi nessuna voce è un prezzo di comodo. Quantità in tab da uno snapshot di Wealthy Exile risincronizzato lo stesso giorno. Frammenti, quantità e boss letti su PoEDB, item per item.</p>
-    <p class="fonte" style="margin:0"><b>Non misurato.</b> Le meccaniche di Sirus vengono dalla guida di Maxroll, non da nostre run: sono descrizioni, non tempi cronometrati. E <b>quante volte serva provarci</b> non lo dice nessun numero qui dentro.</p>
+    <p class="fonte" style="margin:0 0 .5rem"><b>Misurato.</b> Prezzi e volumi dall'API JSON di poe.ninja, lega Allflame, 28 agosto 2026 — volume minimo della lista 3.658 in 24 ore. Quantità in tab e liquidità da uno snapshot di Wealthy Exile risincronizzato lo stesso giorno. Frammenti, quantità e boss letti su PoEDB item per item: il testo dice <b>quattro</b>, non cinque come ripetono le guide più vecchie.</p>
+    <p class="fonte" style="margin:0"><b>Non misurato.</b> Le meccaniche dei boss vengono dalle schede di Maxroll, non da nostre run: sono descrizioni, non tempi cronometrati. 🔴 <b>Sul Cortex la scheda elenca le abilità ma non i tell</b>, e qui non sono stati inventati: quella prima run è di riconoscimento. E <b>quante volte serva provarci</b> non lo dice nessun numero di questa pagina.</p>
   </div>
 
   <footer class="pie">
